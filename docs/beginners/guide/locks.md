@@ -1,109 +1,109 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-Every [output](/docs/beginners/guide/outputs.md) in a [transaction](/docs/beginners/guide/transactions.md) has a lock on it. This lock is a **set of requirements** that must be met to spend the output in a future transaction.
+[交易](/docs/beginners/guide/transactions.md)中的每个[输出](/docs/beginners/guide/outputs.md)都有一个锁。这个锁是未来交易中花费该输出所必须满足的**一组要求**。
 
-So in other words, these locks prevent bitcoins from being stolen (i.e. someone else spending your bitcoins), as every output we receive is *encumbered* by a lock.
+换句话说，这些锁可以防止比特币被盗（即其他人花费你的比特币），因为我们收到的每个输出都由一个锁*限制*。
 
-For example, a typical lock reads something like this:
+例如，一个典型的锁看起来像这样：
 
-[<img src="../../images/beginners_guide_locks_01-output-lock-english.png" alt="Diagram showing a simple lock placed on a transaction output." width="576" height="116" />](/docs/beginners/guide/locks/01-output-lock-english.png.md)
+[<img src="../../images/beginners_guide_locks_01-output-lock-english.png" alt="展示放置在交易输出上的简单锁的图表。" width="576" height="116" />](/docs/beginners/guide/locks/01-output-lock-english.png.md)
 
-## When do locks get placed on outputs?
+## 锁是在什么时候加在输出上的？
 
-As we know, a [transaction](/docs/beginners/guide/transactions.md) takes existing outputs and creates new ones from them:
+正如我们所知，[交易](/docs/beginners/guide/transactions.md)使用现有的输出并从中创建新的输出：
 
-[<img src="../../images/beginners_guide_locks_02-transaction.png" alt="Diagram showing a simple transaction with inputs and outputs." width="360" height="148" />](/docs/beginners/guide/locks/02-transaction.png.md)
+[<img src="../../images/beginners_guide_locks_02-transaction.png" alt="展示包含输入和输出的简单交易图表。" width="360" height="148" />](/docs/beginners/guide/locks/02-transaction.png.md)
 
-And it's during the creation of these outputs that we give each one their own "lock":
+正是在创建这些输出的过程中，我们为每个输出赋予了它们自己的“锁”：
 
-[<img src="../../images/beginners_guide_locks_02-transaction-locks.png" alt="Diagram showing a simple transaction with inputs and outputs, with locks on the outputs." width="364" height="161" />](/docs/beginners/guide/locks/02-transaction-locks.png.md)
+[<img src="../../images/beginners_guide_locks_02-transaction-locks.png" alt="展示包含输入和输出，且输出上带有锁的简单交易图表。" width="364" height="161" />](/docs/beginners/guide/locks/02-transaction-locks.png.md)
 
-So when we want to send bitcoins to a friend, we create a new output, and add a lock that says "only the owner of the address 1friend1234567890... can use this output":
+所以当我们要给朋友发送比特币时，我们创建一个新输出，并添加一个锁，上面写着“只有地址 1friend1234567890... 的拥有者才能使用此输出”：
 
-[<img src="../../images/beginners_guide_locks_02-transaction-locks-addresses.png" alt="Diagram showing a simple transaction with inputs and outputs, and the outputs are locked to addresses." width="661" height="270" />](/docs/beginners/guide/locks/02-transaction-locks-addresses.png.md)
+[<img src="../../images/beginners_guide_locks_02-transaction-locks-addresses.png" alt="展示输出锁定到具体地址的简单交易图表。" width="661" height="270" />](/docs/beginners/guide/locks/02-transaction-locks-addresses.png.md)
 
-As a result, this new output will effectively "belong" to our friend, because they are the only person who has the [private key](/docs/beginners/guide/private-keys.md) required to unlock the bitcoins locked to this [address](/docs/technical/keys/address.md), so nobody else will be able to spend it.
+因此，这个新输出将有效地“属于”我们的朋友，因为他们是唯一拥有解锁锁定到此[地址](/docs/technical/keys/address.md)的比特币所需[私钥](/docs/beginners/guide/private-keys.md)的人，所以没有其他人能够花费它。
 
-### Where do bitcoins live?
+### 比特币存在哪里？
 
-As you may have noticed, you're never really "sending" bitcoins directly from your computer to someone else's computer.
+你可能已经注意到了，你从未真正把比特币直接从你的电脑“发送”到别人的电脑上。
 
-Instead, you're constructing a transaction that creates new outputs (with locks on them), sending this transaction data into the [bitcoin network](/docs/beginners/guide/network.md), and waiting for it to get mined into the [blockchain](/docs/beginners/guide/blockchain.md).
+相反，你是在构建一笔创建新输出（上面带有锁）的交易，将此交易数据发送到[比特币网络](/docs/beginners/guide/network.md)中，并等待它被开采进[区块链](/docs/beginners/guide/blockchain.md)中。
 
-[<img src="../../images/beginners_guide_locks_aside-overview.png" alt="Diagram showing a transaction with inputs and outputs getting mined on to the blockchain." width="314" height="493" />](/docs/beginners/guide/locks/aside-overview.png.md)
+[<img src="../../images/beginners_guide_locks_aside-overview.png" alt="展示一笔包含输入和输出的交易被开采进区块链的图表。" width="314" height="493" />](/docs/beginners/guide/locks/aside-overview.png.md)
 
-So even though the blockchain is a file of transactions, on a practical level you can think of it as **storage for outputs**.
+所以，尽管区块链是一个交易文件，但在实用层面上，你可以把它看作是**输出的存储库**。
 
-[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs.png" alt="Diagram showing individual outputs inside blocks in the blockchain." width="91" height="269" />](/docs/beginners/guide/locks/aside-blockchain-outputs.png.md)
+[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs.png" alt="展示区块链中区块内部各个输出的图表。" width="91" height="269" />](/docs/beginners/guide/locks/aside-blockchain-outputs.png.md)
 
-The blockchain is just one big storage unit for outputs.
+区块链就是一个巨大的输出存储单元。
 
-And when you want to send "your" bitcoins to someone, you simply select the outputs in the blockchain that you are able to unlock:
+当你想要把“你的”比特币发送给某人时，你只需选择区块链中你可以解锁的输出：
 
-[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs-transaction.png" alt="Diagram showing a transaction selecting outputs from the blockchain." width="495" height="272" />](/docs/beginners/guide/locks/aside-blockchain-outputs-transaction.png.md)
+[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs-transaction.png" alt="展示交易选择区块链中输出的图表。" width="495" height="272" />](/docs/beginners/guide/locks/aside-blockchain-outputs-transaction.png.md)
 
-And when this transaction gets mined into the blockchain, the outputs you used (as inputs) cannot be used again.
+而当这笔交易被开采到区块链中后，你用作输入的输出就不能再被使用了。
 
-[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs-transaction-mined.png" alt="Diagram showing a transaction spending existing outputs adding new outputs to the blockchain." width="608" height="718" />](/docs/beginners/guide/locks/aside-blockchain-outputs-transaction-mined.png.md)
+[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs-transaction-mined.png" alt="展示一笔交易花费现有输出并将新输出添加到区块链的图表。" width="608" height="718" />](/docs/beginners/guide/locks/aside-blockchain-outputs-transaction-mined.png.md)
 
-So the blockchain stores outputs, and you can spend any of these outputs any time you want (as long as you can unlock them, of course).
+因此，区块链存储输出，你可以随时花费这些输出中的任何一个（当然，前提是你可以解锁它们）。
 
-## What does a lock look like?
+## 锁看起来像什么？
 
-Locks are written in a basic programming language called [Script](/docs/technical/script.md).
+锁是用一种被称为 [Script](/docs/technical/script.md) 的基础编程语言编写的。
 
-It's a bit tricky to explain the workings of an entire programming language in one diagram, but here we go:
+要用一张图表解释整门编程语言的工作原理有点困难，但我们试一下：
 
-[<img src="../../images/beginners_guide_locks_03-locking-script.png" alt="Diagram showing an example locking script on an output." width="416" height="153" />](/docs/beginners/guide/locks/03-locking-script.png.md)
+[<img src="../../images/beginners_guide_locks_03-locking-script.png" alt="展示输出上锁定脚本示例的图表。" width="416" height="153" />](/docs/beginners/guide/locks/03-locking-script.png.md)
 
-This is a simplified example of a locking script; it's not exactly what Script looks like.
+这是一个简化版的锁定脚本示例；它不完全是 Script 的真实样子。
 
-Now, the most interesting part of this locking script is the `CHECKPRIVATEKEY` part, which is a *function* that we use to help set the requirements for the lock.
+现在，这个锁定脚本中最有趣的部分是 `CHECKPRIVATEKEY` 部分，这是我们用来帮助设置锁要求的一个*函数*。
 
-So for this particular output, we've *set a lock* that wants to compare the address 1EUXSxuUVy2PC5enGXR1a3yxbEjNWMHuem with a [private key](/docs/beginners/guide/private-keys.md).
+所以对于这个特定的输出，我们*设置了一个锁*，该锁想要将地址 1EUXSxuUVy2PC5enGXR1a3yxbEjNWMHuem 与一个[私钥](/docs/beginners/guide/private-keys.md)进行比较。
 
-If we can provide this lock with the correct private key (which the owner of the address keeps secret), we can unlock it and spend it in a transaction.
+如果我们能为这个锁提供正确的私钥（该地址拥有者保持私密的那一个），我们就可以解锁它并在交易中花费它。
 
-## How do you unlock a lock?
+## 你如何解锁一个锁？
 
-When you construct the transaction data, you include an "unlocking script" alongside each output you want to spend:
+当你构建交易数据时，你会在要花费的每个输出旁边包含一个“解锁脚本”：
 
-[<img src="../../images/beginners_guide_locks_04-unlocking-script.png" alt="Diagram showing an unlocking script alongside a transaction input." width="564" height="122" />](/docs/beginners/guide/locks/04-unlocking-script.png.md)
+[<img src="../../images/beginners_guide_locks_04-unlocking-script.png" alt="展示交易输入旁的解锁脚本图表。" width="564" height="122" />](/docs/beginners/guide/locks/04-unlocking-script.png.md)
 
-So for example, to unlock a typical locking script (e.g. `[address] CHECKPRIVATEKEY`), we need to prove that we *own* the address inside the lock. To do this, we provide the private key connected to the address.
+例如，要解锁一个典型的锁定脚本（例如 `[address] CHECKPRIVATEKEY`），我们需要证明我们*拥有*锁内部的地址。为此，我们提供与该地址相连的私钥。
 
-[<img src="../../images/beginners_guide_locks_04-unlocking-script-privkey.png" alt="Diagram showing a private key placed inside the unlocking script of a transaction input." width="609" height="122" />](/docs/beginners/guide/locks/04-unlocking-script-privkey.png.md)
+[<img src="../../images/beginners_guide_locks_04-unlocking-script-privkey.png" alt="展示放入交易输入解锁脚本中私钥的图表。" width="609" height="122" />](/docs/beginners/guide/locks/04-unlocking-script-privkey.png.md)
 
-So when a node receives this transaction data, they will run the "locking"+"unlocking" scripts together to see if your private key is mathematically connected to the address.
+因此，当节点收到此交易数据时，他们将一起运行“锁定”+“解锁”脚本，以查看你的私钥是否在数学上与该地址相连。
 
-[<img src="../../images/beginners_guide_locks_04-locking-unlocking-script-simple.png" alt="Diagram showing a locking and unlocking script evaluating to true." width="704" height="73" />](/docs/beginners/guide/locks/04-locking-unlocking-script-simple.png.md)
+[<img src="../../images/beginners_guide_locks_04-locking-unlocking-script-simple.png" alt="展示锁定和解锁脚本计算为真的图表。" width="704" height="73" />](/docs/beginners/guide/locks/04-locking-unlocking-script-simple.png.md)
 
-If everything is cool, the node accepts the transaction and passes it on to other nodes, who will each in turn run the "locking"+"unlocking" script before accepting the transaction.
+如果一切正常，该节点就会接受该交易并将其传递给其他节点，其他节点在接受交易之前也会依次运行“锁定”+“解锁”脚本。
 
-And that's how you unlock a lock on an output.
+这就是你解锁输出上的锁的方法。
 
-### Aren't we giving away our private key?
+### 我们这不是在泄露我们的私钥吗？
 
-Astute observation.
+敏锐的观察。
 
-Confession: We don't actually put our private key into the unlocking script.
+坦白说：我们实际上并没有把我们的私钥放入解锁脚本中。
 
-You see, to save us from giving our private key away within the transaction data, we use the private key to create something called a [digital signature](/docs/beginners/guide/digital-signatures.md) instead:
+为了避免我们在交易数据中泄露私钥，我们使用私钥创建了一个被称为[数字签名](/docs/beginners/guide/digital-signatures.md)的东西来代替：
 
-[<img src="../../images/beginners_guide_locks_05-unlocking-script-digitalsignature.png" alt="Diagram showing a digital signature being created from a private key and being placed into an unlocking script." width="497" height="116" />](/docs/beginners/guide/locks/05-unlocking-script-digitalsignature.png.md)
+[<img src="../../images/beginners_guide_locks_05-unlocking-script-digitalsignature.png" alt="展示由私钥创建数字签名并放入解锁脚本的图表。" width="497" height="116" />](/docs/beginners/guide/locks/05-unlocking-script-digitalsignature.png.md)
 
-Obviously I lied about that `CHECKPRIVATEKEY` function as well.
+显然，关于那个 `CHECKPRIVATEKEY` 函数我也撒了谎。
 
-However, there *is* a function that compares an address with a digital signature, and it's called `CHECKSIG`:
+然而，确实*存在*一个比较地址与数字签名的函数，它被称为 `CHECKSIG`：
 
-[<img src="../../images/beginners_guide_locks_05-unlocking-script-digitalsignature-simple.png" alt="Diagram showing a digital signature unlocking the transaction input." width="393" height="34" />](/docs/beginners/guide/locks/05-unlocking-script-digitalsignature-simple.png.md)
+[<img src="../../images/beginners_guide_locks_05-unlocking-script-digitalsignature-simple.png" alt="展示数字签名解锁交易输入的图表。" width="393" height="34" />](/docs/beginners/guide/locks/05-unlocking-script-digitalsignature-simple.png.md)
 
-And thanks to the mathematics of digital signatures and the `CHECKSIG` function, we can still lock outputs to addresses, and unlock them without having to give away the private key.
+多亏了数字签名的数学原理和 `CHECKSIG` 函数，我们仍然可以将输出锁定到地址，并在不泄露私钥的情况下解锁它们。
 
-Awesome.
+太棒了。
 
-There are many different functions available in the [Script](/docs/technical/script.md) programming language. The `CHECKSIG` function is designed for locking an output to a specific address, but you can use others (and in various combinations) to create much more complex locks.
+在 [Script](/docs/technical/script.md) 编程语言中有许多不同的可用函数。`CHECKSIG` 函数设计用于将输出锁定到特定地址，但你可以使用其他函数（以及进行各种组合）来创建复杂得多的锁。
 
-For example, you could create a lock that can only be unlocked after a specific date, or a lock that can only be unlocked by the owners of two (or more) different addresses.
+例如，你可以创建一个只能在特定日期之后解锁的锁，或者一个只能由两个（或更多）不同地址的拥有者共同解锁的锁。
 
-This is why bitcoin is sometimes referred to as "programmable money".
+这就是为什么比特币有时被称为“可编程货币”的原因。

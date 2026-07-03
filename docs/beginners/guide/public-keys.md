@@ -1,66 +1,66 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-A public key is the counterpart to a [private key](/docs/technical/keys/private-key.md).
+公钥是[私钥](/docs/technical/keys/private-key.md)的对应物。
 
-And similar to a private key, it's displayed as a [hexadecimal](/docs/technical/general/hexadecimal.md) string.
+与私钥类似，它显示为一个[十六进制](/docs/technical/general/hexadecimal.md)字符串。
 
-For example:
+例如：
 
 ```
 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
 ```
 
-If we didn't end up shortening this public key to an [address](/docs/technical/keys/address.md), this would be the "account number" that you send bitcoins to when making a [transaction](/docs/beginners/guide/transactions.md).
+如果我们不把这个公钥缩短为[地址](/docs/technical/keys/address.md)，那么在进行[交易](/docs/beginners/guide/transactions.md)时，它就是你向其发送比特币的“账号”。
 
-Anyway, here's the interesting part: **your public key is calculated *from* your private key**.
+总之，这里是很有趣的部分：**你的公钥是由你的私钥计算出来的**。
 
-## How do you get a public key from a private key?
+## 你如何从私钥得到公钥？
 
-You insert a private key into a special *mathematical function*, and the result is a public key.
+你将私钥输入到一个特殊的*数学函数*中，结果就是公钥。
 
-### What is this function?
+### 这个函数是什么？
 
-It's called **[elliptic curve multiplication](/docs/technical/cryptography/elliptic-curve.md#multiply)**.
+它被称为**[椭圆曲线乘法](/docs/technical/cryptography/elliptic-curve.md#multiply)**。
 
-This basically involves "bouncing" around the graph of an elliptic curve until you end up at a final set of co-ordinates on the graph, and these resulting co-ordinates are your public key.
+这基本上包括在椭圆曲线的图表上不断“弹跳”，直到你最终落在图表上的一组最终坐标上，这些结果坐标就是你的公钥。
 
-It'll be easier if I show you...
+我向你展示一下会更容易理解……
 
-### What does an elliptic curve look like?
+### 椭圆曲线看起来像什么？
 
-Like this:
+像这样：
 
-[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve.png" alt="A simple graph showing the shape of an elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve.png.md)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve.png" alt="展示椭圆曲线形状的简单图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve.png.md)
 
-Furthermore, the [elliptic curve used in Bitcoin](/docs/technical/cryptography/elliptic-curve.md) comes with a specific *starting point*.
+此外，[比特币中使用的椭圆曲线](/docs/technical/cryptography/elliptic-curve.md)带有一个特定的*起点*。
 
-[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g.png" alt="A simple graph showing the generator point on an elliptic curve." width="272" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g.png.md)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g.png" alt="展示椭圆曲线生成点的简单图表。" width="272" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g.png.md)
 
-We call this starting point the *generator point* (G).
+我们把这个起点称为*生成点* (G)。
 
-And if we were to do some "multiplication" on this curve (e.g. "multiplying" the starting point by 2), we would move around the curve like this.
+如果我们要在这条曲线上做一些“乘法”（例如将起点“乘以” 2），我们就会像这样在曲线上移动。
 
-[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png" alt="Diagram showing elliptic curve multiplication." width="476" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g-multiplication.png.md)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png" alt="展示椭圆曲线乘法的图表。" width="476" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g-multiplication.png.md)
 
-The fact that we can draw a tangent anywhere on the curve and it intersects *one* other point on the curve is a special feature of elliptic curves.
+我们可以在曲线上的任何地方画一条切线，且它与曲线上的*另一个*点相交，这是椭圆曲线的一个特殊特征。
 
-And there we have it. We have just "multiplied" the starting co-ordinate **G** by 2, and found the position of the final co-ordinate **2G**.
+就是这样。我们刚刚将起点坐标 **G** 乘以了 2，并找到了最终坐标 **2G** 的位置。
 
-This is *one round* of elliptic curve multiplication.
+这是椭圆曲线乘法的*一轮*计算。
 
-#### Elliptic curve multiplication
+#### 椭圆曲线乘法
 
-I keep putting "multiplication" inside quotes, because multiplication on elliptic curves is **not standard multiplication**. For example, if you were to multiply the co-ordinates of G by 2, it would not give you the co-ordinates of 2G (as shown on the graph).
+我一直把“乘法”放在引号里，因为椭圆曲线上的乘法**不是普通的乘法**。例如，如果你只是把 G 的坐标乘以 2，它并不会给你 2G 的坐标（如图表所示）。
 
-You see, the geniuses who found out that you can move around the curve in this specific way had to call it something, so they to decided refer to this operation as "multiplication". Because, you know, mathematics can never be confusing enough.
+你看，发现可以以这种特定方式在曲线上移动的天才们不得不给它起个名字，所以他们决定将这种操作称为“乘法”。毕竟，数学永远都不嫌够让人困惑。
 
-So when I say "multiplication" from now on, I mean "elliptic curve multiplication".
+所以从现在开始，当我提到“乘法”时，我的意思是“椭圆曲线乘法”。
 
-### How do you create a public key?
+### 你如何创建公钥？
 
-In the above example we multiplied `G` by 2 to get `2G`.
+在上面的例子中，我们把 `G` 乘以 2 得到了 `2G`。
 
-To get a public key, we multiply `G` by our private key.
+要得到公钥，我们将 `G` 乘以我们的私钥。
 
 ```
 private key = 62132aa90f42874faae316b40190b0f4306300e9a0e00d636bf1a4ffc8716199
@@ -69,14 +69,14 @@ private key = 443605236865754999519263563149212308059996825781614468454718889975
 public key  = 44360523686575499951926356314921230805999682578161446845471888997559888339353 * G
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> EC Multiply
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 椭圆曲线乘法
 
-Generator Point
+生成点
 
-Random Point
+随机点
 
 
-Point 1
+点 1
 
 x:
 
@@ -87,7 +87,7 @@ y:
 0d
 
 
-Multiplier
+乘数
 
 0d
 
@@ -95,10 +95,10 @@ Multiplier
 
 +1
 
-Random
+随机
 
 
-Point 1 x Multiplier
+点 1 x 乘数
 
 x:
 
@@ -110,27 +110,27 @@ y:
 
 
 
-Steps
- 
+步骤
+
 
 
 
 0 secs
 
-Or in other words, "bounce around the elliptic curve private key number of times".
+或者换句话说，“在椭圆曲线上弹跳私钥数字所代表的次数”。
 
-[<img src="../../images/beginners_guide_public-keys_02-public-key-multiplication.png" alt="Diagram showing multiplication on an elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/02-public-key-multiplication.png.md)
+[<img src="../../images/beginners_guide_public-keys_02-public-key-multiplication.png" alt="展示椭圆曲线乘法的图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/02-public-key-multiplication.png.md)
 
-The final resting point on the elliptic curve will give you a set of co-ordinates, and these co-ordinates form the public key.
+椭圆曲线上的最终落脚点将给你一组坐标，这些坐标构成了公钥。
 
-So if these are the coordinates we end up with after multiplying `G` by our private key:
+所以，如果把 `G` 乘以我们的私钥后，我们最终得到的坐标是：
 
 ```
 x = 79501086185442349843693847274906543406531753578810518737095233142215568708309
 y = 69919270316357694283546792236970490308989664412014609961442098166755831692197
 ```
 
-Then all we have to do is convert both to hexadecimal and smush them together...
+那么我们只需要把这两个数字转换为十六进制并拼在一起……
 
 ```
 public key (x) = afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
@@ -139,18 +139,18 @@ public key (y) = 9a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba
 public key (x,y) = afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 公钥
 
-Generate Random
+随机生成
 
-Private Key
+私钥
 
-`0 bytes`
+`0 字节`
 
-Public Key
+公钥
 
 
-Coordinates
+坐标
 
 x:
 
@@ -160,112 +160,112 @@ y:
 
 0d
 
-parity:
+奇偶性 (parity):
 
-A public key is just a point on an elliptic curve. The final public key is these coordinates in hexadecimal.
+公钥只是椭圆曲线上的一个点。最终的公钥就是十六进制的这些坐标。
 
-Compression
- Compressed (02 or 03 prefix)
- Uncompressed (04 prefix)
- x-only (no prefix)
+压缩
+ 已压缩 (02 或 03 前缀)
+ 未压缩 (04 前缀)
+ 仅 x (无前缀)
 
-The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
+椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标，以及 y 坐标是奇数还是偶数。
 
-An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
+仅 x 的公钥用于 [Taproot](/docs/technical/upgrades/taproot.md) 输出中。对应的 y 坐标被假定为偶数。
 
-`0 bytes`
+`0 字节`
 
 
 
-**Never enter your private key into a website, or use a private key generated by a website.** Websites can easily save the private key and use it to steal your bitcoins.
+**切勿在网站中输入你的私钥，也不要使用网站生成的私钥。** 网站很容易保存私钥并用它来窃取你的比特币。
 
 0 secs
 
-And ta da! A public key!
+大功告成！一个公钥诞生了！
 
-#### Public key format
+#### 公钥格式
 
-This is the *old* (long) format of public key, which means I've got to put an `04` at the start. Like this:
+这是*旧*的（长的）公钥格式，这意味着我必须在开头放一个 `04`。像这样：
 
 ```
 public key = 04afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
 ```
 
-To find out why this is the case, I'm afraid you're going to have to read through the section about [compressed public keys](#compressed-public-keys).
+要找出为什么是这样，恐怕你得读一读关于[压缩公钥](#compressed-public-keys)的部分了。
 
-### Compressed Public Keys
+### 压缩公钥
 
-To save space, public keys (these days) use the full `x` coordinate only.
+为了节省空间，公钥（现在）只使用完整的 `x` 坐标。
 
-This is because the elliptic curve is an *equation* (`y^2 = x^3 + 7`), which means that if you have the `x` co-ordinate, you can work out the corresponding `y` co-ordinate.
+这是因为椭圆曲线是一个*方程* (`y^2 = x^3 + 7`)，这意味着如果你有了 `x` 坐标，你就可以算出对应的 `y` 坐标。
 
-However, due to the `y^2` part of the equation, the `y` could be a *positive* or *negative* number:
+然而，由于方程中 `y^2` 部分的存在，`y` 可以是一个*正数*或*负数*：
 
-[<img src="../../images/beginners_guide_public-keys_03-y-polarity.png" alt="Diagram showing two possible y-coordinates for a given x coordinate on the elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity.png.md)
+[<img src="../../images/beginners_guide_public-keys_03-y-polarity.png" alt="展示在椭圆曲线给定 x 坐标下两个可能 y 坐标的图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity.png.md)
 
-So the only extra information you need to find the correct `y` co-ordinate is to know whether the `y` co-ordinate is *above* or *below* the x-axis. And due to the way elliptic curves work:
+所以，找到正确的 `y` 坐标所需的唯一额外信息就是知道 `y` 坐标是在 x 轴*上方*还是*下方*。而根据椭圆曲线的工作原理：
 
-* If `y` is **even**, it's *above* the x-axis.
-* If `y` is **odd**, it's *below* the x-axis.
+* 如果 `y` 是**偶数**，它就在 x 轴*上方*。
+* If `y` is **奇数**，它就在 x 轴*下方*。
 
-So instead of having to store both the full `x` and `y` co-ordinates, you can just store the full `x` co-ordinate, and whether the `y` co-ordinate is *even* or *odd*.
+所以你不需要同时存储完整的 `x` 和 `y` 坐标，你可以只存储完整的 `x` 坐标，以及 `y` 坐标是*偶数*还是*奇数*。
 
-In Bitcoin, the polarity of the `y` co-ordinate is represented by a prefix:
+在比特币中，`y` 坐标的极性由一个前缀表示：
 
-* `02` = even
-* `03` = odd
+* `02` = 偶数
+* `03` = 奇数
 
-[<img src="../../images/beginners_guide_public-keys_03-y-polarity-prefix.png" alt="Diagram showing how a prefix is used to represent one of two possible y-coordinates on the elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity-prefix.png.md)
+[<img src="../../images/beginners_guide_public-keys_03-y-polarity-prefix.png" alt="展示如何使用前缀代表椭圆曲线上两个可能 y 坐标之一的图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity-prefix.png.md)
 
-So whereas an old-school uncompressed public key will begin with `04`, a **compressed public key** will begin with either `02` or `03`:
+因此，旧式的未压缩公钥以 `04` 开头，而**压缩公钥**则以 `02` 或 `03` 开头：
 
 ```
 public key (uncompressed) = 04afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
 public key (compressed)   = 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
 ```
 
-Much shorter.
+短了许多。
 
-This seems like a lot of effort to save on a small amount of data, but because public keys are used within almost all transactions, it does end up saving a lot of space in the [blockchain](/docs/beginners/guide/blockchain.md) over time.
+这看起来像为省去一小部分数据付出了很多努力，但由于几乎所有交易中都会使用公钥，这确实在随着时间的推移为[区块链](/docs/beginners/guide/blockchain.md)节省了大量空间。
 
-## Why do we use elliptic curve multiplication to make public keys?
+## 为什么我们使用椭圆曲线乘法来制作公钥？
 
-Because elliptic curves have two useful properties when creating a private/public key pair.
+因为在创建私钥/公钥对时，椭圆曲线有两个有用的属性。
 
-1. **Elliptic curve multiplication is a "trapdoor function"**. In other words, you can't go backwards from public key to find out what the private key was.  
+1. **椭圆曲线乘法是一个“陷门函数”**。换句话说，你无法从公钥反向寻找计算出私钥是什么。
 
-   > A trapdoor function is a function that is easy to compute in one direction, yet difficult to compute in the opposite direction (finding its inverse) without special information, called the "trapdoor".
-2. **The public key has a *mathematical connection* to the private key.** As a result, it's possible to prove this connection (with a little more mathematics) without having to reveal your private key.
+   > 陷门函数是一个单向函数，在一个方向上很容易计算，而在相反方向上（寻找它的逆）很难计算，除非有特殊的被称为“陷门”的信息。
+2. **公钥与私钥有*数学上的联系***。因此，在不需要透露你的私钥的情况下证明这种联系（利用稍微多一些的数学）是可能的。
 
-   So if I give you my public key (or [address](/docs/technical/keys/address.md)), I can prove to you that I "own" it without having to show you my private key.
+   所以如果我给你我的公钥（或[地址](/docs/technical/keys/address.md)），我可以向你证明我“拥有”它，而不需要给你看我的私钥。
 
-   This feature is especially handy when making bitcoin [transactions](/docs/beginners/guide/transactions.md). Your public key can be placed into a transaction when you want to receive bitcoins, and you do not have to reveal the private key directly when you want to spend them later on (see [digital signatures](/docs/beginners/guide/digital-signatures.md)). As a result, this means that nobody can acquire the private key and use it to spend bitcoins that have been locked to the same public key.
+   这个特性在进行比特币[交易](/docs/beginners/guide/transactions.md)时尤其好用。当你想要接收比特币时，你的公钥可以被放入交易中，而当你稍后想要花费它们时，你不需要直接泄露私钥（见[数字签名](/docs/beginners/guide/digital-signatures.md)）。因此，这意味着没有人可以获取私钥并用它来花费锁定在相同公钥下的比特币。
 
-   When I say *prove* that I own a public key, I mean "show that I possess the private key that the public key was created from".
+   当我所说*证明*我拥有一个公钥时，我的意思是“展示我拥有创建该公钥对应的私钥”。
 
-### How can you prove you own a public key?
+### 你如何证明你拥有公钥？
 
-This is a whole topic (or two) in itself. But seeing as this is such an annoyingly relevant question, I'll try my best to cover the basics.
+这本身就是一个（或两个）完整的主题。但鉴于这是一个如此具有相关性的问题，我会尽力介绍基础知识。
 
-As mentioned, there's a mathematical connection between the private key and public key.
+如上所述，私钥和公钥之间存在数学连接。
 
-As a result:
+结果是：
 
-1. I can put my private key through some more elliptic curve mathematics to get ***a new value*** (called a digital signature).
-2. I can put my public key through some other elliptic curve mathematics to get ***a new value***.
+1. 我可以让我的私钥经过更多的椭圆曲线数学计算，以得到***一个新值***（称为数字签名）。
+2. 我可以让我的公钥经过其他的椭圆曲线数学计算，以得到***一个新值***。
 
-[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math.png" alt="Diagram showing two separate values being calculated from the private key and public key independently." width="501" height="220" />](/docs/beginners/guide/public-keys/04-keys-ec-math.png.md)
+[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math.png" alt="展示分别从私钥和公钥独立计算出两个独立数值的图表。" width="501" height="220" />](/docs/beginners/guide/public-keys/04-keys-ec-math.png.md)
 
-Now, there will be some small *overlap* between these new values:
+现在，在这些新值之间会存在一些微小的*重叠*：
 
-[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png" alt="Diagram showing and overlap between the two separate values calculated from the private key and public key independently." width="501" height="209" />](/docs/beginners/guide/public-keys/04-keys-ec-math-verification.png.md)
+[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png" alt="展示独立从私钥和公钥计算出的两个独立数值之间重叠部分的图表。" width="501" height="209" />](/docs/beginners/guide/public-keys/04-keys-ec-math-verification.png.md)
 
-And this overlap is enough to prove that there is a *mathematical connection* between the public key and private key.
+而这个重叠部分就足以证明公钥和私钥之间存在*数学连接*。
 
-And because nobody is able to recreate this digital signature without the private key, my digital signature it's enough to prove that I "own" the public key.
+而且因为在没有私钥的情况下，没有人能够重新生成这个数字签名，所以我的数字签名就足以证明我“拥有”公钥。
 
-As a result, I can show you that I own a public key with a digital signature, and you never need to see my private key.
+因此，我可以用数字签名向你展示我拥有一个公钥，而你永远不需要看到我的私钥。
 
-### Conclusion
+### 结论
 
-All hail the elliptic curve.
+向椭圆曲线致敬。

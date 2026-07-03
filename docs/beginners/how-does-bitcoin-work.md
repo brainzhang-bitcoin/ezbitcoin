@@ -1,201 +1,201 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-Bitcoin is an **electronic payment system** that allows anyone to create an account and send any amount of money to anyone in the world.
+比特币是一个**电子支付系统**，它允许任何人创建账户并向世界上任何地方的任何人发送任意金额的资金。
 
-You might want to read that again.
+你可能想把这句话再读一遍。
 
-It was created as an alternative to the current financial system. In the current system we have a small number of large banks that control who can create an account and what transactions you can make. This centralizes the control of money, and we have no other option but to trust these banks to act fairly and responsibly.
+它是作为当前金融系统的替代方案而创建的。在当前的系统中，由少数几家大型银行控制谁可以创建账户以及你可以进行什么交易。这集中了对货币的控制，我们别无选择，只能信任这些银行会公平、负责任地行事。
 
-> Banks must be trusted to hold our money and transfer it electronically, but they lend it out in waves of credit bubbles with barely a fraction in reserve.
+> 必须信任银行能够保管我们的钱并以电子方式进行转账，但它们却在信用泡沫的浪潮中将这些钱贷出去，而准备金却只占很小一部分。
 
-Satoshi Nakamoto, 
+中本聪 (Satoshi Nakamoto), 
 [satoshi.nakamotoinstitute.org](https://satoshi.nakamotoinstitute.org/posts/p2pfoundation/1/)
 
-Bitcoin was developed in response to the [2007-2008 financial crisis](https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis) caused by the centralization of the current system. It was designed anonymously by Satoshi Nakamoto, and was [released in January 2009](https://www.metzdowd.com/pipermail/cryptography/2009-January/014994.html) as a payment system that runs *without* a central point of control.
+比特币是为了应对因当前系统集权化而导致的 [2007-2008年金融危机](https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis) 而开发出来的。它由中本聪匿名设计，并于 [2009年1月发布](https://www.metzdowd.com/pipermail/cryptography/2009-January/014994.html)，是一个*没有*中央控制点的支付系统。
 
-It's also [open-source software](https://github.com/bitcoin/bitcoin/), which means that anyone can run the program and interact with the system.
+它也是[开源软件](https://github.com/bitcoin/bitcoin/)，这意味着任何人都可以运行该程序并与该系统进行交互。
 
-The following is a simple explanation of how it works.
+以下是对其工作原理的简单解释。
 
-## What is Bitcoin?
+## 什么是比特币？
 
-Bitcoin is just a **computer program**. You can [download](https://bitcoin.org/en/download) it and run it on your computer.
+比特币只是一个**计算机程序**。你可以[下载](https://bitcoin.org/en/download)它并在你的计算机上运行它。
 
-[<img src="../images/beginners_how-does-bitcoin-work_1_1_program.png" alt="Illustration showing the bitcoin program being download on to a computer." width="800" height="168" />](/docs/beginners/how-does-bitcoin-work/1_1_program.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_1_1_program.png" alt="展示在计算机上下载比特币程序的插图。" width="800" height="168" />](/docs/beginners/how-does-bitcoin-work/1_1_program.png.md)
 
-When you run the program for the first time, it will connect to other computers running the same program, and they will *start sharing a file* with you. This file is called the [**blockchain**](/docs/technical/blockchain.md), which is a big list of [*transactions*](/docs/technical/transaction.md).
+当你第一次运行该程序时，它将连接到运行相同程序的其他计算机，并且它们将*开始与你共享一个文件*。这个文件被称为[**区块链**](/docs/technical/blockchain.md)，它是一个包含[*交易*](/docs/technical/transaction.md)的巨大列表。
 
-[<img src="../images/beginners_how-does-bitcoin-work_1_2_network.png" alt="Diagram showing a network of computers sharing a file of transactions (the blockchain)." width="800" height="396" />](/docs/beginners/how-does-bitcoin-work/1_2_network.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_1_2_network.png" alt="展示共享交易文件（区块链）的计算机网络的图表。" width="800" height="396" />](/docs/beginners/how-does-bitcoin-work/1_2_network.png.md)
 
-When a new transaction enters the network, it gets *relayed* from computer to computer until everyone has a copy of the transaction. At roughly 10 minute intervals, a random computer ([node](/docs/technical/networking/node.md)) on the network will add the latest transactions they have received on to the blockchain, and share the updates with everyone else.
+当一笔新交易进入网络时，它会在计算机之间*转发*，直到每个人都拥有该交易的副本。大约每隔 10 分钟，网络上的一个随机计算机（[节点](/docs/technical/networking/node.md)）会将他们收到的最新交易添加到区块链中，并与所有人共享更新。
 
-[<img src="../images/beginners_how-does-bitcoin-work_1_3_network_transactions.png" alt="Diagram showing a transaction being relayed across computers on a network before being added to the shared file (the blockchain)." width="800" height="428" />](/docs/beginners/how-does-bitcoin-work/1_3_network_transactions.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_1_3_network_transactions.png" alt="展示一笔交易在被添加到共享文件（区块链）之前在网络计算机间转发的图表。" width="800" height="428" />](/docs/beginners/how-does-bitcoin-work/1_3_network_transactions.png.md)
 
-As a result, the Bitcoin program creates a large **[network](/docs/technical/networking.md) of computers** that communicate with each other to **share a file and update it with new transactions**.
+因此，比特币程序创建了一个相互通信的庞大**计算机[网络](/docs/technical/networking.md)**，用于**共享一个文件并用新交易来更新它**。
 
-## What problem does Bitcoin solve?
+## 比特币解决了什么问题？
 
-Bitcoin solves the problem of being able to have a **payment system that operates without a central point of control**.
+比特币解决了在**没有中央控制点的情况下运行支付系统**的问题。
 
-Before Bitcoin, it was possible to relay transactions across a network of computers. However, the problem is that **you can insert conflicting transactions into a network of computers**. For example, you could create two separate transactions that spend the *same* digital coin, and send both of these transactions into the network at the same time.
+在比特币出现之前，在计算机网络中转发交易是可行的。然而，问题是**你可以在计算机网络中插入相互冲突的交易**。例如，你可以创建两笔独立的交易来消费*同一枚*数字硬币，并同时将这两笔交易发送到网络中。
 
-This is called a "**double-spend**":
+这被称为“**双重支付**”（双花）：
 
-[<img src="../images/beginners_how-does-bitcoin-work_2_1_why_double_spend.png" alt="Diagram showing two conflicting transactions being sent into a network of computers at the same time." width="800" height="429" />](/docs/beginners/how-does-bitcoin-work/2_1_why_double_spend.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_2_1_why_double_spend.png" alt="展示两笔冲突交易被同时发送到计算机网络中的图表。" width="800" height="429" />](/docs/beginners/how-does-bitcoin-work/2_1_why_double_spend.png.md)
 
-Some computers will receive the green transaction first, and some computers will receive the red transaction first.
+有些计算机会先收到绿色交易，而有些计算机会先收到红色交易。
 
-Now if you're creating an electronic payment system without a central authority, you have the problem of figuring out which of these transactions came "first", and this is a difficult thing to determine when you have a network of computers acting independently.
+现在，如果你要在没有中央权威机构的情况下创建一个电子支付系统，你就会面临搞清楚这些交易中哪一个“先”发生的问题，而当计算机网络独立运行时，这是很难确定的。
 
-So who's to *decide* which transaction came "first" and should be the only one written to the file?
+那么，谁来*决定*哪笔交易“先”发生并应该是唯一写入文件的交易呢？
 
-Bitcoin solves this problem by forcing nodes to keep all the transactions they receive *in [memory](/docs/technical/mining/memory-pool.md)* before writing them to a file. Then, at 10-minute intervals, a *random node* on the network will add the transactions from their memory on to the file.
+比特币解决这个问题的方法是：强制节点在将收到的交易写入文件之前，先保存在*内[存池](/docs/technical/mining/memory-pool.md)*中。然后，大约每隔 10 分钟，网络上的一个*随机节点*会将他们内存中的交易添加到该文件中。
 
-[<img src="../images/beginners_how-does-bitcoin-work_2_2_why_mining.png" alt="Diagram showing a single node on the network adding the transactions from their memory on to the shared file." width="800" height="429" />](/docs/beginners/how-does-bitcoin-work/2_2_why_mining.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_2_2_why_mining.png" alt="展示网络上的单个节点将他们内存中的交易添加到共享文件中的图表。" width="800" height="429" />](/docs/beginners/how-does-bitcoin-work/2_2_why_mining.png.md)
 
-This updated file is then shared with the rest of the network. Nodes will accept the transactions in the updated file as the "correct" ones, and remove any conflicting transactions from their memory.
+然后，这个更新后的文件会与网络的其余部分共享。节点将接受更新文件中的交易为“正确”的交易，并从他们的内存中删除任何冲突的交易。
 
-As a result, no double-spend transactions will ever be written to the file, and all nodes regularly update to the same version of the shared file.
+结果是，任何双重支付交易都不会被写入文件，并且所有节点都会定期更新到共享文件的相同版本。
 
-[<img src="../images/beginners_how-does-bitcoin-work_2_3_why_solved.png" alt="Diagram showing nodes on the network accepting the updated version of the file and removing the conflicting transaction from their memory." width="800" height="429" />](/docs/beginners/how-does-bitcoin-work/2_3_why_solved.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_2_3_why_solved.png" alt="展示网络节点接受更新后的文件版本并从内存中删除冲突交易的图表。" width="800" height="429" />](/docs/beginners/how-does-bitcoin-work/2_3_why_solved.png.md)
 
-This process of adding transactions on to the file is called [**mining**](/docs/technical/mining.md), and it's a network-wide *competition* that cannot be controlled by a single node on the network.
+这种向文件添加交易的过程被称为[**挖矿**](/docs/technical/mining.md)，这是一场无法被网络上单个节点控制的全网*竞争*。
 
-## How does mining work?
+## 挖矿是如何工作的？
 
-Mining is the process of adding new blocks of transactions on to the blockchain.
+挖矿是将新的交易区块添加到区块链的过程。
 
-To start with, each node stores the latest [transactions](/docs/technical/transaction.md) they have received in their [**memory pool**](/docs/technical/mining/memory-pool.md), which is just temporary memory on their computer.
+首先，每个节点都会将他们收到的最新[交易](/docs/technical/transaction.md)保存在[**内存池**](/docs/technical/mining/memory-pool.md)中，这只是他们计算机上的临时内存。
 
-Any node can then try and *mine* the transactions from their memory pool on to the shared file (the [**blockchain**](/docs/technical/blockchain.md)).
+然后，任何节点都可以尝试将他们内存池中的交易*开采*到共享文件（[**区块链**](/docs/technical/blockchain.md)）中。
 
-To do this, a node will gather the transactions from its memory pool into a container called a [**block**](/docs/technical/block.md), and then use *processing power* to try and add this block of transactions onto the blockchain.
+为此，节点会将内存池中的交易收集到一个名为[**区块**](/docs/technical/block.md)的容器中，然后使用*计算能力*尝试将这个交易区块添加到区块链上。
 
-[<img src="../images/beginners_how-does-bitcoin-work_3_1_mining.png" alt="Diagram showing a node on the network collecting transactions from their memory pool into a block and adding it on to the blockchain." width="800" height="421" />](/docs/beginners/how-does-bitcoin-work/3_1_mining.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_3_1_mining.png" alt="展示网络节点将内存池中的交易收集到一个区块中并将其添加到区块链上的图表。" width="800" height="421" />](/docs/beginners/how-does-bitcoin-work/3_1_mining.png.md)
 
-So where does this processing power come in? Well, to add this block to the blockchain, you must feed your block of transactions in to something called a [**hash function**](/docs/technical/cryptography/hash-function.md). A hash function is basically a mini computer program that will take in any amount of data, scramble it, and spit out a completely unique (and unpredictable) number.
+那么，计算能力在什么地方起作用呢？要将这个区块添加到区块链，你必须将你的交易区块输入到被称为[**哈希函数**](/docs/technical/cryptography/hash-function.md)的程序中。哈希函数基本上是一个微型的计算机程序，它会输入任意数量的数据，将其打乱，并输出一个完全唯一（且不可预测）的数字。
 
-[<img src="../images/beginners_how-does-bitcoin-work_3_2_hash_function.png" alt="Diagram showing data being fed into a hash function and a random number coming out." width="800" height="114" />](/docs/beginners/how-does-bitcoin-work/3_2_hash_function.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_3_2_hash_function.png" alt="展示数据被输入到哈希函数并输出一个随机数的图表。" width="800" height="114" />](/docs/beginners/how-does-bitcoin-work/3_2_hash_function.png.md)
 
-For your block to be successfully added on to the blockchain, this number (or [**block hash**](/docs/technical/block/hash.md)) must be **equal to or below** the [**target**](/docs/technical/mining/target.md), which is a threshold that everyone on the network agrees upon.
+为了让你的区块成功添加到区块链上，这个结果（或[**区块哈希**](/docs/technical/block/hash.md)）必须**等于或低于****[目标**](/docs/technical/mining/target.md)，这是网络上每个人都同意的阈值。
 
-[<img src="../images/beginners_how-does-bitcoin-work_3_3_mining_block_hash.png" alt="Diagram showing the hash of a block trying to get below a target value." width="800" height="354" />](/docs/beginners/how-does-bitcoin-work/3_3_mining_block_hash.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_3_3_mining_block_hash.png" alt="展示区块哈希试图低于目标值的图表。" width="800" height="354" />](/docs/beginners/how-does-bitcoin-work/3_3_mining_block_hash.png.md)
 
-If your resulting **block hash** is *not* below the target, you can make a small adjustment to the data inside the block and put it through the hash function again. This will produce a *completely different* number that will hopefully be below the target. If not, you adjust the block and try again.
+如果计算出的**区块哈希**没有低于目标，你可以对区块内部的数据进行微调，然后再次通过哈希函数运行。这将产生一个*完全不同*的数字，希望它能低于目标。如果还没有，就再次调整区块并重试。
 
-[<img src="../images/beginners_how-does-bitcoin-work_3_4_mining_nonce.png" alt="Diagram showing a miner adjusting the data in the block to produce a different block hash." width="800" height="375" />](/docs/beginners/how-does-bitcoin-work/3_4_mining_nonce.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_3_4_mining_nonce.png" alt="展示矿工调整区块中的数据以产生不同的区块哈希的图表。" width="800" height="375" />](/docs/beginners/how-does-bitcoin-work/3_4_mining_nonce.png.md)
 
-Eventually one of the nodes (or miners) on the network will find a block hash below the target, and this block of transactions will be added on to the blockchain.
+最终，网络上的某个节点（或矿工）会找到一个低于目标的区块哈希，这个交易区块就会被添加到区块链中。
 
-Then the mining process starts over again to add the next block on to the chain.
+然后，挖矿过程重新开始，以向链中添加下一个区块。
 
-So in summary, the process of mining uses processing power to perform hash calculations as fast as you can to try and be the first computer on the network to get a block hash below the target. If you're successful, you can add your block of transactions onto the blockchain and share it with the rest of the network.
+总之，挖矿过程利用计算能力尽可能快地进行哈希计算，以尝试成为网络上第一个获得低于目标的区块哈希的计算机。如果成功，你就可以将你的交易区块添加到区块链上，并与网络上的其他人共享。
 
-The use of the hash function in conjunction with a target value creates a network-wide competition that anyone can compete in. It also means that no single computer on the network has complete control over adding transactions on to the blockchain, which creates a file sharing network with no central point of control.
+哈希函数与目标值的结合使用，创造了一场任何人都可以参与的全网竞争。这也意味着网络上没有哪一台单独的计算机能够完全控制向区块链添加交易，从而创建了一个没有中央控制点的文件共享网络。
 
-**Although it's still possible for anyone to try and mine blocks, it is no longer competitive to do so on a home computer.** Miners now use specialized hardware designed to perform hash calculations as fast (and as efficiently) as possible, which means that mining is now mostly performed by those with access to specialized hardware and cheap electricity.
+**虽然任何人仍然可以尝试去挖矿，但在家用计算机上进行挖矿已经不再具有竞争力。** 现在的矿工使用专为尽可能快（且高效）地进行哈希计算而设计的专业硬件，这意味着挖矿现在主要由那些拥有专业硬件和廉价电力的人来完成。
 
-### Where do bitcoins come from?
+### 比特币从哪里来？
 
-As an incentive to use processing power to try and add new blocks of transactions on to the blockchain, each new block makes a fixed amount of bitcoins available that did not previously exist. Therefore, if you are able to successfully mine a block, you are able to "send" yourself these new bitcoins as a reward for your effort.
+作为使用计算能力来尝试添加新交易区块到区块链的激励，每个新区块都会产生固定数量的、以前不存在的比特币。因此，如果你能够成功开采一个区块，你就可以将这些新比特币“发送”给自己，作为你付出努力的奖励。
 
-[<img src="../images/beginners_how-does-bitcoin-work_3_5_mining_block_reward.png" alt="Diagram showing the block reward for mining a new block on to the blockchain." width="800" height="354" />](/docs/beginners/how-does-bitcoin-work/3_5_mining_block_reward.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_3_5_mining_block_reward.png" alt="展示在区块链上开采新区块的区块奖励的图表。" width="800" height="354" />](/docs/beginners/how-does-bitcoin-work/3_5_mining_block_reward.png.md)
 
-This batch of new bitcoins is called the **[block reward](/docs/technical/mining/block-reward.md)**, and is the reason why the process is called "mining".
+这一批新比特币被称为**[区块奖励](/docs/technical/mining/block-reward.md)**，这也是该过程被称为“挖矿”的原因。
 
-## Why is the file called the "blockchain"?
+## 为什么这个文件被称为“区块链”？
 
-Transactions are not added to the file individually – they are collected together and added in blocks. Each of these new blocks *builds on top of* an existing one, and so the file is made up of a *chain* of **blocks**; hence, [**blockchain**](/docs/technical/blockchain.md).
+交易并不是单独添加到文件中的——它们被收集在一起并以区块形式添加。每个新区块都*构建在*现有区块之上，因此该文件由一*链* **区块**组成；因此得名[**区块链**](/docs/technical/blockchain.md)。
 
-[<img src="../images/beginners_how-does-bitcoin-work_4_1_blockchain.png" alt="Diagram showing a block specifying a previous block to build on top of." width="800" height="232" />](/docs/beginners/how-does-bitcoin-work/4_1_blockchain.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_4_1_blockchain.png" alt="展示一个指定前一个区块以在此基础上构建的区块的图表。" width="800" height="232" />](/docs/beginners/how-does-bitcoin-work/4_1_blockchain.png.md)
 
-Furthermore, every node on the network **will always adopt the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks they receive** as the "official" version of the blockchain.
+此外，网络上的每个节点**都将始终采用他们收到的[最长链](/docs/technical/blockchain/longest-chain.md)的区块**作为区块链的“官方”版本。
 
-This means that miners will always try to build on top of the "tip" of the longest known chain of blocks, as any transactions that are not part of the longest chain will be invalid.
+这意味着矿工将始终尝试在已知最长区块链的“尖端”上进行构建，因为不属于最长链的任何交易都将是无效的。
 
-[<img src="../images/beginners_how-does-bitcoin-work_4_2_blockchain_longest.png" alt="Diagram showing nodes adopting the longest chain of blocks as their blockchain, and any transactions that are not in the longest chain as being invalid." width="800" height="328" />](/docs/beginners/how-does-bitcoin-work/4_2_blockchain_longest.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_4_2_blockchain_longest.png" alt="展示节点采用最长区块链作为其区块链，且不在最长链中的交易均无效的图表。" width="800" height="328" />](/docs/beginners/how-does-bitcoin-work/4_2_blockchain_longest.png.md)
 
-Therefore, if someone wanted to rewrite the history of transactions, they would need to rebuild a longer chain of blocks to create a new longest chain for other nodes to adopt. However, to achieve this, a single miner would need to have more computer processing power than the rest of the network combined.
+因此，如果有人想要重写交易历史，他们就需要重建一条更长的区块链，以创造一条供其他节点采用的新的最长链。然而，要实现这一点，单个矿工需要拥有比网络其他部分总和还要多的计算机处理能力。
 
-[<img src="../images/beginners_how-does-bitcoin-work_4_3_blockchain_hashpower.png" alt="Diagram showing an attacker attempting to build a longer chain of blocks faster than the rest of the network combined." width="800" height="400" />](/docs/beginners/how-does-bitcoin-work/4_3_blockchain_hashpower.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_4_3_blockchain_hashpower.png" alt="展示攻击者企图比网络其余部分总和更快地构建一条更长区块链的图表。" width="800" height="400" />](/docs/beginners/how-does-bitcoin-work/4_3_blockchain_hashpower.png.md)
 
-As a result, the combined effort of the network makes it difficult for any individual to "outrun" the network and rewrite the blockchain.
+因此，整个网络的共同努力使得任何个人都很难“超越”网络并重写区块链。
 
-In other words, the entire history of transactions (and your money) is protected by the combined energy of mining.
+换句话说，整个交易历史（以及你的资金）都受到挖矿所凝聚的能量的保护。
 
-## How do transactions work?
+## 交易是如何工作的？
 
-You can think of the blockchain as being a storage facility for *safe deposit boxes*, which we call [**outputs**](/docs/technical/transaction/output.md). These outputs are just containers that hold various amounts of bitcoin.
+你可以将区块链看作是*保险箱*的保管设施，我们称之为[**输出**](/docs/technical/transaction/output.md)。这些输出只是装有不同数量比特币的容器。
 
-[<img src="../images/beginners_how-does-bitcoin-work_5_1_outputs.png" alt="Diagram showing the blockchain storing lots of individual outputs." width="800" height="324" />](/docs/beginners/how-does-bitcoin-work/5_1_outputs.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_5_1_outputs.png" alt="展示区块链存储了许多独立输出的图表。" width="800" height="324" />](/docs/beginners/how-does-bitcoin-work/5_1_outputs.png.md)
 
-When you make a bitcoin [**transaction**](/docs/technical/transaction.md), you select some outputs and *unlock* them, then create new outputs and put new [locks](/docs/technical/transaction/output/scriptpubkey.md) on them.
+当你进行比特币[**交易**](/docs/technical/transaction.md)时，你选择一些输出并*解锁*它们，然后创建新的输出并在它们上面加上新的[锁](/docs/technical/transaction/output/scriptpubkey.md)。
 
-[<img src="../images/beginners_how-does-bitcoin-work_5_2_transaction.png" alt="Diagram showing a transaction selecting an output from the blockchain and creating a new output from it." width="800" height="299" />](/docs/beginners/how-does-bitcoin-work/5_2_transaction.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_5_2_transaction.png" alt="展示一笔交易选择区块链中的输出并从中创建新输出的图表。" width="800" height="299" />](/docs/beginners/how-does-bitcoin-work/5_2_transaction.png.md)
 
-So when you "send" someone bitcoins, you are actually placing an amount of bitcoins into a new safe deposit box, and putting a lock on it that only the person you are "sending" the bitcoins to can unlock.
+因此，当你向某人“发送”比特币时，你实际上是将一定数量的比特币放入一个新的保险箱中，并给它上锁，只有你“发送”比特币对象的那个人才能解锁。
 
-For example, if I wanted to send you some bitcoins, I would select some outputs from the blockchain that I can unlock, and create a new output from them that only *you* can unlock. Furthermore, if I didn't want to send you all of the bitcoins that I had unlocked, I would create an extra output as my "change" and lock it to myself.
+例如，如果我想给你发一些比特币，我会从区块链中选择一些我可以解锁的输出，并用它们创建一个只有*你*能解锁的新输出。此外，如果我不想把我解锁的所有比特币都发给你，我会创建一个额外的输出作为我的“找零”并将其锁给自己。
 
-[<img src="../images/beginners_how-does-bitcoin-work_5_3_transaction_change.png" alt="Diagram showing a transaction creating an additional output as change." width="800" height="299" />](/docs/beginners/how-does-bitcoin-work/5_3_transaction_change.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_5_3_transaction_change.png" alt="展示一笔交易创建额外输出作为找零的图表。" width="800" height="299" />](/docs/beginners/how-does-bitcoin-work/5_3_transaction_change.png.md)
 
-Moving forward, if you want to send your bitcoins to someone else, you would repeat the process of selecting existing outputs (that you can unlock) and creating new outputs from them. As a result, bitcoin transactions form a graph-like structure, where the movement of bitcoins is connected by a series of transactions.
+以此类推，如果你想把你的比特币发给别人，你会重复选择现有输出（你可以解锁的输出）并从中创建新输出的过程。结果，比特币交易形成了一个类似图的结构，其中比特币的移动是由一系列交易连接起来的。
 
-[<img src="../images/beginners_how-does-bitcoin-work_5_4_transaction_graph.png" alt="Diagram showing a series of transactions unlocking the outputs from a previous transaction and creating new outputs from them." width="800" height="307" />](/docs/beginners/how-does-bitcoin-work/5_4_transaction_graph.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_5_4_transaction_graph.png" alt="展示一系列交易解锁前一笔交易的输出并从中创建新输出的图表。" width="800" height="307" />](/docs/beginners/how-does-bitcoin-work/5_4_transaction_graph.png.md)
 
-Lastly, when a transaction gets mined on to the blockchain, the outputs that were used up (spent) in the transaction cannot be used in another transaction, and the newly created outputs will be available to be spent in a future transaction.
+最后，当一笔交易被开采到区块链上时，在交易中用完（花掉）的输出就不能在另一笔交易中使用了，而新创建的输出将可以在未来的交易中被花掉。
 
-[<img src="../images/beginners_how-does-bitcoin-work_5_5_transaction_blockchain_outputs.png" alt="Diagram showing transactions spending and creating outputs inside the blockchain." width="800" height="455" />](/docs/beginners/how-does-bitcoin-work/5_5_transaction_blockchain_outputs.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_5_5_transaction_blockchain_outputs.png" alt="展示交易在区块链内部花费并创建输出的图表。" width="800" height="455" />](/docs/beginners/how-does-bitcoin-work/5_5_transaction_blockchain_outputs.png.md)
 
-## How do you own bitcoins?
+## 你如何拥有比特币？
 
-To be able to "receive" bitcoins, you need to have your own set of [keys](/docs/technical/keys.md).
+为了能够“接收”比特币，你需要有自己的一套[密钥](/docs/technical/keys.md)。
 
-This set of keys is like your *account number* and *password*, except in Bitcoin they're called your [public key](/docs/technical/keys/public-key.md) and your [private key](/docs/technical/keys/private-key.md).
+这套密钥就像是你的*账号*和*密码*，只是在比特币中它们被称为你的[公钥](/docs/technical/keys/public-key.md)和[私钥](/docs/technical/keys/private-key.md)。
 
-For example, if I wanted to send you some bitcoins, you would first need to give me your public key. When I create my transaction, I would place your public key *inside* the lock on the output (the safe deposit box). And when you want to send these bitcoins on to someone else, you would use your private key to unlock this output.
+例如，如果我想给你发送一些比特币，你首先需要给我你的公钥。当我创建交易时，我会将你的公钥放入输出（保险箱）的锁*内部*。当你想要将这些比特币发送给其他人时，你会使用你的私钥来解锁这个输出。
 
-[<img src="../images/beginners_how-does-bitcoin-work_6_1_keys.png" alt="Diagram showing a public key and a private key pair being used to lock and unlock outputs in a transaction." width="800" height="362" />](/docs/beginners/how-does-bitcoin-work/6_1_keys.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_6_1_keys.png" alt="展示公钥和私钥对被用于锁定和解锁交易中输出的图表。" width="800" height="362" />](/docs/beginners/how-does-bitcoin-work/6_1_keys.png.md)
 
-So where can you get a public key and private key? Well, with the help of [cryptography](/docs/technical/cryptography.md) you can actually **generate them yourself**.
+那么，你在哪里可以获得公钥和私钥呢？借助[密码学](/docs/technical/cryptography.md)，你实际上可以**自己生成它们**。
 
-In short, your private key is just a large *random number*, and your public key is a number *calculated from* this private key. But the clever part is; you can give your public key to someone else, but they cannot work backwards from it to work out the private key.
+简而言之，你的私钥只是一个很大的*随机数*，而你的公钥是通过这个私钥*计算*出来的数字。但聪明的地方在于：你可以把你的公钥给别人，但他们无法通过公钥反向推导计算出私钥。
 
-[<img src="../images/beginners_how-does-bitcoin-work_6_2_keys_generate.png" alt="Diagram showing an example private key and public key, with the public key being calculated from the private key." width="800" height="236" />](/docs/beginners/how-does-bitcoin-work/6_2_keys_generate.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_6_2_keys_generate.png" alt="展示私钥和公钥示例的图表，公钥是由私钥计算出来的。" width="800" height="236" />](/docs/beginners/how-does-bitcoin-work/6_2_keys_generate.png.md)
 
-Now, when you want to unlock bitcoins that are assigned to your public key, you use your private key to create what's called a [digital signature](/docs/technical/keys/signature.md). This signature proves that you are the owner of the public key (and therefore can unlock the bitcoins), *without having to reveal your private key*. This signature is also only valid for the transaction it was created for, so it cannot be used to unlock other bitcoins locked to the same public key.
+现在，当你想要解锁分配给你的公钥的比特币时，你可以使用你的私钥来创建所谓的[数字签名](/docs/technical/keys/signature.md)。这个签名证明了你是该公钥的拥有者（因此可以解锁比特币），*而无需透露你的私钥*。该签名也仅对创建它的那笔交易有效，因此它不能被用于解锁锁定在相同公钥下的其他比特币。
 
-[<img src="../images/beginners_how-does-bitcoin-work_6_3_keys_digital_signature.png" alt="Diagram showing a private key being used to create a digital signature, which is then used to unlock an output in a transaction." width="800" height="375" />](/docs/beginners/how-does-bitcoin-work/6_3_keys_digital_signature.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_6_3_keys_digital_signature.png" alt="展示私钥被用来创建数字签名，然后用于解锁交易中输出的图表。" width="800" height="375" />](/docs/beginners/how-does-bitcoin-work/6_3_keys_digital_signature.png.md)
 
-This system is known as [Public Key Cryptography](/docs/technical/cryptography.md#public-key-cryptography), and has been available since 1978 (see [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))). Bitcoin makes use of this system to allow anyone to create keys for sending and receiving bitcoins securely, without the need of a central authority to issue accounts and passwords.
+这种系统被称为[公钥密码学](/docs/technical/cryptography.md#public-key-cryptography)，自 1978 年起就已投入使用（参见 [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))）。比特币利用这一系统，允许任何人创建用于安全发送和接收比特币的密钥，而无需中央机构来分发账号和密码。
 
-In Bitcoin we convert the public key to a more user-friendly [address](/docs/technical/keys/address.md), which is what you'll typically use when sending and receiving payments.
+在比特币中，我们将公钥转换成更加用户友好的[地址](/docs/technical/keys/address.md)，这就是你通常在发送和接收付款时会使用的东西。
 
-## Summary
+## 总结
 
-[<img src="../images/beginners_how-does-bitcoin-work_7_1_bitcoin_system.png" alt="Diagram showing a summary of how bitcoin works." width="800" height="851" />](/docs/beginners/how-does-bitcoin-work/7_1_bitcoin_system.png.md)
+[<img src="../images/beginners_how-does-bitcoin-work_7_1_bitcoin_system.png" alt="展示比特币工作原理总结的图表。" width="800" height="851" />](/docs/beginners/how-does-bitcoin-work/7_1_bitcoin_system.png.md)
 
-To use Bitcoin, you generate your own [private key](/docs/technical/keys/private-key.md) and [public key](/docs/technical/keys/public-key.md). Your private key is a very large random number, and your public key is calculated from it. These keys can be easily generated on your computer, or even on something as simple as a calculator. Most people, however, use a [bitcoin wallet](/docs/beginners/wallets.md) to help generate and manage their keys.
+要使用比特币，你需要生成自己的[私钥](/docs/technical/keys/private-key.md)和[公钥](/docs/technical/keys/public-key.md)。你的私钥是一个非常大的随机数，你的公钥是由它计算出来的。这些密钥可以轻松地在你的计算机上生成，甚至在像计算器这样简单的工具上也可以生成。然而，大多数人使用[比特币钱包](/docs/beginners/wallets.md)来帮助生成和管理他们的密钥。
 
-To receive bitcoins, you give the person sending them to you your public key. This person then creates a [transaction](/docs/technical/transaction.md) where they unlock bitcoins that they own, and create a new "safe deposit box" of bitcoins and put your public key inside the lock.
+要接收比特币，你需要向发送方提供你的公钥。发送方随后会创建一笔[交易](/docs/technical/transaction.md)，在其中解锁他们拥有的比特币，并创建一个装有比特币的新的“保险箱”，然后将你的公钥放入锁中。
 
-This transaction is then sent to a [node](/docs/technical/networking/node.md), where it's relayed from computer to computer until every node on the [network](/docs/technical/networking.md) has a copy of the transaction. From here, each node has the opportunity to try and *mine* the latest transactions they have received on to the [blockchain](/docs/technical/blockchain.md).
+然后，这笔交易被发送到一个[节点](/docs/technical/networking/node.md)，在计算机之间进行转发，直到[网络](/docs/technical/networking.md)上的每个节点都拥有该交易的副本。从这里开始，每个节点都有机会尝试将他们收到的最新交易*开采*到[区块链](/docs/technical/blockchain.md)中。
 
-The process of [mining](/docs/technical/mining.md) involves a node collecting transactions from its [memory pool](/docs/technical/mining/memory-pool.md) into a [block](/docs/technical/block.md), and repeatedly [hashing](/docs/technical/cryptography/hash-function.md) the block (with a minor adjustment each time) to try and get a [block hash](/docs/technical/block/hash.md) below the current [target](/docs/technical/mining/target.md) value.
+[挖矿](/docs/technical/mining.md)的过程包括：节点将[内存池](/docs/technical/mining/memory-pool.md)中的交易收集到一个[区块](/docs/technical/block.md)中，并对该区块进行重复[哈希](/docs/technical/cryptography/hash-function.md)计算（每次进行微调），以尝试获得低于当前[目标](/docs/technical/mining/target.md)值的[区块哈希](/docs/technical/block/hash.md)。
 
-The first miner to find a block hash below the target will add the block to their [blockchain](/docs/technical/blockchain.md), and broadcast this block to the other nodes on the network. Each node will then verify and add this block to their blockchain (removing any conflicting transactions from their memory pool in the process), and restart the mining process to try and build on top of this new block in the chain.
+第一个找到低于目标的区块哈希的矿工会将该区块添加到他们的[区块链](/docs/technical/blockchain.md)中，并将该区块广播给网络上的其他节点。然后，每个节点将验证该区块并将其添加到自己的区块链中（在此过程中会从他们的内存池中删除任何冲突的交易），并重新开始挖矿过程，以尝试在该链中的这一新区块之上进行构建。
 
-Lastly, the miner who mined this block will have placed their own [special transaction](/docs/technical/mining/coinbase-transaction.md) inside the block, which allows them to collect a set amount of bitcoins that did not already exist. This [block reward](/docs/technical/mining/block-reward.md) acts as an incentive for nodes to continue to build the blockchain, whilst simultaneously distributing new coins across the bitcoin network.
+最后，开采该区块的矿工会在区块内放入他们自己的[特殊交易](/docs/technical/mining/coinbase-transaction.md)，这允许他们收集固定数量的、以前不存在的比特币。这种[区块奖励](/docs/technical/mining/block-reward.md)是促使节点继续构建区块链的激励，同时也将新硬币分发到整个比特币网络中。
 
-## Conclusion
+## 结论
 
-Bitcoin is a computer program that shares a secure file with other computers around the world. This secure file is made up of transactions, and these transactions use cryptography to allow people to send and receive digital safe deposit boxes.
+比特币是一个与世界上其他计算机共享安全文件的计算机程序。这个安全文件由交易组成，这些交易使用密码学允许人们发送和接收数字保险箱。
 
-As a result, this creates an electronic payment system that can be used by anyone, and operates without a central point of control.
+结果，这创建了一个电子支付系统，任何人都可以使用，并且在没有中央控制点的情况下运行。
 
-The Bitcoin network has been running uninterrupted since its release in January 2009. In 2023, the Bitcoin network processed over **153 million transactions**, moving a total of **$12,820,677,140,286** (12.82 trillion)[1](#fn1).
+自 2009 年 1 月发布以来，比特币网络一直处于不间断运行状态。在 2023 年，比特币网络处理了超过 **1.53亿笔交易**，移动的资金总额达到 **$12,820,677,140,286** (12.82 万亿美元)[1](#fn1)。
 
-The Bitcoin program itself is also under active development, with over **600** individuals contributing to the code since its release[2](#fn2). This is due to the fact that the software is "open source", which means that anyone can view the code and contribute to improving it.
+比特币程序本身也处于活跃的开发状态，自发布以来已有超过 **600** 人为代码做出了贡献[2](#fn2)。这是由于该软件是“开源”的，这意味着任何人都可以查看代码并为改进代码做出贡献。
 
-* [bitcoin.pdf](/bitcoin.pdf) – Whitepaper
-* [github.com/bitcoin/bitcoin/](https://github.com/bitcoin/bitcoin/) – Source code
+* [bitcoin.pdf](/bitcoin.pdf) – 白皮书
+* [github.com/bitcoin/bitcoin/](https://github.com/bitcoin/bitcoin/) – 源代码

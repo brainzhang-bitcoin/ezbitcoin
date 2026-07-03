@@ -1,48 +1,48 @@
 <img src="images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-This section is for *beginners* who are completely new to Bitcoin and want to learn the basics of **how it works** and **how to get started** using it.
+本部分面向完全不了解比特币的**初学者**，旨在介绍**其工作原理**以及**如何开始**使用比特币。
 
-Start here:
+从这里开始：
 
-[How Does Bitcoin Work?](/docs/beginners/how-does-bitcoin-work.md)
+[比特币是如何工作的？](/docs/beginners/how-does-bitcoin-work.md)
 
-## Getting started
+## 开始使用
 
-So you want to get started *using* bitcoin? Here are the basic steps:
+你想开始*使用*比特币吗？以下是基本步骤：
 
-[Wallets](/docs/beginners/wallets.md)
-:   A quick guide to bitcoin wallets, and recommendations on which ones to use.
+[钱包](/docs/beginners/wallets.md)
+:   比特币钱包速成指南，以及推荐使用的钱包。
 
-[Exchanges](/docs/beginners/exchanges.md)
-:   Recommendations on the best exchanges to buy bitcoins from.
+[交易所](/docs/beginners/exchanges.md)
+:   推荐购买比特币的优质交易所。
 
-[Sending](/docs/beginners/sending.md)
-:   How to send and receive bitcoin using a bitcoin wallet.
+[发送](/docs/beginners/sending.md)
+:   如何使用比特币钱包发送和接收比特币。
 
-[Security](/docs/beginners/security.md)
-:   How to keep your bitcoins secure.
+[安全](/docs/beginners/security.md)
+:   如何保障你的比特币安全。
 
-## Guide
+## 指南
 
-This is a very quick guide to how bitcoin works for *beginners*.
+这是一份面向*初学者*的比特币工作原理速成指南。
 
-I wrote this guide when I was **first learning about Bitcoin**. I wanted to write something that gave a fast overview of what bitcoin is, and explain the most common terms I kept hearing about. I mean, what the hell is a "blockchain", "mining", and a "private key"?
+我是在**刚开始学习比特币**时写下这篇指南的。我想写一份能快速概述比特币是什么，并解释我经常听到的最常见词汇的指南。毕竟，“区块链”、“挖矿”和“私钥”到底是什么鬼？
 
-So if you have no idea about how bitcoin works and want to get up to speed as quickly as possible, this guide is for you.
+所以，如果你对接比特币的工作原理一无所知，并想以最快的速度入门，本指南就是为你准备的。
 
-* [The Bitcoin Network](/docs/beginners/guide/network.md)
-* [Node](/docs/beginners/guide/node.md)
-* [Mining](/docs/beginners/guide/mining.md)
-* [The Blockchain](/docs/beginners/guide/blockchain.md)
-* [Blocks](/docs/beginners/guide/blocks.md)
-* [Difficulty](/docs/beginners/guide/difficulty.md)
-* [Transactions](/docs/beginners/guide/transactions.md)
-* [Outputs](/docs/beginners/guide/outputs.md)
-* [Locks](/docs/beginners/guide/locks.md)
-* [Keys & Addresses](/docs/beginners/guide/keys-addresses.md)
-* [Private Keys](/docs/beginners/guide/private-keys.md)
-* [Public Keys](/docs/beginners/guide/public-keys.md)
-* [Digital Signatures](/docs/beginners/guide/digital-signatures.md)
+* [比特币网络](/docs/beginners/guide/network.md)
+* [节点](/docs/beginners/guide/node.md)
+* [挖矿](/docs/beginners/guide/mining.md)
+* [区块链](/docs/beginners/guide/blockchain.md)
+* [区块](/docs/beginners/guide/blocks.md)
+* [难度](/docs/beginners/guide/difficulty.md)
+* [交易](/docs/beginners/guide/transactions.md)
+* [输出](/docs/beginners/guide/outputs.md)
+* [锁](/docs/beginners/guide/locks.md)
+* [密钥与地址](/docs/beginners/guide/keys-addresses.md)
+* [私钥](/docs/beginners/guide/private-keys.md)
+* [公钥](/docs/beginners/guide/public-keys.md)
+* [数字签名](/docs/beginners/guide/digital-signatures.md)
 * [SegWit](/docs/beginners/guide/segwit.md)
 
-**This guide is completely non-technical and should only take about 60 minutes.** If you want to learn more, see the [technical section](/docs/technical.md) for more detailed explanations.
+**本指南完全是非技术性的，大约只需花费 60 分钟。** 如果你想了解更多信息，请参阅[技术部分](/docs/technical.md)以获取更详细的解释。

@@ -1,319 +1,310 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-So you've just [bought some bitcoin](/docs/beginners/exchanges.md) and withdrawn them to your [wallet](/docs/beginners/wallets.md). Now you want to *send* some bitcoins to someone else.
+你刚刚[购买了一些比特币](/docs/beginners/exchanges.md)并将其提现到你的[钱包](/docs/beginners/wallets.md)。现在你想向其他人*发送*一些比特币。
 
-This is where you need to make a *transaction*.
+这就是你需要进行*交易*的地方。
 
-In this guide I'll give you a quick overview of **how to make your first bitcoin transaction**.
+在本指南中，我将为你快速概述**如何进行你的第一笔比特币交易**。
 
-## Basics
+## 基础知识
 
-How do you make a transaction?
+你如何进行交易？
 
-[<img src="../images/diagrams_png_beginners-sending-wallet.png" alt="Diagram showing xxx." width="632" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-wallet.png)
+[<img src="../images/diagrams_png_beginners-sending-wallet.png" alt="展示钱包交易基础的图表。" width="632" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-wallet.png)
 
-The process for making a bitcoin transaction is the same for any [bitcoin wallet](/docs/beginners/wallets.md) you use:
+无论你使用哪种[比特币钱包](/docs/beginners/wallets.md)，进行比特币交易的过程都是相同的：
 
-1. **Enter the address.** This is where you want to "send" the bitcoins.
-2. **Enter the amount.** The amount of bitcoins you want to send. This will most likely be in BTC or satoshis.  
+1. **输入地址。** 这是你想将比特币“发送”到的地方。
+2. **输入金额。** 你想发送的比特币数量。这很可能是以 BTC 或 satoshis（聪）为单位。
 
-   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unit Converter
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 单位换算器
 
    BTC
 
-   whole bitcoin
+   完整的比特币
 
 
    mBTC
 
-   one-thousandth of a bitcoin
+   千分之一的比特币
 
 
    uBTC
 
-   one-millionth of a bitcoin
+   百万分之一的比特币
 
 
    Sats
 
-   one-hundred-millionth of a bitcoin
+   亿分之一的比特币
 
 
 
    0 secs
-3. **Set the fee. *(optional)*** This basically sets the "priority" for how quickly the transaction will get finalized.
+3. **设置费用。*(可选)*** 这基本上设置了交易最终确定速度的“优先级”。
 
-Then just click "send" and you're done.
+然后只需点击“发送”即可。
 
-From here you'll just need to wait for the transaction to get added to the *blockchain*…
+从这里开始，你只需要等待交易被添加到*区块链*中……
 
-**Always triple-check the *amount* and the *address*.** You cannot "undo" bitcoin transactions, so if you send bitcoins to the wrong address, you're not going to get them back.
+**务必三遍确认*金额*和*地址*。** 你无法“撤销”比特币交易，所以如果你把比特币发到了错误的地址，你就无法把它们拿回来了。
 
-**Don't worry too much about typos in the address.** The address contains a [checksum](/docs/technical/keys/checksum.md), which means your wallet will detect if it's invalid. So you don't have to check every individual character to make sure the address is correct – I usually just check the first and last 4 or 5 characters.
+**不用太担心地址中的拼写错误。** 地址中包含一个[校验和](/docs/technical/keys/checksum.md)，这意味着你的钱包会检测它是否无效。所以你不需要逐个字符检查以确保地址正确——我通常只检查开头和结尾的 4 或 5 个字符。
 
-**Use the TXID to track your transaction.** When you *send* your transaction your wallet will give you a [TXID](/docs/technical/transaction/input/txid.md), which is a unique *reference number* that you can use to check the status of your transaction on any [blockchain explorer](/explorer/).
+**使用 TXID 跟踪你的交易。** 当你*发送*交易时，你的钱包会给你一个 [TXID](/docs/technical/transaction/input/txid.md)，这是一个唯一的*参考编号*，你可以用它在任何[区块链浏览器](/explorer/)上检查你的交易状态。
 
-## Process
+## 流程
 
-What happens when you make a transaction?
+当你进行交易时会发生什么？
 
-When you click "send", your wallet sends your transaction in to one of the [nodes](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/beginners/guide/network.md).
+当你点击“发送”时，你的钱包会将你的交易发送到[比特币网络](/docs/beginners/guide/network.md)上的一个[节点](/docs/beginners/guide/node.md)。
 
-From here it gets relayed from node to node until every node on the network has a copy of your transaction.
+从这里开始，交易在节点之间转发，直到网络上的每个节点都拥有你的交易副本。
 
-[<img src="../images/beginners_sending_send-transaction.gif" alt="Animation showing a bitcoin transaction being sent to a node and getting relayed across the network." width="800" height="502" />](/docs/beginners/sending/send-transaction.gif.md)
+[<img src="../images/beginners_sending_send-transaction.gif" alt="展示一笔比特币交易被发送到节点并在网络上被转发的动画。" width="800" height="502" />](/docs/beginners/sending/send-transaction.gif.md)
 
-At first, your transaction gets stored in the [memory pool](/docs/technical/mining/memory-pool.md) of each node, which is like a temporary "waiting area" for transactions that have recently been broadcast across the network.
+起初，你的交易被保存在每个节点的[内存池](/docs/technical/mining/memory-pool.md)中，这就像是一个临时“等待区”，存放最近在网络上广播的交易。
 
-[<img src="../images/beginners_sending_memory-pool.gif" alt="Animation showing a transaction getting stored in each node's memory." width="800" height="502" />](/docs/beginners/sending/memory-pool.gif.md)
+[<img src="../images/beginners_sending_memory-pool.gif" alt="展示交易被保存在每个节点内存中的动画。" width="800" height="502" />](/docs/beginners/sending/memory-pool.gif.md)
 
-After roughly 10 minutes, one of the nodes on the network will [mine](/docs/beginners/guide/mining.md) the latest transactions from their memory pool on to their [blockchain](/docs/beginners/guide/blockchain.md).
+大约 10 分钟后，网络上的一个节点会将其内存池中的最新交易[开采](/docs/beginners/guide/mining.md)到他们的[区块链](/docs/beginners/guide/blockchain.md)上。
 
-They will then share this new [block](/docs/beginners/guide/blocks.md) of transactions with the other nodes on the network.
+然后，他们会将这个包含交易的全新[区块](/docs/beginners/guide/blocks.md)共享给网络上的其他节点。
 
-[<img src="../images/beginners_sending_transaction-blockchain.gif" alt="Animation showing a new block of transactions being added on to the blockchain." width="800" height="427" />](/docs/beginners/sending/transaction-blockchain.gif.md)
+[<img src="../images/beginners_sending_transaction-blockchain.gif" alt="展示一个新交易区块被添加到区块链上的动画。" width="800" height="427" />](/docs/beginners/sending/transaction-blockchain.gif.md)
 
-Upon receiving this block, each node will verify it and add it to their blockchain too.
+收到该区块后，每个节点也会对其进行验证并将其添加到自己的区块链中。
 
-As a result, each of the nodes will update their blockchain to include the latest transactions that have been moved from the memory pool (temporary storage) to the blockchain (permanent storage):
+结果，每个节点都会更新其区块链，以包括那些已从内存池（临时存储）移动到区块链（永久存储）中的最新交易：
 
-[<img src="../images/diagrams_png_beginners-sending-blockchain-network.png" alt="Diagram showing the blockchain as permanent storage for transactions." width="983" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-network.png)
+[<img src="../images/diagrams_png_beginners-sending-blockchain-network.png" alt="展示区块链作为交易永久存储的图表。" width="983" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-network.png)
 
-And if your transaction gets included in a block, then your transaction has been **confirmed** and the payment is complete.
+如果你的交易被包含在一个区块中，那么你的交易就已经被**确认**，付款即告完成。
 
-If not, you'll just have to keep waiting for your transaction to make it from the memory pool to the blockchain.
+如果没有，你只需继续等待你的交易从内存池移动到区块链中。
 
-**New blocks are added to the blockchain at 10-minute intervals (on average).** So depending on the [fee](#fees) you've set on your transaction, you shouldn't have to wait too long for your transaction to get confirmed.
+**平均每隔 10 分钟就会有新区块添加到区块链中。** 因此，这取决于你在交易上设置的[费用](#fees)，你不需要等待太长时间就能让交易获得确认。
 
-**Don't rely on transactions in the memory pool.** Memory pool transactions are not permanent, so don't consider a payment as "complete" until the transaction has made it into the blockchain.
+**不要依赖内存池中的交易。** 内存池交易不是永久性的，所以在交易进入区块链之前，不要认为付款已经“完成”。
 
-## Mining
+## 挖矿
 
-How does a transaction make it into the blockchain?
+交易是如何进入区块链的？
 
-Each node has the opportunity to try and add the transactions from their memory pool on to their blockchain. This process is known as [**mining**](/docs/beginners/guide/mining.md).
+每个节点都有机会尝试将其内存池中的交易添加到自己的区块链中。这个过程被称为[**挖矿**](/docs/beginners/guide/mining.md)。
 
-To add transactions on to the blockchain, a *miner* gathers transactions from their memory pool into a container called a [candidate block](/docs/technical/mining/candidate-block.md). From here, the miner *uses energy* to try and "mine" this block on to the blockchain.
+为了将交易添加到区块链上，*矿工*会将其内存池中的交易收集到一个名为[候选区块](/docs/technical/mining/candidate-block.md)的容器中。从这里开始，矿工*使用能量*尝试在区块链上“开采”这个区块。
 
-[<img src="../images/diagrams_png_beginners-sending-miner.png" alt="Diagram showing a miner using processing power to try and mine a candidate block on to the blockchain." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner.png)
+[<img src="../images/diagrams_png_beginners-sending-miner.png" alt="展示矿工使用计算能力尝试在区块链上开采候选区块的图表。" width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner.png)
 
+网络上的任何节点都可以成为矿工。
 
-Any node on the network can become a miner.
+因此，挖矿过程基本上是一场**全网范围的竞争**，网络上的任何节点都有机会开采下一个区块。能够更快进行开采的节点有更好的机会开采下一个区块，但挖矿过程是*不可预测的*，所以没有哪一个单独的节点能控制向区块链添加区块的过程。
 
-As a result the *mining* process is basically a **network-wide competition**, where any node on the network has a chance of mining the next block. A node that can mine faster has a better chance of mining the next block, but the process of mining is *unpredictable*, so no single node is in control of adding blocks to the blockchain.
+[<img src="../images/diagrams_png_beginners-sending-miners.png" alt="展示网络上的多个矿工尝试将下一个区块添加到区块链上的图表。" width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miners.png)
 
-[<img src="../images/diagrams_png_beginners-sending-miners.png" alt="Diagram showing multiple miners on the network trying to add the next block to the blockchain." width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miners.png)
+这些矿工中的任何一个都可能是开采区块链上下一个区块的人。
 
+大约 10 分钟后（平均），其中一个矿工最终会开采出下一个交易区块，并与网络上的所有其他节点共享。然后，每个节点都会检查该区块（以确保其有效且已被正确开采）并将其也添加到自己的区块链中。
 
-Any of these miners could be the one to mine the next block on to the blockchain.
+[<img src="../images/diagrams_png_beginners-sending-mined-block.png" alt="展示矿工开采一个区块并将其发送给网络上其他节点的图表。" width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mined-block.png)
 
-After about 10 minutes (on average), one of the miners will eventually mine the next block of transactions and share it with all the other nodes on the network. Each node then checks the block (to make sure it is valid and has been mined correctly) and adds it to their blockchain too.
+网络中的节点用新开采的区块更新他们的区块链。
 
-[<img src="../images/diagrams_png_beginners-sending-mined-block.png" alt="Diagram showing a miner mining a block and sending it to the other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mined-block.png)
+从这里开始，每个矿工都会构建一个新的候选区块（包含来自内存池的新交易），并开始尝试在链上开采下一个区块。
 
+结果是，矿工们不断工作，用其内存池中的新交易区块来延长区块链。
 
-Nodes across the network update their blockchain with the newly-mined block.
+### 为什么交易必须被开采？
 
-From here, each miner constructs a new candidate block (with new transactions from the memory pool) and starts trying to mine the next block on to the chain.
+[挖矿](/docs/technical/mining.md)的机制对于以下原因非常重要：
 
-As a result, miners are constantly working to extend the blockchain with new blocks of transactions from their memory pool.
+1. **防止冲突的交易被写入区块链。** 如果两笔冲突的交易被发送到网络中（例如尝试将相同的比特币发送到两个不同的地方），那么只有*其中一笔*交易会被写入区块链。
+2. **任何节点都可以开采下一个交易区块。** 由于挖矿机制是不可预测的，*任何*节点都有机会开采下一个区块，这意味着没有哪一个单独的节点能完全控制被添加到区块链的交易。
+3. **很难从区块链中删除交易。** 开采一个区块需要能量，这使得任何单独的矿工都很难获得足够的能量来重写区块链。
 
-### Why do transactions have to be mined?
+总而言之，*挖矿*是允许多台计算机在去中心化网络上就定期更新文件的同一副本达成一致的原因。
 
-The mechanism of [mining](/docs/technical/mining.md) is important for the following reasons:
+或者换句话说，这就是允许比特币维持安全交易账本的要素。
 
-1. **Prevents conflicting transactions from being written to the blockchain.** If two conflicting transactions are sent into the network (e.g. trying to send the same bitcoins to two different places), then only *one* of those transactions will be written to the blockchain.
-2. **Any node can mine the next block of transactions.** Due to the fact that the mining mechanism is unpredictable, *any* node is in with a chance of mining the next block, which means that no single node is in complete control of the transactions that get added to the blockchain.
-3. **It's difficult to remove transactions from the blockchain.** Mining a block requires energy, which makes it difficult for any individual miner to acquire enough energy to rewrite the blockchain.
+## 费用
 
-All in all, *mining* is what allows multiple computers on a decentralized network to agree upon the same copy of a regularly updated file.
+什么是交易费？
 
-Or in other words, it's what allows Bitcoin to maintain a secure ledger of transactions.
+每笔比特币交易都包含[费用](/docs/technical/transaction/fee.md)。
 
-## Fees
+这些费用由矿工收集，因此作为**激励，促使矿工将你的交易包含在[区块](/docs/technical/block.md)中**。
 
-What are transaction fees?
+为什么？
 
-Every bitcoin transaction includes a [fee](/docs/technical/transaction/fee.md).
+因为[候选区块](/docs/technical/mining/candidate-block.md)只能容纳一定量的数据。所以如果很多人同时进行交易，内存池中的交易可能比一个区块所能容纳的还要多：
 
-These fees are collected by miners, and therefore act as an **incentive for miners to include your transaction in a [block](/docs/technical/block.md)**.
+[<img src="../images/diagrams_png_beginners-sending-memory-pool-overflow.png" alt="展示内存池中的交易多于候选区块所能容纳的图表。" width="371" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-memory-pool-overflow.png)
 
-Why?
+**注意：** 一个区块可以容纳[大约 2MB](/docs/technical/block.md#weight)的交易数据，但内存池可以容纳 [300MB+](/docs/technical/mining/memory-pool.md#size-limit)
 
-Because a [candidate block](/docs/technical/mining/candidate-block.md) can only hold a certain amount of data. So if a lot of people are making transactions at the same time, there may be more transactions inside the [memory pool](/docs/technical/mining/memory-pool.md) than can fit inside a block:
+因此，矿工将选择在他们的候选区块中填充带有**最高费用**的交易，因为如果他们成功开采出该区块，他们就可以（通过 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易）收集这些费用。
 
-[<img src="../images/diagrams_png_beginners-sending-memory-pool-overflow.png" alt="Diagram showing more transaction in the memory pool than can fit into a candidate block." width="371" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-memory-pool-overflow.png)
+[<img src="../images/diagrams_png_beginners-sending-miner-highest-fees.png" alt="展示矿工从内存池中选择费用最高的交易来填充其候选区块的图表。" width="371" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner-highest-fees.png)
 
-**Note:** A block can hold [roughly 2MB](/docs/technical/block.md#weight) of transaction data, but the memory pool can hold [300MB+](/docs/technical/mining/memory-pool.md#size-limit)
+因为归根结底，大多数矿工都希望从挖矿中赚取尽可能多的钱。
 
-Therefore, miners will choose to populate their candidate blocks with transactions that have the **highest fees** on them, because they can collect these fees (via the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md)) if they are successful in mining the block.
+所以当内存池中有很多交易时，你在交易上设置的费用越高，你的交易在被包含在区块中的“优先级”就越高，开采速度也就越快。
 
-[<img src="../images/diagrams_png_beginners-sending-miner-highest-fees.png" alt="Diagram showing a mining selecting the highest-fee transactions from the memory pool to fill their candidate block." width="371" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner-highest-fees.png)
+[<img src="../images/beginners_sending_wallet-set-fee.gif" alt="展示当从钱包发送比特币时，你如何设置交易费用的动画。" width="800" height="366" />](/docs/beginners/sending/wallet-set-fee.gif.md)
 
-Because at the end of the day, most miners want to make as much money as possible from mining.
+* **内存池就像排队。** 带有最高费用的交易排在最前面。
+* **交易费用实际上决定了交易在内存池中的*位置*。** 费用越高，开采速度*越快*。
+* **一个好的钱包会允许你设置自己的费用。** 钱包还应该根据你的费用大小，为你估算交易被开采所需的时间。
 
-So when there are a lot of transactions in the memory pool, the higher the fee you place on your transaction, the higher the "priority" your transaction has for getting included in a block, and the faster it will get mined.
+### 我应该在我的交易上放多少费用？
 
-[<img src="../images/beginners_sending_wallet-set-fee.gif" alt="Animation showing how you can set a fee on a transaction when sending bitcoins from a wallet." width="800" height="366" />](/docs/beginners/sending/wallet-set-fee.gif.md)
+这取决于**你希望你的交易以多快的速度被开采**，以及目前有多少交易在[内存池](/docs/technical/mining/memory-pool.md)中等待：
 
-* **The memory pool is like a queue.** Transactions with the highest fees are at the front.
-* **The transaction fee effectively determines a transaction's *position* in the memory pool.** The higher the fee, the *more quickly* it will be mined.
-* **A good wallet will allow you to set your own fee.** The wallet should also give you an estimate of how long it will take for the transaction to be mined based on the size of your fee.
-
-### What fee should I put on my transaction?
-
-This depends on **how quickly you want your transaction to be mined** based on how many transactions are currently waiting in the [memory pool](/docs/technical/mining/memory-pool.md):
-
-Current Mempool Size:
+当前内存池大小：
 
 2.38 vMB
 
-8,900 transactions
+8,900 笔交易
 
-Note: This is the size of the mempool for my local node.  
-The size of your memory pool will differ depending on how long your node has been online and which nodes you are connected to.
+注意：这是我本地节点的内存池大小。  
+根据你的节点在线时间以及你连接的节点，你的内存池大小会有所不同。
 
-The faster you want your transaction to get mined, the higher the fee you should use.
+你希望交易开采得越快，你就应该使用越高的费用。
 
-Therefore, a good wallet uses the **current size of the memory pool** to recommend various [feerates](/docs/technical/transaction/fee.md#feerates) based on how many *blocks* you'd like your transaction to be mined within:
+因此，一个好的钱包会使用**内存池的当前大小**，根据你希望交易在几个*区块*内被开采，来推荐各种[费率](/docs/technical/transaction/fee.md#feerates)：
 
-| Blocks | Time (estimate) | Feerate |
+| 区块数 | 时间（预估） | 费率 |
 | --- | --- | --- |
-| 2 | 20 minutes | 1 sats/vbyte |
-| 3 | 30 minutes | 1 sats/vbyte |
-| 6 | 1 hour | 1 sats/vbyte |
-| 12 | 2 hours | 1 sats/vbyte |
-| 144 | 1 day | 1 sats/vbyte |
-| 432 | 3 days | 1 sats/vbyte |
+| 2 | 20 分钟 | 1 sats/vbyte |
+| 3 | 30 分钟 | 1 sats/vbyte |
+| 6 | 1 小时 | 1 sats/vbyte |
+| 12 | 2 小时 | 1 sats/vbyte |
+| 144 | 1 天 | 1 sats/vbyte |
+| 432 | 3 天 | 1 sats/vbyte |
 
-Note: A new block is [mined](/docs/technical/mining.md) every 10 minutes (on average).
+注意：平均每 10 分钟[开采](/docs/technical/mining.md)一个新区块。
 
-* **These feerates come from Bitcoin Core's `bitcoin-cli estimatesmartfee` command.** This is what most [bitcoin wallets](/docs/beginners/wallets.md) use for fee recommendations.
-* **These are *estimates*.** Nobody can guarantee when your transaction will get mined, as more transactions could enter the [network](/docs/technical/networking.md) after you made your transaction and push your transaction toward the back of the queue.
-* **Fee sizes are sorted by [sats/vbyte](/docs/technical/transaction/fee.md#sats-per-vbyte).** This is the size of the fee in *satoshis* divided by the size of the transaction in *virtual bytes*. This is because miners want to get the most in fees for the amount of space each transaction takes up in a [block](/docs/technical/block.md).
+* **这些费率来自 Bitcoin Core 的 `bitcoin-cli estimatesmartfee` 命令。** 这是大多数[比特币钱包](/docs/beginners/wallets.md)用于费用推荐的命令。
+* **这些是*预测值*。** 没有人能保证你的交易何时会被开采，因为在你进行交易之后，可能会有更多交易进入[网络](/docs/technical/networking.md)，并将你的交易推向队列的后方。
+* **费用大小按 [sats/vbyte](/docs/technical/transaction/fee.md#sats-per-vbyte) 排序。** 这是以 *satoshis* 为单位的费用除以以 *virtual bytes*（虚拟字节）为单位的交易大小。这是因为矿工希望在每个交易在[区块](/docs/technical/block.md)中占用的空间里获得最多的费用。
 
-You can always choose to set your own **custom fee** on your transaction too. You can check out the current status of the memory pool yourself and decide on a fee that you think will work best for your needs.
+你也可以随时在交易上设置自己的**自定义费用**。你可以自己查看内存池的当前状态，并决定一个你认为最适合你需求的费用。
 
-But in general:
+但通常来说：
 
-* If there are **more** transactions in the memory pool than can fit inside a [candidate block](/docs/technical/mining/candidate-block.md), you will need to use a suitably high fee to compete with the other transactions in the memory pool to get inside an upcoming block.
-* If there are **fewer** transactions in the memory pool than can fit inside a candidate block, you can set the [minimum fee](/docs/technical/mining/memory-pool.md#minimum-fee) of 1 sat/vbyte.
+* 如果内存池中的交易**多于**一个[候选区块](/docs/technical/mining/candidate-block.md)所能容纳的量，你将需要使用适当的高费用来与内存池中的其他交易竞争，以进入即将到来的区块。
+* 如果内存池中的交易**少于**候选区块所能容纳的量，你可以将费用设置为 1 sats/vbyte 的[最低费用](/docs/technical/mining/memory-pool.md#minimum-fee)。
 
-* **It's useful to check out the state of the memory pool when deciding what size transaction fee to use:**
-  + [mempool.space](https://mempool.space) – shows a visualization of upcoming blocks and the range of transaction fees within each block.
-  + [Johoe's Bitcoin Mempool Size Statistics](https://jochen-hoenicke.de/queue/#0,24h) – shows a detailed chart of the current state of the memory pool.
-* **Don't put too high a fee on your transaction unless you really need to.** If you're happy to wait for a while for your transaction to get mined, use a lower fee.
+* **在决定使用什么大小的交易费用时，查看内存池的状态很有用：**
+  + [mempool.space](https://mempool.space) – 显示即将到来的区块以及每个区块内交易费用范围的可视化。
+  + [Johoe's Bitcoin Mempool Size Statistics](https://jochen-hoenicke.de/queue/#0,24h) – 显示内存池当前状态的详细图表。
+* **除非真的需要，否则不要在交易上放置太高的费用。** 如果你乐意等待一段时间，请使用较低的费用。
 
-### What happens if I put a low fee on my transaction?
+### 如果我在交易上放了很低的费用会怎么样？
 
-By setting a **low fee** on your transaction you're putting it at "the back of the queue" in the memory pool.
+在交易上设置**低费用**意味着你将其置于内存池的“队列末尾”。
 
-This is fine, but it means that you're going to be waiting for a *quiet period* where the memory pool is cleared out so that your transaction can be included in a block.
+这没关系，但这意味着你将等待一个内存池被清空的*空闲期*，以便你的交易能被包含在区块中。
 
-[<img src="../images/beginners_sending_mempool-low-fee.gif" alt="Animation showing a low fee transaction being included in a block after all the higher-fee transactions have been mined into blocks." width="800" height="366" />](/docs/beginners/sending/mempool-low-fee.gif.md)
+[<img src="../images/beginners_sending_mempool-low-fee.gif" alt="展示低费用交易在内存池中所有高费用交易被开采完毕后，最终被包含在区块中的动画。" width="800" height="366" />](/docs/beginners/sending/mempool-low-fee.gif.md)
 
+如果内存池中没有剩下更高费用的交易，较低费用的交易最终会被包含在区块中。
 
-Lower-fee transactions will eventually get included in a block if there are no higher-fee transactions left in the memory pool.
+然而，交易在节点的内存池中只会保留 **2 周**（参见 [mempoolexpiry](/docs/technical/mining/memory-pool.md#mempoolexpiry)），在此时间段后，节点将**从其内存池中删除该交易**。如果发生这种情况，你的交易将从网络中消失，就好像你的交易从未发生过一样。
 
-However, transactions will only stay in a node's memory pool for **2 weeks** (see [mempoolexpiry](/docs/technical/mining/memory-pool.md#mempoolexpiry)), and after this time period a node will **remove the transaction from its memory pool**. If this happens, your transaction will disappear from the network, and it's as if your transaction never happened.
+[<img src="../images/diagrams_png_beginners-sending-mempool-expiry.png" alt="展示如果交易在一定时间内未被开采，将从内存池中删除的图表。" width="262" height="506" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mempool-expiry.png)
 
-[<img src="../images/diagrams_png_beginners-sending-mempool-expiry.png" alt="Diagram showing a transaction being removed from the memory pool if it hasn't been mined in a certain amount of time." width="262" height="506" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mempool-expiry.png)
+交易只在内存池中等待一段固定的时间。
 
+* **大多数钱包允许你在交易仍在内存池中时[提高费用](/docs/technical/transaction/input/sequence.md#replace-by-fee)。** 所以如果你的交易花费了太长时间才被开采，你可以增加该交易的费用大小以加速该过程。
+* 如果交易离开内存池，你可以随时将其重新广播到网络。
 
-Transactions only wait around in the memory pool for a set amount of time.
+**在比特币交易获得确认之前，不要将其视为最终交易。** 费用非常低的交易可能无法被开采，并且如果它们在内存池中停留的时间太长，就会从网络中消失。
 
-* **Most wallets allow you to [bump the fee](/docs/technical/transaction/input/sequence.md#replace-by-fee) of your transaction whilst it's still in the memory pool.** So if your transaction is taking too long to get mined, you can increase the size of the fee on that transaction to speed up the process.
-* You can always re-broadcast your transaction to the network if it leaves the memory pool.
+## 确认
 
-**Do not consider a bitcoin transaction as final until it has been confirmed.** Transactions with very low fees in may not get mined, and will disappear from the network if they've been sat in the memory pool for too long.
+我应该等待几个确认？
 
-## Confirmations
+作为快速指南：
 
-How many confirmations should I wait for?
+* **1 个确认**通常足够好。
+* **2 个确认**更好，如果你想防止少见的[区块链重组](/docs/technical/blockchain/chain-reorganization.md)。
+* 只有当你担心[网络规模的攻击](/docs/technical/blockchain/51-attack.md)以逆转你的交易时，才需要 **3 个以上确认**。
 
-As a quick guide:
+*确认*是指你的交易被开采进一个区块。额外的确认是指在包含你交易的区块*之上*开采出更多的区块。
 
-* **1 confirmation** is usually good enough.
-* **2 confirmations** is better if you want to protect against an uncommon [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
-* **3+ confirmations** is only required if you are concerned about a [network-scale attack](/docs/technical/blockchain/51-attack.md) to reverse your transaction.
+[<img src="../images/beginners_sending_confirmations.gif" alt="展示确认数作为交易在区块链中深度的图表。" width="800" height="519" />](/docs/beginners/sending/confirmations.gif.md)
 
-A *confirmation* is when your transaction gets mined into a block. Additional confirmations are when further blocks are mined *on top* of the block your transaction was included in.
+确认数量是指你的交易在区块链中的深度。
 
-[<img src="../images/beginners_sending_confirmations.gif" alt="Diagram showing confirmations as the depth of a transaction in the blockchain." width="800" height="519" />](/docs/beginners/sending/confirmations.gif.md)
+为什么这很重要？
 
+虽然我说过你无法从区块链中删除交易，但技术上这是可能发生的。由于[区块链](/docs/technical/blockchain.md)的工作方式，拥有大量采矿能力的[不良矿工](/docs/technical/blockchain/51-attack.md)可以利用他们的能量来建立一个新的[更长区块链](/docs/technical/blockchain/longest-chain.md)供节点采用，并替换链中已有的区块（和交易）。
 
-The number of confirmations refers to how deep your transaction is in the blockchain.
+这在比特币中还没有发生过，但正如我所说，这在*技术上*是可能的。
 
-Why does this matter?
+[<img src="../images/diagrams_png_beginners-sending-replacing-blocks.png" alt="展示矿工在区块链顶部替换越来越多区块的可能性逐渐降低的图表。" width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-replacing-blocks.png)
 
-Well, I know I said that you cannot remove a transaction from the blockchain, but it is technically possible for it to happen. Due to the way the [blockchain](/docs/technical/blockchain.md) works, a [bad miner](/docs/technical/blockchain/51-attack.md) with a lot of mining power could use their energy to build a new [longer blockchain](/docs/technical/blockchain/longest-chain.md) for nodes to adopt, and replace blocks (and transactions) that are already in the chain.
+随着交易在区块链中向下移动的深度增加，矿工删除交易的难度呈指数级增加。
 
-This has not yet happened in Bitcoin, but as I say, it's *technically* possible.
+所以这就是为什么有时建议等待 **6 个确认**（或更多）以确保交易无法被逆转，因为此时对于矿工来说，替换那么多区块在“计算上是不可行的”。然而，除非你是在保护自己免受针对整个网络的不良矿工攻击，否则这是大材小用。
 
-[<img src="../images/diagrams_png_beginners-sending-replacing-blocks.png" alt="Diagram showing the decreasing likelihood of a miner being able to replace an increasing number of blocks at the top of the blockchain." width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-replacing-blocks.png)
+要对交易不会被撤销充满信心，等待 **2 个确认**是一个更合理的预估。这是因为在自然的[区块链重组](/docs/technical/blockchain/chain-reorganization.md)期间，区块链中的顶部区块往往会与另一个区块互换。
 
+[<img src="../images/diagrams_png_beginners-sending-chain-reorganization.png" alt="展示区块链顶部区块被另一个区块替换的链重组图表。" width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-chain-reorganization.png)
 
-It becomes exponentially more difficult for a miner to remove a transaction the deeper it makes its way down the blockchain.
+当两个区块在同一时间被开采出来并在链中竞争同一个位置时，就会发生链重组。
 
-So this is why it's sometimes recommended to wait for **6 confirmations** (or more) to be sure a transaction cannot be reversed, because at this point it's no longer "computationally feasible" for a miner to replace that number of blocks. However, unless you're protecting yourself from a bad miner performing an attack against the entire network, this is overkill.
+所以当你的交易通过了*第一个*区块（即 2 个确认）后，你可以确信它不会由于区块链构建方式的自然运行而被撤销。
 
-A more reasonable amount of time to wait to be confident that a transaction isn't going to be undone is **2 confirmations**. This is because the top block in the blockchain has a tendency to change around with another block during natural [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
+链重组大约每 `44.3` 天发生一次（每 `6,451` 个区块发生一次）。
 
-[<img src="../images/diagrams_png_beginners-sending-chain-reorganization.png" alt="Diagram showing a chain reorganization where the top block of the blockchain is replaced with a different one." width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-chain-reorganization.png)
+就个人而言，**1 个确认在大多数情况下对我来说已经足够了**，如果我收到一笔大额付款，我希望加倍确定它不会被撤销，我会等待 2 个确认。
 
+只有当我用房子换比特币，并且我积极担心区块链可能会受到攻击时，我才会等待大约 6 个以上的确认。
 
-Chain reorganizations happen when two blocks are mined at the same time and compete for the same spot in the chain.
+## 监控
 
-So when your transaction makes it past the *first* block (i.e 2 confirmations), you can be confident that it isn't going to be undone due the natural operation of the way the blockchain is built.
+我该如何检查我的交易状态？
 
-Chain reorganizations happen roughly once every `44.3` days (once every `6,451` blocks).
+比特币最酷的事情之一是你可以使用[区块链浏览器](/explorer/)实时查看你的交易状态。
 
-Personally, **1 confirmation is good enough for me most of the time**, and I'll wait for 2 confirmations if I'm receiving a large payment that I want to be doubly-sure isn't going to be reversed.
+当你进行比特币交易时，你的钱包应该会给你该交易的 [TXID](/docs/technical/transaction/input/txid.md)。这就像是交易的唯一参考编号，你可以用它在区块链浏览器中查找交易。
 
-I'd only wait for about 6+ confirmations if I'm selling my house for bitcoin, and I'm actively worried that the blockchain could be under attack.
+以下是几个好用的区块链浏览器：
 
-## Monitoring
+* [mempool.space](https://mempool.space) – 可能是最受欢迎的浏览器，名副其实。易于使用且时尚。
+* [bitref.com](https://bitref.com) – 一个干净、快速的区块链浏览器。简洁友好。
+* [learnmeabitcoin.com/explorer/](/explorer/) – 这是我做的一个浏览器。虽然用的人不多，但它确实是一个功能齐全的区块链浏览器。
 
-How can I check the status of my transaction?
+现在，区块链浏览器基本上只是一个作为比特币[节点](/docs/technical/networking/node.md)*窗口*的网站。所以通过输入你的 TXID，你只是要求浏览器查看其区块链（或内存池）并向你展示它收到的交易的详细信息。
 
-One of the coolest things about bitcoin is that you can use [blockchain explorers](/explorer/) to see the status of your transactions in real time.
+[<img src="../images/diagrams_png_beginners-sending-blockchain-explorers.png" alt="展示区块链浏览器作为查看正在运行的比特币节点数据窗口的图表。" width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-explorers.png)
 
-When you make a bitcoin transaction, your wallet should give you the [TXID](/docs/technical/transaction/input/txid.md) for that transaction. This is like a unique reference number for the transaction, and you can use it to find the transaction in a blockchain explorer.
+区块链浏览器只是显示来自其区块链（和内存池）内部的数据。
 
-Here are a few handy blockchain explorers:
+我不会涵盖浏览器能向你展示的所有细节，但我发现最有用的一些内容是：
 
-* [mempool.space](https://mempool.space) – Probably the most popular explorer, and rightfully so. Easy to use and stylish.
-* [bitref.com](https://bitref.com) – A clean, fast, blockchain explorer. Nice and simple.
-* [learnmeabitcoin.com/explorer/](/explorer/) – This is an explorer I made. It's not terribly popular, but it is a fully-functioning blockchain explorer nonetheless.
+* **确认数量。** 我的交易仍在[内存池](/docs/technical/mining/memory-pool.md)中，还是已经被开采进一个[区块](/docs/technical/block.md)中了？
+* **比特币的流动。** 比特币来自哪些[地址](/docs/technical/keys/address.md)，又被锁入哪些地址？
+* **比特币上的锁。** 比特币上放置了什么[锁定脚本](/docs/technical/script.md)？
 
-Now, a blockchain explorer is basically just a website that acts as a *window* into a bitcoin [node](/docs/technical/networking/node.md). So by entering your TXID, you're just asking the explorer to look into its blockchain (or memory pool) and show you the details of a transaction it has received.
+总之，你的钱包可能会告诉你关于你的交易的基本信息（比如它是否已被确认），但区块链浏览器允许你深入了解交易的细节，这非常酷。
 
-[<img src="../images/diagrams_png_beginners-sending-blockchain-explorers.png" alt="Diagram showing a blockchain explorer as a window into the data of a running Bitcoin node." width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-explorers.png)
+你也可以使用 `bitcoin-cli gettransaction [txid]` 从你自己的 Bitcoin Core 节点查找交易的状态。
 
+## 总结
 
-Block explorers just display the data from inside their blockchain (and memory pool).
+以下是我进行比特币交易的首要建议：
 
-I won't cover all the details of what explorers can show you, but some of the things I find most useful are:
+* 使用让你感觉舒适的[钱包](/docs/beginners/wallets.md)。
+* 设置你能接受的**最低费用**。
+* 用[区块链浏览器](/explorer/)关注交易的进度。
+  + 大多数时候 **1 个确认**就足够了。
+  + 2 个确认更好，如果你想在罕见的自然[区块链重组](/docs/technical/blockchain/chain-reorganization.md)中做到万无一失。
+  + 3 个以上确认是多余的，除非你害怕有人会精心策划一次[网络规模的攻击](/docs/technical/blockchain/51-attack.md)来撤销你的交易。
 
-* **The number of confirmations.** Is my transaction still in the [memory pool](/docs/technical/mining/memory-pool.md), or has it been mined into a [block](/docs/technical/block.md)?
-* **The movement of bitcoins.** Which [addresses](/docs/technical/keys/address.md) did the bitcoins come from, and which addresses are they being locked up to?
-* **The locks on the bitcoins.** What [locking scripts](/docs/technical/script.md) were placed on the bitcoins?
+在你进行前几次交易后，你就会掌握窍门。
 
-Anyway, your wallet will probably tell you the basic information about your transaction (such as whether it has been confirmed or not), but a blockchain explorer allows you to dig into the details of the transaction, which is pretty cool.
-
-You can also find the status of transactions from your own Bitcoin Core node using `bitcoin-cli gettransaction [txid]`
-
-## Summary
-
-Here are my top tips for making bitcoin transactions:
-
-* Use a [wallet](/docs/beginners/wallets.md) that you feel comfortable with.
-* Set the **lowest fee** you can get away with.
-* Follow the transaction's progress with a [blockchain explorer](/explorer/).
-  + **1 confirmation** is enough most of the time.
-  + 2 confirmations is better if you want to be extra sure in the rare case of a natural [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
-  + 3+ confirmations is overkill unless you're afraid someone is going to orchestrate a [network-scale attack](/docs/technical/blockchain/51-attack.md) to undo your transaction.
-
-You'll get the hang of it after your first few transactions.
-
-I've tried to make this guide as comprehensive as possible, but ultimately **experience is always the best teacher**. So just take your time and give it a go.
+我已试图让本指南尽可能全面，但归根结底**经验始终是最好的老师**。所以慢慢来，试一试吧。

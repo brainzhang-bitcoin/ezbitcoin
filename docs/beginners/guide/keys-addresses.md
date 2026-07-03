@@ -1,134 +1,134 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-To send and receive bitcoins you need some sort of "account number" and "password".
+要发送和接收比特币，你需要某种“账号”和“密码”。
 
-In Bitcoin, we call these a [public key](/docs/beginners/guide/public-keys.md) and a [private key](/docs/beginners/guide/private-keys.md).
+在比特币中，我们称之为[公钥](/docs/beginners/guide/public-keys.md)和[私钥](/docs/beginners/guide/private-keys.md)。
 
-[<img src="../../images/beginners_guide_keys-addresses_01-private-public.png" alt="Diagram showing a public key as an account number and a private key as the password." width="353" height="77" />](/docs/beginners/guide/keys-addresses/01-private-public.png.md)
+[<img src="../../images/beginners_guide_keys-addresses_01-private-public.png" alt="展示公钥作为账号、私钥作为密码的图表。" width="353" height="77" />](/docs/beginners/guide/keys-addresses/01-private-public.png.md)
 
-Here are your account details. Welcome to Bitcoin.
+这就是你的账户明细。欢迎来到比特币世界。
 
-However, this "account number" is an awkwardly long *number*. So to make life easier we create a *shortened* version of this public key, which we call an address.
+然而，这个“账号”是一个笨拙而冗长的*数字*。所以为了方便使用，我们创建了公钥的*缩短*版本，我们称之为地址。
 
-[<img src="../../images/beginners_guide_keys-addresses_01-private-public-address.png" alt="Diagram showing an address another version of the account number." width="448" height="124" />](/docs/beginners/guide/keys-addresses/01-private-public-address.png.md)
+[<img src="../../images/beginners_guide_keys-addresses_01-private-public-address.png" alt="展示地址作为账号的另一个版本的图表。" width="448" height="124" />](/docs/beginners/guide/keys-addresses/01-private-public-address.png.md)
 
-You'll see how hideous the public key is in a moment.
+稍后你就会看到公钥有多丑陋了。
 
-So to summarize:
+总结一下：
 
-* **Public Key** – Your *account number*.
-  + **Address** –Also your *account number*, but a shorter version that people use when sending you bitcoins.
-* **Private Key** – Your *password*. This prevents other people from sending bitcoins from your address.
+* **公钥** – 你的*账号*。
+  + **地址** – 也是你的*账号*，但在人们向你发送比特币时，使用的是一个缩短的版本。
+* **私钥** – 你的*密码*。这可以防止其他人从你的地址发送比特币。
 
-## Where do keys and addresses come from?
+## 密钥与地址从哪里来？
 
-All the keys used in Bitcoin are randomly generated on your computer.
+比特币中使用的所有密钥都是在你的计算机上随机生成的。
 
-### [Private Key](/docs/beginners/guide/private-keys.md)
+### [私钥](/docs/beginners/guide/private-keys.md)
 
-It all starts with the private key, which is just a **randomly generated number**:
+一切都始于私钥，它只是一个**随机生成的数字**：
 
-[<img src="../../images/beginners_guide_keys-addresses_02-random-private.png" alt="Illustration showing a private key being produced by a random number generator." width="691" height="137" />](/docs/beginners/guide/keys-addresses/02-random-private.png.md)
+[<img src="../../images/beginners_guide_keys-addresses_02-random-private.png" alt="展示由随机数生成器产生私钥的插图。" width="691" height="137" />](/docs/beginners/guide/keys-addresses/02-random-private.png.md)
 
-But because this number is so large, we usually display it in [hexadecimal](/docs/technical/general/hexadecimal.md) format:
+但因为这个数字太大，我们通常会以[十六进制](/docs/technical/general/hexadecimal.md)格式显示它：
 
-[<img src="../../images/beginners_guide_keys-addresses_02-random-private-hex.png" alt="Diagram showing a private key converted to hexadecimal format." width="705" height="190" />](/docs/beginners/guide/keys-addresses/02-random-private-hex.png.md)
+[<img src="../../images/beginners_guide_keys-addresses_02-random-private-hex.png" alt="展示将私钥转换为十六进制格式的图表。" width="705" height="190" />](/docs/beginners/guide/keys-addresses/02-random-private-hex.png.md)
 
-Hexadecimal numbers are shorter than decimal numbers because they also use the letters a, b, c, d, e and f.
+十六进制数字比十进制数字短，因为它们还使用字母 a, b, c, d, e 和 f。
 
-And there we have a private key; just a big random number.
+这样我们就拥有了一个私钥；它只是一个巨大的随机数。
 
-For example:
-
-|  |  |
-| --- | --- |
-| Private Key | ef235aacf90d9f4aadd8c92e4b2562e1d9eb97f0df9ba3b508258739cb013db2 |
-
-**Do not use the example private key (or address) on this page.** I'm just showing these as examples of what they look like. All of your private keys should be generated securely on your own computer/device and kept secret.
-
-A private key can be any number between **1** and **115792089237316195423570985008687907852837564279074904382605163141518161494336**.
-
-### [Public Key](/docs/beginners/guide/public-keys.md)
-
-You use your private key to calculate your public key.
-
-But first, this public key is going to be seen by other people. Therefore, when we use the private key to create our public key, **we don't want it to be possible for anyone to figure out what our private key was**.
-
-Because after all, the private key protects our bitcoins.
-
-[<img src="../../images/beginners_guide_keys-addresses_03-public-private-one-way.png" alt="Diagram showing how a private key is used to calculate the public key, but you cannot calculate the private key from the public key." width="65" height="293" />](/docs/beginners/guide/keys-addresses/03-public-private-one-way.png.md)
-
-We don't want anyone to be able to work backwards from the public key to the private key.
-
-Fortunately, we can use a special type of **mathematical function** to achieve this.
-
-We just shove the private key (which is a number after all) in to this function, and the function spits out a public key (which is another number again).
-
-[<img src="../../images/beginners_guide_keys-addresses_03-public-private-one-way-function.png" alt="Diagram showing a private key being put through a mathematical function to produce a public key." width="624" height="293" />](/docs/beginners/guide/keys-addresses/03-public-private-one-way-function.png.md)
-
-Now, there are two benefits of using this particular function:
-
-1. **There is a mathematical connection between the private key and public key.** This will come in handy later on when we want to spend our bitcoins in a [transaction](/docs/beginners/guide/transactions.md).  
-   <img src="../../images/beginners_guide_keys-addresses_03-public-private-mathematical-fit.png" alt="Illustration showing how the private key fits the public key like a traditional key and lock." width="356" height="121" />
-2. **It's not possible to figure out the private key from the public key**. Even though the public key is calculated *from* the private key, we're using what's known as a "one-way" function, so you can't work backwards from the public key to calculate the private key.
-
-And ta-da, thanks to our random number and this function, we now have a *pair of keys* that we can use to send and receive bitcoins:
+例如：
 
 |  |  |
 | --- | --- |
-| Private Key | ef235aacf90d9f4aadd8c92e4b2562e1d9eb97f0df9ba3b508258739cb013db2 |
-| Public Key | 02b4632d08485ff1df2db55b9dafd23347d1c47a457072a1e87be26896549a8737 |
+| 私钥 | ef235aacf90d9f4aadd8c92e4b2562e1d9eb97f0df9ba3b508258739cb013db2 |
 
-### Address
+**请勿使用本页面的示例私钥（或地址）。** 我仅将这些作为展示其外观的示例。你所有的私钥都应该在自己的电脑/设备上安全生成并保持私密。
 
-That public key is hideous isn't it. Nobody is going to enjoy typing that out.
+私钥可以是 **1** 到 **115792089237316195423570985008687907852837564279074904382605163141518161494336** 之间的任意数字。
 
-So let's make it a bit prettier and call it an address.
+### [公钥](/docs/beginners/guide/public-keys.md)
 
-[<img src="../../images/beginners_guide_keys-addresses_04-public-address-pretty.png" alt="Diagram showing a public key being converted to a shorter address format." width="599" height="110" />](/docs/beginners/guide/keys-addresses/04-public-address-pretty.png.md)
+你使用私钥来计算你的公钥。
 
-Thank goodness.
+但首先，这个公钥是会被其他人看到的。因此，当我们使用私钥生成公钥时，**我们不希望任何人有可能推算算我们的私钥是什么**。
 
-All we've done here is *compress* the public key (using [hash functions](/docs/technical/cryptography/hash-function.md)), and convert it to a format that doesn't use any characters that look similar to each other when written down (called [Base58](/docs/technical/keys/base58.md)).
+因为归根结底，私钥保护着我们的比特币。
 
-So it's still not the shortest and sweetest piece of data you've ever seen, but it *is* an improvement.
+[<img src="../../images/beginners_guide_keys-addresses_03-public-private-one-way.png" alt="图表显示私钥被用来计算公钥，但是你无法从公钥计算出私钥。" width="65" height="293" />](/docs/beginners/guide/keys-addresses/03-public-private-one-way.png.md)
 
-And that's all an address is; a shorter version of the public key:
+我们不希望任何人能够从公钥反向推导出私钥。
+
+幸运的是，我们可以使用一种特殊的**数学函数**来实现这一点。
+
+我们只需要把私钥（它毕竟只是一个数字）输入到这个函数中，函数就会输出一个公钥（这又是另一个数字）。
+
+[<img src="../../images/beginners_guide_keys-addresses_03-public-private-one-way-function.png" alt="展示私钥输入数学函数以产生公钥的图表。" width="624" height="293" />](/docs/beginners/guide/keys-addresses/03-public-private-one-way-function.png.md)
+
+现在，使用这一特定函数有两个好处：
+
+1. **私钥和公钥之间存在数学上的联系。** 当我们稍后想要在[交易](/docs/beginners/guide/transactions.md)中花费我们的比特币时，这将派上用场。
+   <img src="../../images/beginners_guide_keys-addresses_03-public-private-mathematical-fit.png" alt="插图展示私钥像传统的钥匙和锁一样与公钥相契合。" width="356" height="121" />
+2. **不可能从公钥算出私钥。** 尽管公钥是从私钥计算出来的，但我们使用的是所谓的“单向”函数，因此你无法从公钥反向推算出来计算私钥。
+
+多亏了我们的随机数和这个函数，我们现在有了一*对密钥*，可以用来发送和接收比特币：
 
 |  |  |
 | --- | --- |
-| Private Key | ef235aacf90d9f4aadd8c92e4b2562e1d9eb97f0df9ba3b508258739cb013db2 |
-| Public Key | 02b4632d08485ff1df2db55b9dafd23347d1c47a457072a1e87be26896549a8737 |
-| Address | 1EUXSxuUVy2PC5enGXR1a3yxbEjNWMHuem |
+| 私钥 | ef235aacf90d9f4aadd8c92e4b2562e1d9eb97f0df9ba3b508258739cb013db2 |
+| 公钥 | 02b4632d08485ff1df2db55b9dafd23347d1c47a457072a1e87be26896549a8737 |
 
-**It's not possible to work backwards from the address to the public key either.** This is due to the use of hash functions when compressing the public key.
+### 地址
 
-## Do I have to remember all 3 keys?
+公钥看起来挺丑的，对吧。没有人会喜欢手动输入那一长串东西。
 
-Because your public key and address are worked out *from* your private key, **you can get away with just saving your private key**.
+所以让我们把它变得好看一点，称之为地址。
 
-[<img src="../../images/beginners_guide_keys-addresses_05-private-source.png" alt="Diagram showing the private key as the source of the public key and address." width="227" height="312" />](/docs/beginners/guide/keys-addresses/05-private-source.png.md)
+[<img src="../../images/beginners_guide_keys-addresses_04-public-address-pretty.png" alt="展示公钥被转换为更短的地址格式的图表。" width="599" height="110" />](/docs/beginners/guide/keys-addresses/04-public-address-pretty.png.md)
 
-So if worse comes to worst, if you ever need to send your address to someone, you can just work it out from your private key.
+谢天谢地。
 
-You're most likely going to be using a [wallet](/docs/beginners/wallets.md), so managing your individual private keys and addresses isn't really an issue. The only thing you need to keep safe when using a wallet is your [seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md).
+我们在这里所做的只是*压缩*公钥（使用[哈希函数](/docs/technical/cryptography/hash-function.md)），并将其转换为一种不使用任何在写下来时看起来相似字符的格式（称为 [Base58](/docs/technical/keys/base58.md)）。
 
-## What happens if I lose my private key?
+所以它依然不是你见过的最短最甜的数据片段，但它*确实*是一种进步。
 
-Well then you're fu…*lly out of luck*.
+而地址仅此而已；它是公钥的较短版本：
 
-**It's impossible to work out your private key from either your public key or address**, so if you lose your private key, it's gone.
+|  |  |
+| --- | --- |
+| 私钥 | ef235aacf90d9f4aadd8c92e4b2562e1d9eb97f0df9ba3b508258739cb013db2 |
+| 公钥 | 02b4632d08485ff1df2db55b9dafd23347d1c47a457072a1e87be26896549a8737 |
+| 地址 | 1EUXSxuUVy2PC5enGXR1a3yxbEjNWMHuem |
 
-[<img src="../../images/beginners_guide_keys-addresses_05-private-lost.png" alt="Diagram showing how you can't work backwards from an address or public key to the private key." width="44" height="300" />](/docs/beginners/guide/keys-addresses/05-private-lost.png.md)
+**也无法从地址反向推导出公钥。** 这是因为在压缩公钥时使用了哈希函数。
 
-You can't calculate your private key from your address or public key.
+## 我需要记住这 3 个密钥吗？
 
-And if you haven't got the private key for an address, any bitcoins located at that address will be locked there forever.
+因为你的公钥和地址都是*从*你的私钥计算出来的，**所以你其实只需保存好你的私钥即可**。
 
-How's that for security?
+[<img src="../../images/beginners_guide_keys-addresses_05-private-source.png" alt="展示私钥作为公钥和地址来源的图表。" width="227" height="312" />](/docs/beginners/guide/keys-addresses/05-private-source.png.md)
 
-This may seem like an unforgiving system, and that's because it is.
+所以，如果遇到最坏的情况，无论何时你需要把地址发给别人，你都可以通过你的私钥把它推导出来。
 
-On the other hand, it's refreshing to know that there are no backdoors to your money. There is only one key to your bitcoins, and you're in charge of it.
+你大部分时候都在使用[钱包](/docs/beginners/wallets.md)，所以管理单个私钥和地址并不是一个真正的问题。在使用钱包时，你唯一需要保护安全的就是你的[种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md)。
 
-[<img src="../../images/beginners_guide_keys-addresses_lol-customer-support.png" alt="Illustration of someone trying to call Bitcoin for support after losing their private key." width="699" height="343" />](/docs/beginners/guide/keys-addresses/lol-customer-support.png.md)
+## 如果我丢失了私钥会怎么样？
+
+那你就彻底……失去它们了。
+
+**不可能从公钥或地址推算出私钥**，所以如果你丢失了私钥，它就真的消失了。
+
+[<img src="../../images/beginners_guide_keys-addresses_05-private-lost.png" alt="展示你无法从地址或公钥反向推导私钥的图表。" width="44" height="300" />](/docs/beginners/guide/keys-addresses/05-private-lost.png.md)
+
+你无法从地址或公钥计算出私钥。
+
+如果你没有一个地址对应的私钥，锁定在该地址下的任何比特币将永远被所在那里。
+
+这种安全防护觉得如何？
+
+这看起来可能是一个毫不留情的系统，事实也确实如此。
+
+但换个角度，知道你的钱没有后门可以进入也是件令人欣慰的事。你的比特币只有一把钥匙，而你完全掌控着它。
+
+[<img src="../../images/beginners_guide_keys-addresses_lol-customer-support.png" alt="有人在丢失私钥后尝试给比特币客服打电话寻求支持的插图。" width="699" height="343" />](/docs/beginners/guide/keys-addresses/lol-customer-support.png.md)

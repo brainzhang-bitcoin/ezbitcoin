@@ -1,151 +1,152 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-Here's a shortlist of what I think are the **best exchanges** for buying bitcoin online.
+以下是我认为在网上购买比特币的**最佳交易所**简短列表。
 
-This isn't an extensive list of all the exchanges on the Internet; they're ones that I *personally recommend*:
+这并不是互联网上所有交易所的详尽列表；它们是我*个人推荐*的交易所：
 
-Exchange | Level | ID Required | Custodial | Fiat | Risk | Notes || [Kraken](https://www.kraken.com/) | Beginner/Advanced | Yes | Yes | Yes | Low | Good company, reliable |
-| [Peach Bitcoin](https://peachbitcoin.com/) | Intermediate | No | No | Yes | Medium | P2P trades, app only, Switzerland |
-| [Bisq](https://bisq.network/) | Advanced | No | No | Yes | Medium | P2P trades, desktop only |
+交易所 | 级别 | 需要身份证件 | 托管型 | 法币 | 风险 | 备注
+--- | --- | --- | --- | --- | --- | ---
+[Kraken](https://www.kraken.com/) | 初学者/高级 | 是 | 是 | 是 | 低 | 优秀的公司，安全可靠 |
+[Peach Bitcoin](https://peachbitcoin.com/) | 中级 | 否 | 否 | 是 | 中 | P2P 交易，仅限 App，瑞士 |
+[Bisq](https://bisq.network/) | 高级 | 否 | 否 | 是 | 中 | P2P 交易，仅限桌面端 |
 
-* **Level** – Whether the exchange is most suited to beginner, intermediate, or advanced users.
-* **ID Required** – Whether the exchange allows you to buy bitcoins anonymously without having to provide ID (aka No-KYC).
-* **Fiat** – Whether the exchange allows you to deposit and buy bitcoin using Fiat currency (e.g. USD, EUR, GBP, etc.)
-* **Custodial** – Whether the exchange holds on to your bitcoins when buying and selling.
-* **Risk** – How risky the exchange is. I wouldn't recommend an exchange that I don't trust, but different exchanges come with different levels of risk based on how they operate.
+* **级别** – 交易所最适合初学者、中级还是高级用户。
+* **需要身份证件** – 交易所是否允许你匿名购买比特币而无需提供身份证件（即 No-KYC）。
+* **法币** – 交易所是否允许你使用法定货币（例如美元、欧元、英镑等）充值并购买比特币。
+* **托管型** – 交易所是否在买卖时为你保管比特币。
+* **风险** – 交易所的风险程度。我不会推荐我不信任的交易所，但不同的交易所由于运营方式不同，其风险水平也不同。
 
-If you're buying bitcoin for the first time and want to keep the process as simple and as secure as possible, use [Kraken](https://www.kraken.com/).
+如果你是第一次购买比特币，并且希望过程尽可能简单且安全，请使用 [Kraken](https://www.kraken.com/)。
 
-## What should you look for in an exchange?
+## 在选择交易所时，你应该看重什么？
 
-When buying bitcoins from an exchange, I look for the following (in this order):
+在从交易所购买比特币时，我主要看重以下几点（按重要性排序）：
 
-### 1. Trust
+### 1. 信任
 
-The most important thing is to **only ever use an exchange that you *trust***.
+最重要的一点是**只使用你*信任*的交易所**。
 
-You're going to be trusting the exchange with *your money*, so you need to feel confident they're able to look after it and that you'll be able to withdraw it when you want to.
+你将把*你的钱*托付给交易所，所以你需要确信他们能够妥善保管它，并且在你需要时能够随时提现。
 
-I like to find out who the owners are first. I think you can get a good feel for the trustworthiness of an exchange by looking at the people who run it. I usually head to the "about" page to see who's behind the curtain, and see if I can find a few video interviews to see what they're like.
+我喜欢先了解一下所有者是谁。我认为通过观察交易所的运营者，你可以很好地感受到它的可信度。我通常会去“关于我们 (about)”页面看看幕后是谁，并找一些视频采访看看他们是什么样的人。
 
-It's not an exact science, but your intuition will take you a long way.
+这并不是一门精确的科学，但你的直觉会引导你走得很远。
 
-There are some exchanges that are run anonymously, and it's not clear who's behind them . It seems ridiculous to trust an exchange like this, and the risk will always be greater, but I still think you can get a decent read from an exchange based on the design and function of the site.
+有些交易所是匿名运营的，并不清楚背后是谁。信任这样的交易所似乎很荒谬，风险也总是更大，但我仍然认为你可以通过该网站的设计 and 功能对其有一个不错的判断。
 
-I also consider "flashy" looking exchanges to be a bit of a red flag. Ultimately, an exchange is a fairly technical operation, so if it appears they're placing *form* over function with big flashing images and even bigger promises of security, be wary.
+我还认为看起来太“花哨”的交易所是一种警示信号。归根结底，交易所是一项相当技术性的运营，所以如果他们看起来是在用闪烁的大图和极具诱惑的安全承诺来“重形式轻功能”，那就要保持警惕。
 
-I've got a good amount of [experience playing online poker](/about/), and I've sent money to and from many unscrupulous companies over the years, so I like to think I've got a good feel for what a trustworthy operation looks like.
+我在[玩在线扑克方面有相当丰富的经验](/about/)，这些年来我曾向许多不道德的公司汇款和收款，所以我认为自己对一家值得信赖的机构是什么样子的有很好的判断力。
 
-Ultimately though, you have to accept that you'll never be 100% certain about *any* exchange. But if you dig below the surface and avoid judging based purely on face value, you should be able to edge *closer* to 100%, and you'll go a long way in protecting yourself from a nightmare down the road.
+但归根结底，你必须接受你永远无法对*任何*交易所做到 100% 确定。但如果你深入挖掘并避免纯粹根据表面价值进行判断，你就能够*接近* 100%，这将在未来为你避免噩梦般的结果。
 
-In other words, trust your gut.
+换句话说，相信你的直觉。
 
-### 2. Privacy
+### 2. 隐私
 
-Your **privacy** may be an important factor when deciding which exchange to use.
+在决定使用哪家交易所时，你的**隐私**可能是一个重要因素。
 
-In general, there's usually a tradeoff between *convenience* and *anonymity* when it comes to buying bitcoins online:
+一般来说，在网上购买比特币时，*便利性*和*匿名性*之间通常需要进行权衡：
 
-* **Exchanges that *require* identification are usually lower risk.** This means you lose your anonymity, but they're usually less risky and the buying process is straightforward.
-* **Exchanges that *do not require* identification are usually higher risk.** This is great for anonymity, but they're naturally more risky and can be more difficult to use.
+* **要求身份验证的交易所通常风险较低。** 这意味着你失去了匿名性，但它们的风险通常较小，而且购买流程很简单。
+* **不要求身份验证的交易所通常风险较高。** 这对于匿名性很好，但它们自然风险更大，而且可能更难使用。
 
-If you're buying bitcoin for the first time and/or have no problem with giving your ID to an exchange, I'd always recommend going for the biggest and most trustworthy exchange you can find (e.g. [Kraken](https://www.kraken.com/)). It's just way easier this way.
+如果你是第一次购买比特币，和/或对于向交易所提供身份证件没有意见，我总是建议选择你能找到的最大且最值得信赖的交易所（例如 [Kraken](https://www.kraken.com/)）。这种方式要简单得多。
 
-However, if anonymity is your main concern, you'll need to search around to find smaller exchanges, and accept the risks that come with them. In this situation, you're going to want to do as much research as you can.
+然而，如果匿名是你的首要关切，你就需要寻找规模较小的交易所，并接受随之而来的风险。在这种情况下，你需要尽可能多地做研究。
 
-There's no single exchange that's perfect for everyone; you've just got to go for the one that's right for you.
+没有哪一个交易所对所有人来说都是完美的，你只需要选择适合你自己的那一个。
 
-You just need to be smart about it.
+你只需要聪明一点。
 
-[KYCnot.me](https://kycnot.me/) is a good resource for finding exchanges that allow you to buy bitcoins anonymously.
+[KYCnot.me](https://kycnot.me/) 是一个用于寻找允许匿名购买比特币的交易所的好资源。
 
-#### Should you avoid exchanges that ask for ID?
+#### 你应该避免使用要求提供身份证件的交易所吗？
 
-Not necessarily.
+不一定。
 
-However, if you buy bitcoins from a company that asks for your ID, then you can consider any bitcoins you buy from them as being "tagged" to your identity.
+然而，如果你从要求提供身份证件的公司购买比特币，那么你可以认为你从他们那里购买的所有比特币都已“标记”了你的身份。
 
-What does this mean for you?
+这对你意味着什么？
 
-Well, let's say you decide to send those bitcoins to a secret shop. That's cool, but if that secret shop ever got raided (for whatever reason) and their bitcoins/addresses were found, it would be possible to see all the transactions that the shop had received. As a result, seeing as the bitcoins you sent there were tagged to your ID, it would be possible to find out that *you* sent bitcoins to that shop.
+举个例子，假设你决定把这些比特币发送到一家秘密商店。这没关系，但如果该秘密商店因为某种原因被查封，并且他们发现其比特币/地址，那么就可以查看到该商店接收到的所有交易。结果就是，鉴于你发送到那里的比特币带有你身份的标记，就有可能查出是*你*将比特币发送到了那家商店。
 
-[<img src="../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png" alt="Diagram showing how buying a bitcoin from an exchange that requires ID tags those bitcoins to your identity." width="983" height="473" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-exchanges-id-privacy-transaction.png)
+[<img src="../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png" alt="该图展示了从需要身份证件的交易所购买比特币是如何将这些比特币标记到你的身份上的。" width="983" height="473" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-exchanges-id-privacy-transaction.png)
 
-I wouldn't dissuade anyone from buying bitcoins from companies that ask for your ID, but it's important to be aware of how they operate. Just remember that bitcoin [transactions](/docs/technical/transaction.md) are connected together, and so the privacy of your coins depends on you *not creating links* from your identity to the [addresses](/docs/technical/keys/address.md) you use.
+我不会劝阻任何人不要从要求提供身份证件的公司购买比特币，但了解它们是如何运作的非常重要。只需记住，比特币[交易](/docs/technical/transaction.md)是连接在一起的，因此你的硬币的隐私取决于你*不要*在你的身份与你使用的[地址](/docs/technical/keys/address.md)之间建立关联。
 
-I do not believe requiring ID to buy bitcoin is in true spirit of Bitcoin, but these kinds of exchanges do make for a convenient and easy way to get your first bitcoins.
+我不定义购买比特币需要身份证件符合比特币的真正精神，但这些类型的交易所确实为你获得第一批比特币提供了一种便捷的方法。
 
-In short, Bitcoin *can* be used anonymously, but only if you are careful to not tie your identity to any addresses that you use. By buying bitcoins from a company that requires your ID, you are **sacrificing your privacy for convenience**.
+简而言之，比特币*可以*匿名使用，但前提是你必须小心，不要将你的身份与你使用的任何地址绑定。通过从需要身份证件的公司购买比特币，你是在**为了便利而牺牲隐私**。
 
-And in the words of Benjamin Franklin:
+用本杰明·富兰克林的话来说：
 
-> Those who would give up essential liberty to purchase a little temporary safety deserve neither liberty nor safety.
+> 那些为了获得一点点临时安全而放弃基本自由的人，既不配享有自由，也不配享有安全。
 
-[Benjamin Franklin](https://founders.archives.gov/documents/Franklin/01-06-02-0107)
+[本杰明·富兰克林](https://founders.archives.gov/documents/Franklin/01-06-02-0107)
 
-### 3. Fees
+### 3. 费用
 
-It's always good to check out the **fees** an exchange charges beforehand.
+提前查看交易所收取的**费用**总是好的。
 
-Exchanges offer a service, which means there are going to be fees involved when buying and selling. These fees are usually relatively small, but it's worth comparing the fees between the different exchanges you're looking at before pulling the trigger.
+交易所提供服务，这意味着在买卖时会产生相关费用。这些费用通常相对较小，但在做决定之前，值得对比一下你所关注的不同交易所之间的费用。
 
-I personally wouldn't use *fees* as the primary factor when determining whether to use an exchange; I'd prefer to pay more in fees to use an exchange I trust, rather than risk my money on an exchange that I don't trust just to save a little on fees.
+我个人不会将*费用*作为决定是否使用某个交易所的首要因素；我宁愿支付更多的费用来使用我信任的交易所，也不愿为了节省一点费用而在一张我不信任的交易所上冒险。
 
-But if it's a close call between a few different exchanges, I'd lean toward the one that has the lowest fees.
+但如果是几个不同交易所之间的艰难抉择，我会偏向于费用最低的那一个。
 
-### 4. Ease
+### 4. 易用性
 
-There's absolutely nothing wrong with sticking with an exchange that you find **easy to use**.
+坚持使用你认为**易于使用**的交易所绝对没有错。
 
-Buying bitcoin online can be a pretty intimidating experience, especially if you're doing it for the first time. So you shouldn't feel bad about using an exchange that makes the process straightforward.
+在网上购买比特币可能是一次相当令人生畏的经历，特别是如果你是第一次这样做。所以你不必因为使用能让这个过程变得简单的交易所而感到愧疚。
 
-Some exchanges can be quite technical and are designed for experienced traders, and it's not always clear what's going on if you haven't used them before. Whereas other exchanges are designed for beginners, and simplify the process as much as possible.
+有些交易所可能相当专业，是为有经验的交易员设计的，如果你以前没有使用过，就可能不太清楚发生了什么。而其他交易所则是为初学者设计的，尽可能地简化了过程。
 
-[<img src="../images/beginners_exchanges_screenshot-tradeogre.jpg" alt="Screenshot of the old TradeOgre exchange." width="600" height="347" />](/docs/beginners/exchanges/screenshot-tradeogre.jpg.md)
+[<img src="../images/beginners_exchanges_screenshot-tradeogre.jpg" alt="老版 TradeOgre 交易所的屏幕截图。" width="600" height="347" />](/docs/beginners/exchanges/screenshot-tradeogre.jpg.md)
 
+这种界面并不是每个人的菜。
 
-This kind of interface isn't going to be everyone's cup of tea.
+你在这里处理的是你自己的钱，你不应该感到被迫去使用可能会导致你犯错的交易所。
 
-You're handling your own money here, and you shouldn't feel compelled to use an exchange that could lead to you making mistakes.
+最好的方法是从简单的开始，然后逐步深入。
 
-The best method is to start simple and work your way up.
+## 常见问题
 
-## FAQ
+### 你如何购买比特币？
 
-### How do you buy bitcoin?
+从根本上说，购买比特币的方式就是从出售它们的人那里购买。
 
-Fundamentally, the way you buy bitcoin is to buy them from someone who is selling them.
+[<img src="../images/beginners_exchanges_buy-bitcoin-person.gif" alt="展示一个人直接从另一个人那里购买比特币的动画。" width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-person.gif.md)
 
-[<img src="../images/beginners_exchanges_buy-bitcoin-person.gif" alt="Animation showing a person buying bitcoins from another person directly." width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-person.gif.md)
+但当然，并不是每个人都认识有比特币出售的人，所以出现了一些以出售比特币为生的公司。这些公司被称为交易所，它们在网上提供了一种*便捷*的比特币购买方式。
 
-But of course, not everyone knows someone who has bitcoins to sell, so companies have popped up that sell bitcoin for a living. These are called exchanges, and they offer a *convenient* way to buy bitcoin online.
+[<img src="../images/beginners_exchanges_buy-bitcoin-company.gif" alt="展示一个人从一家公司（即交易所）购买比特币的动画。" width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-company.gif.md)
 
-[<img src="../images/beginners_exchanges_buy-bitcoin-company.gif" alt="Animation showing a person buying bitcoins from a company (i.e. an exchange)." width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-company.gif.md)
+所以这个页面列出了我认为在网上购买比特币的最佳交易所。
 
-So this page lists what I think are the best exchanges for buying bitcoin online.
+但当然，如果可以（且愿意）的话，直接从某人那里购买也没有任何问题。如果说有什么不同的话，这正是比特币的真谛。
 
-But of course, there's nothing wrong with buying from someone directly if you can (and want to). And if anything, that's what Bitcoin is all about.
+### 你应该把你的比特币留在交易所吗？
 
-### Should you keep your bitcoins on an exchange?
+如果你愿意，你可以这样做，但你需要意识到交易所将完全控制你的比特币。
 
-You can if you want, but you need to be aware that the exchange will have complete control of your bitcoins.
+这就像从网站“购买”黄金，但只能在你的账户中看到黄金的数量，而实际上并没有把黄金拿到自己手里。因此，如果交易所的计算机发生爆炸、被黑客入侵，或者该公司直接凭空消失，那么你的比特币也就没有了。
 
-It's like "buying" gold from a website, but only seeing the amount of gold in your account and not actually having the gold in your hands. So if the exchange's computers were to blow up, get hacked, or if the company just plain-old disappears, then your bitcoins are gone too.
+那有什么替代方案？
 
-So what's the alternative?
+好吧，如果你想完全控制你的比特币（我推荐这样做），那么你需要将比特币*提现*到你自己的[钱包](/docs/beginners/wallets.md)。通过提现，你是要求该公司创建一个[交易](/docs/technical/transaction.md)，将一定数量的比特币锁定到你的[地址](/docs/technical/keys/address.md)之一。这意味着你将拥有允许你转移比特币的[密钥](/docs/technical/keys.md)，这意味着除了你之外，没有其他人可以控制它们。
 
-Well, if *you* want to have complete control over your bitcoins (which I recommend), then you need to *withdraw* the bitcoins to your own [wallet](/docs/beginners/wallets.md). By withdrawing you are asking the company to create a [transaction](/docs/technical/transaction.md) to lock up an amount of bitcoins to one of your [addresses](/docs/technical/keys/address.md). This means you will have the [keys](/docs/technical/keys.md) that allow you to transfer the bitcoins, which means that nobody else has control of them except for you.
+[<img src="../images/beginners_exchanges_withdraw.gif" alt="展示一个人将比特币从交易所提现到他们钱包的动画。" width="800" height="378" />](/docs/beginners/exchanges/withdraw.gif.md)
 
-[<img src="../images/beginners_exchanges_withdraw.gif" alt="Animation showing a person withdrawing bitcoins from an exchange to their wallet." width="800" height="378" />](/docs/beginners/exchanges/withdraw.gif.md)
+**完全拥有和控制自己的资金是比特币的核心原则之一。** 这就是为什么我建议尽可能将比特币从交易所提现到你的钱包里，因为这才是比特币设计用来带给你的自由。
 
-**Having complete ownership and control of your money is one of the key principles of Bitcoin.** This is why I recommend withdrawing bitcoins from an exchange to your wallet if you can, as this is what gives you the freedom that Bitcoin was designed for.
+通过提现到你的钱包，你现在也掌控了那些比特币的[安全](/docs/beginners/security.md)。这完全是可管理的，但也不要掉以轻心。
 
-By withdrawing to your wallet, you are now also in control of the [security](/docs/beginners/security.md) of those bitcoins. It's perfectly manageable, but don't take it lightly.
+## 接下来该做什么？
 
-## What next?
+在你购买了你的第一批比特币之后，你应该考虑将它们提现到你自己的[钱包](/docs/beginners/wallets.md)。
 
-After you've bought your first bitcoin, you should consider withdrawing them to your own [wallet](/docs/beginners/wallets.md).
+从这里开始，你可以开始进行交易并向其他人及企业[发送比特币](/docs/beginners/sending.md)。
 
-From here, you can start making transactions and [sending bitcoins](/docs/beginners/sending.md) to other people and businesses.
-
-This is where the fun begins.
+这就是乐趣开始的地方。

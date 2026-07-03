@@ -1,153 +1,153 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/beginners_guide_difficulty_00-difficulty.png" alt="Illustration showing the difficulty controlling the time it takes to add a new block to the blockchain." width="304" height="322" />](/docs/beginners/guide/difficulty/00-difficulty.png.md)
+[<img src="../../images/beginners_guide_difficulty_00-difficulty.png" alt="展示控制向区块链添加新区块所需时间的难度图表。" width="304" height="322" />](/docs/beginners/guide/difficulty/00-difficulty.png.md)
 
-Current Difficulty:
+当前难度：
 
 133,869,853,540,305.41
 
-Height: [956,479](/explorer/956479)
+区块高度：[956,479](/explorer/956479)
 
-The difficulty is a number that represents how difficult it is for miners to add new [blocks](/docs/beginners/guide/blocks.md) of [transactions](/docs/beginners/guide/transactions.md) to the [blockchain](/docs/beginners/guide/blockchain.md).
+难度是一个代表矿工向[区块链](/docs/beginners/guide/blockchain.md)添加新[交易](/docs/beginners/guide/transactions.md)[区块](/docs/beginners/guide/blocks.md)难易程度的数字。
 
-It **adjusts every 2 weeks** to ensure that it takes 10 minutes (on average) to add new blocks to the blockchain.
+它**每 2 周调整一次**，以确保添加新区块到区块链平均需要 10 分钟。
 
-## Why is the difficulty important?
+## 为什么难度很重要？
 
-The difficulty ensures that blocks of transactions are added to the blockchain at **regular intervals** during [mining](/docs/beginners/guide/mining.md), even as more miners join the [network](/docs/beginners/guide/network.md).
+难度确保了在[挖矿](/docs/beginners/guide/mining.md)期间，即使有更多矿工加入[网络](/docs/beginners/guide/network.md)，交易区块也能以**固定时间间隔**被添加到区块链中。
 
-If the difficulty stayed the same, it would gradually take less and less time to add new blocks to the blockchain as new miners join the network.
+如果难度保持不变，随着新矿工加入网络，添加新区块到区块链所需的时间将逐渐缩短。
 
-So the difficulty adjustments mean that the blockchain gets updated consistently.
+因此，难度调整意味着区块链可以持续稳定地更新。
 
-## When does the difficulty change?
+## 难度何时发生变化？
 
-The difficulty adjusts **every 2,016 blocks** (roughly every 2 weeks)
+难度**每 2,016 个区块**调整一次（大约每 2 周）。
 
-At this interval, each [node](/docs/beginners/guide/node.md) takes the *expected time* for the last 2,016 blocks to be mined (2016 x 10 minutes), and divides it by the *actual time* it took:
+在此间隔，每个[节点](/docs/beginners/guide/node.md)都会获取开采最后 2,016 个区块的*预期时间*（2016 x 10 分钟），并除以实际所用的*实际时间*：
 
 ```
 expected / actual
 20160 / actual
 ```
 
-If miners were able to solve each block more quickly than expected; say 9 minutes per block for example, you'd get a number like this
+如果矿工解决每个区块的速度快于预期，例如每个区块花费 9 分钟，你会得到类似这样的数字：
 
 ```
 20160 / 18144 = 1.11
 ```
 
-Each node then uses this number to adjust the difficulty for the next 2,016 blocks:
+然后，每个节点使用这个数字来调整下 2,016 个区块的难度：
 
 ```
 difficulty x 1.11 = new difficulty
 ```
 
-* If the number is greater than 1 (blocks were mined *quicker* than expected), the difficulty increases.
-* If the number is less than 1 (blocks were mined slower than expected) the difficulty decreases.
+* 如果该数字大于 1（区块开采速度比预期*快*），难度就会增加。
+* 如果该数字小于 1（区块开采速度比预期慢），难度就会降低。
 
-And that's it. Every miner on the bitcoin network now works with this new difficulty for the next 2,016 blocks.
+就是这样。现在比特币网络上的每个矿工在接下来的 2,016 个区块中都使用这个新难度。
 
-The difficulty will only adjust by a factor of 4 at most (i.e. a multiplier not greater than 4, or less than 0.25). This is to prevent abrupt changes from one difficulty period to the next.
+难度一次最多只会调整 4 倍（即乘数不大于 4 且不小于 0.25）。这是为了防止在不同的难度周期之间发生过于剧烈的变化。
 
-## How does the difficulty control time between blocks?
+## 难度如何控制区块之间的时间？
 
-Okay, I'll start with a simple example, and build on it from there.
+好的，我将从一个简单的例子开始，并以此为基础进行构建。
 
-### 1. Simple example
+### 1. 简单的例子
 
-Let's say I give you a range of numbers from 1 to 100.
+假设我给你一个 1 到 100 的数字范围。
 
-[<img src="../../images/beginners_guide_difficulty_01-range.png" alt="Diagram showing a y-axis between 1 and 100." width="191" height="162" />](/docs/beginners/guide/difficulty/01-range.png.md)
+[<img src="../../images/beginners_guide_difficulty_01-range.png" alt="展示在 1 到 100 之间的 Y 轴的图表。" width="191" height="162" />](/docs/beginners/guide/difficulty/01-range.png.md)
 
-Now, let's say you are able to randomly generate a number between 1 and 100 *once every minute*, and **your goal is to generate a number below my *target* number**.
+现在，假设你能够*每分钟一次*随机生成一个 1 到 100 之间的数字，并且**你的目标是生成一个低于我的*目标*数的数字**。
 
-So let's say I set the target at **50**:
+假设我将目标设置为 **50**：
 
-[<img src="../../images/beginners_guide_difficulty_01-range_target.png" alt="Diagram showing the number 50 on a y-axis between 1 and 100." width="295" height="162" />](/docs/beginners/guide/difficulty/01-range_target.png.md)
+[<img src="../../images/beginners_guide_difficulty_01-range_target.png" alt="展示 1 到 100 之间 Y 轴上数字 50 的图表。" width="295" height="162" />](/docs/beginners/guide/difficulty/01-range_target.png.md)
 
-Seeing as you're only able to generate a number *once a minute*, this should take you **2 minutes** on average to find a number below this target value.
+鉴于你只能*每分钟*生成一个数字，你平均需要花费 **2分钟** 才能找到低于该目标值的数字。
 
-But that's too easy. So let's say I lower the target to **20**, which means you're only going to be able to generate a winning number 1/5 of the time, or once every **5 minutes**:
+但这太容易了。所以假设我将目标降低到 **20**，这意味着你只有 1/5 的概率生成获胜数字，或者说平均每 **5分钟** 才能找到一个：
 
-[<img src="../../images/beginners_guide_difficulty_01-range_target_20.png" alt="Diagram showing the number 20 on a y-axis between 1 and 100." width="191" height="162" />](/docs/beginners/guide/difficulty/01-range_target_20.png.md)
+[<img src="../../images/beginners_guide_difficulty_01-range_target_20.png" alt="展示 1 到 100 之间 Y 轴上数字 20 的图表。" width="191" height="162" />](/docs/beginners/guide/difficulty/01-range_target_20.png.md)
 
-The lower the target, the more *difficult* it gets to generate a winning number.
+目标越低，生成获胜数字就越*困难*。
 
-So as you can see, I can use the height of the target to control how long it takes you to find a winning number (depending on how many numbers you are able to generate per minute, of course).
+所以如你所见，我可以使用目标的高度来控制你找到获胜数字需要多长时间（当然，这取决于你每分钟能够生成多少个数字）。
 
-It's not going to be exactly 5 minutes *every* time, because you could get lucky on your first attempt. However, over the long run it will work out to be 5-minute intervals on average.
+这不会是*每一次*都恰好是 5 分钟，因为你在第一次尝试时就可能运气好。然而，从长期来看，平均间隔时间会是 5 分钟。
 
-#### So what is the difficulty?
+#### 那么什么是难度？
 
-Instead of telling you the target value *directly*, I could give you the target by **dividing the range of numbers** with a *new number*:
+除了*直接*告诉你目标值外，我还可以通过用一个*新数字***除以数字范围**来给你目标：
 
-[<img src="../../images/beginners_guide_difficulty_01-range_target_difficulty.png" alt="Diagram showing a number being used to control the height of the target on a y-axis between 1 and 100." width="218" height="276" />](/docs/beginners/guide/difficulty/01-range_target_difficulty.png.md)
+[<img src="../../images/beginners_guide_difficulty_01-range_target_difficulty.png" alt="展示使用一个数字在 1 到 100 的 Y 轴上控制目标高度的图表。" width="218" height="276" />](/docs/beginners/guide/difficulty/01-range_target_difficulty.png.md)
 
-This *new number* is the **difficulty**, and it's used to modify the height of the target.
+这个*新数字*就是**难度**，它被用来调整目标的高度。
 
-Here's the equation for setting the target using the difficulty:
+以下是通过难度设置目标的等式：
 
 ```
 target = max target / difficulty
 ```
 
-So now I can use this *difficulty* value to help me set the target to any level I want:
+所以现在我可以使用这个*难度*值来帮助我把目标设定到我想要的任何水平：
 
-[<img src="../../images/beginners_guide_difficulty_01-range_target_difficulty_examples.png" alt="Diagram showing how different difficulty values can adjust the target value on a y-axis between 1 and 100." width="690" height="246" />](/docs/beginners/guide/difficulty/01-range_target_difficulty_examples.png.md)
+[<img src="../../images/beginners_guide_difficulty_01-range_target_difficulty_examples.png" alt="展示不同难度值如何在 1 到 100 的 Y 轴上调整目标值的图表。" width="690" height="246" />](/docs/beginners/guide/difficulty/01-range_target_difficulty_examples.png.md)
 
-Therefore, I use the *difficulty* to control the *target*, which in turn controls how long it takes for you to generate a winning number below the target.
+因此，我使用*难度*来控制*目标*，而目标反过来控制你生成低于目标的获胜数字所需的时间。
 
-* The *difficulty* is basically another way of representing the current *target*.
-* The higher the difficulty, the lower the target.
+* 这里的*难度*基本上是表示当前*目标*的另一种方式。
+* 难度越大，目标越低。
 
-### 2. Bitcoin example
+### 2. 比特币的例子
 
-The difficulty in bitcoin works in exactly the same way – it's used to set a target value, and miners keep generating numbers ([hashing](/docs/technical/cryptography/hash-function.md) their candidate [blocks](/docs/beginners/guide/blocks.md)) in the hope that they will find a [block hash](/docs/technical/block/hash.md) below the target value:
+比特币中的难度工作原理完全相同——它被用于设定目标值，矿工不断生成数字（对其候选[区块](/docs/beginners/guide/blocks.md)进行[哈希](/docs/technical/cryptography/hash-function.md)计算），以期找到低于该目标值的[区块哈希](/docs/technical/block/hash.md)：
 
-[<img src="../../images/beginners_guide_difficulty_02-bitcoin_target_hash.png" alt="Diagram showing a block hash trying to get below a target value." width="490" height="179" />](/docs/beginners/guide/difficulty/02-bitcoin_target_hash.png.md)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_target_hash.png" alt="展示区块哈希试图低于目标值的图表。" width="490" height="179" />](/docs/beginners/guide/difficulty/02-bitcoin_target_hash.png.md)
 
-And seeing as miners are able to generate thousands of numbers (hashes) per second, bitcoin uses extremely large numbers for the target:
+鉴于矿工每秒能够生成成千上万的数字（哈希值），比特币的目标使用了极其庞大的数字：
 
-[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range.png" alt="Diagram showing a y-axis between 1 and a very large number." width="721" height="159" />](/docs/beginners/guide/difficulty/02-bitcoin_range.png.md)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range.png" alt="展示在 1 到一个极大数字之间 Y 轴的图表。" width="721" height="159" />](/docs/beginners/guide/difficulty/02-bitcoin_range.png.md)
 
-And due to the fact that there are now thousands of miners trying to find winning numbers, to ensure that a winning number is found every 10 minutes (instead of every few seconds), the range of successful numbers ends up being absolutely tiny:
+由于现在有成千上万的矿工在尝试寻找获胜数字，为了确保每 10 分钟（而不是每隔几秒）找到一个获胜数字，成功的数字范围最终变得极其微小：
 
-[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range_target.png" alt="Diagram showing the target being very low relative to the scale of the y-axis." width="725" height="251" />](/docs/beginners/guide/difficulty/02-bitcoin_range_target.png.md)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range_target.png" alt="展示目标相对于 Y 轴尺度非常低的图表。" width="725" height="251" />](/docs/beginners/guide/difficulty/02-bitcoin_range_target.png.md)
 
-Even though that difficulty number looks big, the target is still absurdly difficult to get under. It's like a lottery.
+即使那个难度数字看起来很大，目标依然低到令人发指，极其难以低于此目标。这就像买彩票。
 
-#### Hexadecimal numbers
+#### 十六进制数字
 
-Because these target numbers are so big, we typically display them in the shorter [hexadecimal](/docs/technical/general/hexadecimal.md) format.
+因为这些目标数字太庞大了，我们通常会以较短的[十六进制](/docs/technical/general/hexadecimal.md)格式来显示它们。
 
-[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range_target_hex.png" alt="Diagram showing the target and range in hexadecimal." width="688" height="211" />](/docs/beginners/guide/difficulty/02-bitcoin_range_target_hex.png.md)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range_target_hex.png" alt="展示十六进制表示的目标和范围的图表。" width="688" height="211" />](/docs/beginners/guide/difficulty/02-bitcoin_range_target_hex.png.md)
 
-That's why block hashes look like this: `000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506`
+这就是为什么区块哈希看起来像这样：`000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506`
 
-But even though it contains letters, it's *still a number*. So the target is a hexadecimal value, and miners are trying to get a hexadecimal block hash below the target.
+但即使它包含字母，它*依然是一个数字*。所以目标是一个十六进制值，矿工正在尝试获得一个低于目标的十六进制区块哈希。
 
-In fact, you can easily convert between hexadecimal and "normal" numbers (aka decimal numbers):
+事实上，你可以很容易地在十六进制和“正常”数字（即十进制数字）之间进行转换：
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
-`0 digits`
+`0 位`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
-`0 digits`
+`0 位`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
-`0 digits`
+`0 位`
 
 
 
@@ -160,48 +160,47 @@ Hexadecimal (Base 16)
 
 |  |  |
 | --- | --- |
-| Hexadecimal | 000000000004864c000000000000000000000000000000000000000000000000 |
-| Decimal | 1861311314983800126815643622927230076368334845814253369901973504 |
-Target for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506)
+| 十六进制 | 000000000004864c000000000000000000000000000000000000000000000000 |
+| 十进制 | 1861311314983800126815643622927230076368334845814253369901973504 |
+[区块 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) 的目标值
 
 |  |  |
 | --- | --- |
-| Hexadecimal | 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506 |
-| Decimal | 1533267872647776902154320487930659211795065581998445848740226310 |
-Hash for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506)
+| 十六进制 | 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506 |
+| 十进制 | 1533267872647776902154320487930659211795065581998445848740226310 |
+[区块 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) 的哈希值
 
-So that's why you usually see the hash and the target as bunches of numbers *and letters* – they're in hexadecimal as opposed to decimal (which is what humans are more familiar with).
+所以这就是为什么你通常会看到哈希和目标是一串数字*和字母*——它们使用的是十六进制，而不是我们人类更熟悉的十进制。
 
-Just remember that both these decimal and hexadecimal numbers have the *same **value***, and you can easily convert between the two.
+只需记住，这些十进制和十六进制数字具有*相同的**数值***，你可以很容易地在两者之间进行转换。
 
-Awkwardly, the difficulty is usually given in decimal format, whereas block hashes and targets in hexadecimal:
+尴尬的是，难度通常是用十进制格式表示，而区块哈希和目标则是用十六进制表示：
 
-[<img src="../../images/beginners_guide_difficulty_blockheader_hexadecimal_decimal.png" alt="Diagram showing the target and range in hexadecimal." width="859" height="482" />](/docs/beginners/guide/difficulty/blockheader_hexadecimal_decimal.png.md)
+[<img src="../../images/beginners_guide_difficulty_blockheader_hexadecimal_decimal.png" alt="展示十六进制表示的目标和范围的图表。" width="859" height="482" />](/docs/beginners/guide/difficulty/blockheader_hexadecimal_decimal.png.md)
 
+目标是十六进制的，但它以一种 compact 格式存储在区块头中，称为 [bits](/docs/technical/block/bits.md)。
 
-The target is hexadecimal, but it is stored in a compact format in the block header called [bits](/docs/technical/block/bits.md).
+但正如我所说，它们都是数字，所以如果你将它们转换为相同的格式，你仍然可以使用它们。
 
-But as I say, they're both numbers, so you can still work with them if you convert them to the same format.
+## 你如何计算难度？
 
-## How do you calculate the difficulty?
+当前
 
-Current
+随机示例
 
-Random Example
+高度：
 
-Height:
-
-Maximum Target
-
-0x
-
-Target
+最大目标
 
 0x
 
-`0 bytes`
+目标
 
-Difficulty
+0x
+
+`0 字节`
+
+难度
 
 0d
 
@@ -209,41 +208,41 @@ Difficulty
 
 0 secs
 
-The difficulty is calculated by dividing the maximum possible target value by the target for the current block.
+难度是通过将最大可能的目标值除以当前区块的目标计算出来的。
 
-The max target is the target that was set for the very [first block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f):
+最大目标是为[创世区块（第一个区块）](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)设置的目标：
 
 ```
 max target = 0x00000000ffff0000000000000000000000000000000000000000000000000000
 ```
 
-So to work out the difficulty for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) for example, we just need to find out what the target for that block was:
+因此，要算出例如[区块 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) 的难度，我们只需要找出该区块的目标是多少：
 
 ```
 target = 0x000000000004864c000000000000000000000000000000000000000000000000
 ```
 
-Now, if we convert both of these values to decimal and divide them, we get the difficulty:
+现在，如果我们将这两个值都转换为十进制并相除，我们就得到了难度：
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
-`0 digits`
+`0 位`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
-`0 digits`
+`0 位`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
-`0 digits`
+`0 位`
 
 
 
@@ -261,19 +260,19 @@ difficulty = 2695953529101130949315647634472399133601089873857416408613777309696
 difficulty = 14484.162361
 ```
 
-So as you can see, the difficulty is just a representation of how far the current target has moved from the maximum possible target value.
+所以如你所见，难度只是表示当前目标距离最大可能目标的偏移程度。
 
-Internally in Bitcoin, it's only the target that adjusts. So the difficulty is just a way of representing the change.
+在比特币内部，只有目标值在进行调整。所以难度只是一种表示这一变化的方式。
 
-## How do you calculate the target from the difficulty?
+## 你如何根据难度计算目标？
 
-**The difficulty is calculated *from* the target.** However, you can always work backwards to calculate the target from the difficulty if you want to.
+**难度是*根据*目标计算出来的。** 然而，如果你愿意，你总是可以倒推根据难度计算出目标。
 
-Let's use the *difficulty* to work out *target* for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506).
+让我们使用*难度*来算出[区块 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) 的*目标*。
 
-We'll do it using decimal numbers (mostly), because they're easier to understand.
+我们将（主要）使用十进制数字进行计算，因为它们更容易理解。
 
-Here's the difficulty:
+以下是难度：
 
 ```
 bitcoin-cli getblockheader 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506
@@ -288,46 +287,46 @@ bitcoin-cli getblockheader 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986d
 }
 ```
 
-Lovely.
+很好。
 
-Now, let's note down the equation we're going to use to find the target:
+现在，让我们记下我们用来寻找目标的等式：
 
 ```
 target = max target / difficulty
 ```
 
-Let's get the *max target* and difficulty ready to insert it into the equation.
+让我们准备好*最大目标*和难度以代入等式。
 
 ```
 max target = 0x00000000ffff0000000000000000000000000000000000000000000000000000
 difficulty = 14484.162361
 ```
 
-* The *max target* is a fixed value; it's the initial target that was set for the very [first block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f).
-* The 0x a prefix is used to signify hexadecimal values (the 0x isn't part of the number). The presence of letters within the value is usually a giveaway (but not always).
-* I got the difficulty from the block header information above.
+* *最大目标*是一个固定值；它是为最初的[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)设置的初始目标。
+* 0x 前缀用于表示十六进制值（0x 不是数字的一部分）。值中存在字母通常是明显的标志（但并不总是如此）。
+* 我从上面的区块头信息中得到了难度。
 
-The *max target* is currently in hexadecimal format though, so let's convert that to decimal.
+但是，*最大目标*目前是十六进制格式，因此我们将其转换为十进制。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
-`0 digits`
+`0 位`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
-`0 digits`
+`0 位`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
-`0 digits`
+`0 位`
 
 
 
@@ -342,7 +341,7 @@ Hexadecimal (Base 16)
 max target = 26959535291011309493156476344723991336010898738574164086137773096960
 ```
 
-Now we can just plug these numbers into the equation and away we go:
+现在我们只需将这些数字代入等式，就可以得出：
 
 ```
 target = max target / difficulty
@@ -350,40 +349,40 @@ target = 26959535291011309493156476344723991336010898738574164086137773096960 / 
 target = 1861311315012765306929610463010191006516769515973403833769533170
 ```
 
-Ta da.
+搞定。
 
-So when the miner was trying to solve block 100,000, she wanted to get a hash for her candidate block that would be below `1861311315012765306929610463010191006516769515973403833769533170`.
+所以当矿工试图解决区块 100,000 时，她希望为她的候选区块获得一个低于 `1861311315012765306929610463010191006516769515973403833769533170` 的哈希值。
 
-### Checking the results
+### 检查结果
 
-Let's compare this target value with the hash she got for the block to check that she was genuinely successful (i.e. her hash for the block was below the target):
+让我们将这个目标值与她为该区块获得的哈希值进行对比，以检查她是否真的成功（即她为区块计算的哈希值低于目标）：
 
 ```
 target = 1861311315012765306929610463010191006516769515973403833769533170
 hash   = 0x000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506
 ```
 
-Oh yeah, the hash is in hexadecimal format. Let's convert from hexadecimal to decimal again so that we can compare the two numbers:
+啊，是的，哈希值是十六进制格式。让我们再次将十六进制转换为十进制，以便对比这两个数字：
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
-`0 digits`
+`0 位`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
-`0 digits`
+`0 位`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
-`0 digits`
+`0 位`
 
 
 
@@ -399,24 +398,24 @@ target = 1861311315012765306929610463010191006516769515973403833769533170
 hash   = 1533267872647776902154320487930659211795065581998445848740226310
 ```
 
-Yep, that hash *is* lower than the target, so the block can be added to the blockchain.
+是的，该哈希值*确实*低于目标，因此该区块可以添加到区块链中。
 
-## Where can I find the current difficulty?
+## 我在哪里可以找到当前的难度？
 
-You can find the current difficulty using the `bitcoin-cli getdifficulty` command:
+你可以使用 `bitcoin-cli getdifficulty` 命令来找到当前的难度：
 
-[<img src="../../images/beginners_guide_difficulty_getdifficulty.png" alt="Screenshot showing the results of a 'getdifficulty' command in the Bitcoin Core client." width="476" height="523" />](/docs/beginners/guide/difficulty/getdifficulty.png.md)
+[<img src="../../images/beginners_guide_difficulty_getdifficulty.png" alt="展示在 Bitcoin Core 客户端中运行 'getdifficulty' 命令结果的屏幕截图。" width="476" height="523" />](/docs/beginners/guide/difficulty/getdifficulty.png.md)
 
-* The current difficulty can also be found within `bitcoin-cli getmininginfo`.
-* Here's a chart showing the change in difficulty over time: [blockchain.com/explorer/charts/difficulty](https://www.blockchain.com/explorer/charts/difficulty)
+* 当前难度也可以在 `bitcoin-cli getmininginfo` 中找到。
+* 这是一个显示难度随时间变化的图表：[blockchain.com/explorer/charts/difficulty](https://www.blockchain.com/explorer/charts/difficulty)
 
-## Summary
+## 总结
 
-The **[target](/docs/technical/mining/target.md)** is the actual limbo pole that block hashes have to get below for a new block to be added on the blockchain.
+**[目标](/docs/technical/mining/target.md)**是区块哈希必须低于的实际 limbo 杆，只有低于此目标，新区块才能被添加到区块链上。
 
-The **difficulty** is just a measure of how much the target has moved from its initial starting value. Or in other words, how much more difficult it is to mine a block compared to when the blockchain first started.
+**难度**只是衡量目标距离其初始初始值移动了多少的指标。或者换句话说，与区块链刚刚启动时相比，现在开采区块有多困难。
 
-## Resources
+## 资源
 
 * [bitcoin.it/wiki/Difficulty](https://en.bitcoin.it/wiki/Difficulty)
 * [What is the numeric precision of Network Difficulty?](https://bitcoin.stackexchange.com/questions/121131/what-is-the-numeric-precision-of-network-difficulty)
