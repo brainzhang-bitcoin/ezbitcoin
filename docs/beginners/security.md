@@ -46,12 +46,12 @@
 
 使用密码短语不是必须的，但它是一个简单且有效的安全升级。
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Mnemonic Seed
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 助记词种子
 
-Generate Random
-Reset
+随机生成
+重置
 
-Size
+大小
 
 128 Bit (12 words) (standard)
 160 Bit (15 words) 
@@ -60,7 +60,7 @@ Size
 256 Bit (24 words) (standard)
 
 
-Entropy
+熵
 
 0
 
@@ -321,7 +321,7 @@ Entropy
 `128 bits`
 
 
-Checksum
+校验和
 
 0
 
@@ -333,18 +333,18 @@ Checksum
 `4 bits`
 
 
-Words
+单词
  
 
-Mnemonic Sentence
+助记词短语
 
 `0 words`
 
-Passphrase (optional)
+密码短语（可选）
 
 `extra word`
 
-Seed
+种子
 
 PBKDF2
 
@@ -430,7 +430,7 @@ PBKDF2
 
 ### 你应该使用 12 个单词还是 24 个单词的种子？
 
-12 个单词 the 种子完全没有问题。
+12 个单词的种子完全没有问题。
 
 如果愿意（或者这是你唯一的选择），你可以使用 24 个单词的种子，但在实际使用中，使用 12 个单词的种子并不会在安全性上做出任何妥协。
 
@@ -445,71 +445,71 @@ PBKDF2
 
 鉴于[宇宙的年龄大约是 140 亿年](https://en.wikipedia.org/wiki/Age_of_the_universe)，你可以非常确信近期内没有人能破解你 12 个单词的种子密句。
 
-So don't get bogged down in the security benefits of a 12-word vs 24-word seed; they're **both extremely secure**.
+因此，不要纠结于 12 个单词与 24 个单词种子在安全性上的优劣；它们**都极为安全**。
 
 **如果你目前对 12 个单词的种子感到满意，我认为没有必要换成 24 个单词的种子。** 如果非要说的话，12 个单词的种子密句更实用，因为它还有一个额外的好处，那就是更容易被记住，以此作为一种*额外*的备份形式。
 
-#### Calculation
+#### 计算方法
 
-The two different seed phrase sizes contain the following [bits](/docs/technical/general/bytes.md#bit) of entropy:
+两种不同大小的种子密句包含以下[位](/docs/technical/general/bytes.md#bit)的熵：
 
 ```
 12 words = 128 bits
 24 words = 256 bits
 ```
 
-In other words, there are this many different combinations for each seed size:
+换句话说，每种种子大小的不同组合数量如下：
 
 ```
 12 words = 340282366920938463463374607431768211456
 24 words = 115792089237316195423570985008687907853269984665640564039457584007913129639936
 ```
 
-These numbers are calculated by raising 2 to the power of the number of bits of entropy (e.g. `2^128`)
+这些数字是通过将 2 提高到熵的位数次方来计算的（例如 `2^128`）。
 
-Now, let's assume the combined [hashrate](/docs/technical/blockchain/51-attack.md) of all the miners on the bitcoin network constitutes the biggest "computer" in the world (or at least one of the biggest). With all this computing power, we can see that this "computer" has the ability to perform this many hashes per second:
+现在，假设比特币网络上所有矿工的综合[算力](/docs/technical/blockchain/51-attack.md)构成了世界上最强大的“计算机”（或至少是最强大的之一）。凭借这些算力，我们可以看到这台“计算机”每秒能够执行这么多次哈希计算：
 
 ```
 Bitcoin hashes per second = 935160135489377927168
 ```
 
-You can get this data using `bitcoin-cli getmininginfo`
+你可以使用 `bitcoin-cli getmininginfo` 获取此数据。
 
-In addition, you actually need to perform [2,048 hashes to generate each individual seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed). Using this information, we can divide the *hashes per second* by the number of hashes required to generate each seed to calculate how many seeds the fastest computer in the world can generate per second:
+此外，实际上你需要执行 [2,048 次哈希来生成每个单独的种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed)。利用这些信息，我们可以用*每秒哈希次数*除以生成每个种子所需的哈希次数，来计算世界上最快的计算机每秒可以生成多少个种子：
 
 ```
 seeds per second = 456621159906922816
 ```
 
-So if we divide all of the possible combinations of each seed by the number of seeds the biggest computer can generate per second, we can work out how many seconds it would take to run through all the possible seeds:
+因此，如果我们将每种种子的所有可能组合数除以最强计算机每秒可以生成的种子数，我们就可以算出遍历所有可能种子需要多少秒：
 
 ```
 12 words = 745218130036508313528 seconds
 24 words = 253584589161218754926938008578650677148511103196174980847779 seconds
 ```
 
-And if we divide that by the number of seconds in a year (31536000), we get:
+如果再除以一年的秒数（31536000），我们得到：
 
 ```
 12 words = 23630711885987 years
 24 words = 8041114572590650524065766380601556226170443404241976 years
 ```
 
-Lastly, when determining how long it would take for an attacker to crack a password, we base this on how long it would take for them to run through [half](https://security.stackexchange.com/questions/257519/how-many-bits-of-entropy-should-a-password-have-to-be-reasonably-future-proof-1) of the total combinations. So if we divide this time by 2 we get:
+最后，在确定攻击者破解密码需要多长时间时，我们以他们遍历所有组合数的[一半](https://security.stackexchange.com/questions/257519/how-many-bits-of-entropy-should-a-password-have-to-be-reasonably-future-proof-1)所需的时间为基准。因此，如果我们将这个时间除以 2，得到：
 
 ```
 12 words = 11815355942993 years
 24 words = 4020557286295325262032883190300778113085221702120988 years
 ```
 
-And that's how long it would take to crack each type of seed.
+这就是破解每种类型种子所需的时间。
 
-So whilst there is a significant difference between a 12-word and 24-word seed in terms of how long it takes to brute-force each one, in practical terms you're only going from "impossible" to "even more impossible".
+因此，虽然 12 个单词和 24 个单词的种子在暴力破解所需时间上存在显著差异，但从实际意义上讲，差别只是从“不可能”变成了“更不可能”。
 
-* I'm assuming it would be faster to perform [2048 hashes of the mnemonic sentence to calculate each seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed) than it would be to run through all possible combinations of raw 512-bit seeds.
-* These calculations assume you're using a seed phrase without a passphrase. If you add a passphrase, you add more entropy, and it will take even longer again.
+* 我假设执行 [2048 次助记句哈希来计算每个种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed)比遍历所有原始 512 位种子的可能组合更快。
+* 这些计算假设你使用的是没有密码短语的种子密句。如果你添加了密码短语，则会增加更多熵，破解所需时间也会更长。
 
-##### Code
+##### 代码
 
 ```ruby
 # Calculate the number of years to crack different lengths of seeds in bitcoin

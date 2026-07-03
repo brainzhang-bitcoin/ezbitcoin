@@ -19133,17 +19133,17 @@ Bits
 
 0
 
-Binary
+二进制 (Base 2)
 
 0b
 
 `0 位`
 
-Decimal
+十进制 (Base 10)
 
 0d
 
-Hexadecimal
+十六进制 (Base 16)
 
 0x
 

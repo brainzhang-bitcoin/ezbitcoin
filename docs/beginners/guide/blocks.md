@@ -35,13 +35,13 @@
 [Version](/docs/technical/block/version.md)
 :   区块的版本号。
 
-Previous Block
+前一个区块
 :   我们想要在其上进行构建的前一个区块的识别号。
 
 [Merkle Root](/docs/technical/block/merkle-root.md)
 :   区块中所有交易的指纹（基本上是将所有交易[哈希](/docs/technical/cryptography/hash-function.md)在一起）。这是区块头中最重要的部分。
 
-[Time](/docs/technical/block/time.md)
+[时间](/docs/technical/block/time.md)
 :   当前时间。总是很有用。
 
 Target（目标）
