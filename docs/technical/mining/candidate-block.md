@@ -2,25 +2,25 @@
 
 [<img src="../../images/diagrams_png_mining-candidate-block.png" alt="Diagram showing a candidate block as a collection of transactions from the memory pool." width="505" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/mining-candidate-block.png)
 
-A candidate block is a **[block](/docs/technical/block.md) of [transactions](/docs/technical/transaction.md) a miner attempts to add to the [blockchain](/docs/technical/blockchain.md)**.
+候选区块是**矿工试图添加到[区块链](/docs/technical/blockchain.md)中的[交易](/docs/technical/transaction.md)[区块](/docs/technical/block.md)**。
 
-During the [mining](/) process, each miner will collect transactions from their [memory pool](/docs/technical/mining/memory-pool.md) into a *candidate block*. They will then repeatedly [hash](/docs/technical/cryptography/hash-function.md) this block to try and get a [block hash](/docs/technical/block/hash.md) below the [target](/docs/technical/mining/target.md).
+在[挖矿](/)过程中，每个矿工都会从他们的[内存池](/docs/technical/mining/memory-pool.md)中收集交易到一个*候选区块*中。然后，他们会反复对该区块进行[哈希](/docs/technical/cryptography/hash-function.md)运算，以试图获得一个低于[目标值](/docs/technical/mining/target.md)的[区块哈希](/docs/technical/block/hash.md)。
 
-If a miner can get a block hash below the target, their candidate block can be added on to the blockchain.
+如果矿工能够获得低于目标值的区块哈希，他们的候选区块就可以被添加到区块链上。
 
-They will then broadcast this "mined" candidate block to the other [nodes](/docs/technical/networking/node.md) on the network, where each node will verify and add it to their blockchain too.
+然后，他们会将这个“已开采”的候选区块广播给网络上的其他[节点](/docs/technical/networking/node.md)，每个节点都将对其进行验证并将其添加到自己的区块链中。
 
 [<img src="../../images/diagrams_png_mining-block-broadcast.png" alt="Diagram showing a miner broadcasting their mined candidate block to the other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast.png)
 
-In other words, a candidate block *represents* the **next block of transactions** to be added on to the blockchain.
+换句话说，候选区块*代表*要添加到区块链上的**下一个交易区块**。
 
-## Example
+## 示例
 
-What does the current candidate block look like?
+当前的候选区块长什么样？
 
-Here's what the *current* candidate block looks like according to my [local node](/explorer/):
+根据我的[本地节点](/explorer/)，*当前*的候选区块如下所示：
 
-### Block Header <img src="../../images/icons_reload.svg" alt="Candidate Block Header Refreshing" style="height:24px; width:24px;" />
+### 区块头 <img src="../../images/icons_reload.svg" alt="Candidate Block Header Refreshing" style="height:24px; width:24px;" />
 
 |  |  |
 | --- | --- |
@@ -31,56 +31,56 @@ Here's what the *current* candidate block looks like according to my [local node
 | [Bits](/docs/technical/block/bits.md) | `17021a42` |
 | [Nonce](/docs/technical/block/nonce.md) | 0 |
 
-### Transactions
+### 交易
 
-Show Transactions <img src="../../images/icons_loader-2.svg" alt="Loading Transactions" style="height:24px; width:24px;" />
+显示交易 <img src="../../images/icons_loader-2.svg" alt="Loading Transactions" style="height:24px; width:24px;" />
 
-* **I'm not actively trying to mine this block.** If I was, I would be adjusting the [nonce](/docs/technical/block/nonce.md) in the block header to try and get a block hash below the current target.
-* I haven't put my own [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) in this candidate block either, so it wouldn't be valid if I mined it anyway. This example is here to show you what a current candidate block looks like.
-* If the [merkle root](/docs/technical/block/merkle-root.md) changes, you know the transactions in the block have changed.
-* The lower-fee transactions toward the bottom of the candidate block are more likely to change.
+* **我并没有积极尝试去开采这个区块。** 如果我正在开采，我会调整区块头中的 [Nonce](/docs/technical/block/nonce.md)，以试图获得低于当前目标值的区块哈希。
+* 我也没有在这个候选区块中放入我自己的 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易，所以即使我开采了它，它也是无效的。这个示例只是为了向你展示当前候选区块的样子。
+* 如果 [Merkle Root](/docs/technical/block/merkle-root.md) 改变了，你就知道区块中的交易已经改变了。
+* 候选区块底部较低手续费的交易更有可能发生变化。
 
-## Construction
+## 构建
 
-How do you construct a candidate block?
+如何构建候选区块？
 
 [<img src="../../images/diagrams_png_block-candidate-block-construction.png" alt="Diagram showing the steps for constructing a candidate block." width="597" height="499" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-construction.png)
 
-There are three basic steps to constructing a candidate block:
+构建候选区块有三个基本步骤：
 
-### 1. Select transactions
+### 1. 选择交易
 
-The first step is to **[select transactions](#transaction-selection) from the memory pool** that you want to include in your candidate block.
+第一步是**从内存池中[选择交易](#transaction-selection)**，你想把这些交易包含在你的候选区块中。
 
-A miner will typically fill their candidate block with the highest-[fee](/docs/technical/transaction/fee.md) transactions to maximize the amount they can claim from the [block reward](/docs/technical/mining/block-reward.md).
+矿工通常会用手续费最高的交易填充他们的候选区块，以最大化他们可以从[区块奖励](/docs/technical/mining/block-reward.md)中索取的金额。
 
-### 2. Construct the coinbase transaction
+### 2. 构建 Coinbase 交易
 
-The [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) is the very first transaction in a block, and it's used by the miner to claim the [block reward](/docs/technical/mining/block-reward.md).
+[Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易是区块中的第一笔交易，矿工用它来索取[区块奖励](/docs/technical/mining/block-reward.md)。
 
-The reason for constructing the coinbase transaction *after* selecting the transactions is because it needs to contain a [witness root hash](/docs/technical/transaction/wtxid.md#commitment), which is calculated based on the transactions that have been included in the block.
+在选择交易*之后*构建 Coinbase 交易的原因是，它需要包含一个[见证根哈希](/docs/technical/transaction/wtxid.md#commitment)，该哈希是根据区块中已包含的交易计算出来的。
 
-### 3. Construct the block header
+### 3. 构建区块头
 
-The [block header](/docs/technical/block.md#header) is a small amount of metadata that summarizes all the data inside the block. This is what a miner will be hashing as they attempt to [mine](/docs/technical/mining.md) the candidate block.
+[区块头](/docs/technical/block.md#header)是总结区块内所有数据的小量元数据。这是矿工在尝试[挖掘](/docs/technical/mining.md)候选区块时将对其进行哈希运算的内容。
 
-The block header contains six different fields ([version](/docs/technical/block/version.md), [previous block](/docs/technical/block/previous-block.md), [merkle root](/docs/technical/block/merkle-root.md), [time](/docs/technical/block/time.md), [bits](/docs/technical/block/bits.md), [nonce](/docs/technical/block/nonce.md)), but these two are the most pertinent:
+区块头包含六个不同的字段（[version](/docs/technical/block/version.md)、[previous block](/docs/technical/block/previous-block.md)、[merkle root](/docs/technical/block/merkle-root.md)、[time](/docs/technical/block/time.md)、[bits](/docs/technical/block/bits.md)、[nonce](/docs/technical/block/nonce.md)），但以下这两个最为相关：
 
-* **Previous Block:** This field is used to specify an existing block that the candidate block will be built on top of. Miners always want to build on top of the *tip* of the blockchain, because they can only claim the block reward if the block they mine ends up becoming part of the [longest chain](/docs/technical/blockchain/longest-chain.md).
-* **Merkle Root:** The merkle root is a fingerprint for all the transactions included in the block. This is important, because it means that you cannot change the contents of the block without changing the fingerprint. So again, this is why we construct the block header *after* selecting the transactions for the candidate block.
+* **Previous Block:** 此字段用于指定候选区块将构建在其之上的现有区块。矿工总是希望构建在区块链的*顶端*之上，因为只有当他们开采的区块最终成为[最长链](/docs/technical/blockchain/longest-chain.md)的一部分时，他们才能索取区块奖励。
+* **Merkle Root:** Merkle Root 是区块中包含的所有交易的指纹。这重要，因为这意味着如果不更改指纹就无法更改区块的内容。所以，这就是为什么我们在为候选区块选择交易*之后*才构建区块头的原因。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 区块头
 
-Random Example
+随机示例
 
-Block:
+区块:
 
-Block Header (Hex)
+区块头 (Hex)
 
 `0 bytes`
 
 
-Block Header (Fields)
+区块头 (Fields)
 
 
 Version
@@ -167,142 +167,142 @@ Nonce
 
 
 
-Block Hash
+区块哈希
 
-This is the HASH256 of the hex block header. It's also in reverse byte order, because that's how block hashes are displayed in block explorers.
+这是十六进制区块头的 HASH256。它也是以反向字节序排列的，因为区块浏览器就是这样显示区块哈希的。
 
 
 
 
 0 secs
 
-And that's the construction of the candidate block complete.
+到此，候选区块的构建就完成了。
 
-From here, a miner can now start working on [mining](/docs/technical/mining.md) the candidate block to try and add it on to the [blockchain](/docs/technical/blockchain.md).
+从这里开始，矿工现在可以开始致力于[挖矿](/docs/technical/mining.md)候选区块，以试图将其添加到[区块链](/docs/technical/blockchain.md)中。
 
-## Requirements
+## 要求
 
-What are the requirements for a candidate block?
+候选区块有哪些要求？
 
 [<img src="../../images/diagrams_png_block-candidate-block-requirements.png" alt="Diagram showing the requirements for a candidate block." width="669" height="340" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-requirements.png)
 
-A candidate block has a few basic requirements:
+候选区块有一些基本要求：
 
-### 1. Coinbase transaction
+### 1. Coinbase 交易
 
-The **first transaction** in the candidate block must be the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md).
+候选区块中的**第一笔交易**必须是 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易。
 
-This transaction is placed in the block by the miner to claim the [block reward](/docs/technical/mining/block-reward.md).
+这笔交易由矿工放入区块中以索取[区块奖励](/docs/technical/mining/block-reward.md)。
 
-This means that all blocks will always contain **at least *one* transaction**.
+这意味着所有区块将始终包含**至少*一笔*交易**。
 
-### 2. Valid transactions
+### 2. 有效交易
 
-All the transactions a miner includes in their candidate block **must be valid**.
+矿工在其候选区块中包含的所有交易**必须有效**。
 
-For example, each transaction can only spend coins that already exist.
+例如，每笔交易只能花费已经存在的硬币。
 
-If a miner mines a block containing invalid transactions and broadcasts it to the network, all of the nodes will reject it, and all of their effort for mining the block will be wasted.
+如果矿工开采了一个包含无效交易的区块并将其广播到网络，所有的节点都会拒绝它，并且他们开采该区块的所有努力都将付诸东流。
 
-### 3. Transaction parents
+### 3. 交易父项
 
 [<img src="../../images/diagrams_png_transaction-child-pays-for-parent.png" alt="Diagram showing a parent transaction coming before a child transaction in a block." width="752" height="544" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-child-pays-for-parent.png)
 
-The parent(s) of a transaction must always come *before* the child transaction.
+交易的父项必须始终在子交易*之前*出现。
 
-For example, if a transaction has [ancestors](/docs/technical/mining/memory-pool.md#ancestors) that are currently in the mempool, those ancestors must be included **above it in the candidate block**.
+例如，如果一个交易的[祖先](/docs/technical/mining/memory-pool.md#ancestors)目前在内存池中，这些祖先必须被包含在**候选区块中它的上方**。
 
-Each node validates the transactions in a block from *top to bottom*, so if you include a parent *after* a child, it will appear as though that child transaction is spending [outputs](/docs/technical/transaction/output.md) that do not already exist (and would therefore be invalid).
+每个节点自*顶向下*验证区块中的交易，因此如果你在子项*之后*包含父项，那么该子交易看起来就像是在花费尚不存在的[输出](/docs/technical/transaction/output.md)（因此将是无效的）。
 
-### 4. Size limit
+### 4. 大小限制
 
 [<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing the block size limit in terms of weight." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
-The maximum size of a block is **4,000,000 [weight](/docs/technical/transaction/size.md#weight) units**.
+区块的最大大小为 **4,000,000 [重量](/docs/technical/transaction/size.md#weight)单位**。
 
-So the transactions you include in your candidate block (including the size of the block header and transaction count) must be within this size limit.
+因此，你在候选区块中包含 the 交易（包括区块头的大小和交易数量）必须在此大小限制之内。
 
-The block size limit can be found in [consensus.h](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/consensus.h)
+区块大小限制可以在 [consensus.h](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/consensus.h) 中找到。
 
-### 5. Signature operations
+### 5. 签名操作
 
-A block is limited to a maximum of **80,000 [signature](/docs/technical/keys/signature.md) check operations**. So the transactions you include in your candidate block must be within this limit.
+一个区块最多限制为 **80,000 个[签名](/docs/technical/keys/signature.md)检查操作**。因此，你在候选区块中包含的交易必须在此限制之内。
 
-This is because [signature verification](/docs/technical/cryptography/elliptic-curve/ecdsa.md#verify) is time-consuming, so this limit prevents miners from creating blocks that would be exceptionally slow to validate.
+这是因为[签名验证](/docs/technical/cryptography/elliptic-curve/ecdsa.md#verify)非常耗时，因此该限制可防止矿工创建验证速度异常缓慢的区块。
 
-Signature check operations are performed by [Script](/docs/technical/script.md) opcodes such as: `OP_CHECKSIG`, `OP_CHECKMULTISIG`, `OP_CHECKSIGVERIFY`, `OP_CHECKMULTISIGVERIFY`
+签名检查操作由 [Script](/docs/technical/script.md) Opcode 执行，例如：`OP_CHECKSIG`, `OP_CHECKMULTISIG`, `OP_CHECKSIGVERIFY`, `OP_CHECKMULTISIGVERIFY`
 
-* The sigops limit can also be found in [consensus.h](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/consensus.h)
-* [Segregated Witness](/docs/technical/upgrades/segregated-witness.md): Similar to how bytes in a [legacy transaction](/docs/technical/transaction.md#example-legacy) are multiplied by 4 to calculate their equivalent weight, the count of signature operations in legacy transactions is also **multiplied by 4**. So whereas a single `OP_CHECKSIG` counts as 1 signature operation when in the [Witness](/docs/technical/transaction/witness.md) field (as expected), it actually counts as 4 signature operations when in the [ScriptSig](/docs/technical/transaction/input/scriptsig.md) (see [validation.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/validation.cpp)).
+* 签名操作限制也可以在 [consensus.h](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/consensus.h) 中找到。
+* [Segregated Witness](/docs/technical/upgrades/segregated-witness.md): 类似于[旧版交易](/docs/technical/transaction.md#example-legacy)中的字节乘以 4 来计算其等效重量一样，旧版交易中的签名操作计数也**乘以 4**。因此，当单个 `OP_CHECKSIG` 在 [Witness](/docs/technical/transaction/witness.md) 字段中时算作 1 个签名操作（符合预期），而当它在 [ScriptSig](/docs/technical/transaction/input/scriptsig.md) 中时实际上算作 4 个签名操作（参见 [validation.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/validation.cpp)）。
 
-## Transaction Selection
+## 交易选择
 
-How do miners select transactions for their candidate block?
+矿工如何为其候选区块选择交易？
 
 [<img src="../../images/diagrams_png_block-candidate-block-transaction-selection.png" alt="Diagram showing the highest fee transactions being selected from the memory pool for inclusion in a candidate block." width="722" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-transaction-selection.png)
 
-A miner can fill their candidate block with **any transactions** they like from the [memory pool](/docs/technical/mining/memory-pool.md).
+矿工可以用他们喜欢的来自[内存池](/docs/technical/mining/memory-pool.md)的**任何交易**来填充他们的候选区块。
 
-However, miners will typically look to fill their candidate block with the highest-[fee](/docs/technical/transaction/fee.md) transactions available to maximize the amount they can claim from the [block reward](/docs/technical/mining/block-reward.md).
+然而，矿工通常会寻找可用手续费最高的交易来填充他们的候选区块，以最大化他们可以从[区块奖励](/docs/technical/mining/block-reward.md)中索取的金额。
 
-So if there are more transactions in the memory pool than can fit into a candidate block, a miner will **prioritize the transactions with the highest fees** for inclusion in their block.
+$$因此，如果内存池中的交易多于候选区块所能容纳的交易，矿工将**优先选择手续费最高的交易**放入其区块中。$$
 
-### Ancestor Feerate
+### 祖先费率
 
 [<img src="../../images/diagrams_png_block-candidate-block-transaction-selection-ancestor-fee-rate.png" alt="Diagram showing a miner working out the ancestor feerate for the transactions in their memory pool." width="758" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-transaction-selection-ancestor-fee-rate.png)
 
-There is one important rule that miners must follow when selecting transactions:
+矿工在选择交易时必须遵循一条重要规则：
 
-You can only include a transaction in a block if you also include all of its parents first.
+只有在先包含交易的所有父项的情况下，才能在区块中包含该交易。
 
-Therefore, if a memory pool transaction has [ancestors](/docs/technical/mining/memory-pool.md#ancestors), a miner will calculate the **[ancestor feerate](/docs/technical/mining/memory-pool.md#ancestor-feerate)** to work out whether it's worth including that transaction compared to another transaction that doesn't have any ancestors.
+因此，如果内存池交易具有[祖先](/docs/technical/mining/memory-pool.md#ancestors)，矿工将计算**[祖先费率](/docs/technical/mining/memory-pool.md#ancestor-feerate)**，以算出与没有祖先的其他交易相比，是否值得包含该交易。
 
-When you've got ancestors in the memory pool, the process of selecting the optimum combination of transactions is complex, and the only way to get the "perfect" block in terms of maximizing fees is to try *all possible combinations*. Therefore, most miners will make a best-effort attempt at constructing a block with high-fee transactions, without wasting time on trying to calculate the "perfect" block each time.
+当内存池中有祖先时，选择最佳交易组合的过程是复杂的，而在最大化手续费方面获得“完美”区块的唯一方法是尝试*所有可能的组合*。因此，大多数矿工都会尽力构建包含高额手续费交易的区块，而不会每次都浪费时间尝试计算“完美”的区块。
 
-## Empty Blocks
+## 空区块
 
-Why do miners mine empty blocks of transactions?
+为什么矿工会挖掘没有交易的空区块？
 
 [<img src="../../images/diagrams_png_block-candidate-block-empty-blocks.png" alt="Diagram showing a miner constructing an empty candidate block to work on while they select the optimum combination of transactions from the memory pool to fill it with." width="756" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-empty-blocks.png)
 
-You sometimes find "empty blocks" appearing in the blockchain with only *one* transaction in them.
+你有时会发现区块链中出现只有*一笔*交易的“空区块”。
 
-For example, block [828,012](/explorer/828012#blockchain) doesn't contain any transactions (other than the required [coinbase transaction](/docs/technical/mining/coinbase-transaction.md)), whereas the blocks above and below it are full of transactions:
+例如，区块 [828,012](/explorer/828012#blockchain) 不包含任何交易（除了所需的 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易），而其上方和下方的区块都充满了交易：
 
-| [Height](/docs/technical/blockchain/height.md) | [Block Hash](/docs/technical/block/hash.md) | Txs | Size | Avg [Feerate](/docs/technical/transaction/fee.md#sats-per-vbyte) AFR | Time (UTC) |
+| [高度](/docs/technical/blockchain/height.md) | [区块哈希](/docs/technical/block/hash.md) | 交易数 | 大小 | 平均[费率](/docs/technical/transaction/fee.md#sats-per-vbyte) AFR | 时间 (UTC) |
 | --- | --- | --- | --- | --- | --- |
-| [828,015](/explorer/block/00000000000000000000a9c619c4af8c09f10c11a8262bcde576450e45a126ca) 828,015 | [00000000000000000000a9c619c4af8c09f10c11a8262bcde576450e45a126ca](/explorer/block/00000000000000000000a9c619c4af8c09f10c11a8262bcde576450e45a126ca) | 3,142 | 1.00/1.00 vMB | 31 | 29 Jan 2024, 21:54 |
-| [828,014](/explorer/block/000000000000000000015b4c953a7636418316bee66575d79edf407a3f9640ae) 828,014 | [000000000000000000015b4c953a7636418316bee66575d79edf407a3f9640ae](/explorer/block/000000000000000000015b4c953a7636418316bee66575d79edf407a3f9640ae) | 5,222 | 1.00/1.00 vMB | 30 | 29 Jan 2024, 21:48 |
-| [828,013](/explorer/block/000000000000000000023cbbedc89f62a4e38db462bb45b5214d12f0f85f1972) 828,013 | [000000000000000000023cbbedc89f62a4e38db462bb45b5214d12f0f85f1972](/explorer/block/000000000000000000023cbbedc89f62a4e38db462bb45b5214d12f0f85f1972) | 4,385 | 1.00/1.00 vMB | 33 | 29 Jan 2024, 21:44 |
-| [828,012](/explorer/block/00000000000000000003eb119d2115448bea2d14e18bf19c00020dd23fee79cb) 828,012 | [00000000000000000003eb119d2115448bea2d14e18bf19c00020dd23fee79cb](/explorer/block/00000000000000000003eb119d2115448bea2d14e18bf19c00020dd23fee79cb) | 1 | 0.00/1.00 vMB | 0 | 29 Jan 2024, 21:41 |
-| [828,011](/explorer/block/0000000000000000000300773e6ec30fbed5d49a07568114c5824c7f89401fc9) 828,011 | [0000000000000000000300773e6ec30fbed5d49a07568114c5824c7f89401fc9](/explorer/block/0000000000000000000300773e6ec30fbed5d49a07568114c5824c7f89401fc9) | 5,639 | 1.00/1.00 vMB | 29 | 29 Jan 2024, 21:33 |
-| [828,010](/explorer/block/000000000000000000004cdc62634f083ec10dffc7bb4777c792d67c0aefbf8b) 828,010 | [000000000000000000004cdc62634f083ec10dffc7bb4777c792d67c0aefbf8b](/explorer/block/000000000000000000004cdc62634f083ec10dffc7bb4777c792d67c0aefbf8b) | 3,881 | 1.00/1.00 vMB | 29 | 29 Jan 2024, 21:32 |
-| [828,009](/explorer/block/00000000000000000000ce872172185086c9c6cfbedd0e78e90b6d0a7bd93f07) 828,009 | [00000000000000000000ce872172185086c9c6cfbedd0e78e90b6d0a7bd93f07](/explorer/block/00000000000000000000ce872172185086c9c6cfbedd0e78e90b6d0a7bd93f07) | 2,557 | 1.00/1.00 vMB | 38 | 29 Jan 2024, 21:31 |
+| [828,015](/explorer/block/00000000000000000000a9c619c4af8c09f10c11a8262bcde576450e45a126ca) 828,015 | [00000000000000000000a9c619c4af8c09f10c11a8262bcde576450e45a126ca](/explorer/block/00000000000000000000a9c619c4af8c09f10c11a8262bcde576450e45a126ca) | 3,142 | 1.00/1.00 vMB | 31 | 2024年1月29日, 21:54 |
+| [828,014](/explorer/block/000000000000000000015b4c953a7636418316bee66575d79edf407a3f9640ae) 828,014 | [000000000000000000015b4c953a7636418316bee66575d79edf407a3f9640ae](/explorer/block/000000000000000000015b4c953a7636418316bee66575d79edf407a3f9640ae) | 5,222 | 1.00/1.00 vMB | 30 | 2024年1月29日, 21:48 |
+| [828,013](/explorer/block/000000000000000000023cbbedc89f62a4e38db462bb45b5214d12f0f85f1972) 828,013 | [000000000000000000023cbbedc89f62a4e38db462bb45b5214d12f0f85f1972](/explorer/block/000000000000000000023cbbedc89f62a4e38db462bb45b5214d12f0f85f1972) | 4,385 | 1.00/1.00 vMB | 33 | 2024年1月29日, 21:44 |
+| [828,012](/explorer/block/00000000000000000003eb119d2115448bea2d14e18bf19c00020dd23fee79cb) 828,012 | [00000000000000000003eb119d2115448bea2d14e18bf19c00020dd23fee79cb](/explorer/block/00000000000000000003eb119d2115448bea2d14e18bf19c00020dd23fee79cb) | 1 | 0.00/1.00 vMB | 0 | 2024年1月29日, 21:41 |
+| [828,011](/explorer/block/0000000000000000000300773e6ec30fbed5d49a07568114c5824c7f89401fc9) 828,011 | [0000000000000000000300773e6ec30fbed5d49a07568114c5824c7f89401fc9](/explorer/block/0000000000000000000300773e6ec30fbed5d49a07568114c5824c7f89401fc9) | 5,639 | 1.00/1.00 vMB | 29 | 2024年1月29日, 21:33 |
+| [828,010](/explorer/block/000000000000000000004cdc62634f083ec10dffc7bb4777c792d67c0aefbf8b) 828,010 | [000000000000000000004cdc62634f083ec10dffc7bb4777c792d67c0aefbf8b](/explorer/block/000000000000000000004cdc62634f083ec10dffc7bb4777c792d67c0aefbf8b) | 3,881 | 1.00/1.00 vMB | 29 | 2024年1月29日, 21:32 |
+| [828,009](/explorer/block/00000000000000000000ce872172185086c9c6cfbedd0e78e90b6d0a7bd93f07) 828,009 | [00000000000000000000ce872172185086c9c6cfbedd0e78e90b6d0a7bd93f07](/explorer/block/00000000000000000000ce872172185086c9c6cfbedd0e78e90b6d0a7bd93f07) | 2,557 | 1.00/1.00 vMB | 38 | 2024年1月29日, 21:31 |
 
-This is because miners will typically **start working on an empty candidate block** while they select transactions from the memory pool.
+这是因为矿工在从内存池中选择交易的同时，通常会**开始挖掘空候选区块**。
 
-Because, as mentioned, it takes a while for a miner to calculate an optimal combination of transactions to maximize the amount in [fees](/docs/technical/transaction/fee.md) they can claim. So instead of doing nothing while they calculate which transactions to include in their block, they will immediately start work on mining an *empty block* first.
+因为如前所述，矿工需要一段时间来计算最佳的交易组合，以最大化他们可以索取的[手续费](/docs/technical/transaction/fee.md)金额。因此，与其在计算要包含哪些交易时什么都不做，他们会立即开始尝试先开采一个*空区块*。
 
-Consequently, a miner will sometimes get *lucky* and mine their empty block before they get around to working on a candidate block that has been filled with transactions.
+因此，矿工有时会碰巧*走运*，在他们着手处理已经填满交易的候选区块之前，就开采了他们的空区块。
 
-It doesn't happen very often, but that explains why you sometimes see "empty blocks" in the blockchain.
+这并不经常发生，但这解释了为什么你有时会在区块链中看到“空区块”。
 
-Whilst a miner will miss out on claiming transaction fees by mining an empty block, it's more profitable for them to start work on mining an empty block for the opportunity to claim the [block subsidy](/docs/technical/mining/block-reward.md#block-subsidy) in the meantime.
+虽然矿工通过开采空区块会错失索取交易手续费的机会，但在此期间开始开采空区块以争取索取[区块补贴](/docs/technical/mining/block-reward.md#block-subsidy)的机会对他们来说更有利可图。
 
-## Commands
+## 命令
 
 ### `bitcoin-cli getblocktemplate [template_request]`
 
-Returns transactions from your node's memory pool that you can use to construct a candidate block.
+返回来自你节点内存池的交易，你可以使用这些交易来构建候选区块。
 
-Annoyingly, you also have to provide an awkward array to specify the kind of block template you want (see [BIP22](https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki)). This is what I typically use: `bitcoin-cli getblocktemplate '{"rules": ["segwit"]}'`
+烦人的是，你还必须提供一个复杂的数组来指定你想要的区块模板类型（参见 [BIP22](https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki)）。这通常是我所使用的：`bitcoin-cli getblocktemplate '{"rules": ["segwit"]}'`
 
-You will need to construct the block header manually from this block template before you start mining. For example, you will need to construct your own coinbase transaction, as well as calculate the merkle root. So it's more of a "starting point", but it does the hard work of **selecting an optimum combination of transactions** from the memory pool for maximizing the fees you can claim.
+在开始挖矿之前，你需要根据这个区块模板手动构建区块头。例如，你需要构建自己的 Coinbase 交易，以及计算 Merkle Root。所以它更像是一个“起点”，但它确实为你完成了从内存池中**选择用于最大化所索取手续费的交易的最佳组合**这一繁重工作。
 
-## Notes
+## 备注
 
-* **There is no "single" candidate block that all miners work on.** Each miner selects transactions from their *own* mempool, so whilst there's usually a big overlap, there are typically slight differences between candidate blocks. So if you see that your transaction is currently sitting in a candidate block, it's not *guaranteed* to be included in the next block (although it's likely it will).
+* **没有一个所有矿工都在其上工作的“单一”候选区块。** 每个矿工都从他们*自己*的内存池中选择交易，因此虽然通常有很大的重叠，但候选区块之间通常存在微小的差异。所以，如果你看到你的交易当前正处于候选区块中，这并不能*保证*它会被包含在下一个区块中（尽管很可能会）。
 
-## Resources
+## 资源
 
 * [What is sigop (signature operation)?](https://bitcoin.stackexchange.com/questions/117356/what-is-sigop-signature-operation)

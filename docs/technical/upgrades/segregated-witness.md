@@ -6,159 +6,156 @@
 
 [<img src="../../images/icons_segwit.svg" alt="SegWit Logo" width="3923" height="995" style="width: 24px; height: 24px;" />](https://static.learnmeabitcoin.com/assets/icons/segwit.svg)
 
-Segregated Witness (SegWit) was a major upgrade to the Bitcoin software activated in 2017 (block [481,824](/explorer/block/0000000000000000001c8018d9cb3b742ef25114f27563e3fc4a1902167f9893)).
+Segregated Witness (SegWit) 是 2017 年激活的比特币软件的一次重大升级（区块 [481,824](/explorer/block/0000000000000000001c8018d9cb3b742ef25114f27563e3fc4a1902167f9893)）。
 
-The main changes were a **new transaction structure**, a **block size increase**, and the addition of a **new address format**.
+主要变化是**新的交易结构**、**区块大小的增加**以及**新增的地址格式**。
 
-**This page lists the *technical changes* introduced in the Segregated Witness upgrade.** For an introduction on why and how the upgrade took place, check out the [beginner's guide to SegWit](/docs/beginners/guide/segwit.md).
+**本页列出了 Segregated Witness 升级中引入的*技术变化*。** 有关该升级发生的原因和过程的介绍，请查看 [SegWit 初学者指南](/docs/beginners/guide/segwit.md)。
 
-## Motivation
+## 动机
 
-Why was Segregated Witness introduced?
+为什么要引入 Segregated Witness？
 
-The primary reason for the Segregated Witness upgrade was to **fix transaction malleability**.
+引入 Segregated Witness 的首要原因是为了**修复交易延展性 (transaction malleability)**。
 
-Before Segregated Witness, the [TXID](/docs/technical/transaction/input/txid.md)s for [legacy transactions](/docs/technical/transaction.md#example-legacy) were created from the *entire transaction data*, including the [signatures](/docs/technical/keys/signature.md).
+在 Segregated Witness 之前，[旧版交易](/docs/technical/transaction.md#example-legacy)的 [txid](/docs/technical/transaction/input/txid.md) 是从*整个交易数据*（包括[签名](/docs/technical/keys/signature.md)）中创建的。
 
-However, it's possible to [adjust the signatures](/docs/technical/keys/signature.md#legacy-step-6) inside a transaction and for them to remain valid, and this would have a knock-on effect to the TXID. This meant that it was possible for someone to change the TXID of your transaction after you sent it into the [network](/docs/technical/networking.md).
+然而，可以[调整交易内部的签名](/docs/technical/keys/signature.md#legacy-step-6)并使它们保持有效，这会对 txid 产生连锁反应。这意味着有人可以在你将交易发送到[网络](/docs/technical/networking.md)后更改你交易的 txid。
 
-The problem with this is that any transactions that depend on this TXID (i.e. transactions that spend one of the [outputs](/docs/technical/transaction/output.md) while it was still in the [memory pool](/docs/technical/mining/memory-pool.md)) would become invalid. In other words, a miner could "cancel" the [descendants](/docs/technical/mining/memory-pool.md#descendants) of memory pool transactions and prevent them from getting [mined](/docs/technical/mining.md) into a block.
+这带来的问题是，任何依赖于此 txid 的交易（即在交易仍在[内存池](/docs/technical/mining/memory-pool.md)中时花费其[输出](/docs/technical/transaction/output.md)的交易）都将变得无效。换句话说，矿工可以“取消”内存池交易的[后代](/docs/technical/mining/memory-pool.md#descendants)并阻止它们被[开采](/docs/technical/mining.md)到区块中。
 
-Therefore, the primary change in the Segregated Witness upgrade was a modification to the transaction data structure so that the signatures were no longer included as part of the TXID calculation, making TXIDs dependable and allowing you to confidently spend the outputs of transactions whilst they are still in the memory pool.
+因此，Segregated Witness 升级中的主要变化是对交易数据结构的修改，使得签名不再包含在 txid 计算中，从而使 txid 变得可靠，并允许你在交易仍处于内存池中时自信地花费它们的输出。
 
-This new transaction data allowed for a block size increase at the same time, which is why Segregated Witness was introduced as **suite of changes** in one major upgrade to the software.
+这种新的交易数据同时允许区块大小的增加，这就是为什么 Segregated Witness 在一次重大软件升级中作为**一系列变更**引入的原因。
 
-## Technical Changes
+## 技术变化
 
-What were the changes to the Bitcoin?
+比特币发生了哪些变化？
 
-The following is a **list of all the changes** that took place to Bitcoin with the Segregated Witness upgrade.
+以下是随着 Segregated Witness 升级在比特币中发生的所有**变化列表**。
 
-I'll start with the most significant changes first (the ones you're most likely to run into as a developer), and work down to the minor changes.
+我将从最重大的变化开始（开发者最可能遇到的变化），然后逐渐介绍较小的变化。
 
-### 1. Transaction Structure
+### 1. 交易结构
 
 [<img src="../../images/diagrams_png_transaction-witness.png" alt="Diagram showing the new witness section of a transaction used for unlocking inputs." width="450" height="420" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness.png)
 
-The primary change was the addition of a new [segwit transaction](/docs/technical/transaction.md#example-segwit) structure.
+主要变化是增加了新的 [SegWit 交易](/docs/technical/transaction.md#example-segwit)结构。
 
-These new segwit transactions include a **new [witness](/docs/technical/transaction/witness.md) section** that holds the unlocking code (i.e. signatures) for the [new locking scripts](#locking-scripts) introduced in the upgrade.
+这些新的 SegWit 交易包含一个**新的 [witness](/docs/technical/transaction/witness.md) 部分**，该部分保存用于解锁升级中引入的[新锁定脚本](#locking-scripts)的解锁代码（即签名）。
 
-So whereas legacy transactions would use the [ScriptSig](/docs/technical/transaction/input/scriptsig.md) field to unlock inputs, segwit transactions now use the new *witness* section instead.
+因此，虽然旧版交易使用 [ScriptSig](/docs/technical/transaction/input/scriptsig.md) 字段来解锁输入，但 SegWit 交易现在使用新的 *witness* 部分来代替。
 
-* Legacy locking scripts (e.g. [P2PKH](/docs/technical/script/p2pkh.md), [P2SH](/docs/technical/script/p2sh.md)) still need to be unlocked using the ScriptSig field. It's only the new locking scripts (e.g. [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md)) that use the new witness field for unlocking.
-* Legacy transactions that do not use the witness section for unlocking inputs are therefore still vulnerable to transaction malleability.
+* 旧版锁定脚本（例如 [P2PKH](/docs/technical/script/p2pkh.md), [P2SH](/docs/technical/script/p2sh.md)）仍然需要使用 ScriptSig 字段进行解锁。只有新的锁定脚本（例如 [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md)）才使用新的 witness 字段进行解锁。
+* 因此，不使用 witness 部分解锁输入的旧版交易仍然容易受到交易延展性的影响。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Splitter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易拆分器
 
-Random Example
+随机示例
 
-Transaction Data
+交易数据
 
 
 * `0 bytes`
 * `0 vbytes`
 
-Result
+结果
 
 ```
- 
+ 
 ```
 
 
 
 0 secs
 
-### 2. Transaction Size Calculation
+### 2. 交易大小计算
 
 [<img src="../../images/diagrams_png_transaction-weight.png" alt="Diagram showing the size calculation of a transaction in terms of weight." width="699" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
 
-With the addition of the [new witness field](#transaction-structure), transactions were also given a **new [size](/docs/technical/transaction/size.md) calculation called [weight](/docs/technical/transaction/size.md#weight)**.
+随着[新 witness 字段](#transaction-structure)的增加，交易还获得了一种**名为[重量 (weight)](/docs/technical/transaction/size.md#weight) 的新[大小](/docs/technical/transaction/size.md)计算方法**。
 
-Instead of measuring the size of a transaction purely on the number of bytes, different parts of the transaction data were given *specific multipliers* so that some parts of a transaction would "weigh less" than others:
-
-|  |  |
-| --- | --- |
-| Legacy Data | bytes x 4 |
-| Segwit Data | bytes x 1 |
-
-As a result, the unlocking code in a segwit transaction *weighs less* than the unlocking code in a legacy transaction, effectively giving a size discount (and reduced [fee](/docs/technical/transaction/fee.md) costs) to anyone using new segwit transactions.
-
-#### [Virtual Bytes](/docs/technical/transaction/size.md#vbytes)
-
-The virtual bytes measurement is equivalent to the *weight* measurement, but with different multipliers:
+不同于纯粹根据字节数衡量交易大小，交易数据的不同部分被赋予了*特定的乘数*，从而使交易的某些部分比其他部分“重量更轻”：
 
 |  |  |
 | --- | --- |
-| Legacy Data | bytes x 1 |
-| Segwit Data | bytes x 0.25 |
+| 旧版数据 (Legacy Data) | 字节数 x 4 |
+| SegWit 数据 (Segwit Data) | 字节数 x 1 |
 
-With virtual bytes, legacy transactions maintain the same size measurement, and new segwit transactions can be *compared* to the size of legacy transactions in terms of "virtual bytes".
+结果，SegWit 交易中的解锁代码比旧版交易中的解锁代码*重量更轻*，有效地为使用新 SegWit 交易的任何人提供了大小折扣（并降低了[手续费](/docs/technical/transaction/fee.md)成本）。
 
-You'll typically see the virtual bytes measurement on [blockchain explorers](/explorer/), but internally Bitcoin uses weight to determine how many transactions can fit inside a [block](/docs/technical/block.md).
+#### [虚拟字节 (vbytes)](/docs/technical/transaction/size.md#vbytes)
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Splitter
+虚拟字节测量相当于*重量*测量，但使用不同的乘数：
 
-Random Example
+|  |  |
+| --- | --- |
+| 旧版数据 (Legacy Data) | 字节数 x 1 |
+| SegWit 数据 (Segwit Data) | 字节数 x 0.25 |
 
-Transaction Data
+使用虚拟字节，旧版交易保持相同的大小计量，而新 SegWit 交易可以在“虚拟字节”方面与旧版交易的大小进行*对比*。
+
+你通常会在[区块链浏览器](/explorer/)上看到虚拟字节测量，但在内部，比特币使用重量来确定一个[区块](/docs/technical/block.md)中可以容纳多少交易。
+
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易拆分器
+
+随机示例
+
+交易数据
 
 
 * `0 bytes`
 * `0 vbytes`
 
-Result
+结果
 
 ```
- 
+ 
 ```
 
 
 
 0 secs
 
-### 3. Block Size Increase
+### 3. 区块大小增加
 
 [<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing the block size limit in terms of weight." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
-Using the [new weight calculation](#transaction-size-calculation) for transactions, the [block size limit](/docs/technical/block.md#weight) was changed from **1,000,000 *bytes*** to **4,000,0000 *weight units***.
+为交易使用[新的重量计算方法](#transaction-size-calculation)后，[区块大小限制](/docs/technical/block.md#weight)从 **1,000,000 *字节*** 更改为 **4,000,000 *重量单位***。
 
-This results in a block size increase that is **up to 4 times bigger** than the old block size limit.
+这导致区块大小增加，平均比旧的区块大小限制**大 4 倍**。
 
-Seeing as transaction data always contains *some legacy data* along with the new segwit data, the *effective* block size increase works out to be around **1,700,000 to 2,000,000 *bytes*** on average (depending on the composition of transactions included in the block).
+鉴于交易数据中总是包含*一些旧版数据*以及新的 SegWit 数据，*实际的*区块大小增加在平均水平上约为 **1,700,000 至 2,000,000 *字节***（具体取决于区块中包含 of 交易组成）。
 
-### 4. Locking Scripts
+### 4. 锁定脚本
 
-Two new locking script patterns were introduced to take advantage of the [new witness field](#transaction-structure) for unlocking certain types of outputs:
+引入了两种新的锁定脚本模式，以利用[新的 witness 字段](#transaction-structure)解锁特定类型的输出：
 
 1. [P2WPKH](/docs/technical/script/p2wpkh.md)
    [<img src="../../images/diagrams_png_script-p2wpkh.png" alt="A diagram showing the structure of a P2WPKH." width="858" height="299" />](https://static.learnmeabitcoin.com/diagrams/png/script-p2wpkh.png)
 2. [P2WSH](/docs/technical/script/p2wsh.md)
    [<img src="../../images/diagrams_png_script-p2wsh.png" alt="A diagram showing the structure of a P2WSH." width="964" height="379" />](https://static.learnmeabitcoin.com/diagrams/png/script-p2wsh.png)
 
-These are *functionally* the same as the legacy [P2PKH](/docs/technical/script/p2pkh.md) and [P2SH](/docs/technical/script/p2sh.md) locking scripts.
+它们在功能上与旧版 [P2PKH](/docs/technical/script/p2pkh.md) 和 [P2SH](/docs/technical/script/p2sh.md) 锁定脚本相同。
 
-The main difference is that P2WPKH and P2WSH are unlocked using the [witness](/docs/technical/transaction/witness.md) area of a transaction instead of the [ScriptSig](/docs/technical/transaction/input/scriptsig.md).
+主要区别在于 P2WPKH 和 P2WSH 是使用交易的 [witness](/docs/technical/transaction/witness.md) 区域而不是 [ScriptSig](/docs/technical/transaction/input/scriptsig.md) 解锁的。
 
-**The new P2WPKH and P2WSH locking scripts *do not* use the traditional [Script](/docs/technical/script.md) language for locking and unlocking.** They use a fixed structure of bytes instead, and have their own hard-coded method for execution. But nonetheless, they are still functionally the same as P2PKH and P2SH.
+**新的 P2WPKH 和 P2WSH 锁定脚本*不*使用传统的 [Script](/docs/technical/script.md) 语言进行锁定和解锁。** 它们使用固定的字节结构，并有自己的硬编码执行方法。但尽管如此，它们在功能上仍与 P2PKH 和 P2SH 相同。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Script
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 脚本
 
-Random ScriptPubKey
-Random ScriptSig
+随机 ScriptPubKey
+随机 ScriptSig
 
-Hex
+十六进制
 
-
-<img src="../../images/icons_arrow-up.svg" alt="Decrease Text Box Size" style="width:24px; height:24px;" />
-<img src="../../images/icons_arrow-down.svg" alt="Increase Text Box Size" style="width:24px; height:24px;" />
 
 `0 bytes`
 
 ASM
-Type
+类型
 
- Non-Standard
+ 非标准
  P2PK (Pay To Pubkey)
  P2PKH (Pay To Pubkey Hash)
  P2MS (Multisig)
@@ -166,24 +163,24 @@ Type
  P2WPKH (Pay To Witness Pubkey Hash)
  P2WSH (Pay To Witness Script Hash)
  P2TR (Pay To Taproot)
- OP\_RETURN (Data)
+ OP_RETURN (Data)
 
 
-Address`0 characters`
+地址`0 characters`
 
 
 
 0 secs
 
-### 5. Address Format
+### 5. 地址格式
 
-The [new P2WPKH and P2WSH locking scripts](#locking-scripts) use the new **[Bech32](/docs/technical/keys/bech32.md) address format**.
+[新的 P2WPKH 和 P2WSH 锁定脚本](#locking-scripts)使用新的 **[Bech32](/docs/technical/keys/bech32.md) 地址格式**。
 
-These Bech32 addresses allow for **better error-detection** and are **easier to transcribe**.
+这些 Bech32 地址允许**更好的错误检测**，且**更易于抄写**。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Address (Bech32)
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 地址 (Bech32)
 
-Generate Random
+随机生成
 
 
 ScriptPubKey
@@ -216,49 +213,50 @@ Bech32 encoding of the ScriptPubKey
 
 0 secs
 
-So whereas legacy P2PKH and P2SH locking scripts continue to use [Base58](/docs/technical/keys/base58.md) addresses, the new P2WPKH and P2WSH locking scripts use Bech32 addresses instead.
+因此，旧版 P2PKH 和 P2SH 锁定脚本继续使用 [Base58](/docs/technical/keys/base58.md) 地址，而新的 P2WPKH 和 P2WSH 锁定脚本使用 Bech32 地址来代替。
 
-### 6. Signature Algorithm
+### 6. 签名算法
 
-The [new P2WPKH and P2WSH locking scripts](#locking-scripts) also make use of a **[new signature algorithm](/docs/technical/keys/signature.md#segwit-algorithm)**.
+[新的 P2WPKH 和 P2WSH 锁定脚本](#locking-scripts)还使用了一种**[新的签名算法](/docs/technical/keys/signature.md#segwit-algorithm)**。
 
-This new "segwit signature algorithm" is designed to be more efficient than the [legacy signing algorithm](/docs/technical/keys/signature.md#legacy-algorithm).
+这种新的“SegWit 签名算法”旨在比[旧版签名算法](/docs/technical/keys/signature.md#legacy-algorithm)更高效。
 
-So now the process for creating signatures to unlock P2WPKH and P2WSH locking scripts is different to the process for creating signatures for legacy locking scripts (e.g. P2PKH and P2SH).
+所以现在，创建签名来解锁 P2WPKH 和 P2WSH 锁定脚本的过程与为旧版锁定脚本（例如 P2PKH 和 P2SH）创建签名的过程是不同的。
 
-**Both the legacy and new segwit signature algorithm still use [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md).** It's just that now the method for *preparing the transaction data* for signing is different when you want to unlock P2WPKH and P2WSH locking scripts.
+**旧版签名算法和新 SegWit 签名算法都仍然使用 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)。** 只是当你想解锁 P2WPKH 和 P2WSH 锁定脚本时，*准备用于签名的交易数据*的方法是不同的。
 
-### 7. wTXID Commitment
+### 7. wTXID 承诺
 
 [<img src="../../images/diagrams_png_block-wtxid-commitment.png" alt="Diagram showing the wtxid commitment inside a block." width="810" height="499" />](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
 
-Due to the fact that [new segwit transactions](#transaction-structure) contain data that is no longer part of the [TXID](/docs/technical/transaction/input/txid.md), this new witness data needs to be *committed* to the block via a [wTXID commitment](/docs/technical/transaction/wtxid.md#commitment).
+由于[新的 SegWit 交易](#transaction-structure)包含不再属于 [txid](/docs/technical/transaction/input/txid.md) 一部分的数据，因此需要通过 [wTXID 承诺](/docs/technical/transaction/wtxid.md#commitment)将此新见证数据*提交*到区块。
 
-So in addition to the TXID (which does not include the new fields in a segwit transaction), each transaction also has a [wTXID](/docs/technical/transaction/wtxid.md) that is calculated by hashing all the data in a segwit transaction (which does includes the new fields in a segwit transaction).
+所以，除了 txid（不包括 SegWit 交易中的新字段）之外，每个交易还具有一个 [wtxid](/docs/technical/transaction/wtxid.md)，该 id 是通过对 SegWit 交易中的所有数据（包括 SegWit 交易中的新字段）进行哈希运算计算得出的。
 
 [<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the new segwit fields." width="764" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> TXID
 
-Random Example
+随机示例
 
-Transaction Data
-
-`0 bytes`
-
-
- Show Details
-
-
-TXID (Natural Byte Order)
-
-Used internally inside raw transaction data
+交易数据
 
 `0 bytes`
 
-TXID (Reverse Byte Order)
 
-Used externally when searching for transactions on block explorers
+ 显示详情
+
+
+
+TXID (自然字节顺序)
+
+内部在原始交易数据中使用
+
+`0 bytes`
+
+TXID (反向字节顺序)
+
+在区块浏览器上搜索交易时外部使用
 
 `0 bytes`
 
@@ -268,19 +266,19 @@ Used externally when searching for transactions on block explorers
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> wTXID
 
-Random Example
+随机示例
 
-Transaction Data
-
-`0 bytes`
-
-wTXID (Natural Byte Order)
+交易数据
 
 `0 bytes`
 
-wTXID (Reverse Byte Order)
+wTXID (自然字节顺序)
 
-Also known as the transaction "hash" when using `bitcoin-cli` commands
+`0 bytes`
+
+wTXID (反向字节顺序)
+
+使用 `bitcoin-cli` 命令时也称为交易“哈希”
 
 `0 bytes`
 
@@ -288,39 +286,39 @@ Also known as the transaction "hash" when using `bitcoin-cli` commands
 
 0 secs
 
-So when constructing a block, a miner will now also calculate a [merkle root](/docs/technical/block/merkle-root.md) for all of the wTXIDs in the block and include this in the block via a wTXID commitment in the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md).
+所以当构建区块时，矿工现在还将为区块中的所有 wtxid 计算一个 [merkle root](/docs/technical/block/merkle-root.md)，并通过 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易中的 wTXID 承诺将该根哈希包含在区块中。
 
-As a result, this wTXID commitment **prevents anyone from modifying the witness data** for the transactions included in a block.
+结果，这个 wTXID 承诺**防止任何人修改见证数据**用于区块中包含的交易。
 
-* The wTXID is placed inside the coinbase transaction because it's the only part of a block that can include new additional data without causing a [hard fork](/docs/technical/blockchain/hard-fork.md).
-* Seeing as a [legacy transaction](/docs/technical/transaction.md#example-legacy) does not include any new segwit fields, its wTXID will be the same as its TXID.
+* wtxid 被放入 Coinbase 交易中，因为它是区块中唯一可以包含新附加数据而不会引起[硬分叉](/docs/technical/blockchain/hard-fork.md)的部分。
+* 鉴于[旧版交易](/docs/technical/transaction.md#example-legacy)不包含任何新 SegWit 字段，其 wtxid 将与其 txid 相同。
 
-### 8. Network Messages
+### 8. 网络消息
 
-When communicating with other nodes on the [network](/docs/technical/networking.md), you now have to specifically **request for a node to send you the full transaction data for segwit transactions** (i.e. including the [new witness data](#transaction-structure)).
+当与[网络](/docs/technical/networking.md)上的其他节点通信时，你现在必须专门**请求节点发送 SegWit 交易的完整交易数据**（即包括[新见证数据](#transaction-structure)）。
 
-So whereas in a [`getdata`](/docs/technical/networking.md#getdata) message the *type* field would be one of the following:
+所以，在 [`getdata`](/docs/technical/networking.md#getdata) 消息中，*type* 字段本来是以下之一：
 
 * `01000000 = MSG_TX`
 * `02000000 = MSG_BLOCK`
 
-To request a transaction or block including the new witness data you need to use the following *type* fields instead:
+要请求包括新见证数据在内的交易或区块，你需要使用以下 *type* 字段来代替：
 
 * `01000040 = MSG_WITNESS_TX`
 * `02000040 = MSG_WITNESS_BLOCK`
 
-### 9. Other
+### 9. 其他
 
-* In addition to legacy bytes getting multiplied by 4 during the [new transaction size calculation](#transaction-size-calculation), all [signature](/docs/technical/keys/signature.md) operations (e.g. `OP_CHECKSIG`, `OP_CHECKMULTISIG`, `OP_CHECKSIGVERIFY`, `OP_CHECKMULTISIGVERIFY`) in a legacy transaction are multiplied by 4 too. This is important when calculating how many signature operations are in a block, as a block has a [limit of **80,000** signature operations](/docs/technical/mining/candidate-block.md#requirement-sigops) (sigops).
+* 除了在[新交易大小计算](#transaction-size-calculation)期间旧版字节数乘以 4 外，旧版交易中的所有[签名](/docs/technical/keys/signature.md)操作（例如 `OP_CHECKSIG`, `OP_CHECKMULTISIG`, `OP_CHECKSIGVERIFY`, `OP_CHECKMULTISIGVERIFY`）也会乘以 4。这在计算区块中包含多少个签名操作时很重要，因为一个区块具有 [**80,000** 个签名操作的限制](/docs/technical/mining/candidate-block.md#requirement-sigops) (sigops)。
 
-## Summary
+## 总结
 
-As you can see, Segregated Witness introduced **multiple technical changes** to Bitcoin in one go.
+正如你所看到的，Segregated Witness 一次性为比特币引入了**多项技术变革**。
 
-Many of these changes also seem unnecessarily complex at first, but that's because technical workarounds were required to be able to introduce these changes as a [soft fork as opposed to a hard fork](/docs/beginners/guide/segwit.md#why-were-the-changes-implemented-in-this-way).
+其中的许多改变起初似乎有些不必要地复杂，但那是因为需要技术性权衡才能将这些变化作为[软分叉而不是硬分叉](/docs/beginners/guide/segwit.md#why-were-the-changes-implemented-in-this-way)引入。
 
-However, depending on what you're working on, you probably do not need to include all of the changes in your software; you can just implement the changes that are relevant to your tool (e.g. you probably don't need to worry about the new [network messages](#network-messages) if you're developing a wallet).
+然而，根据你所从事的项目，你可能不需要在你的软件中实现所有的变化；你可以仅实现与你的工具相关的改变（例如，如果你在开发钱包，你可能不需要担心新的[网络消息](#network-messages)）。
 
-Nonetheless, it's useful to be aware of all the changes that took place, and how they all tie together to create the biggest upgrade to Bitcoin since its release.
+不过，了解已发生的所有变化以及它们如何结合在一起构成比特币自发布以来最大的一次升级，还是非常有用的。
 
-Implementing support for SegWit might seem like a daunting technical challenge at first, but if you work on incorporating each change as you go you'll get there eventually. Just take it one step at a time.
+最初实现对 SegWit 的支持可能看起来是一项艰巨的技术挑战，但如果你按步骤逐步引入每一项更改，你最终会实现的。一步一步来。

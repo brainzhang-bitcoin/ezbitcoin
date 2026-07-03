@@ -2,342 +2,337 @@
 
 [<img src="../../images/diagrams_png_memory-pool.png" alt="Diagram showing nodes on the Bitcoin network storing the latest transactions in their memory pool." width="779" height="488" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool.png)
 
-Current Mempool Size:
+当前内存池大小：
 
 2.54 vMB
 
-9,648 transactions
+9,648 笔交易
 
-Note: This is the size of the mempool for my local node.  
-The size of your memory pool will differ depending on how long your node has been online and which nodes you are connected to.
+注意：这是我本地节点的内存池大小。  
+你内存池的大小会因你节点的在线时长以及你连接 of 节点而有所不同。
 
-The memory pool (mempool) is a **waiting area** for new [transactions](/docs/technical/transaction.md).
+内存池（mempool）是新[交易](/docs/technical/transaction.md)的**等待区**。
 
-New transactions are stored in a [node](/docs/technical/networking/node.md)'s memory pool while they're waiting to get [mined](/docs/technical/mining.md) on to the [blockchain](/docs/technical/blockchain.md).
+新交易在等待被[开采](/docs/technical/mining.md)到[区块链](/docs/technical/blockchain.md)上时，会被存储在[节点](/docs/technical/networking/node.md)的内存池中。
 
-**Do not rely on memory pool transactions.** Not all transactions will make it from the memory pool (temporary storage) to the blockchain (permanent storage).
+**不要依赖内存池交易。** 并非所有交易都能从内存池（临时存储）进入区块链（永久存储）。
 
-## Purpose
+## 目的
 
-Why does the memory pool exist?
+为什么存在内存池？
 
-The memory pool is used to **sort out conflicting transactions**.
+内存池用于**整理冲突交易**。
 
-You see, it's possible for two different transactions spending the same bitcoins to be inserted into different parts of the [network](/docs/technical/networking.md) at the same time. Some nodes will receive the one transaction first, and some nodes will receive the other transactions first:
+你可以看到，同时向[网络](/docs/technical/networking.md)的不同部分插入两笔花费相同比特币的不同交易是可能的。一些节点会先收到一笔交易，而另一些节点会先收到另一笔交易：
 
 [<img src="../../images/diagrams_png_memory-pool-conflict.png" alt="Diagram showing two conflicting transactions (spending the same bitcoins) being inserted into different parts of the Bitcoin network." width="779" height="586" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict.png)
 
 
-Nodes will reject the second conflicting transaction they receive, but there will still be different versions of the conflicting transaction floating around the network.
+节点会拒绝它们收到的第二笔冲突交易，但冲突交易的不同版本仍会在网络中流传。
 
-Because both of these transactions are trying to spend the same bitcoins, only *one* of them should be written to the [blockchain](/docs/technical/blockchain.md). So which of these conflicting transactions should make it into the blockchain?
+因为这两笔交易都试图花费相同的比特币，所以其中只有*一笔*应该被写入[区块链](/docs/technical/blockchain.md)。那么这些冲突交易中的哪一笔应该进入区块链呢？
 
-This conflict is resolved when one of the nodes on the network [mines](/docs/technical/mining.md) the transactions from *their* memory pool into a block:
+当网络上的一个节点将*其*内存池中的交易[开采](/docs/technical/mining.md)到一个区块中时，这个冲突就解决了：
 
 [<img src="../../images/diagrams_png_memory-pool-conflict-resolved.png" alt="Diagram showing one of the conflicting transactions getting mined into a block and the other getting kicked out of the memory pools." width="779" height="518" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict-resolved.png)
 
 
-One of the nodes will mine the next block of transactions and broadcast it across the network.
+其中一个节点将开采下一个交易区块并在网络中广播它。
 
-Upon receiving this newly-mined block, nodes will add this block on to the blockchain, and **kick out any conflicting transactions** from their memory pool.
+收到这个新开采的区块后，节点会将该区块添加到区块链上，并从其内存池中**剔除任何冲突交易**。
 
-So the memory pool is part of a *sorting mechanism* ([mining](/docs/technical/mining.md)) that prevents conflicting transactions from being written to the blockchain.
+因此，内存池是防止冲突交易被写入区块链的*整理机制*（[挖矿](/docs/technical/mining.md)）的一部分。
 
-The memory pool plays a crucial role in preventing conflicting transactions from being written to the blockchain, and is the reason why you have to *wait* for transactions to get mined.
+内存池在防止冲突交易被写入区块链方面起着至关重要作用，这也是你必须*等待*交易被开采的原因。
 
-## Entry
+## 进入
 
-How does a transaction enter the memory pool?
+交易如何进入内存池？
 
-A transaction can enter a node's memory pool in a number of ways:
+交易可以通过多种方式进入节点的内存池：
 
-### 1. Inserted into a local node
+### 1. 插入本地节点
 
-(common)
+（常见）
 
 [<img src="../../images/diagrams_png_memory-pool-entry-insert.png" alt="Diagram showing a new transaction being inserted directly into a local node on the network." width="253" height="281" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-insert.png)
 
-A new transaction can be inserted directly into a node on the network.
+新交易可以直接插入到网络中的节点。
 
-From here the node will *broadcast* the transaction to the other nodes on the network so they can add it to their memory pool too.
+从这里开始，该节点将把该交易*广播*给网络中的其他节点，以便它们也可以将其添加到各自的内存池中。
 
-You can manually insert a transaction into your local Bitcoin Core node using the `bitcoin-cli sendrawtransaction` command. Alternatively, your [wallet](/docs/beginners/wallets.md) will insert your transaction into a node when you send someone bitcoins.
+你可以使用 `bitcoin-cli sendrawtransaction` 命令手动将交易插入到本地的 Bitcoin Core 节点。或者，当你想给某人发送比特币时，你的[钱包](/docs/beginners/wallets.md)也会将你的交易插入到一个节点中。
 
-### 2. Received from another node
+### 2. 从另一个节点接收
 
-(common)
+（常见）
 
 [<img src="../../images/diagrams_png_memory-pool-entry-receive.png" alt="Diagram showing a new transaction being received from another node on the network." width="491" height="287" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-receive.png)
 
-New transactions can be received from other nodes on the network.
+可以从网络上的其他节点接收新交易。
 
-Nodes continually broadcast the latest transactions they've received to the nodes they are connected to. So if a node advertises a transaction that your node does not have, your node will [request](/docs/technical/networking.md#requesting-transactions-and-blocks) it and add it to their memory pool too.
+节点会不断将它们收到的最新交易广播给与它们连接的节点。因此，如果某个节点宣告了你的节点没有的交易，你的节点将[请求](/docs/technical/networking.md#requesting-transactions-and-blocks)它并将其也添加到自己的内存池中。
 
-This process repeats until all nodes on the network have a copy of the latest transactions in their memory pools.
+这个过程会重复，直到网络上的所有节点在其内存池中都拥有最新交易的副本。
 
-**Only valid transactions can enter the memory pool.** A node will check if each transaction they receive is valid (doesn't break any rules) before adding it to their memory pool or relaying it to the nodes they are connected to.
+**Only valid transactions can enter the memory pool.** 节点会在将接收到的每笔交易添加到其内存池或中继给所连接的节点之前，检查该交易是否有效（没有违反任何规则）。
 
-### 3. Re-entry after a chain reorganization
+### 3. 链分叉重组后重新进入
 
-(uncommon)
+（罕见）
 
 [<img src="../../images/diagrams_png_memory-pool-entry-chain-reorganization.png" alt="Diagram showing a previously mined transactions re-entering the memory pool after a chain reorganization." width="767" height="314" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-chain-reorganization.png)
 
-Previously mined transactions can re-enter the memory pool during a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
+在[链重组](/docs/technical/blockchain/chain-reorganization.md)期间，先前已被开采的交易可能会重新进入内存池。
 
-Sometimes a node will perform a chain reorganization, where a new [longest chain](/docs/technical/blockchain/longest-chain.md) is found that replaces some of the blocks in the node's previous longest blockchain. If any of the transactions in the blocks being replaced are *not* found in the blocks of the new longest chain, they will get recycled back into your node's memory pool (and re-broadcast again) for the chance to get re-mined into a future block.
+有时，节点会执行链重组，即发现了一条新的[最长链](/docs/technical/blockchain/longest-chain.md)，它取代了该节点之前最长区块链中的某些区块。如果被替换的区块中的任何交易在新的最长链的区块中*未*被找到，它们将被回收回到你节点的内存池中（并再次重新广播），以争取在未来的区块中被重新开采。
 
-## Exit
+## 退出
 
-How does a transaction leave the memory pool?
+交易如何离开内存池？
 
-There are a number of reasons why a transaction will leave the memory pool:
+交易离开内存池有多种原因：
 
-### 1. Mined
+### 1. 被开采
 
 [<img src="../../images/diagrams_png_memory-pool-exit-mined.png" alt="Diagram showing a transaction leaving the memory pool due to being mined into a block." width="658" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mined.png)
 
-This is the goal for all memory pool transactions.
+这是所有内存池交易的目标。
 
-When a miner [mines](/docs/technical/mining.md) a new block of transactions, they will broadcast it to the other nodes on the network. When a node receives this block, any transactions in their memory pool that are inside that block will be removed from their memory pool and connected to the block instead.
+当矿工[开采](/docs/technical/mining.md)一个包含交易的新区块时，他们会将其广播给网络上的其他节点。当节点收到该区块时，其内存池中包含在该区块内的任何交易都将从其内存池中移除，并改为连接到该区块。
 
-In other words, transactions are moved from temporary storage (the memory pool) to permanent storage (the blockchain).
+换句话说，交易已从临时存储（内存池）转移到永久存储（区块链）。
 
-### 2. Mined Conflict
+### 2. 被开采的冲突交易
 
 [<img src="../../images/diagrams_png_memory-pool-exit-mined-conflict.png" alt="Diagram showing a transaction leaving the memory pool due to a conflicting transaction being mined into a block." width="639" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mined-conflict.png)
 
-Nodes will remove any transactions from their memory pool that conflict with the transactions inside a block.
+节点将从其内存池中移除与已开采区块中的交易相冲突的任何交易。
 
-The transactions inside a mined block are considered "correct", so if a node has a transaction in their memory pool that spends the same bitcoins as a transaction inside a block, they will kick that transaction out the memory pool.
+区块中已开采的交易被认为是“正确的”，因此如果节点内存池中有一笔交易与区块内的某笔交易花费了相同的比特币，它们会将该交易剔除出内存池。
 
-In other words, the memory pool has done its job as being part of the sorting mechanism for conflicting transactions.
+换句话说，内存池已完成了作为冲突交易整理机制的一部分的工作。
 
-All the [descendants](#descendants) of a conflicting memory pool transaction will be removed at the same time.
+冲突内存池交易的所有[后代](#descendants)都将同时被移除。
 
-### 3. Replaced
+### 3. 被替换
 
 [<img src="../../images/diagrams_png_memory-pool-exit-replaced.png" alt="Diagram showing a transaction being removed from the memory pool due to being replaced by a higher-fee version." width="609" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-replaced.png)
 
-A transaction will be removed from the memory pool if it gets replaced by a new higher-fee transaction.
+如果一笔交易被一笔新的更高手续费的交易替换，它将从内存池中移除。
 
-This will happen if an existing transaction in the memory pool has the [replace-by-fee](/docs/technical/transaction/input/sequence.md#replace-by-fee) (RBF) setting, and then a new transaction gets broadcast to the network that *spends the same bitcoins* but with a suitably higher fee.
+如果内存池中的现有交易具有[费用替换](/docs/technical/transaction/input/sequence.md#replace-by-fee)（RBF）设置，然后一笔*花费相同比特币*但手续费适当更高的新交易被广播到网络，就会发生这种情况。
 
-The new higher-fee version of the transaction is more likely to get mined on to the blockchain, so a node will kick out the old transaction in favor of the new one.
+交易的新高费率版本更有可能被开采到区块链上，因此节点会剔除旧交易以支持新交易。
 
-### 4. Time Limit
+### 4. 时间限制
 
 [<img src="../../images/diagrams_png_memory-pool-exit-mempoolexpiry.png" alt="Diagram showing a transaction leaving the memory pool after a certain amount of time." width="386" height="238" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mempoolexpiry.png)
 
-Each node has a [time limit setting](#mempoolexpiry) for how long they're willing to hold on to transactions in their memory pool.
+每个节点都有一个[时间限制设置](#mempoolexpiry)，用来规定它们愿意在内存池中保留交易多长时间。
 
-So if a transaction in the memory pool doesn't get mined before it reaches the time limit, the node assumes the transaction *probably* isn't going to get mined and will remove it from their memory pool.
+因此，如果内存池中的一笔交易在达到时间限制之前没有被开采，节点会认为该交易*大概*不会被开采，并将其从其内存池中移除。
 
-* The default time limit is **2 weeks**.
-* You can always rebroadcast a transaction to the network if it leaves the memory pools due to exceeding the expiry time.
+* 默认时间限制为 **2 周**。
+* 如果交易由于超过过期时间而离开了内存池，你始终可以向网络重新广播该交易。
 
-### 5. Size Limit
+### 5. 大小限制
 
 [<img src="../../images/diagrams_png_memory-pool-exit-maxmpool.png" alt="Diagram showing a low-fee transaction being removed from the memory pool when the memory pool reaches its maximum size setting." width="450" height="246" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-maxmpool.png)
 
-Transactions will be removed from a node's memory pool when their memory pool reaches a certain size (in megabytes).
+当节点的内存池达到一定大小（以兆字节为单位）时，交易将从其内存池中移除。
 
-Each node has the ability to set a [maximum size](#maxmempool) for their memory pool. So when their memory pool exceeds this limit, they will start removing the lowest-fee transactions from their memory pool to make space for higher-fee transactions instead.
+每个节点都有能力为其内存池设置一个[最大大小](#maxmempool)。因此，当它们的内存池超过此限制时，它们将开始从内存池中移除手续费最低的交易，以腾出空间存放手续费更高的交易。
 
-So if there are more transactions floating around the network than can fit in to your node's memory pool, your node will only keep the highest-fee transactions available.
+所以，如果网络中流传的交易多于你的节点内存池所能容纳的交易，你的节点将只保留可用手续费最高的交易。
 
-* The default size limit is **300 MB**.
-* Some nodes maintain very large memory pools, so it's unlikely that a low-fee transaction will completely leave the network due to other nodes' small memory pools.
-* **The memory pool also stores *[metadata](#getmempoolentry)* for each transaction.** So only around 25% of memory pool data is made of raw transaction data.
+* 默认大小限制为 **300 MB**。
+* 某些节点维持着非常大的内存池，因此低手续费交易不太可能因为其他节点内存池小而完全离开网络。
+* **内存池还会存储每笔交易的*[元数据](#getmempoolentry)*。** 因此，只有大约 25% 的内存池数据是由原始交易数据组成的。
 
-## Settings
+## 设置
 
-Each node keeps their own *individual* memory pool, and has the ability to use their own settings and rules for it.
+每个节点都保留着自己*独立的*内存池，并有能力为其使用自己的设置 and 规则。
 
-If you're running a Bitcoin Core node, these are the most common [bitcoin.conf](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md) settings for your memory pool:
+如果你运行的是 Bitcoin Core 节点，以下是你的内存池最常用的 [bitcoin.conf](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md) 设置：
 
 ### `maxmempool=<n>`
 
-default = 300 MB
+默认 = 300 MB
 
-This setting controls the **maximum size** of the memory pool in MB (megabytes).
+此设置控制内存池的**最大大小**，单位为 MB（兆字节）。
 
-Increasing the size of your nodes' memory pool with `maxmempool` is the easiest way to keep track of as many memory pool transactions as possible. However, this will use more RAM on your computer.
+使用 `maxmempool` 增加节点内存池的大小是尽可能多地跟踪内存池交易的最简单方法。但是，这会在你的计算机上使用更多内存（RAM）。
 
-This setting includes the size of transaction *metadata* and is not the maximum size based on the size of raw transaction data alone.
+此设置包括交易*元数据*的大小，并非仅基于原始交易数据大小的最大大小。
 
 ### `mempoolexpiry=<n>`
 
-default = 336 hours (2 weeks)
+默认 = 336 小时（2 周）
 
-This setting controls **how many hours** your node will hold on to transactions in the memory pool after first receiving them.
+此设置控制你的节点在首次收到交易后，将在内存池中保留**多少个小时**。
 
 ### `minrelaytxfee=<amount>`
 
-default = 0.00001 BTC/kvB (1 sat/vbyte)
+默认 = 0.00001 BTC/kvB（1 sat/vbyte）
 
-This setting controls the **minimum transaction [feerate](/docs/technical/transaction/fee.md#feerates)** for a transaction to be added to your node's mempool.
+此设置控制将交易添加到你节点内存池的**最小交易[费率](/docs/technical/transaction/fee.md#feerates)**。
 
-This setting uses an awkward BTC/kvB (kilo [virtual byte](/docs/technical/transaction/size.md#vbytes)) setting for measuring feerates. The default of 0.00001 BTC/kvB is equivalent to 1 sat/vbyte.
+此设置使用一种繁琐的 BTC/kvB（千[虚拟字节](/docs/technical/transaction/size.md#vbytes)）设置来衡量费率。默认的 0.00001 BTC/kvB 相当于 1 sat/vbyte。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unit Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 单位转换器
 
 BTC
 
 whole bitcoin
 
-
 mBTC
 
 one-thousandth of a bitcoin
-
 
 uBTC
 
 one-millionth of a bitcoin
 
-
 Sats
 
 one-hundred-millionth of a bitcoin
 
-
-
 0 secs
 
-So although each memory pool can be unique, the most common setting for memory pools across the network are:
+因此，虽然每个内存池都可以是唯一的，但整个网络中最常用的内存池设置为：
 
-* A maximum size of **300 MB**.
-* Keep transactions for up to **2 weeks**.
-* Reject transactions that do not have a fee of at least **1 sat/byte**.
+* 最大大小为 **300 MB**。
+* 保留交易最多 **2 周**。
+* 拒绝手续费低于 **1 sat/byte** 的交易。
 
-As a result, most nodes on the network will share a *similar* view of the memory pool at any given time.
+结果是，网络上的大多数节点在任何给定时间都会共享*相似的*内存池视图。
 
-## Minimum Fee
+## 最低费用
 
-What is the minimum mempool fee?
+什么是最低内存池费用？
 
 [<img src="../../images/diagrams_png_memory-pool-minimum-fee.png" alt="Diagram showing the minimum feerate being dynamically calculated by the maximum size of the memory pool." width="779" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-minimum-fee.png)
 
-Each node maintains a **minimum feerate** to limit the transactions that are accepted into their memory pool.
+每个节点都维持一个**最低费率**，以限制被接受进入其内存池的交易。
 
-This value increases when the memory pool exceeds its [size limit](#maxmempool).
+当内存池超过其[大小限制](#maxmempool)时，该值会增加。
 
-For example, if the memory pool gets too big, the lowest-fee transactions will be evicted and the minimum feerate will increase to prevent lower-fee transactions from entering. Conversely, if the size of the memory pool drops back below its maximum size, the minimum feerate will drop to allow lower-fee transactions back in.
+例如，如果内存池变得太大，手续费最低的交易将被逐出，并且最低费率将增加以防止费率较低的交易进入。相反，如果内存池的大小降回到其最大大小以下，最低费率将下降以允许费率较低的交易重新进入。
 
-The default minimum mempool fee is **1 sat/byte**.
+默认的最低内存池费用是 **1 sat/byte**。
 
-> When transactions are evicted from the mempool due to being at the bottom of a too-large mempool when sorted by feerate, the effective minrelayfee is raised to be the feerate of the evicted transactions.
+> 当交易因为在按费率排序时处于太大内存池的底部而被逐出内存池时，有效的 minrelayfee 将提高为被逐出交易的费率。
 >
-> It continuously goes down, very slowly, halving every 3 to 12 hours, until it has to be bumped again due to an eviction.
+> 它会连续下降，非常缓慢，每 3 到 12 小时减半一次，直到由于再次逐出而不得不再次调高。
 
 Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/58083/is-it-possible-to-set-a-dynamic-minrelaytxfee)
 
-### Calculation
+### 计算
 
-This minimum feerate is controlled by `minrelayfee`.
+该最低费率由 `minrelayfee` 控制。
 
-* `minrelayfee` (dynamic) – This is the maximum of the following two values:
-  + `minmempoolfee` (dynamic) – An internal value that moves up and down when your mempool hits its `maxmemool` size.
-  + `minrelaytxfee` (static) – A fixed value that you can set in your node's [configuration file](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md).
+* `minrelayfee` (动态) – 这是以下两个值中的最大值：
+  + `minmempoolfee` (动态) – 当你的内存池达到其 `maxmempool` 大小时上下变动的内部值。
+  + `minrelaytxfee` (静态) – 你可以在节点的[配置文件](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md)中设置的固定值。
 
-So in other words, `minmempoolfee` is an internally-calculated value that dynamically adjusts based on the size of your mempool, and you can override this by setting a permanent minimum using `minrelaytxfee`. When Bitcoin is running, `minrelayfee` (the effective minimum feerate) is the greater of these two values.
+所以换句话说，`minmempoolfee` 是一个内部计算的值，根据你内存池的大小动态调整，你可以通过使用 `minrelaytxfee` 设置一个永久的最小值来覆盖它。当 Bitcoin 运行时，`minrelayfee`（有效最低费率）是这两个值中较大的那个。
 
-## Structure
+## 结构
 
-Does the memory pool have a structure?
+内存池有结构吗？
 
-The memory pool doesn't have a defined structure; it's just a **pool of unconfirmed transactions**.
+内存池没有定义的结构；它只是一个**未确认交易的池**。
 
-However, the transactions in the memory pool include some additional [metadata](#getmempoolentry) to help with sorting for inclusion in a [candidate block](/docs/technical/mining/candidate-block.md).
+但是，内存池中的交易包括一些额外的[元数据](#getmempoolentry)，以帮助排序以包含在[候选区块](/docs/technical/mining/candidate-block.md)中。
 
-This metadata includes things like; *[size](/docs/technical/transaction/size.md)*, *[fee](/docs/technical/transaction/fee.md)*, *[descendants](#descendants)*, and *[ancestors](#ancestors)*.
+该元数据包括诸如：*[大小](/docs/technical/transaction/size.md)*、*[手续费](/docs/technical/transaction/fee.md)*、*[后代](#descendants)* 和 *[祖先](#ancestors)* 之类的信息。
 
-### Descendants
+### 后代
 
 [<img src="../../images/diagrams_png_memory-pool-descendants.png" alt="Diagram showing the descendants of a transaction in the memory pool." width="499" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-descendants.png)
 
-A descendant is the **child of a memory pool transaction**.
+后代是**内存池交易的子项**。
 
-In other words, it's a transaction that *spends an existing memory pool transaction*. So if a transaction is sitting in the memory pool, it's possible to create a *child* transaction that spends the [output](/docs/technical/transaction/output.md)(s) of that transaction, and send that transaction into the memory pool too.
+换句话说，它是一笔*花费现有内存池交易*的交易。所以如果一笔交易正处于内存池中，就可以创建一笔花费该交易[输出](/docs/technical/transaction/output.md)的*子*交易，并将该交易也送入内存池。
 
-Therefore, a transaction can have multiple descendants whilst it's sat in the memory pool.
+因此，交易在内存池中时可以有多个后代。
 
-**The parent of a child transaction must always get mined first.** A child transaction *depends* on its parent getting mined before it can get mined (because otherwise it would be trying to spend bitcoins that do not exist). The parent could get mined in an earlier block, or higher up in the same block as the child. Either way, you can't mine a child transaction without its parent.
+**子交易的父项必须始终先被开采。** 子交易*依赖*于其父项被开采后它才能被开采（因为否则它将尝试花费不存在的比特币）。父项可以在较早的区块中被开采，或者在与子项相同的区块中较高位置被开采。无论哪种方式，你都无法在没有父项的情况下开采子交易。
 
-**Descendant Limits.** A memory pool transaction can have a maximum of 25 descendants. The total size of the descendants is also limited to 101,000 [virtual bytes](/docs/technical/transaction/size.md#vbytes) (101 kvB). (see [policy.h](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.h))
+**后代限制。** 内存池交易最多可以有 25 个后代。后代的总大小也限制在 101,000 个[虚拟字节](/docs/technical/transaction/size.md#vbytes)（101 kvB）。（参见 [policy.h](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.h)）
 
-#### Descendant Feerate
+#### 后代费率
 
-Memory Pool Eviction
+内存池驱逐
 
 [<img src="../../images/diagrams_png_memory-pool-descendant-fee-rate.png" alt="Diagram showing the descendant feerate as the average feerate of a transaction and all of its descendants." width="745" height="567" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-descendant-fee-rate.png)
 
-The descendant feerate is the ***average feerate* of a transaction and all its descendants**.
+后代费率是**一笔交易及其所有后代的*平均费率***。
 
-It's used when determining *which transactions to evict* from the memory pool.
+它用于决定*从内存池中逐出哪些交易*。
 
-When a node's memory pool reaches its size limit, it will look to evict the lowest fee transactions first. But before evicting a transaction, it will look at its descendant feerate to see if it's worth keeping it in the memory pool.
+当节点的内存池达到其大小限制时，它会首先逐出手续费最低的交易。但在逐出交易之前，它会查看其后代费率，以确定是否值得将其保留在内存池中。
 
-For example:
+例如：
 
-* **Higher Descendant Feerate:** A single transaction may have a low-enough feerate to make it a candidate for eviction. However, if there is a descendant transaction with a very large feerate attached to it, the descendant feerate will be higher, so it might be worth keeping that particular transaction because it's more likely it will get mined into a block in the near future (because you can't mine a high-fee descendant without its parent).
-* **Lower Descendant Feerate:** If a single transaction has a low enough feerate for eviction *and* the descendant feerate is the same (or lower), then we can happily evict that transaction and all of the descendants. This is because all the descendants *depend* on that transaction, so they're not going to be able to get mined into a block without it.
+* **较高的后代费率：** 单个交易的费率可能足够低，使其成为被逐出的候选交易。但是，如果附加了一个非常高费率的后代交易，后代费率就会更高，因此可能值得将该特定交易保留在内存池中，因为它更有可能在不久的将来被开采到区块中（因为你无法在没有父项的情况下开采高手续费的后代）。
+* **较低的后代费率：** 如果单个交易的费率足够低可以被逐出，*并且*后代费率相同（或更低），那么我们可以很愉快地逐出该交易及其所有后代。这是因为所有的后代都*依赖*于该交易，所以在没有它的情况下，它们将无法被开采到区块中。
 
-**Average Feerate.** The average feerate is the sum of the transaction fees divided by the sum of the transaction sizes. It's the same [feerate](/docs/technical/transaction/fee.md#feerates) calculation as with a single transaction, but spread across multiple transactions.
+**平均费率。** 平均费率是交易手续费之和除以交易大小之和。它与单笔交易的[费率](/docs/technical/transaction/fee.md#feerates)计算相同，但分摊在多笔交易中。
 
-### Ancestors
+### 祖先
 
 [<img src="../../images/diagrams_png_memory-pool-ancestors.png" alt="Diagram showing the ancestors of a transaction in the memory pool." width="499" height="389" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-ancestors.png)
 
-An ancestor is the **parent of a memory pool transaction**.
+祖先是**内存池交易的父项**。
 
-A memory pool transaction *depends* on its ancestor(s) for getting mined into a block. This is because you can't include a transaction in a block that spends an [output](/docs/technical/transaction/output.md) that doesn't exist (or hasn't been created yet).
+内存池交易*依赖*于其祖先被开采到区块中。这是因为你无法在区块中包含一笔花费不存在（或尚未创建）的[输出](/docs/technical/transaction/output.md)的交易。
 
-So if you look up any transaction in the memory pool, it's possible that it will have multiple ancestors, and these ancestors must get mined before that particular transaction can get mined.
+所以如果你查找内存池中的任何交易，它都有可能有多个祖先，并且这些祖先必须在该特定交易能够被开采之前先被开采。
 
-#### Ancestor Feerate
+#### 祖先费率
 
-Candidate Block Selection
+候选区块选择
 
 [<img src="../../images/diagrams_png_memory-pool-ancestor-fee-rate.png" alt="Diagram showing the ancestor feerate as the average feerate of a transaction and all of its ancestors." width="745" height="612" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-ancestor-fee-rate.png)
 
-The ancestor feerate is the **average feerate of a transaction and all its ancestors**.
+祖先费率是**一笔交易及其所有祖先的平均费率**。
 
-It's used when determining *which transactions to select* for inclusion in a [candidate block](/docs/technical/mining/candidate-block.md).
+它在确定*选择哪些交易*以包含在[候选区块](/docs/technical/mining/candidate-block.md)中时使用。
 
-A miner has to include all the ancestors of a transaction in their block. So they work out the ancestor feerate for each transaction to determine whether it's worth including that specific transaction *and all of its ancestors*, versus including a different transaction with a similar feerate (but without any ancestors).
+矿工必须在他们的区块中包含一笔交易的所有祖先。所以他们计算每笔交易的祖先费率，以确定与包含另一笔具有相似费率（但没有任何祖先）的交易相比，是否值得包含该特定交易*及其所有祖先*。
 
-For example:
+例如：
 
-* **Lower Ancestor Feerate:** A single transaction may have a high-enough feerate to make it worth including in a candidate block. However, if it has ancestors with very low feerates, this brings the ancestor feerate down and could mean that it's not actually worth including the transaction in the block (compared to other transactions with a lower absolute feerate but no ancestors).
-* **Higher Ancestor Feerate:** A higher ancestor feerate doesn't improve a transaction's chances of getting included in a block, as a miner can simply mine the ancestors and ignore the current transaction if the feerate isn't high enough.
+* **较低的祖先费率：** 单个交易可能具有足够高的费率，值得将其包含在候选区块中。但是，如果它具有费率非常低的祖先，这会降低祖先费率，并且可能意味着实际上不值得将该交易包含在区块中（与具有较低绝对费率但没有祖先的其他交易相比）。
+* **较高的祖先费率：** 较高的祖先费率不会提高交易被包含在区块中的机会，因为如果费率不够高，矿工可以简单地开采祖先而忽略当前交易。
 
-**[Child Pays For Parent (CPFP)](/docs/technical/transaction/fee.md#cpfp).** You can increase the chances of getting a memory pool transaction mined by creating a child with a large fee. This will increase the average feerate, which makes the parent transaction more attractive to a miner.
+**[子凭父贵 (CPFP)](/docs/technical/transaction/fee.md#cpfp)。** 你可以通过创建一个带高额手续费的子交易来增加内存池交易被开采的机会。这将增加平均费率，从而使父交易对矿工更具吸引力。
 
-## Location
+## 位置
 
-Where is the memory pool stored?
+内存池存储在哪里？
 
-The memory pool is stored in [RAM](https://www.crucial.com/articles/about-memory/support-what-does-computer-memory-do).
+内存池存储在 [RAM](https://www.crucial.com/articles/about-memory/support-what-does-computer-memory-do) 中。
 
-This means memory pool transactions can be **accessed as quickly as possible**, which provides multiple benefits:
+这意味着内存池交易可以**以最快的速度被访问**，这提供了多重好处：
 
-* **Faster validation of new transactions.** Each new transaction needs to be checked to see if it conflicts with any of the transactions currently in the memory pool. Keeping memory pool transactions in RAM allows nodes to validate and relay new transactions more rapidly.
-* **Faster relay of new blocks.** Every new block a node receives needs to be validated before it can be written to their blockchain and relayed to other nodes. If most of the transactions in the block are already in a node's mempool, it speeds up the validation of the block (as most of the transaction will have already been validated).
-* **Faster candidate block construction.** Miners need to grab transactions from the memory pool when constructing their candidate blocks. If all of the memory pool transactions are held in RAM, it makes it much faster to sort them for selection.
+* **更快验证新交易。** 需要检查每笔新交易是否与当前内存池中的任何交易冲突。将内存池交易保留在 RAM 中允许节点更迅速地验证和中继新交易。
+* **更快中继新区块。** 节点收到的每个新区块都需要在写入其区块链并中继给其他节点之前进行验证。如果区块中的大多数交易已经存在于节点的内存池中，这会加快区块的验证速度（因为大多数交易已经过验证）。
+* **更快构建候选区块。** 矿工在构建其候选区块时需要从内存池中获取交易。如果所有的内存池交易都保留在 RAM 中，那么对它们进行排序以进行选择就会快得多。
 
-In short, keeping the memory pool in RAM (as opposed to writing and reading to disk) helps a node to run more efficiently.
+简而言之，将内存池保留在 RAM 中（而不是读取和写入磁盘）有助于节点更高效地运行。
 
-This also explains why the memory pool has a relatively "small" default [size](#maxmempool) of 300 MB (as RAM space is much smaller than disk space on a typical computer). However, this is still large enough to hold *multiple blocks* worth of transaction data in memory.
+这也解释了为什么内存池的默认[大小](#maxmempool)相对“较小”，为 300 MB（因为在典型计算机上，RAM 空间比磁盘空间小得多）。然而，这仍然足够大，可以在内存中保存*多个区块*份量的交易数据。
 
-## Commands
+## 命令
 
-There are three main commands for getting information about the memory pool from Bitcoin Core:
+从 Bitcoin Core 获取有关内存池信息的主要命令有三个：
 
 ### `bitcoin-cli getmempoolinfo`
 
-Shows statistics about your node's memory pool.
+显示有关你节点内存池的统计信息。
 
 ```
 $ bitcoin-cli getmempoolinfo
@@ -358,13 +353,13 @@ $ bitcoin-cli getmempoolinfo
 
 ### `bitcoin-cli getrawmempool`
 
-Shows the [TXIDs](/docs/technical/transaction/input/txid.md) for all the transactions in your node's memory pool.
+显示你节点内存池中所有交易的 [txid](/docs/technical/transaction/input/txid.md)。
 
 ### `bitcoin-cli getmempoolentry <txid>`
 
-Shows the details (including metadata) about a specific transaction in your node's memory pool.
+显示有关你节点内存池中特定交易的详细信息（包括元数据）。
 
-For example:
+例如：
 
 ```
 {
@@ -394,19 +389,19 @@ For example:
 }
 ```
 
-## Notes
+## 备注
 
-* **There is no such thing as "*the* memory pool".** In other words, there is no single memory pool that all new transactions go into, as each node keeps their own independent memory pool. As a result, the memory pools across nodes on the network will be slightly different at any given time.
+* **没有像“*那个*内存池”这样的东西。** 换句话说，没有所有新交易都会进入的单一内存池，因为每个节点都保留自己独立的内存池。因此，网络中各节点的内存池在任何给定时间都会略有不同。
 
-  This is due to different mempool settings (e.g. `maxmempool`, `mempoolexpiry`, `minrelaytxfee`), transaction propagation speed, and the fact that there could be conflicting transactions floating around the network at the same time.
+  这是由于不同的内存池设置（例如 `maxmempool`, `mempoolexpiry`, `minrelaytxfee`）、交易传播速度以及网络中可能同时存在冲突交易的事实所致。
 
-  However, there's typically a large overlap where most nodes will have similar transactions in their memory pools, so there's nothing wrong with using the term "the memory pool" to refer to the general state of the memory pools across the network.
+  然而，通常会有一个很大的重叠，即大多数节点在其内存池中都会有相似的交易，因此使用“内存池”一词来指代网络中内存池的总体状态并没有什么错。
 
-  Just be prepared to be corrected on technical forums if you refer to it as "the memory pool".
-* **The default mempool expiry time is 2 weeks.** It used to be 3 days, but it was increased to 14 days in 2017 with the release of Bitcoin Core [v0.14.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.14.0.md).
-* **When a transaction leaves the memory pool, it's as though it never happened.** So don't rely on memory pool transactions when accepting payments. If the transaction leaves the memory pool without getting mined, then it might as well have never taken place. The only way to get it back into the memory pool would be to re-broadcast to the network.
+  只是要做好在技术论坛上被纠正的准备，如果你将其称为“那个内存池”的话。
+* **默认的内存池过期时间为 2 周。** 以前是 3 天，但在 2017 年随着 Bitcoin Core [v0.14.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.14.0.md) 的发布增加到了 14 天。
+* **当交易离开内存池时，就好像它从未发生过一样。** 所以在接受付款时不要依赖内存池交易。如果交易在没有被开采的情况下离开了内存池，那么它也可以被视为从未发生过。将其重新带回内存池的唯一方法是重新广播到网络。
 
-## Resources
+## 资源
 
 * [Brink Podcast – Episode 2: Mempool Ancestors and Descendants](https://brink.dev/podcast/2-mempool-ancestors-descendants/)
 * [Bitcoin Optech – Waiting for confirmation: a series about mempool and relay policy](https://bitcoinops.org/en/blog/waiting-for-confirmation/)

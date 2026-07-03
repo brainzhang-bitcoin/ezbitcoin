@@ -2,39 +2,39 @@
 
 [<img src="../../images/diagrams_png_target.png" alt="Diagram showing the block hash of a candidate block trying to get below a target value." width="790" height="427" />](https://static.learnmeabitcoin.com/diagrams/png/target.png)
 
-Current Target:
+当前目标值：
 
-Height: [956,480](/explorer/956480) (the upcoming block)
+高度: [956,480](/explorer/956480) (即将到来的区块)
 
 `000000000000000000021a420000000000000000000000000000000000000000`
 
-The target is a number that a [block hash](/docs/technical/block/hash.md) for a [candidate block](/docs/technical/mining/candidate-block.md) must get **equal to or below** to add the block on to the [blockchain](/docs/technical/blockchain.md).
+目标值是一个数字，[候选区块](/docs/technical/mining/candidate-block.md)的[区块哈希](/docs/technical/block/hash.md)必须**小于或等于**该数字，才能将该区块添加到[区块链](/docs/technical/blockchain.md)中。
 
-It is used during the process of [mining](/docs/technical/mining.md).
+它在[挖矿](/docs/technical/mining.md)过程中使用。
 
-The target is adjusted every 2016 blocks (roughly every two weeks) to try and ensure that blocks are mined **once every 10 minutes** on average. This creates a *consistent time* between blocks, and a *consistent issuance* of new bitcoins (via the [block reward](/docs/technical/mining/block-reward.md)).
+目标值每 2016 个区块（大约每两周）调整一次，以试图确保平均**每 10 分钟**挖掘一个区块。这在区块之间创造了*一致的时间*，以及新比特币的*一致发行*（通过[区块奖励](/docs/technical/mining/block-reward.md)）。
 
-> To compensate for increasing hardware speed and varying interest in running nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour. If they're generated too fast, the difficulty increases.
+> 为了补偿不断增加的硬件速度以及随着时间推移运行节点的不同兴趣，工作量证明的难度由针对每小时平均区块数的移动平均线决定。如果它们生成得太快，难度就会增加。
 
-Satoshi Nakamoto, [Bitcoin Whitepaper](/bitcoin.pdf)
+中本聪，[比特币白皮书](/bitcoin.pdf)
 
-## Period
+## 周期
 
-When does the target adjust?
+目标值何时调整？
 
-The target adjusts **every 2016 blocks**.
+目标值**每 2016 个区块**调整一次。
 
-This is roughly every *two weeks*.
+这大约是*每两周*一次。
 
-Blocks are mined roughly every 10 minutes, and there are 20,160 minutes in two weeks.
+区块大约每 10 分钟挖掘一次，两周内有 20,160 分钟。
 
-## History
+## 历史
 
-Here are the block heights and target values for every target adjustment in Bitcoin's history:
+以下是比特币历史上每次目标值调整的区块高度和目标值：
 
-| Height | Target | Adjustment\* | Time |
+| 高度 | 目标值 | 调整\* | 时间 |
 | --- | --- | --- | --- |
-| 957600 | Next adjustment in 1120 blocks (7 days, 18 hours, 40 minutes) |  |  |
+| 957600 | 下一次调整在 1120 个区块后 (7 天, 18 小时, 40 分钟) |  |  |
 | [955584](/explorer/block/00000000000000000001e265c627e0a27ad347deb4d6b921f249eddfbf78e011) | `000000000000000000021a420000000000000000000000000000000000000000` | x 0.93324122423824 | 27 Jun 2026, 02:00:07 |
 | [953568](/explorer/block/0000000000000000000090b6c2d9f1e99b76c4c9b54d391fa9d02187425678d9) | `0000000000000000000240c30000000000000000000000000000000000000000` | x 1.1122402091133 | 14 Jun 2026, 00:23:57 |
 | [951552](/explorer/block/00000000000000000001b472f1922f86148c8286609fb14be39e12b8bd14bb64) | `00000000000000000002068f0000000000000000000000000000000000000000` | x 0.98310042730296 | 29 May 2026, 10:29:46 |
@@ -510,179 +510,175 @@ Here are the block heights and target values for every target adjustment in Bitc
 | [4032](/explorer/block/00000000ca4b69045a03d7b20624def97a5366418648d5005e82fd3b345d20d0) | `00000000ffff0000000000000000000000000000000000000000000000000000` | x 1 | 12 Feb 2009, 19:16:30 |
 | [2016](/explorer/block/00000000a141216a896c54f211301c436e557a8d55900637bbdce14c6c7bddef) | `00000000ffff0000000000000000000000000000000000000000000000000000` | x 1 | 27 Jan 2009, 13:38:51 |
 | [0](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) | `00000000ffff0000000000000000000000000000000000000000000000000000` |  | 03 Jan 2009, 18:15:05 |
+\* 本表中的调整比例是根据一个目标值到下一个目标值的变化计算出来的。*实际的*调整比例是根据区块之间的时间计算出来的。详情请参见每个区块。
 
-\* The adjustment ratios in this table are calculated based on the change from one target to the next. The *actual* adjustment ratios are calculated based on the time between blocks. See each block for details.
+* **目标值调整限制在 4 倍以内。** 因此最大调整为 x0.25 或 x4。这是为了防止从一个目标值到下一个目标值发生过大的调整。
+* 目标值在最初的 15 个调整周期内没有变化，因为区块的开采速度*慢于*每 10 分钟一个，而且目标值已经处于最大值。
 
-* **Target adjustments are limited by a factor of 4.** So the maximum adjustment is either x0.25 or x4. This is to prevent overly-large adjustments from one target to the next.
-* The target did not change for the first 15 adjustment periods because blocks were mined *slower* than every 10 minutes, and the target was already at the maximum value.
+## 调整
 
-## Adjustment
+如何计算目标值？
 
-How is the target calculated?
-
-Previous Adjustment
-Current Target
-
-0x
-
-`0 bytes`
-
-
-Time (seconds)
-
-Actual
-
-0d
-
-Expected
-
-0d
-
-The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds.
-
-Ratio
-
-The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target.
-
-New Target (Full Precision)
-
-0x
-
-New Target
+上一次调整
+当前目标值
 
 0x
 
 `0 bytes`
 
-Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining.
+时间 (秒)
+
+实际
+
+0d
+
+预期
+
+0d
+
+目标值调整周期为 2016 个区块。一个区块平均每 600 秒（10 分钟）开采一次，因此预期时间为 2016 \* 600 = 1209600 秒。
+
+比例
+
+*实际*时间除以*预期*时间。我们将当前目标值乘以这个比例来得到新的目标值。
+
+新目标值 (全精度)
+
+0x
+
+新目标值
+
+0x
+
+`0 bytes`
+
+注意：此目标值已被稍微截断，以便存储在区块头的 bits 字段中，这是挖矿时实际使用的目标值。
 
 
 
 0 secs
 
-The target for the first block was set at:
+第一区块的目标值设定为：
 
-Height: [0](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) (Genesis Block)
+高度: [0](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) (创世区块)
 
 `00000000ffff0000000000000000000000000000000000000000000000000000`
 
 [<img src="../../images/diagrams_png_target-initial.png" alt="Diagram showing the target for the genesis block." width="977" height="215" />](https://static.learnmeabitcoin.com/diagrams/png/target-initial.png)
 
-This initial target value is hard-coded into the source code of every Bitcoin node (see [chainparams.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp)). It's also the maximum possible target value. It was most likely a best-guess by Satoshi at what be a good starting point for a difficult-enough target that would result in a 10-minute interval between new blocks.
+这个初始目标值是硬编码在每个比特币节点的源代码中的（参见 [chainparams.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp)）。它也是可能的最大目标值。这很可能是中本聪对一个足够困难的目标值的一个最佳推测，该目标值将导致新区块之间的时间间隔为 10 分钟。
 
-On every 2016th block, each node will look at the time between the previous 2015 blocks and work out if they were mined faster or slower than 10 minutes on average.
+在每第 2016 个区块上，每个节点都会查看前 2015 个区块之间的时间，并算出它们平均开采的速度是快于还是慢于 10 分钟。
 
 [<img src="../../images/diagrams_png_target-period.png" alt="Diagram showing the target period between the genesis block and the 2016th block along with the timestamp of each block." width="983" height="189" />](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
 
-Each block contains a [timestamp](/docs/technical/block/time.md) in its block header. This timestamp is in *Unix Time*, which is the number of seconds since 01 Jan 1970, 00:00:00.
+每个区块在其区块头中都包含一个[时间戳](/docs/technical/block/time.md)。此时间戳采用 *Unix 时间*，即自 1970年1月1日 00:00:00 以来的秒数。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix 时间
 
-Unix Time
+Unix 时间
 
 0d
 
+当前
 
-Now
-
-Date
-
+日期
 
 0 secs
 
-If blocks during this period are mined *faster* than every 10 minutes, the target will be *adjusted downwards* to make it **more difficult** to get below the target for the next period of blocks.
+如果在此期间开采区块的速度*快于*每 10 分钟，则目标值将*向下调整*，以使下一个周期的区块**更难**低于目标值。
 
 [<img src="../../images/diagrams_png_target-period-adjust-down.png" alt="Diagram showing the target value adjusting downwards due to blocks being mined more quickly than expected." width="983" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/target-period-adjust-down.png)
 
-Conversely, if blocks are mined *slower* than every 10 minutes, the target will be *adjusted upwards* to make it **less difficult** to get below the target for the next period of blocks.
+相反，如果开采区块的速度*慢于*每 10 分钟，则目标值将*向上调整*，以使下一个周期的区块**不那么难**低于目标值。
 
 [<img src="../../images/diagrams_png_target-period-adjust-up.png" alt="Diagram showing the target value adjusting upwards due to blocks being mined more slowly than expected." width="983" height="480" />](https://static.learnmeabitcoin.com/diagrams/png/target-period-adjust-up.png)
 
-As a result, each node regularly recalculates the target to maintain a 10-minute average interval between new blocks as miners join and leave the network over time.
+因此，随着矿工随时间推移加入和离开网络，每个节点都会定期重新计算目标值，以维持新区块之间 10 分钟的平均间隔。
 
-See the [code](#code) at the bottom of the page for a worked example.
+参见页面底部的[代码](#code)以获取一个具体示例。
 
-## Synchronization
+## 同步
 
-How do nodes calculate the same target?
+节点如何计算相同的目标值？
 
-> Everyone does the same calculation with the same chain data, so they all get the same result at the same link in the chain.
+> 每个人都使用相同的链 data 进行相同的计算，因此他们都在链中的相同链接处得到相同的结果。
 
-Satoshi Nakamoto, [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.org/emails/cryptography/10/#selection-73.260-73.383)
+中本聪，[比特币 P2P 电子现金论文](https://satoshi.nakamotoinstitute.org/emails/cryptography/10/#selection-73.260-73.383)
 
-Each [node](/docs/technical/networking/node.md) on the network operates *independently*, so there is no central authority to determine the current target value.
+网络上的每个[节点](/docs/technical/networking/node.md)都*独立*运行，因此没有中央 authority 来确定当前的目标值。
 
-However, because nodes always adopt the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks as their blockchain, they will each **calculate the same target**.
+然而，由于节点总是采用最长的区块链作为其区块链，它们都将**计算出相同的目标值**。
 
-For example, when you run Bitcoin for the first time, your node will perform the [initial block download](https://btcinformation.org/en/developer-guide#initial-block-download) and calculate the targets as it goes. And because you're receiving the same blocks as everyone else, you will end up calculating the same current target when you reach the tip of the blockchain.
+例如，当你第一次运行比特币时，你的节点将执行[初始区块下载](https://btcinformation.org/en/developer-guide#initial-block-download)并在过程中计算目标值。而且因为你收到的区块与其他人相同，所以当你到达区块链顶端时，你最终会计算出相同的当前目标值。
 
 [<img src="../../images/diagrams_png_target-independent-calculation.png" alt="Diagram showing the initial block download and target calculations." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/target-independent-calculation.png)
 
-Furthermore, all nodes continually update to the same version of the blockchain (as they will always adopt the longest available chain of blocks). Therefore, nodes will also calculate the same target value as each new block is mined.
+此外，所有节点都不断更新到相同版本的区块链（因为它们总是采用最长可用区块链）。因此，随着每个新区块的开采，节点也将计算出相同的目标值。
 
 [<img src="../../images/diagrams_png_target-independent-calculation-agree.png" alt="Diagram showing nodes on the network recalculating the target when new blocks are mined." width="983" height="658" />](https://static.learnmeabitcoin.com/diagrams/png/target-independent-calculation-agree.png)
 
-As a result, despite the fact nodes calculate the target independently, they will each calculate the same target because they share the same view of the blockchain.
+因此，尽管节点独立计算目标值，但由于它们共享相同的区块链视图，因此它们都会计算出相同的目标值。
 
-## Purpose
+## 目的
 
-Why does Bitcoin use a target?
+为什么比特币使用目标值？
 
-The target **regulates the speed at which new blocks are added on to the blockchain**.
+目标值**调节新区块添加到区块链的速度**。
 
-This has two benefits:
+这有两个好处：
 
-### 1. Gives blocks time to propagate across the network.
+### 1. 给区块在网络中传播的时间。
 
-> If broadcasts turn out to be slower in practice than expected, the target time between blocks may have to be increased to avoid wasting resources. We want blocks to usually propagate in much less time than it takes to generate them, otherwise nodes would spend too much time working on obsolete blocks.
+> 如果广播在实践中证明比预期的要慢，则可能必须增加区块之间的目标时间，以避免浪费资源。我们希望区块的传播时间通常远远少于生成它们所需的时间，否则节点将花费太多时间在过时的区块上工作。
 
-Satoshi Nakamoto, [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.org/emails/cryptography/12/#selection-63.209-63.512)
+中本聪，[比特币 P2P 电子现金论文](https://satoshi.nakamotoinstitute.org/emails/cryptography/12/#selection-63.209-63.512)
 
-It's preferable to have miners working on extending the *same chain of blocks* as much as possible. For this to work, we need to **allow time for new blocks to propagate across the network** before the next block gets mined.
+最好让矿工尽可能多地致力于延长*相同的区块链*。为此，我们需要**在挖掘下一个区块之前，为新区块在网络中的传播预留时间**。
 
 [<img src="../../images/diagrams_png_target-block-propagation.png" alt="Diagram showing a newly-mined block propagating across nodes on the network." width="983" height="552" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation.png)
 
-If blocks are being mined faster than they can be broadcast across the network, it will result in miners regularly working on top of "old" blocks in the blockchain (because they haven't had a chance to receive the latest blocks yet).
+If 区块的开采速度快于它们在网络中的广播速度，这将导致矿工经常在区块链中的“旧”区块之上工作（因为他们还没有机会收到最新区块）。
 
-This will result in miners building multiple competing blockchains; only one of these will become the [longest](/docs/technical/blockchain/longest-chain.md), so some miners will end up **wasting energy** working to build on top of a competing chain only for it to be left behind due to a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
+这将导致矿工构建多个竞争的区块链；其中只有一个会成为[最长链](/docs/technical/blockchain/longest-chain.md)，因此一些矿工最终将**浪费能量**致力于在竞争链之上进行构建，结果却因为[链重组](/docs/technical/blockchain/chain-reorganization.md)而被抛在后面。
 
 [<img src="../../images/diagrams_png_target-block-propagation-mining-split.png" alt="Diagram showing miners working on building two different blockchains due to not receiving the latest blocks quickly enough." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-split.png)
 
-Therefore, this time delay (block interval) allows blocks to propagate the network so that more miners can adopt the longest available chain, which helps to **concentrate the network's mining power** on extending the *same* chain of blocks.
+因此，这种时间延迟（区块间隔）允许区块传播网络，以便更多矿工能够采用最长的可用链，这有助于**集中网络的挖矿能力**来延长*相同*的区块链。
 
 [<img src="../../images/diagrams_png_target-block-propagation-mining-concentrated.png" alt="Diagram showing miners focused on extending the same blockchain due to the latest block having time to propagate the network." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-concentrated.png)
 
-### 2. A consistent issuance of new bitcoins.
+### 2. 持续发行新比特币。
 
-> Coins have to get initially distributed somehow, and a constant rate seems like the best formula.
+> 代币必须以某种方式最初分发，而恒定的速率似乎是最好的公式。
 
-Satoshi Nakamoto, [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.org/emails/cryptography/5/#selection-57.0-57.97)
+中本聪，[比特币 P2P 电子现金论文](https://satoshi.nakamotoinstitute.org/emails/cryptography/5/#selection-57.0-57.97)
 
-Bitcoin is a *currency*, so having a fixed rate of new bitcoins introduced into the system helps to provide stability.
+比特币是一种*货币*，因此将新比特币引入系统的固定速率有助于提供稳定性。
 
 [<img src="../../images/diagrams_png_target-block-reward-constant-rate.png" alt="Diagram showing block rewards being issued at a constant rate." width="786" height="469" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-reward-constant-rate.png)
 
-So thanks to the target, you can be confident that new bitcoins will be minted at a predictable rate.
+因此，多亏了目标值，你可以确信新比特币将以可预测的速率铸造。
 
-## Location
+## 位置
 
-Where can you find the target?
+在哪里可以找到目标值？
 
-The target gets stored in the [bits](/docs/technical/block/bits.md) field in the [block header](/docs/technical/block.md#header) of every block.
+目标值存储在每个区块的[区块头](/docs/technical/block.md#header)的 [bits](/docs/technical/block/bits.md) 字段中。
 
 [<img src="../../images/diagrams_png_target-block-header-bits.png" alt="Diagram showing the target being stored in the bits field of a block header." width="833" height="212" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-header-bits.png)
 
-The *bits* field is a *compact representation* of the target (to save space in the block header). But you can easily convert between the bits representation and the full target.
+*bits* 字段是目标值的*紧凑表示*（以节省区块头中的空间）。但你可以轻松地在 bits 表示和完整目标值之间进行转换。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标值 Bits
 
-Current
+当前
 
-Random Example
+随机示例
 
-Height:
+高度：
 
-Target
+目标值
 
 0x
 
@@ -690,17 +686,15 @@ Target
 
 Bits`0 bytes`
 
-
-
 0 secs
 
-## Commands
+## 命令
 
 ### `bitcoin-cli getblocktemplate`
 
-This is the simplest way to get the **current target**. When you request a block template (for [mining](/docs/technical/mining.md) purposes) it will also return the current target.
+这是获取**当前目标值**最简单的方法。当你请求区块模板（出于[挖矿](/docs/technical/mining.md)目的）时，它也将返回当前目标值。
 
-This command returns a lot of data, so it's best to [grep](https://www.man7.org/linux/man-pages/man1/grep.1.html) for the target.
+此命令返回大量数据，因此最好对目标值进行 [grep](https://www.man7.org/linux/man-pages/man1/grep.1.html)。
 
 ```
 $ bitcoin-cli getblocktemplate '{"rules": ["segwit"]}' | grep target
@@ -710,44 +704,42 @@ $ bitcoin-cli getblocktemplate '{"rules": ["segwit"]}' | grep target
 
 ### `bitcoin-cli getdifficulty`
 
-Alternatively, to get the **current target** you can ask for the current [difficulty](/docs/beginners/guide/difficulty.md), which you can then convert to the target:
+或者，要获取**当前目标值**，你可以询问当前的[难度](/docs/beginners/guide/difficulty.md)，然后你可以将其转换为目标值：
 
 ```
 $ bitcoin-cli getdifficulty
 133869853540305.41
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Difficulty
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 难度
 
-Current
+当前
 
-Random Example
+随机示例
 
-Height:
+高度：
 
-Maximum Target
+最大目标值
 
 0x
 
-Target
+目标值
 
 0x
 
 `0 bytes`
 
-Difficulty
+难度
 
 0d
 
-
-
 0 secs
 
-**Converting from difficulty to target is not always accurate.** The difficulty is a floating point number calculated *from* the change between the first and current target value, so it can lose precision and give you an inaccurate result.
+**从难度转换为目标值并不总是准确的。** 难度是根据第一个目标值和当前目标值之间的变化计算出来的浮点数，因此它可能会失去精度并给你一个不准确的结果。
 
 ### `bitcoin-cli getblockheader [block hash]`
 
-This command allows you to find a **previous target** for a specific block. The target at the time of mining is stored in every block header in [bits](/docs/technical/block/bits.md) format, which you can convert to a full target value.
+此命令允许你找到特定区块的**先前目标值**。挖矿时的目标值以 [bits](/docs/technical/block/bits.md) 格式存储在每个区块头中，你可以将其转换为完整的目标值。
 
 ```
 $ bitcoin-cli getblockheader 000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad133b7fae594cf
@@ -770,15 +762,15 @@ $ bitcoin-cli getblockheader 000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad
 }
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标值 Bits
 
-Current
+当前
 
-Random Example
+随机示例
 
-Height:
+高度：
 
-Target
+目标值
 
 0x
 
@@ -786,18 +778,16 @@ Target
 
 Bits`0 bytes`
 
-
-
 0 secs
 
-You can get the target for the most recent block in the chain using this one-liner:  
+你可以使用以下单行命令获取链中最新区块的目标值：  
 `$ bitcoin-cli getblockheader $(bitcoin-cli getblockhash $(bitcoin-cli getblockcount))`
 
-## Code
+## 代码
 
-Here's some example Ruby code for calculating target adjustments.
+这里有一些用于计算目标值调整的 Ruby 示例代码。
 
-This code works out the new target for block [403,200](/explorer/block/000000000000000000c4272a5c68b4f55e5af734e88ceab09abf73e9ac3b6d01), using the timestamps from blocks [401,184](/explorer/block/000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad133b7fae594cf) and [403,199](/explorer/block/00000000000000000404b6939e6c35a5448386e5d58f318c82ce2fefb7d73e47).
+此代码使用区块 [401,184](/explorer/block/000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad133b7fae594cf) 和 [403,199](/explorer/block/00000000000000000404b6939e6c35a5448386e5d58f318c82ce2fefb7d73e47) 的时间戳，计算出区块 [403,200](/explorer/block/000000000000000000c4272a5c68b4f55e5af734e88ceab09abf73e9ac3b6d01) 的新目标值。
 
 ```
 # 403,200 - NEW TARGET
@@ -842,39 +832,39 @@ puts target
 # 000000000000000006a4c3000000000000000000000000000000000000000000
 ```
 
-* You can get the timestamp for a block with `bitcoin-cli getblockheader [block hash]`
-* You can get the block hash for a block at a specific height with `bitcoin-cli getblockhash [height]`
+* 你可以使用 `bitcoin-cli getblockheader [block hash]` 获取区块的时间戳。
+* 你可以使用 `bitcoin-cli getblockhash [height]` 获取特定高度区块的区块哈希。
 
-**Off-by-one error.** Target adjustments are actually calculated using the time across **2015** blocks (e.g. 403199 - 401184 = 2015), and not across 2016 blocks as you would expect. This was an implementation error in the code, and it still exists today.
+**差一错误 (Off-by-one error)。** 目标值调整实际上是使用 **2015** 个区块的时间（例如 403199 - 401184 = 2015）来计算的，而不是像你预期的那样使用 2016 个区块。这是代码中的一个实现错误，至今仍然存在。
 
-**Official Target.** The *actual* target that miners need to get below when mining is the truncated target that gets stored in the [bits](/docs/technical/block/bits.md) field. So it's not actually the full-precision target that you get after a target adjustment calculation.
+**官方目标值。** 挖矿时矿工需要低于的*实际*目标值是存储在 [bits](/docs/technical/block/bits.md) 字段中的截断目标值。因此，它实际上不是你在目标值调整计算后获得的全精度目标值。
 
-## FAQs
+## 常见问题
 
-### Why 10 minutes between blocks?
+### 为什么区块之间间隔 10 分钟？
 
-I don't think anyone except Satoshi knows why **10 minutes** was chosen exactly.
+除了中本聪之外，我想没有人确切地知道为什么选择 **10 分钟**。
 
-My guess is that it seemed *long enough* to allow blocks to propagate around the network (to minimize [chain reorganizations](/docs/technical/blockchain/chain-reorganization.md)), and *short enough* to not have to wait too long for new transactions to get mined on to the blockchain.
+我的猜测是，这看起来*足够长*，可以让区块在网络中传播（以最大程度地减少[链重组](/docs/technical/blockchain/chain-reorganization.md)），并且*足够短*，以免为新交易在区块链上被开采等待太久。
 
-And **10** is a nice round number.
+而且 **10** 是一个不错的整数。
 
-### What causes blocks to be mined faster or slower than every 10 minutes?
+### 是什么导致区块被开采的速度快于或慢于每 10 分钟？
 
-Firstly, [mining](/docs/technical/mining.md) is *unpredictable*, so you never know when a miner is going to find the next block with a block hash below the current target.
+首先，[挖矿](/docs/technical/mining.md)是*不可预测的*，所以你永远不知道矿工何时会发现下一个区块哈希低于当前目标值的区块。
 
-Secondly (and most importantly), miners can join and leave the network at any time, which affects the speed at which blocks can be mined. For example, the more miners that join the network, the more [hashing](/docs/technical/cryptography/hash-function.md) there is taking place, and the more likely it is a new block will be mined in under 10 minutes.
+其次（最重要的一点），矿工可以随时加入和离开网络，这会影响区块的开采速度。例如，加入网络的矿工越多，进行的[哈希](/docs/technical/cryptography/hash-function.md)运算就越多，新区块在 10 分钟内被开采出来的可能性就越大。
 
-## Resources
+## 资源
 
-* [pow.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/pow.cpp) – The function `CalculateNextWorkRequired()` adjusts the target.
-* [chainparams.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp) – The initial (and maximum) target value is set by `consensus.powLimit`.
+* [pow.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/pow.cpp) – 函数 `CalculateNextWorkRequired()` 调整目标值。
+* [chainparams.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp) – 初始（和最大）目标值由 `consensus.powLimit` 设置。
 * <https://en.bitcoin.it/wiki/Target>
 * [How is the target in Bitcoin set? Who does this? (bitcoin.stackexchange.com)](https://bitcoin.stackexchange.com/questions/77875/how-is-the-target-in-bitcoin-set-who-does-this)
 * [Why not retarget on every block?](https://bitcoin.stackexchange.com/questions/9305/why-not-retarget-on-every-block)
 * [Why was the target block time chosen to be 10 minutes?](https://bitcoin.stackexchange.com/questions/1863/why-was-the-target-block-time-chosen-to-be-10-minutes)
 * [Gaming the "off-by-one" bug (difficulty re-target based on 2015 instead of 2016 block time span)?](https://bitcoin.stackexchange.com/questions/1511/gaming-the-off-by-one-bug-difficulty-re-target-based-on-2015-instead-of-2016)
 
-### Thanks
+### 致谢
 
-* Thanks to [David Harding](https://dtrt.org/) for pointing out that you can get the target directly from bitcoind using `bitcoin-cli getblocktemplate`.
+* 感谢 [David Harding](https://dtrt.org/) 指出你可以使用 `bitcoin-cli getblocktemplate` 直接从 bitcoind 获取目标值。
