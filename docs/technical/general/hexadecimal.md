@@ -2,15 +2,15 @@
 
 [<img src="../../images/diagrams_png_numbers-hexadecimal-key.png" alt="Table showing hexadecimal numbers with corresponding decimal numbers." width="779" height="79" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-key.png)
 
-The hexadecimal numbering system uses the **digits 0-9 and the characters A-F** to represent the numbers **0-15**.
+十六进制数字系统使用**数字 0-9 和字母 A-F** 来表示 **0-15** 的数字。
 
-So basically the hexadecimal system (16 symbols) is an extension of the decimal system (10 symbols). This means you can represent numbers from 0 to 15 using just one symbol.
+简单来说，十六进制系统（16 个符号）是十进制系统（10 个符号）的扩展。这意味着你只需用一个符号就能表示 0 到 15 之间的数字。
 
-This system is useful for representing [bytes](/docs/technical/general/bytes.md), because half a byte has 16 different combinations, so you can represent a whole byte using just 2 hexadecimal symbols. That's why a lot of the data you see in Bitcoin (e.g. [private keys](/docs/technical/keys/private-key.md), [transactions](/docs/technical/transaction.md)) is in hexadecimal.
+该系统非常适合表示[字节](/docs/technical/general/bytes.md)，因为半个字节有 16 种不同的组合，因此可以用两个十六进制符号来表示一个完整的字节。这就是为什么在比特币中你会看到很多数据（例如[私钥](/docs/technical/keys/private-key.md)、[交易](/docs/technical/transaction.md)）都以十六进制形式呈现。
 
-The letters in hexadecimal can be **uppercase or lowercase**, it doesn't matter (e.g. 1337af is the same as 1337AF).
+十六进制中的字母**大小写均可**，没有区别（例如 1337af 与 1337AF 相同）。
 
-Hexa = 6, Deci = 10. So *hexadeci*mal refers to the fact that there are 16 different characters in this numbering system.
+Hexa = 6，Deci = 10。因此 *hexadeci*mal 表示该数字系统共有 16 个不同的字符。
 
 Binary (Base 2)
 
@@ -32,40 +32,39 @@ Hexadecimal (Base 16)
 
 
 
-
 +1
 
 
 
 0 secs
 
-## Number Prefixes
+## 数字前缀
 
-We use prefixes to identify numbers in hexadecimal, decimal, and binary.
+我们使用前缀来标识十六进制、十进制和二进制数字。
 
-* 0x = Hexadecimal
-* 0d = Decimal
-* 0b = Binary
+* 0x = 十六进制
+* 0d = 十进制
+* 0b = 二进制
 
-For example:
+例如：
 
 * 0x100 = 256
 * 0d100 = 100
 * 0b100 = 4
 
-We don't usually prefix decimal numbers with 0d (unless it makes sense to do so). So if you see 100, you can assume that it's one hundred.
+通常不会用 0d 给十进制数字加前缀（除非确实有意义）。所以如果你看到 100，可以直接认为它是一百。
 
-## Hexadecimal to Decimal
+## 十六进制转十进制
 
 [<img src="../../images/diagrams_png_numbers-hexadecimal-decimal-conversion.png" alt="Diagram showing how to convert hexadecimal to decimal." width="768" height="181" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-decimal-conversion.png)
 
-To convert hexadecimal to decimal, you multiply each character by increasing powers of 16.
+要将十六进制转换为十进制，需要将每个字符乘以 16 的递增幂次。
 
-1. Convert each hexadecimal symbol to its corresponding decimal value.
-2. Multiply each of these decimal values (from smallest to largest) by an increasing power of 16 (e.g. 160, 161, 162, 163, etc.)
-3. Add up all of the results together to get the final decimal value.
+1. 将每个十六进制符号转换为对应的十进制值。
+2. 将这些十进制值（从最小到最大）分别乘以 16 的递增幂次（例如 16⁰、16¹、16²、16³ 等）。
+3. 将所有结果相加，即可得到最终的十进制值。
 
-For example:
+例如：
 
 ```
 Hexadecimal = 02A13B
@@ -80,17 +79,17 @@ A = 10 * 163 = 40960
 Decimal = 0 + 131072 + 40960 + 256 + 48 + 11 = 172347
 ```
 
-This sounds confusing at first, but it's exactly how the decimal system works too. Every number in a decimal value represents 10 to an increasing power (because there are 10 digits in the decimal system, aka "base 10"). For example, the number 123 is saying (1 x 102) + (2 x 101) + 3 x (100), or "one 100, two 10's, and three 1's".
+这听起来有点复杂，但其实和十进制系统的原理完全相同。十进制中每个数位对应 10 的递增幂次（因为十进制有 10 个数字，即"base 10"）。例如，数字 123 表示 (1 × 10²) + (2 × 10¹) + (3 × 10⁰)，即"一个百、两个十、三个一"。
 
-Any number to the power of zero is 1. For example, 100 = 1, and 160 = 1.
+任何数字的零次幂等于 1，例如 10⁰ = 1，16⁰ = 1。
 
-You don't have to be able to convert hexadecimal to decimal in your head, but it's good to remember that ultimately you're just looking at numbers when you're looking at hexadecimal digits and characters.
+你不必在脑海中进行十六进制到十进制的转换，但要记住：你看到十六进制数字和字母时，本质上还是在看数字。
 
-**[Little-Endian](/docs/technical/general/little-endian.md).** Most numbers stored within fields in bitcoin data (e.g. [vout](/docs/technical/transaction.md#structure-inputs-vout), [amount](/docs/technical/transaction.md#structure-outputs-amount)) are in *little-endian* (where the bytes are in reverse order), so you need to reverse the order of bytes first before converting to decimal.
+**[Little-Endian](/docs/technical/general/little-endian.md)。** 比特币数据中大多数字段里存储的整数（例如 [vout](/docs/technical/transaction.md#structure-inputs-vout)、[amount](/docs/technical/transaction.md#structure-outputs-amount)）都采用*小端序*（字节顺序相反），因此在转换为十进制之前需要先颠倒字节顺序。
 
-### Code Examples
+### 代码示例
 
-You can convert hexadecimal strings to decimal in any good programming language. There should be built-in functions to make it easy, so you shouldn't have to perform the conversion manually.
+在任何主流编程语言中都可以将十六进制字符串转换为十进制。通常有内置函数可以轻松完成，无需手动计算。
 
 ```
 # hexadecimal to decimal
@@ -102,15 +101,15 @@ puts "02A13B".to_i(16) #=> 172347
 echo "ibase=16; 02A13B" | bc #=> 172347
 ```
 
-## Decimal to Hexadecimal
+## 十进制转十六进制
 
 [<img src="../../images/diagrams_png_numbers-decimal-hexadecimal-conversion.png" alt="Diagram showing how to convert decimal to hexadecimal." width="620" height="344" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-decimal-hexadecimal-conversion.png)
 
-To convert decimal to hexadecimal, you just need to keep dividing by 16.
+要将十进制转换为十六进制，只需持续除以 16 即可。
 
-The *remainder* of each division gives you the number for each hexadecimal character (from smallest to largest). You then take the result of each division (quotient), and keep going until you cannot divide the remainder any more (i.e. the quotient is zero).
+每次除法的*余数*对应一个十六进制字符（从最小到最大）。然后取每次除法的商继续进行，直到商为零为止。
 
-For example:
+例如：
 
 ```
 Decimal = 6735
@@ -123,9 +122,9 @@ Decimal = 6735
 Hexadecimal = 1A4F
 ```
 
-**Modulus.** The modulus operation (%) returns the *remainder* after division.
+**取模运算。** 取模运算符（%）返回除法后的*余数*。
 
-### Code Examples
+### 代码示例
 
 ```
 # decimal to hexadecimal
@@ -137,23 +136,23 @@ puts 6735.to_s(16) #=> 1a4f
 echo "obase=16; 6735" | bc #=> 1A4F
 ```
 
-## [Bytes](/docs/technical/general/bytes.md)
+## [字节](/docs/technical/general/bytes.md)
 
-What's the use of hexadecimal?
+十六进制有什么用？
 
 [<img src="../../images/diagrams_png_bytes-hexadecimal.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="772" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-hexadecimal.png)
 
-You will encounter lots of hexadecimal characters when working with raw data in Bitcoin. For example, here's a random private key:
+在处理比特币的原始数据时，你会频繁遇到十六进制字符。例如，下面是一个随机私钥：
 
 ```
 b97bb553a077ee8bc49337a4e920ff0535ac2e8a00e22c26660d38663da3b6b6
 ```
 
-This private key represents 32 bytes of data.
+这个私钥代表 32 字节的数据。
 
-Why do we use hexadecimal for showing bytes? Because half of a byte of data has 16 different possible combinations, and there are 16 different hexadecimal characters. Therefore, we can represent half a byte using one single hexadecimal character, and a whole byte using two hexadecimal characters.
+为什么用十六进制来表示字节？因为半个字节有 16 种可能的组合，而十六进制恰好有 16 个字符。因此，可以用一个十六进制字符表示半个字节，用两个十六进制字符表示一个完整的字节。
 
-It's a match made in computing heaven.
+这简直是计算领域天作之合。
 
 Binary
 
@@ -180,15 +179,15 @@ Hexadecimal
 `0`
 `0`
 
-Tip: The *lowest value* bit is on the right →
+提示：*最低位*在右边 →
 
-Tip: Half of a byte is called a "nibble". But that's not important to know for Bitcoin.
+提示：半个字节称为"nibble"（半字节），但这对比特币来说并不重要。
 
-For example, rather than displaying all eight individual [bits](/docs/technical/general/bytes.md#bit) using binary like `10110101`, we can shorten it two hexadecimal characters `B5` instead (because `1011` = `B` and `0101` = `5`).
+例如，与其用二进制显示所有八个[位](/docs/technical/general/bytes.md#bit)（如 `10110101`），不如用两个十六进制字符 `B5` 来缩写（因为 `1011` = `B`，`0101` = `5`）。
 
-So basically, the hexadecimal system is a *convenient* system for displaying raw bytes of data.
+所以简而言之，十六进制系统是一种用于显示原始字节数据的*便捷*系统。
 
-## Resources
+## 参考资料
 
 * [Practical Guide to Binary, Decimal and Hexadecimal Numbers](https://web.archive.org/web/20170628180513/http://www.myhome.org/pg/numbers.html)
 * [A Brief Explanation of Hexadecimal Numbers](https://tseggleston.com/hex-numbers/)
