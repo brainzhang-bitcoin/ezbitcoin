@@ -55,6 +55,16 @@ def test_transform_html_to_markdown():
           <a href="/beginners/wallets/">Wallets</a>
           <a href="/technical/keys-addresses/wif#header">WIF</a>
           <img src="/images/beginners/what-is-bitcoin/btc.png" alt="Bitcoin logo" />
+          <pre class="ruby relative">
+            <div class="clipboard-code pointer" data-clipboard-target="code">
+              <div class="copy"><img src="/assets/icons/clipboard-white.svg" alt="Copy" /></div>
+            </div>
+            <code>
+              def hello()
+                puts "world"
+              end
+            </code>
+          </pre>
         </div>
       </body>
     </html>
@@ -69,7 +79,11 @@ def test_transform_html_to_markdown():
     # Check that links are rewritten correctly
     assert "[Wallets](/docs/beginners/wallets.md)" in md_content
     assert "[WIF](/docs/technical/keys-addresses/wif.md#header)" in md_content
+    # Check code block conversion and clipboard stripping
+    assert "def hello()" in md_content
+    assert "![Copy]" not in md_content
     assert len(images) == 1
     assert images[0]["local_filename"] == "beginners_what-is-bitcoin_btc.png"
+
 
 

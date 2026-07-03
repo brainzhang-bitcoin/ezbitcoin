@@ -15,9 +15,13 @@ def transform_html_to_markdown(html_content: str, md_filepath: str) -> tuple[str
     for tag in content_area.find_all(["script", "style", "nav", "header", "footer"]):
         tag.decompose()
         
+    for tag in content_area.find_all(class_=["clipboard-code", "copy", "copied", "failed"]):
+        tag.decompose()
+        
     # Process images and rewrite sources
     images_to_download = []
     base_url = "https://learnmeabitcoin.com/"
+
     
     for img in content_area.find_all("img"):
         src = img.get("src")
