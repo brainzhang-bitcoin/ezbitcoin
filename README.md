@@ -1,2 +1,135 @@
-# ezbitcoin
-easy learn how bitcoin work
+# EzBitcoin - 如何工作极简教学资料库
+
+这个项目包含来自知名 Bitcoin 极简图解教学网站 [Learn Me A Bitcoin](https://learnmeabitcoin.com/) 的完整文章内容。所有教程已整理成树状结构的本地 Markdown 格式，并配套完整的图片资源，方便离线阅读、搜索与学习。
+
+---
+
+## 📚 文档目录 (Table of Contents)
+
+### 🟢 1. 新手指南 (Beginners Guide)
+适合完全没有技术背景的读者，用极简非技术语言介绍比特币基本概念。
+*   **[新手导读及概览](docs/beginners.md)**
+*   **[比特币是如何工作的？](docs/beginners/how-does-bitcoin-work.md)**
+*   **[如何选择钱包 (Wallets)](docs/beginners/wallets.md)**
+*   **[如何选择交易平台 (Exchanges)](docs/beginners/exchanges.md)**
+*   **[如何发送与接收比特币 (Sending)](docs/beginners/sending.md)**
+*   **[安全与存储防范 (Security)](docs/beginners/security.md)**
+*   **📖 新手极简图解手册 (Beginners Short Guide)**
+    *   [比特币网络 (Network)](docs/beginners/guide/network.md)
+    *   [节点 (Node)](docs/beginners/guide/node.md)
+    *   [挖矿 (Mining)](docs/beginners/guide/mining.md)
+    *   [区块链 (Blockchain)](docs/beginners/guide/blockchain.md)
+    *   [区块 (Blocks)](docs/beginners/guide/blocks.md)
+    *   [难度 (Difficulty)](docs/beginners/guide/difficulty.md)
+    *   [交易 (Transactions)](docs/beginners/guide/transactions.md)
+    *   [交易输出 (Outputs)](docs/beginners/guide/outputs.md)
+    *   [锁定与解锁 (Locks)](docs/beginners/guide/locks.md)
+    *   [密钥与地址 (Keys & Addresses)](docs/beginners/guide/keys-addresses.md)
+    *   [私钥 (Private Keys)](docs/beginners/guide/private-keys.md)
+    *   [公钥 (Public Keys)](docs/beginners/guide/public-keys.md)
+    *   [数字签名 (Digital Signatures)](docs/beginners/guide/digital-signatures.md)
+    *   [隔离见证 (SegWit)](docs/beginners/guide/segwit.md)
+
+---
+
+### 🔵 2. 技术指南 (Technical Guide)
+适合想要深入理解比特币底层协议、密码学及进行比特币编程开发的读者。
+*   **[技术指南导读主页](docs/technical.md)**
+
+#### 📦 区块与区块链 (Blocks & Blockchain)
+*   **[区块总览 (Block)](docs/technical/block.md)**
+    *   [区块哈希值 (Hash)](docs/technical/block/hash.md)
+    *   [前一区块哈希 (Previous Block)](docs/technical/block/previous-block.md)
+    *   [默克尔根 (Merkle Root)](docs/technical/block/merkle-root.md)
+    *   [时间戳 (Time)](docs/technical/block/time.md)
+    *   [难度目标 Bits (Bits)](docs/technical/block/bits.md)
+    *   [随机数 Nonce (Nonce)](docs/technical/block/nonce.md)
+    *   [版本号 Version (Version)](docs/technical/block/version.md)
+    *   [blk.dat 数据文件结构](docs/technical/block/blkdat.md)
+*   **[区块链总览 (Blockchain)](docs/technical/blockchain.md)**
+    *   [区块高度 (Height)](docs/technical/blockchain/height.md)
+    *   [最长链原则 (Longest Chain)](docs/technical/blockchain/longest-chain.md)
+    *   [51% 攻击 (51% Attack)](docs/technical/blockchain/51-attack.md)
+    *   [硬分叉 (Hard Fork)](docs/technical/blockchain/hard-fork.md)
+    *   [软分叉 (Soft Fork)](docs/technical/blockchain/soft-fork.md)
+
+#### 🔐 密码学 (Cryptography)
+*   **[密码学总览 (Cryptography)](docs/technical/cryptography.md)**
+    *   [哈希函数 (Hash Function)](docs/technical/cryptography/hash-function.md)
+    *   [椭圆曲线 (Elliptic Curve)](docs/technical/cryptography/elliptic-curve.md)
+    *   [ECDSA 签名算法](docs/technical/cryptography/elliptic-curve/ecdsa.md)
+    *   [Schnorr 签名算法](docs/technical/cryptography/elliptic-curve/schnorr.md)
+
+#### 🔑 密钥、签名与地址 (Keys, Signatures & Addresses)
+*   **[密钥总览 (Keys)](docs/technical/keys.md)**
+    *   [私钥 (Private Key)](docs/technical/keys/private-key.md)
+    *   [WIF 格式私钥 (WIF)](docs/technical/keys/private-key/wif.md)
+    *   [公钥 (Public Key)](docs/technical/keys/public-key.md)
+    *   [公钥哈希 (Public Key Hash)](docs/technical/keys/public-key/hash.md)
+    *   [数字签名 (Signature)](docs/technical/keys/signature.md)
+    *   [比特币地址 (Address)](docs/technical/keys/address.md)
+    *   [Base58 校验和 (Checksum)](docs/technical/keys/checksum.md)
+    *   [Bech32 格式编码 (Bech32)](docs/technical/keys/bech32.md)
+    *   [HD 层次确定性钱包 (HD Wallets)](docs/technical/keys/hd-wallets.md)
+        *   [助记词种子 (Mnemonic Seed)](docs/technical/keys/hd-wallets/mnemonic-seed.md)
+        *   [扩展密钥 (Extended Keys)](docs/technical/keys/hd-wallets/extended-keys.md)
+        *   [派生路径 (Derivation Paths)](docs/technical/keys/hd-wallets/derivation-paths.md)
+
+#### 💸 比特币交易 (Transactions)
+*   **[交易总览 (Transaction)](docs/technical/transaction.md)**
+    *   [未花费交易输出 (UTXO)](docs/technical/transaction/utxo.md)
+    *   [交易输入 (Input)](docs/technical/transaction/input.md)
+        *   [ScriptSig 解锁脚本](docs/technical/transaction/input/scriptsig.md)
+        *   [Sequence 序列号](docs/technical/transaction/input/sequence.md)
+        *   [Vout 输出索引](docs/technical/transaction/input/vout.md)
+    *   [交易输出 (Output)](docs/technical/transaction/output.md)
+        *   [ScriptPubKey 锁定脚本](docs/technical/transaction/output/scriptpubkey.md)
+    *   [交易手续费 (Fee)](docs/technical/transaction/fee.md)
+    *   [锁定时间 Locktime (Locktime)](docs/technical/transaction/locktime.md)
+    *   [交易大小与虚拟大小 (Size / Vsize)](docs/technical/transaction/size.md)
+    *   [见证数据 (Witness)](docs/technical/transaction/witness.md)
+    *   [Wtxid 见证交易哈希](docs/technical/transaction/wtxid.md)
+    *   [部分签名的比特币交易 (PSBT)](docs/technical/transaction/psbt.md)
+
+#### 📝 比特币脚本 (Script)
+*   **[脚本语言总览 (Script)](docs/technical/script.md)**
+    *   [P2PK (Pay-to-Public-Key)](docs/technical/script/p2pk.md)
+    *   [P2PKH (Pay-to-Public-Key-Hash)](docs/technical/script/p2pkh.md)
+    *   [P2MS (Pay-to-Multi-Sig)](docs/technical/script/p2ms.md)
+    *   [P2SH (Pay-to-Script-Hash)](docs/technical/script/p2sh.md)
+    *   [P2WPKH (Pay-to-Witness-Public-Key-Hash)](docs/technical/script/p2wpkh.md)
+    *   [P2WSH (Pay-to-Witness-Script-Hash)](docs/technical/script/p2wsh.md)
+    *   [P2SH-P2WPKH](docs/technical/script/p2sh-p2wpkh.md)
+    *   [P2SH-P2WSH](docs/technical/script/p2sh-p2wsh.md)
+    *   [P2TR (Pay-to-Taproot)](docs/technical/script/p2tr.md)
+    *   [OP_RETURN 脚本 (Return)](docs/technical/script/return.md)
+
+#### ⛏️ 挖矿与网络 (Mining & Networking)
+*   **[挖矿总览 (Mining)](docs/technical/mining.md)**
+    *   [区块奖励 (Block Reward)](docs/technical/mining/block-reward.md)
+    *   [币基交易 (Coinbase Transaction)](docs/technical/mining/coinbase-transaction.md)
+    *   [内存池 (Memory Pool)](docs/technical/mining/memory-pool.md)
+    *   [候选区块 (Candidate Block)](docs/technical/mining/candidate-block.md)
+    *   [目标值 (Target)](docs/technical/mining/target.md)
+*   **[网络协议总览 (Networking)](docs/technical/networking.md)**
+    *   [网络节点 (Node)](docs/technical/networking/node.md)
+    *   [魔法字节 (Magic Bytes)](docs/technical/networking/magic-bytes.md)
+
+#### ⚡ 比特币升级协议 (Upgrades)
+*   [隔离见证 (Segregated Witness / SegWit)](docs/technical/upgrades/segregated-witness.md)
+*   [主根升级 (Taproot)](docs/technical/upgrades/taproot.md)
+
+#### ⚙️ CS 基础知识 (General CS Concepts)
+*   [十六进制 (Hexadecimal)](docs/technical/general/hexadecimal.md)
+*   [字节 (Bytes)](docs/technical/general/bytes.md)
+*   [字节序 (Byte Order / Little-Endian)](docs/technical/general/byte-order.md)
+*   [可变长度整数 VarInt (Compact Size)](docs/technical/general/compact-size.md)
+
+---
+
+## 🛠️ 项目使用的爬虫工具
+我们使用 Python 编写的本地爬虫工具来抓取和转换这些内容：
+*   **`scrape_to_markdown.py`**：核心启动脚本。
+*   **`sitemap_parser.py`**：获取和过滤目标 URL。
+*   **`content_transformer.py`**：清洗 HTML 并利用 `markdownify` 转换为干净的 `.md` 内容。
+*   **`image_manager.py`**：处理图解文件的本地下载和链接重写。
