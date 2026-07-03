@@ -33,3 +33,29 @@ def test_path_helpers():
     # Check relative path generation from different markdown directories
     assert get_relative_img_path("docs/beginners/what-is-bitcoin.md", "beginners_transaction.png") == "../images/beginners_transaction.png"
     assert get_relative_img_path("docs/technical/keys-addresses/wif.md", "tech_wif.png") == "../../images/tech_wif.png"
+
+
+def test_transform_html_to_markdown():
+    from content_transformer import transform_html_to_markdown
+    
+    html = """
+    <html>
+      <body>
+        <div id="content">
+          <h1>What is Bitcoin?</h1>
+          <p>Bitcoin is a currency.</p>
+          <img src="/images/beginners/what-is-bitcoin/btc.png" alt="Bitcoin logo" />
+        </div>
+      </body>
+    </html>
+    """
+    
+    md_content, images = transform_html_to_markdown(html, "docs/beginners/what-is-bitcoin.md")
+    
+    assert "# What is Bitcoin?" in md_content
+    assert "Bitcoin is a currency." in md_content
+    # Link should be converted to relative local link
+    assert "![Bitcoin logo](../images/beginners_what-is-bitcoin_btc.png)" in md_content
+    assert len(images) == 1
+    assert images[0]["local_filename"] == "beginners_what-is-bitcoin_btc.png"
+
