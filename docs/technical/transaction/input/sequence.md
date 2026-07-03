@@ -2,371 +2,316 @@
 
 [<img src="../../../images/diagrams_png_transaction-sequence.png" alt="Diagram of showing the sequence fields alongside each transaction input." width="503" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence.png)
 
-The sequence field can be found inside every transaction [input](/docs/technical/transaction/input.md). It gives you control over when a transaction **can be mined** or if a transaction **can be replaced** whilst it's in the [mempool](/docs/technical/mining/memory-pool.md).
+sequence（序列号）字段存在于每个交易 [input](/docs/technical/transaction/input.md) 内部。它允许你控制一笔交易**何时可以被打包挖出**，或者一笔交易在[内存池 (mempool)](/docs/technical/mining/memory-pool.md) 中时**是否可以被替换**。
 
-In more technical terms, you can say that the sequence field has control over the "finality" of a transaction, as in whether a transaction is in its "final" state before it gets mined into a block. If it's not in its "final" state, then it's possible for it to be replaced before it ends up in the [blockchain](/docs/technical/blockchain.md).
+用更具技术性的术语来说，可以说 sequence 字段控制着交易的“终结性 (finality)”，即一笔交易在被打包挖入区块之前是否处于其“最终”状态。如果它不处于“最终”状态，那么在它最终进入[区块链](/docs/technical/blockchain.md)之前，它是有可能被替换的。
 
-These are the most common settings:
+以下是最常见的设置：
 
-* <=0xFFFFFFFE — **Locktime.**  
-  This setting enables the transaction's [locktime](/docs/technical/transaction/locktime.md) field to be used.
-* <=0xFFFFFFFD — **Replace By Fee (RBF)**.  
-  This setting enables the RBF feature, which allows you to replace a transaction with a higher-fee one if it's still in the mempool.
-* <=0xEFFFFFFF — **Relative Locktime**.  
-  This setting allows you to set a locktime on the transaction relative to when the output being spent was mined.
-  + 0x00000000 to 0x0000FFFF — **Blocks.** Set the relative locktime as a number of blocks.
-  + 0x00400000 to 0x0040FFFF — **Time.** Set the relative locktime as a number of seconds.
+* <=0xFFFFFFFE — **Locktime**。
+  此设置允许使用交易的 [locktime](/docs/technical/transaction/locktime.md) 字段。
+* <=0xFFFFFFFD — **Replace By Fee (RBF)**。
+  此设置启用了 RBF 功能，如果交易仍处于内存池中，允许你用手续费更高的一笔交易替换它。
+* <=0xEFFFFFFF — **相对锁定时间 (Relative Locktime)**。
+  此设置允许你根据被花费的输出何时被挖出，在交易上设置相对锁定时间。
+  * 0x00000000 到 0x0000FFFF — **区块。** 以区块数量设置相对锁定时间。
+  * 0x00400000 到 0x0040FFFF — **时间。** 以秒数设置相对锁定时间。
 
-A popular choice is to use 0xFFFFFFFD for your sequence fields, as this enables both the locktime field (in case you want to use it) and also replace-by-fee (which is generally useful).
+一个普遍的选择是为你的 sequence 字段使用 0xFFFFFFFD，因为这既启用了 locktime 字段（如果你想使用它的话），也启用了 replace-by-fee（这通常很有用）。
 
-Sequence (Little Endian)
+Sequence (小端序)
 
-The sequence as found in raw transaction data
-
-0x
-
-`4 bytes`
-
-Sequence (Big Endian)
+原始交易数据中的 sequence 形式
 
 0x
 
 `4 bytes`
 
+Sequence (大端序)
 
-Features
+0x
 
- Locktime
+`4 bytes`
 
- Replace-by-Fee
+功能
 
- Relative Locktime
+ 锁定时间 (Locktime)
+ 提升费用替换 (Replace-by-Fee)
+ 相对锁定时间 (Relative Locktime)
+
+相对锁定时间类型
+
+ 时间 (Time)
+ 秒 (seconds)
+ 区块 (Blocks)
+
+数量 (Count)
 
 
-Relative Locktime Type
-
-
-Time
-
-
-seconds
-
-Blocks
-
-
-Count
 
 0 secs
 
-If you set the maximum value of 0xFFFFFFFF on *all* the inputs to a transaction, the entire transaction is considered "final" and cannot be replaced or prevented from being mined.
+如果你将一笔交易中 *所有* inputs 的 sequence 都设置为最大值 0xFFFFFFFF，那么这整笔交易就被认为是“最终确定”的，无法被替换，也无法阻止其被打包挖出。
 
-You only need to set *one* of the sequence fields to enable **locktime** or **RBF** (even if you have multiple inputs and sequence fields in one transaction). However, **relative locktime** settings are specific to each input.
+你只需设置 *其中一个* sequence 字段即可启用 **locktime** 或 **RBF**（即使一笔交易中包含多个 inputs 和 sequence 字段）。然而，**相对锁定时间 (relative locktime)** 设置对于每个 input 都是特定的。
 
-## Locktime
+## 锁定时间 (Locktime)
 
 [<img src="../../../images/diagrams_png_transaction-sequence-locktime.png" alt="Diagram showing the sequence field being set to enable the locktime field of a transaction." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-locktime.png)
 
-You can enable the [locktime](/docs/technical/transaction/locktime.md) field for the entire transaction if you set *any* of the input sequence values to 0xFFFFFFE or below.
+如果你将 *任何* input 的 sequence 值设置为 0xFFFFFFFE 或更低，你就可以为整笔交易启用 [locktime](/docs/technical/transaction/locktime.md) 字段。
 
-For example:
+例如：
 
 ```
-0xFFFFFFFE <- enables locktime
+0xFFFFFFFE <- 启用 locktime
 ```
 
-As mentioned, setting all of the sequence values in a transaction to 0xFFFFFFFF indicates that the transaction is *final*. So by setting any of the sequences to *below the maximum value* of 0xFFFFFFFF, you're indicating that the transaction is *not final* and therefore the locktime field will be enabled.
+如前所述，将交易中的所有 sequence 值设置为 0xFFFFFFFF 表示该交易是 *最终确定* 的。因此，通过将任何 sequence 设置为 *低于最大值* 0xFFFFFFFF，即表示该交易是 *非最终确定* 的，因此 locktime 字段将被启用。
 
-By default, the [Bitcoin Core](https://bitcoin.org/en/bitcoin-core/) wallet sets the sequence field for each input to 0xFFFFFFFE. This enables the locktime field for the transaction, but no other features.
+默认情况下，[Bitcoin Core](https://bitcoin.org/en/bitcoin-core/) 钱包为每个 input 的 sequence 字段设置为 0xFFFFFFFE。这会启用交易的 locktime 字段，但不会启用其他功能。
 
-### Usage
+### 使用
 
-If you want a transaction to only be able to be [mined](/docs/technical/mining.md) at some point in the future, you need to make use of the locktime field at the end of the transaction.
+如果你希望交易仅在未来的某个时间点才能被[打包挖出](/docs/technical/mining.md)，你需要利用交易末尾的 locktime 字段。
 
-To enable the locktime field, you need to set one of the sequence values in your transaction to 0xFFFFFFFE or below.
+要启用 locktime 字段，你需要将交易中的 sequence 值之一设置为 0xFFFFFFFE 或更低。
 
-You can then set the locktime field to between 0 and 499999999 for the transaction to be able to be mined after a certain block [height](/docs/technical/blockchain/height.md), or between 500000000 and 4294967295 for it to be mined after a specific point in time (i.e. a Unix timestamp).
+然后，你可以将 locktime 字段设置为 0 到 499999999 之间，以使交易能够在特定的区块[高度](/docs/technical/blockchain/height.md)之后被打包挖出；或者设置为 500000000 到 4294967295 之间，以使其在特定时间点（即 Unix 时间戳）之后被打包挖出。
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix 时间 (Unix Time)
 
-Unix Time
+Unix 时间
 
 0d
 
+当前
 
-Now
-
-Date
-
+日期
 
 0 secs
 
-## Replace By Fee
+## Replace By Fee (RBF)
 
 [BIP 125](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki)
 
 [<img src="../../../images/diagrams_png_transaction-sequence-replace-by-fee.png" alt="Diagram showing the sequence field being set to enable the replace by fee feature on a transaction." width="733" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-replace-by-fee.png)
 
-You can allow for a transaction to be replaced by a higher-fee transaction later on (whilst it's still in the [memory pool](/docs/technical/mining/memory-pool.md)) by setting the sequence value on *any* of its inputs to 0xFFFFFFFD or below.
+你可以通过将 *任何* input 的 sequence 值设置为 0xFFFFFFFD 或更低，来允许交易稍后（在它仍处于[内存池](/docs/technical/mining/memory-pool.md)中时）被手续费更高的一笔交易替换。
 
-For example:
+例如：
 
 ```
-0xFFFFFFFD <- enables replace-by-fee
+0xFFFFFFFD <- 启用 replace-by-fee
 ```
 
-This value is **1 less** than the [locktime](#locktime) setting above, which means you can enable the locktime *without* enabling replace-by-fee.
+这个值比上面的 [locktime](#锁定时间-locktime) 设置**小 1**，这意味着你可以仅启用 locktime 而 *不* 启用 replace-by-fee。
 
-### Usage
+### 使用
 
-Let's say you've created a transaction and sent it into the [network](/docs/technical/networking.md), but you've set an annoyingly low [fee](/docs/technical/transaction/fee.md) on it.
+假设你创建了一笔交易并将其发送到了[网络](/docs/technical/networking.md)中，但你在其上设置了一个极低的[手续费](/docs/technical/transaction/fee.md)。
 
-If there's a high volume of high-fee transactions on the network, your transaction may end up hanging around in the memory pool waiting to get mined. Normally you wouldn't be able to undo or replace this transaction until it gets mined or expires from the memory pool, but this could take a few days.
+如果网络上有大量的高手续费交易，你的交易可能会一直悬在内存池中等待被打包挖出。通常情况下，你无法撤销或替换此交易，直到它被打包挖出或在内存池中过期，但这可能需要几天时间。
 
-However, if you set a sequence value of 0xFFFFFFFD on any of the inputs in your transaction, you're signaling that any of those inputs can be spent by a newer transaction with a higher fee on it. So instead of having to wait around for the first transaction to get mined, you can send a replacement transaction to speed up the process.
+但是，如果你在交易的任何 input 上将 sequence 值设置为 0xFFFFFFFD，你就是在发出信号：任何这些 inputs 都可以被一笔带有更高手续费的新交易花费。因此，你不用等第一笔交易被打包挖出，而是可以发送一笔替代交易来加快这一过程。
 
-Nodes and miners will be aware that a sequence has been set to 0xFFFFFFFD or below, and so they will be happy to replace that transaction in their memory pools if one arrives with a higher fee.
+节点和矿工会意识到某笔交易的 sequence 被设置为 0xFFFFFFFD 或更低，因此，如果有手续费更高的一笔交易到来，他们会乐意在内存池中替换掉那笔旧交易。
 
-A few notes on using RBF:
+关于使用 RBF 的几点注意事项：
 
-* **You do not need to increase or decrease the sequence number in the replacement transaction.** All that matters is that the replacement transaction has a higher fee.
-* **You can replace transactions over and over again as long as the new transaction has a higher fee than the one you're replacing.** The more replacements you make, the higher the fee will need to be each time to surpass the fees on the previous replacement transactions.
-* **You can send the coins to a different destination (i.e. create different [outputs](/docs/technical/transaction/output.md)) in the replacement transaction if you want.** This is why this is sometimes referred to as "Full RBF", as other RBF proposals required the replacement transaction to have the same outputs.
+* **你不需要在替代交易中增加或减少 sequence 数值。** 唯一关键的是替代交易具有更高的手续费。
+* **只要新交易的手续费比你要替换的交易更高，你就可以一次又一次地替换交易。** 替换的次数越多，每次就需要更高的手续费来超越之前的替代交易手续费。
+* **如果你愿意，你可以在替代交易中把代币发送到不同的目的地（即创建不同的 [outputs](/docs/technical/transaction/output.md)）。** 这也是为什么这有时被称为“Full RBF”（完全 RBF）的原因，因为其他 RBF 提案要求替代交易具有相同的 outputs。
 
-**RBF is transaction-wide, not input-specific.** Setting a sequence of 0xFFFFFFFD or below on any input makes the *whole transaction* replaceable. So if you have a number of other inputs in the same transaction, those individual inputs can also be spent in a higher-fee transaction *even if* you gave them the maximum sequence of 0xFFFFFFFF.
+**RBF 是整笔交易范围的，而不是 input 特定的。** 在任何一个 input 上将 sequence 设置为 0xFFFFFFFD 或更低都会使*整笔交易*可被替换。因此，即使你在同一交易中的其他 inputs 上赋予了最大值 0xFFFFFFFF，那些独立的 inputs 也可以在高手续费的替代交易中被花费。
 
-### Setting Higher Fees
+### 设置更高手续费
 
 [<img src="../../../images/diagrams_png_transaction-replace-by-fee-increase.png" alt="Diagram showing the transactions fees on replacement transactions including the size of the fees of the transactions they are replacing." width="355" height="284" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee-increase.png)
 
-The fee on the replacement transaction must be enough to cover the *minimum relay fee*, **plus the size of fee(s) on the transaction(s) it replaces**.
+替代交易上的手续费必须足以覆盖*最低中继费*，**外加它所替代的交易的手续费大小**。
 
 ```
-RBF Transaction Minimum Fee = Minimum Relay Fee + Previous Transaction Fee(s)
+RBF 交易最低手续费 = 最低中继费 + 前一笔交易手续费
 ```
 
-**[Minimum Relay Fee](/docs/technical/transaction/fee.md#minimum-relay-fee):**
+**[最低中继费](/docs/technical/transaction/fee.md#最低中继费-minimum-relay-fee)：**
 
-This is the *minimum* fee you have to put on a transaction for a node to accept it into their memory pools. Each node can set this fee independently, but the default is 1 sat/[vbyte](/docs/technical/transaction/size.md#vbytes). This helps to prevent anyone from spamming the network with "free" transactions.
+这是你必须在交易中设置的*最低*手续费，以便节点能够将其接受到内存池中。每个节点都可以独立设置此费用，但默认是 1 sat/[vbyte](/docs/technical/transaction/size.md#虚拟字节-virtual-bytes-vbytes-vb)。这有助于防止有人用“免费”交易对网络进行垃圾邮件攻击。
 
+### RBF 示例
 
+假设当前最低中继费是 **1 sat/[vbyte](/docs/technical/transaction/size.md#虚拟字节-virtual-bytes-vbytes-vb)**。
 
-
-### RBF Examples
-
-Let's say the minimum relay fee is currently **1 sat/[vbyte](/docs/technical/transaction/size.md#vbytes)**.
-
-For a simple *replace by fee* transaction (where the replacement transaction is exactly the same as the original), the fee on the replacement transaction just needs to be at least *double* that of the transaction you want to replace:
+对于一个简单的*提升费用*交易（替代交易与原交易完全相同），替代交易的手续费只需至少是你要替换交易手续费的*两倍*：
 
 ```
-Minimum Relay Fee: 1sat/vbyte
+最低中继费：1 sat/vbyte
 
-Transaction   | Size      | Min Relay Fee | Previous Fee(s) | Minimum Fee  | Feerate
+交易          | 大小      | 最低中继费   | 前一交易费      | 最低费用     | 费率
 --------------|-----------|---------------|-----------------|--------------|------------
-Original      | 200 bytes | 200 sats      | 0               | 200 sats     | 1 sat/vbyte
-Replacement 1 | 200 bytes | 200 sats      | 200 sats        | 400 sats     | 2 sat/vbyte
+原始交易      | 200 字节  | 200 sats      | 0               | 200 sats     | 1 sat/vbyte
+替代交易 1    | 200 字节  | 200 sats      | 200 sats        | 400 sats     | 2 sat/vbyte
 ```
 
-So in this example, the fee for the replacement transaction needed to be at least 200 sats on its own (to satisfy the minimum relay fee of 1sat/vbyte), *plus* the 200 sat fee on the transaction we're replacing, making the minimum fee 400 sats in total. You can go much higher than this if you want, and you possibly will to create a more attractive feerate, but this is the *minimum*.
+因此在这个例子中，替代交易的手续费本身需要至少 200 sats（以满足 1 sat/vbyte 的最低中继费），*外加* 我们要替换的交易的 200 sats 手续费，使得最低手续费总共为 400 sats。如果你愿意，你可以设置比这高得多的费用，而且为了创造更有吸引力的费率你可能确实会这么做，但这就是*最低要求*。
 
-Now, if you're replacing a transaction multiple times (bumping up the fee repeatedly), the minimum fee on the next transaction needs to be greater than the **sum of all the fees on the previous transactions you want to replace** *plus* the minimum relay fee for the current transaction (as usual):
+现在，如果你要多次替换交易（反复调高手续费），下一笔交易的最低费用需要大于**你要替换的所有先前交易的手续费总和** *外加* 当前交易的最低中继费（如往常一样）：
 
 ```
-Minimum Relay Fee: 1sat/vbyte
+最低中继费：1 sat/vbyte
 
-Transaction   | Size      | Min Relay Fee | Previous Fee(s) | Minimum Fee  | Feerate
+交易          | 大小      | 最低中继费   | 前一交易费      | 最低费用     | 费率
 --------------|-----------|---------------|-----------------|--------------|------------
-Original      | 200 bytes | 200 sats      | 0               | 200 sats     | 1 sat/vbyte
-Replacement 1 | 200 bytes | 200 sats      | 200 sats        | 400 sats     | 2 sat/vbyte
-Replacement 2 | 200 bytes | 200 sats      | 400 sats        | 600 sats     | 3 sat/vbyte
+原始交易      | 200 字节  | 200 sats      | 0               | 200 sats     | 1 sat/vbyte
+替代交易 1    | 200 字节  | 200 sats      | 200 sats        | 400 sats     | 2 sat/vbyte
+替代交易 2    | 200 字节  | 200 sats      | 400 sats        | 600 sats     | 3 sat/vbyte
 ```
 
-Here's another example where the replacement transactions are different sizes (which is also perfectly acceptable):
+下面是另一个替代交易体积大小不同（这也是完全允许的）的例子：
 
 ```
-Minimum Relay Fee: 1sat/vbyte
+最低中继费：1 sat/vbyte
 
-Transaction   | Size      | Min Relay Fee | Previous Fee(s) | Minimum Fee  | Feerate
+交易          | 大小      | 最低中继费   | 前一交易费      | 最低费用     | 费率
 --------------|-----------|---------------|-----------------|--------------|---------------
-Original      | 200 bytes | 200 sats      | 0               |  200 sats    | 1 sat/vbyte
-Replacement 1 | 800 bytes | 800 sats      | 200 sats        | 1000 sats    | 1.25 sat/vbyte
-Replacement 2 | 300 bytes | 300 sats      | 1000 sats       | 1300 sats    | 4.33 sat/vbyte
-Replacement 3 | 200 bytes | 200 sats      | 1300 sats       | 1500 sats    | 7.50 sat/vbyte
+原始交易      | 200 字节  | 200 sats      | 0               |  200 sats    | 1 sat/vbyte
+替代交易 1    | 800 字节  | 800 sats      | 200 sats        | 1000 sats    | 1.25 sat/vbyte
+替代交易 2    | 300 字节  | 300 sats      | 1000 sats       | 1300 sats    | 4.33 sat/vbyte
+替代交易 3    | 200 字节  | 200 sats      | 1300 sats       | 1500 sats    | 7.50 sat/vbyte
 ```
 
-So basically, to work out the next higher fee, you just need to start by adding up the fees on the transaction(s) you want to replace. The *minimum fee* is then the sum of all those previous fees *plus* the minimum relay fee for the current transaction.
+所以基本上，要算出下一个更高的手续费，你只需把你要替换的交易手续费相加。*最低费用*便是所有这些先前费用与当前交易最低中继费的总和。
 
-But in general, for a straightforward replace-by-fee transaction you're just looking to double the size of the previous fee.
+但一般而言，对于简单的 RBF 交易，你只需将前一笔交易的手续费增加一倍即可。
 
-## Relative Locktime
+## 相对锁定时间 (Relative Locktime)
 
 [BIP 68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki)
 
 [<img src="../../../images/diagrams_png_transaction-sequence-relative-locktime.png" alt="Diagram showing the sequence field being used to set a relative locktime on the transaction." width="741" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-relative-locktime.png)
 
-> Relative lock-time (RLT) enables a signed transaction input to remain invalid for a defined period of time after confirmation of its corresponding outpoint.
+> 相对锁定时间（RLT）使已签名的交易输入在其相对应的输出确认后的一段指定时间内保持无效。
+> 
+> —— [BIP 68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki)
 
-[BIP 68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki)
+相对锁定时间允许你**指定在被花费的输出被确认打包之后，经过多长时间或多少个区块，花费该输出的交易才会生效**。
 
-Relative locktime allows you to **specify an amount of time or number of blocks *from when an output was mined* before a transaction spending it becomes valid**.
+交易的 locktime 允许你指定交易可以被打包挖出的*绝对*时间，而相对锁定时间允许你指定相对时间（从被花费输出被打包的那刻起算）。
 
-So whereas the transaction locktime allows you to specify an *absolute* time when a transaction can be mined, relative locktime allows you to specify a relative amount of time (from when an output was mined) before the transaction spending it can be mined.
+要在某个 input 上设置相对锁定时间，你需要将 sequence 视作一个包含 32 个独立位的字段（即[位字段 (bit field)](/docs/technical/general/bytes.md#bit-field)）：
 
-To set the relative locktime on an input you need to view the sequence as a field of 32 individual bits (i.e. a [bit field](/docs/technical/general/bytes.md#bit-field)):
+Sequence (小端序)
 
-Sequence (Little Endian)
-
-The sequence as found in raw transaction data
-
-0x
-
-`4 bytes`
-
-Sequence (Big Endian)
+原始交易数据中的 sequence 形式
 
 0x
 
 `4 bytes`
 
+Sequence (大端序)
 
-Sequence (Bit Field)
+0x
 
-0
+`4 bytes`
 
-0
-
-0
-
-0
+Sequence (位字段)
 
 0
-
 0
-
 0
-
 0
-
 0
-
+0
+0
+0
+0
+1
+0
+0
+0
+0
+0
+0
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
 1
 
-0
+设置
 
-0
+ 禁用标志 (Disable Flag)
+ 类型标志 (Type Flag)
 
-0
+相对锁定时间
 
-0
+ 时间 (Time)
+ 数值 (Value)
+ `x 512 = 0 seconds`
 
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-
-Settings
-
- Disable Flag
-
- Type Flag
-
-
-Relative Locktime
-
-
-Time
-
-Value
-
-`x 512 = 0 seconds`
-
-Blocks
-
-Value
-
+ 区块 (Blocks)
+ 数值 (Value)
 
 0 secs
 
-* **Bit 31: Disable Flag**
-  + 1 = Relative Locktime Disabled
-  + 0 = Relative Locktime Enabled
-* **Bit 22: Type Flag**
-  + 1 = Time (the value gets multiplied by 512 to give you the time in seconds)
-  + 0 = Blocks
-* **Bits 15-0: Value**
-  + These 16 bits can hold any number between 0 and 65535 (0x0000 to 0xffff)
+* **第 31 位：禁用标志 (Disable Flag)**
+  * 1 = 相对锁定时间已禁用
+  * 0 = 相对锁定时间已启用
+* **第 22 位：类型标志 (Type Flag)**
+  * 1 = 时间（其值乘以 512，得到以秒为单位的时间）
+  * 0 = 区块
+* **第 15-0 位：数值 (Value)**
+  * 这 16 位可以容纳 0 到 65535 (0x0000 到 0xffff) 之间的任何数值
 
-Firstly, to enable the relative locktime setting you need to set the **disable flag** (bit 31) to 0. I know it's a bit counter-intuitive to set something to zero to turn it on, but that's how it works here. But because this is the first bit and it's set to zero, all relative locktime settings are always going to be less than or equal to 0xEFFFFFFF.
+首先，要启用相对锁定时间设置，你需要将**禁用标志 (disable flag)**（第 31 位）设置为 0。虽然将某项设置为零来开启它有点反直觉，但这里就是这样工作的。因为第一位被设置为零，所以所有的相对锁定时间设置都将始终小于或等于 0xEFFFFFFF。
 
-Secondly we have the **type flag** (bit 22), which allows you to choose between setting a relative locktime as an *amount of time* or a *number of blocks* since the output you're spending was mined.
+其次我们有**类型标志 (type flag)**（第 22 位），它允许你选择以*时间量*还是*区块数量*来设置自从被花费输出被确认以来的相对锁定时间。
 
-Lastly, the last 16 bits contain the actual **value** (bits 15-0) in terms of *blocks* or *time*. If you choose *time*, this value gets multiplied by 512 to give you the relative locktime in seconds.
+最后，最后 16 位包含以*区块*或*时间*计算的实际**数值**（第 15-0 位）。如果你选择*时间*，该值会乘以 512 得到以秒为单位的相对锁定时间。
 
-RBF and locktime will be enabled when using relative locktime.
+当使用相对锁定时间时，RBF 和绝对锁定时间将被自动启用。
 
-To enable relative locktime the transaction **version must be 2 or greater**.
+要启用相对锁定时间，交易的**版本 (version) 必须为 2 或更大**。
 
-### Why does the time value get multiplied by 512?
+### 为什么时间值会乘以 512？
 
-Because this creates a similar range between setting a number of blocks and a number of seconds.
+因为这会在设置区块数与秒数之间创造一个类似的范围。
 
-For example, there's an average of 600 seconds (10 minutes) between blocks, and the maximum value you can put for either is relative locktime types is 65535 (0xffff), so:
+例如，区块之间平均有 600 秒（10 分钟），而对于两种相对锁定时间类型，你能放置的最大值都是 65535 (0xffff)，因此：
 
 ```
-Max Blocks = 65535 * 600 = 39321600 seconds = 455.11111 days
-Max Time   = 65535 * 512 = 33553920 seconds = 388.35556 days
+最大区块数 = 65535 * 600 = 39321600 秒 = 455.11111 天
+最大时间   = 65535 * 512 = 33553920 秒 = 388.35556 天
 ```
 
-So whether you're using a type flag of either blocks *or* time, you're able to set a **maximum relative locktime of slightly over a year into the future** for both.
+所以无论你使用的是区块*或*时间的类型标志，你都能将**最大相对锁定时间设置为未来略多于一年的时间**。
 
-But why multiply by 512 instead of 600? Because 512 is 2^9, which means that you can do a bitwise left shift of 9 to convert the value in to seconds quickly. This is faster than multiplying by 600, and 512 is the closest power of 2 you can get to 600.
+但为什么要乘以 512 而不是 600？因为 512 是 2^9，这意味着你可以快速进行向左移位 9 位的位运算来将该值转换为秒。这比乘以 600 更加高效，且 512 是你能得到的、最接近 600 的 2 的幂。
 
 ```
 0b0000000001 = 1
-0b1000000000 = 512 (bit shifting on a computer is faster than multiplying)
+0b1000000000 = 512（在计算机上进行位移比乘法更快）
 ```
 
-> Bit shifts are cheap.
+> 位移非常廉价。
+> 
+> —— Mark Friedenbach（BIP 68 作者），（通过电子邮件）
 
-Mark Friedenbach (BIP 68 author), (via Email)
+### 相对锁定时间示例
 
-
-
-
-### Relative Locktime Examples
-
-Set a relative locktime of 65535 \* 512 = 33553920 seconds:
+设置 65535 \* 512 = 33553920 秒的相对锁定时间：
 
 ```
 ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐
@@ -376,7 +321,7 @@ Set a relative locktime of 65535 \* 512 = 33553920 seconds:
 0x0040ffff
 ```
 
-Set a relative locktime of 1 \* 512 = 512 seconds:
+设置 1 \* 512 = 512 秒的相对锁定时间：
 
 ```
 ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐
@@ -386,7 +331,7 @@ Set a relative locktime of 1 \* 512 = 512 seconds:
 0x00400001
 ```
 
-Set a relative locktime of 65535 blocks:
+设置 65535 个区块的相对锁定时间：
 
 ```
 ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐
@@ -396,7 +341,7 @@ Set a relative locktime of 65535 blocks:
 0x0000ffff
 ```
 
-Set a relative locktime of 1 block:
+设置 1 个区块的相对锁定时间：
 
 ```
 ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐
@@ -406,7 +351,7 @@ Set a relative locktime of 1 block:
 0x00000001
 ```
 
-Disable the relative locktime completely:
+完全禁用相对锁定时间：
 
 ```
 ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐
@@ -416,14 +361,11 @@ Disable the relative locktime completely:
 0x80000000
 ```
 
-A relative locktime of 0 blocks (0x00000000) means that the input can be mined into a block immediately without having to wait. This is like having no relative locktime at all, so you might as well use a sequence of 0xFFFFFFFF instead.
+0 个区块的相对锁定时间 (0x00000000) 意味着该 input 可以立即打包进区块而无需等待。这相当于没有设置相对锁定时间，因此你也可以使用 0xFFFFFFFF 序列号。
 
-Any sequence value of 0x80000000 or above will disable the relative locktime feature.
+任何 0x80000000 或以上的 sequence 值都将禁用相对锁定时间功能。
 
-
-
-
-### Code
+### 代码
 
 ```
 # -----------------
@@ -504,34 +446,34 @@ puts (type ? 'time' : 'blocks')
 puts value #=> 10000
 ```
 
-## Examples
+## 示例
 
-Here are some examples of sequence values being used in actual transactions in the blockchain:
+这里有几个在区块链实际交易中使用 sequence 值的例子：
 
 * [2833fece3b1c38dffc11a7f211b05512512b0f8dec7055b6d7e7c155d83e7dec](/explorer/tx/2833fece3b1c38dffc11a7f211b05512512b0f8dec7055b6d7e7c155d83e7dec#input-0) (Input 0)
-  + Sequence = `fffffffe`
-  + **Locktime enabled.** The value of the locktime field was also 699999, so this transaction couldn't be mined until *after* block 699,999. It was eventually mined into block [700,000](/explorer/700000).
+  * Sequence = `fffffffe`
+  * **锁定时间启用。** 并且 locktime 字段的值为 699999，所以这笔交易在区块 699,999 *之后*才能被打包挖出。它最终在区块 [700,000](/explorer/700000) 中被确认。
 * [163558ace2946d805b688d89d8ba0dd607d9f947073b45f393d9757eef1a4af7](/explorer/tx/163558ace2946d805b688d89d8ba0dd607d9f947073b45f393d9757eef1a4af7#input-0) (Input 0)
-  + Sequence = `fffffffd`
-  + **RBF enabled.** Can't tell if this transaction was replaced or not, but it could have been whilst it was in the mempool.
+  * Sequence = `fffffffd`
+  * **RBF 启用。** 无法判断这笔交易是否被替换过，但当它在内存池中时它是可以被替换的。
 * [62fb5ecd3f022a2f09b73723b56410db0545923516b611013aed5218e4979322](/explorer/tx/62fb5ecd3f022a2f09b73723b56410db0545923516b611013aed5218e4979322#input-0) (Input 0)
-  + Sequence = `00000090`
-  + **Relative locktime enabled (blocks).** This transaction couldn't be mined until 144 blocks (0x0090 = 144) *after* the output being spent was mined. The output being spent was mined into block [603,018](/explorer/603018), and this transaction was mined **146 blocks later** into block [603,164](/explorer/603164).
+  * Sequence = `00000090`
+  * **相对锁定时间启用 (区块)。** 这交易在被花费输出被确认打包后的 144 个区块 (0x0090 = 144) *之后*才能打包挖出。被花费输出是在区块 [603,018](/explorer/603018) 中被确认的，这笔交易则在 **146 个区块之后**的 [603,164](/explorer/603164) 中被打包挖出。
 * [12fa403cb22bf08c4c5542cc00673495a0c54c9cc8181bea850a12d40d7593a2](/explorer/tx/12fa403cb22bf08c4c5542cc00673495a0c54c9cc8181bea850a12d40d7593a2#input-0) (Input 0)
-  + Sequence = `00400007`
-  + **Relative locktime enabled (time).** This transaction couldn't be mined until 3584 seconds (0x0007 = 7, 7 \* 512 = 3584) *after* the output being spent was mined. The output being spent was mined into block [603,434](/explorer/603434) with a timestamp of 1573549241 (*12 Nov 2019, 09:00:41*), and this transaction was mined **6426 seconds later** into block [603,450](/explorer/603450) with a timestamp of 1573555667 (*12 Nov 2019, 10:47:47*).
+  * Sequence = `00400007`
+  * **相对锁定时间启用 (时间)。** 这交易在被花费输出确认打包后的 3584 秒 (0x0007 = 7, 7 \* 512 = 3584) *之后*才能被打包挖出。被花费输出在区块 [603,434](/explorer/603434) 中打包，其时间戳为 1573549241（*2019 年 11 月 12 日，09:00:41*），此交易则在 **6426 秒之后**的区块 [603,450](/explorer/603450) 中被确认打包，时间戳为 1573555667（*2019 年 11 月 12 日，10:47:47*）。
 
-## History
+## 历史
 
-The sequence field was originally designed to allow for the replacement of transactions whilst they were still in the memory pool.
+sequence 字段最初设计是为了允许在交易处于内存池中时对其进行替换。
 
-Originally, you would set a locktime on a transaction for some time in the future, and if any of the sequence fields were below the maximum value of 0xFFFFFFFF, you could replace it with a new version of the transaction with a higher sequence value.
+最初，你会为未来的某个时间在交易上设置 locktime，如果任何 sequence 字段低于最大值 0xFFFFFFFF，你就可以用一个具有更高 sequence 值的新版本交易来替换它。
 
-Nodes and miners were expected to hold these non-final transactions until the locktime was reached, or until a replacement transaction arrived with all the sequence values set to 0xFFFFFFFF (meaning it could finally be mined into a block). However, there was no incentive for miners to hold these non-final transactions in memory, so the sequence field was never fully utilized for this purpose, and was [quietly disabled](https://github.com/bitcoin/bitcoin/commit/05454818dc7ed92f577a1a1ef6798049f17a52e7#diff-118fcbaaba162ba17933c7893247df3aR522) by Satoshi in 2010 in Bitcoin v0.3.12.
+节点和矿工被期望保留这些非最终确定的交易，直到达到 locktime，或者直到接收到一个所有 sequence 值都设置为 0xFFFFFFFF 的替代交易（意味着它最终可以打包进区块）。然而，矿工没有在内存中保留这些非最终交易的动力，所以 sequence 字段从未真正被完全用于这个目的，并在 2010 年被中本聪在 Bitcoin v0.3.12 中[悄然禁用](https://github.com/bitcoin/bitcoin/commit/05454818dc7ed92f577a1a1ef6798049f17a52e7#diff-118fcbaaba162ba17933c7893247df3aR522)。
 
-Since then the sequence field has been repurposed a number of times, but all of the changes to the sequence field are related to the "finality" of the transaction, or the ability to replace a transaction whilst it's in (or before it gets in to) the memory pool.
+此后，sequence 字段被多次重新设计用途，但 sequence 字段的所有更改依然与交易的“终结性”或者说在进入内存池中时（或之前）替换交易的能力相关。
 
-## Resources
+## 资源
 
 * [BIP 125: Opt-in Full Replace-by-Fee Signaling](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki)
 * [BIP 68: Relative lock-time using consensus-enforced sequence numbers](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki)

@@ -2,180 +2,172 @@
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization.png" alt="Diagram showing a chain reorganization across nodes on the network." width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization.png)
 
-Recent Chain Reorganizations:
+最近的区块重组 (Recent Chain Reorganizations):
 
-| Height | Length | Date |
+| 高度 | 长度 | 日期 |
 | --- | --- | --- |
-| [956,337](/explorer/956337) | 1 | 02 July 2026 |
-| [951,052](/explorer/951052) | 1 | 26 May 2026 |
-| [945,189](/explorer/945189) | 1 | 15 April 2026 |
-| [944,852](/explorer/944852) | 1 | 13 April 2026 |
-| [941,882](/explorer/941882) | 2 | 23 March 2026 |
-| [939,832](/explorer/939832) | 1 | 08 March 2026 |
-| [935,497](/explorer/935497) | 1 | 08 February 2026 |
-| [933,995](/explorer/933995) | 1 | 27 January 2026 |
-| [928,484](/explorer/928484) | 1 | 19 December 2025 |
-| [925,605](/explorer/925605) | 1 | 28 November 2025 |
-| [920,138](/explorer/920138) | 1 | 21 October 2025 |
-| [916,308](/explorer/916308) | 1 | 25 September 2025 |
-| [904,623](/explorer/904623) | 1 | 08 July 2025 |
-| [901,092](/explorer/901092) | 1 | 13 June 2025 |
-| [894,657](/explorer/894657) | 1 | 30 April 2025 |
-| [883,183](/explorer/883183) | 1 | 10 February 2025 |
-| [881,953](/explorer/881953) | 1 | 02 February 2025 |
-| [881,780](/explorer/881780) | 1 | 01 February 2025 |
-| [877,770](/explorer/877770) | 1 | 04 January 2025 |
-| [863,888](/explorer/863888) | 1 | 03 October 2024 |
-| [856,689](/explorer/856689) | 1 | 14 August 2024 |
-| [853,051](/explorer/853051) | 1 | 20 July 2024 |
-| [851,248](/explorer/851248) | 1 | 08 July 2024 |
-| [849,233](/explorer/849233) | 1 | 24 June 2024 |
-| [848,477](/explorer/848477) | 1 | 18 June 2024 |
-| [847,849](/explorer/847849) | 1 | 14 June 2024 |
-| [829,613](/explorer/829613) | 1 | 09 February 2024 |
-| [827,853](/explorer/827853) | 1 | 28 January 2024 |
-| [819,343](/explorer/819343) | 1 | 01 December 2023 |
-| [818,038](/explorer/818038) | 1 | 23 November 2023 |
-| [815,202](/explorer/815202) | 1 | 04 November 2023 |
-| [813,210](/explorer/813210) | 1 | 21 October 2023 |
-| [803,389](/explorer/803389) | 1 | 16 August 2023 |
-| [800,786](/explorer/800786) | 1 | 29 July 2023 |
-| [792,379](/explorer/792379) | 1 | 01 June 2023 |
-| [789,147](/explorer/789147) | 1 | 10 May 2023 |
-| [788,837](/explorer/788837) | 1 | 08 May 2023 |
-| [788,805](/explorer/788805) | 1 | 08 May 2023 |
-| [781,487](/explorer/781487) | 1 | 19 March 2023 |
-| [781,277](/explorer/781277) | 1 | 18 March 2023 |
-| [730,848](/explorer/730848) | 1 | 07 April 2022 |
-| [685,135](/explorer/685135) | 1 | 27 May 2021 |
-| [675,407](/explorer/675407) | 1 | 20 March 2021 |
-| [675,392](/explorer/675392) | 1 | 20 March 2021 |
+| [956,337](/explorer/956337) | 1 | 2026 年 7 月 2 日 |
+| [951,052](/explorer/951052) | 1 | 2026 年 5 月 26 日 |
+| [945,189](/explorer/945189) | 1 | 2026 年 4 月 15 日 |
+| [944,852](/explorer/944852) | 1 | 2026 年 4 月 13 日 |
+| [941,882](/explorer/941882) | 2 | 2026 年 3 月 23 日 |
+| [939,832](/explorer/939832) | 1 | 2026 年 3 月 8 日 |
+| [935,497](/explorer/935497) | 1 | 2026 年 2 月 8 日 |
+| [933,995](/explorer/933995) | 1 | 2026 年 1 月 27 日 |
+| [928,484](/explorer/928484) | 1 | 2025 年 12 月 19 日 |
+| [925,605](/explorer/925605) | 1 | 2025 年 11 月 28 日 |
+| [920,138](/explorer/920138) | 1 | 2025 年 10 月 21 日 |
+| [916,308](/explorer/916308) | 1 | 2025 年 9 月 25 日 |
+| [904,623](/explorer/904623) | 1 | 2025 年 7 月 8 日 |
+| [901,092](/explorer/901092) | 1 | 2025 年 6 月 13 日 |
+| [894,657](/explorer/894657) | 1 | 2025 年 4 月 30 日 |
+| [883,183](/explorer/883183) | 1 | 2025 年 2 月 10 日 |
+| [881,953](/explorer/881953) | 1 | 2025 年 2 月 2 日 |
+| [881,780](/explorer/881780) | 1 | 2025 年 2 月 1 日 |
+| [877,770](/explorer/877770) | 1 | 2025 年 1 月 4 日 |
+| [863,888](/explorer/863888) | 1 | 2024 年 10 月 3 日 |
+| [856,689](/explorer/856689) | 1 | 2024 年 8 月 14 日 |
+| [853,051](/explorer/853051) | 1 | 2024 年 7 月 20 日 |
+| [851,248](/explorer/851248) | 1 | 2024 年 7 月 8 日 |
+| [849,233](/explorer/849233) | 1 | 2024 年 6 月 24 日 |
+| [848,477](/explorer/848477) | 1 | 2024 年 6 月 18 日 |
+| [847,849](/explorer/847849) | 1 | 2024 年 6 月 14 日 |
+| [829,613](/explorer/829613) | 1 | 2024 年 2 月 9 日 |
+| [827,853](/explorer/827853) | 1 | 2024 年 1 月 28 日 |
+| [819,343](/explorer/819343) | 1 | 2023 年 12 月 1 日 |
+| [818,038](/explorer/818038) | 1 | 2023 年 11 月 23 日 |
+| [815,202](/explorer/815202) | 1 | 2023 年 11 月 4 日 |
+| [813,210](/explorer/813210) | 1 | 2023 年 10 月 21 日 |
+| [803,389](/explorer/803389) | 1 | 2023 年 8 月 16 日 |
+| [800,786](/explorer/800786) | 1 | 2023 年 7 月 29 日 |
+| [792,379](/explorer/792379) | 1 | 2023 年 6 月 1 日 |
+| [789,147](/explorer/789147) | 1 | 2023 年 5 月 10 日 |
+| [788,837](/explorer/788837) | 1 | 2023 年 5 月 8 日 |
+| [788,805](/explorer/788805) | 1 | 2023 年 5 月 8 日 |
+| [781,487](/explorer/781487) | 1 | 2023 年 3 月 19 日 |
+| [781,277](/explorer/781277) | 1 | 2023 年 3 月 18 日 |
+| [730,848](/explorer/730848) | 1 | 2022 年 4 月 7 日 |
+| [685,135](/explorer/685135) | 1 | 2021 年 5 月 27 日 |
+| [675,407](/explorer/675407) | 1 | 2021 年 3 月 20 日 |
+| [675,392](/explorer/675392) | 1 | 2021 年 3 月 20 日 |
 
-A chain reorganization (or "reorg") takes place when your node receives blocks that are part of a new [longest chain](/docs/technical/blockchain/longest-chain.md). Your node will *deactivate* blocks in its old longest chain in favor of the blocks that build the **new longest chain**.
+当您的节点收到属于新的[最长链](/docs/technical/blockchain/longest-chain.md)的区块时，就会发生区块重组 (chain reorganization，或简称 “reorg”)。您的节点将*停用*其旧最长链中的区块，以采用构建**新最长链**的区块。
 
-This process allows individual nodes across the network to **agree on the same version of the [blockchain](/docs/technical/blockchain.md)**, because the globally accepted view of the blockchain will always be the one with the longest\* chain of blocks.
+这一过程允许整个网络中的各个节点**商定同一个版本的[区块链](/docs/technical/blockchain.md)**，因为全球接受的区块链视图将始终是包含最长\*区块链接的视图。
 
-\*Technically it's the chain with the most amount of *work*, but the most number of blocks is usually the same thing.
+\*从技术上讲，它是包含最大*工作量*的链，但通常区块数量最多也就是指相同的内容。
 
-> It is strictly necessary that the longest chain is always considered the valid one.
+> 必须严格规定，最长链总是被视为有效的链。
+> 
+> 中本聪, [密码学邮件列表 (Bitcoin P2P e-cash paper)](https://satoshi.nakamotoinstitute.org/emails/cryptography/6/)
 
-Satoshi Nakamoto, [Cryptography Mailing List (Bitcoin P2P e-cash paper)](https://satoshi.nakamotoinstitute.org/emails/cryptography/6/)
+## 发生场景
 
-## Scenario
+何时会发生区块重组？
 
-When does a chain reorganization take place?
-
-A chain reorganization most commonly takes place after **two [blocks](/docs/technical/block.md) have been [mined](/docs/technical/mining.md) at the same time**.
+区块重组最常发生在**两个[区块](/docs/technical/block.md)被同时[挖掘出](/docs/technical/mining.md)**之后。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-two-blocks.png" alt="Diagram showing two blocks being mined at the same time on the Bitcoin network." width="983" height="582" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-example-two-blocks.png)
 
+虽然少见，但同时挖掘出两个区块是完全正常的。
 
-Although uncommon, it's perfectly normal for two blocks to get mined at the same time.
-
-Due to the propagation speed of blocks across the [network](/docs/technical/networking.md), some nodes will receive the one block first, and some nodes will receive the other block first. Therefore, there will be a temporary disagreement about which of these blocks was actually "first" and belongs at the top of everyone's blockchain.
+由于区块在[网络](/docs/technical/networking.md)上的传播速度不同，某些节点会先收到其中一个区块，而另一些节点会先收到另一个区块。因此，对于这两个区块中哪一个实际上是“第一位”并应该放在每个人区块链的最顶端，会存在临时的分歧。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-chain-split.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="559" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-example-chain-split.png)
 
+节点会暂时对区块链的外观产生分歧。
 
-Nodes will temporarily disagree on what the blockchain looks like.
+那么，我们该如何解决这个争议并确保每个人都同意同一个版本的区块链呢？
 
-So how can we resolve this dispute and make sure everyone agrees upon the same version of the blockchain?
-
-Well, it's resolved when the *next block is mined*. The next block to be mined will build on top of *one* of these blocks, creating a new longest chain. When nodes receive this newest block, they will see that it creates a new longest chain, and they will perform a *chain reorganization* to adopt it.
+当*下一个区块被挖出*时，这个问题就会得到解决。下一个被挖出的区块将构建在这些区块之中的*一个*之上，从而创建一条新的最长链。当节点收到这个最新区块时，它们会发现它创建了一条新的最长链，并且它们将执行*区块重组*来采用它。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-next-block-resolved.png" alt="Diagram showing a temporary fork being resolved when the next block is mined." width="983" height="597" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-example-next-block-resolved.png)
 
+旧较短链中的区块被停用，新最长链中的区块被激活。
 
-Blocks in the old shorter chain are deactivated, and blocks in the new longer chain are activated.
+得益于区块重组，每个节点最终都会像其他所有人一样商定同一个版本的区块链。
 
-So thanks to chain reorganizations, each node eventually agrees on the same version of the blockchain as everyone else.
+## 过期区块 (Stale Blocks)
 
-## Stale Blocks
+旧最长链中的交易会发生什么？
 
-What happens to the transactions in the old longest chain?
+> **stale** – 活力或有效性受损
+> 
+> [Merriam-Webster 词典](https://www.merriam-webster.com/dictionary/stale)
 
-> **stale** – impaired in vigor or effectiveness
-
-[Merriam-Webster](https://www.merriam-webster.com/dictionary/stale)
-
-If a block is deactivated due to a chain reorganization ("stale block"), the transactions inside it are **no longer part of the blockchain**.
+如果一个区块因为区块重组而被停用（“过期区块”），其中的交易将**不再是区块链的一部分**。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block.png" alt="Diagram showing a stale block after a chain reorganization." width="772" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block.png)
 
+过期区块是指不再属于最长链一部分的区块。
 
-A stale block is a block that is no longer part of the longest chain.
-
-So if you try to spend the [outputs](/docs/technical/transaction/output.md) from a transaction inside a *stale block*, nodes would reject your transaction because you are trying to spend bitcoins that do not exist in the valid chain.
+因此，如果您尝试使用*过期区块*中交易的[输出 (outputs)](/docs/technical/transaction/output.md)，节点会拒绝您的交易，因为您正试图消费在有效链中并不存在的比特币。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-invalid-transaction.png" alt="Diagram showing how the outputs from a transaction in a stale block cannot be spent." width="772" height="469" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block-invalid-transaction.png)
 
+过期区块中交易的输出是不能被消费的；这就像交易从未发生过一样。
 
-The outputs from transactions in a stale block cannot be spent; it's like the transaction never happened.
-
-Practically speaking though, if two blocks are mined at the same time, they're probably going to include the same (or similar) transactions in them, so a reorg isn't usually going to cause a problem.
+不过在实际操作中，如果同时挖掘出两个区块，它们可能会包含相同（或相似）的交易，因此重组通常不会造成问题。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-similar-transactions.png" alt="Diagram showing how competing blocks during a chain reorganization usually contain similar transactions." width="772" height="318" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block-similar-transactions.png)
 
+在区块重组后，您的交易极有可能包含在“竞争”区块中。
 
-Your transaction is most likely included in the "competing" block after a chain reorganization.
-
-However, if there are transactions in the stale block that are *not* in the competing block, they will get sent back into your node's [memory pool](/docs/technical/mining/memory-pool.md) and propagated around the network again for the *chance* to be mined into a future block.
+然而，如果过期区块中存在*未*包含在竞争区块中的交易，它们将被退回到您节点的[内存池 (memory pool)](/docs/technical/mining/memory-pool.md)中，并在网络中重新传播，以获得被挖掘到未来区块中的*机会*。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-transactions-recycled.png" alt="Diagram showing a transaction from a stale block being recycled back into the mempool." width="772" height="480" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block-transactions-recycled.png)
 
+如果过期区块中的交易未在竞争区块中，它们将被回收回到内存池。
 
-Transactions from stale blocks will be recycled back into the memory pool if they're not in the competing block.
+但这并不能保证成功，如果交易在活跃链中不存在，它可能就像从未发生过一样。
 
-But this is not a guarantee, and if a transaction does not exist in the active chain, it may as well have never happened.
+**在将交易视为最终交易之前，值得等待交易进入区块链达 2 个以上的区块。** 始终存在它被重组掉的几率，届时您将不得不等待并希望它被重新挖掘回最长链。
 
-**It's worth waiting for a transaction to make it 2+ blocks into the blockchain before considering it as final.** There is always the chance that it will get reorg'd out, and you will have to wait/hope for it to be re-mined back into the longest chain.
+**“过期区块 (stale block)”有时被称为“孤块 (orphan block)”，但“过期区块”是更准确的术语。** *孤块*是指您的节点在收到它赖以构建的父区块之前就收到了该区块，而过期区块并不是孤块，因为它们有父区块。
 
-**A "stale block" is sometimes referred to as an "orphan block", but "stale block" is the more accurate term.** An *orphan block* is when your node receives a block before receiving the parent block that it builds upon, and stale blocks aren't orphans because they have parents.
+### 示例
 
-### Example
+在这里，我们可以看到一个发生在区块高度 [578,141](/explorer/578141) 的区块链中实际发生区块重组的示例。
 
-Here we can see an example of an actual chain reorganization that took place in the blockchain at block height [578,141](/explorer/578141).
+[<img src="../../images/technical_blockchain_chain-reorganization_neo4j-reorg-5.jpg" alt="Diagram showing an actual example of chain reorganization and transactions from the stale block being re-mined in a later block." width="1151" height="621" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/chain-reorganization/neo4j-reorg-5.jpg.md)
 
-[<img src="../../images/technical_blockchain_chain-reorganization_neo4j-reorg-5.jpg" alt="Diagram showing an actual example of chain reorganization and transactions from the stale block being re-mined in a later block." width="1151" height="621" />](/docs/technical/blockchain/chain-reorganization/neo4j-reorg-5.jpg.md)
+过期区块中的大多数交易都包含在竞争区块中，但有些交易在稍后的区块中被重新开采。
 
+## 长度
 
-Most of the transactions in the stale block were in the competing block, but some transactions were re-mined in to later blocks.
+区块重组的长度可以有多大？
 
-## Size
+区块重组可以是**任意区块长度**。
 
-How big can chain reorganizations be?
+如果您的节点收到了一条比当前活跃链更长的新区块链接，无论有多少个区块会被替换，您的节点都将进行区块重组以采用新链。
 
-A chain reorganization can be **any number of blocks in length**.
+这就是为什么拥有大多数哈希算力的矿工能够通过 [51% 攻击](/docs/technical/blockchain/51-attack.md)来替换您当前最长链中的区块和交易的原因。最长链总是获胜。
 
-If your node receives a new chain of blocks that's longer than your current active chain, your node will do a chain reorganization to adopt the new chain, no matter how many blocks will be replaced.
+然而，“自然”的区块重组（由于同时开采出两个区块而发生的重组）**很少涉及您链中顶端区块之外的区块**。
 
-This is why it's possible for a miner with a majority of hashing power to replace blocks and transactions in your current longest chain via a [51% attack](/docs/technical/blockchain/51-attack.md). The longest chain always wins.
+## 频率
 
-However, "natural" chain reorganizations (ones that take place due to two blocks being mined at the same time) **rarely involve more than the top block in your chain**.
+区块重组发生的频率如何？
 
-## Frequency
+并不经常。对于您的节点而言，要经历一次真正的区块重组，需要发生以下情况：
 
-How often do chain reorganizations happen?
+1. 两个区块同时被挖出。
+2. 您的节点首先收到了其中一个区块，但*另一个*区块被后续构建并成为了新的最长链。
 
-Not very often. For your node to experience an honest chain reorganization, the following needs to take place:
+我不知道这在数学上的概率是多少，因此以下是基于[我的比特币节点](/explorer/)（自 **2021 年 3 月** 以来一直持续运行）数据统计出的区块重组发生频率：
 
-1. Two blocks are mined at the same time.
-2. Your node receives one of the blocks first, but the *other* block gets built upon and becomes the new longest chain.
+* **实际重组:** 44 次 (每 6,451 个区块发生 1 次 / 44.3 天一次)
+  + 我们收到了一条新的最长链并更新至该链，同时停用了旧最长链中的区块。
+* **避免的重组:** 232 次 (每 1,223 个区块发生 1 次 / 8.4 天一次)
+  + 我们得知了可能成为新最长链的链接，但我们当时的活跃链作为最长链继续保持。
 
-I don't know what the mathematical probability of this is, so here's the frequency of chain reorganizations based on the data from [my bitcoin node](/explorer/) (which has been running continuously since **March 2021**):
+## 命令
 
-* **Actual Reorganizations:** 44 (1 every 6,451 blocks / 44.3 days)
-  + We received a new longest chain and updated to it, deactivating blocks in our old longest chain.
-* **Avoided Reorganizations:** 232 (1 every 1,223 blocks / 8.4 days)
-  + We heard about a chain that could become the new longest chain, but our active chain at the time continued as the longest.
+您如何查找区块重组？
 
-## Commands
+您可以使用 `bitcoin-cli getchaintips` 命令查看您的节点观察到的区块重组。
 
-How can you find chain reorganizations?
-
-You can see the chain reorganizations your node has observed with the `bitcoin-cli getchaintips` command.
-
-For example:
+例如：
 
 ```
 [
@@ -200,31 +192,31 @@ For example:
   ...
 ```
 
-* `brachlen` – tells you how many blocks are in the competing chain of blocks.
-* `status` – indicates the following:
-  + `active` – This is our current active chain (the longest chain).
-  + `valid-fork` – **Our node performed a chain reorganization.** We downloaded and validated these blocks and had them as part of our active chain, but we later deactivated them after receiving a new longer chain of blocks.
-  + `valid-headers` – **Our node observed a possible chain reorganization.** We downloaded these blocks, but did not validate them as our active chain was equivalent and became longer.
-  + `headers-only` – **Our node observed a possible chain reorganization.** We received the block headers for a competing chain but did not download the full blocks.
-  + `invalid` – A branch that contains invalid blocks.
+* `branchlen` – 告诉您在竞争的区块分支中有多少个区块。
+* `status` – 指示以下内容：
+  + `active` – 这是我们当前的活跃链（最长链）。
+  + `valid-fork` – **我们的节点执行了区块重组。** 我们下载并验证了这些区块，并让它们作为我们活跃链的一部分，但我们在收到新的最长区块链接后停用了它们。
+  + `valid-headers` – **我们的节点观察到了可能的区块重组。** 我们下载了这些区块，但没有验证它们，因为我们当时等效的活跃链变得更长了。
+  + `headers-only` – **我们的节点观察到了可能的区块重组。** 我们收到了竞争链的区块头，但没有下载完整的区块。
+  + `invalid` – 包含无效区块的分支。
 
 [<img src="../../images/diagrams_png_blockchain-chain-reorganization-getchaintips-status.png" alt="Diagram showing the difference between valid-fork, valid-headers, and headers-only." width="983" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-getchaintips-status.png)
 
-The branches with the status of `valid-fork` are the ones with blocks that we originally considered part of our active blockchain, but we later deactivated them after receiving a new longer chain of blocks.
+状态为 `valid-fork` 的分支是包含我们最初认为是活跃区块链一部分的区块，但在收到新的最长区块链接后停用了它们。
 
-The branches with the status of `valid-headers` are competing chains that we received *after* already having an equivalent active chain. These could have resulted in a reorganization, but our chain continued as the longest chain, so no reorganization took place.
+状态为 `valid-headers` 的分支是在我们已拥有等效活跃链*之后*收到的竞争链。这些链本来可能导致重组，但我们的链作为最长链继续保持，因此没有发生重组。
 
-**You're unlikely to see any chain reorganizations if you have not been running your node continuously for a few weeks or months.** When your node [downloads the blockchain](/docs/technical/blockchain.md#download) it will only download the blocks in the current longest chain (and not blocks from any branches or old chain reorganizations). Your node needs to experience chain reorganizations *as they happen* for them to show up in `bitcoin-cli getchaintips`.
+**如果您没有持续运行节点几周或几个月，您不太可能看到任何区块重组。** 当您的节点[下载区块链](/docs/technical/blockchain.md#download)时，它将仅下载当前最长链中的区块（而不会下载来自任何分支或旧的区块重组的区块）。您的节点需要经历*实时发生的*区块重组，它们才会显示在 `bitcoin-cli getchaintips` 中。
 
-## Summary
+## 总结
 
-Chain reorganizations are a *perfectly normal* part of a Bitcoin node's function. Adopting the longest known chain allows nodes across a network to agree on the same blockchain, and chain reorganizations are just a part of this process.
+区块重组是比特币节点正常功能的*完全标准*部分。采用已知的最长链允许网络中的节点商定同一个区块链，而区块重组正是此过程的一部分。
 
-Transactions inside blocks that are deactivated due to a chain reorganization will become invalid, but they will be recycled into the memory pool for the opportunity to be mined into a block on the new longest chain.
+由于区块重组而停用的区块中的交易将失效，但它们将被回收回内存池中，以获得挖掘到新最长链区块上的机会。
 
-So basically, if your transaction gets mined into a block, there's still a chance that it could get thrown back into the mempool due to a chain reorganization. However, these natural reorgs typically only happen to the **top block** on the chain, so you should wait for your transaction to make it 2 blocks deep to help avoid this scenario.
+所以基本上，如果您的交易被开采到区块中，仍然有可能会因为区块重组而重新被扔回内存池。然而，这种自然重组通常只会发生在链的**顶端区块**，因此您应该等待您的交易进入 2 个区块深，以帮助避免这种场景。
 
-## Resources
+## 资源
 
 * [How to detect a fork with bitcoin-cli?](https://bitcoin.stackexchange.com/questions/44437/how-to-detect-a-fork-with-bitcoin-cli)
 * [Understanding getchaintips in terms of chain reorganisations](https://bitcoin.stackexchange.com/questions/91111/understanding-getchaintips-in-terms-of-chain-reorganisations)

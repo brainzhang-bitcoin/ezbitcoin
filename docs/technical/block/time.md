@@ -2,81 +2,78 @@
 
 [<img src="../../images/diagrams_png_block-time.png" alt="Diagram showing the location of the time field inside the block header." width="609" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
 
-The time field in the [block header](/docs/technical/block.md#header) indicates the **rough time a block was created**.
+[区块头](/docs/technical/block.md#header)中的 time 字段指示了**区块被创建的粗略时间**。
 
-Miners put the current time in the block header when they construct their [candidate block](/docs/technical/mining/candidate-block.md). It contains a Unix Timestamp (the number of seconds since 01 January 1970), which is what computer programs typically use to store specific points in time.
+矿工在构建其[候选区块](/docs/technical/mining/candidate-block.md)时，会将当前时间存入区块头。它包含一个 Unix 时间戳 (Unix Timestamp，即自 1970 年 1 月 1 日以来的秒数)，这是计算机程序通常用来存储特定时间点的形式。
 
-For example, the [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) contains the timestamp 1231006505, which represents the date *03 Jan 2009, 18:15:05*.
+例如，[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)包含时间戳 1231006505，代表日期 *2009 年 1 月 3 日 18:15:05*。
 
-Unix Time
+Unix 时间
 
 0d
 
+当前
 
-Now
+日期
 
-Date
+0 秒
 
+## 区块顺序
 
-0 secs
+区块时间是否影响区块的顺序？
 
-## Block Order
+时间戳**不会**影响[区块链](/docs/technical/blockchain.md)中区块的顺序。
 
-Does block time influence the order of blocks?
+事实上，一个区块的时间戳完全有可能早于它所构建在其上的区块。例如：
 
-The timestamps **do not** influence the order of blocks in the [blockchain](/docs/technical/blockchain.md).
+* 区块 [790,402](/explorer/790402#blockchain) = 2023 年 5 月 19 日 04:22（比[前一个区块](/docs/technical/block/previous-block.md)“早”了 2 分钟）
+* 区块 [790,401](/explorer/790401#blockchain) = 2023 年 5 月 19 日 04:24
 
-In fact, it's possible for a block to have an earlier timestamp than the block it builds on top of. For example:
+另一个特别极端的例子是 2011 年的一个区块，其时间比前一个区块“早”了近 2 个小时：
 
-* Block [790,402](/explorer/790402#blockchain) = 19 May 2023, 04:22 (2 minutes "before" the [previous block](/docs/technical/block/previous-block.md))
-* Block [790,401](/explorer/790401#blockchain) = 19 May 2023, 04:24
+* 区块 [156,114](/explorer/156114#blockchain) = 2011 年 12 月 5 日 06:17（比前一个区块“早”了 1 小时 59 分钟）
+* 区块 [156,113](/explorer/156113#blockchain) = 2011 年 12 月 5 日 08:16
 
-Another particularly bad example is from 2011 where a block has a time of almost 2 hours "before" the block before it:
+因此，尽管时间戳通常相当准确，但有时区块并不是按“时间顺序”排列的，这完全没有问题。
 
-* Block [156,114](/explorer/156114#blockchain) = 05 Dec 2011, 06:17 (1 hour 59 minutes "before" the previous block)
-* Block [156,113](/explorer/156113#blockchain) = 05 Dec 2011, 08:16
+每个区块的时间戳通常非常接近当前时间，但您不应该依赖它们 100% 正确。您会发现“乱序”的区块每个月都会在区块链中出现几次，所以这并不算罕见。
 
-So whilst the timestamps are usually fairly accurate, sometimes blocks are not in "chronological" order, and that's perfectly fine.
+## 要求
 
-The timestamp of each block is usually pretty close to the current time, but you shouldn't rely on them to be 100% correct. You'll see "out of order" blocks appear in the blockchain a few times a month, so it's not terribly uncommon.
-
-## Requirements
-
-What is the maximum and minimum block time?
+区块时间的最大和最小值是多少？
 
 [<img src="../../images/diagrams_png_block-time-range.png" alt="Diagram showing the valid time range that can be placed in the block header." width="355" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/block-time-range.png)
 
-The timestamp has to be within a certain range for it to be valid:
+时间戳必须在特定范围内才有效：
 
-* It must be **greater than the median time of the last 11 blocks** (i.e. the time in the block 6 blocks below).
-* It must be **less than the [network adjusted time](#network-adjusted-time) +2 hours**.
+* 它必须**大于前 11 个区块的中间时间**（即在其下方第 6 个区块处的时间）。
+* 它必须**小于[网络调整时间](#network-adjusted-time) +2 小时**。
 
-So there is some flexibility in what the timestamp can be. For any newly-mined block, the time field could be anywhere between -1 to +2 hours (roughly) from the actual current time, and it would still be valid.
+因此，时间戳的确定具有一定的弹性。对于任何新挖掘出的区块，time 字段可以在实际当前时间的 -1 到 +2 小时（粗略计算）内，并且它仍然是有效的。
 
-This flexibility allows for a node to have an incorrect time setting (e.g. mistakes due to [Daylight Savings Time](https://en.wikipedia.org/wiki/Daylight_saving_time)), and for latency when transmitting blocks across the network.
+这种弹性允许节点的本地时间设置不准确（例如由于[夏令时](https://en.wikipedia.org/wiki/Daylight_saving_time)导致的误差），并包容了跨网络传输区块时的延迟。
 
-There is no mathematical justification for the range being between the median of the last 11 blocks and up to +2 hours into the future. They're "good enough" values that Satoshi chose when they coded the first version of bitcoin, and we still use them today.
+将范围限定在前 11 个区块的中间时间到未来的 +2 小时之间并没有严格的数学依据。它们是中本聪在编写第一版比特币代码时选择的“足够好”的数值，我们今天仍然在使用它们。
 
-> The two hour rule is really weird. It's the only 'consensus' rule that isn't based on blockchain data but on local data.
+> 这两小时的规则真的很奇怪。它是唯一一个不基于区块链数据而是基于本地数据的“共识”规则。
+> 
+> John Newbery, [Bitcoin Core PR Review Club (Jun 19, 2019)](https://bitcoincore.reviews/15481)
 
-John Newbery, [Bitcoin Core PR Review Club (Jun 19, 2019)](https://bitcoincore.reviews/15481)
+### 网络调整时间
 
-### Network Adjusted Time
+[本地节点](/explorer/):
 
-[Local Node](/explorer/):
+本地计算机时间:   2026 年 7 月 3 日 09:18:09
 
-Local Computer Time:   03 Jul 2026, 09:18:09
+网络调整时间: 2026 年 7 月 3 日 08:56:35 (-21 分 34 秒)
 
-Network Adjusted Time: 03 Jul 2026, 08:56:35 (-21 minutes, 34 seconds)
-
-The network adjusted time is your local time plus the median offset of all the nodes you are connected to.
+网络调整时间是您的本地时间加上您所连接的所有节点的中间偏移量。
 
 [<img src="../../images/diagrams_png_networking-network-adjusted-time.png" alt="Diagram showing the network average time being calculated based on the timestamps sent by connected nodes" width="786" height="404" />](https://static.learnmeabitcoin.com/diagrams/png/networking-network-adjusted-time.png)
 
+节点在相互[连接](/docs/technical/networking.md)时，会发送其本地时间的 UTC 时间戳。
 
-Nodes send a UTC timestamp of their local time when they [connect](/docs/technical/networking.md) to each other.
-
-For example:
+例如：
 
 ```
 Local Time = 1685010124
@@ -97,84 +94,84 @@ Note: This is just a quick example.
 Nodes are usually connected to more than 7 peers at a time.
 ```
 
-The reason we use network adjusted time is that it's difficult for computers on a decentralized network to agree on the current exact time.
+我们使用网络调整时间的原因是去中心化网络上的计算机很难就当前的确切时间达成一致。
 
-The network adjusted time allows the nodes to agree on a time between them, whilst limiting the ability of any one node from manipulating the "current" agreed time.
+网络调整时间允许节点在它们之间商定一个时间，同时限制任何单个节点操纵“当前”商定时间的能力。
 
-#### Network Adjusted Time bug
+#### 网络调整时间 Bug
 
-There is a well-known [bug](https://github.com/bitcoin/bitcoin/issues/4521) with the network adjusted time calculation in [timedata.cpp](https://github.com/bitcoin/bitcoin/blob/26.x/src/timedata.cpp).
+在 [timedata.cpp](https://github.com/bitcoin/bitcoin/blob/26.x/src/timedata.cpp) 中，网络调整时间的计算存在一个众所周知的 [Bug](https://github.com/bitcoin/bitcoin/issues/4521)。
 
-Basically, if you have a long-running node, after 199 connections your node will get "stuck" with the median offset based on those first 199 connections, as any further connections will not be registered for the median offset calculation.
+基本上，如果您有一个长期运行的节点，在发生 199 次连接后，您的节点将“卡”在基于前 199 次连接的中间偏移量上，因为任何后续连接都不会在中间偏移量计算中被注册。
 
-However, this bug protects other kinds of attacks [according to Gregory Maxwell](https://github.com/bitcoin/bitcoin/pull/4526#issuecomment-49115517), so it has intentionally not been fixed.
+然而，[ Gregory Maxwell 表示](https://github.com/bitcoin/bitcoin/pull/4526#issuecomment-49115517)，此 Bug 保护了节点免受其他类型的攻击，因此它是有意未被修复的。
 
-## Usage
+## 用途
 
-What is the time field in the block header used for?
+区块头中的 time 字段是用于做什么的？
 
-Besides being a rough indicator of when the block was mined, the block's timestamp has a couple of other uses within bitcoin:
+除了作为区块挖掘出的大致时间指标外，区块的时间戳在比特币中还有其他几个用途：
 
-### Target Recalculation
+### 目标重新计算
 
 [<img src="../../images/diagrams_png_target-period.png" alt="Diagram showing a target recalculation based on the time between the last 2015 blocks." width="983" height="189" />](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
 
-The timestamps in block headers are used to work out whether blocks are being mined more quickly or more slowly than expected over a 2016-block period, and the [target](/docs/technical/mining/target.md) is adjusted accordingly.
+区块头中的时间戳用于计算在 2016 个区块的周期内，区块的挖掘速度是快于还是慢于预期，并据此调整[target](/docs/technical/mining/target.md)。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标调整 (Target Adjustment)
 
-Previous Adjustment
-Current Target
-
-0x
-
-`0 bytes`
-
-
-Time (seconds)
-
-Actual
-
-0d
-
-Expected
-
-0d
-
-The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds.
-
-Ratio
-
-The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target.
-
-New Target (Full Precision)
-
-0x
-
-New Target
+上一次调整
+当前目标
 
 0x
 
 `0 bytes`
 
-Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining.
+
+时间 (秒)
+
+实际
+
+0d
+
+预期
+
+0d
+
+目标调整周期为 2016 个区块。一个区块平均每 600 秒（10 分钟）开采一次，因此预期时间为 2016 \* 600 = 1209600 秒。
+
+比例
+
+实际时间除以预期时间。我们将当前目标乘以该比例以获得新目标。
+
+新目标 (全精度)
+
+0x
+
+新目标
+
+0x
+
+`0 bytes`
+
+注意：此目标值已被轻微截断，以便存储在区块头的 bits 字段中，而这正是挖矿时实际使用的目标值。
 
 
 
-0 secs
+0 秒
 
-### Transaction Locktime
+### 交易锁定时间 (Transaction Locktime)
 
 [<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing the locktime being used to prevent a transaction being mined until a specific time in the future." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
 
-A transaction can include a specific [locktime](/docs/technical/transaction/locktime.md) to prevent it from being mined in a block until it's less a valid time field in a block header.
+交易可以包含特定的 [locktime](/docs/technical/transaction/locktime.md)，以防止在它小于区块头中有效 time 字段的设定之前被挖掘到区块中。
 
-## Notes
+## 注意事项
 
-* **Transactions do not have timestamps.** A raw transaction does not have a timestamp field. To figure out how "old" a transaction is, you have to find the block it is included in and get the timestamp from there. Alternatively, you could manually keep track of when your node first received the transaction from another node on the network (which is what Bitcoin Core does and is why you can see a transaction's "time" when you run `bitcoin-cli getmempoolentry [txid]`, but this information is only stored temporarily).
+* **交易不包含时间戳。** 原始交易不包含时间戳字段。要弄清楚交易有多“旧”，您必须找到包含该交易的区块并从中获取时间戳。或者，您可以手动跟踪您的节点第一次从网络上的另一个节点接收到该交易的时间（这正是 Bitcoin Core 所做的，也是为什么您在运行 `bitcoin-cli getmempoolentry [txid]` 时可以看到交易的“时间”的原因，但该信息仅会临时存储）。
 
-## Resources
+## 资源
 
 * [From where does the 2 hours limitation on bitcoin time stamp come?](https://bitcoin.stackexchange.com/questions/77755/where-does-the-2-hour-limit-on-the-timestamp-come-from)
 * [Why don't the timestamps in the block chain always increase?](https://bitcoin.stackexchange.com/questions/915/why-dont-the-timestamps-in-the-block-chain-always-increase)
-* [mediantime.go](https://github.com/btcsuite/btcd/blob/master/blockchain/mediantime.go) – Source code for the *network adjusted time* calculation in the btcd implementation of Bitcoin. Contains excellent comments.
+* [mediantime.go](https://github.com/btcsuite/btcd/blob/master/blockchain/mediantime.go) – Bitcoin 的 btcd 实现中，用于*网络调整时间*计算的源代码。包含极好的注释。

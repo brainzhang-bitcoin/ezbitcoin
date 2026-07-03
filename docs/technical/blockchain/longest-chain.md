@@ -2,107 +2,104 @@
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain.png" alt="Diagram showing the longest chain of blocks in a blockchain." width="320" height="376" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain.png)
 
-Current Longest Chain:
+当前最长链:
 
-* **Height:** 956479
-* **[Chainwork](#chainwork):** 0x000000000000000000000000000000000000000134d0e337eef3b345d0a8d660
+* **高度:** 956479
+* **[累积工作量 (Chainwork)](#chainwork):** 0x000000000000000000000000000000000000000134d0e337eef3b345d0a8d660
 
-The longest chain is what Bitcoin nodes accept as the **valid version** of the [blockchain](/docs/technical/blockchain.md).
+最长链是比特币节点接受为**有效版本**的[区块链](/docs/technical/blockchain.md)。
 
-The longest chain rule **allows every node on the network to agree** on what the blockchain looks like, and therefore agree on the same transaction history.
+最长链规则**允许网络上的每个节点商定**区块链的外观，并因此商定相同的交易历史。
 
-In other words, it means that computers acting independently over a network can maintain the same view of a globally updated file.
+换句话说，这意味着在网络上独立运行的计算机可以维护对全局更新文件的相同视图。
 
-> The proof-of-work chain is the solution to the synchronisation problem, and to knowing what the globally shared view is without having to trust anyone.
+> 工作量证明链是解决同步问题以及在不信任任何人的情况下了解全球共享视图的解决方案。
+> 
+> 中本聪, [密码学邮件列表 (Bitcoin P2P e-cash paper)](https://satoshi.nakamotoinstitute.org/emails/cryptography/7/)
 
-Satoshi Nakamoto, [Cryptography Mailing List (Bitcoin P2P e-cash paper)](https://satoshi.nakamotoinstitute.org/emails/cryptography/7/)
+## 定义
 
-## Definition
+什么是最长链？
 
-What is the longest chain?
+最长链是构建时付出了**最多劳动的区块链接**。
 
-The longest chain is the chain of blocks that took the **most effort to build**.
-
-In short, to add a new block to the blockchain you need to [use processing power](/docs/technical/mining.md), which means that every block on the blockchain requires a certain amount of *energy* to get there.
+简而言之，要向区块链中添加新区块，您需要[使用处理能力](/docs/technical/mining.md)，这意味着区块链上的每个区块都需要耗费一定的*能量*才能加入到其中。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-block-energy.png" alt="Diagram showing a computer processor being used to mine a block on to the blockchain." width="147" height="181" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-energy.png)
 
+区块是使用计算能力开采出来的。
 
-Blocks are mined using processing power.
-
-Therefore, a blockchain with *more blocks* in it will have taken *more energy* to build than a chain with fewer blocks in it, and as a rule nodes will always adopt this chain over a "shorter" one.
+因此，包含*更多区块*的区块链将比包含较少区块的链消耗*更多能量*来构建，并且作为规则，节点将始终采用该链而不是“较短的”链。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-nodes-adopting.png" alt="Diagram showing nodes adopting a longer chain instead of a shorter chain." width="779" height="427" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-nodes-adopting.png)
 
-As a result, nodes will always adopt the chain that took the most energy to build, and this is what we mean when we refer to the "longest chain".
+结果，节点将始终采用耗费最多能量构建的链，这就是我们所说的“最长链”的意思。
 
-> The majority decision is represented by the longest chain, which has the greatest proof-of-work effort invested in it.
+> 多数决定由最长链来代表，该链投入了最大的工作量证明努力。
+> 
+> 中本聪, [比特币白皮书](/bitcoin.pdf)
 
-Satoshi Nakamoto, [Bitcoin Whitepaper](/bitcoin.pdf)
+## 常见误区
 
-## Misconception
+最长链就是区块数量最多的链吗？
 
-Is the longest chain the one with the most blocks?
+您可能会认为*最长*链就是包含最多区块的链，但是，构建时需要最多能量的链**不一定包含最多的区块**。
 
-You'd think that the *longest* chain is simply the one with the most blocks in it, but the chain that required the most energy to build is **not necessarily the one with the most blocks in it**.
+这是因为[难度](/docs/beginners/guide/difficulty.md)的变化意味着有些区块比其他区块需要耗费更多的能量才能被挖掘。
 
-This is because changes to the [difficulty](/docs/beginners/guide/difficulty.md) mean that some blocks are going to require more energy to mine than others.
-
-For example, within the same difficulty period every new block requires the same amount of effort to be mined, and therefore adds the same amount of "work" to the chain:
+例如，在相同的难度周期内，挖掘每个新区块所需的努力是相同的，因此为链增加了等量“工作量”：
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-difficulty.png" alt="Diagram showing the difficulty for the first blocks in the blockchain." width="722" height="193" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty.png)
 
-However, if the difficulty increases (because blocks were mined more quickly than every 10 minutes on average), the blocks in the new difficulty period are going to take *more effort* to mine:
+然而，如果难度增加了（因为开采区块的平均时间少于 10 分钟），新难度周期内的区块挖掘将需要*更多的努力*：
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-difficulty-adjustment.png" alt="Diagram showing an increased difficulty after the first target adjustment." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty-adjustment.png)
 
-Now, seeing as nodes adopt the chain with the most work, they wouldn't actually adopt a chain with *more* blocks in it if it didn't require as much work to build.
+现在，鉴于节点采用工作量最多的链，如果构建时不需要那么多工作，它们实际上并不会采用包含*更多*区块的链。
 
-For example, if you construct two different blockchains spanning multiple difficulty periods, nodes will adopt the one that has the most cumulative "chainwork", and not simply the one with the most blocks in it:
+例如，如果您构建了跨越多个难度周期的两条不同的区块链，节点将采用累积“chainwork”最多的那条，而不仅仅是区块数量最多的那条：
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-difficulty-adjustment-chainwork.png" alt="Diagram showing the difference between a chain with the most work and a chain with the most blocks." width="941" height="427" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty-adjustment-chainwork.png)
 
+右边的链在构建时人为地保持了极低的难度。
 
-The chain on the right has been constructed to keep the difficulty artificially low.
+所以总结来说，“最长链”一词指的是**消耗了最多能量构建的区块链**。在大多数情况下，这通常也是包含最多区块的链，但更准确地说，它是包含最多*工作量*的链。
 
-So in summary, the phrase "longest chain" refers to **the blockchain that has taken the most energy to build**. For the most part this is usually the chain with the most blocks in it, but to be more precise it's the chain with the most amount of *work* in it.
+在[比特币的第一个版本](https://github.com/Dan-McG/bitcoin-0.1.0)中，中本聪使用*区块数量*作为决定最长链的指标，认为这会是包含最多工作量的链。然而，这容易受到操纵，因此后来被[更改](https://bitcoin.stackexchange.com/questions/29742/strongest-vs-longest-chain-and-orphaned-blocks/29744#29744)为使用 chainwork（累积工作量）作为最长链的判定指标。
 
-In the [first version of Bitcoin](https://github.com/Dan-McG/bitcoin-0.1.0), Satoshi used the *number of blocks* as the metric for determining the longest chain, believing this to be the chain that would have taken the most work to build. However, this is vulnerable to manipulation, so it was later [changed](https://bitcoin.stackexchange.com/questions/29742/strongest-vs-longest-chain-and-orphaned-blocks/29744#29744) to using chainwork as the metric for the longest chain instead.
+## 累积工作量 (Chainwork)
 
-## Chainwork
+如何计算最长链？
 
-How do you calculate the longest chain?
+最长链是通过名为“chainwork”的指标来衡量的。
 
-The longest chain is measured by a metric called "chainwork".
+> [Chainwork] 是预计产生当前链所必需的哈希总数。
+> 
+> Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/26869/what-is-chainwork/26894#26894)
 
-> [Chainwork] is the total number of hashes that are expected to have been necessary to produce the current chain.
-
-Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/26869/what-is-chainwork/26894#26894)
-
-To work out chainwork, you just need to work out **how many hashes you would have needed to perform to mine each block** in the chain, then add them up.
+要计算 chainwork，您只需要计算**挖掘链中每个区块预计需要执行多少次哈希**，然后将它们相加。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-chainwork.png" alt="Diagram showing the calculation for chainwork." width="937" height="386" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-chainwork.png)
 
+总 chainwork 是挖掘链中每个区块所需的平均预期哈希次数之和。
 
-The total chainwork is the sum of the average number of expected hashes to mine each block in the chain.
+### 计算方法
 
-### Calculation
+[挖矿](/docs/technical/mining.md)的过程涉及对[区块头](/docs/technical/block.md#header)进行哈希运算。
 
-The process of [mining](/docs/technical/mining.md) involves hashing a [block header](/docs/technical/block.md#header).
-
-Every time you perform a hash, the [hash function](/docs/technical/cryptography/hash-function.md) spits out a *256-bit number*, which can be any number from `0` to:
+每次您执行哈希时，[哈希函数](/docs/technical/cryptography/hash-function.md)都会输出一个 *256 位的数字*，该数字可以是 `0` 到以下值之间的任何数字：
 
 ```
 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ```
 
-To successfully mine this block on to the blockchain, this hash result needs to be *less than or equal to the [target](/docs/technical/mining/target.md) value* for that particular height in the chain. The target for the [first ever block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) was set at:
+为了成功将该区块开采到区块链中，该哈希结果需要*小于或等于该高度在链中的 [target](/docs/technical/mining/target.md) 值*。[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)的目标值被设定为：
 
 ```
 0x00000000ffff0000000000000000000000000000000000000000000000000000
 ```
 
-So to work out how many hashes you'd need to perform (on average) to get below this value, you **divide** the *maximum range of numbers* by the *number you want to get below*.
+因此，要算出得到低于该值的结果平均需要执行多少次哈希，您需要将*最大数值范围*除以*您希望低于的数值*。
 
 ```
 range = 2^256
@@ -112,29 +109,29 @@ hashes = range / below
 hashes = 0x0100010001
 ```
 
-This means you would need to perform `0x0100010001` (4295032833) hashes on average to get a result below this target value. Therefore, this was the actual chainwork for that first block.
+这意味着您平均需要进行 `0x0100010001` (4,295,032,833) 次哈希运算才能得到低于该目标值的结果。因此，这就是创世区块的实际 chainwork。
 
-So to work out the **total chainwork of a chain**, you just work out the expected hashes for each block and add them all up.
+所以为了计算**一条链的总 chainwork**，您只需计算每个区块的预期哈希次数并将其相加。
 
-You can find out what the target was for each block by looking at the [bits](/docs/technical/block/bits.md) field in the [block header](/docs/technical/block.md#header).
+您可以通过查看[区块头](/docs/technical/block.md#header)中的 [bits](/docs/technical/block/bits.md) 字段来找出每个区块的目标值。
 
-#### Average Hashes Explained
+#### 平均哈希的直观解释
 
-Let's say you're randomly generating numbers between 1 and 100, and you're hoping to randomly generate a number of **5 or below**. On average, how many numbers would you need to generate before you get one below your target?
+假设您在 1 到 100 之间随机生成数字，并希望随机生成一个 **5 或以下** 的数字。平均而言，在生成低于目标的数字之前，您需要生成多少个数字？
 
 ```
 100 / 5 = 20
 ```
 
-So on average **you'll need to generate 20 numbers** to get one that is below **5**.
+因此，平均而言，**您需要生成 20 个数字**才能得到一个低于 **5** 的数字。
 
-This is exactly the same kind of calculation that takes place in Bitcoin, but just with bigger numbers (and usually calculated using [hexadecimal](/docs/technical/general/hexadecimal.md) values instead).
+这与比特币中进行的计算完全相同，只是数字要大得多（通常使用[十六进制](/docs/technical/general/hexadecimal.md)值来计算）。
 
-### Example
+### 示例
 
-To give a quick example of how chainwork is calculated, let's calculate the chainwork for the **fourth block** in the blockchain.
+为了提供一个如何计算 chainwork 的快速示例，让我们计算区块链中**第四个区块**的 chainwork。
 
-The target did not adjust for the first 2016 blocks, so the average number of hashes required to mine each of these first 4 blocks will be the same:
+对于前 2016 个区块，目标并没有调整，因此挖掘这前 4 个区块中每一个所需的平均哈希次数都是相同的：
 
 ```
 Block 0
@@ -154,7 +151,7 @@ Block 3
   Average Hashes: 2**256 / (Target + 1) = 4295032833
 ```
 
-The total chainwork will be the sum of the average number of hashes to mine each of these blocks:
+总 chainwork 将是挖掘这些区块中的每一个的平均哈希次数之和：
 
 ```
 Total Chainwork
@@ -163,7 +160,7 @@ Total Chainwork
   = 0x400040004
 ```
 
-We can check that our calculation is correct using `bitcoin-cli`:
+我们可以使用 `bitcoin-cli` 检查我们的计算是否正确：
 
 ```
 bitcoin-cli getblockhash 3
@@ -177,88 +174,83 @@ bitcoin-cli getblock 0000000082b5015589a3fdf2d4baff403e6f0be035a5d9742c1cae62954
 }
 ```
 
-## Purpose
+## 目的
 
-Why do nodes adopt the longest chain?
+为什么节点采用最长链？
 
-Having nodes adopt the longest available chain allows computers across a network to agree on the same version of the blockchain.
+使节点采用可用的最长链，允许整个网络中的计算机能够就同一个区块链版本达成一致。
 
-Here are two situations where this proves to be useful:
+以下是该机制被证明非常有用的两个场景：
 
-### 1. Resolving disagreements when two blocks are mined at the same time.
+### 1. 解决两个区块同时被挖掘出时的分歧。
 
-Due to the fact that bitcoin operates on a [network](/docs/technical/networking.md), it's possible for two independent computers to mine a block at the same time. In this situation, nodes across the network will end up being in disagreement about which of these two blocks should be at the top of the blockchain.
+由于比特币运行在[网络](/docs/technical/networking.md)上，两台独立的计算机有可能同时开采出一个区块。在此情况下，网络中的节点最终会对这两个区块中哪一个应该处于区块链尖端产生分歧。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined.png" alt="Diagram showing two blocks mined at the same time across the network causing a temporary fork in the chain." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined.png)
 
+每个节点都会将其接收到的*第一个*区块放在其区块链的尖端。
 
-Each node puts the *first* block they receive at the top of their blockchain.
-
-However, this situation can be resolved by having nodes adopt the longest chain of blocks. This is because the **next block to be mined** will build upon *one* of these two blocks, creating a new longest chain that all nodes on the network will be happy to adopt.
+然而，可以通过使节点采用最长区块链接来解决此问题。这是因为**下一个挖掘出的区块**将构建在这两个区块之中的*一个*之上，从而创建一条全网节点都乐意采用的新最长链。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined-reorg.png" alt="Diagram showing a temporary fork being resolved via a chain reorganization." width="983" height="582" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined-reorg.png)
 
+节点会乐意放弃较短的链以采用新的最长链。这被称为[区块重组](/docs/technical/blockchain/chain-reorganization.md)。
 
-Nodes are happy to abandon the shorter chain in favor of the new longer one. This is known as a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
+所以即使节点在任何给定时间都可能存在分歧（由于挖矿的不可预测性和网络中广播数据的速度限制），但采用最长可用链意味着节点最终*总是*会商定同一个区块链视图。
 
-So even though nodes can be in disagreement at any given time (due to the unpredictability of mining and the speed of broadcasting data across a network), adopting the longest available chain means that nodes will always *eventually* agree on the same view of the blockchain.
+### 2. 保护已写入区块链的区块。
 
-### 2. Protecting blocks already mined on to the blockchain.
+节点总是采用最长链作为区块链有效版本的事实，意味着替换链中已有的区块（以及其中的交易）是非常困难的。
 
-The fact that nodes always adopt the longest chain as the valid version of the blockchain means that it is very difficult to replace blocks (and therefore transactions) already in the chain.
+如果有人想替换区块链中的一笔[交易](/docs/technical/transaction.md)，他们需要付出努力来构建一条**新的最长链来替换当前的链**。
 
-If someone wanted to replace a [transaction](/docs/technical/transaction.md) in the blockchain, they would need to work to build a **new longest chain to replace the current one**.
-
-However, if the majority of miners are continually working to extend the same current longest chain, an individual miner won't be able to compete to outwork the combined effort of all the other miners.
+然而，如果大多数矿工都在不断地工作以延长当前的同一条最长链，那么单个矿工将无法与所有其他矿工的合并努力进行竞争。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-protection.png" alt="Diagram showing how adopting the longest chain makes it difficult for attackers to rewrite the blockchain." width="979" height="586" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-protection.png)
 
+您需要拥有大多数挖矿算力才能超越所有其他矿工并构建一条新的最长链（这被称为 [51% 攻击](/docs/technical/blockchain/51-attack.md)）。
 
-You would need the majority of mining power to be able to out-run all other miners and build a new longest chain (known as a [51% Attack](/docs/technical/blockchain/51-attack.md)).
+结果，矿工们协同延长同一条链的合并努力保护了现有区块和交易不被单个矿工替换。
 
-As a result, the combined effort of miners coordinating to extend the same chain protects existing blocks and transactions from being replaced by a single miner.
+> 将其视为共同合作去制作一条链。
+> 
+> 中本聪, [bitcointalk.org](https://bitcointalk.org/index.php?topic=6.msg31#msg31)
 
-> Think of it as a cooperative effort to make a chain.
+## 常见问题
 
-Satoshi Nakamoto, [bitcointalk.org](https://bitcointalk.org/index.php?topic=6.msg31#msg31)
+### 为什么矿工选择在最长链上构建？
 
-## FAQ
+因为如果矿工能开采出一个区块，他们就可以声称获得了[区块奖励](/docs/technical/mining/block-reward.md)。
 
-### Why do miners choose to build on the longest chain?
-
-Because a miner can claim a [block reward](/docs/technical/mining/block-reward.md) if they are able to mine a block.
-
-However, the bitcoins from this block reward can only be spent if the block becomes **100 blocks deep in the *longest chain***. Therefore, this block reward incentivizes miners to always try and mine new blocks that will become part of the longest chain (by always trying to build on to the current longest one).
+然而，只有当该区块在***最长链*中达到 100 个区块的深度**时，该区块奖励中的比特币才能被消费。因此，该区块奖励激励着矿工总是尝试去挖掘能够成为最长链一部分的新区块（通过始终尝试在当前最长链上进行构建）。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-block-reward.png" alt="Diagram showing how a block reward can only be spent when the block reaches 100 blocks deep in the longest chain." width="707" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-reward.png)
 
+区块奖励只有在区块是最长链的一部分时才能被消费。
 
-A block reward can only be spent if the block is part of the longest chain.
+矿工最初通过 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易来声称区块奖励。
 
-Miners initially claim the block reward through the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md).
+### 那些不属于最长链的交易会发生什么？
 
-### What happens to transactions that are not part of the longest chain?
+在不属于最长链的区块中的[交易](/docs/technical/transaction.md)是**无效的**。
 
-A [transaction](/docs/technical/transaction.md) inside a block that is not part of the longest chain is **invalid**.
-
-If you try to spend the [outputs](/docs/technical/transaction/output.md) from a transaction that is not in the longest chain, nodes would not accept this new transaction nor try to mine it into a block. This is because nodes only consider the **longest chain as the valid history of transactions**, and anything outside of that is not a valid transaction.
+如果您试图使用不处于最长链中的交易[输出 (outputs)](/docs/technical/transaction/output.md)，节点既不会接受这笔新交易，也不会尝试将其挖掘到区块中。这是因为节点仅将**最长链视为有效的交易历史**，除此之外的任何交易都是无效的。
 
 [<img src="../../images/diagrams_png_blockchain-longest-chain-invalid-transaction.png" alt="Diagram showing a transaction that is not part of the longest chain as being invalid." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-invalid-transaction.png)
 
+不在最长链中的交易输出是不可消费的。
 
-The outputs in a transaction not in the longest chain are unspendable.
+所以只有最长链中的交易才被视为有效交易历史的一部分，而链外的任何交易实际上都从未发生过。
 
-So only the transactions inside the longest chain are considered to be part of the valid transaction history, and any transactions outside of it effectively never took place.
+**我建议您在判定比特币属于“您”之前，等待交易在区块链中达到 2 个或更多区块的深度。** 区块链中最顶端的区块总是有可能因为[区块重组](/docs/technical/blockchain/chain-reorganization.md)而发生改变，从而使此前有效的区块和交易失效。
 
-**I recommend that you wait for a transaction to make it to 2 or more blocks deep into the blockchain before you consider bitcoins to be "yours".** There is always a chance that the topmost blocks in the blockchain could change due to a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md), making previously valid blocks and transactions invalid.
+## 命令
 
-## Commands
-
-You can find the chainwork values for yourself using these `bitcoin-cli` commands:
+您可以使用以下 `bitcoin-cli` 命令自行找出 chainwork 值：
 
 ### `bitcoin-cli getblockchaininfo`
 
-See the total chainwork for the current longest chain.
+查看当前最长链的总 chainwork。
 
 ```
 $ bitcoin-cli getblockchaininfo
@@ -276,7 +268,7 @@ $ bitcoin-cli getblockchaininfo
 
 ### `bitcoin-cli getblock [blockhash]`
 
-See the chainwork for any given block in the chain.
+查看链中任何给定区块的 chainwork。
 
 ```
 $ bitcoin-cli getblock 00000000b8980ec1fe96bc1b4425788ddc88dd36699521a448ebca2020b38699
@@ -292,13 +284,13 @@ $ bitcoin-cli getblock 00000000b8980ec1fe96bc1b4425788ddc88dd36699521a448ebca202
 }
 ```
 
-## Summary
+## 总结
 
-The adoption of the longest chain of blocks allows nodes on a network of computers to be able to share a globally accepted view of the blockchain. Furthermore, the fact that it requires energy to add new blocks to the chain makes it very difficult for any individual to replace blocks that have already been mined into the chain.
+采用最长区块链接允许计算机网络中的节点能够分享全局接受的区块链视图。此外，向链中添加新区块需要消耗能量的事实，使得任何个人都极难替换链中已被挖掘出的区块。
 
-The "longest chain" usually refers to the chain with the greatest number of consecutive blocks, but technically it refers to the chain that has the *most work* in it based on how difficult it was to mine each block.
+“最长链”通常指包含最多连续区块数量的链，但在技术上，它指基于挖掘每个区块的难度，拥有*最大工作量*的链。
 
-## Resources
+## 资源
 
 * [What does the term "Longest chain" mean?](https://bitcoin.stackexchange.com/questions/5540/what-does-the-term-longest-chain-mean)
 * [chain.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/chain.cpp)

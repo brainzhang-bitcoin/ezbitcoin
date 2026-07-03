@@ -1,28 +1,28 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-The blk.dat files in the `~/.bitcoin/blocks/` directory contain the **raw [block](/docs/technical/block.md) data** received by your [*Bitcoin Core*](https://bitcoin.org/en/download) node.
+`~/.bitcoin/blocks/` 目录中的 blk.dat 文件包含您的 [*Bitcoin Core*](https://bitcoin.org/en/download) 节点接收到的**原始[区块](/docs/technical/block.md)数据**。
 
-These blk.dat files basically store the entire [blockchain](/docs/technical/blockchain.md).
+这些 blk.dat 文件基本上存储了整个[区块链](/docs/technical/blockchain.md)。
 
-## Location
+## 位置
 
-Where is the blockchain stored on your computer?
+区块链在您的计算机上存储在什么位置？
 
-The location of the raw blockchain files on your disk depends on what operating system you're using. These are the default locations:
+原始区块链文件在磁盘上的位置取决于您使用的操作系统。以下是默认位置：
 
 * **Linux:** `~/.bitcoin/blocks/`
 * **Mac:** `~/Library/Application Support/Bitcoin/blocks/`
 * **Windows:**
-  + `C:\Users\[username]\AppData\Roaming\Bitcoin\blocks\` ([v27.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.2.md) and below)
-  + `C:\Users\[username]\AppData\Local\Bitcoin\blocks\` ([v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md) onwards)
+  + `C:\Users\[username]\AppData\Roaming\Bitcoin\blocks\`（[v27.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.2.md) 及以下版本）
+  + `C:\Users\[username]\AppData\Local\Bitcoin\blocks\`（[v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md) 及以上版本）
 
-You can change the location of the block data directory by setting the `datadir=<dir>` option in the [bitcoin.conf configuration file](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md).
+您可以通过在 [bitcoin.conf 配置文件](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md) 中设置 `datadir=<dir>` 选项来更改区块数据目录的位置。
 
-## Filenames
+## 文件名
 
-How are the blockchain files organized?
+区块链文件是如何组织的？
 
-Every [block](/docs/technical/block.md) that your node receives gets appended to a blk.dat file. But instead of the entire blockchain being stored in one massive file, they are split into multiple blk\*.dat files.
+您的节点接收到的每个[区块](/docs/technical/block.md)都会追加到 blk.dat 文件中。但是，为了避免将整个区块链存储在一个庞大的文件中，它们被拆分成了多个 blk\*.dat 文件。
 
 * ~/.bitcoin/blocks/
   1. blk00000.dat
@@ -30,9 +30,9 @@ Every [block](/docs/technical/block.md) that your node receives gets appended to
   3. blk00002.dat
   4. blk00003.dat
   5. blk00004.dat
-  6. and so on...
+  6. 依此类推...
 
-Your node first adds blocks to blk00000.dat, then when it fills up it moves on to blk00001.dat, then blk00002.dat..., and so on. If you're on Linux, you can navigate to the data directory and list all the raw block files with:
+您的节点首先将区块添加到 blk00000.dat 中，当它写满时，会转移到 blk00001.dat，然后是 blk00002.dat...，依此类推。如果您使用的是 Linux，可以导航到数据目录并使用以下命令列出所有原始区块文件：
 
 ```
 $ cd ~/.bitcoin/blocks/
@@ -48,97 +48,97 @@ blk00006.dat
 ...
 ```
 
-The maximum blk.dat file size is **128 MiB** (134,217,728 bytes). This limit is set by [MAX\_BLOCKFILE\_SIZE](https://github.com/bitcoin/bitcoin/blob/master/src/node/blockstorage.h).
+blk.dat 文件的最大大小为 **128 MiB**（134,217,728 字节）。此限制由 [MAX\_BLOCKFILE\_SIZE](https://github.com/bitcoin/bitcoin/blob/master/src/node/blockstorage.h) 设置。
 
-## Example
+## 示例
 
-What does a raw block look like?
+原始区块看起来是什么样的？
 
-The data in blk.dat files is stored in binary, which is basically a bunch of 1s and 0s and not human-readable text.
+blk.dat 文件中的数据是以二进制形式存储的，基本上是一堆 1 和 0，并不是人类可读的文本。
 
-Nonetheless, we can look at the [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) by reading the first *293 bytes* of blk00000.dat. I've split up the individual fields so you can see them more clearly:
+尽管如此，我们可以通过读取 blk00000.dat 的前 *293 个字节*来查看[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)。我拆分了各个字段，以便您可以更清楚地看到它们：
 
 ```
-f9beb4d9 1d010000 01000000 0000000000000000000000000000000000000000000000000000000000000000 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a 29ab5f49 ffff001d 1dac2b7c 01 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
+f9beb4d9 1d010000 01000000 0000000000000000000000000000000000000000000000000000000000000000 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a 29ab5f49 ffff001d 1dac2b7c 01 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e642062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-See the [od command](#od) below for displaying the [hex bytes](/docs/technical/general/bytes.md#representing-bytes) from a binary file.
+请参阅下面的 [od 命令](#od) 以从二进制文件中显示[十六进制字节](/docs/technical/general/bytes.md#representing-bytes)。
 
-## Structure
+## 结构
 
-What is the structure of a raw block?
+原始区块的结构是怎样的？
 
 [<img src="../../images/diagrams_png_block-blkdat.png" alt="Diagram showing structure of the raw block data inside the blk.dat files." width="431" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat.png)
 
-The data above can be split into five parts:
+上面的数据可以分为五个部分：
 
-1. The [**magic bytes**](/docs/technical/networking/magic-bytes.md) (4 bytes) is a message delimiter indicating the start of a block.
-2. The **size** (4 bytes) indicates the size of the upcoming block in [bytes](/docs/technical/general/bytes.md).
-3. The [**block header**](/docs/technical/block.md#header) (80 bytes) is a summary of the block data.
-4. The **tx count** ([compact size](/docs/technical/general/compact-size.md)) indicates how many transactions are in the block.
-5. The [**transaction data**](/docs/technical/transaction.md) (variable) is all of the transactions in the block concatenated one after the other.
+1. [**魔术字节 (magic bytes)**](/docs/technical/networking/magic-bytes.md)（4 字节）是一个消息分隔符，用于指示区块的开始。
+2. **大小 (size)**（4 字节）指示接下来的区块的大小（以[字节](/docs/technical/general/bytes.md)为单位）。
+3. [**区块头 (block header)**](/docs/technical/block.md#header)（80 字节）是区块数据的摘要。
+4. **交易数量 (tx count)**（[compact size](/docs/technical/general/compact-size.md)）指示区块中有多少笔交易。
+5. [**交易数据 (transaction data)**](/docs/technical/transaction.md)（可变长度）是区块中所有一个接一个连接在一起的交易。
 
-The size field is what allowed me to figure out that I needed to read **293 bytes** to get the whole block in the example above. The size of the block is indicated as `1d010000`, so to get this in human format:
+大小字段让我能够计算出在上面的示例中我需要读取 **293 字节** 才能获取整个区块。区块的大小表示为 `1d010000`，因此为了将其转换为人类可读的格式：
 
-1. Convert `1d010000` from *little-endian* to *big-endian* to get `0000011d`
-2. Convert `0000011d` from *hexadecimal* to *decimal* to get `285`
+1. 将 `1d010000` 从 *小端序 (little-endian)* 转换为 *大端序 (big-endian)* 得到 `0000011d`。
+2. 将 `0000011d` 从 *十六进制* 转换为 *十进制* 得到 `285`。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Little Endian
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 小端序 (Little Endian)
 
 +1
 
-Decimal
+十进制
 
 0d
 
-Hex Bytes (Big Endian)
+十六进制字节 (大端序)
 
 0x
 
 `0 bytes`
 
-Hex Bytes (Little Endian)
+十六进制字节 (小端序)
 
 0x
 
 `0 bytes`
 
 
-Field Size
+字段大小
 
  Any
 
- 2 Bytes
+ 2 字节
 
- 4 Bytes
+ 4 字节
 
- 8 Bytes
+ 8 字节
 
- 12 Bytes
+ 12 字节
 
- 16 Bytes
+ 16 字节
 
- 32 Bytes
+ 32 字节
 
 
 
-0 secs
+0 秒
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
 `0 digits`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
 `0 digits`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
@@ -151,19 +151,19 @@ Hexadecimal (Base 16)
 
 
 
-0 secs
+0 秒
 
-So the actual block itself is only 285 bytes. But then there is an extra 8 bytes at the start for the magic-bytes + size, so I needed to read **293 bytes** from the start of the raw blockchain file to get the full block of data.
+因此实际的区块本身只有 285 字节。但是，由于在开始处有额外的 8 字节用于存放 magic-bytes + size，因此我需要从原始区块链文件的开头读取 **293 字节** 才能获得完整的区块数据。
 
-## Linux Tools
+## Linux 工具
 
-How can you read raw blockchain data?
+您如何读取原始区块链数据？
 
-As mentioned, the data inside a blk.dat file is *binary*, so you're probably not getting to see anything useful if you open one up in a regular text editor. But no matter, because binary data can be easily displayed as [hexadecimal](/docs/technical/general/hexadecimal.md) bytes, and there are a few commands that can help:
+如前所述，blk.dat 文件中的数据是*二进制*的，因此如果您在常规文本编辑器中打开它，可能看不到任何有用的内容。不过没关系，因为二进制数据可以很容易地显示为[十六进制](/docs/technical/general/hexadecimal.md)字节，并且有几个命令可以提供帮助：
 
 ### 1. `xxd`
 
-This is a simple one. It dumps out the contents of raw binary files in hexadecimal.
+这是一个简单的工具。它以十六进制形式导出原始二进制文件的内容。
 
 ```
 $ xxd -p -s 8 -l 285 blk00000.dat
@@ -179,16 +179,16 @@ ffff4d04ffff001d0104455468652054696d65732030332f4a616e2f3230
 7962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b
 8d578a4c702b6bf11d5fac00000000
 
-# -p      <- show plain hexadecimal bytes
-# -s 8    <- seek to a position in the file (using 8 to skip the magic bytes and block size fields)
-# -l 285  <- number of bytes to read (the genesis block is the next 285 bytes)
+# -p      <- 显示纯十六进制字节
+# -s 8    <- 定位到文件中的某个位置 (使用 8 跳过 magic bytes 和 block size 字段)
+# -l 285  <- 要读取的字节数 (创世区块是接下来的 285 字节)
 ```
 
-If you're running Bitcoin Core `v28.0` or newer, you may need to *deobfuscate* ([XOR](#xor)) the raw block data first to get the same result as above.
+如果您运行的是 Bitcoin Core `v28.0` 或更高版本，您可能需要先*解密* ([XOR](#xor)) 原始区块数据才能获得与上面相同的结果。
 
 ### 2. `od`
 
-This is another simple one. It dumps out the contents of files in your format of choice.
+这是另一个简单的工具。它以您选择的格式导出文件内容。
 
 ```
 $ od -x --endian=big -N 293 -An blk00000.dat
@@ -213,17 +213,17 @@ $ od -x --endian=big -N 293 -An blk00000.dat
  5c38 4df7 ba0b 8d57 8a4c 702b 6bf1 1d5f
  ac00 0000 0000
 
-# -x           <- show hexadecimal
-# --endian=big <- display bytes in big endian
-# -N 293       <- number of bytes to read
-# -An          <- do not show file offset
+# -x           <- 显示十六进制
+# --endian=big <- 以大端序显示字节
+# -N 293       <- 要读取的字节数
+# -An          <- 不显示文件偏移量
 ```
 
-"od" stands for **o**ctal **d**ump, but you can dump out data in other formats than just [octal](https://en.wikipedia.org/wiki/Octal).
+"od" 代表 **o**ctal **d**ump (八进制转储)，但您也可以将数据转储为除 [八进制](https://en.wikipedia.org/wiki/Octal) 之外的其他格式。
 
 ### 3. `hexdump`
 
-This is similar to `xxd` and `od`, but it also gives you the option of displaying [ASCII](/docs/technical/general/bytes.md#text) text from the data (which is also handy for looking at messages contained inside transaction data).
+这类似于 `xxd` 和 `od`，但它还提供了从数据中显示 [ASCII](/docs/technical/general/bytes.md#text) 文本的选项（这对于查看交易数据中包含的消息非常方便）。
 
 ```
 $ hexdump -C -s 8 -n 285 blk00000.dat
@@ -245,29 +245,29 @@ $ hexdump -C -s 8 -n 285 blk00000.dat
 000000e8  19 67 f1 a6 71 30 b7 10  5c d6 a8 28 e0 39 09 a6  |.g..q0..\..(.9..|
 000000f8  79 62 e0 ea 1f 61 de b6  49 f6 bc 3f 4c ef 38 c4  |yb...a..I..?L.8.|
 00000108  f3 55 04 e5 1e c1 12 de  5c 38 4d f7 ba 0b 8d 57  |.U......\8M....W|
-00000118  8a 4c 70 2b 6b f1 1d 5f  ac 00 00 00 00           |.Lp+k.._.....|)
+00000118  8a 4c 70 2b 6b f1 1d 5f  ac 00 00 00 00           |.Lp+k.._.....|
 0000125
 
-# -C <- display data in the same byte-order that is used in bitcoin, and also ascii text
-# -s <- start point (offset in bytes)
-# -n <- number of bytes to read
+# -C <- 以比特币中使用的相同字节顺序显示数据，同时显示 ascii 文本
+# -s <- 起始点 (字节偏移量)
+# -n <- 要读取的字节数
 ```
 
-This is a popular way to display the genesis block, and you'll see it floating around the Internet in various places.
+这是显示创世区块的流行方式，您会在互联网的各个地方看到它。
 
-Anyway, you can chain some commands together so that you just get the raw hexadecimal bytes without any formatting if you prefer:
+总之，如果您喜欢，您可以将一些命令连接在一起，这样您就可以在没有任何格式的情况下直接获得原始十六进制字节：
 
 ```
 $ hexdump -C -s 8 -n 285 blk00000.dat | cut -c 11-58 | tr '\n' ' ' | tr -d ' '
 
 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000%
 
-# cut -c 11-58 <- cuts out anything outside the columns from characters 11 to 58 (on each line)
-# tr '\n' ' ' <- translate new lines in to spaces
-# tr -d ' ' <- deletes all spaces
+# cut -c 11-58 <- 剪切掉每行中字符 11 到 58 列之外的所有内容
+# tr '\n' ' ' <- 将换行符翻译为空格
+# tr -d ' ' <- 删除所有空格
 ```
 
-But if you're going to go to the effort of doing that, you might as well extract raw block data directly from Bitcoin Core by using:
+但是，如果您要花精力这么做，不妨直接使用以下命令从 Bitcoin Core 中提取原始区块数据：
 
 ```
 $ bitcoin-cli getblock <hash> 0
@@ -275,42 +275,42 @@ $ bitcoin-cli getblock <hash> 0
 
 ### 4. bitcoin-iterate
 
-[bitcoin-iterate](https://github.com/rustyrussell/bitcoin-iterate) is an excellent tool for extracting data from raw blockchain files. It's surprisingly fast too. Here are some simple examples:
+[bitcoin-iterate](https://github.com/rustyrussell/bitcoin-iterate) 是一个用于从原始区块链文件中提取数据的极好工具。它的运行速度也出奇地快。以下是一些简单的示例：
 
 ```
-# Usage
+# 用法
 bitcoin-iterate -h
 
-# return the block headers for the first 100 blocks
+# 返回前 100 个区块的区块头 (block headers)
 bitcoin-iterate -q --block='%bH' --end=100 > headers.txt
 
-# return the all raw transactions in block 123,456
+# 返回区块 123,456 中的所有原始交易
 bitcoin-iterate -q --tx='%tX' --start=123456 --end=123456 > transactions.txt
 
-# return every single scriptpubkey in the blockchain along with the txid for the transaction they were included in
+# 返回区块链中的每一个 scriptpubkey 以及它们被包含的交易的 txid
 bitcoin-iterate -q --output='%th %os' > scriptpubkeys.txt
 ```
 
-I use it all the time to look for interesting blocks and transactions in the blockchain.
+我经常用它来寻找区块链中有趣的区块和交易。
 
 ## XOR
 
-Since [v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md), the raw block data in the blkXXXXX.dat files is **obfuscated by default**. It's easy enough to *deobfuscate*, but it does mean that the raw block data is no longer stored in "plain text" like it used to be.
+自 [v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md) 起，blkXXXXX.dat 文件中的原始区块数据**默认已混淆 (obfuscated by default)**。对其进行*去混淆*非常简单，但这确实意味着原始区块数据不再像以前那样以“纯文本”形式存储。
 
-> **obfuscate** — to make something less clear and harder to understand, especially intentionally
+> **obfuscate** — 故意使某事不那么清晰，更难理解
+> 
+> [剑桥词典](https://dictionary.cambridge.org/dictionary/english/obfuscate)
 
-[Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/obfuscate)
+这样做的原因是因为您无法控制其他人可能决定在区块链中存储什么内容，因此为了[防止杀毒软件检测到原始区块数据有任何问题](https://github.com/bitcoin/bitcoin/pull/28052)，当数据存储在您的计算机上时会被轻微地“打乱”。但正如我所说，将它恢复到自然形态是非常容易的。
 
-The reason for this is because you have no control over what other people might decide to store inside the blockchain, so to [prevent anti-virus software detecting any issues](https://github.com/bitcoin/bitcoin/pull/28052) with the raw block data, it is lightly "scrambled" when stored on your computer. But as I say, it's easy enough to unscramble it to get it back to its natural form.
+所以如果您想从磁盘上读取原始区块数据，您需要首先学习如何**对其进行去混淆**。
 
-So if you want to read raw block data from disk, you need to learn how to **deobfuscate it first**.
+* 您可以通过在 `bitcoin.conf` 文件中设置 `blocksxor=0` 来关闭混淆。但是，这只有在您重新下载区块链时才有效。
+* 如果您在升级到 v28.0 之前就在运行比特币节点，您的原始区块数据文件将保持纯文本状态。因此，现有的和新的区块数据在未来都不会被混淆。
 
-* You can turn off obfuscation by setting `blocksxor=0` in your `bitcoin.conf` file. However, this only works if you're starting with a fresh download of the blockchain.
-* If you were running a bitcoin node before upgrading to v28.0, your raw block data files will remain in plain text. So existing and new block data will not be obfuscated moving forward.
+### 示例
 
-### Example
-
-This is what the [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) looks like in its natural form:
+这是[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)在其自然形态下的样子：
 
 ```
 $ hexdump -C -s 8 -n 285 blk00000.dat
@@ -332,11 +332,11 @@ $ hexdump -C -s 8 -n 285 blk00000.dat
 000000e8  19 67 f1 a6 71 30 b7 10  5c d6 a8 28 e0 39 09 a6  |.g..q0..\..(.9..|
 000000f8  79 62 e0 ea 1f 61 de b6  49 f6 bc 3f 4c ef 38 c4  |yb...a..I..?L.8.|
 00000108  f3 55 04 e5 1e c1 12 de  5c 38 4d f7 ba 0b 8d 57  |.U......\8M....W|
-00000118  8a 4c 70 2b 6b f1 1d 5f  ac 00 00 00 00           |.Lp+k.._.....|)
+00000118  8a 4c 70 2b 6b f1 1d 5f  ac 00 00 00 00           |.Lp+k.._.....|
 0000125
 ```
 
-However, my `xor_key` is `17 7a 35 a3 e4 32 54 ff`, so this is what my genesis block looks like on disk:
+然而，我的 `xor_key` 是 `17 7a 35 a3 e4 32 54 ff`，因此这是我的创世区块在磁盘上的样子：
 
 ```
 $ hexdump -C -s 8 -n 285 blk00000.dat
@@ -359,16 +359,16 @@ $ hexdump -C -s 8 -n 285 blk00000.dat
 000000f8  6e 18 d5 49 fb 53 8a 49  5e 8c 89 9c a8 dd 6c 3b  |n..I.S.I^.....l;|
 00000108  e4 2f 31 46 fa f3 46 21  4b 42 78 54 5e 39 d9 a8  |./1F..F!KBxT^9..|
 00000118  9d 36 45 88 8f c3 49 a0  bb 7a 35 a3 e4           |.6E...I..z5..|
-00000125
+0000125
 ```
 
-The `xor_key` is randomly generated by your node, so your genesis block will look different on your disk.
+`xor_key` 是由您的节点随机生成的，因此您磁盘上的创世区块看起来可能会有所不同。
 
-### Deobfuscate
+### 去混淆
 
-The raw block data is obfuscated using the `xor_key` stored in the `xor.dat` file in your `/blocks/` folder.
+原始区块数据是使用存储在您的 `/blocks/` 文件夹中 `xor.dat` 文件里的 `xor_key` 来进行混淆的。
 
-For example:
+例如：
 
 ```
 $ xxd -p ~/.bitcoin/blocks/xor.dat
@@ -376,13 +376,13 @@ $ xxd -p ~/.bitcoin/blocks/xor.dat
 177a35a3e43254ff
 ```
 
-To deobfuscate the raw block data, you simply use this `xor_key` and XOR it across the raw block data, which "flips the bits" back to their natural form.
+要对原始区块数据进行去混淆，您只需使用此 `xor_key` 与原始区块数据进行 XOR 运算，这会将“位翻转”回它们自然形态。
 
-This `xor_key` is **8 bytes** in length, so you need to repeatedly XOR every 8 bytes of raw block data to deobfuscate it.
+这个 `xor_key` 长度为 **8 字节**，因此您需要重复对原始区块数据的每 8 个字节进行 XOR 运算以对其进行去混淆。
 
 [<img src="../../images/diagrams_png_block-blkdat-xor.png" alt="Diagram showing how to use the xor_key to deobfuscate raw block data from a blk.dat file." width="765" height="178" />](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat-xor.png)
 
-Here's some simple code to show you how it works:
+这是一些简单的代码，显示它是如何工作的：
 
 ```
 # get the xor key
@@ -421,61 +421,61 @@ result_hex = result.pack("C*").unpack("H*")
 puts result_hex #=> 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-As you can see, the important part is making sure to use the correct byte from the `xor_key` for each byte of the raw block data.
+如您所见，重要的部分是确保为原始区块数据的每个字节使用来自 `xor_key` 的正确字节。
 
-#### XOR Operator
+#### XOR 运算符
 
-The [XOR](https://stackoverflow.com/questions/14526584/what-does-the-xor-operator-do) (exclusive or) bitwise operator works on bits (`1`s and `0`s) of binary data. It works as follows:
+[XOR](https://stackoverflow.com/questions/14526584/what-does-the-xor-operator-do)（异或）按位运算符作用于二进制数据的位（`1` 和 `0`）。它的工作原理如下：
 
-* Returns a `1` if both input bits are different.
-* Returns a `0` if both input bits are the same.
+* 如果两个输入位不同，则返回 `1`。
+* 如果两个输入位相同，则返回 `0`。
 
-In practical terms, this operator is useful for "flipping bits".
+在实际操作中，该运算符对于“翻转位”非常有用。
 
-For example:
+例如：
 
 ```
-0101010101 <- raw data
-1111111111 <- example xor_key
+0101010101 <- 原始数据
+1111111111 <- 示例 xor_key
 ---------- XOR
-1010101010 <- result
+1010101010 <- 结果
 ```
 
-Then if you use the same `xor_key` on the result, you flip the bits back to their original form:
+然后，如果您在结果上使用相同的 `xor_key`，就会将这些位翻转回它们原始形式：
 
 ```
-1010101010 <- raw data
-1111111111 <- example xor_key
+1010101010 <- 原始数据
+1111111111 <- 示例 xor_key
 ---------- XOR
-0101010101 <- result
+0101010101 <- 结果
 ```
 
-Therefore:
+因此：
 
-* If you use an xor\_key of all `1`s, it will **flip every bit** of the original data.
-* If you use an xor key of all `0`s, it will **not flip any of the bits** (so the original data will remain the same).
+* 如果您使用全为 `1` 的 xor\_key，它将**翻转原始数据的每一位**。
+* 如果您使用全为 `0` 的 xor 密钥，它将**不翻转任何位**（因此原始数据将保持不变）。
 
-So by using a random `xor_key`, different keys will flip different bits of the raw block data when stored on your disk. These bits can then be "flipped back" using the same `xor_key` on the obfuscated result.
+所以通过使用随机的 `xor_key`，不同的密钥在原始区块数据存储在您的磁盘上时会翻转不同的位。然后可以使用相同的 `xor_key` 对混淆后的结果进行“翻转”，恢复原样。
 
-If you upgrade to v28.0 from an earlier version, your `xor_key` will be all `0`s, so the raw block data will remain unchanged on disk.
+如果您从较早版本升级到 v28.0，您的 `xor_key` 将全为 `0`，因此原始区块数据在磁盘上将保持不变。
 
-It's a bit annoying to have to deobfuscate the raw block data after v28.0, especially if you've already written a tool that reads through the blkXXXXX.dat files. But it's pretty straightforward to unscramble the raw data, so it shouldn't require too much effort to update your code and get it working again.
+在 v28.0 之后必须对原始区块数据进行去混淆确实有点烦人，特别是如果您已经编写了读取 blkXXXXX.dat 文件的工具。但恢复原始数据还是非常简单明了的，因此更新您的代码并让它重新工作应该不会花费太多精力。
 
-## Notes
+## 注意
 
-### Block Order
+### 区块顺序
 
-If you are parsing the blk.dat files with your own script, be aware that blocks are **not going to be in order**. For example, you may encounter blocks in this order as you run through the file:
+如果您使用的是自己的脚本解析 blk.dat 文件，请注意区块**不会是有序的**。例如，当您运行文件时，您可能会以以下顺序遇到区块：
 
 ```
 A B C E F D G
 ```
 
-This is because your bitcoin node will **download blocks in parallel** so that it can download the blockchain as quickly as possible. So instead of having to wait to receive each block in order, your node will download blocks further ahead of the current one as it goes.
+这是因为您的比特币节点将**并行下载区块**，以便能够尽快下载区块链。因此，您的节点在运行时会下载比当前区块更靠前的区块，而无需等待按顺序接收每个区块。
 
-The maximum distance ahead your node will fetch from (or the "maximum out-of-orderness") is controlled by [BLOCK\_DOWNLOAD\_WINDOW](https://github.com/bitcoin/bitcoin/blob/master/src/net_processing.cpp) in the bitcoin source code.
+您的节点获取的最远领先距离（或“最大无序度”）由比特币源码中的 [BLOCK\_DOWNLOAD\_WINDOW](https://github.com/bitcoin/bitcoin/blob/master/src/net_processing.cpp) 控制。
 
-## Resources
+## 资源
 
 * [Bitcoin Core file system](https://github.com/bitcoin/bitcoin/blob/master/doc/files.md)
 * [Why are blk\*.dat files ~134200000 bytes?](https://bitcoin.stackexchange.com/questions/50693/why-are-blk-dat-files-134200000-bytes)

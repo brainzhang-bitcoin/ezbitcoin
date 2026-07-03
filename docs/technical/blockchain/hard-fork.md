@@ -2,178 +2,178 @@
 
 [<img src="../../images/diagrams_png_blockchain-forks-hard-fork.png" alt="Diagram showing a hard fork in the blockchain." width="560" height="457" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork.png)
 
-A hard fork happens when an upgrade is made to the Bitcoin software that is *incompatible* with previous versions of the software.
+硬分叉 (hard fork) 发生于对比特币软件进行升级，且该升级与软件的旧版本*不兼容*时。
 
-This is when changes are made to the rules so that previously invalid [blocks](/docs/technical/block.md)/[transactions](/docs/technical/transaction.md) will now be considered valid in the new version of the software.
+这是指对规则进行修改，从而使以前无效的[区块](/docs/technical/block.md)/[交易](/docs/technical/transaction.md)在软件新版本中被视为有效。
 
-As a result, unless everyone upgrades to the new software, the [blockchain](/docs/technical/blockchain.md) will split in two different directions:
+结果，除非每个人都升级到新软件，否则[区块链](/docs/technical/blockchain.md)将向两个不同的方向分裂：
 
-1. A chain that is made up of blocks that follow the **old rules**.
-2. A chain that is made up of blocks that follow the **new rules**.
+1. 一条遵循**旧规则**区块组成的链。
+2. 一条遵循**新规则**区块组成的链。
 
 [<img src="../../images/diagrams_png_blockchain-forks-hard-fork-network.png" alt="Diagram showing a hard fork on the bitcoin network." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-network.png)
 
-The old [nodes](/docs/technical/networking/node.md) cannot accept these new blocks, so **two parallel blockchains** will exist. This is known as a "hard fork" in the chain.
+旧[节点](/docs/technical/networking/node.md)无法接受这些新区块，因此将存在**两条平行的区块链**。这在链中被称为“硬分叉”。
 
-Therefore, if you want a hard-forking change to the software to be successful, you want every node on the network to agree with the changes and upgrade their software. This is the only way everyone will keep up to date with the same version of the blockchain after the upgrade.
+因此，如果您希望软件的硬分叉升级成功，您需要网络上的每个节点都同意更改并升级其软件。这是升级后每个人保持同步相同版本区块链的唯一方法。
 
-A "hard fork" can refer to a change made to the Bitcoin *software*, or the state of the *blockchain* after the change has been made. In this article I will use the following terms:
+“硬分叉”可以指对比特币*软件*所做的更改，或者是指更改之后*区块链*的状态。在本文中，我将使用以下术语：
 
-* *hard-forking change* – The upgrade to the software.
-* *hard fork* – What happens to the blockchain when new incompatible blocks are mined.
+* *硬分叉修改* – 对软件的升级。
+* *硬分叉* – 当开采出新的不兼容区块时区块链发生的分裂。
 
-## Scenario
+## 场景
 
-How do you create a hard fork?
+如何创建硬分叉？
 
-To create a hard fork, you need to change the rules of the software to allow for **previously invalid blocks/transactions to be considered valid**.
+要创建硬分叉，您需要更改软件规则，以允许**以前无效的区块/交易被视为有效**。
 
-To give a simple example, let's say the block size limit is 1 MB (block capacity is now measured in [weight](/docs/technical/block.md#weight), but don't worry about that for now), and let's say we upgrade the software to accept blocks up to **10 MB**.
+举一个简单的例子，假设区块大小限制为 1 MB（区块容量现在以[权重](/docs/technical/block.md#weight)来衡量，但现在先不用担心这个），并假设我们升级软件以接受最大为 **10 MB** 的区块。
 
-The hard-forking change begins when miners upgrade to the new version. The actual hard fork in the blockchain takes place when the first 10 MB block is mined.
+当矿工升级到新版本时，硬分叉修改便开始了。而区块链中实际的硬分叉发生于开采出第一个 10 MB 区块时。
 
-* New miners will start building a chain with 10 MB blocks.
-* Old miners will continue building a chain with 1 MB blocks only, and reject the new 10 MB blocks.
+* 新矿工将开始构建包含 10 MB 区块的链。
+* 旧矿工将继续构建仅包含 1 MB 区块的链，并拒绝新的 10 MB 区块。
 
 [<img src="../../images/diagrams_png_blockchain-forks-hard-fork-start.png" alt="Diagram showing the start of a hard fork in the blockchain when a new block is mined breaking the old rules." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-start.png)
 
-This hard fork will persist as long as the new chain (containing incompatible 10 MB blocks) remains as the [longest chain](/docs/technical/blockchain/longest-chain.md) on the network.
+只要新链（包含不兼容的 10 MB 区块）仍然是网络上的[最长链](/docs/technical/blockchain/longest-chain.md)，该硬分叉就会持续下去。
 
-If the old miners are in the majority and build the longest chain with 1 MB blocks, the upgraded nodes will accept this as their version of the blockchain (because they still accept the old blocks), and the hard fork will be nullified.
+如果旧矿工占多数，并用 1 MB 区块构建了最长链，已升级的节点将接受其作为它们的区块链版本（因为它们仍然接受旧区块），硬分叉将被取消。
 
-## Causes
+## 原因
 
-What can cause a hard fork?
+什么会导致硬分叉？
 
-Anything that **breaks the existing consensus rules** will result in a hard fork.
+任何**破坏现有共识规则**的更改都会导致硬分叉。
 
-For example:
+例如：
 
-1. **Changes to block structure.**
-   * e.g. A direct increase to the maximum block size.
-2. **Changes to transaction structure.**
-   * e.g. Changing the [cryptography](/docs/technical/cryptography.md) used for [signatures](/docs/technical/keys/signature.md) on existing transactions.
-3. **Changes to other consensus rules.**
-   * e.g. Increasing the maximum supply of bitcoin.
-   * e.g. Manually adjusting the [target](/docs/technical/mining/target.md) to make it easier to mine blocks.
+1. **区块结构的修改**
+   * 例如：直接增加最大区块大小。
+2. **交易结构的修改**
+   * 例如：修改现有交易中用于[签名](/docs/technical/keys/signature.md)的[密码学](/docs/technical/cryptography.md)算法。
+3. **其他共识规则的修改**
+   * 例如：增加比特币的最大供应量。
+   * 例如：手动调整[target](/docs/technical/mining/target.md)以使挖矿变得更容易。
 
-So whilst not all updates to Bitcoin require a hard fork, anything that changes the way Bitcoin fundamentally operates can only be achieved via a hard fork.
+因此，虽然并不是所有对比特币的更新都需要硬分叉，但任何从根本上改变比特币运作方式的行为都只能通过硬分叉来实现。
 
-## Motivation
+## 动力
 
-Why would you create a hard fork?
+为什么要创建硬分叉？
 
-A hard-forking change is the **only way to make consensus-breaking updates** to the bitcoin software.
+硬分叉修改是对比特币软件进行**破坏共识的升级的唯一方法**。
 
-So if you want to make an upgrade to bitcoin, but the only way to do it is to break the rules that all of the nodes on the network are currently following, then a hard fork is your only option.
+所以，如果您想对比特币进行升级，但唯一的实现方式是打破网络上所有节点当前遵循的规则，那么硬分叉是您的唯一选择。
 
-You can make changes to the rules using what's known as a [soft fork](/docs/technical/blockchain/soft-fork.md). However, depending on the complexity of the upgrade, a hard fork would typically be the *simpler* option for making changes to the Bitcoin software.
+您也可以使用所谓的[软分叉](/docs/technical/blockchain/soft-fork.md)来修改规则。然而，取决于升级的复杂程度，硬分叉通常是对比特币软件进行修改的*较简单*选择。
 
-## Problems
+## 问题
 
-Why wouldn't you want to create a hard fork?
+为什么不想创建硬分叉？
 
-There are two main problems with a hard fork:
+硬分叉有两个主要问题：
 
-### 1. Everyone has to upgrade.
+### 1. 每个人都必须升级。
 
-**Anyone who does not upgrade will be left behind.** They will not receive the new incompatible blocks, and so they will be left in the dark about the latest transactions on the network.
+**任何未升级的人都将被抛在后面。** 他们将无法收到新的不兼容区块，因此将对网络上的最新交易一无所知。
 
 [<img src="../../images/diagrams_png_blockchain-forks-hard-fork-left-behind.png" alt="Diagram showing a node's blockchain falling behind due to not upgrading after a hard-forking change has been made to the software." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-left-behind.png)
 
-In other words, people running the old software will fall behind and will be unaware of any new payments they may have received. They will not lose any of their bitcoins, but they will no longer be able to participate in the system as normal.
+换句话说，运行旧软件的人将会落后，并且不会知道自己可能收到的任何新付款。他们不会失去其持有的任何比特币，但他们将无法再正常参与系统。
 
-This is not a user-friendly way to upgrade a peer-to-peer [network](/docs/technical/networking.md).
+这并不是一种对用户友好的对点对[网络](/docs/technical/networking.md)的升级方式。
 
-### 2. A disagreement will divide the network.
+### 2. 分歧将分裂网络。
 
-The worst case scenario would be a "contentious hard fork". This is where some miners on the network agree to the upgrade, but a significant portion does not.
+最坏的情况是“有争议的硬分叉”。这是指网络上的部分矿工同意升级，但很大一部分人不同意。
 
-This will result in the blockchain branching into two parallel blockchains, effectively **splitting the currency** in two different directions.
+这将导致区块链分裂为两条平行的链，实际上使**货币分道扬镳**，向两个不同的方向分裂。
 
 [<img src="../../images/diagrams_png_blockchain-forks-hard-fork-currency-split.png" alt="Diagram showing bitcoin as a currency splitting in two different directions after a contentious hard fork." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-currency-split.png)
 
-This would cause confusion amongst users and merchants; who accepts which branch of the currency? How do you make sure you are transacting on the correct branch of the chain?
+这会在用户和商家之间造成混乱：谁接受货币的哪条分支？您如何确保自己在正确的链条分支上进行交易？
 
-This confusion would undermine the overall trust in the system, and would likely cause a collapse in the value of bitcoin that it may not recover from. This is not an ideal outcome if the goal is to create a stable digital currency.
+这种混乱会破坏对系统的总体信任，并可能导致比特币价值崩溃而无法恢复。如果目标是创造一种稳定的数字货币，这并不是一个理想的结果。
 
-> The incentive for consensus is huge, as disagreement effectively means granting every old coin held to spend it once on each side.
+> 共识的激励非常大，因为分歧实际上意味着赋予每一个旧持有的币可以在分裂的两侧各消费一次的权利。
+> 
+> Pieter Wuille, [Bitcoin StackExchange](https://bitcoin.stackexchange.com/questions/9986/how-is-a-hard-fork-resolved)
 
-Pieter Wuille, [Bitcoin StackExchange](https://bitcoin.stackexchange.com/questions/9986/how-is-a-hard-fork-resolved)
+**矿工之间的分裂也会将挖矿算力分流给两条链。** 因此，每条链都将*不那么安全*，因为每条链保护自身免受 [51% 攻击](/docs/technical/blockchain/51-attack.md) 的算力都变少了。
 
-**A split between miners will also split the mining power between the two chains.** Each chain would therefore be *less secure*, as each chain will have less power to protect against a [51% attack](/docs/technical/blockchain/51-attack.md).
+**旧矿工可以通过继续构建旧区块的最长可用链来取消升级。** 当然，除非升级在开始后由于某种原因也使旧区块无效，在此情况下会出现永久性链分裂。
 
-**Old miners could nullify the upgrade by continuing to build the longest available chain of old blocks.** Unless of course the upgrade also made the old blocks invalid from the upgrade onwards for some reason, in which case there would be a permanent chain split.
+## 好处
 
-## Benefits
+您何时会想对比特币创建硬分叉？
 
-When would you want to create a hard-forking change to Bitcoin?
+由于存在将区块链一分为二的风险，在对比特币软件进行*一般性改进*时应**避免**使用硬分叉修改。
 
-Due to the risk of splitting the blockchain in to two, a hard-forking change is **avoided** to make *general improvements* to the Bitcoin software.
+例如，有几个可以通过硬分叉轻松修复的小 Bug：
 
-For example, there are a few minor bugs that could be easily fixed with a hard fork:
+* **修复 `OP_CHECKMULTISIG` [Script](/docs/technical/script.md) opcode (操作码)。** 此 opcode 会从堆栈中多弹出一项（参见 [P2MS](/docs/technical/script/p2ms.md)）。
+* **增加区块头中 [Nonce](/docs/technical/block/nonce.md) 字段的大小。** Nonce 字段太小，这意味着在耗尽 Nonce 字段中所有可能的数字后，矿工必须 resort to 修改 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易（参见 [ExtraNonce](/docs/technical/block/nonce.md#extranonce)）以继续[挖掘](/docs/technical/mining.md)该区块。
+* **与[字节顺序](/docs/technical/general/byte-order.md)保持一致。** 在[浏览器](/explorer/)上搜索区块时，[区块哈希](/docs/technical/block.md#hash)以[反向字节顺序](/docs/technical/general/byte-order.md#reverse-byte-order)显示，但原始区块数据中使用的区块哈希处于[自然字节顺序](/docs/technical/general/byte-order.md#natural-byte-order)。如果内部所有的区块哈希都处于*反向字节顺序*，对开发人员来说会更容易。
 
-* **Fixing the `OP_CHECKMULTISIG` [Script](/docs/technical/script.md) opcode.** This opcode pops off one more item from the stack than it should (see [P2MS](/docs/technical/script/p2ms.md)).
-* **Increasing the size of the [nonce](/docs/technical/block/nonce.md) field in the block header.** The nonce field is too small, which means miners have to resort to modifying the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) (see [ExtraNonce](/docs/technical/block/nonce.md#extranonce)) to continue [mining](/docs/technical/mining.md) the block after all the possible numbers in the nonce field have been exhausted.
-* **Consistency with [byte order](/docs/technical/general/byte-order.md).** The [block hash](/docs/technical/block/hash.md) is displayed in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) when searching for a block on an [explorer](/explorer/), but the block hashes used inside raw block data are in [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order). It would be easier for developers if all block hashes were in *reverse byte order* internally.
+然而，这些修改带来的微小好处并不足以抵挡在软件硬分叉修改中让每个人升级所带来的风险。
 
-However, the minor benefits of these changes would not outweigh the risks of getting everyone to upgrade in a hard-forking change to the software.
+因此，硬分叉更新保留给潜在灾难性事件的**紧急修复**。这可能是以下情况：
 
-As a result, hard fork updates are reserved for **urgent fixes** to potentially catastrophic events. This could be something like:
+* **摒弃 SHA-256 [哈希函数](/docs/technical/cryptography/hash-function.md)。** 如果发现削弱了开采区块所需工作量的漏洞，这就需要硬分叉。
+* **手动增加目标值（即降低[难度](/docs/beginners/guide/difficulty.md)）。** 如果网络上的挖矿算力出现了不可恢复的流失，导致区块间隔时间变得极长，这就需要硬分叉。没有硬分叉，可能需要数月时间才能进行下一次目标调整并使交易再次得以及时挖掘。
 
-* **Switching away from the SHA-256 [hash function](/docs/technical/cryptography/hash-function.md).** This would be required if a weakness is found that undermines the effort required to mine blocks.
-* **Manually increasing the target value (i.e. reducing the [difficulty](/docs/beginners/guide/difficulty.md)).** This would be required if there was an irrecoverable loss of mining power on the network, which would result in painfully slow block intervals. Without a hard fork, it could take months before the next target adjustment and for transactions to be mined in a timely manner again.
+这就是为什么到目前为止比特币的所有升级都是作为软分叉实现的；只有在系统运行方式出现根本性问题时，才有可能发生硬分叉。
 
-This is why all upgrades to Bitcoin so far have been implemented as soft forks; a hard fork is only likely to happen in the event of a fundamental problem arising with how the system works.
+## 示例
 
-## Examples
+比特币历史上发生过硬分叉吗？
 
-Have there been any hard forks in Bitcoin's history?
+Bitcoin Core 开发人员并未提出过任何*有意的*硬分叉修改。
 
-There have been no *intentional* hard-forking changes put forward by Bitcoin Core developers.
+然而，有两次软件升级导致（或本可以导致）意外的硬分叉：
 
-However, there have been two software upgrades that caused (or could have caused) an accidental hard fork:
+### 1. BerkeleyDB 升级到 LevelDB
 
-### 1. BerkeleyDB to LevelDB upgrade
+[v0.7.0]( https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.7.0.md) 升级到 [v0.8.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.8.0.md)
 
-[v0.7.0]( https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.7.0.md) to [v0.8.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.8.0.md)
+比特币使用一个独立的 [chainstate 数据库](https://github.com/in3rsha/bitcoin-chainstate-parser) 来记录所有的 [UTXO](/docs/technical/transaction/utxo.md)。v0.8.0 之前的版本使用 [BerkeleyDB](https://www.oracle.com/database/technologies/related/berkeleydb.html) 数据库。
 
-Bitcoin uses a separate [chainstate database](https://github.com/in3rsha/bitcoin-chainstate-parser) to keep track of all the [UTXOs](/docs/technical/transaction/utxo.md). Versions prior to v0.8.0 used the [BerkeleyDB](https://www.oracle.com/database/technologies/related/berkeleydb.html) database.
+由于 BerkeleyDB 的工作原理，它对可以包含在[区块](/docs/technical/block.md)内的[输入](/docs/technical/transaction/input.md)数量施加了限制。这创造了一个关于什么才是有效区块的未预料到且无意的网络共识规则。
 
-Due to the way BerkeleyDB works, it imposed a limit on the number of [inputs](/docs/technical/transaction/input.md) that could be included inside a [block](/docs/technical/block.md). This created an unexpected and unintentional network consensus rule about what makes a valid block.
+当 v0.8.0 中 BerkeleyDB 被 [LevelDB](https://github.com/google/leveldb) 取代时，这一未知的限制被移除了。在 2013 年 3 月 12 日，开采出了一个包含比 v0.7.0 节点所能接受的更多输入的区块，从而在 v0.7.0 节点和 v0.8.0 节点之间产生了一个无意的硬分叉。
 
-When BerkeleyDB was replaced by [LevelDB](https://github.com/google/leveldb) in v0.8.0, this unknown limitation was removed. On 12 March 2013, a block was mined containing more inputs than a pre-v0.8.0 node would accept, creating an unintentional hard fork between nodes on v0.7.0 and nodes on v0.8.0.
+最初的解决办法是要求矿工降级到 v0.7.0，这意味着大多数挖矿算力回到了旧的 v0.7.0 链上。这使得 v0.7.0 链再次成为最长链，并且 v0.8.0 上的所有节点都[重组](/docs/technical/blockchain/chain-reorganization.md)回该链，临时解决了问题并迫使所有节点回到 v0.7.0 链。
 
-This was initially remedied by asking miners to downgrade to v0.7.0, which meant that the majority of the mining power was back on the old v0.7.0 chain. This led to the v0.7.0 chain becoming the longest chain once again, and all nodes on v0.8.0 [reorganized](/docs/technical/blockchain/chain-reorganization.md) back to this chain, temporarily solving the problem and forcing all nodes back on to the v0.7.0 chain.
+在接下来的两个月里，所有使用 v0.7.0 的节点都被敦促升级到 v0.8.1 的最新版本。随后在 2013 年 8 月 16 日的区块高度 [252,451](/explorer/block/0000000000000024b58eeb1134432f00497a6a860412996e7a260f47126eed07) 处挖掘出了一个永久性硬分叉区块，彻底移除了区块中可以包含的输入数量限制。
 
-Over the next two months, all nodes on v0.7.0 were urged to upgrade to the latest version of v0.8.1. A permanent hard-forking block was then mined on 16 August 2013 at block height [252,451](/explorer/block/0000000000000024b58eeb1134432f00497a6a860412996e7a260f47126eed07), removing the limit on the number of inputs that could be included in a block.
-
-* [Original thread documenting the v0.8.0 hard fork](https://bitcointalk.org/index.php?topic=152348.0)
+* [记录 v0.8.0 硬分叉的原始帖子](https://bitcointalk.org/index.php?topic=152348.0)
 * [BIP: 50 (March 2013 Chain Fork Post-Mortem)](https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki)
 
-### 2. Double spend vulnerability (CVE-2018-17144)
+### 2. 双重支付漏洞 (CVE-2018-17144)
 
-[v0.14.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.14.0.md) to [v0.15.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.15.0.md)/[v0.16.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.16.2.md)
+[v0.14.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.14.0.md) 升级到 [v0.15.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.15.0.md)/[v0.16.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.16.2.md)
 
-The software versions between 0.15.0 and 0.16.2 *could* have caused a potential hard fork, but the vulnerability was patched before it could be exploited, so no actual hard fork took place.
+0.15.0 和 0.16.2 之间的软件版本*本可以*导致潜在的硬分叉，但在该漏洞被利用之前就被修复了，因此没有发生实际的硬分叉。
 
-In short, versions 0.15.0 to 0.16.2 would allow for a miner to double-spend the same UTXO if it was included as an [input](/docs/technical/transaction/input.md) multiple times in the same transaction. Only miners would be able to perform this attack, as nodes would only accept this transaction if it was already mined into a block (they would reject the transaction on its own otherwise).
+简而言之，0.15.0 到 0.16.2 版本会允许矿工在同一交易中多次包含同一 UTXO 作为[输入](/docs/technical/transaction/input.md)时，对该 UTXO 进行双重支付。只有矿工能执行此攻击，因为只有在交易已被挖掘到区块中时，节点才会接受该交易（否则它们会拒绝该交易本身）。
 
-This double-spend vulnerability was fixed in [0.16.3](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.16.3.md), and no actual hard fork took place.
+这个双重支付漏洞在 [0.16.3](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.16.3.md) 中被修复，没有发生实际的硬分叉。
 
 * [Bitcoin Core Bug CVE-2018–17144: An Analysis](https://hackernoon.com/bitcoin-core-bug-cve-2018-17144-an-analysis-f80d9d373362)
 
-## Summary
+## 总结
 
-A *hard fork* is when you make an upgrade to the Bitcoin software that will produce new [blocks](/docs/technical/block.md)/[transactions](/docs/technical/transaction.md) that are **incompatible with the old version of the software**.
+*硬分叉*是指您对比特币软件进行升级，且会产生与**该软件的旧版本不兼容**的新[区块](/docs/technical/block.md)/[交易](/docs/technical/transaction.md)。
 
-To make a successful hard fork, you want everyone running Bitcoin (i.e. [nodes](/docs/technical/networking/node.md) and [miners](/docs/technical/mining.md)) to upgrade to the new version of the software. This is so everyone will receive these new blocks, and agree on the same upgraded version of the [blockchain](/docs/technical/blockchain.md).
+要成功进行硬分叉，您需要运行比特币的每个人（即[节点](/docs/technical/networking/node.md)和[矿工](/docs/technical/mining.md)）升级到软件的新版本。这样每个人都将收到这些新区块，并同意同一个升级后的[区块链](/docs/technical/blockchain.md)版本。
 
-If miners disagree about the upgrade and continue to mine blocks with both the old and new versions of the software, the blockchain will branch into two parallel blockchains. This would split bitcoin into two separate currencies and undermine the integrity of the system, which would be bad for Bitcoin.
+如果矿工对升级产生分歧，并继续用旧版和新版软件挖掘区块，区块链将分裂为两条平行的链。这会将比特币分裂为两种独立的货币，并破坏系统的完整性，这对比特币是有害的。
 
-There have yet to be any intentional hard-forking changes to Bitcoin. Instead, general upgrades to the software are preferred to be made using [soft forks](/docs/technical/blockchain/soft-fork.md).
+比特币目前尚未发生过有意的硬分叉。相反，软件的一般性升级更倾向于使用[软分叉](/docs/technical/blockchain/soft-fork.md)来实现。
 
-## Resources
+## 资源
 
 * [bitcoin.it/wiki/Hardfork](https://en.bitcoin.it/wiki/Hardfork)
 * [bitcoin.it/wiki/Hardfork\_Wishlist](https://en.bitcoin.it/wiki/Hardfork_Wishlist)

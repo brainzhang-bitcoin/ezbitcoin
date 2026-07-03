@@ -2,126 +2,118 @@
 
 [<img src="../../images/diagrams_png_blockchain-51-attack.png" alt="Diagram showing a transaction being removed from the blockchain in a 51% attack." width="484" height="393" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack.png)
 
-Current Network Hashrate:
+当前网络算力 (Current Network Hashrate):
 
-958,292,360,507,524,907,008 hashes per second
+每秒 958,292,360,507,524,907,008 次哈希运算
 
-See [calculation](#hashpower)
+查看[计算方法](#hashpower)
 
-A 51% attack refers to the act of intentionally building a new [longest chain](/docs/technical/blockchain/longest-chain.md) of [blocks](/docs/technical/block.md) to replace blocks already in the [blockchain](/docs/technical/blockchain.md). This allows you to **replace [transactions](/docs/technical/transaction.md)** that have previously been [mined](/docs/technical/mining.md) into the blockchain.
+51% 攻击是指故意构建一个新的[最长链](/docs/technical/blockchain/longest-chain.md)以替换[区块链](/docs/technical/blockchain.md)中已有[区块](/docs/technical/block.md)的行为。这允许您**替换那些此前已写入区块链的[交易](/docs/technical/transaction.md)**。
 
-This kind of attack is easiest to perform when you have a ***majority* of the mining power**, which is why it's referred to as a "majority attack" or a "51% attack".
+当您拥有**大多数挖矿算力 (majority of the mining power)**时，这种攻击最容易实施，这就是为什么它被称为“多数攻击 (majority attack)”或“51% 攻击”。
 
-## Method
+## 攻击方法
 
-How does a 51% attack work?
+51% 攻击是如何进行的？
 
-Nodes always accept the [longest known chain](/docs/technical/blockchain/longest-chain.md) of blocks as the *valid* version of the blockchain. So if you want to "undo" a transaction from the blockchain, you just need to **build a new, longer chain of blocks** *without* that transaction in it.
+节点总是将[已知的最长链](/docs/technical/blockchain/longest-chain.md)视为区块链的*有效*版本。因此，如果您想在区块链中“撤销”一笔交易，您只需要**构建一个新的、更长的区块链接**，而在该链接中*不包含*那笔交易。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="544" height="370" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-build-longest-chain.png)
 
+假设我们用比特币买了一辆车并把它开走了。
 
-Let's say we paid for a car in bitcoin and drove off with it.
-
-When nodes receive this new *longer* chain of blocks, they will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to *deactivate* blocks in their old longest chain, and *activate* the blocks in the new longest chain you have built.
+当节点收到这个新的*更长*的区块链接时，它们会执行一次[区块重组](/docs/technical/blockchain/chain-reorganization.md)以*停用*其旧最长链中的区块，并*激活*您构建的新最长链中的区块。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="554" height="370" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-chain-reorganization.png)
 
+旧最长链中的交易现在失效了。这就好像购买这辆车的付款从未发生过一样。
 
-Transactions in the old longest chain are now invalid. It's as if the payment for the car never happened.
+因此，通过构建一个新的最长链来替换已有的最长链，您实际上是在**重写区块链**，并创建了一个[网络](/docs/technical/networking.md)上的所有节点都将采用的新交易历史。结果，您逆转了我们此前认为已永久成为区块链一部分的交易。
 
-So by building a new longest chain to replace an existing one, you are effectively **rewriting the blockchain** and creating a new history of transactions that every node on the [network](/docs/technical/networking.md) will adopt. As a result, you have reversed transactions that we previously thought to have been a permanent part of the blockchain.
+但成功实施 51% 攻击并不容易。
 
-But performing a successful 51% attack is not easy.
+您会希望在新链中包含一笔*替代*交易，将比特币发送到*新的*目的地（例如，发送到您的[地址](/docs/technical/keys/address.md)而不是汽车经销商的地址）。否则，原始交易可能会在新链中被重新开采。
 
-You would want to include a *replacement* transaction in the new chain to send the bitcoins to a *new* destination (e.g. to your [address](/docs/technical/keys/address.md) and not to the car dealer's). Otherwise, the original transaction could get re-mined into the new chain.
+## 防范
 
-## Prevention
+如何防范 51% 攻击？
 
-What prevents a 51% attack?
-
-Every miner is incentivized to build upon the current longest chain of blocks. So if the combined mining power of every other miner on the network is greater than yours, it makes it **incredibly difficult to outwork the other miners** to build a longer chain and replace the existing one.
+每个矿工都有动力在当前最长的区块链接之上继续构建。因此，如果网络上所有其他矿工的合并挖矿算力大于您的算力，那么要**超越其他矿工的工作量**去构建一条更长的链并替换已有链就会变得**极其困难**。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-prevention-combined-mining.png" alt="Diagram showing miners working together to extend the current longest chain." width="733" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-combined-mining.png)
 
+矿工们协同工作，可以比您独自一人更快地构建起区块链。
 
-Miners working together can build a chain faster than you can on your own.
-
-But of course, if you can actually acquire *more* mining power than all other miners combined, then you have the ability to outrun the current longest chain and build a new longer chain for everyone else to adopt.
+但当然，如果您确实能获得比所有其他矿工合并起来*更多*的挖矿算力，那么您就有能力赶超当前的最长链，并构建一条新的最长链供所有人采用。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-prevention-majority-power.png" alt="Diagram showing how you can build a longer chain faster than all other miners combined if you have the majority of the hashing power." width="730" height="707" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-majority-power.png)
 
+如果您拥有大多数的挖矿算力，那么构建出一条更长的链只是时间问题。
 
-If you have the majority of mining power, it's just a matter of time before you build a longer chain.
-
-So to help prevent this from happening, we want to make it difficult for a single miner to acquire a majority of the mining power. This is achieved by **allowing anyone in the world to mine**, and offering a **[block reward](/docs/technical/mining/block-reward.md) as an incentive** to build on the longest known chain.
+因此，为了防范这种情况的发生，我们希望使单个矿工难以获得大多数的挖矿算力。这是通过**允许世界上任何人参与挖矿**，并提供**[区块奖励](/docs/technical/mining/block-reward.md)作为动力**在已知最长链上继续构建来实现的。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png" alt="Diagram showing the block reward as an incentive for miners to extend the longest chain." width="733" height="907" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-incentive.png)
 
+区块奖励只有在最长链中达到 100 个区块深之后才能被消费。
 
-The block reward can only be spent when it reaches 100 blocks deep in the longest chain.
+结果，矿工们将精力集中在构建同一条链上，从而使任何个人试图重写区块链中区块的行为变得困难（或至少非常昂贵）。
 
-As a result, miners focus their energy on building the same chain, making it difficult (or at least very expensive) for any individual to try and rewrite the blocks in the blockchain.
+<blockquote>
+只要大多数的 CPU 算力被不协同向网络发起攻击的节点所控制，它们就会生成最长链并超越攻击者。
+</blockquote>
 
-> As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they’ll generate the longest chain and outpace attackers.
+中本聪, [比特币白皮书](/bitcoin.pdf)
 
-Satoshi Nakamoto, [Bitcoin Whitepaper](/bitcoin.pdf)
+## 可行性
 
-## Practicality
+实施 51% 攻击有多困难？
 
-How difficult is it to perform a 51% attack?
+实施 51% 攻击最棘手的部分首先在于获得执行攻击所需的所有硬件，因为这将是极其昂贵的。
 
-The trickiest part of performing a 51% attack would be getting all the hardware needed to be able to perform the attack in the first place, as this would be incredibly expensive.
+然而，如果您*确实*设法获得了大多数的挖矿算力，那么构建出一条新的最长链**仅仅是时间问题**。
 
-However, if you *did* manage to acquire a majority of the mining power, then it's **only a matter of time** before you build a new longest chain.
-
-Having said that, it requires more work to replace a larger number of blocks than it does to replace just a few. So the further down a transaction makes it into the blockchain, the more time and energy it's going to take to reverse it.
+话虽如此，要替换较大数量的区块比只替换几个区块需要做更多的工作。因此，交易在区块链中沉淀得越深，逆转它所需要花费的时间和能量就越多。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-depth-work.png" alt="Diagram showing how it's harder to replace blocks the further they are down the blockchain." width="367" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-depth-work.png)
 
+交易在区块链中陷得越深，就越难以被替换。
 
-Transactions get harder to replace the further they get into the blockchain.
+但同样，这是假设您可以获得硬件以达到 51% 或更多的挖矿算力来超越所有其他矿工。
 
-But again, this is assuming you can get the hardware to attain 51% or more of the mining power to outpace all the other miners.
+尽管如此，您仍然可以尝试以低于 50% 的挖矿算力执行此类攻击，但胜算会非常小……
 
-Nonetheless, you can still try and perform this kind of attack with less than 50% mining power, but the odds are very much against you…
+## 概率
 
-## Probability
+您能在拥有低于 50% 挖矿算力的情况下重写区块链吗？
 
-Can you rewrite the blockchain with less than 50% mining power?
-
-Mining Power
+挖矿算力
 
 %
 
+随机示例
 
-Random Example
+0 秒
 
+在*没有*占大多数挖矿算力的情况下重写区块链是可能的，但您需要**运气**。
 
-
-
-0 secs
-
-It's possible to rewrite the blockchain *without* a majority of the mining power, but you'll need to be **lucky**.
-
-Mining is unpredictable, so even if you've got a small amount of mining power, there's nothing to say that you wouldn't be able to get lucky and mine the next 2 blocks in a row. It's unlikely, but not impossible. The probability depends on how much mining power you have relative to everyone else.
+挖矿是不可预测的，因此即使您只有少量的挖矿算力，也不能断定您运气不够好而无法连续开采接下来的 2 个区块。这虽然不太可能，但并非不可能。概率取决于您相对于其他人拥有多少挖矿算力。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-rewrite-luck.png" alt="Diagram showing how you would need luck to rewrite the blockchain with a minority of the mining power." width="733" height="699" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-rewrite-luck.png)
 
-Of course, the further down a transaction is in the blockchain, the luckier you'll need to get to be able to mine X blocks in a row. If nobody has a majority of the mining power, it gets *exponentially more difficult* to replace a transaction the further it gets into the blockchain.
+当然，交易在区块链中沉淀得越深，您连续开采 X 个区块所需要的运气就越多。如果在没有人拥有大多数挖矿算力的情况下，交易在区块链中沉淀得越深，替换它的难度就会呈*指数级增加*。
 
 [<img src="../../images/diagrams_png_blockchain-51-attack-mining-power-success-chart.png" alt="Chart showing the probability of being able to replace blocks in the blockchain based on mining power." width="548" height="612" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-mining-power-success-chart.png)
 
+如果一个矿工拥有 40% 的挖矿算力，他们大约有 50% 的机会能替换掉在链中深达 5 个区块的交易。
 
-If a miner has 40% of the mining power, they have roughly a 50% chance of being able to replace a transaction 5 blocks deep in the chain.
+因此，除非您在比特币网络中占有很大比例的算力，否则您替换掉已被开采交易的几率非常渺茫，并且随着交易进一步深入链中，这些几率会迅速减小。
 
-So unless you've got a significant proportion of the total mining power on the bitcoin network, your chances of replacing a mined transaction are slim, and those chances diminish quickly as the transaction makes it further down the chain.
+以下是您确切几率的表格：
 
-Here's a table of your exact odds:
+基于挖矿算力百分比替换区块链中顶部 X 个区块的概率。
 
-Probability of replacing top X blocks in the blockchain based on percentage mining power.
-
-| **Blocks** | 50%+ Control | 40% Control | 30% Control | 20% Control | 10% Control |
+| **区块数 (z)** | 50%+ 算力控制 | 40% 算力控制 | 30% 算力控制 | 20% 算力控制 | 10% 算力控制 |
+|---|---|---|---|---|---|
 | 1 | 100% | 73.6% | 44.6% | 20.4% | 5.1% |
 | 2 | 100% | 66.4% | 32.5% | 10.3% | 1.3% |
 | 3 | 100% | 60.3% | 23.9% | 5.3% | 0.4% |
@@ -133,20 +125,19 @@ Probability of replacing top X blocks in the blockchain based on percentage mini
 | 9 | 100% | 36.0% | 4.2% | 0.1% | 0.0001% |
 | 10 | 100% | 33.2% | 3.1% | 0.06% | 0.00003% |
 
-The numbers in the table above assume you are attempting to replace blocks by building an alternate chain that is *one block longer* than the current longest chain.
+上表中的数字假定您正试图通过构建一条比当前最长链*长一个区块*的备选链来替换区块。
 
-### Equation
+### 数学公式
 
-The probability of being able to rewrite blocks in the blockchain is a function of **how much mining power** you have and **how many blocks** you want to try and replace.
+能够重写区块链中区块的概率是**您拥有多少挖矿算力**以及**您想尝试替换多少个区块**的函数。
 
-Here's the equation from the [Bitcoin Whitepaper](/bitcoin.pdf) (Section 11):
+以下是来自[比特币白皮书](/bitcoin.pdf)（第 11 节）的公式：
 
-[<img src="../../images/technical_blockchain_51-attack_equation-success.png" alt="The equation for attacking the blockchain from the Bitcoin whitepaper." width="523" height="264" />](/docs/technical/blockchain/51-attack/equation-success.png.md)
+[<img src="../../images/technical_blockchain_51-attack_equation-success.png" alt="The equation for attacking the blockchain from the Bitcoin whitepaper." width="523" height="264" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/51-attack/equation-success.png.md)
 
+区块越深越难被替换的证明是系统完整性和安全性的重要部分。
 
-The proof that blocks get harder to replace the further down they are in the chain is an important part of the system's integrity and security.
-
-Anyway, here's what that equation looks like in Ruby code:
+无论如何，这就是该公式在 Ruby 代码中的实现：
 
 ```
 # p = probability honest node finds the next block
@@ -175,40 +166,38 @@ end
 puts attacker_success_probability(0.4, 5) #=> 0.5506251290702077
 ```
 
-The equation above works out the probability of *catching up* with the longest chain (from being a specified number of blocks behind). If you want to *replace* blocks in the chain, you need to go *one block longer*.
+上述公式计算了（在落后指定数量的区块时）*追赶上*最长链的概率。如果您想*替换*链中的区块，您需要比其*多出一个区块*。
 
-### Chart
+### 图表
 
-[<img src="../../images/technical_blockchain_51-attack_success_chart_50_blocks.png" alt="Chart showing the probability of success for replacing blocks in the blockchain." width="800" height="600" />](/docs/technical/blockchain/51-attack/success_chart_50_blocks.png.md)
+[<img src="../../images/technical_blockchain_51-attack_success_chart_50_blocks.png" alt="Chart showing the probability of success for replacing blocks in the blockchain." width="800" height="600" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/51-attack/success_chart_50_blocks.png.md)
 
+交易在区块链中埋得越深，被替换的成功概率就呈指数级衰减。
 
-There is an exponential decay in the probability of replacing a transaction the deeper it makes it into the blockchain.
+## 常见问题
 
-## FAQ
+### 是否有人曾对比特币成功发起过 51% 攻击？
 
-### Has anyone successfully performed a 51% attack on Bitcoin?
+没有，从来没有过。
 
-Nope, not yet.
+在比特币的历史上，一些矿池曾接近达到总算力的 50% 或更多，但实际上没有人发起过成功的 51% 攻击。
 
-Some miners have come close to reaching 50% or more of the total mining power over Bitcoin's history, but nobody has actually performed a successful 51% attack.
+[<img src="../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg" alt="Chart showing Ghash.io having close to 50% of the mining power in 2014." width="500" height="467" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/51-attack/mining-distribution-ghash-2014.jpg.md)
 
-[<img src="../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg" alt="Chart showing Ghash.io having close to 50% of the mining power in 2014." width="500" height="467" />](/docs/technical/blockchain/51-attack/mining-distribution-ghash-2014.jpg.md)
-
-
-GHash.io came close to reaching 50% in 2014.  
+GHash.io 在 2014 年曾接近达到 50%。  
 [github.com/in3rsha/bitcoin-mining-distribution](https://github.com/in3rsha/bitcoin-mining-distribution)
 
-Even if a miner gets over 50% mining power, it doesn't necessarily mean that they're actually going to perform an attack; it just means that they *can*. If anything, if you've got that much power, it's probably more lucrative to keep mining blocks and collecting block rewards than it would be to reverse a single transaction (and sink the value of bitcoin because of your attack).
+即使矿工获得了超过 50% 的算力，也不一定意味着他们真的会发起攻击；这只意味着他们*能够*这样做。无论如何，如果您拥有如此巨大的算力，继续挖矿并赚取区块奖励可能比逆转单笔交易（并因此让您的攻击导致比特币价值暴跌）更赚钱。
 
-### How much hashpower do I need to perform a 51% attack?
+### 我需要多少算力才能发起 51% 攻击？
 
-You can use the current [target](/docs/technical/mining/target.md) value to estimate how much hash power you would need to get majority control.
+您可以使用当前的[target](/docs/technical/mining/target.md)值来估计获得网络控制权所需的算力大小。
 
-The target moves up and down based on how much quickly all miners on the network are able to mine new blocks. We can therefore use it to figure out how fast we need to be able to hash to outpace the current speed of the network.
+目标值根据网络上所有矿工开采新区块的速度而上下浮动。因此，我们可以利用它来计算我们需要以多快的速度进行哈希，从而超越网络当前的速度。
 
-#### 1. Find the current target
+#### 1. 查找当前目标值
 
-Firstly, we can get the current target by looking at the "[bits](/docs/technical/block/bits.md)" field inside the block header of the most recently mined block.
+首先，我们可以通过查看最近挖掘出的区块的区块头中的“[bits](/docs/technical/block/bits.md)”字段来获取当前的目标。
 
 ```
 $ bitcoin-cli getblockcount
@@ -221,21 +210,21 @@ $ bitcoin-cli getblockheader 000000000000000000005af9d7cca01756b552b02e5f5fac642
 "bits": "17021a42",
 ```
 
-Now, this "bits" value is just the target in compact format. So converting from bits to target we get:
+这里，“bits”值就是压缩格式的目标值。因此，将 bits 转换为 target 我们得到：
 
 ```
 0x000000000000000000021a420000000000000000000000000000000000000000
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标 Bits (Target Bits)
 
-Current
+当前
 
-Random Example
+随机示例
 
-Height:
+高度:
 
-Target
+目标
 
 0x
 
@@ -245,46 +234,46 @@ Bits`0 bytes`
 
 
 
-0 secs
+0 秒
 
-And that's the number that all miners need to get a [block hash](/docs/technical/block/hash.md) below to mine a block.
+这就是所有矿工需要将[区块哈希](/docs/technical/block/hash.md)降至其下才能成功挖出区块的数字。
 
-#### 2. Calculate the average number of hashes required to mine the next block
+#### 2. 计算挖掘下一个区块所需的平均哈希次数
 
-We can work out how many hashes we would need to perform (on average) to get below this target value by dividing the range of all possible hash results by the target:
+我们可以通过将所有可能哈希结果的范围除以目标值，来算出我们平均需要执行多少次哈希才能使结果低于该目标：
 
 ```
 hashes = (2**256) / 0x000000000000000000021a420000000000000000000000000000000000000000
 hashes = 574975416304515007119360
 ```
 
-So that tells us that we need to do `574975416304515007119360` hashes on average to mine the next block.
+这告诉我们，我们平均需要进行 `574975416304515007119360` 次哈希运算才能挖掘出下一个区块。
 
-Or in other words, this is roughly the combined number of hashes all the miners on the network are performing **every 10 minutes**.
+或者说，这大约是网络上所有矿工**每 10 分钟**执行的哈希总次数。
 
-See the [chainwork calculation explanation](/docs/technical/blockchain/longest-chain.md#calculation) for more information on how we get this "expected number of hashes".
+请参阅[累积工作量计算说明](/docs/technical/blockchain/longest-chain.md#calculation)了解我们如何获得这一“预期哈希次数”的更多信息。
 
-#### 3. Convert to hashes per second
+#### 3. 转换为每秒哈希数
 
-Anyway, using this number we can work out the hashes per second of the network:
+无论如何，使用这个数字我们可以算出网络的每秒哈希次数（算力）：
 
 ```
-hashes per second = 574975416304515007119360 / 600 # there are 600 seconds in 10 minutes
+hashes per second = 574975416304515007119360 / 600 # 10分钟有600秒
 hashes per second = 958292360507524907008
 ```
 
-So the current combined hash rate of every miner on the bitcoin network is `958292360507524907008` hashes/sec.
+因此，当前比特币网络上所有矿工的合并算力为每秒 `958292360507524907008` 次哈希。
 
-Converting this to **TH/s** (terahashes per second) we get:
+将其转换为 **TH/s** (每秒万亿次哈希) 我们得到：
 
 ```
 terahashes per second = 958292360507524907008 / 10**12
 terahashes per second = 958292360
 ```
 
-Therefore, to acquire 50% control over mining blocks, we need to build a mining farm that is capable of performing over `958,292,360` TH/s.
+因此，要获得 50% 的区块挖矿控制权，我们需要建立一个能够运行超过 `958,292,360` TH/s 的矿场。
 
-## Resources
+## 资源
 
-* [Hashrate Distribution Chart](https://mainnet.observer/charts/mining-pools-hashrate-distribution/) — Useful pie chart showing the bitcoin mining distribution. The [Mining Centralization Index chart](https://mainnet.observer/charts/mining-pools-centralization-index/) is also interesting.
-* [Coin Dance - Latest Blocks](https://coin.dance/blocks/today) – Another website showing a pie chart of the current bitcoin mining distribution. The more distributed the better.
+* [Hashrate Distribution Chart](https://mainnet.observer/charts/mining-pools-hashrate-distribution/) — 很有用的饼图，展示了比特币的算力分布。
+* [Coin Dance - Latest Blocks](https://coin.dance/blocks/today) – 另一个提供当前比特币挖矿分布饼图的网站。分布越分散越好。

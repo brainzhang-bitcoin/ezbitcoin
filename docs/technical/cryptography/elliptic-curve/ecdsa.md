@@ -2,17 +2,17 @@
 
 [<img src="../../../images/diagrams_png_ecdsa-bitcoin.png" alt="Diagram showing how ECDSA is used to lock and unlock outputs in bitcoin transactions." width="862" height="420" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-bitcoin.png)
 
-Bitcoin uses a digital signature system called ECDSA to control the ownership of bitcoins.
+比特币使用一种名为 ECDSA 的数字签名系统来控制比特币的所有权。
 
-In short, a digital signature system allows you to generate your own [private](/docs/technical/keys/private-key.md)/[public](/docs/technical/keys/public-key.md) key pair. You can then use the private key to generate [signatures](/docs/technical/keys/signature.md) that prove you are the owner of the public key, without having to reveal the private key.
+简而言之，数字签名系统允许您生成自己的[私钥](/docs/technical/keys/private-key.md)/[公钥](/docs/technical/keys/public-key.md)对。然后，您可以使用私钥生成[签名](/docs/technical/keys/signature.md)来证明您是公钥的所有者，而无需泄露私钥。
 
-This system is used in Bitcoin to allow people to receive and send bitcoins in [transactions](/docs/technical/transaction.md).
+此系统在比特币中用于允许人们在[交易](/docs/technical/transaction.md)中接收和发送比特币。
 
-Anyone can generate their own pair of keys, and then anyone can send (or "lock") an [output](/docs/technical/transaction/output.md) to your public key. Nobody can steal these bitcoins, because only the person with the correct private key for this public key is able to generate valid signatures to "unlock" the bitcoins and use them as an [input](/docs/technical/transaction/input.md) in a future transaction.
+任何人都可以生成自己的一对密钥，然后任何人都可以向您的公钥发送（或“锁定”）一个[输出](/docs/technical/transaction/output.md)。没有人可以盗取这些比特币，因为只有拥有该公钥对应正确私钥的人，才能生成有效的签名来“解锁”这些比特币，并将其作为未来交易中的[输入](/docs/technical/transaction/input.md)使用。
 
-I don't know enough about cryptography to explain *why* ECDSA works, but I can show you *how* ECDSA works.
+我对比特币密码学的了解还不够深入，无法解释*为什么* ECDSA 能起作用，但我可以向您展示 ECDSA 是*如何*运作的。
 
-## Full ECDSA Code
+## 完整 ECDSA 代码
 
 ```
 require "digest" # for hashing transaction data so we can sign it
@@ -260,31 +260,26 @@ puts transaction #=> 0100000001b7994a0db2f373a29227e1d90da883c6ce1cb0dd2d6812e45
 # $ bitcoin-cli sendrawtransaction [raw transaction data]
 ```
 
+## 椭圆曲线
 
+ECDSA 的数学支柱
 
-## Elliptic Curves
+[<img src="../../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/point-multiply.gif.md)
 
-The mathematical backbone of ECDSA
+椭圆曲线点乘 (Elliptic curve multiplication)
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](/docs/technical/cryptography/elliptic-curve/point-multiply.gif.md)
+ECDSA 使用[椭圆曲线](/docs/technical/cryptography/elliptic-curve.md)作为数字签名系统的基础。
 
+简而言之，公钥和签名都只是椭圆曲线上的**点 (points)**。如果这两个点是由同一个私钥（一个庞大的数字）创建的，那么它们之间将存在*几何关联*，证明创建签名的人同时也创建（或“拥有”）了该公钥。
 
-Elliptic curve multiplication.
+在此我不会涉及[椭圆曲线数学](/docs/technical/cryptography/elliptic-curve.md#mathematics)，但我们在比特币中使用 ECDSA 所需要的一切仅仅是能够**[乘以椭圆曲线上的点](/docs/technical/cryptography/elliptic-curve.md#multiply)**。
 
-ECDSA uses the [elliptic curve](/docs/technical/cryptography/elliptic-curve.md) as the basis for a digital signature system.
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 椭圆曲线乘法 (EC Multiply)
 
-In summary, public keys and signatures are just **points** on an elliptic curve. If both of these points are created from the same private key (a large number), there will be a *geometric connection* between them that proves that the person who created the signature also created (or "owns") the public key too.
+基点 (Generator Point)
+随机点
 
-I'm not going to cover the [mathematics of elliptic curves](/docs/technical/cryptography/elliptic-curve.md#mathematics) here, but all we need to use ECDSA in Bitcoin is to be able to **[multiply](/docs/technical/cryptography/elliptic-curve.md#multiply) a point on the elliptic curve**.
-
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> EC Multiply
-
-Generator Point
-
-Random Point
-
-
-Point 1
+点 1 (Point 1)
 
 x:
 
@@ -303,10 +298,10 @@ Multiplier
 
 +1
 
-Random
+随机
 
 
-Point 1 x Multiplier
+点 1 x 乘数 (Multiplier)
 
 x:
 
@@ -317,19 +312,16 @@ y:
 0d
 
 
-
-Steps
+步骤 (Steps)
  
 
+0 秒
 
+简而言之，椭圆曲线上的“乘法”基本上是指在曲线上面选择一个起点，并在曲线上弹跳一定次数以到达曲线上一个新的点。这种“乘法”运算的特殊性质在于无法“反向求出”，这就是为什么椭圆曲线被用于数字签名等密码学系统的原因。
 
-0 secs
+无论如何，以下是执行椭圆曲线点乘的代码（使用比特币中使用的 *Secp256k1* 曲线的[参数](/docs/technical/cryptography/elliptic-curve.md#parameters)）：
 
-In short, "multiplication" on the elliptic curve basically means taking a starting point on the curve, and bouncing around it a certain number of times to end up at a new point of the curve. The special property of this "multiplication" operation is that it's not possible to "go backwards", which is why the elliptic curve is used for cryptographic systems such as digital signatures.
-
-Anyway, here's the code for performing elliptic curve multiplication (using the [parameters](/docs/technical/cryptography/elliptic-curve.md#parameters) for the *Secp256k1* curve used in Bitcoin):
-
-## Secp256k1 Parameters
+## Secp256k1 参数
 
 ```
 # y² = x³ + ax + b
@@ -349,10 +341,7 @@ $G = {
 }
 ```
 
-
-
-
-## Elliptic Curve Mathematics
+## 椭圆曲线数学
 
 ```
 def inverse(a, m = $p)
@@ -438,27 +427,234 @@ def multiply(k, point = $G)
 end
 ```
 
-## Usage
+## 用法
 
-How do you create digital signatures using ECDSA?
+如何使用 ECDSA 创建数字签名？
 
-Now that we know how to **multiply a point on an elliptic curve**, we can use this as the basis for a system for creating digital signatures.
+既然我们知道了如何**在椭圆曲线上面进行点乘**，我们就可以将其用作创建数字签名系统的基础。
 
-The following system is called the *Elliptic Curve Digital Signature Algorithm*, or ECDSA for short.
+以下系统被称为*椭圆曲线数字签名算法*，或简称为 ECDSA。
 
-* [Key Generation](#key-generation)
-* [Sign](#sign)
-* [Verify](#verify)
+* [密钥生成](#key-generation)
+* [签名](#sign)
+* [验证](#verify)
 
-### Key Generation
+### 密钥生成
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Private Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 私钥 (Private Key)
 
-Generate Random
-Reset
-
+随机生成 (Generate Random)
+重置 (Reset)
 
 Bits
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
 
 0
 
@@ -988,21 +1184,14 @@ Hexadecimal
 
 `0 bytes`
 
+**切勿使用由网站生成的私钥，或在网站中输入您的私钥。** 网站很容易保存私钥并用其盗取您的比特币。
 
+0 秒
 
+基点 (Generator Point)
+随机点
 
-
-
-**Never use a private key generated by a website, or enter your private key into a website.** Websites can easily save the private key and use it to steal your bitcoins.
-
-0 secs
-
-Generator Point
-
-Random Point
-
-
-Point 1
+点 1 (Point 1)
 
 x:
 
@@ -1021,10 +1210,10 @@ Multiplier
 
 +1
 
-Random
+随机
 
 
-Point 1 x Multiplier
+点 1 x 乘数 (Multiplier)
 
 x:
 
@@ -1035,31 +1224,27 @@ y:
 0d
 
 
-
-Steps
+步骤 (Steps)
  
 
+0 秒
 
+我们使用椭圆曲线点乘来创建**密钥对**：
 
-0 secs
+* [private key](/docs/technical/keys/private-key.md) (`d`) — 一个介于 0 到[曲线上的点数](/docs/technical/cryptography/elliptic-curve.md#parameters-n)（`[0...n-1]`）之间的随机生成大整数。
+* [public key](/docs/technical/keys/public-key.md) (`Q`) — [基点](/docs/technical/cryptography/elliptic-curve.md#parameters-g) (`G`) 乘以 private key (`d`) 的点乘结果。
 
-We create pairs of **keys** using elliptic curve multiplication:
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif" alt="Animation showing how to create a public key by multiplying the generator point by a private key." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key.gif.md)
 
-* [private key](/docs/technical/keys/private-key.md) (`d`) — A large randomly-generated number between 0 and the [number of points on the curve](/docs/technical/cryptography/elliptic-curve.md#parameters-n) (`[0...n-1]`)
-* [public key](/docs/technical/keys/public-key.md) (`Q`) — The [generator point](/docs/technical/cryptography/elliptic-curve.md#parameters-g) (`G`) multiplied by the private key (`d`).
+`d` 是私钥 (一个整数)  
+`G` 是基点 (一个椭圆曲线点)  
+`Q` 是公钥 (一个椭圆曲线点)
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif" alt="Animation showing how to create a public key by multiplying the generator point by a private key." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key.gif.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png" alt="Equation for multiplying a point on an elliptic curve." width="150" height="48" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/latex-point-multiply.png.md)
 
+所以在椭圆曲线密码学中，私钥仅仅是一个大**随机整数**（小于曲线上的点数），而其对应的公钥仅仅是**曲线上的一个点**。
 
-`d` is the private key (an integer)  
-`G` is the generator point (a point)  
-`Q` is the public key (a point)
-
-[<img src="../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png" alt="Equation for multiplying a point on an elliptic curve." width="150" height="48" />](/docs/technical/cryptography/elliptic-curve/latex-point-multiply.png.md)
-
-So in elliptic curve cryptography, a private key is just a large **random integer** (less than the number of points on the curve), and its corresponding public key is just a **point on the curve**.
-
-For example:
+例如：
 
 ```
 private key = 112757557418114203588093402336452206775565751179231977388358956335153294300646
@@ -1069,28 +1254,25 @@ public key  = {
 }
 ```
 
+#### 陷门函数 (Trapdoor Function)
 
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png" alt="Equation for multiplying a point on an elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key-trapdoor.png.md)
 
+给定公钥点 `Q`，没有简单的方法可以反向推导出用于创建它的私钥 `d`。
 
-#### Trapdoor Function
+推导私钥的唯一方法是用不同的数字手动点乘基点 `G`，看看能否得到相同的公钥，如果有人使用了一个非常庞大的数字作为其私钥，这种暴力方法将慢得令人绝望。
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png" alt="Equation for multiplying a point on an elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key-trapdoor.png.md)
+因此，*椭圆曲线乘法*被称为**陷门函数 (trapdoor function)**（因为向一个方向进行很容易，但反向进行却极难），这是所有[公钥密码学](/docs/technical/cryptography.md#public-key-cryptography)的核心要素。
 
-Given a public key point `Q`, there's no easy way to work out the private key `d` used to create it.
+此外，私钥和公钥之间的单向数学关联意味着，您可以在以后分别使用这两者来计算椭圆曲线上的相同点，这在构建用于创建数字签名的系统时非常有用。
 
-The only way to work out the private key would be to manually multiply the generator point `G` by different numbers to see if you can get the same public key, and this brute-force approach is going to be impossibly slow if someone has used a very large number for their private key.
+### 签名
 
-Therefore, *elliptic curve multiplication* is known as a **trapdoor function** (because it's easy to go one way but difficult to go the other), which is a key component of all [public key cryptography](/docs/technical/cryptography.md#public-key-cryptography).
+随机示例
 
-Furthermore, the one-way mathematical connection between the private key and public key means that you can use both independently to calculate the same points on the elliptic curve later on, which comes in very handy when constructing a system for creating digital signatures.
+消息哈希 (Message Hash) (z)
 
-### Sign
-
-Random Example
-
-Message Hash (z)
-
-This is typically the hash of some transaction data (that has been prepared for signing)
+这通常是已被准备用于签名的某些交易数据的哈希值。
 
 0x
 
@@ -1100,23 +1282,17 @@ Nonce (k)
 
 0x
 
+随机 (Random)
 
-
-Random
-
-Private Key (d)
+私钥 (Private Key) (d)
 
 0x
 
-
-
-Random
+随机 (Random)
 
 `0 bytes`
 
-
-Signature
-
+签名 (Signature)
 
 R:
 
@@ -1127,42 +1303,36 @@ S:
 0d
 
 High:
-
 Low:
 
+**切勿在网站中输入您的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并用其盗取您的比特币。
 
+0 秒
 
+要签署消息，您需要三样东西：
 
-**Never enter your private key into a website, or use a private key generated by a website.** Websites can easily save the private key and use it to steal your bitcoins.
+1. **随机数** (`k`) — 这在我们的签名中引入了随机性元素，这对于安全至关重要。这意味着即使我们对同一条消息签署两次，我们生成的每一个签名都会是不同的。
+2. **消息哈希** (`z`) — 这是我们想要签署的消息的*哈希*。对消息进行[哈希运算](/docs/technical/cryptography/hash-function.md)为我们提供了一个简短且唯一的指纹，对该指纹进行签名比对庞大的数据块进行签名更有效率。您可以选择要使用的哈希算法，但与 *secp256k1* 结合使用最常见的是 [SHA-256](/docs/technical/cryptography/hash-function.md#sha256)。
+3. **私钥** (`d`) — 对应已公开的公钥的源泉。
 
-0 secs
+实际的签名由两部分组成：
 
-To sign a message you need three things:
+* `r` — **曲线上的一个随机点。** 我们使用随机数 `k` 并点乘基点以获得随机点 `R`。实际上我们仅使用该点的 *x 坐标*，并将其称为小写 `r`。
+* `s` — **随机点附带的一个数字。** 这是一个结合了*消息哈希* `z` 和私钥 `d` 创建出的唯一数字，它还使用 `r` 绑定到该随机点。
 
-1. **Random Number** (`k`) — This introduces an element of randomness in to our signatures, which is important for security. It means that every signature we generate will be different, even if we sign the same message twice.
-2. **Message Hash** (`z`) — This is the *hash* of the message we want to sign. [Hashing](/docs/technical/cryptography/hash-function.md) the message gives us a small and unique fingerprint for it, and it's more efficient to sign this fingerprint than it is to sign a large blob of data. You have a choice of which hash algorithm to use, but the one most commonly used with *secp256k1* is [SHA-256](/docs/technical/cryptography/hash-function.md#sha256).
-3. **Private Key** (`d`) — The source of a public key (that we've made publicly available).
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif" alt="Animation showing a random point being used as part of the signature in ECDSA." width="330" height="381" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-sign.gif.md)
 
-An actual signature is then made of two parts:
+ECDSA 签名包含曲线上随机点的 x 坐标。
 
-* `r` — **A random point on the curve.** We take the random number `k` and multiply it by the generator point to get a random point `R`. We only actually use the *x-coordinate* of this point, and we call this lowercase `r`.
-* `s` — **A number to accompany the random point.** This is a unique number created from a combination of the *message hash* `z` and private key `d`, which is also bound to the random point using `r`.
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png" alt="Equation for creating a signature in ECDSA." width="393" height="158" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/latex-sign.png.md)
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif" alt="Animation showing a random point being used as part of the signature in ECDSA." width="330" height="381" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-sign.gif.md)
+ECDSA 签名方程
 
+`⁻¹` 符号表示该数字的[模逆](/docs/technical/cryptography/elliptic-curve.md#modular-inverse)。在这里，模乘逆元是 `mod n`（曲线上的点数）求解的。
 
-An ECDSA signature contains the x-coordinate of a random point on the curve.
+这两个 `[r, s]` 值就是“数字签名”。
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png" alt="Equation for creating a signature in ECDSA." width="393" height="158" />](/docs/technical/cryptography/elliptic-curve/ecdsa/latex-sign.png.md)
-
-
-ECDSA Sign Equation
-
-The `⁻¹` notation indicates the [modular inverse](/docs/technical/cryptography/elliptic-curve.md#modular-inverse) of that number. Here the modular multiplicative inverse is found `mod n` (the number of points on the curve).
-
-These two `[r, s]` values are the "digital signature".
-
-For example:
+例如：
 
 ```
 random number   (k): 12345
@@ -1180,23 +1350,23 @@ signature: r = R[x], s = k⁻¹ * (z + r * d): {
 }
 ```
 
-**Nonce:** A random number in cryptography is sometimes called a "nonce", which is short for "number used once".
+**Nonce:** 密码学中的随机数有时被称为 "nonce"，它是 "number used once"（使用一次的数字）的简写。
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
 `0 digits`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
 `0 digits`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
@@ -1209,15 +1379,15 @@ Hexadecimal (Base 16)
 
 
 
-0 secs
+0 秒
 
-In short, the unique `s` value provides a *pathway* for getting to the randomly-generated point `r`.
+简而言之，唯一的 `s` 值提供了到达随机生成点 `r` 的*路径*。
 
-You can give these two pieces of information to someone else, and **starting from the public key point `Q`** they can use the `s` value to help them get to the random point `r`. The trick here is that only the person with the corresponding private key `d` could create a valid pathway to this random point provided by `s`.
+您可以将这两条信息提供给其他人，**从公钥点 `Q` 开始**，他们可以使用 `s` 值来帮助他们到达随机点 `r`。这里的诀窍是，只有拥有对应私钥 `d` 的人才能利用 `s` 创建出通往该随机点的有效路径。
 
-This pathway also has the *message hash* `z` encoded in to it, which is what effectively allows us to create signatures for messages; nobody can create the pathways from the public key to a random point on the curve **via the *message hash*** without knowing the private key it was created from.
+该路径中也编码了*消息哈希* `z`，这正是使我们能够为消息创建签名的原因；在不知道私钥的情况下，没有人能够创建出从公钥**通过*消息哈希***到达曲线上随机点的路径。
 
-#### ECDSA Sign
+#### ECDSA 签名代码
 
 ```
 def sign(private_key, hash, nonce = nil)
@@ -1240,48 +1410,45 @@ def sign(private_key, hash, nonce = nil)
 end
 ```
 
+#### 私钥恢复
 
+如果您在多个签名中使用相同的随机点（即相同的 `k` 值），任何人都可以求出您的私钥。
 
+例如，假设我们得到了两个使用相同 `k` 值生成的已签署消息。
 
-#### Private Key Recovery
-
-If you use the same random point (i.e. the same value for `k`) for more than one signature, anyone can work out your private key.
-
-For example, lets say we're given two signed messages that were generated using the same value for `k`.
-
-For each signed message we have the *message hash* `z`, and also the `r` and `s` values from each of the respective signatures:
+对于每个已签署消息，我们拥有*消息哈希* `z`，以及来自各自签名的 `r` 和 `s` 值：
 
 ```
-Signed Message 1: (z₁, r₁, s₁)
-Signed Message 2: (z₂, r₂, s₂)
+已签署消息 1: (z₁, r₁, s₁)
+已签署消息 2: (z₂, r₂, s₂)
 ```
 
-However, because the same value for `k` was used each time to generate the random point (`R = k*G`), the `r` value (x-coordinate of `R`) in each of these signatures will also be the same:
+然而，因为每次都使用相同的 `k` 值生成随机点（`R = k*G`），所以这些签名中的 `r` 值（`R` 的 x 坐标）也将是相同的：
 
 ```
-Signed Message 1: (z₁, r, s₁)
-Signed Message 2: (z₂, r, s₂)
+已签署消息 1: (z₁, r, s₁)
+已签署消息 2: (z₂, r, s₂)
 ```
 
-So how can we use this information to work out the private key `d`?
+那么我们该如何利用这些信息推导出私钥 `d` 呢？
 
-First of all, we know that the `s` value in each of these signatures was calculated using `s = k⁻¹(z + r * d) mod n`, so:
+首先，我们知道每个签名中的 `s` 值是使用 `s = k⁻¹(z + r * d) mod n` 计算出来的，所以：
 
 ```
 s₁ = k⁻¹(z₁ + r * d) mod n
 s₂ = k⁻¹(z₂ + r * d) mod n
 ```
 
-And thanks to the fact that both equations now have the same value for `k`, we can solve them as a pair of simultaneous equations to work out the value for `k`.
+得益于这两个方程式现在具有相同的 `k` 值，我们可以将它们作为联立方程组进行求解，算出 `k` 的值。
 
-To do this, we start by rearranging the second equation to get `r * d` on its own:
+为此，我们首先将第二个方程重新排列，使 `r * d` 独立在等式的一边：
 
 ```
 s₂ = k⁻¹(z₂ + r * d) mod n
 r * d = k * s₂ - z₂ mod n
 ```
 
-Then we can substitute this into the first equation, and rearrange it to get `k`:
+然后，我们可以将其代入第一个方程中，并重新整理以求出 `k`：
 
 ```
 s₁ = k⁻¹(z₁ + r * d) mod n
@@ -1289,28 +1456,28 @@ s₁ = k⁻¹(z₁ + (k * s₂ - z₂)) mod n
 k = (z₁ - z₂) * (s₁ - s₂)⁻¹ mod n
 ```
 
-Remember that multiplying by `(s₁ - s₂)⁻¹` means multiplying by the [*modular multiplicative inverse*](/docs/technical/cryptography/elliptic-curve.md#modular-inverse) of `(s₁ - s₂)`, which is the same thing as "division" in elliptic curve mathematics.
+请记住，乘以 `(s₁ - s₂)⁻¹` 意味着乘以 `(s₁ - s₂)` 的[*模乘逆元*](/docs/technical/cryptography/elliptic-curve.md#modular-inverse)，这在椭圆曲线数学中等同于“除法”。
 
-And after we've worked out `k`, we can use it in `s = k⁻¹(z + r * d) mod n` again to work out `d`.
+在求出 `k` 之后，我们可以将其再次代入 `s = k⁻¹(z + r * d) mod n` 中以求出 `d`。
 
-So rearranging the first equation (you can use either) to get `d` on its own:
+因此，重新整理第一个方程（使用哪一个都可以）使 `d` 独立在等式的一边：
 
 ```
 s₁ = k⁻¹(z₁ + r * d) mod n
 d = (k * s₁ - z₁) * r⁻¹ mod n
 ```
 
-And because we already knew `(z₁, r, s₁)` and have just worked out `k`, we can plug them all in to this equation to work out the private key `d`.
+因为我们已经知道了 `(z₁, r, s₁)` 并且刚刚求出了 `k`，我们可以将它们全部代入该方程中以求出私钥 `d`。
 
-In mathematical notation, the private key recovery looks like this:
+在数学符号中，私钥恢复如下所示：
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png" alt="Equation for private key recovery in ECDSA." width="350" height="186" />](/docs/technical/cryptography/elliptic-curve/ecdsa/latex-private-key-recovery.png.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png" alt="Equation for private key recovery in ECDSA." width="350" height="186" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/latex-private-key-recovery.png.md)
 
-**So make sure you always use securely random values for `k` each time you create a signature.** If someone spots you've used the same `r` value when signing different messages for the same public key, it only takes milliseconds for them to recover your private key.
+**因此，请确保您每次创建签名时，始终使用安全的随机值作为 `k`。** 如果有人发现您为同一公钥签署不同消息时使用了相同的 `r` 值，他们只需几毫秒即可恢复您的私钥。
 
-In 2011 [hackers worked out how to get the private key for the PS3](https://arstechnica.com/gaming/2010/12/ps3-hacked-through-poor-implementation-of-cryptography/) because Sony were using the same value for `k` when generating their signatures.
+在 2011 年，[黑客发现如何获取 PS3 的私钥](https://arstechnica.com/gaming/2010/12/ps3-hacked-through-poor-implementation-of-cryptography/)，因为索尼在生成签名时使用相同的 `k` 值。
 
-Here's an example of recovering a private key from two signatures using the same `k` in Ruby:
+以下是在 Ruby 中从使用相同 `k` 的两个签名恢复私钥的示例：
 
 ```
 require 'digest' # used for hashing messages before signing
@@ -1349,19 +1516,17 @@ d_calculated = ((k_calculated * sig1[:s] - z1) * inverse(sig1[:r], $n)) % $n
 puts d_calculated #=> 1111222233334444555566667777888899990000
 ```
 
-### Verify
+### 验证
 
-Random Example
+随机示例
 
-Message Hash (z)
+消息哈希 (Message Hash) (z)
 
 0x
 
 `0 bytes`
 
-
-Signature
-
+签名 (Signature)
 
 R:
 
@@ -1371,16 +1536,13 @@ S:
 
 0d
 
-
-Public Key (Q)
+公钥 (Public Key) (Q)
 
 0x
 
 `0 bytes`
 
-
-Signature Verification
-
+签名验证 (Signature Verification)
 
 x:
 
@@ -1390,37 +1552,32 @@ y:
 
 0d
 
+0 秒
 
+您可以使用三样东西来验证消息及其签名：
 
+1. **公钥** `Q` — 声明创建该签名的用户的公钥。
+2. **消息** — 被签署的数据。我们可以自己对其进行哈希运算以获得*消息哈希* `z`。
+3. **签名** `[r, s]` — 为上述消息创建的签名，据称是由拥有该公钥对应私钥的用户创建的。
 
-0 secs
+然后我们使用这三条数据在曲线上*计算两个点*：
 
-You can verify a message and its signature with three things:
+* **点 1.** 从*基点* `G` 开始，并乘以 `inverse(s) * z`。
+* **点 2.** 从公钥点 `Q` 开始，并乘以 `inverse(s) * r`。
 
-1. **Public Key** `Q` — This is the public key for the person claiming to have created the signature.
-2. **Message** — The data that was signed. We can hash it ourselves to get the *message hash* `z`.
-3. **Signature** `[r, s]` — This is the signature created for the above message, allegedly created by the person who has the private key for the public key.
+我们现在可以将这两个点相加得到 **点 3**：
 
-We then use these three pieces of data to *calculate two points* on the curve:
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif" alt="Animation showing the verification of an ECDSA signature on the elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-verify.gif.md)
 
-* **Point 1.** Start with the *generator point* `G`, and multiply it by `inverse(s) * z`.
-* **Point 2.** Start with the public key point `Q`, and multiply it by `inverse(s) * r`.
+椭圆曲线上的 ECDSA 验证。
 
-We can now add these points together to give us **Point 3**:
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png" alt="Equation for verifying a signature in ECDSA." width="418" height="56" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/latex-verify.png.md)
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif" alt="Animation showing the verification of an ECDSA signature on the elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-verify.gif.md)
+ECDSA 验证方程
 
+**如果点 3 的 x 坐标与 r 相匹配，则签名有效**。
 
-ECDSA verification on the elliptic curve.
-
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png" alt="Equation for verifying a signature in ECDSA." width="418" height="56" />](/docs/technical/cryptography/elliptic-curve/ecdsa/latex-verify.png.md)
-
-
-ECDSA Verify Equation
-
-**If Point 3 matches up with the random point, the signature is valid**.
-
-For example:
+例如：
 
 ```
 message:             ECDSA is the most fun I have ever experienced
@@ -1440,21 +1597,21 @@ verification (s⁻¹ * z)G + (s⁻¹ * r)Q: {
 }
 ```
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
 `0 digits`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
 `0 digits`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
@@ -1467,20 +1624,19 @@ Hexadecimal (Base 16)
 
 
 
-0 secs
+0 秒
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 公钥 (Public Key)
 
-Generate Random
+随机生成 (Generate Random)
 
-Private Key
+私钥 (Private Key)
 
 `0 bytes`
 
-Public Key
+公钥 (Public Key)
 
-
-Coordinates
+坐标 (Coordinates)
 
 x:
 
@@ -1490,32 +1646,33 @@ y:
 
 0d
 
-parity:
+奇偶性 (parity):
 
-A public key is just a point on an elliptic curve. The final public key is these coordinates in hexadecimal.
+公钥只是椭圆曲线上的一个点。最终的公钥是这些十六进制的坐标。
 
-Compression
- Compressed (02 or 03 prefix)
- Uncompressed (04 prefix)
- x-only (no prefix)
+压缩方式
 
-The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
+ 压缩格式 (以 02 或 03 开头)
 
-An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
+ 未压缩格式 (以 04 开头)
+
+ 仅含 x 轴 (无前缀)
+
+椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标以及 y 坐标是奇数还是偶数即可。
+
+在 [Taproot](/docs/technical/upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
 
 `0 bytes`
 
+**切勿在网站中输入您的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并用其盗取您的比特币。
 
+0 秒
 
-**Never enter your private key into a website, or use a private key generated by a website.** Websites can easily save the private key and use it to steal your bitcoins.
+换句话说，该消息的签名只能由拥有公钥所对应的实际私钥的人创建。其他人无法提供一个 `s` 值，能让您在与公钥 `Q` 结合后到达随机点 `R`，*除非*他们知道该公钥对应的私钥 `d`。
 
-0 secs
+如果您更改已签署消息的内容，或尝试将该签名与不同的公钥结合使用，则计算出的第三个点将无法与签名中给出的随机点相匹配，签名验证将失败。
 
-In other words, the signature for this message could only have been created by the person who has the actual private key that the public key was created from. Nobody else can give you an `s` value that you can use in combination with the public key `Q` to reach the random point `R` *unless* they knew the private key `d` for that public key.
-
-If you change the contents of the signed message or try to use the signature with a different public key, the resulting third point won't match up with the random point given in the signature, and the signature verification will fail.
-
-#### ECDSA Verify
+#### ECDSA 验证代码
 
 ```
 def verify(public_key, signature, hash)
@@ -1533,85 +1690,82 @@ def verify(public_key, signature, hash)
 end
 ```
 
+#### 为什么起作用？（数学证明）
 
+##### 签名过程：
 
-
-#### Why does this work? (Mathematics)
-
-##### Signing:
-
-The person creating a signature starts by using a random number `k` to generate a random point on the curve:
+创建签名的人首先使用一个随机数 `k` 来在曲线上生成一个随机点：
 
 ```
 R = k * G
 ```
 
-They then compute an auxiliary number using their private key `d` and the hash of the message `z` (along with `r` (the x-coordinate of `R`) and the random number `k`):
+然后，他们使用自己的私钥 `d` 和消息的哈希值 `z`（以及 `r`（`R` 的 x 坐标）和随机数 `k`）来计算一个辅助数字：
 
 ```
 s = k⁻¹ * (z + r * d)
 ```
 
-##### Verifying:
+##### 验证过程：
 
-The following equation allows you to calculate the *same point* by using the public key `Q` alongside the hash of the message `z` and the given `s` value:
+以下方程允许您通过结合使用公钥 `Q`、消息的哈希值 `z` 和给定的 `s` 值来计算出*相同的点*：
 
 ```
 R = (s⁻¹ * z)G + (s⁻¹ * r)Q
 ```
 
-We can now rearrange this equation and substitute some values to prove that this equation does indeed get us to the same point.
+我们现在可以重新整理该方程并代入一些值，以证明该方程确实能让我们得到相同的点。
 
-To start with, the public key `Q` is `d * G`, so:
+首先，公钥 `Q` 就是 `d * G`，所以：
 
 ```
 R = (s⁻¹ * z)G + (s⁻¹ * r)d*G
 ```
 
-If we rearrange this equation we get:
+如果我们提取公因子重新整理该方程，我们得到：
 
 ```
 R = (s⁻¹ * z)G + (s⁻¹ * r * d)G
 R = s⁻¹ * (z + r * d) * G
 ```
 
-Now, remember that `s = k⁻¹ * (z + r * d)`. If we rearrange this to get `k` on its own we get `k = s⁻¹ * (z + r * d)`, and substituting this into the equation above:
+现在，请记住 `s = k⁻¹ * (z + r * d)`。如果我们将此等式重新排列以使 `k` 独立在等式的一边，我们得到 `k = s⁻¹ * (z + r * d)`，将其代入上面的方程中：
 
 ```
 R = k * G
 ```
 
-And that's the same calculation that was used to generate the random point in the first place.
+而这正是最初用于生成随机点的相同计算方式。
 
-## Summary
+## 总结
 
-The best way to get the hang of ECDSA is to try coding it yourself.
+熟练掌握 ECDSA 的最佳方式是尝试自己编写代码。
 
-The hardest part is not usually the [elliptic curve mathematics](/docs/technical/cryptography/elliptic-curve.md#mathematics), but actually preparing and formatting the resulting [signatures](/docs/technical/keys/signature.md) for use inside bitcoin transactions later on. Also, it's not always easy to work with big numbers in some programming languages, so you may need to use special functions to perform the elliptic curve operations.
+最困难的部分通常不是[椭圆曲线数学](/docs/technical/cryptography/elliptic-curve.md#mathematics)，而是在之后实际为用于比特币交易内的生成的[签名](/docs/technical/keys/signature.md)准备格式并进行编码。此外，在某些编程语言中处理大数并不总是很容易，因此您可能需要使用特殊的库函数来执行椭圆曲线运算。
 
-Other than that, the code is not as difficult as you may have initially thought.
+除此之外，代码并不像您最初想象的那么困难。
 
-Of course, I wouldn't recommend using this code in your most recent mission-critical system, but it should help you get started with creating your own public keys and signing your own [transactions](/docs/technical/transaction.md) in Bitcoin without using an ECDSA library, should you want to.
+当然，我不建议在您最新的任务关键型系统中使用这些代码，但如果您想在不使用外部 ECDSA 库的情况下，在比特币中创建自己的公钥并签署您自己的[交易](/docs/technical/transaction.md)，它应该能帮助您开始。
 
-Have fun.
+祝您玩得开心。
 
-**It wasn't necessary for Satoshi Nakamoto to know the details of how digital signature systems work to be able to create Bitcoin.** All they needed to know was that it *does* work, and that they could use it as the mechanism for sending and receiving money in the system they were building. The first version of Bitcoin actually used the [OpenSSL](https://www.openssl.org/) library to provide the functionality for creating and verifying digital signatures, so it's not something they coded by hand themselves.
+**中本聪并不需要了解数字签名系统工作原理的所有细节，就能创建比特币。** 他们所需要知道的仅仅是它*确实*起作用，并且他们可以将其用作在他们正在构建的系统中发送和接收资金的机制。比特币的第一个版本实际上使用 [OpenSSL](https://www.openssl.org/) 库来提供创建和验证数字签名的功能，因此这不是他们自己亲手编写的代码。
 
-## Resources
+## 资源
 
-### References:
+### 参考资料：
 
-* [NIST.FIPS.186-4.pdf](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) - Official *Digital Signature Standard* by NIST. Contains outlines for DSA, RSA, and ECDSA.
-* [sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf) - List of recommended curves for use in elliptic curve cryptography from SECG. Contains parameters for the `secp256k1` curve used in Bitcoin.
+* [NIST.FIPS.186-4.pdf](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) - NIST 官方的*数字签名标准*。包含 DSA, RSA 和 ECDSA 的概述。
+* [sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf) - 来自 SECG 的椭圆曲线密码学推荐曲线列表。包含比特币中使用的 `secp256k1` 曲线的参数。
 
-### Explanations:
+### 说明文档：
 
-* [How The ECDSA Algorithm Works](https://kakaroto.ca/2012/01/how-the-ecdsa-algorithm-works/) - Concise explanation of ECDSA.
-* [Recovering private key from Secp256k1 signatures](https://crypto.stackexchange.com/questions/57846/recovering-private-key-from-secp256k1-signatures) - Succinct mathematical explanation by Thomas Pornin on how to recover a private key if someone has used the same random point for their signatures more than once.
+* [How The ECDSA Algorithm Works](https://kakaroto.ca/2012/01/how-the-ecdsa-algorithm-works/) - ECDSA 算法的简明解释。
+* [Recovering private key from Secp256k1 signatures](https://crypto.stackexchange.com/questions/57846/recovering-private-key-from-secp256k1-signatures) - Thomas Pornin 关于如果有人多次使用相同的随机点生成签名，如何求出其私钥的简明数学解释。
 
-### Code
+### 代码
 
-Here are some implementations of ECDSA in different programming languages that I found helpful:
+以下是我发现有用的不同编程语言中 ECDSA 的一些实现：
 
 * Python: [github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py](https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py)
 * Python: [github.com/andreacorbellini/ecc/blob/master/scripts/ecdsa.py](https://github.com/andreacorbellini/ecc/blob/master/scripts/ecdsa.py)

@@ -2,54 +2,54 @@
 
 [<img src="../../images/diagrams_png_block-hash.png" alt="Diagram showing how a block hash is created by hashing the block header." width="775" height="563" />](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
 
-A block hash (or block ID) is a **unique reference** for a [block](/docs/technical/block.md) in the [blockchain](/docs/technical/blockchain.md).
+区块哈希 (block hash，或区块 ID) 是[区块链](/docs/technical/blockchain.md)中[区块](/docs/technical/block.md)的**唯一引用标识**。
 
-Every block hash is unique and is determined by the contents of the block. You can therefore use the block hash to search for a specific block in a [blockchain explorer](/explorer/). For example:
+每个区块哈希都是唯一的，由区块的内容决定。因此，您可以使用区块哈希在[区块链浏览器](/explorer/)中搜索特定区块。例如：
 
-* Most Recent Block: [000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264)
-* Block 123,456: [0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca](/explorer/block/0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca)
-* Genesis Block: [000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)
+* 最近的区块: [000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264)
+* 区块 123,456: [0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca](/explorer/block/0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca)
+* 创世区块: [000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)
 
-There's nothing too interesting about these block hashes, as they're ultimately just a random-looking bunch of [bytes](/docs/technical/general/bytes.md).
+这些区块哈希本身并没有什么特别有趣的地方，因为它们最终只是一堆看起来随机的[字节](/docs/technical/general/bytes.md)。
 
-However, you'll notice that all block hashes begin with a **bunch of zeros**. This is because for a block to be added to the blockchain, a [miner](/docs/technical/mining.md) must get a hash for their block below the current [target](/docs/technical/mining/target.md) value. And if the block hash is *below* this target value, then the block hash is naturally going to have a bunch of zeros at the start.
+然而，您会注意到所有的区块哈希都以**一堆零**开头。这是因为区块要被添加到区块链中，[矿工](/docs/technical/mining.md)必须使他们区块的哈希值低于当前的[target](/docs/technical/mining/target.md)值。而如果区块哈希*低于*这个目标值，那么区块哈希的开头自然就会有一堆零。
 
-## Creating
+## 创建
 
-How do you create a block hash?
+如何创建区块哈希？
 
-A block hash is created by [hashing](/docs/technical/cryptography/hash-function.md) the [block header](/docs/technical/block.md#header).
+区块哈希是通过对[区块头](/docs/technical/block.md#header)进行[哈希运算](/docs/technical/cryptography/hash-function.md)创建的。
 
-Random Example
+随机示例
 
-Block Header
-
-`0 bytes`
-
-Block Hash (Natural Byte Order)
-
-Used internally inside raw block headers
+区块头 (Block Header)
 
 `0 bytes`
 
-Block Hash (Reverse Byte Order)
+区块哈希 (自然字节顺序)
 
-Used externally when searching for blocks on block explorers
+在原始区块头内部使用
+
+`0 bytes`
+
+区块哈希 (反向字节顺序)
+
+在区块浏览器上搜索区块时在外部使用
 
 `0 bytes`
 
 
 
-0 secs
+0 秒
 
-The steps for creating a block hash are as follows:
+创建区块哈希的步骤如下：
 
-1. Construct a [block](/docs/technical/block.md) of [transactions](/docs/technical/transaction.md).
-2. Construct a [block header](/docs/technical/block.md#header) for that block.
-3. [HASH256](/docs/technical/cryptography/hash-function.md#hash256) the block header to get the block hash.
-   * HASH256 is shorthand for *double SHA-256*; you put the block header through the SHA-256 hash function, then put the result through SHA-256 again.
+1. 构建包含[交易](/docs/technical/transaction.md)的[区块](/docs/technical/block.md)。
+2. 为该区块构建一个[区块头](/docs/technical/block.md#header)。
+3. 对区块头进行 [HASH256](/docs/technical/cryptography/hash-function.md#hash256) 运算以获得区块哈希。
+   * HASH256 是*双重 SHA-256 (double SHA-256)*的简写；您将区块头输入 SHA-256 哈希函数，然后将结果再次输入 SHA-256。
 
-### Code
+### 代码
 
 ```
 require 'digest'
@@ -92,69 +92,68 @@ puts blockhash #=> 6fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000
 puts blockhash.scan(/../).reverse.join #=> 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
 ```
 
-**Transactions.** You'll notice that we're not directly hashing the transactions inside the block. However, the block header contains a [merkle root](/docs/technical/block/merkle-root.md), which *is* the hash of the transactions, so the transactions inside the block are part of the block header.
+**交易。** 您会注意到我们并没有直接对区块内的交易进行哈希运算。然而，区块头包含了一个 [Merkle Root](/docs/technical/block/merkle-root.md)，它是交易的哈希值，因此区块内的交易是区块头的一部分。
 
-**Valid Block Hashes.** Not all block hashes will have a bunch of zeros at the start (at first). Miners increment the [nonce](/docs/technical/block/nonce.md) value in the block header to try and get a block hash that is below the target.
+**有效的区块哈希。** 并不是所有的区块哈希（最初）都会以一堆零开头。矿工会递增区块头中的 [Nonce](/docs/technical/block/nonce.md) 值，以尝试获得低于目标的区块哈希。
 
-**Byte Order.** The actual result of hashing the block header will produce a block hash that is in [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order). However, when searching for blocks in a blockchain explorer the block hash is in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order).
+**字节顺序。** 对区块头进行哈希的实际结果将产生一个处于[自然字节顺序](/docs/technical/general/byte-order.md#natural-byte-order)的区块哈希。然而，在区块链浏览器中搜索区块时，区块哈希采用的是[反向字节顺序](/docs/technical/general/byte-order.md#reverse-byte-order)。
 
-## Usage
+## 用途
 
-Where are block hashes used in bitcoin?
+区块哈希在比特币中用于何处？
 
-Block hashes are used in two places:
+区块哈希在两个地方使用：
 
-1. They are used when **searching** for a specific block in the blockchain.
-2. They are put inside the [previous block](/docs/technical/block/previous-block.md) field of the block header to **connect blocks** together in the blockchain.
+1. 用于在区块链中**搜索**特定的区块。
+2. 它们被放入区块头的 [previous block](/docs/technical/block/previous-block.md) 字段中，以在区块链中**连接区块**。
 
 [<img src="../../images/diagrams_png_block-previous-block.png" alt="Diagram showing blocks connected together through block hashes in the block header using the previous block field." width="397" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
 
+区块通过它们的区块哈希连接在一起。
 
-Blocks are connected by their block hashes.
+因此，您最常在区块链浏览器中搜索特定区块时使用区块哈希，但 previous block 字段至关重要，因为它是将区块链粘合在一起的粘合剂。
 
-So you'll most commonly use block hashes when searching for a specific block on a [blockchain explorer](/explorer/), but the previous block field is critically important as it's the glue that holds the blockchain together.
+## 常见问题
 
-## FAQ
+### 区块哈希只是某些字节，还是一个数字？
 
-### Is the block hash just some bytes or is it a number?
+两者都是。
 
-It's both.
+任何来自 SHA-256 [哈希函数](/docs/technical/cryptography/hash-function.md) 的结果都只是一堆无意义的[字节](/docs/technical/general/bytes.md)。但它们（对于该特定数据）是*唯一的*，因此非常适合用作特定数据的唯一引用标识。这使您在构建[区块链](/docs/technical/blockchain.md)时能够自信地搜索和引用之前的区块。
 
-Anything that comes out of the SHA-256 [hash function](/docs/technical/cryptography/hash-function.md) is just a bunch of meaningless [bytes](/docs/technical/general/bytes.md). But they *are unique* (for that particular data), so they're perfect for use as a unique reference for some specific data. This allows you to confidently search for and reference previous blocks when building a [blockchain](/docs/technical/blockchain.md).
-
-Again, this is the unique block hash for the genesis block:
+同样，这是创世区块的唯一区块哈希：
 
 ```
 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
 ```
 
-The [hexadecimal](/docs/technical/general/hexadecimal.md) characters you see here are just representing **32 bytes** of meaningless data.
+您在此处看到的[十六进制](/docs/technical/general/hexadecimal.md)字符仅表示 **32 字节** 的无意义数据。
 
-However, in bitcoin, during the process of [mining](/docs/technical/mining.md) these block hashes also get interpreted as **numbers**. If you convert this block hash from hexadecimal to decimal you get:
+然而，在比特币中，在[开采](/docs/technical/mining.md)过程中，这些区块哈希也被解释为**数字**。如果您将此区块哈希从十六进制转换为十进制，您将得到：
 
 ```
 10628944869218562084050143519444549580389464591454674019345556079
 ```
 
-By doing this you can check to see if the block hash is below the [target](/docs/technical/mining/target.md), and if it is, the block can be added on to the blockchain.
+通过这样做，您可以检查区块哈希是否低于[target](/docs/technical/mining/target.md)值，如果是，该区块就可以被添加到区块链中。
 
-So it makes sense to think of the block hash as being a unique number.
+因此，将区块哈希视为一个唯一的数字是有意义的。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-Binary (Base 2)
+二进制 (Base 2)
 
 0b
 
 `0 digits`
 
-Decimal (Base 10)
+十进制 (Base 10)
 
 0d
 
 `0 digits`
 
-Hexadecimal (Base 16)
+十六进制 (Base 16)
 
 0x
 
@@ -167,4 +166,4 @@ Hexadecimal (Base 16)
 
 
 
-0 secs
+0 秒

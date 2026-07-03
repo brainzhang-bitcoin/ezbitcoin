@@ -2,73 +2,73 @@
 
 [<img src="../../images/diagrams_png_block-previous-block.png" alt="Diagram showing the location of the previous block field inside the block header and how it connects the current block to the block below it in the blockchain." width="397" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
 
-The previous block field in the [block header](/docs/technical/block.md#header) contains the [hash](/docs/technical/block/hash.md) of a previous block that the block **builds on**.
+[区块头](/docs/technical/block.md#header)中的 previous block 字段包含了该区块所**构建于其上**的前一个区块的[哈希](/docs/technical/block/hash.md)。
 
-Each block links to a previous block, and this creates a *chain of blocks*. Or, as it's more commonly known, a [blockchain](/docs/technical/blockchain.md).
+每个区块都链接到前一个区块，这便创建了一个*区块的链条*。或者，正如它更广为人知的名称：[区块链](/docs/technical/blockchain.md)。
 
-## Example
+## 示例
 
-Below are the top 5 blocks in the blockchain. If you check them out, you'll see that they each contain the hash of the block below it in their block headers.
+下面是区块链中最高的 5 个区块。如果您查看它们，就会发现它们各自的区块头中都包含其下方区块的哈希。
 
-Height | Block Hash || 956,479 | [000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) |
-| 956,478 | [000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100](/explorer/block/000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100) |
-| 956,477 | [000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce](/explorer/block/000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce) |
-| 956,476 | [000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9](/explorer/block/000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9) |
-| 956,475 | [000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a](/explorer/block/000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a) |
+高度 | 区块哈希
+---|---
+956,479 | [000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) |
+956,478 | [000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100](/explorer/block/000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100) |
+956,477 | [000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce](/explorer/block/000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce) |
+956,476 | [000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9](/explorer/block/000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9) |
+956,475 | [000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a](/explorer/block/000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a) |
 
-You can visit every block in the blockchain by starting at the tip and following the *previous block*s all the way to the bottom.
+您可以通过从区块顶端开始并一路跟随 *previous block* 字段，访问区块链中的每一个区块，直至最底部。
 
-## Usage
+## 用途
 
-When constructing a [candidate block](/docs/technical/mining/candidate-block.md), a [miner](/docs/technical/mining.md) will put the block hash of the current **tip of the blockchain** in the previous block field.
+当构建[候选区块](/docs/technical/mining/candidate-block.md)时，[矿工](/docs/technical/mining.md)会在 previous block 字段中放入当前**区块链尖端**的区块哈希。
 
 [<img src="../../images/diagrams_png_block-previous-block-tip.png" alt="Diagram showing how a candidate block referencing the tip of the blockchain through the previous block field in the block header." width="454" height="696" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block-tip.png)
 
-All miners want to extend the current longest known chain of blocks, because the [longest chain](/docs/technical/blockchain/longest-chain.md) is what all nodes adopt as the *canonical* version of the blockchain, and they can only collect the [block reward](/docs/technical/mining/block-reward.md) if the block makes it 100 blocks deep into the longest chain.
+所有的矿工都希望延长当前已知最长的区块链接，因为[最长链](/docs/technical/blockchain/longest-chain.md)是所有节点采用的区块链的*权威 (canonical)*版本，并且矿工只有在区块成功进入最长链达 100 个区块深之后，才能收回其[区块奖励](/docs/technical/mining/block-reward.md)。
 
-> **canonical** – authorized; recognized; accepted
+> **canonical** – 经授权的；公认的；被接受的
+> 
+> [collinsdictionary.com](https://www.collinsdictionary.com/dictionary/english/canonical)
 
-[collinsdictionary.com](https://www.collinsdictionary.com/dictionary/english/canonical)
+您可以通过运行 `bitcoin-cli getbestblockhash` 来查找当前区块链尖端的区块。
 
-You can find the block at the current tip of the blockchain by running `bitcoin-cli getbestblockhash`.
+**所有区块都必须构建在现有的前一个区块之上。** 如果您在区块的 previous block 字段中放入一个不存在的哈希值，该区块将是无效的，并会被[网络](/docs/technical/networking.md)上的节点拒绝。
 
-**All blocks must build upon an existing previous block.** If you put a hash in the previous block field of a block that does not exist, the block will be invalid and will be rejected by nodes on the [network](/docs/technical/networking.md).
+## 目的
 
-## Purpose
+为什么区块要包含前一个区块的哈希值？
 
-Why do blocks contain the hash of a previous block?
+previous block 字段的作用是**将区块连接在一起**构成区块链。
 
-The previous block field is what **connects blocks together** in the blockchain.
-
-A [block hash](/docs/technical/block/hash.md) is a unique reference for a block, and it's determined by the contents of the block. So by including a previous block's hash in the block header, you can create a reliable chain of data, where each chunk of data (i.e. block of transactions) is linked to the one before it.
+[区块哈希](/docs/technical/block/hash.md)是区块的唯一引用，并由区块的内容决定。因此，通过在区块头中包含前一个区块的哈希值，您可以创建一个可靠的数据链，其中每个数据块（即交易区块）都链接到它前面的那个区块。
 
 [<img src="../../images/diagrams_png_block-previous-block-hash-chain.png" alt="Diagram showing how block hashes are used to create a chain of blocks." width="386" height="461" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block-hash-chain.png)
 
+区块链只是通过区块哈希连接起来的区块链接。
 
-The blockchain is just a chain of blocks connected by block hashes.
-
-So if you tried to modify the content of an older block (e.g. by replacing or removing a [transaction](/docs/technical/transaction.md)), this will change the hash for that block, and it will no longer be part of the same chain of blocks, because the block that builds upon it will no longer be referring to it anymore.
+因此，如果您试图修改较旧区块的内容（例如替换或删除某笔[交易](/docs/technical/transaction.md)），这将更改该区块的哈希值，并且它将不再是同一区块链接的一部分，因为构建于其上的区块将不再引用它。
 
 [<img src="../../images/diagrams_png_block-previous-block-hash-chain-break.png" alt="Diagram showing how changing the contents of a block will change its hash, and will therefore break the link in the blockchain." width="557" height="518" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block-hash-chain-break.png)
 
+如果您更改了其中一个区块哈希，您就将其从链条中移除了。
 
-If you change one of the block hashes you're removing it from the chain.
+所以基本上，这条区块哈希链条就是防止任何人回到过去更改区块链的机制。因为如果您这样做，节点将忽略修改后的区块，因为它不会成为已知最长链的一部分。
 
-So basically, this chain of block hashes is what prevents anyone from going back in time and changing the blockchain. Because if you did, nodes would ignore the modified block as it would not be a part of longest-known chain.
+这就是人们将区块链称为“不可篡改账本 (immutable ledger)”的意思。
 
-This is what people mean when they refer to the blockchain as being an "immutable ledger".
+> **immutable** – 不可改变的；某物是不可改变的，将永远不会改变或无法改变。
+> 
+> [collinsdictionary.com](https://www.collinsdictionary.com/dictionary/english/immutable)
 
-> **immutable** – Something that is immutable will never change or cannot be changed.
+## 创世区块
 
-[collinsdictionary.com](https://www.collinsdictionary.com/dictionary/english/immutable)
+[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)的独特之处在于其 previous block 字段**全为零**。这是因为它是区块链中的第一个区块，因此没有“前一个区块”可供其构建于其上。
 
-## Genesis Block
+这就是我关于区块头中 previous block 字段仅有的有趣事实。
 
-The [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) is unique in that its previous block field contains **all zeros**. This is because it's the very first block in the blockchain, and so there is no "previous block" for it to build upon.
-
-That's the only interesting fact I have about the previous block field in the block header.
-
-## Resources
+## 资源
 
 * <https://en.wikipedia.org/wiki/Hash_chain>
-* [Blockchain Demo](https://andersbrownworth.com/blockchain/) - Cool interactive website that shows how blocks are connected in a blockchain by block hashes.
+* [Blockchain Demo](https://andersbrownworth.com/blockchain/) - 酷炫的互动网站，展示了如何通过区块哈希将区块连接在区块链中。

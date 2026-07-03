@@ -2,57 +2,55 @@
 
 [<img src="../../images/diagrams_png_block-merkle-root.png" alt="An overview of the structure of a merkle tree and the merkle root being placed in the block header." width="767" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root.png)
 
-A merkle root is created by [hashing](/docs/technical/cryptography/hash-function.md) together pairs of [TXID](/docs/technical/transaction/input/txid.md)s to get a short and unique **fingerprint for all the [transactions](/docs/technical/transaction.md) in a [block](/docs/technical/block.md)**.
+Merkle Root 是通过将成对的 [TXID](/docs/technical/transaction/input/txid.md) 组合进行[哈希运算](/docs/technical/cryptography/hash-function.md)创建的，以获取一个简短且独特的**指纹，代表[区块](/docs/technical/block.md)中的所有[交易](/docs/technical/transaction.md)**。
 
-This merkle root is placed in a [block header](/docs/technical/block.md#header) to prevent the contents of the block from being tampered with later on. So if someone tries to add or remove a transaction from the block, the merkle root for the transactions inside the block will no longer match the merkle root inside the block header.
+这个 Merkle Root 被放置在[区块头](/docs/technical/block.md#header)中，以防止区块内容随后被篡改。因此，如果有人试图从区块中添加或删除交易，区块内交易的 Merkle Root 将不再与区块头内的 Merkle Root 相匹配。
 
-In other words, the merkle root is what connects the block header to the transactions in the block.
+换句话说，Merkle Root 是连接区块头与区块中交易的纽带。
 
-Random Example
+随机示例
 
-Block
+区块
 
-TXID List
+TXID 列表
 
-A list of TXIDs separated by *spaces*, *commas*, or *new lines*. Quotes and brackets are ignored.
+TXID 列表，以*空格*、*逗号*或*换行符*分隔。引号和括号会被忽略。
 
-The TXIDs should be input in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order) before the merkle root is calculated.
+TXID 应以[反向字节顺序](/docs/technical/general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算 Merkle Root 之前，它们会被转换为[自然字节顺序](/docs/technical/general/byte-order.md#natural-byte-order)。
 
 
 
 TXIDs (0)
  
 
-Merkle Root (Natural Byte Order)
+Merkle Root (自然字节顺序)
 
-The byte order as it comes out of the hash function
+来自哈希函数的字节顺序
 
-Merkle Root (Reverse Byte Order)
+Merkle Root (反向字节顺序)
 
-The byte order as shown on blockchain explorers
+在区块链浏览器上显示的字节顺序
 
 
 
-0 secs
+0 秒
 
-## Structure
+## 结构
 
-How do you create a merkle root?
+如何创建 Merkle Root？
 
-A merkle root is created by hashing TXIDs in a tree-like structure.
+Merkle Root 是通过在树状结构中对 TXID 进行哈希运算创建的。
 
-1. Hash the TXIDs together in pairs.
-   * **Note:** If you have a single item left over, hash it with itself.
-2. Take the resulting hashes and hash those together in pairs.
-3. Repeat until you are left with a single hash.
+1. 将 TXID 成对地组合并进行哈希运算。
+   * **注意:** 如果最后剩下一个单独的项，则将其与自身进行哈希。
+2. 提取得到的哈希值，并将它们成对组合并哈希。
+3. 重复此过程，直到只剩下一个哈希值。
 
 [<img src="../../images/diagrams_png_block-merkle-root-technical-diagram.png" alt="Technical diagram of a merkle tree structure." width="684" height="280" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-technical-diagram.png)
 
+## 代码
 
-
-## Code
-
-Here's some Ruby code for creating a merkle root from a list of `TXID`s. The code is fairly readable, so it's worth reading through the steps even if you don't consider yourself to be a programmer.
+这里有一些用 Ruby 编写的从 `TXID` 列表创建 Merkle Root 的代码。该代码非常易读，即使您不认为自己是一名程序员，也值得通读这些步骤。
 
 ```
 require 'digest' # Need this for the SHA256 hash function
@@ -114,39 +112,39 @@ result = merkleroot(txids)
 puts result.scan(/../).reverse.join('') #=> f3e94742aca4b5ef85488dc37c06c3282295ffec960994b2c0d5ac2a25a95766
 ```
 
-**[Byte Order](/docs/technical/general/byte-order.md):** The TXIDs must be in natural byte order when creating the merkle root. The resulting merkle root will also be in natural byte order, but it gets displayed in reverse byte order on [blockchain explorers](/explorer/).
+**[字节顺序](/docs/technical/general/byte-order.md):** 在创建 Merkle Root 时，TXID 必须处于自然字节顺序。生成的 Merkle Root 也将处于自然字节顺序，但在[区块链浏览器](/explorer/)上会以反向字节顺序显示。
 
-If there is only *one* transaction in a block, the merkle root will be the same as the TXID for that transaction.
+如果区块中只有*一笔*交易，则 Merkle Root 将与该交易的 TXID 相同。
 
-## Merkle Tree
+## Merkle 树
 
-Why do we use a merkle root?
+为什么我们使用 Merkle Root？
 
-This structure for hashing a list of items together is known as a **merkle tree**. But why use a merkle tree?
+这种将列表项哈希在一起的结构被称为 **Merkle 树 (merkle tree)**。但为什么要使用 Merkle 树呢？
 
-I mean we *could* just hash all the TXIDs together in one go. That would create a fingerprint for all the transactions in the block, and that would work. But later on if we wanted to find out if a specific TXID was used to create that fingerprint, we would need to know **all** the other TXIDs:
+我的意思是，我们*本来*可以一次性对所有 TXID 进行哈希。那将为区块中的所有交易创建一个指纹，并且这也是可行的。但随后如果我们想知道某个特定的 TXID 是否用于创建该指纹，我们将需要知道**所有**其他 TXID：
 
 [<img src="../../images/diagrams_png_block-merkle-root-fingerprint-hash.png" alt="Without a merkle tree you would need all of the TXIDs in the block to recreate the final hash." width="756" height="333" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-hash.png)
 
-This is where merkle trees come in. If we use a *merkle tree* instead, we only need to know **some** of the *branches* along the path of the tree to check that a TXID was used to create the root hash:
+这就是 Merkle 树的用武之地。如果我们改用 *Merkle 树*，我们只需要知道沿着树路径的**一些** *分支*，就可以验证一个 TXID 是否用于创建根哈希：
 
 [<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree.png" alt="With a merkle tree you only need the specific branches (the merkle proof) to reconstruct the final hash (the merkle root)" width="756" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree.png)
 
-This pathway is known as the *merkle proof*.
+这一路径被称为 *Merkle 证明 (merkle proof)*。
 
-So by using a merkle tree, we can find out if a transaction is part of a block without having to know every other `TXID` in the block. Or in technical terms, a merkle tree provides an efficient way to prove that something is in a set, without having to know the full set.
+因此，通过使用 Merkle 树，我们可以找出某个交易是否是区块的一部分，而无需知道区块中的每个其他 `TXID`。或者用技术术语来说，Merkle 树提供了一种有效的方法来证明某物存在于一个集合中，而无需知道整个集合。
 
-And if you're dealing with blocks that have 2,000+ transactions in them, merkle trees become much more efficient than having all the TXIDs hashed together in one go.
+而如果您在处理包含 2,000 多笔交易的区块，Merkle 树比将所有 TXID 一次性哈希在一起要高效得多。
 
 [<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree-big.png" alt="Diagram showing how merkle trees save on bandwidth when verifying the presence of a transaction in larger blocks." width="979" height="794" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree-big.png)
 
-### Merkle Proof Example
+### Merkle 证明示例
 
-Let's say we have a block header (and therefore the merkle root) for the block [00000000000000000027ad67588ebcf18eabe2250c411e6b79ad1c009b4cb54f](/explorer/block/00000000000000000027ad67588ebcf18eabe2250c411e6b79ad1c009b4cb54f).
+假设我们有一个区块头（因此也有 Merkle Root），对应区块 [00000000000000000027ad67588ebcf18eabe2250c411e6b79ad1c009b4cb54f](/explorer/block/00000000000000000027ad67588ebcf18eabe2250c411e6b79ad1c009b4cb54f)。
 
-Now let's say we want to check that the transaction [f66f6ab609d242edf266782139ddd6214777c4e5080f017d15cb9aa431dda351](/explorer/tx/f66f6ab609d242edf266782139ddd6214777c4e5080f017d15cb9aa431dda351) is inside this block.
+现在，假设我们想验证交易 [f66f6ab609d242edf266782139ddd6214777c4e5080f017d15cb9aa431dda351](/explorer/tx/f66f6ab609d242edf266782139ddd6214777c4e5080f017d15cb9aa431dda351) 是否在此区块内。
 
-Here's the **merkle proof** that proves the transaction is inside the block:
+这是证明该交易在此区块内的 **Merkle 证明 (merkle proof)**：
 
 ```
 txid
@@ -173,44 +171,44 @@ merkle root
 17663ab10c2e13d92dccb4514b05b18815f5f38af1f21e06931c71d62b36d8af (reverse byte order)
 ```
 
-This merkle proof contains a list of the *branches* across the merkle tree that we need to get to the merkle root. These branches also indicate whether they are on the "left" or "right" so that you can concatenate each pair in the correct order when hashing them together.
+这个 Merkle 证明包含我们到达 Merkle Root 所需的 Merkle 树上的*分支*列表。这些分支还指示了它们是在“左边 (left)”还是在“右边 (right)”，以便您在哈希时按正确的顺序串联每一对。
 
-To check if the TXID forms part of the merkle root, we just start with the TXID, then recursively concatenate and hash through this merkle proof to confirm that we get the same result as the merkle root as found in the block header.
+要检查 TXID 是否构成 Merkle Root 的一部分，我们只需从 TXID 开始，然后通过该 Merkle 证明递归地串联和哈希，以确认我们得到了与区块头中相同的 Merkle Root 结果。
 
-#### Bandwidth
+#### 带宽
 
-Whilst merkle roots take a little more effort to construct in the first place, they save on bandwidth when it comes to verification later on. For example, if we compare the amount of data you would need to download to verify that a transaction exists in the block above:
+虽然 Merkle Root 最初在构建时需要花费更多精力，但在随后的验证时能节省带宽。例如，如果我们比较验证上区块中是否存在交易所需下载的数据量：
 
-* **Without a merkle root.** We would need to download **75,232 bytes** (2,351 x 32 byte TXIDs) of data to recreate the hash of all the transactions in the block.
-* **With a merkle root**. We only need to download **384 bytes** (12 x 32 byte branches along the path of the merkle tree) to recreate the merkle root hash.
+* **没有 Merkle Root:** 我们需要下载 **75,232 字节**（2,351 x 32 字节 TXID）的数据来重建区块中所有交易的哈希值。
+* **有 Merkle Root:** 我们只需要下载 **384 字节**（沿着 Merkle 树路径的 12 x 32 字节分支）来重建 Merkle Root 哈希。
 
-## Lightweight Wallets
+## 轻量级钱包
 
-Thanks to merkle trees, you can create *lightweight wallets* (or "thin nodes") that can verify when a transaction has made it into a block, **without the overhead of having to download and store the entire the blockchain**.
+得益于 Merkle 树，您可以创建*轻量级钱包*（或“瘦节点”），它们可以验证交易是否已进入区块，**而无需下载和存储整个区块链的开销**。
 
-These wallets just download and store [block headers](/docs/technical/block.md#header) (80 bytes each, instead of 1 MB+ blocks), and use the merkle roots inside them (along with *merkle proofs* they receive from [full archival nodes](/docs/technical/networking/node.md#archival-node)) to verify that a transaction has made it into a block.
+这些钱包只需下载并存储[区块头](/docs/technical/block.md#header)（每个仅 80 字节，而不是 1 MB+ 的区块），并使用其中的 Merkle Root（以及从[全归档节点](/docs/technical/networking/node.md#archival-node)接收到的 *Merkle 证明*）来验证交易是否已被写入区块。
 
 [<img src="../../images/diagrams_png_block-merkle-root-thin-nodes.png" alt="Block headers are just 80 bytes, whereas each block can be 1,000,000+ bytes." width="756" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-thin-nodes.png)
 
-A popular example of a lightweight wallet is [Electrum](https://electrum.org).
+轻量级钱包的一个流行示例是 [Electrum](https://electrum.org)。
 
-I have no experience with these though, so here are some interesting links instead:
+不过我在这方面没有经验，这里有一些有趣的相关链接：
 
 * <https://bitcoin.stackexchange.com/questions/32529/what-is-a-thin-client>
 * <https://bitcoin.stackexchange.com/questions/11054/how-do-spv-simple-payment-verification-wallets-learn-about-incoming-transactio>
 
-## Why is it called a "merkle root"?
+## 为什么它被称为 "merkle root"?
 
-Because [Ralph *Merkle*](https://en.wikipedia.org/wiki/Ralph_Merkle) patented the idea in 1979.
+因为 [Ralph *Merkle*](https://en.wikipedia.org/wiki/Ralph_Merkle) 在 1979 年申请了该专利。
 
-Common Misconception.
+常见的误解。
 <img src="../../images/technical_block_merkle-root_angela-merkel-root.png" alt="Angela Merkel Root" width="542" height="460" />
 
-## Resources
+## 资源
 
 * [James D'Angelo explaining Merkle Roots](https://www.youtube.com/watch?v=gUwXCt1qkBU)
 * [Understanding Merkle Trees - Why Use Them, Who Uses Them, and How to Use Them](https://www.codeproject.com/articles/Understanding-Merkle-Trees-Why-Use-Them-Who-Uses-T)
 
-### Thanks
+### 感谢
 
-* Thanks to Gabriele Semeraro for pointing out an error in the Ruby code. I had the exit condition for returning the result *after* the part where the pairs of TXIDs get hashed. But if you've only got one item left, you just return it without doing any more work. In other words, if you've only got one transaction in a block, the merkle root is the same as the TXID.
+* 感谢 Gabriele Semeraro 指出 Ruby 代码中的一个错误。我原本将返回结果的退出条件放在了对成对的 TXID 进行哈希运算的步骤*之后*。但如果您只剩下一个项，只需直接返回它而不用做任何更多工作。换句话说，如果区块中只有一笔交易，Merkle Root 就与 TXID 相同。

@@ -2,27 +2,27 @@
 
 [<img src="../../images/diagrams_png_bytes-checksum.png" alt="Diagram showing how a checksum is used for detecting errors in data." width="544" height="140" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum.png)
 
-A checksum is a small piece of data that allows you to check if another piece of **data is the same as expected**.
+校验和（checksum）是一小段数据，用于允许你检查另一段**数据是否与预期相符**。
 
-They're most commonly found within [addresses](/docs/technical/keys/address.md) to detect typos. This helps to prevent sending bitcoins to the wrong address.
+它们最常见于[地址](/docs/technical/keys/address.md)中以检测拼写错误。这有助于防止将比特币发送到错误的地址。
 
-Random Example
+随机示例
 
-Data
+数据
 
-Some bytes of data you want to create a checksum for
+你想要为其创建校验和的一些数据字节
 
 `0 bytes`
 
-Checksum
+校验和
 
-First 4 bytes of [hash256](/docs/technical/cryptography/hash-function.md#hash256)(data)
+[hash256](/docs/technical/cryptography/hash-function.md#hash256)(data) 的前 4 个字节
 
 `Expected:`
 
-Data with Checksum
+带有校验和的数据
 
-The original data with the checksum appended
+原数据后面附加校验和
 
 `0 bytes`
 
@@ -30,40 +30,40 @@ The original data with the checksum appended
 
 0 secs
 
-To be more precise, a checksum can be added to the end of some data to create a combined `data+checksum`.
+更准确地说，可以将校验和添加到某些数据的末尾，以创建组合的 `data+checksum`。
 
-So when you re-enter this entire piece of data somewhere later on, you can make sure that everything is correct by checking that the `data` still matches the `checksum`:
+因此，当你稍后在其他地方重新输入这整段数据时，可以通过检查 `data` 是否仍与 `checksum` 匹配来确保一切正确：
 
 [<img src="../../images/diagrams_png_bytes-checksum-valid.png" alt="Diagram showing some data with a valid checksum." width="650" height="200" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-valid.png)
 
-If you were to make a mistake, the `data` will not match the `checksum` (or vice versa) and you can be alerted that the data is incorrect in some way:
+如果你犯了错误，`data` 将与 `checksum` 不匹配（反之亦然），系统会提醒你数据在某些方面是不正确的：
 
 [<img src="../../images/diagrams_png_bytes-checksum-invalid.png" alt="Diagram showing some data with an invalid checksum." width="706" height="247" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-invalid.png)
 
-**This type of checksum does not help with error *correction*.** The checksum will *detect* errors, but it will not help by telling you where the error is or how it should be corrected.
+**这种类型的校验和无法用于错误 *纠正*。** 校验和只能 *检测* 错误，但无法告诉你错误在哪里，或者应该如何纠正它。
 
-## Location
+## 使用位置
 
-Where are checksums used in Bitcoin?
+校验和在比特币中用于哪些地方？
 
-Here are a few examples of where checksums are used in Bitcoin:
+以下是比特币中使用校验和的几个示例：
 
-* **[Addresses](/docs/technical/keys/address.md)** – Every Base58 address (ones that start with a 1 or 3) contains a checksum. This helps to prevent losing bitcoins by sending them to the incorrect address if you make a typo.
-* **[WIF Private Keys](/docs/technical/keys/private-key/wif.md)** – A WIF private key is like an address format for a private key. These also contain checksums, so you can be informed if you're importing an incorrect private key into a wallet.
-* **[Extended Keys](/docs/technical/keys/hd-wallets/extended-keys.md)** – Every extended private key and extended public key contains its own checksum. Again, this allows you to detect errors when transcribing them.
-* **[Network Messages](/docs/technical/networking.md#messages)** – Every message that gets sent between nodes on the network has a checksum attached to it. This allows you to detect if the message has been tampered with, or if the message has been corrupted during transmission.
+* **[地址](/docs/technical/keys/address.md)** – 每个 Base58 地址（以 1 或 3 开头的地址）都包含一个校验和。这有助于防止在输入拼写错误时将比特币发送到错误地址而造成损失。
+* **[WIF 私钥](/docs/technical/keys/private-key/wif.md)** – WIF 私钥是私钥的地址格式。这些也包含校验和，因此在将错误的私钥导入钱包时会收到通知。
+* **[扩展密钥](/docs/technical/keys/hd-wallets/extended-keys.md)** – 每个扩展私钥和扩展公钥都包含其自己的校验和。这同样允许你在转录它们时检测错误。
+* **[网络消息](/docs/technical/networking.md#messages)** – 在网络节点之间发送的每条消息都附带一个校验和。这使你能够检测消息在传输过程中是否被篡改或损坏。
 
-Modern [Bech32](/docs/technical/keys/bech32.md) addresses also contain checksums, but they're more complex than the simple checksums described on this page.
+现代 [Bech32](/docs/technical/keys/bech32.md) 地址也包含校验和，但它们比本页面介绍的简单校验和更为复杂。
 
-## Creating
+## 创建
 
-How do you create a checksum?
+如何创建校验和？
 
 [<img src="../../images/diagrams_png_bytes-checksum-create.png" alt="Diagram showing a checksum as the first 4 bytes of the HASH256 of some data." width="771" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-create.png)
 
-A checksum is created by taking the **first 4 [bytes](/docs/technical/general/bytes.md) of the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) of some data**.
+校验和是通过取**某些数据的 [HASH256](/docs/technical/cryptography/hash-function.md#hash256) 的前 4 个[字节](/docs/technical/general/bytes.md)**来创建的。
 
-For example:
+例如：
 
 ```
 data          = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -73,11 +73,11 @@ checksum      = 05c4de7c
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
-Random Transaction Data
+随机交易数据
 
-Random Block Header
+随机区块头
 
-Data (Hex)
+数据 (十六进制)
 
 `0 bytes`
 
@@ -131,13 +131,13 @@ data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 puts checksum(data) #=> 05c4de7c
 ```
 
-## Verifying
+## 验证
 
-How do you verify a checksum?
+如何验证校验和？
 
-To verify a checksum, you just need to check that the data hashes to the checksum that has been provided with the data.
+要验证校验和，你只需检查该数据哈希后的校验和是否与随数据一起提供的校验和相符。
 
-In other words, you just **recalculate the checksum**:
+换句话说，只需**重新计算校验和**：
 
 ```
 # original data
@@ -150,7 +150,7 @@ hash256(data) = 05c4de7c1069e9de703efd172e58c1919f48ae03910277a49c9afd7ded58bbeb
 checksum      = 05c4de7c <- it matches
 ```
 
-This is just a simple example, but the process is the same throughout Bitcoin.
+这只是一个简单的示例，但该过程在整个比特币中都是相同的。
 
 ```
 # ---------
@@ -191,60 +191,60 @@ checksum = datachecksum[40...48]
 puts checksum(data) == checksum #=> true
 ```
 
-## Reliability
+## 可靠性
 
-How reliable are checksums in Bitcoin?
+比特币中的校验和有多可靠？
 
-There is a **1 in 4,294,967,295** chance that a checksum will not detect an error.
+校验和无法检测到错误的概率只有 **4,294,967,295 分之一**。
 
-A checksum is 4 [bytes](/docs/technical/general/bytes.md) in size. This means that there are only 0xFFFFFFFF (4,294,967,295) possible checksums, so there is a chance that two different pieces of data will end up having the same checksum.
+校验和的大小为 4 [字节](/docs/technical/general/bytes.md)。这意味着总共只有 0xFFFFFFFF (4,294,967,295) 种可能的校验和，因此两个不同的数据片段有可能具有相同的校验和。
 
-In other words, if you make a typo when entering an address, there is roughly a **one in four billion** chance that the resulting checksum will inadvertently be the same and **the typo will not be detected**.
+换句话说，如果你在输入地址时犯了拼写错误，大约有**四十亿分之一**的几率导致生成的校验和意外地相同，从而**无法检测到该拼写错误**。
 
-So it's very unlikely, but possible.
+所以这极不可能，但并非不可能。
 
-It would be more reliable to use the full 32-byte hash result as a checksum. However, this would make addresses much longer, so taking the first 4 bytes only strikes a balance between practicality and keeping addresses as short as possible.
+使用完整的 32 字节哈希结果作为校验和会更加可靠。然而，这会使地址变得更长，因此仅取前 4 个字节是在实用性与保持地址尽可能短之间取得了平衡。
 
-## Terminology
+## 术语
 
-Why is it called a "checksum"?
+为什么叫“校验和”？
 
-Early checksums used to literally be the "sum" of some data. So for example, let's say I wanted to store the following string:
+早期的校验和字面意思就是某些数据的“和（sum）”。例如，假设我想存储以下字符串：
 
 ```
 abc
 ```
 
-To create a simple checksum for it, I could just give each character a number (e.g. a = 1, b = 2, c = 3) and add the sum of those to the end:
+为了给它创建一个简单的校验和，我可以为每个字符指定一个数字（例如 a = 1, b = 2, c = 3），并将它们的总和加到末尾：
 
 ```
 abc+6
 ```
 
-If I were to make a typo when transcribing this string later on, like this:
+如果我稍后在转录此字符串时犯了错误，像这样：
 
 ```
 abb+6
 ```
 
-The checksum would no longer match the sum of the characters (`abb` = 1 + 2 + 2 = 5), and I would know that I've made a mistake somewhere. So by "checking" the "sum", I can see that something has gone wrong somewhere. Hence, the name "checksum".
+校验和将不再与字符的总和匹配（`abb` = 1 + 2 + 2 = 5），我就会知道自己在某个地方犯了错误。因此，通过“检查（checking）”“总和（sum）”，我可以发现某些地方出错了。这就是“校验和（checksum）”这个名字的由来。
 
-Anyway, in Bitcoin we actually use a [hash function](/docs/technical/cryptography/hash-function.md) to create the checksum, which is a more reliable fingerprint for the data than simply summing characters. Nonetheless, it does the same job, and that's why we still call this extra piece of error-detection data a *checksum*.
+不过，在比特币中，我们实际上是使用[哈希函数](/docs/technical/cryptography/hash-function.md)来创建校验和，这比简单地对字符求和更可靠。尽管如此，它起到了相同的作用，所以我们仍然将这段额外的错误检测数据称为 *校验和*。
 
-Thanks to [Greg Maxwell](https://nt4tn.net/) for the quick computer science lesson on (and the history of) checksums.
+感谢 [Greg Maxwell](https://nt4tn.net/) 给我们上了一堂关于校验和（以及校验和历史）的快速计算机科学课。
 
-## Summary
+## 总结
 
-A checksum is a useful tool for **detecting typos**.
+校验和是**检测拼写错误**的有用工具。
 
-As a user, it's good to know that things like addresses contain checksums. So if you make a mistake when typing an address into a wallet, you can be pretty sure that the wallet will detect any errors and stop you from sending bitcoins to the wrong address and losing them forever.
+作为用户，知道像地址这样的内容包含校验和是件好事。因此，如果你在将地址输入钱包时犯了错误，基本上可以确定钱包会检测到任何错误，并阻止你将比特币发送到错误地址而导致它们永远丢失。
 
-**It's best to think of checksums as a backup safety net.** There's no substitute for double (or triple) checking an address.
+**最好将校验和视为后备安全网。** 任何时候都无法替代对地址的双重（或三重）检查。
 
-As a developer, if something contains a checksum, you should always use it to verify that the data is correct. That's what they're there for. And if you can save *one person* from losing coins, then it's worth the short time it takes to write the checksum verification code.
+作为开发者，如果某些内容包含校验和，你应该始终使用它来验证数据是否正确。这就是它们存在的作用。而且，如果你能挽救*一个人*免于丢失代币，那么编写校验和验证代码所花费的少量时间就是值得的。
 
-Checksums are used throughout computer science, and they're very handy for simple error-detection, so they're a handy tool to have in your programming toolbox.
+校验和广泛应用于计算机科学中，它们对于简单的错误检测非常方便，因此也是你编程工具箱中一件很好用的工具。
 
-## Resources
+## 资源
 
 * [en.wikipedia.org/wiki/Checksum](https://en.wikipedia.org/wiki/Checksum)

@@ -2,197 +2,197 @@
 
 [<img src="../../images/diagrams_png_blockchain-forks-soft-fork.png" alt="Diagram showing a soft fork in the blockchain." width="543" height="457" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork.png)
 
-A soft fork is when an upgrade is made to the Bitcoin software that is *compatible* with the previous versions of the software.
+软分叉 (soft fork) 是指对比特币软件进行升级，且该升级与软件的旧版本*兼容*。
 
-To summarize the difference between a soft fork and a [hard fork](/docs/technical/blockchain/hard-fork.md):
+总结软分叉与[硬分叉](/docs/technical/blockchain/hard-fork.md)之间的区别：
 
-* A **hard fork** *expands* the rules on what makes a valid block/transaction.
-* A **soft fork** *restricts* the rules on what makes a valid block/transaction.
+* **硬分叉** *放宽*了关于什么是有效区块/交易的规则。
+* **软分叉** *限制*了关于什么是有效区块/交易的规则。
 
-With a soft fork, [nodes](/docs/technical/networking/node.md) that do not upgrade their software will still be able to accept [blocks](/docs/technical/block.md)/[transactions](/docs/technical/transaction.md) created by the upgraded software. Therefore, nodes that do not upgrade will be able to keep up to date with the [blockchain](/docs/technical/blockchain.md) and not get left behind.
+使用软分叉，未升级软件的[节点](/docs/technical/networking/node.md)仍然能够接受由升级后软件创建的[区块](/docs/technical/block.md)/[交易](/docs/technical/transaction.md)。因此，未升级的节点将能够与[区块链](/docs/technical/blockchain.md)保持同步，而不会被抛在后面。
 
 [<img src="../../images/diagrams_png_blockchain-forks-soft-fork-network.png" alt="Diagram showing a soft fork on the bitcoin network, with old nodes that have not upgraded receiving the new blocks from the upgraded nodes." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-network.png)
 
-To make a soft-forking change successful, you only need a *majority* of the [miners](/docs/technical/mining.md) on the network to upgrade to the new version of the software. Because if you have a majority of miners upgrade, their mining power will build the [longest chain](/docs/technical/blockchain/longest-chain.md) of upgraded blocks (which the old nodes will adopt).
+要使软分叉更改成功，您只需要网络上占*多数*的[矿工](/docs/technical/mining.md)升级到软件的新版本。因为如果您有多数矿工升级，它们的挖矿算力将构建起已升级区块的[最长链](/docs/technical/blockchain/longest-chain.md)（旧节点也会采用该链）。
 
-## Scenario
+## 场景
 
-How do you create a soft fork?
+如何创建软分叉？
 
-To create a soft fork, you need to *restrict* the rules on what is considered a valid block or transaction.
+要创建软分叉，您需要*限制*关于什么是有效区块或交易的规则。
 
-In other words, you need to make **previously valid blocks/transactions invalid**.
+换句话说，您需要使**以前有效的区块/交易变得无效**。
 
-For example, let's say the block size limit is 1 MB (block capacity is now measured in [weight](/docs/technical/block.md#weight), but don't worry about that for now). A soft-forking change would be to create a new rule that restricts the block size to **0.5 MB** instead (sounds like a step backwards, I know, but this is just an example).
+例如，假设区块大小限制为 1 MB（区块容量现在以[权重](/docs/technical/block.md#weight)来衡量，但现在先不用担心这个）。软分叉修改将是创建一条新规则，将区块大小限制缩减至 **0.5 MB**（我知道这听起来像是倒退了一步，但这只是一个例子）。
 
-When upgraded miners begin to mine these smaller blocks, old nodes will still see these new blocks as valid, so there will be no branching of the blockchain like there would be in a [hard fork](/docs/technical/blockchain/hard-fork.md).
+当升级后的矿工开始开采这些较小的区块时，旧节点仍会将这些新区块视为有效，因此不会像在[硬分叉](/docs/technical/blockchain/hard-fork.md)中那样出现区块链的分支。
 
 [<img src="../../images/diagrams_png_blockchain-forks-soft-fork-compatibility.png" alt="Diagram showing old nodes on the network accepting the new blocks (from the soft fork upgrade) on to their blockchain." width="983" height="518" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-compatibility.png)
 
-## Method
+## 激活方法
 
-How do you make a soft fork successful?
+如何使软分叉成功？
 
-To make a soft fork successful, you want a **majority of miners to upgrade** to the new version of the software.
+要使软分叉成功，您需要**大多数矿工升级**到新版软件。
 
-This is because nodes will always accept the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks, so if the majority of miners are working on mining the upgraded blocks with the restricted rules, the old nodes will naturally adopt it as their blockchain.
+这是因为节点总是接受[最长链](/docs/technical/blockchain/longest-chain.md)，因此如果大多数矿工都在按照限制后的规则开采升级后的区块，旧节点自然会将其采用为自己的区块链。
 
 [<img src="../../images/diagrams_png_blockchain-forks-soft-fork-majority.png" alt="Diagram showing nodes adopting the longest chain of new blocks, despite some miners still mining old blocks." width="983" height="548" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-majority.png)
 
-So even if a minority of old miners continue to build the blockchain with old blocks, they will not be able to compete with the speed at which the new blocks are being mined by the upgraded miners, so old nodes will adopt the same version of the blockchain as the upgraded nodes.
+所以，即使少数旧矿工继续用旧区块构建区块链，它们也无法与升级后矿工开采新区块的速度相抗衡，因此旧节点将采用与已升级节点相同的区块链版本。
 
-## Risks
+## 风险
 
-What are the risks of a soft fork?
+软分叉有哪些风险？
 
-The main risk with a soft fork is if you **do not get a majority of the miners to upgrade**.
+软分叉的主要风险在于**未能获得大多数矿工的升级**。
 
-This will result in the blockchain splitting in two, as a majority of old miners will continue to mine old blocks that are incompatible with the new version of the software.
+这将导致区块链一分为二，因为大多数旧矿工将继续开采与软件新版本不兼容的旧区块。
 
 [<img src="../../images/diagrams_png_blockchain-forks-soft-fork-split.png" alt="Diagram showing a majority of old miners building the longest chain with old blocks, creating a chain split between a blockchain with old blocks and a blockchain with upgraded blocks." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-split.png)
 
-And because old blocks form the longest available chain, old nodes will adopt this as their blockchain. However, the upgraded nodes will reject these old blocks (because those blocks are now invalid according to their upgraded rules), and they will adopt the longest available chain containing only the new blocks instead.
+由于旧区块构成了最长的可用链，旧节点将采用其作为自己的区块链。然而，已升级的节点将拒绝这些旧区块（因为根据它们升级后的规则，这些区块是无效的），它们将转而采用仅包含新区块的最长可用链。
 
-So once again, just like in a hard fork, you have two parallel versions of the blockchain; one containing old blocks, and another containing new blocks.
+所以，就像在硬分叉中一样，您再次拥有了两个平行的区块链版本：一个包含旧区块，另一个包含新区块。
 
-However, unlike a hard fork where the two chains can never converge, this chain split can be resolved by **getting more mining power on to the new chain**. If the upgraded miners are able to build the longest chain, the old nodes will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to adopt the blockchain made out of the new blocks.
+然而，与两个链永远无法融合的硬分叉不同，这种链分裂可以通过**在主链上投入更多算力**来解决。如果已升级的矿工能够构建起最长链，旧节点将执行一次[区块重组](/docs/technical/blockchain/chain-reorganization.md)来采用由新区块构成的区块链。
 
 [<img src="../../images/diagrams_png_blockchain-forks-soft-fork-reconverge.png" alt="Diagram showing old nodes reorganizing their chain once a majority of miners build the longest chain with the new blocks." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-reconverge.png)
 
-So by getting a majority of miners to upgrade, you "encourage" everyone on the network to keep up to date with the same version of the blockchain.
+因此，通过让大多数矿工升级，您可以“鼓励”网络上的每个人保持同步同一个区块链版本。
 
-## Compromises
+## 妥协与代价
 
-What is the downside to a soft fork?
+软分叉的缺点是什么？
 
-The biggest downside to soft forks is that they tend to make the software **more complex** ([Segregated Witness](/docs/technical/upgrades/segregated-witness.md) is a prime example).
+软分叉最大的缺点是它们往往会使软件**更加复杂**（[SegWit](/docs/technical/upgrades/segregated-witness.md) 就是一个典型的例子）。
 
-It would be easier to make direct upgrades to the software through [hard forks](/docs/technical/blockchain/hard-fork.md). However, a hard-forking change is undesirable due to the greater risk of a chain split (and having to force everyone to upgrade), so most upgrades are made through soft forks instead.
+通过[硬分叉](/docs/technical/blockchain/hard-fork.md)直接升级软件会更容易。然而，由于硬分叉产生链分裂的风险更大（并且必须强制每个人都升级），所以大多数升级都是通过软分叉完成的。
 
-As a result, the fact that you have to keep the changes compatible with the *old software* means you have to make **more technical workarounds**, and this makes the software more complex than if you had the freedom to make changes that would be incompatible with old nodes.
+因此，您必须保持更改与*旧软件*兼容的事实意味着您必须做出**更多的技术妥协**，这使得软件比您拥有制作与旧节点不兼容的更改自由时更加复杂。
 
-In short:
+简而言之：
 
-* A **hard fork** allows you to directly replace rules and code.
-* A **soft fork** involves *adding more code* to account for new rules.
+* **硬分叉**允许您直接替换规则和代码。
+* **软分叉**涉及*添加更多代码*以适配新规则。
 
-## Examples
+## 示例
 
-Have there been any soft forks in bitcoin?
+比特币发生过软分叉吗？
 
-All major upgrades to Bitcoin so far have been deployed as soft forks.
+到目前为止，比特币的所有重大升级都是作为软分叉部署的。
 
-Here are some examples, including a summary of the *new restrictions* they introduced:
+以下是一些示例，包括它们引入的*新限制*的摘要：
 
 ### 1. [BIP 16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki): Pay to Script Hash
 
-03 January 2012
+2012 年 1 月 3 日
 
-#### Problem
+#### 解决的问题
 
-There was no convenient way to get other people to use custom locks of your choice when sending you bitcoins.
+在向您发送比特币时，没有便利的方法让其他人使用您选择的自定义锁定脚本。
 
-#### Restriction
+#### 引入的限制
 
-A specific [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) pattern now has additional validation rules (see [P2SH](/docs/technical/script/p2sh.md)).
+特定的 [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) 模式现在有了额外的验证规则（参见 [P2SH](/docs/technical/script/p2sh.md)）。
 
-So whereas the locking script pattern `OP_HASH160` `OP_PUSHBYTES_20` `digest` `OP_EQUAL` previously only required you to provide some data that hashed to `digest` to unlock it, you now need to provide some data in the form of a custom locking script that hashes to `digest` *and* can be evaluated and unlocked in a second step of execution.
+因此，以前锁定脚本模式 `OP_HASH160` `OP_PUSHBYTES_20` `digest` `OP_EQUAL` 仅需要您提供一些哈希值为 `digest` 的数据即可解锁，而现在您需要提供以自定义锁定脚本形式呈现的数据（其哈希值为 `digest`），*并且*该脚本可以在执行的第二步中被评估并解锁。
 
-In other words, additional rules were added for how a specific locking script can be unlocked.
+换句话说，对于特定的锁定脚本如何被解锁，增加了额外的规则。
 
-### 2. [BIP 30](https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki): Duplicate transactions
+### 2. [BIP 30](https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki): 重复交易
 
-22 February 2012
+2012 年 2 月 22 日
 
-#### Problem
+#### 解决的问题
 
-It was not thought to be possible that you could have duplicate transactions in Bitcoin.
+以前不认为比特币中可能会出现重复交易。
 
-However, [coinbase transactions](/docs/technical/mining/coinbase-transaction.md) in different blocks could have the same [TXID](/docs/technical/transaction/input/txid.md), allowing for duplicate transactions in the blockchain. This would also allow for further duplicate transactions to be created later on.
+然而，不同区块中的 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易可以具有相同的 [TXID](/docs/technical/transaction/input/txid.md)，从而允许在区块链中存在重复交易。这也会允许随后创建更多的重复交易。
 
-#### Restriction
+#### 引入的限制
 
-Blocks are not allowed to contain a transaction with a TXID that matches an earlier, not-fully-spent transaction in the same chain.
+区块中不允许包含具有与同一链中较早的、未完全消费的交易相匹配的 TXID 的交易。
 
-### 3. [BIP 34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki): Block v2, Height in Coinbase
+### 3. [BIP 34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki): Block v2, Coinbase 中的高度
 
-06 July 2012
+2012 年 7 月 6 日
 
-#### Problem
+#### 解决的问题
 
-Even after the introduction of BIP 30 (see above), it was still possible for miners to construct duplicate coinbase transactions in different blocks.
+即使在引入了 BIP 30（见上文）之后，矿工仍有可能在不同区块中构建重复的 Coinbase 交易。
 
-#### Restriction
+#### 引入的限制
 
-A [coinbase transactions](/docs/technical/mining/coinbase-transaction.md) must contain the block [height](/docs/technical/blockchain/height.md) as the first field in the [ScriptSig](/docs/technical/transaction/input/scriptsig.md). This ensures that every coinbase transaction will be unique (and therefore have a unique [TXID](/docs/technical/transaction/input/txid.md)).
+Coinbase 交易必须在 [ScriptSig](/docs/technical/transaction/input/scriptsig.md) 的第一个字段中包含区块[高度](/docs/technical/blockchain/height.md)。这确保了每个 Coinbase 交易都将是唯一的（从而具有唯一的 [TXID](/docs/technical/transaction/input/txid.md)）。
 
-Any coinbase transaction that did not contain the height of the current block would now be invalid.
+现在，任何不包含当前区块高度的 Coinbase 交易都是无效的。
 
 ### 4. [BIP 65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki): OP\_CHECKLOCKTIMEVERIFY
 
-01 October 2014
+2014 年 10 月 1 日
 
-#### Problem
+#### 解决的问题
 
-There was no mechanism to make a transaction [output](/docs/technical/transaction/output.md) unspendable until a future date.
+以前没有机制能使交易[输出](/docs/technical/transaction/output.md)在未来的某个日期之前不可消费。
 
-#### Restriction
+#### 引入的限制
 
-The `OP_NOP2` opcode was repurposed for `OP_CHECKLOCKTIMEVERIFY`.
+`OP_NOP2` 操作码被重新定义为 `OP_CHECKLOCKTIMEVERIFY`。
 
-As a result, the `OP_NOP2` opcode no longer "did nothing", and scripts using it would no longer execute successfully without additional rules being satisfied.
+结果，`OP_NOP2` 操作码不再“什么都不做”，使用它的脚本在没有满足额外规则的情况下将无法成功执行。
 
-### 5. [BIP 66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki): Strict DER signatures
+### 5. [BIP 66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki): 严格的 DER 签名
 
-10 January 2015
+2015 年 1 月 10 日
 
-#### Problem
+#### 解决的问题
 
-Lack of consistency with the encoding of [signatures](/docs/technical/keys/signature.md) in transactions due to a reliance on the [OpenSSL](https://www.openssl.org/) library.
+由于依赖 [OpenSSL](https://www.openssl.org/) 库，交易中[签名](/docs/technical/keys/signature.md)的编码缺乏一致性。
 
-#### Restriction
+#### 引入的限制
 
-Restrict signatures to follow a single [encoding format](/docs/technical/keys/signature.md#der). This makes it easier for implementations of Bitcoin to not have to rely on OpenSSL as a dependency.
+限制签名必须遵循单一的[编码格式](/docs/technical/keys/signature.md#der)。这使得比特币的实现更容易，而无需将 OpenSSL 作为依赖项。
 
-### 6. [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki): [Segregated Witness](/docs/technical/upgrades/segregated-witness.md)
+### 6. [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki): [Segregated Witness (SegWit)](/docs/technical/upgrades/segregated-witness.md)
 
-21 December 2015
+2015 年 12 月 21 日
 
-#### Problem
+#### 解决的问题
 
-The [TXID](/docs/technical/transaction/input/txid.md) could be modified after sending a [transaction](/docs/technical/transaction.md) into the [network](/docs/technical/networking.md), which meant you couldn't depend on the TXID for referencing the transaction later on.
+在将[交易](/docs/technical/transaction.md)发送到[网络](/docs/technical/networking.md)后，其 [TXID](/docs/technical/transaction/input/txid.md) 可以被修改，这意味着您随后无法依赖该 TXID 来引用交易。
 
-This was because the TXID was made *including* the [signatures](/docs/technical/keys/signature.md) inside the transaction, and these signatures could be modified after they are created (yet still remain valid).
+这是因为生成 TXID 时把交易中的[签名](/docs/technical/keys/signature.md)也包括在内，而这些签名在创建后可以被修改（但仍然保持有效）。
 
-#### Restriction
+#### 引入的限制
 
-Two new patterns of [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) ([P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md)) that were once spendable by anyone are now only spendable under certain conditions.
+以前任何人都可以消费的两种新的 ScriptPubKey 模式（[P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md)）现在只有在满足某些条件时才能被消费。
 
-This allows for a new transaction data structure, where the signatures sit at the end of the transaction data (in a new [witness](/docs/technical/transaction/witness.md) area) and are not included in the creation of the TXID.
+这允许使用一种新的交易数据结构，其中签名位于交易数据的末尾（在一个新的 [witness](/docs/technical/transaction/witness.md) 区域中），且不参与 TXID 的生成。
 
-**Segregated Witness also allowed for a block size increase.** This was made possible by not sending the new witness section of transactions (containing the signatures) to the old nodes. The old nodes would see these outputs as spendable by anyone anyway, so the signatures were not required for the transactions to be considered valid.
+**SegWit 还允许增加区块大小。** 这是通过不向旧节点发送新的包含签名的 witness 部分交易数据来实现的。旧节点无论如何都会将这些输出视为任何人都可以消费，因此不需要签名即可认为交易有效。
 
 ### 7. [BIP 341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki): [Taproot](/docs/technical/upgrades/taproot.md)
 
-19 January 2020
+2020 年 1 月 19 日
 
-#### Problem
+#### 解决的问题
 
-A [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) reveals all of its spending conditions inside the transaction data. These can be complex and large, and displaying all the spending conditions isn't good for privacy.
+ScriptPubKey 会在交易数据中暴露其所有的消费条件。这些条件可能会很复杂且庞大，暴露所有的消费条件不利于隐私保护。
 
-#### Restriction
+#### 引入的限制
 
-A new pattern of ScriptPubKey ([P2TR](/docs/technical/script/p2tr.md)) that was once spendable by anyone is now only spendable under certain conditions. This allows for a new locking and unlocking mechanism that only reveals *one* spending condition (and not all the other spending conditions that may have existed for the lock).
+以前任何人都可以消费的新的 ScriptPubKey 模式（[P2TR](/docs/technical/script/p2tr.md)）现在只有在满足某些条件时才能被消费。这允许一种新的锁定和解锁机制，该机制仅公开*一个*消费条件（而不是该锁定可能存在的其他所有消费条件）。
 
-## Deployment
+## 部署
 
-How are soft forks deployed?
+软分叉是如何部署的？
 
-The goal of a successful soft fork is to get a majority of miners to agree to the upgrade.
+成功的软分叉的目标是让大多数矿工同意升级。
 
-So before the soft-forking change is activated, miners are asked to **signal their readiness** beforehand. Miners can signal readiness by setting a specific bit in the [version](/docs/technical/block/version.md) field of the block header.
+所以在软分叉更改被激活之前，需要矿工提前**指示其就绪状态 (signal readiness)**。矿工可以通过在区块头的 [version](/docs/technical/block/version.md) 字段中设置特定的位来表明就绪。
 
-For example:
+例如：
 
 ```
 00100000 00000000 00000000 00000001 = Bit 0 = CHECKSEQUENCEVERIFY (BIP 65)
@@ -200,11 +200,11 @@ For example:
 00100000 00000000 00000000 00000100 = Bit 2 = Taproot (BIP 341)
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Version Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 版本位 (Version Bits)
 
-Random Example
+随机示例
 
-Bit Field
+位字段 (Bit Field)
 
 0
 
@@ -272,7 +272,7 @@ Bit Field
 
 
 
-Hex
+十六进制 (Hex)
 
 0x
 
@@ -281,25 +281,26 @@ Hex
 
 
 
-* **Version Bits:** Enabled
 
-When 90-95% of miners are signaling that they are in agreement with the upgrade within a [target adjustment period](/docs/technical/mining/target.md#period) (and that they will mine the new blocks with the new rules), the soft fork gets "locked in", and at a specific block [height](/docs/technical/blockchain/height.md) the miners will begin to mine the new blocks.
+* **Version Bits:** 已启用
 
-* The first 3 bits in the version must be set to `001` to be able to signal readiness for soft forks.
-* Earlier soft forks (e.g. [BIP 16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) were deployed before this specific signaling system was set up.
-* Soft forks usually require 95% of miners to signal for activation, but for [Taproot](/docs/technical/upgrades/taproot.md) this was changed to only require 90%.
+当在一个[目标调整周期](/docs/technical/mining/target.md#period)内，有 90-95% 的矿工指示它们同意升级（并且它们将按照新规则开采新区块）时，该软分叉就会被“锁定 (locked in)”，并且在特定的区块[高度](/docs/technical/blockchain/height.md)处矿工们将开始挖掘新区块。
 
-## Summary
+* 版本号中的前 3 位必须设置为 `001` 才能指示软分叉的就绪状态。
+* 较早的软分叉（例如 [BIP 16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)）在设置此特定指示系统之前就已部署。
+* 软分叉通常需要 95% 的矿工指示才能激活，但对于 [Taproot](/docs/technical/upgrades/taproot.md) 这一比例被更改为仅需 90%。
 
-A *soft fork* is an upgrade to the Bitcoin software that is **compatible with old versions of the software**. It maintains this compatibility by *restricting the rules* around valid blocks/transactions, as opposed to relaxing them like in a [hard fork](/docs/technical/blockchain/hard-fork.md).
+## 总结
 
-The primary benefit of a soft fork is that all [nodes](/docs/technical/networking/node.md) on the network can keep up to date with the [blockchain](/docs/technical/blockchain.md) even if they do not upgrade.
+*软分叉*是指对比特币软件的升级，且与**软件的旧版本兼容**。它通过*限制*有效区块/交易的规则来保持这种兼容性，这与像[硬分叉](/docs/technical/blockchain/hard-fork.md)那样放宽规则相反。
 
-The key to a successful soft fork is to get a majority of miners to upgrade to the new version of the software. By doing so, miners will have the power to build the [longest chain](/docs/technical/blockchain/longest-chain.md) of new blocks/transactions, and old nodes will naturally adopt this longest chain containing the upgraded blocks.
+软分叉的主要好处是，网络上的所有[节点](/docs/technical/networking/node.md)即使不升级也能与[区块链](/docs/technical/blockchain.md)保持同步。
 
-All upgrades to the Bitcoin software so far have been made via soft forks.
+软分叉成功的关键是让大多数矿工升级到软件的新版本。通过这样做，矿工将有能力构建起新区块/交易的[最长链](/docs/technical/blockchain/longest-chain.md)，旧节点将自然采用这条包含已升级区块的最长链。
 
-## Resources
+到目前为止，比特币软件的所有升级都是通过软分叉进行的。
+
+## 资源
 
 * [What is a soft fork? What is a hard fork? What are their differences?](https://bitcoin.stackexchange.com/questions/30817/what-is-a-soft-fork-what-is-a-hard-fork-what-are-their-differences)
 * [Why is a softfork unable to divide the network?](https://bitcoin.stackexchange.com/questions/75543/why-is-a-softfork-unable-to-divide-the-network)

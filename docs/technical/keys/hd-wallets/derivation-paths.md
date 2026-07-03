@@ -1,4 +1,4 @@
-This code requires the [bitcoin-ruby](https://github.com/lian/bitcoin-ruby) library.
+此代码需要 [bitcoin-ruby](https://github.com/lian/bitcoin-ruby) 库。
 
 ```
 require 'bitcoin' # sum gem install bitcoin-ruby

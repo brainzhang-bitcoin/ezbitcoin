@@ -2,125 +2,122 @@
 
 [<img src="../../images/diagrams_png_bytes-compact-size.png" alt="Diagram showing how the compact size field indicates the upcoming size or item count." width="775" height="295" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size.png)
 
-A compact size field is used in [network messages](/docs/technical/networking.md#messages) to indicate the **size of an upcoming field** or the **number of upcoming fields**.
+紧凑大小 (compact size) 字段在[网络消息](/docs/technical/networking.md#messages)中用于指示**即将到来的字段的尺寸**或**即将到来的字段的数量**。
 
-It can store numbers between 0 and 18446744073709551615.
+它可以存储介于 0 和 18446744073709551615 之间的数字。
 
-The size of the field increases as the number it contains increases. Or in other words, smaller numbers take up less space. This means you don't have to use a larger fixed-size field at all times to accommodate the largest acceptable number.
+该字段的尺寸随着其包含的数字的增大而变长。或者换句话说，较小的数字占用较少的空间。这意味着您不必在任何时候都使用一个较大的固定尺寸字段来容纳最大可接受的数字。
 
-Integer
+整数 (Integer)
 
 0d
 
-Compact Size
+紧凑大小 (Compact Size)
 
 `0 bytes`
 
+前缀 (Prefix)
 
-Prefix
-
-The first byte indicates which bytes encode the integer:
+第一个字节指示哪些字节对整数进行编码：
 
  `<=FC`
-– This byte (0 - 252)
+– 该字节本身 (0 - 252)
  `FD`
-– The next two bytes (253 - 65535)
+– 接下来的 2 个字节 (253 - 65535)
  `FE`
-– The next four bytes (65536 - 4294967295)
+– 接下来的 4 个字节 (65536 - 4294967295)
  `FF`
-– The next eight bytes (4294967296 - 18446744073709551615)
+– 接下来的 8 个字节 (4294967296 - 18446744073709551615)
 
-Note: Bytes encoding the integer are in little endian.
+注意：对整数进行编码的字节采用 little endian (小端序)。
 
+0 秒
 
+## 结构
 
-0 secs
-
-## Structure
-
-A compact size field is a variable-length [byte](/docs/technical/general/bytes.md) structure. The *leading byte* indicates the **size** of the field, and also indicates the bytes that contain the **number**.
+紧凑大小字段是一个可变长度的[字节](/docs/technical/general/bytes.md)结构。*首字节 (leading byte)*指示该字段的**尺寸**，并且还指示了包含该**数字**的那些字节。
 
 [<img src="../../images/diagrams_png_bytes-compact-size-prefix.png" alt="Diagram showing the prefixes used for compact size fields and the corresponding field sizes." width="367" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size-prefix.png)
 
-| Leading Byte | Number | Range | Field Size | Example |
+| 首字节 | 数字存储位置 | 范围 | 字段尺寸 | 示例 |
 | --- | --- | --- | --- | --- |
-| `FC` (and below) | Current byte | 0 - 252 | 1 byte | `64` (100) |
-| `FD` | Next 2 bytes | 253 - 65535 | 3 bytes | `FDE803` (1,000) |
-| `FE` | Next 4 bytes | 65536 - 4294967295 | 5 bytes | `FEA0860100` (100,000) |
-| `FF` | Next 8 bytes | 4294967296 - 18446744073709551615 | 9 bytes | `FF00E40B5402000000` (10,000,000,000) |
+| `FC` (及以下) | 当前字节本身 | 0 - 252 | 1 字节 | `64` (100) |
+| `FD` | 接下来的 2 字节 | 253 - 65535 | 3 字节 | `FDE803` (1,000) |
+| `FE` | 接下来的 4 字节 | 65536 - 4294967295 | 5 字节 | `FEA0860100` (100,000) |
+| `FF` | 接下来的 8 字节 | 4294967296 - 18446744073709551615 | 9 字节 | `FF00E40B5402000000` (10,000,000,000) |
 
-**Note:** The bytes containing the number are in [little-endian](/docs/technical/general/little-endian.md).
+**注意：** 包含数字的字节采用 [little-endian](/docs/technical/general/little-endian.md)。
 
-So for small numbers of 252 or less, you just use a single byte. But for larger numbers you use a prefix of `FD`, `FE`, or `FF`, and the integer is contained in the next 2, 4, or 8 bytes.
+因此，对于 252 或更小的数字，您只需使用单个字节。但对于较大的数字，您要使用 `FD`、`FE` 或 `FF` 的前缀，并且该整数包含在接下来的 2、4 或 8 个字节中。
 
-The maximum value a compact size field can hold is 18446744073709551615, which is `FFFFFFFFFFFFFFFFFF` (an `FF` prefix followed by `FFFFFFFFFFFFFFFFFF`).
+紧凑大小字段可以容纳的最大值是 18446744073709551615，即 `FFFFFFFFFFFFFFFFFF`（前缀 `FF` 加上 `FFFFFFFFFFFFFFFFFF`）。
 
-You'll most commonly see compact size fields holding numbers of 252 or less. So at first you might assume you're looking at a simple 1-byte field, and not realize you're looking at a special type of field that can vary in size.
+您最常看到的紧凑大小字段存储的都是 252 或更小的数字。所以起初您可能会以为您看到的是一个简单的 1 字节字段，而没有意识到您看到的是一个可以变化尺寸的特殊类型字段。
 
-A compact size field starting with `FF` (for 8-byte numbers) is complete overkill and is never used in Bitcoin. This would be used to indicate an upcoming 4 GB+ of data, which is far more than could ever fit inside an actual block of data.
+以 `FF` 开头（针对 8 字节数字）的紧凑大小字段属于完全过度设计，在比特币中从未被使用过。这会被用于指示接下来有超过 4 GB 的数据，这比能够装入实际数据区块中的容量要大得多。
 
-You can actually use the `FF` prefix and then use the next 8 bytes of `0000000000000001` to indicate a value of 1. It would be a waste of space, but it would still be as valid as if you just used the single byte `01`.
+您实际上可以使用 `FF` 前缀，然后使用接下来的 8 字节 `0000000000000001` 来指示值 1。这会是空间的浪费，但它仍与您仅使用单个字节 `01` 一样有效。
 
-## Examples
+## 示例
 
-Here are some examples of the different compact size prefixes found inside [transaction](/docs/technical/transaction.md) data:
+以下是在[交易](/docs/technical/transaction.md)数据中发现的各种不同紧凑大小前缀的一些示例：
 
-### `FC` (and below)
+### `FC` (及以下)
 
-A single-byte of `FC` or below is by far the most common:
+单字节的 `FC` 或以下是目前为止最常见的形式：
 
-* [a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d](/explorer/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d) – This is the famous [pizza transaction](https://bitcointalk.org/index.php?topic=137.0). To form the 10,000 BTC [output](/docs/technical/transaction/output.md), this transaction collected 131 [inputs](/docs/technical/transaction/input.md) together, so the input count was a single byte compact size field of `83`.
+* [a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d](/explorer/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d) – 这是著名的[披萨交易 (pizza transaction)](https://bitcointalk.org/index.php?topic=137.0)。为了形成这笔 10,000 BTC 的[输出](/docs/technical/transaction/output.md)，该交易将 131 个[输入](/docs/technical/transaction/input.md)收集在一起，因此其输入数量 count 是一个单字节紧凑大小字段 `83`。
 
-This is just one quick example. You can look up any transaction in the blockchain and you'll find simple single-byte compact size fields. They're everywhere.
+这仅仅是一个简短示例。您可以在区块链中查询任意交易，您都会找到简单的单字节紧凑大小字段。它们无处不在。
 
 ### `FD`
 
-You'll occasionally run into the `FD` prefix every now and then. This happens when there's a higher-than-average input/output count, or if a [scriptsig](/docs/technical/transaction/input/scriptsig.md)/[scriptpubkey](/docs/technical/transaction/output/scriptpubkey.md) is unusually large:
+您偶尔会遇到 `FD` 前缀。这发生于具有高于平均水平的输入/输出数量，或者当一个 [ScriptSig](/docs/technical/transaction/input/scriptsig.md)/[ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) 异常庞大时：
 
-* [6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b](/explorer/tx/6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b) – This transaction has 965 inputs, so the compact size field is `FDC503` (don't forget that the last two bytes are in [little-endian](/docs/technical/general/little-endian.md), so `03C5` = 965).
-* [e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455](/explorer/tx/e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455) – This transaction has an unusually large scriptpubkey (it has `OP_CHECKSIG` repeated multiple times for some reason). The script is 4,026 bytes in length, so the compact size field is `FDBA0F`.
-* [3454605a6e24181a6061574720e93a79689865e7952c56c330ebcb98fa95e936](/explorer/tx/3454605a6e24181a6061574720e93a79689865e7952c56c330ebcb98fa95e936) – This transaction has 254 outputs. Whilst a single byte can hold the number 254 in normal circumstances, when using a compact size field the maximum single-byte value is 252. So in this instance the `FD` prefix was used and the number 254 was encoded in the next 2 bytes instead, resulting in a compact size field of `FDFE00`
+* [6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b](/explorer/tx/6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b) – 该交易具有 965 个输入，因此紧凑大小字段为 `FDC503`（不要忘记最后两个字节是 [little-endian](/docs/technical/general/little-endian.md)，因此 `03C5` = 965）。
+* [e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455](/explorer/tx/e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455) – 该交易具有一个异常庞大的 ScriptPubKey（由于某种原因，它重复了多次 `OP_CHECKSIG`）。该脚本长度为 4,026 字节，因此其紧凑大小字段为 `FDBA0F`。
+* [3454605a6e24181a6061574720e93a79689865e7952c56c330ebcb98fa95e936](/explorer/tx/3454605a6e24181a6061574720e93a79689865e7952c56c330ebcb98fa95e936) – 该交易具有 254 个输出。虽然在正常情况下一个单字节可以容纳数字 254，但在使用紧凑大小字段时，最大单字节值是 252。所以在这种情况下使用了 `FD` 前缀，并将数字 254 编码在了接下来的 2 字节中，导致了紧凑大小字段为 `FDFE00`。
 
-### `FE` and `FF`
+### `FE` 和 `FF`
 
-You'll *very rarely* come across the `FE` or `FF` prefixes (for numbers greater than 65,535).
+您*极少*会遇到 `FE` 或 `FF` 前缀（针对大于 65,535 的数字）。
 
-This is because the maximum scriptpubkey/scriptsig size is 10,000 bytes (see [script.h](https://github.com/bitcoin/bitcoin/blob/master/src/script/script.h)). Furthermore, due to the block size limit of 4,000,000 [weight](/docs/technical/block.md#weight) units, it would be impossible to have more than 65,535 inputs in a single transaction, and it would be incredibly difficult to have more than 65,535 outputs.
+这是因为最大的 ScriptPubKey/ScriptSig 限制为 10,000 字节（参见 [script.h](https://github.com/bitcoin/bitcoin/blob/master/src/script/script.h)）。此外，由于区块大小被限制为 4,000,000 [权重](/docs/technical/block.md#weight)单位，在单笔交易中拥有超过 65,535 个输入是不可能的，并且拥有超过 65,535 个输出也将极度困难。
 
-#### Minimum transaction input and output sizes
+#### 最小交易输入和输出大小
 
-* The minimum *[input](/docs/technical/transaction/input.md)* size is 41 bytes (32 byte [TXID](/docs/technical/transaction/input/txid.md) + 4 byte [VOUT](/docs/technical/transaction/input/vout.md) + 1 byte [scriptsig](/docs/technical/transaction/input/scriptsig.md) + 4 byte [sequence](/docs/technical/transaction/input/sequence.md)). So if you put 65,535 of these in a transaction, it would be 2.686 MB (10,747,740 [weight units](/docs/technical/transaction/size.md#weight)) in size, which is larger than the maximum size for an entire block.
-* The minimum *[output](/docs/technical/transaction/output.md)* size is 9 bytes (8 byte amount + 1 byte [scriptpubkey](/docs/technical/transaction/output/scriptpubkey.md)). So if you put 65,535 of these in a transaction, it would take you up to 0.589 MB (2,359,260 weight units), which *would* technically fit inside a block.
+* 最小*[输入](/docs/technical/transaction/input.md)*大小为 41 字节（32 字节 [txid](/docs/technical/transaction/input/txid.md) + 4 字节 [vout](/docs/technical/transaction/input/vout.md) + 1 字节 [ScriptSig](/docs/technical/transaction/input/scriptsig.md) + 4 字节 sequence）。因此，如果您在交易中放入 65,535 个此类输入，其大小将为 2.686 MB（10,747,740 权重单位），这比整个区块的最大大小还要大。
+* 最小*[输出](/docs/technical/transaction/output.md)*大小为 9 字节（8 字节金额 + 1 字节 [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md)）。因此，如果您在交易中放入 65,535 个此类输出，它将占用 0.589 MB（2,359,260 权重单位），这在技术上*确实*可以装入一个区块中。
 
-On the mainnet chain:
+在主网链上：
 
-* The most outputs I've seen in one transaction is 13,107: [dd9f6bbf80ab36b722ca95d93268667a3ea6938288e0d4cf0e7d2e28a7a91ab3](/explorer/tx/dd9f6bbf80ab36b722ca95d93268667a3ea6938288e0d4cf0e7d2e28a7a91ab3)
-* The largest scriptpubkey I've seen is 4,026 bytes: [e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455](/explorer/tx/e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455)
+* 我见过的单笔交易中输出最多的是 13,107 个：[dd9f6bbf80ab36b722ca95d93268667a3ea6938288e0d4cf0e7d2e28a7a91ab3](/explorer/tx/dd9f6bbf80ab36b722ca95d93268667a3ea6938288e0d4cf0e7d2e28a7a91ab3)
+* 我见过的最大的 ScriptPubKey 是 4,026 字节：[e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455](/explorer/tx/e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455)
 
-But still, both of these are well below needing to use a compact size prefix of `FE`.
+但即便如此，两者也均远未达到需要使用紧凑大小前缀 `FE` 的程度。
 
-The only time you find an `FE` or `FF` prefix in the wild is if it has been incorrectly used to store a number that could have been put inside a smaller compact size field.
+野外发现 `FE` 或 `FF` 前缀的唯一时刻是它被错误地用于存储本可以放入更小紧凑大小字段的数字。
 
-## Location
+## 位置
 
-Here's where you'll most commonly find compact size fields:
+以下是您最常发现紧凑大小字段的地方：
 
-* [Transaction Data](#transaction-data)
-* [Block Data](#block-data)
-* [Network Messages](#network-messages)
+* [交易数据](#transaction-data)
+* [区块数据](#block-data)
+* [网络消息](#network-messages)
 
-### Transaction Data
+### 交易数据
 
-Compact size fields are used throughout raw [transactions](/docs/technical/transaction.md). They're used for indicating:
+紧凑大小字段贯穿于原始[交易](/docs/technical/transaction.md)数据中。它们用于指示：
 
-* The number of [inputs](/docs/technical/transaction/input.md).
-* The number of [outputs](/docs/technical/transaction/output.md).
-* The size of the [scriptsig](/docs/technical/transaction/input/scriptsig.md).
-* The size of the [scriptpubkey](/docs/technical/transaction/output/scriptpubkey.md).
-* The number of [witness](/docs/technical/transaction/witness.md) elements. ([Segwit](/docs/technical/upgrades/segregated-witness.md) Transactions)
-  + The size of each witness element.
+* [输入](/docs/technical/transaction/input.md)的数量。
+* [输出](/docs/technical/transaction/output.md)的数量。
+* [ScriptSig](/docs/technical/transaction/input/scriptsig.md) 的大小。
+* [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) 的大小。
+* [witness](/docs/technical/transaction/witness.md) 元素的数量。（[SegWit](/docs/technical/upgrades/segregated-witness.md) 交易）
+  + 每个 witness 元素的大小。
 
-Here's an example legacy transaction ([414719d592b73341b77497165d9f46f6eff6c243469265f95d920b779c7a0492](/explorer/tx/414719d592b73341b77497165d9f46f6eff6c243469265f95d920b779c7a0492)). I've split the raw transaction data into individual fields and highlighted the compact size fields in green:
+这里是一个传统的遗留交易示例（[414719d592b73341b77497165d9f46f6eff6c243469265f95d920b779c7a0492](/explorer/tx/414719d592b73341b77497165d9f46f6eff6c243469265f95d920b779c7a0492)）。我已将原始交易数据拆分为单独的字段，并用绿色高亮了紧凑大小字段：
 
 ```
 01000000
@@ -136,7 +133,7 @@ Here's an example legacy transaction ([414719d592b73341b77497165d9f46f6eff6c2434
 00000000
 ```
 
-Here's an example segwit transaction ([672d9428242a097e57c5def8b300d05068e0d85a1028ac3e93c9a487561f36c9](/explorer/tx/672d9428242a097e57c5def8b300d05068e0d85a1028ac3e93c9a487561f36c9)), again with the compact size fields highlighted in green:
+这里是一个 SegWit 交易示例（[672d9428242a097e57c5def8b300d05068e0d85a1028ac3e93c9a487561f36c9](/explorer/tx/672d9428242a097e57c5def8b300d05068e0d85a1028ac3e93c9a487561f36c9)），同样以绿色突出显示了紧凑大小字段：
 
 ```
 01000000
@@ -158,13 +155,13 @@ Here's an example segwit transaction ([672d9428242a097e57c5def8b300d05068e0d85a1
 00000000
 ```
 
-### Block Data
+### 区块数据
 
-A compact size field is used once within a raw block of data. It indicates:
+紧凑大小字段在原始区块数据中被使用了一次。它指示：
 
-* The number of transactions in the block.
+* 区块中的交易数量。
 
-For example, this is the genesis block ([000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)), and it only has one transaction in it:
+例如，这是创世区块（[000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)），其中仅有一笔交易：
 
 ```
 01000000
@@ -177,34 +174,34 @@ ffff001d
 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-It sits between the [block header](/docs/technical/block.md#header) and the transactions. This is the only time the compact size field is used inside a raw block (not including the transactions).
+它位于[区块头](/docs/technical/block.md#header)和交易数据之间。这是紧凑大小字段在原始区块（不包括交易）中被使用的唯一时刻。
 
-### Network Messages
+### 网络消息
 
-The compact size field is used inside the various [messages](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types) that nodes send to each other on the bitcoin [network](/docs/technical/networking.md).
+紧凑大小字段在节点在比特币[网络](/docs/technical/networking.md)上互相发送的各种[消息](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types)中被使用。
 
-For example, the payload of an ["inv" message](/docs/technical/networking.md#inv) uses a compact size field to indicate the number of upcoming items:
+例如，["inv" 消息](/docs/technical/networking.md#inv)的有效载荷使用紧凑大小字段来指示即将到来的项目的数量：
 
 ```
 01 01000000aa325e9122aa39ca18c75aabe2a3ceaf9802acd1a40720925bfd77fff58ed821
 ```
 
-This message indicates that there is one item in the list, and it's this TXID: [21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa](/explorer/tx/21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa) ([reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order)).
+此消息指示列表中有一个项目，正是此 [txid](/docs/technical/general/byte-order.md#reverse-byte-order)：[21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa](/explorer/tx/21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa)。
 
-*Transactions* and *blocks* are actually messages that get sent across the bitcoin network too. So the compact size field helps to save space in the serialized *messages* that get sent between nodes. You always want to send the least amount of data across the wire as possible (for efficiency), so that's why compact size is useful.
+*交易*和*区块*实际上也是在比特币网络上传输的消息。因此紧凑大小字段有助于在节点之间发送的序列化*消息*中节省空间。您总是希望在线路上发送尽可能少的数据（出于效率原因），这正是紧凑大小的用武之地。
 
-## Benefits
+## 优势
 
-Why are compact size fields used in Bitcoin?
+为什么比特币中要使用紧凑大小字段？
 
-The compact size field saves a few extra bytes of space.
+紧凑大小字段节省了几个字节的空间。
 
-For example, you can quite comfortably fit a few thousand outputs in a transaction, but the majority of the time you're only creating one or two. So for the *output count* field, a basic solution would be to make it a fixed 2-byte field at all times to allow for a large number of outputs on rare occasions, even though the vast majority of the time it won't be needed. So for example, across 10 transactions you might have the following fields:
+例如，您可以在一笔交易中非常轻松地装入几千个输出，但绝大多数时候您只创建一到两个输出。因此对于 *输出数量 count* 字段，基本的方案是让它在任何时候都成为一个固定的 2 字节字段，以便在罕见情况下容纳大量的输出，即使绝大多数时间都不需要。例如，跨越 10 笔交易，您可能会有以下字段：
 
 ```
-Fixed 2-Byte Field:
+固定 2 字节字段：
 
-Number  | Bytes
+数量    | 字节表示
 --------|------
  2      | 0002
  2      | 0002
@@ -217,15 +214,15 @@ Number  | Bytes
  1      | 0001
  2      | 0002
 
- TOTAL BYTES = 40
+ 总计字节数 = 40
 ```
 
-But by using a flexible compact size field instead, we can use a 1-byte field size most of the time, and then expand up to 3 bytes (1 byte prefix + 2 byte number) to accommodate larger numbers on the rare occasions that we need them. Over the same 10 transactions for example:
+但通过使用灵活的紧凑大小字段，我们可以在大部分时间里使用 1 字节的字段大小，并在少数需要容纳更大数字的罕见场合中扩展至 3 字节（1 字节前缀 + 2 字节数字）。以相同的 10 笔交易为例：
 
 ```
-Compact Size Field:
+紧凑大小字段：
 
-Number  | Bytes
+数量    | 字节表示
 --------|------
  2      | 02
  2      | 02
@@ -238,14 +235,14 @@ Number  | Bytes
  1      | 01
  2      | 02
 
- TOTAL BYTES = 24
+ 总计字节数 = 24
 ```
 
-It's a minor space-saving technique. But when you have multiple of these fields in a transaction, and hundreds of thousands of transactions traveling between computers every day (and billions of transactions stored in the [blockchain](/docs/technical/blockchain.md)), the bytes add up.
+这是一种微小的空间节省技术。但当您在一笔交易中拥有多个此类字段，且每天有数十万笔交易在计算机之间传输（以及在[区块链](/docs/technical/blockchain.md)中存储数十亿笔交易）时，节省的字节数就会聚沙成塔。
 
-## Code
+## 代码
 
-Here's a quick code example showing how you can convert between an integer and compact size in Ruby:
+以下是一个展示如何在 Ruby 中进行整数与紧凑大小相互转换的快速代码示例：
 
 ```
 # pack()       - converts an integer to raw bytes of a specific length and byte order (e.g. little-endian) based on the directive given
@@ -311,25 +308,25 @@ puts decode("ff0000000001000000") #=> 4294967296
 puts decode("ffffffffffffffffff") #=> 18446744073709551615
 ```
 
-## Summary
+## 总结
 
-A compact size field is used for indicating an upcoming number of items or the upcoming length of some data in network messages (e.g. raw transactions). It's usually 1 byte in size, but can expand up to 9 bytes in length when needed to encode larger numbers.
+紧凑大小字段用于在网络消息（例如原始交易数据）中指示接下来的项目数量或后续数据的长度。它通常为 1 字节大小，但当需要对更大的数字进行编码时，可以扩展至 9 字节长度。
 
-It has been part of the protocol since the first release of Bitcoin (v0.1.0) and can be found in [serialize.h](https://github.com/bitcoin/bitcoin/blob/master/src/serialize.h). I believe this compact size encoding is something Satoshi came up with when programming Bitcoin, as I haven't seen it used anywhere else.
+自比特币的第一个版本 (v0.1.0) 发布以来，它就已经是协议的一部分，可以在 [serialize.h](https://github.com/bitcoin/bitcoin/blob/master/src/serialize.h) 中找到。我相信这种紧凑大小的编码是中本聪在编程开发比特币时自己发明的，因为我还没在其他任何地方见过它被使用。
 
-### Compact Size vs VarInt
+### Compact Size 与 VarInt 的对比
 
-I used to think a compact size field was called a *VarInt* (Variable Integer). They both encode variable-length integers in a compact form, but they actually have different structures:
+我曾经以为紧凑大小字段叫做 *VarInt*（可变整数）。它们都以紧凑格式对可变长度整数进行编码，但它们实际上具有不同的结构：
 
-* **Compact Size** – The first byte indicates how many bytes you need to read to calculate the integer value. You'll find this in many of the serialized messages sent across the bitcoin network (e.g. transactions and blocks).
-* **VarInt** – You keep reading bytes until the first bit is not set, then combine those bytes together to calculate the integer. You'll find [VarInts in the LevelDB Chainstate database](https://github.com/in3rsha/bitcoin-chainstate-parser/blob/master/README.md#varints).
+* **Compact Size** – 第一个字节指示您需要读取多少个字节来计算整数值。您会在许多在比特币网络中发送的序列化消息（例如交易和区块）中找到它。
+* **VarInt** – 您持续读取字节，直到首个 bit 未被设置，然后将这些字节组合在一起以计算整数。您会在 [LevelDB Chainstate 数据库中找到 VarInt](https://github.com/in3rsha/bitcoin-chainstate-parser/blob/master/README.md#varints)。
 
-So they have a similar purpose, but they work differently.
+因此，它们具有相似的目的，但工作方式截然不同。
 
-I actually used to call a compact size field a "VarInt" on this website in the past. Sorry for the confusion. You can also find the compact size field being referred to as a var\_int in [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#transaction-id).
+我过去曾在这个网站上将紧凑大小字段称为“VarInt”。为引起混淆深表歉意。您也可以在 [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#transaction-id) 中发现紧凑大小字段被称为 var\_int。
 
-These kinds of variable-length byte structures for integers are also known as "variable length encodings" in other programs. It can be found in UTF-8 encoding, the MIDI file format, and WAP (Wireless Application Protocol). However, these work slightly differently to the "compact size" structure found in Bitcoin.
+其他程序中，这种针对整数的可变长度字节结构也被称为“可变长度编码”。它可以在 UTF-8 编码、MIDI 文件格式和 WAP（无线应用协议）中被发现。然而它们与比特币中发现的“紧凑大小”结构工作起来略有不同。
 
-## Resources
+## 资源
 
 * <https://developer.bitcoin.org/reference/transactions.html#compactsize-unsigned-integers>
