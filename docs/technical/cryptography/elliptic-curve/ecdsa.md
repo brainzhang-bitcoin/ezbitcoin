@@ -1,6 +1,6 @@
-![Loading Tool](../../../images/icons_loader-2.svg)
+<img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing how ECDSA is used to lock and unlock outputs in bitcoin transactions.](../../../images/diagrams_png_ecdsa-bitcoin.png)](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-bitcoin.png)
+[<img src="../../../images/diagrams_png_ecdsa-bitcoin.png" alt="Diagram showing how ECDSA is used to lock and unlock outputs in bitcoin transactions." width="862" height="420" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-bitcoin.png)
 
 Bitcoin uses a digital signature system called ECDSA to control the ownership of bitcoins.
 
@@ -15,16 +15,6 @@ I don't know enough about cryptography to explain *why* ECDSA works, but I can s
 ## Full ECDSA Code
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 require "digest" # for hashing transaction data so we can sign it
 require "securerandom" # for generating random nonces when signing
 
@@ -276,7 +266,7 @@ puts transaction #=> 0100000001b7994a0db2f373a29227e1d90da883c6ce1cb0dd2d6812e45
 
 The mathematical backbone of ECDSA
 
-[![Animation showing how to multiply a point on an elliptic curve.](../../../images/technical_cryptography_elliptic-curve_point-multiply.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/point-multiply.gif)
+[<img src="../../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](/docs/technical/cryptography/elliptic-curve/point-multiply.gif.md)
 
 
 Elliptic curve multiplication.
@@ -287,7 +277,7 @@ In summary, public keys and signatures are just **points** on an elliptic curve.
 
 I'm not going to cover the [mathematics of elliptic curves](/docs/technical/cryptography/elliptic-curve.md#mathematics) here, but all we need to use ECDSA in Bitcoin is to be able to **[multiply](/docs/technical/cryptography/elliptic-curve.md#multiply) a point on the elliptic curve**.
 
-![Tool Icon](../../../images/icons_tool.svg) EC Multiply
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> EC Multiply
 
 Generator Point
 
@@ -342,16 +332,6 @@ Anyway, here's the code for performing elliptic curve multiplication (using the 
 ## Secp256k1 Parameters
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # y² = x³ + ax + b
 $a = 0
 $b = 7
@@ -375,16 +355,6 @@ $G = {
 ## Elliptic Curve Mathematics
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 def inverse(a, m = $p)
 
   # store original modulus
@@ -482,7 +452,7 @@ The following system is called the *Elliptic Curve Digital Signature Algorithm*,
 
 ### Key Generation
 
-![Tool Icon](../../../images/icons_tool.svg) Private Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Private Key
 
 Generate Random
 Reset
@@ -1078,14 +1048,14 @@ We create pairs of **keys** using elliptic curve multiplication:
 * [private key](/docs/technical/keys/private-key.md) (`d`) — A large randomly-generated number between 0 and the [number of points on the curve](/docs/technical/cryptography/elliptic-curve.md#parameters-n) (`[0...n-1]`)
 * [public key](/docs/technical/keys/public-key.md) (`Q`) — The [generator point](/docs/technical/cryptography/elliptic-curve.md#parameters-g) (`G`) multiplied by the private key (`d`).
 
-[![Animation showing how to create a public key by multiplying the generator point by a private key.](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key.gif)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif" alt="Animation showing how to create a public key by multiplying the generator point by a private key." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key.gif.md)
 
 
 `d` is the private key (an integer)  
 `G` is the generator point (a point)  
 `Q` is the public key (a point)
 
-[![Equation for multiplying a point on an elliptic curve.](../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/latex-point-multiply.png)
+[<img src="../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png" alt="Equation for multiplying a point on an elliptic curve." width="150" height="48" />](/docs/technical/cryptography/elliptic-curve/latex-point-multiply.png.md)
 
 So in elliptic curve cryptography, a private key is just a large **random integer** (less than the number of points on the curve), and its corresponding public key is just a **point on the curve**.
 
@@ -1104,7 +1074,7 @@ public key  = {
 
 #### Trapdoor Function
 
-[![Equation for multiplying a point on an elliptic curve.](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key-trapdoor.png)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png" alt="Equation for multiplying a point on an elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key-trapdoor.png.md)
 
 Given a public key point `Q`, there's no easy way to work out the private key `d` used to create it.
 
@@ -1178,12 +1148,12 @@ An actual signature is then made of two parts:
 * `r` — **A random point on the curve.** We take the random number `k` and multiply it by the generator point to get a random point `R`. We only actually use the *x-coordinate* of this point, and we call this lowercase `r`.
 * `s` — **A number to accompany the random point.** This is a unique number created from a combination of the *message hash* `z` and private key `d`, which is also bound to the random point using `r`.
 
-[![Animation showing a random point being used as part of the signature in ECDSA.](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/point-sign.gif)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif" alt="Animation showing a random point being used as part of the signature in ECDSA." width="330" height="381" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-sign.gif.md)
 
 
 An ECDSA signature contains the x-coordinate of a random point on the curve.
 
-[![Equation for creating a signature in ECDSA.](../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/latex-sign.png)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png" alt="Equation for creating a signature in ECDSA." width="393" height="158" />](/docs/technical/cryptography/elliptic-curve/ecdsa/latex-sign.png.md)
 
 
 ECDSA Sign Equation
@@ -1212,7 +1182,7 @@ signature: r = R[x], s = k⁻¹ * (z + r * d): {
 
 **Nonce:** A random number in cryptography is sometimes called a "nonce", which is short for "number used once".
 
-![Tool Icon](../../../images/icons_tool.svg) Number Converter
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -1250,16 +1220,6 @@ This pathway also has the *message hash* `z` encoded in to it, which is what eff
 #### ECDSA Sign
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 def sign(private_key, hash, nonce = nil)
   # generate random number if not given
   if nonce == nil
@@ -1344,7 +1304,7 @@ And because we already knew `(z₁, r, s₁)` and have just worked out `k`, we c
 
 In mathematical notation, the private key recovery looks like this:
 
-[![Equation for private key recovery in ECDSA.](../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/latex-private-key-recovery.png)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png" alt="Equation for private key recovery in ECDSA." width="350" height="186" />](/docs/technical/cryptography/elliptic-curve/ecdsa/latex-private-key-recovery.png.md)
 
 **So make sure you always use securely random values for `k` each time you create a signature.** If someone spots you've used the same `r` value when signing different messages for the same public key, it only takes milliseconds for them to recover your private key.
 
@@ -1353,16 +1313,6 @@ In 2011 [hackers worked out how to get the private key for the PS3](https://arst
 Here's an example of recovering a private key from two signatures using the same `k` in Ruby:
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 require 'digest' # used for hashing messages before signing
 
 # Note: This code uses the previously defined inverse(), double(), add(), multiply(), and sign() functions
@@ -1458,12 +1408,12 @@ We then use these three pieces of data to *calculate two points* on the curve:
 
 We can now add these points together to give us **Point 3**:
 
-[![Animation showing the verification of an ECDSA signature on the elliptic curve.](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/point-verify.gif)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif" alt="Animation showing the verification of an ECDSA signature on the elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/ecdsa/point-verify.gif.md)
 
 
 ECDSA verification on the elliptic curve.
 
-[![Equation for verifying a signature in ECDSA.](../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/latex-verify.png)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png" alt="Equation for verifying a signature in ECDSA." width="418" height="56" />](/docs/technical/cryptography/elliptic-curve/ecdsa/latex-verify.png.md)
 
 
 ECDSA Verify Equation
@@ -1490,7 +1440,7 @@ verification (s⁻¹ * z)G + (s⁻¹ * r)Q: {
 }
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) Number Converter
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -1519,7 +1469,7 @@ Hexadecimal (Base 16)
 
 0 secs
 
-![Tool Icon](../../../images/icons_tool.svg) Public Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -1568,16 +1518,6 @@ If you change the contents of the signed message or try to use the signature wit
 #### ECDSA Verify
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 def verify(public_key, signature, hash)
   # point 1
   point1 = multiply(inverse(signature[:s], $n) * hash)

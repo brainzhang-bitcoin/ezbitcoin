@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 A private key is a **large randomly-generated number**.
 
@@ -16,7 +16,7 @@ Or to *[hexadecimal](/docs/technical/general/hexadecimal.md)*:
 
 It doesn't make a difference. They're all the same number, and they're all the same private key.
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -67,17 +67,17 @@ A [bit](/docs/technical/general/bytes.md#bit) is the smallest unit of data insid
 
 In fact, a bit is so small, it can only hold a value of `1` or `0`:
 
-[![Diagram showing a single bit as being either a 1 or 0.](../../images/beginners_guide_private-keys_01-bit.png)](https://static.learnmeabitcoin.com/beginners/guide/private-keys/01-bit.png)
+[<img src="../../images/beginners_guide_private-keys_01-bit.png" alt="Diagram showing a single bit as being either a 1 or 0." width="81" height="69" />](/docs/beginners/guide/private-keys/01-bit.png.md)
 
 Nonetheless, you can still use bits to represent other kinds of data, such as everyday numbers.
 
 For example, here's how you would store the decimal numbers 0 to 8 in a computer using bits:
 
-[![Diagram showing bits being used to represent the decimal numbers 1 to 8.](../../images/beginners_guide_private-keys_01-bit-numbers.png)](https://static.learnmeabitcoin.com/beginners/guide/private-keys/01-bit-numbers.png)
+[<img src="../../images/beginners_guide_private-keys_01-bit-numbers.png" alt="Diagram showing bits being used to represent the decimal numbers 1 to 8." width="733" height="38" />](/docs/beginners/guide/private-keys/01-bit-numbers.png.md)
 
 Therefore, a 256-bit number is a number that can be represented by using 256 of these bits:
 
-[![Diagram showing the maximum decimal number that can be represented by 256 bits.](../../images/beginners_guide_private-keys_01-bit-numbers-max.png)](https://static.learnmeabitcoin.com/beginners/guide/private-keys/01-bit-numbers-max.png)
+[<img src="../../images/beginners_guide_private-keys_01-bit-numbers-max.png" alt="Diagram showing the maximum decimal number that can be represented by 256 bits." width="732" height="128" />](/docs/beginners/guide/private-keys/01-bit-numbers-max.png.md)
 
 Or in other words, a 256-bit number is between:
 
@@ -98,7 +98,7 @@ I wasn't lying when I said they are generated randomly.
 
 Honestly, when you use any kind of bitcoin software to generate a private key, they are not performing magic – they're just giving you a random 256-bit number.
 
-[![A badly-drawn illustration of an imaginary private key generating machine.](../../images/beginners_guide_private-keys_02-lol-private-key-machine.png)](https://static.learnmeabitcoin.com/beginners/guide/private-keys/02-lol-private-key-machine.png)
+[<img src="../../images/beginners_guide_private-keys_02-lol-private-key-machine.png" alt="A badly-drawn illustration of an imaginary private key generating machine." width="714" height="334" />](/docs/beginners/guide/private-keys/02-lol-private-key-machine.png.md)
 
 Therefore, there's no reason why you can't create your own private key. All you need is to be able to *securely* generate a random 256-bit number.
 
@@ -108,11 +108,11 @@ You can do this in a number (heh) of ways:
 
 Flipping a coin 256 times allows you to generate a 256-bit private key in **binary**:
 
-[![Illustration of using a coin flip to generate a 1 or 0.](../../images/beginners_guide_private-keys_02-1-coin.png)](https://static.learnmeabitcoin.com/beginners/guide/private-keys/02-1-coin.png)
+[<img src="../../images/beginners_guide_private-keys_02-1-coin.png" alt="Illustration of using a coin flip to generate a 1 or 0." width="390" height="117" />](/docs/beginners/guide/private-keys/02-1-coin.png.md)
 
 This 256-bit binary result can then be converted to hexadecimal.
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -146,16 +146,6 @@ Hexadecimal (Base 16)
 This will give you a private key in **decimal**:
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # need to use the operating system's random number generator for security
 import random
 random.SystemRandom().randint(1, 115792089237316195423570985008687907852837564279074904382605163141518161494336)
@@ -167,9 +157,9 @@ random.SystemRandom().randint(1, 11579208923731619542357098500868790785283756427
 
 Inserting *random* data into the SHA-256 will return a 32-byte (256-bit) **hexadecimal** result, which can be used as a private key:
 
-[![Illustration showing the result of putting the string 'learnmeabitcoin' through the SHA-256 hash function.](../../images/beginners_guide_private-keys_02-3-sha256.png)](https://static.learnmeabitcoin.com/beginners/guide/private-keys/02-3-sha256.png)
+[<img src="../../images/beginners_guide_private-keys_02-3-sha256.png" alt="Illustration showing the result of putting the string 'learnmeabitcoin' through the SHA-256 hash function." width="419" height="219" />](/docs/beginners/guide/private-keys/02-3-sha256.png.md)
 
-![Tool Icon](../../images/icons_tool.svg) SHA-256 (Text)
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> SHA-256 (Text)
 
 Text
 
@@ -178,7 +168,7 @@ Enter any string of characters
 `0 characters`
 
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 SHA-256(text)
@@ -224,16 +214,6 @@ For example, if I had one million monkeys who could each generate one million pr
 Now, if you're attempting a brute-force search to find someone else's private key, *on average* you'll need to run through *half* of all the possible private keys before finding the one you're looking for, which means these monkeys are looking at 1,835,871,531,540,401,617,735,462,066,426,938,130,528,051,574,865,920 million years of work if they want to generate the exact same private key as you.
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 keys = 115792089237316195423570985008687907852837564279074904382605163141518161494336
 monkeys = 1000000
 rate = 1000000

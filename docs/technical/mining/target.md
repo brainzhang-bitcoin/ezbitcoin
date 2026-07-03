@@ -1,10 +1,10 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the block hash of a candidate block trying to get below a target value.](../../images/diagrams_png_target.png)](https://static.learnmeabitcoin.com/diagrams/png/target.png)
+[<img src="../../images/diagrams_png_target.png" alt="Diagram showing the block hash of a candidate block trying to get below a target value." width="790" height="427" />](https://static.learnmeabitcoin.com/diagrams/png/target.png)
 
 Current Target:
 
-Height: [956,473](/explorer/956473) (the upcoming block)
+Height: [956,480](/explorer/956480) (the upcoming block)
 
 `000000000000000000021a420000000000000000000000000000000000000000`
 
@@ -34,7 +34,7 @@ Here are the block heights and target values for every target adjustment in Bitc
 
 | Height | Target | Adjustment\* | Time |
 | --- | --- | --- | --- |
-| 957600 | Next adjustment in 1127 blocks (7 days, 19 hours, 50 minutes) |  |  |
+| 957600 | Next adjustment in 1120 blocks (7 days, 18 hours, 40 minutes) |  |  |
 | [955584](/explorer/block/00000000000000000001e265c627e0a27ad347deb4d6b921f249eddfbf78e011) | `000000000000000000021a420000000000000000000000000000000000000000` | x 0.93324122423824 | 27 Jun 2026, 02:00:07 |
 | [953568](/explorer/block/0000000000000000000090b6c2d9f1e99b76c4c9b54d391fa9d02187425678d9) | `0000000000000000000240c30000000000000000000000000000000000000000` | x 1.1122402091133 | 14 Jun 2026, 00:23:57 |
 | [951552](/explorer/block/00000000000000000001b472f1922f86148c8286609fb14be39e12b8bd14bb64) | `00000000000000000002068f0000000000000000000000000000000000000000` | x 0.98310042730296 | 29 May 2026, 10:29:46 |
@@ -566,17 +566,17 @@ Height: [0](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3
 
 `00000000ffff0000000000000000000000000000000000000000000000000000`
 
-[![Diagram showing the target for the genesis block.](../../images/diagrams_png_target-initial.png)](https://static.learnmeabitcoin.com/diagrams/png/target-initial.png)
+[<img src="../../images/diagrams_png_target-initial.png" alt="Diagram showing the target for the genesis block." width="977" height="215" />](https://static.learnmeabitcoin.com/diagrams/png/target-initial.png)
 
 This initial target value is hard-coded into the source code of every Bitcoin node (see [chainparams.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp)). It's also the maximum possible target value. It was most likely a best-guess by Satoshi at what be a good starting point for a difficult-enough target that would result in a 10-minute interval between new blocks.
 
 On every 2016th block, each node will look at the time between the previous 2015 blocks and work out if they were mined faster or slower than 10 minutes on average.
 
-[![Diagram showing the target period between the genesis block and the 2016th block along with the timestamp of each block.](../../images/diagrams_png_target-period.png)](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
+[<img src="../../images/diagrams_png_target-period.png" alt="Diagram showing the target period between the genesis block and the 2016th block along with the timestamp of each block." width="983" height="189" />](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
 
 Each block contains a [timestamp](/docs/technical/block/time.md) in its block header. This timestamp is in *Unix Time*, which is the number of seconds since 01 Jan 1970, 00:00:00.
 
-![Tool Icon](../../images/icons_tool.svg) Unix Time
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
 
 Unix Time
 
@@ -592,11 +592,11 @@ Date
 
 If blocks during this period are mined *faster* than every 10 minutes, the target will be *adjusted downwards* to make it **more difficult** to get below the target for the next period of blocks.
 
-[![Diagram showing the target value adjusting downwards due to blocks being mined more quickly than expected.](../../images/diagrams_png_target-period-adjust-down.png)](https://static.learnmeabitcoin.com/diagrams/png/target-period-adjust-down.png)
+[<img src="../../images/diagrams_png_target-period-adjust-down.png" alt="Diagram showing the target value adjusting downwards due to blocks being mined more quickly than expected." width="983" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/target-period-adjust-down.png)
 
 Conversely, if blocks are mined *slower* than every 10 minutes, the target will be *adjusted upwards* to make it **less difficult** to get below the target for the next period of blocks.
 
-[![Diagram showing the target value adjusting upwards due to blocks being mined more slowly than expected.](../../images/diagrams_png_target-period-adjust-up.png)](https://static.learnmeabitcoin.com/diagrams/png/target-period-adjust-up.png)
+[<img src="../../images/diagrams_png_target-period-adjust-up.png" alt="Diagram showing the target value adjusting upwards due to blocks being mined more slowly than expected." width="983" height="480" />](https://static.learnmeabitcoin.com/diagrams/png/target-period-adjust-up.png)
 
 As a result, each node regularly recalculates the target to maintain a 10-minute average interval between new blocks as miners join and leave the network over time.
 
@@ -616,11 +616,11 @@ However, because nodes always adopt the [longest chain](/docs/technical/blockcha
 
 For example, when you run Bitcoin for the first time, your node will perform the [initial block download](https://btcinformation.org/en/developer-guide#initial-block-download) and calculate the targets as it goes. And because you're receiving the same blocks as everyone else, you will end up calculating the same current target when you reach the tip of the blockchain.
 
-[![Diagram showing the initial block download and target calculations.](../../images/diagrams_png_target-independent-calculation.png)](https://static.learnmeabitcoin.com/diagrams/png/target-independent-calculation.png)
+[<img src="../../images/diagrams_png_target-independent-calculation.png" alt="Diagram showing the initial block download and target calculations." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/target-independent-calculation.png)
 
 Furthermore, all nodes continually update to the same version of the blockchain (as they will always adopt the longest available chain of blocks). Therefore, nodes will also calculate the same target value as each new block is mined.
 
-[![Diagram showing nodes on the network recalculating the target when new blocks are mined.](../../images/diagrams_png_target-independent-calculation-agree.png)](https://static.learnmeabitcoin.com/diagrams/png/target-independent-calculation-agree.png)
+[<img src="../../images/diagrams_png_target-independent-calculation-agree.png" alt="Diagram showing nodes on the network recalculating the target when new blocks are mined." width="983" height="658" />](https://static.learnmeabitcoin.com/diagrams/png/target-independent-calculation-agree.png)
 
 As a result, despite the fact nodes calculate the target independently, they will each calculate the same target because they share the same view of the blockchain.
 
@@ -640,17 +640,17 @@ Satoshi Nakamoto, [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.o
 
 It's preferable to have miners working on extending the *same chain of blocks* as much as possible. For this to work, we need to **allow time for new blocks to propagate across the network** before the next block gets mined.
 
-[![Diagram showing a newly-mined block propagating across nodes on the network.](../../images/diagrams_png_target-block-propagation.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation.png)
+[<img src="../../images/diagrams_png_target-block-propagation.png" alt="Diagram showing a newly-mined block propagating across nodes on the network." width="983" height="552" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation.png)
 
 If blocks are being mined faster than they can be broadcast across the network, it will result in miners regularly working on top of "old" blocks in the blockchain (because they haven't had a chance to receive the latest blocks yet).
 
 This will result in miners building multiple competing blockchains; only one of these will become the [longest](/docs/technical/blockchain/longest-chain.md), so some miners will end up **wasting energy** working to build on top of a competing chain only for it to be left behind due to a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
-[![Diagram showing miners working on building two different blockchains due to not receiving the latest blocks quickly enough.](../../images/diagrams_png_target-block-propagation-mining-split.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-split.png)
+[<img src="../../images/diagrams_png_target-block-propagation-mining-split.png" alt="Diagram showing miners working on building two different blockchains due to not receiving the latest blocks quickly enough." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-split.png)
 
 Therefore, this time delay (block interval) allows blocks to propagate the network so that more miners can adopt the longest available chain, which helps to **concentrate the network's mining power** on extending the *same* chain of blocks.
 
-[![Diagram showing miners focused on extending the same blockchain due to the latest block having time to propagate the network.](../../images/diagrams_png_target-block-propagation-mining-concentrated.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-concentrated.png)
+[<img src="../../images/diagrams_png_target-block-propagation-mining-concentrated.png" alt="Diagram showing miners focused on extending the same blockchain due to the latest block having time to propagate the network." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-concentrated.png)
 
 ### 2. A consistent issuance of new bitcoins.
 
@@ -660,7 +660,7 @@ Satoshi Nakamoto, [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.o
 
 Bitcoin is a *currency*, so having a fixed rate of new bitcoins introduced into the system helps to provide stability.
 
-[![Diagram showing block rewards being issued at a constant rate.](../../images/diagrams_png_target-block-reward-constant-rate.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-reward-constant-rate.png)
+[<img src="../../images/diagrams_png_target-block-reward-constant-rate.png" alt="Diagram showing block rewards being issued at a constant rate." width="786" height="469" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-reward-constant-rate.png)
 
 So thanks to the target, you can be confident that new bitcoins will be minted at a predictable rate.
 
@@ -670,11 +670,11 @@ Where can you find the target?
 
 The target gets stored in the [bits](/docs/technical/block/bits.md) field in the [block header](/docs/technical/block.md#header) of every block.
 
-[![Diagram showing the target being stored in the bits field of a block header.](../../images/diagrams_png_target-block-header-bits.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-header-bits.png)
+[<img src="../../images/diagrams_png_target-block-header-bits.png" alt="Diagram showing the target being stored in the bits field of a block header." width="833" height="212" />](https://static.learnmeabitcoin.com/diagrams/png/target-block-header-bits.png)
 
 The *bits* field is a *compact representation* of the target (to save space in the block header). But you can easily convert between the bits representation and the full target.
 
-![Tool Icon](../../images/icons_tool.svg) Target Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
 
 Current
 
@@ -717,7 +717,7 @@ $ bitcoin-cli getdifficulty
 133869853540305.41
 ```
 
-![Tool Icon](../../images/icons_tool.svg) Difficulty
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Difficulty
 
 Current
 
@@ -770,7 +770,7 @@ $ bitcoin-cli getblockheader 000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad
 }
 ```
 
-![Tool Icon](../../images/icons_tool.svg) Target Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
 
 Current
 
@@ -800,16 +800,6 @@ Here's some example Ruby code for calculating target adjustments.
 This code works out the new target for block [403,200](/explorer/block/000000000000000000c4272a5c68b4f55e5af734e88ceab09abf73e9ac3b6d01), using the timestamps from blocks [401,184](/explorer/block/000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad133b7fae594cf) and [403,199](/explorer/block/00000000000000000404b6939e6c35a5448386e5d58f318c82ce2fefb7d73e47).
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # 403,200 - NEW TARGET
 # 403,199              | last block
 #		               |

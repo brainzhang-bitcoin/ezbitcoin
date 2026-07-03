@@ -1,6 +1,6 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing how keys (private key and public key) are used to lock and unlock bitcoins in transactions.](../images/diagrams_png_keys.png)](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
+[<img src="../images/diagrams_png_keys.png" alt="Diagram showing how keys (private key and public key) are used to lock and unlock bitcoins in transactions." width="696" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
 
 Keys are used to control the ownership of bitcoins.
 
@@ -19,7 +19,7 @@ Using signatures means that you don't have to reveal the original private key, w
 
 This mechanism is known as **public key cryptography**. It existed before Bitcoin was created, and Satoshi simply made use of it as a way to control the ownership of coins.
 
-[![Diagram showing a public key being converted to an address for convenience in making bitcoin transactions with other people.](../images/diagrams_png_keys-address-public-key.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-address-public-key.png)
+[<img src="../images/diagrams_png_keys-address-public-key.png" alt="Diagram showing a public key being converted to an address for convenience in making bitcoin transactions with other people." width="654" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/keys-address-public-key.png)
 
 Lastly, in Bitcoin we convert these public keys to addresses, which are simply human-friendly encodings of the public keys.
 
@@ -27,7 +27,7 @@ So when you "send" bitcoins to someone's address, you're actually just locking u
 
 ## [Private Key](/docs/technical/keys/private-key.md)
 
-[![Diagram showing a private key as simply a random number.](../images/diagrams_png_keys-private-key.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-private-key.png)
+[<img src="../images/diagrams_png_keys-private-key.png" alt="Diagram showing a private key as simply a random number." width="316" height="102" />](https://static.learnmeabitcoin.com/diagrams/png/keys-private-key.png)
 
 
 Generate Random
@@ -575,7 +575,7 @@ Hexadecimal
 
 Example Private Key:
 
-bd7a7eefb68dd27651ce5aadc7a2c0b0c8a40371d35a4614a11d41176c677152
+aeae8733ac057ef3591f1587390bcc620fdc4b8d91a0afe88c2e95168eccd8b4
 
 A private key is a 256-[bit](/docs/technical/general/bytes.md#bit) **randomly generated number**.
 
@@ -589,7 +589,7 @@ There are so many possible private keys that generating one *randomly* is enough
 
 ## [Public Key](/docs/technical/keys/public-key.md)
 
-[![Diagram showing a public key being created from a private key using elliptic curve mathematics.](../images/diagrams_png_keys-public-key.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key.png)
+[<img src="../images/diagrams_png_keys-public-key.png" alt="Diagram showing a public key being created from a private key using elliptic curve mathematics." width="295" height="287" />](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key.png)
 
 
 Generate Random
@@ -634,7 +634,7 @@ An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) o
 
 Example Public Key (compressed):
 
-02d41a576876f4212acb7abd9cf44fd099327fd951d80b86a9b73cabd3e8061758
+022f5282edbbee94d0c42afa3c169ef2b03f23914c5bd4a44abbbdbdacc865dd47
 
 A public key is a set of coordinates calculated from a private key.
 
@@ -648,7 +648,7 @@ Anyway, when you see a public key, you're actually looking at a set of **x and y
 
 ## [Address](/docs/technical/keys/address.md)
 
-[![Diagram showing a public key being converted to an address for convenience in making bitcoin transactions with other people.](../images/diagrams_png_keys-address-public-key.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-address-public-key.png)
+[<img src="../images/diagrams_png_keys-address-public-key.png" alt="Diagram showing a public key being converted to an address for convenience in making bitcoin transactions with other people." width="654" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/keys-address-public-key.png)
 
 An address is basically a **human-friendly** encoding of a public key.
 
@@ -663,7 +663,7 @@ Now, there are actually *different types* of addresses you can use in Bitcoin. T
 
 **This is a legacy address format.** This format was commonly used up until 2016 before the [Segregated Witness](/docs/technical/upgrades/segregated-witness.md) upgrade was introduced. You can still use it, but it's now more common to use [Bech32](/docs/technical/keys/bech32.md) addresses (see below).
 
-[![A diagram showing the structure of a P2PKH.](../images/diagrams_png_script-p2pkh.png)](https://static.learnmeabitcoin.com/diagrams/png/script-p2pkh.png)
+[<img src="../images/diagrams_png_script-p2pkh.png" alt="A diagram showing the structure of a P2PKH." width="1036" height="253" />](https://static.learnmeabitcoin.com/diagrams/png/script-p2pkh.png)
 
 A [base58](/docs/technical/keys/base58.md) address corresponds to a legacy [P2PKH](/docs/technical/script/p2pkh.md) locking script.
 
@@ -676,10 +676,10 @@ A public key or script for example
 `0 bytes`
 
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 RIPEMD-160
 
 HASH160
@@ -694,7 +694,7 @@ RIPEMD-160(SHA-256(data))
 
 Example Public Key Hash:
 
-50f5becf9a4cc046d2928834f4f713c23d61a146
+5a42499bf73f175901bd5cffa14c535c6ee5afb0
 
 You then put this public key hash through [Base58Check](/docs/technical/keys/base58.md#base58check) encoding, which adds a checksum to the public key hash and then converts the whole thing to base58 characters.
 
@@ -727,7 +727,7 @@ Base58 encoding of the above data
 
 Example Address (Base58):
 
-18P5T2vCnb6foStGk4GhR9jXZQ1EydK4sj
+19EFE1CjwGqrXTUau6z35LQUTs9LvioX7t
 
 So if you "send" bitcoins to this address using a [bitcoin wallet](/docs/beginners/wallets.md), the wallet will create a [P2PKH](/docs/technical/script/p2pkh.md) locking script using the public key hash contained within the address.
 
@@ -738,7 +738,7 @@ The base58 address format is also used for [P2SH](/docs/technical/script/p2sh.md
 
 ### Bech32 Address (P2WPKH)
 
-[![A diagram showing the structure of a P2WPKH.](../images/diagrams_png_script-p2wpkh.png)](https://static.learnmeabitcoin.com/diagrams/png/script-p2wpkh.png)
+[<img src="../images/diagrams_png_script-p2wpkh.png" alt="A diagram showing the structure of a P2WPKH." width="858" height="299" />](https://static.learnmeabitcoin.com/diagrams/png/script-p2wpkh.png)
 
 A [bech32](/docs/technical/keys/bech32.md) address corresponds to a [P2WPKH](/docs/technical/script/p2wpkh.md) locking script.
 
@@ -751,10 +751,10 @@ A public key or script for example
 `0 bytes`
 
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 RIPEMD-160
 
 HASH160
@@ -769,7 +769,7 @@ RIPEMD-160(SHA-256(data))
 
 Example Public Key Hash:
 
-50f5becf9a4cc046d2928834f4f713c23d61a146
+5a42499bf73f175901bd5cffa14c535c6ee5afb0
 
 You must only use **compressed public keys** when creating a bech32 address.
 
@@ -779,7 +779,7 @@ In short, this is a prefix of `0014` followed by the 20-byte public key hash. Fo
 
 Example P2WPKH ScriptPubKey:
 
-`001450f5becf9a4cc046d2928834f4f713c23d61a146`
+`00145a42499bf73f175901bd5cffa14c535c6ee5afb0`
 
 You can then convert this full P2WPKH ScriptPubKey to bech32:
 
@@ -818,7 +818,7 @@ Bech32 encoding of the ScriptPubKey
 
 Example Address (Bech32):
 
-bc1q2r6manu6fnqyd55j3q60facncg7krg2xh06tck
+bc1qtfpynxlh8ut4jqdatnl6znznt3hwttasryr8d0
 
 So if you "send" bitcoins to this address using a bitcoin wallet, the wallet will create a [P2WPKH](/docs/technical/script/p2wpkh.md) locking script using the public key hash contained within the address.
 

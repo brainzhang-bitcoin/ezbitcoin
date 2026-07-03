@@ -1,11 +1,11 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the longest chain of blocks in a blockchain.](../../images/diagrams_png_blockchain-longest-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain.png" alt="Diagram showing the longest chain of blocks in a blockchain." width="320" height="376" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain.png)
 
 Current Longest Chain:
 
-* **Height:** 956471
-* **[Chainwork](#chainwork):** 0x000000000000000000000000000000000000000134cd152c185fde26dc120668
+* **Height:** 956479
+* **[Chainwork](#chainwork):** 0x000000000000000000000000000000000000000134d0e337eef3b345d0a8d660
 
 The longest chain is what Bitcoin nodes accept as the **valid version** of the [blockchain](/docs/technical/blockchain.md).
 
@@ -25,14 +25,14 @@ The longest chain is the chain of blocks that took the **most effort to build**.
 
 In short, to add a new block to the blockchain you need to [use processing power](/docs/technical/mining.md), which means that every block on the blockchain requires a certain amount of *energy* to get there.
 
-[![Diagram showing a computer processor being used to mine a block on to the blockchain.](../../images/diagrams_png_blockchain-longest-chain-block-energy.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-energy.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-block-energy.png" alt="Diagram showing a computer processor being used to mine a block on to the blockchain." width="147" height="181" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-energy.png)
 
 
 Blocks are mined using processing power.
 
 Therefore, a blockchain with *more blocks* in it will have taken *more energy* to build than a chain with fewer blocks in it, and as a rule nodes will always adopt this chain over a "shorter" one.
 
-[![Diagram showing nodes adopting a longer chain instead of a shorter chain.](../../images/diagrams_png_blockchain-longest-chain-nodes-adopting.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-nodes-adopting.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-nodes-adopting.png" alt="Diagram showing nodes adopting a longer chain instead of a shorter chain." width="779" height="427" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-nodes-adopting.png)
 
 As a result, nodes will always adopt the chain that took the most energy to build, and this is what we mean when we refer to the "longest chain".
 
@@ -50,17 +50,17 @@ This is because changes to the [difficulty](/docs/beginners/guide/difficulty.md)
 
 For example, within the same difficulty period every new block requires the same amount of effort to be mined, and therefore adds the same amount of "work" to the chain:
 
-[![Diagram showing the difficulty for the first blocks in the blockchain.](../../images/diagrams_png_blockchain-longest-chain-difficulty.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-difficulty.png" alt="Diagram showing the difficulty for the first blocks in the blockchain." width="722" height="193" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty.png)
 
 However, if the difficulty increases (because blocks were mined more quickly than every 10 minutes on average), the blocks in the new difficulty period are going to take *more effort* to mine:
 
-[![Diagram showing an increased difficulty after the first target adjustment.](../../images/diagrams_png_blockchain-longest-chain-difficulty-adjustment.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty-adjustment.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-difficulty-adjustment.png" alt="Diagram showing an increased difficulty after the first target adjustment." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty-adjustment.png)
 
 Now, seeing as nodes adopt the chain with the most work, they wouldn't actually adopt a chain with *more* blocks in it if it didn't require as much work to build.
 
 For example, if you construct two different blockchains spanning multiple difficulty periods, nodes will adopt the one that has the most cumulative "chainwork", and not simply the one with the most blocks in it:
 
-[![Diagram showing the difference between a chain with the most work and a chain with the most blocks.](../../images/diagrams_png_blockchain-longest-chain-difficulty-adjustment-chainwork.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty-adjustment-chainwork.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-difficulty-adjustment-chainwork.png" alt="Diagram showing the difference between a chain with the most work and a chain with the most blocks." width="941" height="427" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-difficulty-adjustment-chainwork.png)
 
 
 The chain on the right has been constructed to keep the difficulty artificially low.
@@ -81,7 +81,7 @@ Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/que
 
 To work out chainwork, you just need to work out **how many hashes you would have needed to perform to mine each block** in the chain, then add them up.
 
-[![Diagram showing the calculation for chainwork.](../../images/diagrams_png_blockchain-longest-chain-chainwork.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-chainwork.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-chainwork.png" alt="Diagram showing the calculation for chainwork." width="937" height="386" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-chainwork.png)
 
 
 The total chainwork is the sum of the average number of expected hashes to mine each block in the chain.
@@ -189,14 +189,14 @@ Here are two situations where this proves to be useful:
 
 Due to the fact that bitcoin operates on a [network](/docs/technical/networking.md), it's possible for two independent computers to mine a block at the same time. In this situation, nodes across the network will end up being in disagreement about which of these two blocks should be at the top of the blockchain.
 
-[![Diagram showing two blocks mined at the same time across the network causing a temporary fork in the chain.](../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined.png" alt="Diagram showing two blocks mined at the same time across the network causing a temporary fork in the chain." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined.png)
 
 
 Each node puts the *first* block they receive at the top of their blockchain.
 
 However, this situation can be resolved by having nodes adopt the longest chain of blocks. This is because the **next block to be mined** will build upon *one* of these two blocks, creating a new longest chain that all nodes on the network will be happy to adopt.
 
-[![Diagram showing a temporary fork being resolved via a chain reorganization.](../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined-reorg.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined-reorg.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined-reorg.png" alt="Diagram showing a temporary fork being resolved via a chain reorganization." width="983" height="582" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined-reorg.png)
 
 
 Nodes are happy to abandon the shorter chain in favor of the new longer one. This is known as a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
@@ -211,7 +211,7 @@ If someone wanted to replace a [transaction](/docs/technical/transaction.md) in 
 
 However, if the majority of miners are continually working to extend the same current longest chain, an individual miner won't be able to compete to outwork the combined effort of all the other miners.
 
-[![Diagram showing how adopting the longest chain makes it difficult for attackers to rewrite the blockchain.](../../images/diagrams_png_blockchain-longest-chain-protection.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-protection.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-protection.png" alt="Diagram showing how adopting the longest chain makes it difficult for attackers to rewrite the blockchain." width="979" height="586" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-protection.png)
 
 
 You would need the majority of mining power to be able to out-run all other miners and build a new longest chain (known as a [51% Attack](/docs/technical/blockchain/51-attack.md)).
@@ -230,7 +230,7 @@ Because a miner can claim a [block reward](/docs/technical/mining/block-reward.m
 
 However, the bitcoins from this block reward can only be spent if the block becomes **100 blocks deep in the *longest chain***. Therefore, this block reward incentivizes miners to always try and mine new blocks that will become part of the longest chain (by always trying to build on to the current longest one).
 
-[![Diagram showing how a block reward can only be spent when the block reaches 100 blocks deep in the longest chain.](../../images/diagrams_png_blockchain-longest-chain-block-reward.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-reward.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-block-reward.png" alt="Diagram showing how a block reward can only be spent when the block reaches 100 blocks deep in the longest chain." width="707" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-reward.png)
 
 
 A block reward can only be spent if the block is part of the longest chain.
@@ -243,7 +243,7 @@ A [transaction](/docs/technical/transaction.md) inside a block that is not part 
 
 If you try to spend the [outputs](/docs/technical/transaction/output.md) from a transaction that is not in the longest chain, nodes would not accept this new transaction nor try to mine it into a block. This is because nodes only consider the **longest chain as the valid history of transactions**, and anything outside of that is not a valid transaction.
 
-[![Diagram showing a transaction that is not part of the longest chain as being invalid.](../../images/diagrams_png_blockchain-longest-chain-invalid-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-invalid-transaction.png)
+[<img src="../../images/diagrams_png_blockchain-longest-chain-invalid-transaction.png" alt="Diagram showing a transaction that is not part of the longest chain as being invalid." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-invalid-transaction.png)
 
 
 The outputs in a transaction not in the longest chain are unspendable.

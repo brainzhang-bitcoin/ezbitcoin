@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 Every [output](/docs/beginners/guide/outputs.md) in a [transaction](/docs/beginners/guide/transactions.md) has a lock on it. This lock is a **set of requirements** that must be met to spend the output in a future transaction.
 
@@ -6,21 +6,21 @@ So in other words, these locks prevent bitcoins from being stolen (i.e. someone 
 
 For example, a typical lock reads something like this:
 
-[![Diagram showing a simple lock placed on a transaction output.](../../images/beginners_guide_locks_01-output-lock-english.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/01-output-lock-english.png)
+[<img src="../../images/beginners_guide_locks_01-output-lock-english.png" alt="Diagram showing a simple lock placed on a transaction output." width="576" height="116" />](/docs/beginners/guide/locks/01-output-lock-english.png.md)
 
 ## When do locks get placed on outputs?
 
 As we know, a [transaction](/docs/beginners/guide/transactions.md) takes existing outputs and creates new ones from them:
 
-[![Diagram showing a simple transaction with inputs and outputs.](../../images/beginners_guide_locks_02-transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/02-transaction.png)
+[<img src="../../images/beginners_guide_locks_02-transaction.png" alt="Diagram showing a simple transaction with inputs and outputs." width="360" height="148" />](/docs/beginners/guide/locks/02-transaction.png.md)
 
 And it's during the creation of these outputs that we give each one their own "lock":
 
-[![Diagram showing a simple transaction with inputs and outputs, with locks on the outputs.](../../images/beginners_guide_locks_02-transaction-locks.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/02-transaction-locks.png)
+[<img src="../../images/beginners_guide_locks_02-transaction-locks.png" alt="Diagram showing a simple transaction with inputs and outputs, with locks on the outputs." width="364" height="161" />](/docs/beginners/guide/locks/02-transaction-locks.png.md)
 
 So when we want to send bitcoins to a friend, we create a new output, and add a lock that says "only the owner of the address 1friend1234567890... can use this output":
 
-[![Diagram showing a simple transaction with inputs and outputs, and the outputs are locked to addresses.](../../images/beginners_guide_locks_02-transaction-locks-addresses.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/02-transaction-locks-addresses.png)
+[<img src="../../images/beginners_guide_locks_02-transaction-locks-addresses.png" alt="Diagram showing a simple transaction with inputs and outputs, and the outputs are locked to addresses." width="661" height="270" />](/docs/beginners/guide/locks/02-transaction-locks-addresses.png.md)
 
 As a result, this new output will effectively "belong" to our friend, because they are the only person who has the [private key](/docs/beginners/guide/private-keys.md) required to unlock the bitcoins locked to this [address](/docs/technical/keys/address.md), so nobody else will be able to spend it.
 
@@ -30,21 +30,21 @@ As you may have noticed, you're never really "sending" bitcoins directly from yo
 
 Instead, you're constructing a transaction that creates new outputs (with locks on them), sending this transaction data into the [bitcoin network](/docs/beginners/guide/network.md), and waiting for it to get mined into the [blockchain](/docs/beginners/guide/blockchain.md).
 
-[![Diagram showing a transaction with inputs and outputs getting mined on to the blockchain.](../../images/beginners_guide_locks_aside-overview.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/aside-overview.png)
+[<img src="../../images/beginners_guide_locks_aside-overview.png" alt="Diagram showing a transaction with inputs and outputs getting mined on to the blockchain." width="314" height="493" />](/docs/beginners/guide/locks/aside-overview.png.md)
 
 So even though the blockchain is a file of transactions, on a practical level you can think of it as **storage for outputs**.
 
-[![Diagram showing individual outputs inside blocks in the blockchain.](../../images/beginners_guide_locks_aside-blockchain-outputs.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/aside-blockchain-outputs.png)
+[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs.png" alt="Diagram showing individual outputs inside blocks in the blockchain." width="91" height="269" />](/docs/beginners/guide/locks/aside-blockchain-outputs.png.md)
 
 The blockchain is just one big storage unit for outputs.
 
 And when you want to send "your" bitcoins to someone, you simply select the outputs in the blockchain that you are able to unlock:
 
-[![Diagram showing a transaction selecting outputs from the blockchain.](../../images/beginners_guide_locks_aside-blockchain-outputs-transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/aside-blockchain-outputs-transaction.png)
+[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs-transaction.png" alt="Diagram showing a transaction selecting outputs from the blockchain." width="495" height="272" />](/docs/beginners/guide/locks/aside-blockchain-outputs-transaction.png.md)
 
 And when this transaction gets mined into the blockchain, the outputs you used (as inputs) cannot be used again.
 
-[![Diagram showing a transaction spending existing outputs adding new outputs to the blockchain.](../../images/beginners_guide_locks_aside-blockchain-outputs-transaction-mined.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/aside-blockchain-outputs-transaction-mined.png)
+[<img src="../../images/beginners_guide_locks_aside-blockchain-outputs-transaction-mined.png" alt="Diagram showing a transaction spending existing outputs adding new outputs to the blockchain." width="608" height="718" />](/docs/beginners/guide/locks/aside-blockchain-outputs-transaction-mined.png.md)
 
 So the blockchain stores outputs, and you can spend any of these outputs any time you want (as long as you can unlock them, of course).
 
@@ -54,7 +54,7 @@ Locks are written in a basic programming language called [Script](/docs/technica
 
 It's a bit tricky to explain the workings of an entire programming language in one diagram, but here we go:
 
-[![Diagram showing an example locking script on an output.](../../images/beginners_guide_locks_03-locking-script.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/03-locking-script.png)
+[<img src="../../images/beginners_guide_locks_03-locking-script.png" alt="Diagram showing an example locking script on an output." width="416" height="153" />](/docs/beginners/guide/locks/03-locking-script.png.md)
 
 This is a simplified example of a locking script; it's not exactly what Script looks like.
 
@@ -68,15 +68,15 @@ If we can provide this lock with the correct private key (which the owner of the
 
 When you construct the transaction data, you include an "unlocking script" alongside each output you want to spend:
 
-[![Diagram showing an unlocking script alongside a transaction input.](../../images/beginners_guide_locks_04-unlocking-script.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/04-unlocking-script.png)
+[<img src="../../images/beginners_guide_locks_04-unlocking-script.png" alt="Diagram showing an unlocking script alongside a transaction input." width="564" height="122" />](/docs/beginners/guide/locks/04-unlocking-script.png.md)
 
 So for example, to unlock a typical locking script (e.g. `[address] CHECKPRIVATEKEY`), we need to prove that we *own* the address inside the lock. To do this, we provide the private key connected to the address.
 
-[![Diagram showing a private key placed inside the unlocking script of a transaction input.](../../images/beginners_guide_locks_04-unlocking-script-privkey.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/04-unlocking-script-privkey.png)
+[<img src="../../images/beginners_guide_locks_04-unlocking-script-privkey.png" alt="Diagram showing a private key placed inside the unlocking script of a transaction input." width="609" height="122" />](/docs/beginners/guide/locks/04-unlocking-script-privkey.png.md)
 
 So when a node receives this transaction data, they will run the "locking"+"unlocking" scripts together to see if your private key is mathematically connected to the address.
 
-[![Diagram showing a locking and unlocking script evaluating to true.](../../images/beginners_guide_locks_04-locking-unlocking-script-simple.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/04-locking-unlocking-script-simple.png)
+[<img src="../../images/beginners_guide_locks_04-locking-unlocking-script-simple.png" alt="Diagram showing a locking and unlocking script evaluating to true." width="704" height="73" />](/docs/beginners/guide/locks/04-locking-unlocking-script-simple.png.md)
 
 If everything is cool, the node accepts the transaction and passes it on to other nodes, who will each in turn run the "locking"+"unlocking" script before accepting the transaction.
 
@@ -90,13 +90,13 @@ Confession: We don't actually put our private key into the unlocking script.
 
 You see, to save us from giving our private key away within the transaction data, we use the private key to create something called a [digital signature](/docs/beginners/guide/digital-signatures.md) instead:
 
-[![Diagram showing a digital signature being created from a private key and being placed into an unlocking script.](../../images/beginners_guide_locks_05-unlocking-script-digitalsignature.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/05-unlocking-script-digitalsignature.png)
+[<img src="../../images/beginners_guide_locks_05-unlocking-script-digitalsignature.png" alt="Diagram showing a digital signature being created from a private key and being placed into an unlocking script." width="497" height="116" />](/docs/beginners/guide/locks/05-unlocking-script-digitalsignature.png.md)
 
 Obviously I lied about that `CHECKPRIVATEKEY` function as well.
 
 However, there *is* a function that compares an address with a digital signature, and it's called `CHECKSIG`:
 
-[![Diagram showing a digital signature unlocking the transaction input.](../../images/beginners_guide_locks_05-unlocking-script-digitalsignature-simple.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/05-unlocking-script-digitalsignature-simple.png)
+[<img src="../../images/beginners_guide_locks_05-unlocking-script-digitalsignature-simple.png" alt="Diagram showing a digital signature unlocking the transaction input." width="393" height="34" />](/docs/beginners/guide/locks/05-unlocking-script-digitalsignature-simple.png.md)
 
 And thanks to the mathematics of digital signatures and the `CHECKSIG` function, we can still lock outputs to addresses, and unlock them without having to give away the private key.
 

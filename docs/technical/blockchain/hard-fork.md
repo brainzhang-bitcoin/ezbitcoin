@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a hard fork in the blockchain.](../../images/diagrams_png_blockchain-forks-hard-fork.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork.png)
+[<img src="../../images/diagrams_png_blockchain-forks-hard-fork.png" alt="Diagram showing a hard fork in the blockchain." width="560" height="457" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork.png)
 
 A hard fork happens when an upgrade is made to the Bitcoin software that is *incompatible* with previous versions of the software.
 
@@ -11,7 +11,7 @@ As a result, unless everyone upgrades to the new software, the [blockchain](/doc
 1. A chain that is made up of blocks that follow the **old rules**.
 2. A chain that is made up of blocks that follow the **new rules**.
 
-[![Diagram showing a hard fork on the bitcoin network.](../../images/diagrams_png_blockchain-forks-hard-fork-network.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-network.png)
+[<img src="../../images/diagrams_png_blockchain-forks-hard-fork-network.png" alt="Diagram showing a hard fork on the bitcoin network." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-network.png)
 
 The old [nodes](/docs/technical/networking/node.md) cannot accept these new blocks, so **two parallel blockchains** will exist. This is known as a "hard fork" in the chain.
 
@@ -35,7 +35,7 @@ The hard-forking change begins when miners upgrade to the new version. The actua
 * New miners will start building a chain with 10 MB blocks.
 * Old miners will continue building a chain with 1 MB blocks only, and reject the new 10 MB blocks.
 
-[![Diagram showing the start of a hard fork in the blockchain when a new block is mined breaking the old rules.](../../images/diagrams_png_blockchain-forks-hard-fork-start.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-start.png)
+[<img src="../../images/diagrams_png_blockchain-forks-hard-fork-start.png" alt="Diagram showing the start of a hard fork in the blockchain when a new block is mined breaking the old rules." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-start.png)
 
 This hard fork will persist as long as the new chain (containing incompatible 10 MB blocks) remains as the [longest chain](/docs/technical/blockchain/longest-chain.md) on the network.
 
@@ -79,7 +79,7 @@ There are two main problems with a hard fork:
 
 **Anyone who does not upgrade will be left behind.** They will not receive the new incompatible blocks, and so they will be left in the dark about the latest transactions on the network.
 
-[![Diagram showing a node's blockchain falling behind due to not upgrading after a hard-forking change has been made to the software.](../../images/diagrams_png_blockchain-forks-hard-fork-left-behind.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-left-behind.png)
+[<img src="../../images/diagrams_png_blockchain-forks-hard-fork-left-behind.png" alt="Diagram showing a node's blockchain falling behind due to not upgrading after a hard-forking change has been made to the software." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-left-behind.png)
 
 In other words, people running the old software will fall behind and will be unaware of any new payments they may have received. They will not lose any of their bitcoins, but they will no longer be able to participate in the system as normal.
 
@@ -91,7 +91,7 @@ The worst case scenario would be a "contentious hard fork". This is where some m
 
 This will result in the blockchain branching into two parallel blockchains, effectively **splitting the currency** in two different directions.
 
-[![Diagram showing bitcoin as a currency splitting in two different directions after a contentious hard fork.](../../images/diagrams_png_blockchain-forks-hard-fork-currency-split.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-currency-split.png)
+[<img src="../../images/diagrams_png_blockchain-forks-hard-fork-currency-split.png" alt="Diagram showing bitcoin as a currency splitting in two different directions after a contentious hard fork." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-hard-fork-currency-split.png)
 
 This would cause confusion amongst users and merchants; who accepts which branch of the currency? How do you make sure you are transacting on the correct branch of the chain?
 

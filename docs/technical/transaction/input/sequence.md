@@ -1,6 +1,6 @@
-![Loading Tool](../../../images/icons_loader-2.svg)
+<img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram of showing the sequence fields alongside each transaction input.](../../../images/diagrams_png_transaction-sequence.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence.png)
+[<img src="../../../images/diagrams_png_transaction-sequence.png" alt="Diagram of showing the sequence fields alongside each transaction input." width="503" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence.png)
 
 The sequence field can be found inside every transaction [input](/docs/technical/transaction/input.md). It gives you control over when a transaction **can be mined** or if a transaction **can be replaced** whilst it's in the [mempool](/docs/technical/mining/memory-pool.md).
 
@@ -64,7 +64,7 @@ You only need to set *one* of the sequence fields to enable **locktime** or **RB
 
 ## Locktime
 
-[![Diagram showing the sequence field being set to enable the locktime field of a transaction.](../../../images/diagrams_png_transaction-sequence-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-locktime.png)
+[<img src="../../../images/diagrams_png_transaction-sequence-locktime.png" alt="Diagram showing the sequence field being set to enable the locktime field of a transaction." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-locktime.png)
 
 You can enable the [locktime](/docs/technical/transaction/locktime.md) field for the entire transaction if you set *any* of the input sequence values to 0xFFFFFFE or below.
 
@@ -86,7 +86,7 @@ To enable the locktime field, you need to set one of the sequence values in your
 
 You can then set the locktime field to between 0 and 499999999 for the transaction to be able to be mined after a certain block [height](/docs/technical/blockchain/height.md), or between 500000000 and 4294967295 for it to be mined after a specific point in time (i.e. a Unix timestamp).
 
-![Tool Icon](../../../images/icons_tool.svg) Unix Time
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
 
 Unix Time
 
@@ -104,7 +104,7 @@ Date
 
 [BIP 125](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki)
 
-[![Diagram showing the sequence field being set to enable the replace by fee feature on a transaction.](../../../images/diagrams_png_transaction-sequence-replace-by-fee.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-replace-by-fee.png)
+[<img src="../../../images/diagrams_png_transaction-sequence-replace-by-fee.png" alt="Diagram showing the sequence field being set to enable the replace by fee feature on a transaction." width="733" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-replace-by-fee.png)
 
 You can allow for a transaction to be replaced by a higher-fee transaction later on (whilst it's still in the [memory pool](/docs/technical/mining/memory-pool.md)) by setting the sequence value on *any* of its inputs to 0xFFFFFFFD or below.
 
@@ -136,7 +136,7 @@ A few notes on using RBF:
 
 ### Setting Higher Fees
 
-[![Diagram showing the transactions fees on replacement transactions including the size of the fees of the transactions they are replacing.](../../../images/diagrams_png_transaction-replace-by-fee-increase.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee-increase.png)
+[<img src="../../../images/diagrams_png_transaction-replace-by-fee-increase.png" alt="Diagram showing the transactions fees on replacement transactions including the size of the fees of the transactions they are replacing." width="355" height="284" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee-increase.png)
 
 The fee on the replacement transaction must be enough to cover the *minimum relay fee*, **plus the size of fee(s) on the transaction(s) it replaces**.
 
@@ -201,7 +201,7 @@ But in general, for a straightforward replace-by-fee transaction you're just loo
 
 [BIP 68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki)
 
-[![Diagram showing the sequence field being used to set a relative locktime on the transaction.](../../../images/diagrams_png_transaction-sequence-relative-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-relative-locktime.png)
+[<img src="../../../images/diagrams_png_transaction-sequence-relative-locktime.png" alt="Diagram showing the sequence field being used to set a relative locktime on the transaction." width="741" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-relative-locktime.png)
 
 > Relative lock-time (RLT) enables a signed transaction input to remain invalid for a defined period of time after confirmation of its corresponding outpoint.
 
@@ -426,16 +426,6 @@ Any sequence value of 0x80000000 or above will disable the relative locktime fea
 ### Code
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # -----------------
 # Bitwise Operators
 # -----------------

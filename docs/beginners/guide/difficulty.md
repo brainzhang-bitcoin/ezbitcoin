@@ -1,12 +1,12 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Illustration showing the difficulty controlling the time it takes to add a new block to the blockchain.](../../images/beginners_guide_difficulty_00-difficulty.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/00-difficulty.png)
+[<img src="../../images/beginners_guide_difficulty_00-difficulty.png" alt="Illustration showing the difficulty controlling the time it takes to add a new block to the blockchain." width="304" height="322" />](/docs/beginners/guide/difficulty/00-difficulty.png.md)
 
 Current Difficulty:
 
 133,869,853,540,305.41
 
-Height: [956,471](/explorer/956471)
+Height: [956,479](/explorer/956479)
 
 The difficulty is a number that represents how difficult it is for miners to add new [blocks](/docs/beginners/guide/blocks.md) of [transactions](/docs/beginners/guide/transactions.md) to the [blockchain](/docs/beginners/guide/blockchain.md).
 
@@ -58,19 +58,19 @@ Okay, I'll start with a simple example, and build on it from there.
 
 Let's say I give you a range of numbers from 1 to 100.
 
-[![Diagram showing a y-axis between 1 and 100.](../../images/beginners_guide_difficulty_01-range.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/01-range.png)
+[<img src="../../images/beginners_guide_difficulty_01-range.png" alt="Diagram showing a y-axis between 1 and 100." width="191" height="162" />](/docs/beginners/guide/difficulty/01-range.png.md)
 
 Now, let's say you are able to randomly generate a number between 1 and 100 *once every minute*, and **your goal is to generate a number below my *target* number**.
 
 So let's say I set the target at **50**:
 
-[![Diagram showing the number 50 on a y-axis between 1 and 100.](../../images/beginners_guide_difficulty_01-range_target.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/01-range_target.png)
+[<img src="../../images/beginners_guide_difficulty_01-range_target.png" alt="Diagram showing the number 50 on a y-axis between 1 and 100." width="295" height="162" />](/docs/beginners/guide/difficulty/01-range_target.png.md)
 
 Seeing as you're only able to generate a number *once a minute*, this should take you **2 minutes** on average to find a number below this target value.
 
 But that's too easy. So let's say I lower the target to **20**, which means you're only going to be able to generate a winning number 1/5 of the time, or once every **5 minutes**:
 
-[![Diagram showing the number 20 on a y-axis between 1 and 100.](../../images/beginners_guide_difficulty_01-range_target_20.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/01-range_target_20.png)
+[<img src="../../images/beginners_guide_difficulty_01-range_target_20.png" alt="Diagram showing the number 20 on a y-axis between 1 and 100." width="191" height="162" />](/docs/beginners/guide/difficulty/01-range_target_20.png.md)
 
 The lower the target, the more *difficult* it gets to generate a winning number.
 
@@ -82,7 +82,7 @@ It's not going to be exactly 5 minutes *every* time, because you could get lucky
 
 Instead of telling you the target value *directly*, I could give you the target by **dividing the range of numbers** with a *new number*:
 
-[![Diagram showing a number being used to control the height of the target on a y-axis between 1 and 100.](../../images/beginners_guide_difficulty_01-range_target_difficulty.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/01-range_target_difficulty.png)
+[<img src="../../images/beginners_guide_difficulty_01-range_target_difficulty.png" alt="Diagram showing a number being used to control the height of the target on a y-axis between 1 and 100." width="218" height="276" />](/docs/beginners/guide/difficulty/01-range_target_difficulty.png.md)
 
 This *new number* is the **difficulty**, and it's used to modify the height of the target.
 
@@ -94,7 +94,7 @@ target = max target / difficulty
 
 So now I can use this *difficulty* value to help me set the target to any level I want:
 
-[![Diagram showing how different difficulty values can adjust the target value on a y-axis between 1 and 100.](../../images/beginners_guide_difficulty_01-range_target_difficulty_examples.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/01-range_target_difficulty_examples.png)
+[<img src="../../images/beginners_guide_difficulty_01-range_target_difficulty_examples.png" alt="Diagram showing how different difficulty values can adjust the target value on a y-axis between 1 and 100." width="690" height="246" />](/docs/beginners/guide/difficulty/01-range_target_difficulty_examples.png.md)
 
 Therefore, I use the *difficulty* to control the *target*, which in turn controls how long it takes for you to generate a winning number below the target.
 
@@ -105,15 +105,15 @@ Therefore, I use the *difficulty* to control the *target*, which in turn control
 
 The difficulty in bitcoin works in exactly the same way – it's used to set a target value, and miners keep generating numbers ([hashing](/docs/technical/cryptography/hash-function.md) their candidate [blocks](/docs/beginners/guide/blocks.md)) in the hope that they will find a [block hash](/docs/technical/block/hash.md) below the target value:
 
-[![Diagram showing a block hash trying to get below a target value.](../../images/beginners_guide_difficulty_02-bitcoin_target_hash.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/02-bitcoin_target_hash.png)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_target_hash.png" alt="Diagram showing a block hash trying to get below a target value." width="490" height="179" />](/docs/beginners/guide/difficulty/02-bitcoin_target_hash.png.md)
 
 And seeing as miners are able to generate thousands of numbers (hashes) per second, bitcoin uses extremely large numbers for the target:
 
-[![Diagram showing a y-axis between 1 and a very large number.](../../images/beginners_guide_difficulty_02-bitcoin_range.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/02-bitcoin_range.png)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range.png" alt="Diagram showing a y-axis between 1 and a very large number." width="721" height="159" />](/docs/beginners/guide/difficulty/02-bitcoin_range.png.md)
 
 And due to the fact that there are now thousands of miners trying to find winning numbers, to ensure that a winning number is found every 10 minutes (instead of every few seconds), the range of successful numbers ends up being absolutely tiny:
 
-[![Diagram showing the target being very low relative to the scale of the y-axis.](../../images/beginners_guide_difficulty_02-bitcoin_range_target.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/02-bitcoin_range_target.png)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range_target.png" alt="Diagram showing the target being very low relative to the scale of the y-axis." width="725" height="251" />](/docs/beginners/guide/difficulty/02-bitcoin_range_target.png.md)
 
 Even though that difficulty number looks big, the target is still absurdly difficult to get under. It's like a lottery.
 
@@ -121,7 +121,7 @@ Even though that difficulty number looks big, the target is still absurdly diffi
 
 Because these target numbers are so big, we typically display them in the shorter [hexadecimal](/docs/technical/general/hexadecimal.md) format.
 
-[![Diagram showing the target and range in hexadecimal.](../../images/beginners_guide_difficulty_02-bitcoin_range_target_hex.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/02-bitcoin_range_target_hex.png)
+[<img src="../../images/beginners_guide_difficulty_02-bitcoin_range_target_hex.png" alt="Diagram showing the target and range in hexadecimal." width="688" height="211" />](/docs/beginners/guide/difficulty/02-bitcoin_range_target_hex.png.md)
 
 That's why block hashes look like this: `000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506`
 
@@ -129,7 +129,7 @@ But even though it contains letters, it's *still a number*. So the target is a h
 
 In fact, you can easily convert between hexadecimal and "normal" numbers (aka decimal numbers):
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -176,7 +176,7 @@ Just remember that both these decimal and hexadecimal numbers have the *same **v
 
 Awkwardly, the difficulty is usually given in decimal format, whereas block hashes and targets in hexadecimal:
 
-[![Diagram showing the target and range in hexadecimal.](../../images/beginners_guide_difficulty_blockheader_hexadecimal_decimal.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/blockheader_hexadecimal_decimal.png)
+[<img src="../../images/beginners_guide_difficulty_blockheader_hexadecimal_decimal.png" alt="Diagram showing the target and range in hexadecimal." width="859" height="482" />](/docs/beginners/guide/difficulty/blockheader_hexadecimal_decimal.png.md)
 
 
 The target is hexadecimal, but it is stored in a compact format in the block header called [bits](/docs/technical/block/bits.md).
@@ -225,7 +225,7 @@ target = 0x000000000004864c000000000000000000000000000000000000000000000000
 
 Now, if we convert both of these values to decimal and divide them, we get the difficulty:
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -309,7 +309,7 @@ difficulty = 14484.162361
 
 The *max target* is currently in hexadecimal format though, so let's convert that to decimal.
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -365,7 +365,7 @@ hash   = 0x000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506
 
 Oh yeah, the hash is in hexadecimal format. Let's convert from hexadecimal to decimal again so that we can compare the two numbers:
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -405,7 +405,7 @@ Yep, that hash *is* lower than the target, so the block can be added to the bloc
 
 You can find the current difficulty using the `bitcoin-cli getdifficulty` command:
 
-[![Screenshot showing the results of a 'getdifficulty' command in the Bitcoin Core client.](../../images/beginners_guide_difficulty_getdifficulty.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/getdifficulty.png)
+[<img src="../../images/beginners_guide_difficulty_getdifficulty.png" alt="Screenshot showing the results of a 'getdifficulty' command in the Bitcoin Core client." width="476" height="523" />](/docs/beginners/guide/difficulty/getdifficulty.png.md)
 
 * The current difficulty can also be found within `bitcoin-cli getmininginfo`.
 * Here's a chart showing the change in difficulty over time: [blockchain.com/explorer/charts/difficulty](https://www.blockchain.com/explorer/charts/difficulty)

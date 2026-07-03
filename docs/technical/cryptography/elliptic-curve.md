@@ -1,7 +1,7 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Graph showing the shape of an elliptic curve.](../../images/technical_cryptography_elliptic-curve_elliptic-curve.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/elliptic-curve.png)
-[![Equation for an elliptic curve.](../../images/technical_cryptography_elliptic-curve_latex-elliptic-curve-equation.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/latex-elliptic-curve-equation.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_elliptic-curve.png" alt="Graph showing the shape of an elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/elliptic-curve.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_latex-elliptic-curve-equation.png" alt="Equation for an elliptic curve." width="412" height="57" />](/docs/technical/cryptography/elliptic-curve/latex-elliptic-curve-equation.png.md)
 
 An elliptic curve is used as the basis for some cryptographic systems.
 
@@ -17,16 +17,6 @@ So in short, **elliptic curves have mathematical properties that make them usefu
 Satoshi chose the **secp256k1** curve for use with [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md), which has the following parameters:
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # y² = x³ + ax + b
 $a = 0
 $b = 7
@@ -48,7 +38,7 @@ $G = {
 * `p` – This is the **prime modulus**. It's a number that keeps all of the numbers within a specific range when performing mathematical calculations (again it's specific to *secp256k1*). The fact that it's a prime number is a key ingredient for the cryptography to work.
 * `n` – This is the **order**. It's the **number of points on the curve** that we can reach. It's less than `p`, and it's influenced by the chosen generator point (see below).
 * `G` – This is the **generator point**. This is the *starting point* on the curve used when performing most mathematical operations. The exact origin for the [choice of this point is unknown](https://crypto.stackexchange.com/questions/60420/what-does-the-special-form-of-the-base-point-of-secp256k1-allow/60421#60421), but it's usually because it provides a high *order* (see above) and has shown to not have any inherent cryptographic weaknesses.  
-  [![Graph showing an example of a generator point on an elliptic curve.](../../images/technical_cryptography_elliptic-curve_point-generator.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/point-generator.png)
+  [<img src="../../images/technical_cryptography_elliptic-curve_point-generator.png" alt="Graph showing an example of a generator point on an elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/point-generator.png.md)
 
 **Secp256k1** is just the name for [one of the specific elliptic curves](http://www.secg.org/sec2-v2.pdf) used in cryptography. It's short for:
 
@@ -71,14 +61,14 @@ Satoshi Nakamoto, [Email to Mike Hearn (Jan 10, 2011)](https://plan99.net/~mike/
 
 The diagrams I'm using in this tutorial show a smooth elliptic curve like this:
 
-[![Graph showing an elliptic curve over real numbers (showing example point at x=1.123, y=2.90107701845366).](../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-real-numbers.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/sage-elliptic-curve-real-numbers.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-real-numbers.png" alt="Graph showing an elliptic curve over real numbers (showing example point at x=1.123, y=2.90107701845366)." width="780" height="640" />](/docs/technical/cryptography/elliptic-curve/sage-elliptic-curve-real-numbers.png.md)
 
 
 An elliptic curve over real numbers.
 
 However, the actual curve used in Bitcoin looks more like a scatter plot of points like this:
 
-[![Graph showing an elliptic curve over a finite field mod 47 (showing example point at x=17, y=19).](../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-47.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/sage-elliptic-curve-finite-field-47.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-47.png" alt="Graph showing an elliptic curve over a finite field mod 47 (showing example point at x=17, y=19)." width="780" height="640" />](/docs/technical/cryptography/elliptic-curve/sage-elliptic-curve-finite-field-47.png.md)
 
 
 An elliptic curve over a finite field (mod 47).
@@ -89,7 +79,7 @@ However, even though these plots look wildly different, **the mathematical opera
 
 Of course, the *secp256k1* curve has a *very large* value for `p`, so it more closely resembles the graph below, except imagine there are about as many points on it as there are atoms in the universe:
 
-[![Graph showing an elliptic curve over a finite field mod 2503 (showing example point at x=17, y=19).](../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-2503.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/sage-elliptic-curve-finite-field-2503.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-2503.png" alt="Graph showing an elliptic curve over a finite field mod 2503 (showing example point at x=17, y=19)." width="780" height="640" />](/docs/technical/cryptography/elliptic-curve/sage-elliptic-curve-finite-field-2503.png.md)
 
 
 An elliptic curve over a finite field (mod 2503).
@@ -181,7 +171,7 @@ The is because the `double()` and `add()` equations include the *division* `/` o
 
 However, there is no straightforward *division* operation within a finite field of numbers. Instead, you can **multiply by the *inverse*** of a number to achieve the same result as *division*:
 
-[![Animation showing showing the modular inverse of a number within a finite field.](../../images/technical_cryptography_elliptic-curve_modular-inverse.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/modular-inverse.gif)
+[<img src="../../images/technical_cryptography_elliptic-curve_modular-inverse.gif" alt="Animation showing showing the modular inverse of a number within a finite field." width="574" height="232" />](/docs/technical/cryptography/elliptic-curve/modular-inverse.gif.md)
 
 
 In the finite field of **47**, the modular multiplicative inverse of **13** is **29**.
@@ -197,16 +187,6 @@ So the first step in elliptic curve mathematics is to be able to find the invers
 #### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 def inverse(a, m = $p)
 
   # store original modulus
@@ -247,7 +227,7 @@ end
 
 The modular inverse of a number is typically denoted by `⁻¹` in mathematical equations.
 
-[![Diagram showing the mathematical notation for the modular inverse of a number.](../../images/technical_cryptography_elliptic-curve_inverse-notation.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/inverse-notation.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_inverse-notation.png" alt="Diagram showing the mathematical notation for the modular inverse of a number." width="317" height="73" />](/docs/technical/cryptography/elliptic-curve/inverse-notation.png.md)
 
 In the upcoming operations, the inverse of a number is sometimes found `mod p` (modulo the *prime number*), and is sometimes found `mod n` (modulo the *number of points* on the curve).
 
@@ -289,29 +269,19 @@ y:
 
 From a visual perspective, to "double" a point you draw a *tangent* to the curve at the given point, then find the point on the curve this line intersects (there will only be one), then take the reflection of this point across the x-axis.
 
-[![Graph showing how to double a point on an elliptic curve.](../../images/technical_cryptography_elliptic-curve_point-double.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/point-double.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_point-double.png" alt="Graph showing how to double a point on an elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/point-double.png.md)
 
 
 `P` is a general point on the curve.  
 `s` refers to the slope of the tangent.
 
-[![Equation for doubling a point on an elliptic curve.](../../images/technical_cryptography_elliptic-curve_latex-point-double.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/latex-point-double.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_latex-point-double.png" alt="Equation for doubling a point on an elliptic curve." width="404" height="185" />](/docs/technical/cryptography/elliptic-curve/latex-point-double.png.md)
 
 
 
 #### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 def double(point)
   # slope = (3x₁² + a) / 2y₁
   slope = ((3 * point[:x] ** 2 + $a) * inverse((2 * point[:y]), $p)) % $p # using inverse to help with division
@@ -386,28 +356,18 @@ As expected, "addition" of two points in elliptic curve mathematics isn't the sa
 
 From a visual perspective, to "add" two points together you draw a line between them, then find the point on the curve this line intersects (there will only be one), then take the reflection of this point across the x-axis.
 
-[![Graph showing how to add two points on an elliptic curve.](../../images/technical_cryptography_elliptic-curve_point-add.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/point-add.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_point-add.png" alt="Graph showing how to add two points on an elliptic curve." width="330" height="330" />](/docs/technical/cryptography/elliptic-curve/point-add.png.md)
 
 
 `Q` is a second general point on the curve.
 
-[![Equation for adding two points on an elliptic curve.](../../images/technical_cryptography_elliptic-curve_latex-point-add.png)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/latex-point-add.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_latex-point-add.png" alt="Equation for adding two points on an elliptic curve." width="404" height="169" />](/docs/technical/cryptography/elliptic-curve/latex-point-add.png.md)
 
 
 
 #### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 def add(point1, point2)
   # double if both points are the same
   if point1 == point2
@@ -488,7 +448,7 @@ Thankfully, there is a faster way to perform *multiplication* on elliptic curves
 
 #### Double-and-add algorithm
 
-[![Animation showing how to multiply a point on an elliptic curve.](../../images/technical_cryptography_elliptic-curve_point-multiply.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/point-multiply.gif)
+[<img src="../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](/docs/technical/cryptography/elliptic-curve/point-multiply.gif.md)
 
 
 `3P = 2P + P` (one double, one add)
@@ -527,16 +487,6 @@ Anyway, here's what **elliptic curve multiplication** looks like when *using the
 #### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 def multiply(k, point = $G)
   # create a copy the initial starting point (for use in addition later on)
   current = point

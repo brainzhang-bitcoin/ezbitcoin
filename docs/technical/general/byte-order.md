@@ -1,14 +1,4 @@
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # hexadecimal string
 hex_string = "6fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000"
 

@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing how a checksum is used for detecting errors in data.](../../images/diagrams_png_bytes-checksum.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum.png)
+[<img src="../../images/diagrams_png_bytes-checksum.png" alt="Diagram showing how a checksum is used for detecting errors in data." width="544" height="140" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum.png)
 
 A checksum is a small piece of data that allows you to check if another piece of **data is the same as expected**.
 
@@ -34,11 +34,11 @@ To be more precise, a checksum can be added to the end of some data to create a 
 
 So when you re-enter this entire piece of data somewhere later on, you can make sure that everything is correct by checking that the `data` still matches the `checksum`:
 
-[![Diagram showing some data with a valid checksum.](../../images/diagrams_png_bytes-checksum-valid.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-valid.png)
+[<img src="../../images/diagrams_png_bytes-checksum-valid.png" alt="Diagram showing some data with a valid checksum." width="650" height="200" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-valid.png)
 
 If you were to make a mistake, the `data` will not match the `checksum` (or vice versa) and you can be alerted that the data is incorrect in some way:
 
-[![Diagram showing some data with an invalid checksum.](../../images/diagrams_png_bytes-checksum-invalid.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-invalid.png)
+[<img src="../../images/diagrams_png_bytes-checksum-invalid.png" alt="Diagram showing some data with an invalid checksum." width="706" height="247" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-invalid.png)
 
 **This type of checksum does not help with error *correction*.** The checksum will *detect* errors, but it will not help by telling you where the error is or how it should be corrected.
 
@@ -59,7 +59,7 @@ Modern [Bech32](/docs/technical/keys/bech32.md) addresses also contain checksums
 
 How do you create a checksum?
 
-[![Diagram showing a checksum as the first 4 bytes of the HASH256 of some data.](../../images/diagrams_png_bytes-checksum-create.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-create.png)
+[<img src="../../images/diagrams_png_bytes-checksum-create.png" alt="Diagram showing a checksum as the first 4 bytes of the HASH256 of some data." width="771" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-create.png)
 
 A checksum is created by taking the **first 4 [bytes](/docs/technical/general/bytes.md) of the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) of some data**.
 
@@ -71,7 +71,7 @@ hash256(data) = 05c4de7c1069e9de703efd172e58c1919f48ae03910277a49c9afd7ded58bbeb
 checksum      = 05c4de7c
 ```
 
-![Tool Icon](../../images/icons_tool.svg) HASH256
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
 Random Transaction Data
 
@@ -82,10 +82,10 @@ Data (Hex)
 `0 bytes`
 
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 HASH256
@@ -99,16 +99,6 @@ SHA-256(SHA-256(data))
 0 secs
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # ---------
 # Functions
 # ---------
@@ -163,16 +153,6 @@ checksum      = 05c4de7c <- it matches
 This is just a simple example, but the process is the same throughout Bitcoin.
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # ---------
 # Functions
 # ---------

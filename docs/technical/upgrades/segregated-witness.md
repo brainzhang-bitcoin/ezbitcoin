@@ -1,10 +1,10 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 * [BIP 141: Segregated Witness (Consensus layer)](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
 * [BIP 143: Transaction Signature Verification for Version 0 Witness Program](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
 * [BIP 144: Segregated Witness (Peer Services)](https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki)
 
-[![SegWit Logo](../../images/icons_segwit.svg)](https://static.learnmeabitcoin.com/assets/icons/segwit.svg)
+[<img src="../../images/icons_segwit.svg" alt="SegWit Logo" width="3923" height="995" style="width: 24px; height: 24px;" />](https://static.learnmeabitcoin.com/assets/icons/segwit.svg)
 
 Segregated Witness (SegWit) was a major upgrade to the Bitcoin software activated in 2017 (block [481,824](/explorer/block/0000000000000000001c8018d9cb3b742ef25114f27563e3fc4a1902167f9893)).
 
@@ -38,7 +38,7 @@ I'll start with the most significant changes first (the ones you're most likely 
 
 ### 1. Transaction Structure
 
-[![Diagram showing the new witness section of a transaction used for unlocking inputs.](../../images/diagrams_png_transaction-witness.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness.png)
+[<img src="../../images/diagrams_png_transaction-witness.png" alt="Diagram showing the new witness section of a transaction used for unlocking inputs." width="450" height="420" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness.png)
 
 The primary change was the addition of a new [segwit transaction](/docs/technical/transaction.md#example-segwit) structure.
 
@@ -49,7 +49,7 @@ So whereas legacy transactions would use the [ScriptSig](/docs/technical/transac
 * Legacy locking scripts (e.g. [P2PKH](/docs/technical/script/p2pkh.md), [P2SH](/docs/technical/script/p2sh.md)) still need to be unlocked using the ScriptSig field. It's only the new locking scripts (e.g. [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md)) that use the new witness field for unlocking.
 * Legacy transactions that do not use the witness section for unlocking inputs are therefore still vulnerable to transaction malleability.
 
-![Tool Icon](../../images/icons_tool.svg) Transaction Splitter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Splitter
 
 Random Example
 
@@ -71,7 +71,7 @@ Result
 
 ### 2. Transaction Size Calculation
 
-[![Diagram showing the size calculation of a transaction in terms of weight.](../../images/diagrams_png_transaction-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
+[<img src="../../images/diagrams_png_transaction-weight.png" alt="Diagram showing the size calculation of a transaction in terms of weight." width="699" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
 
 With the addition of the [new witness field](#transaction-structure), transactions were also given a **new [size](/docs/technical/transaction/size.md) calculation called [weight](/docs/technical/transaction/size.md#weight)**.
 
@@ -97,7 +97,7 @@ With virtual bytes, legacy transactions maintain the same size measurement, and 
 
 You'll typically see the virtual bytes measurement on [blockchain explorers](/explorer/), but internally Bitcoin uses weight to determine how many transactions can fit inside a [block](/docs/technical/block.md).
 
-![Tool Icon](../../images/icons_tool.svg) Transaction Splitter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Splitter
 
 Random Example
 
@@ -119,7 +119,7 @@ Result
 
 ### 3. Block Size Increase
 
-[![Diagram showing the block size limit in terms of weight.](../../images/diagrams_png_block-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
+[<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing the block size limit in terms of weight." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
 Using the [new weight calculation](#transaction-size-calculation) for transactions, the [block size limit](/docs/technical/block.md#weight) was changed from **1,000,000 *bytes*** to **4,000,0000 *weight units***.
 
@@ -132,9 +132,9 @@ Seeing as transaction data always contains *some legacy data* along with the new
 Two new locking script patterns were introduced to take advantage of the [new witness field](#transaction-structure) for unlocking certain types of outputs:
 
 1. [P2WPKH](/docs/technical/script/p2wpkh.md)
-   [![A diagram showing the structure of a P2WPKH.](../../images/diagrams_png_script-p2wpkh.png)](https://static.learnmeabitcoin.com/diagrams/png/script-p2wpkh.png)
+   [<img src="../../images/diagrams_png_script-p2wpkh.png" alt="A diagram showing the structure of a P2WPKH." width="858" height="299" />](https://static.learnmeabitcoin.com/diagrams/png/script-p2wpkh.png)
 2. [P2WSH](/docs/technical/script/p2wsh.md)
-   [![A diagram showing the structure of a P2WSH.](../../images/diagrams_png_script-p2wsh.png)](https://static.learnmeabitcoin.com/diagrams/png/script-p2wsh.png)
+   [<img src="../../images/diagrams_png_script-p2wsh.png" alt="A diagram showing the structure of a P2WSH." width="964" height="379" />](https://static.learnmeabitcoin.com/diagrams/png/script-p2wsh.png)
 
 These are *functionally* the same as the legacy [P2PKH](/docs/technical/script/p2pkh.md) and [P2SH](/docs/technical/script/p2sh.md) locking scripts.
 
@@ -142,7 +142,7 @@ The main difference is that P2WPKH and P2WSH are unlocked using the [witness](/d
 
 **The new P2WPKH and P2WSH locking scripts *do not* use the traditional [Script](/docs/technical/script.md) language for locking and unlocking.** They use a fixed structure of bytes instead, and have their own hard-coded method for execution. But nonetheless, they are still functionally the same as P2PKH and P2SH.
 
-![Tool Icon](../../images/icons_tool.svg) Script
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Script
 
 Random ScriptPubKey
 Random ScriptSig
@@ -150,8 +150,8 @@ Random ScriptSig
 Hex
 
 
-![Decrease Text Box Size](../../images/icons_arrow-up.svg)
-![Increase Text Box Size](../../images/icons_arrow-down.svg)
+<img src="../../images/icons_arrow-up.svg" alt="Decrease Text Box Size" style="width:24px; height:24px;" />
+<img src="../../images/icons_arrow-down.svg" alt="Increase Text Box Size" style="width:24px; height:24px;" />
 
 `0 bytes`
 
@@ -181,7 +181,7 @@ The [new P2WPKH and P2WSH locking scripts](#locking-scripts) use the new **[Bech
 
 These Bech32 addresses allow for **better error-detection** and are **easier to transcribe**.
 
-![Tool Icon](../../images/icons_tool.svg) Address (Bech32)
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Address (Bech32)
 
 Generate Random
 
@@ -230,15 +230,15 @@ So now the process for creating signatures to unlock P2WPKH and P2WSH locking sc
 
 ### 7. wTXID Commitment
 
-[![Diagram showing the wtxid commitment inside a block.](../../images/diagrams_png_block-wtxid-commitment.png)](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
+[<img src="../../images/diagrams_png_block-wtxid-commitment.png" alt="Diagram showing the wtxid commitment inside a block." width="810" height="499" />](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
 
 Due to the fact that [new segwit transactions](#transaction-structure) contain data that is no longer part of the [TXID](/docs/technical/transaction/input/txid.md), this new witness data needs to be *committed* to the block via a [wTXID commitment](/docs/technical/transaction/wtxid.md#commitment).
 
 So in addition to the TXID (which does not include the new fields in a segwit transaction), each transaction also has a [wTXID](/docs/technical/transaction/wtxid.md) that is calculated by hashing all the data in a segwit transaction (which does includes the new fields in a segwit transaction).
 
-[![Diagram showing the wTXID being calculated from the raw transaction data including the new segwit fields.](../../images/diagrams_png_transaction-witness-wtxid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
+[<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the new segwit fields." width="764" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
 
-![Tool Icon](../../images/icons_tool.svg) TXID
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> TXID
 
 Random Example
 
@@ -266,7 +266,7 @@ Used externally when searching for transactions on block explorers
 
 0 secs
 
-![Tool Icon](../../images/icons_tool.svg) wTXID
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> wTXID
 
 Random Example
 

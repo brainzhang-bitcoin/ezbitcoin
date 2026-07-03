@@ -1,6 +1,6 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram of the structure of a bitcoin block showing the block header fields and the transactions.](../images/diagrams_png_block.png)](https://static.learnmeabitcoin.com/diagrams/png/block.png)
+[<img src="../images/diagrams_png_block.png" alt="Diagram of the structure of a bitcoin block showing the block header fields and the transactions." width="636" height="688" />](https://static.learnmeabitcoin.com/diagrams/png/block.png)
 
 A block is a container for [transactions](/docs/technical/transaction.md).
 
@@ -51,7 +51,7 @@ Every raw block begins with a block *header*.
 
 The block header contains a **summary of the block's contents**, and is used to create the [block hash](/docs/technical/block/hash.md).
 
-![Tool Icon](../images/icons_tool.svg) Block Header
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
 
 Random Example
 
@@ -165,7 +165,7 @@ This is the HASH256 of the hex block header. It's also in reverse byte order, be
 * Format: little-endian
 * Example: `01000000` (i.e. 0x00000001 in little-endian)
 
-[![Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks.](../images/diagrams_png_block-version.png)](https://static.learnmeabitcoin.com/diagrams/png/block-version.png)
+[<img src="../images/diagrams_png_block-version.png" alt="Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks." width="639" height="404" />](https://static.learnmeabitcoin.com/diagrams/png/block-version.png)
 
 The *version* field is used to **signal for upgrades** to Bitcoin.
 
@@ -190,7 +190,7 @@ If you look at most blocks since 2016 they will appear to have unusually large "
 * Format: natural byte order
 * Example: `6fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000`
 
-[![Diagram showing blocks connected together through block hashes in the block header using the previous block field.](../images/diagrams_png_block-previous-block.png)](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
+[<img src="../images/diagrams_png_block-previous-block.png" alt="Diagram showing blocks connected together through block hashes in the block header using the previous block field." width="397" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
 
 The *previous block* field contains the **hash of an existing block**, which is what the current block builds upon.
 
@@ -210,9 +210,9 @@ So in other words, when you create a new block, the *previous block* field conta
 * Format: natural byte order
 * Example: `982051fd1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e`
 
-[![Diagram of a merkle root being created for use in the block header.](../images/diagrams_png_block-merkle-root-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-basic.png)
+[<img src="../images/diagrams_png_block-merkle-root-basic.png" alt="Diagram of a merkle root being created for use in the block header." width="767" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-basic.png)
 
-![Tool Icon](../images/icons_tool.svg) Merkle Root
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Merkle Root
 
 Random Example
 
@@ -256,9 +256,9 @@ So the merkle root is like putting a tamper-resistant seal on the block.
 * Format: little-endian
 * Example: `61bc6649` (i.e. 0x4966bc61, or 1231469665)
 
-[![Diagram showing the time being stored in the block header.](../images/diagrams_png_block-time.png)](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
+[<img src="../images/diagrams_png_block-time.png" alt="Diagram showing the time being stored in the block header." width="609" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
 
-![Tool Icon](../images/icons_tool.svg) Unix Time
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
 
 Unix Time
 
@@ -284,9 +284,9 @@ So it's possible that a block higher up in the chain could have an earlier *time
 * Format: little-endian
 * Example: `ffff001d` (i.e. `1d00ffff` in little-endian)
 
-[![Diagram showing target being stored in the bits field of the block header.](../images/diagrams_png_block-bits.png)](https://static.learnmeabitcoin.com/diagrams/png/block-bits.png)
+[<img src="../images/diagrams_png_block-bits.png" alt="Diagram showing target being stored in the bits field of the block header." width="646" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-bits.png)
 
-![Tool Icon](../images/icons_tool.svg) Target Bits
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
 
 Current
 
@@ -326,7 +326,7 @@ This compact representation of the target is the *actual value* the block hash n
 * Format: little-endian
 * Example: `01e36299`
 
-[![Diagram showing the nonce field in the block header.](../images/diagrams_png_block-nonce.png)](https://static.learnmeabitcoin.com/diagrams/png/block-nonce.png)
+[<img src="../images/diagrams_png_block-nonce.png" alt="Diagram showing the nonce field in the block header." width="646" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-nonce.png)
 
 This field is short for "number used once". It's basically a **spare field** in the block header that you can increment to get different [hash](/docs/technical/cryptography/hash-function.md) results for the block header.
 
@@ -341,7 +341,7 @@ Every block you see in the blockchain shows the "magic" nonce value that just so
 
 ## Transactions
 
-[![Diagram of the structure of a block showing the block header, tx count, and transaction data.](../images/diagrams_png_block-transactions.png)](https://static.learnmeabitcoin.com/diagrams/png/block-transactions.png)
+[<img src="../images/diagrams_png_block-transactions.png" alt="Diagram of the structure of a block showing the block header, tx count, and transaction data." width="537" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/block-transactions.png)
 
 After the block header we have the actual transaction data. This is just a series of transactions one after the other.
 
@@ -351,7 +351,7 @@ After the block header we have the actual transaction data. This is just a serie
 * Type: [compact size](/docs/technical/general/compact-size.md)
 * Example: `01`
 
-![Tool Icon](../images/icons_tool.svg) Compact Size
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Compact Size
 
 Integer
 
@@ -385,7 +385,7 @@ The first piece of data after the block header is actually a transaction count i
 
 ### [Coinbase Transaction](/docs/technical/mining/coinbase-transaction.md)
 
-[![Diagram showing the position of a coinbase transaction as the first transaction in a block.](../images/diagrams_png_block-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
+[<img src="../images/diagrams_png_block-coinbase-transaction.png" alt="Diagram showing the position of a coinbase transaction as the first transaction in a block." width="655" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
 
 > The first transaction in the block is a special one that creates a new coin owned by the creator of the block.
 
@@ -401,7 +401,7 @@ Miners often put custom signatures and messages in the [scriptsig](/docs/technic
 
 ### Regular [Transactions](/docs/technical/transaction.md)
 
-[![Diagram showing the position of the regular transaction below the coinbase transaction in a block.](../images/diagrams_png_block-regular-transactions.png)](https://static.learnmeabitcoin.com/diagrams/png/block-regular-transactions.png)
+[<img src="../images/diagrams_png_block-regular-transactions.png" alt="Diagram showing the position of the regular transaction below the coinbase transaction in a block." width="571" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-regular-transactions.png)
 
 Following the coinbase transaction we have all the "regular" transactions, concatenated one after the other.
 
@@ -413,9 +413,9 @@ Parent transactions must always come before child transactions in a block. So if
 
 ## [Block Hash](/docs/technical/block/hash.md)
 
-[![Diagram showing the position of the regular transaction below the coinbase transaction in a block.](../images/diagrams_png_block-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
+[<img src="../images/diagrams_png_block-hash.png" alt="Diagram showing the position of the regular transaction below the coinbase transaction in a block." width="775" height="563" />](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
 
-![Tool Icon](../images/icons_tool.svg) Block Hash
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Hash
 
 Random Example
 
@@ -452,7 +452,7 @@ And as mentioned, during the process of [mining](/docs/technical/mining.md) the 
 
 What is the maximum size of a block?
 
-[![Diagram showing the position of the regular transaction below the coinbase transaction in a block.](../images/diagrams_png_block-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
+[<img src="../images/diagrams_png_block-weight.png" alt="Diagram showing the position of the regular transaction below the coinbase transaction in a block." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
 A block has a maximum capacity of **4,000,000 weight units**.
 

@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the location of the nonce field inside the block header.](../../images/diagrams_png_block-nonce.png)](https://static.learnmeabitcoin.com/diagrams/png/block-nonce.png)
+[<img src="../../images/diagrams_png_block-nonce.png" alt="Diagram showing the location of the nonce field inside the block header." width="646" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-nonce.png)
 
 The nonce is a spare field at the end of the [block header](/docs/technical/block.md#header) used for [mining](/docs/technical/mining.md).
 
@@ -127,7 +127,7 @@ Miners increment the nonce value when mining so that they can get completely dif
 
 So there's no skill in trying to find a nonce that works. It's just a spare field that allows miners to quickly re-hash their block header without having to reconstruct the entire block.
 
-[![Mining simulator showing multiple hash attempts by incrementing the nonce.](../../images/technical_block_nonce_miningsimulator.gif)](https://static.learnmeabitcoin.com/technical/block/nonce/miningsimulator.gif)
+[<img src="../../images/technical_block_nonce_miningsimulator.gif" alt="Mining simulator showing multiple hash attempts by incrementing the nonce." width="787" height="142" />](/docs/technical/block/nonce/miningsimulator.gif.md)
 
 
 This is a slowed-down simulation of what the mining process looks like under the hood.
@@ -158,7 +158,7 @@ Having such a small 4-byte nonce field in the block header was possibly a design
 
 ## ExtraNonce
 
-[![The ExtraNonce is located inside the scriptSig of a coinbase transaction.](../../images/diagrams_png_block-extranonce.png)](https://static.learnmeabitcoin.com/diagrams/png/block-extranonce.png)
+[<img src="../../images/diagrams_png_block-extranonce.png" alt="The ExtraNonce is located inside the scriptSig of a coinbase transaction." width="767" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-extranonce.png)
 
 If a miner exhausts the nonce field, they will move on to adjusting what's referred to as an "ExtraNonce".
 
@@ -192,11 +192,11 @@ Unless you're British of course, in which case it doesn't mean that at all.
 
 Here's a terrible gif I made in 2016 that shows how the nonce is used to change the block hash:
 
-[![Animated gif of the nonce being used to change the block hash.](../../images/technical_block_nonce_nonce-block-hash.gif)](https://static.learnmeabitcoin.com/technical/block/nonce/nonce-block-hash.gif)
+[<img src="../../images/technical_block_nonce_nonce-block-hash.gif" alt="Animated gif of the nonce being used to change the block hash." width="445" height="234" />](/docs/technical/block/nonce/nonce-block-hash.gif.md)
 
 And here's another one showing a rough visualization of the mining process:
 
-[![Animated gif of the nonce being used during the mining process.](../../images/technical_block_nonce_nonce-mining.gif)](https://static.learnmeabitcoin.com/technical/block/nonce/nonce-mining.gif)
+[<img src="../../images/technical_block_nonce_nonce-mining.gif" alt="Animated gif of the nonce being used during the mining process." width="600" height="420" />](/docs/technical/block/nonce/nonce-mining.gif.md)
 
 If those gifs don't explain everything, I don't know what will.
 

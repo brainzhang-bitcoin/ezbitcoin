@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the location of the time field inside the block header.](../../images/diagrams_png_block-time.png)](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
+[<img src="../../images/diagrams_png_block-time.png" alt="Diagram showing the location of the time field inside the block header." width="609" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
 
 The time field in the [block header](/docs/technical/block.md#header) indicates the **rough time a block was created**.
 
@@ -44,7 +44,7 @@ The timestamp of each block is usually pretty close to the current time, but you
 
 What is the maximum and minimum block time?
 
-[![Diagram showing the valid time range that can be placed in the block header.](../../images/diagrams_png_block-time-range.png)](https://static.learnmeabitcoin.com/diagrams/png/block-time-range.png)
+[<img src="../../images/diagrams_png_block-time-range.png" alt="Diagram showing the valid time range that can be placed in the block header." width="355" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/block-time-range.png)
 
 The timestamp has to be within a certain range for it to be valid:
 
@@ -65,13 +65,13 @@ John Newbery, [Bitcoin Core PR Review Club (Jun 19, 2019)](https://bitcoincore.r
 
 [Local Node](/explorer/):
 
-Local Computer Time:   03 Jul 2026, 08:10:35
+Local Computer Time:   03 Jul 2026, 09:18:09
 
-Network Adjusted Time: 03 Jul 2026, 07:32:50 (-37 minutes, 45 seconds)
+Network Adjusted Time: 03 Jul 2026, 08:56:35 (-21 minutes, 34 seconds)
 
 The network adjusted time is your local time plus the median offset of all the nodes you are connected to.
 
-[![Diagram showing the network average time being calculated based on the timestamps sent by connected nodes](../../images/diagrams_png_networking-network-adjusted-time.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-network-adjusted-time.png)
+[<img src="../../images/diagrams_png_networking-network-adjusted-time.png" alt="Diagram showing the network average time being calculated based on the timestamps sent by connected nodes" width="786" height="404" />](https://static.learnmeabitcoin.com/diagrams/png/networking-network-adjusted-time.png)
 
 
 Nodes send a UTC timestamp of their local time when they [connect](/docs/technical/networking.md) to each other.
@@ -117,11 +117,11 @@ Besides being a rough indicator of when the block was mined, the block's timesta
 
 ### Target Recalculation
 
-[![Diagram showing a target recalculation based on the time between the last 2015 blocks.](../../images/diagrams_png_target-period.png)](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
+[<img src="../../images/diagrams_png_target-period.png" alt="Diagram showing a target recalculation based on the time between the last 2015 blocks." width="983" height="189" />](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
 
 The timestamps in block headers are used to work out whether blocks are being mined more quickly or more slowly than expected over a 2016-block period, and the [target](/docs/technical/mining/target.md) is adjusted accordingly.
 
-![Tool Icon](../../images/icons_tool.svg) Target Adjustment
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
 
 Previous Adjustment
 Current Target
@@ -165,7 +165,7 @@ Note: This target value has been truncated slightly for storage in the bits fiel
 
 ### Transaction Locktime
 
-[![Diagram showing the locktime being used to prevent a transaction being mined until a specific time in the future.](../../images/diagrams_png_transaction-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
+[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing the locktime being used to prevent a transaction being mined until a specific time in the future." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
 
 A transaction can include a specific [locktime](/docs/technical/transaction/locktime.md) to prevent it from being mined in a block until it's less a valid time field in a block header.
 

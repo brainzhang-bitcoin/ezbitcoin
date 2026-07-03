@@ -1,8 +1,8 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 [BIP 32: Hierarchical Deterministic Wallets](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
 
-[![Diagram showing the basic structure of an HD Wallet.](../../images/diagrams_png_hd-wallets.png)](https://static.learnmeabitcoin.com/diagrams/png/hd-wallets.png)
+[<img src="../../images/diagrams_png_hd-wallets.png" alt="Diagram showing the basic structure of an HD Wallet." width="983" height="673" />](https://static.learnmeabitcoin.com/diagrams/png/hd-wallets.png)
 
 A hierarchical deterministic wallet (or "HD Wallet") is a wallet that generates all of its keys and addresses from a single source.
 
@@ -57,7 +57,7 @@ What are the benefits of a HD wallet?
 
 In a basic wallet, you would generate pairs of [private keys](/docs/technical/keys/private-key.md) and [public keys](/docs/technical/keys/public-key.md) independently each time you want to receive bitcoins.
 
-[![Diagram showing individual private and public keys generated in a non-HD Wallet.](../../images/technical_keys_hd-wallets_basic-wallet.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/basic-wallet.gif)
+[<img src="../../images/technical_keys_hd-wallets_basic-wallet.gif" alt="Diagram showing individual private and public keys generated in a non-HD Wallet." width="900" height="301" />](/docs/technical/keys/hd-wallets/basic-wallet.gif.md)
 
 
 Basic Wallet.
@@ -66,7 +66,7 @@ This works perfectly fine, but it means that you would need to back up your wall
 
 However, with a hierarchical deterministic wallet, you can use a single **[seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md)** to create a **[master private key](/docs/technical/keys/hd-wallets/extended-keys.md#master-extended-key)**, and you can use this to generate billions of "child" private keys and public keys.
 
-[![Diagram showing private and public keys generated from a single seed in an HD Wallet.](../../images/technical_keys_hd-wallets_hd-wallet.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hd-wallet.gif)
+[<img src="../../images/technical_keys_hd-wallets_hd-wallet.gif" alt="Diagram showing private and public keys generated from a single seed in an HD Wallet." width="900" height="425" />](/docs/technical/keys/hd-wallets/hd-wallet.gif.md)
 
 
 HD Wallet (Deterministic).
@@ -79,7 +79,7 @@ Another cool thing about hierarchical deterministic wallets is the *hierarchical
 
 Each [**child key**](/docs/technical/keys/hd-wallets/extended-keys.md#child-key-derivation) in the wallet can also **generate its own keys**, which means you can create a **tree structure** (or *hierarchy*) to organize the keys in your wallet.
 
-[![Diagram showing the hierarchical structure of keys in an HD wallet.](../../images/technical_keys_hd-wallets_hierarchical.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hierarchical.gif)
+[<img src="../../images/technical_keys_hd-wallets_hierarchical.gif" alt="Diagram showing the hierarchical structure of keys in an HD wallet." width="900" height="332" />](/docs/technical/keys/hd-wallets/hierarchical.gif.md)
 
 
 HD Wallet (Hierarchical).
@@ -90,7 +90,7 @@ You then use different parts of the tree to separate the keys into different "ac
 
 But the really cool thing about a **master private key** is that it has a corresponding **master public key**, and this can generate the same child public keys without the private keys.
 
-[![Diagram showing how you can generate public keys independently of their corresponding private keys in an HD Wallet.](../../images/technical_keys_hd-wallets_extended-public-key.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/extended-public-key.gif)
+[<img src="../../images/technical_keys_hd-wallets_extended-public-key.gif" alt="Diagram showing how you can generate public keys independently of their corresponding private keys in an HD Wallet." width="900" height="336" />](/docs/technical/keys/hd-wallets/extended-public-key.gif.md)
 
 
 You can generate public keys independently of their corresponding private keys.
@@ -109,7 +109,7 @@ For technical details, see [extended keys](/docs/technical/keys/hd-wallets/exten
 
 ### 1. Seed
 
-[![Diagram showing a 64-byte seed used as the source for an HD Wallet.](../../images/diagrams_png_hd-wallets-seed.png)](https://static.learnmeabitcoin.com/diagrams/png/hd-wallets-seed.png)
+[<img src="../../images/diagrams_png_hd-wallets-seed.png" alt="Diagram showing a 64-byte seed used as the source for an HD Wallet." width="393" height="110" />](https://static.learnmeabitcoin.com/diagrams/png/hd-wallets-seed.png)
 
 To create an HD wallet, you start by generating 64 random [bytes](/docs/technical/general/bytes.md). This is our **seed**.
 
@@ -120,11 +120,11 @@ New Seed
 
 ### 2. Master Private Key
 
-[![Animation showing the creation of a master private key from a 64-byte seed.](../../images/technical_keys_hd-wallets_master-key.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/master-key.gif)
+[<img src="../../images/technical_keys_hd-wallets_master-key.gif" alt="Animation showing the creation of a master private key from a 64-byte seed." width="900" height="554" />](/docs/technical/keys/hd-wallets/master-key.gif.md)
 
 The "master key" is created by putting the seed through a hash function (called a HMAC) to generate *another* set of 64 bytes.
 
-![Tool Icon](../../images/icons_tool.svg) HMAC-SHA512
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HMAC-SHA512
 
 Random Example
 
@@ -143,7 +143,7 @@ Key (Hex)
 "Bitcoin seed"
 (ASCII)
 
-![HMAC Icon](../../images/icons_hash-function-hmac.svg)
+<img src="../../images/icons_hash-function-hmac.svg" alt="HMAC Icon" style="width:128px; height:128px" />
 HMAC-SHA512
 
 Result
@@ -171,7 +171,7 @@ An "extended key" is just a normal key coupled with a chain code.
 
 The private key embedded inside an extended key can be used to create a corresponding [public key](/docs/technical/keys/public-key.md) as normal:
 
-![Tool Icon](../../images/icons_tool.svg) Public Key
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -223,7 +223,7 @@ New child private keys are generated from an extended private key by putting it 
 
 We also include an **index** number each time, which allows us to create multiple child keys from a single master key.
 
-[![Animation showing the derivation of hardened extended private key children.](../../images/technical_keys_hd-wallets_child-keys-basic-private.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/child-keys-basic-private.gif)
+[<img src="../../images/technical_keys_hd-wallets_child-keys-basic-private.gif" alt="Animation showing the derivation of hardened extended private key children." width="900" height="533" />](/docs/technical/keys/hd-wallets/child-keys-basic-private.gif.md)
 
 
 By changing the **index** you get a completely different result from the hash function.
@@ -255,9 +255,9 @@ First, we need to construct the extended public key.
 
 This is just the public key from the extended private key, coupled with the same chain code:
 
-[![Animation showing the creation of an extended public key.](../../images/technical_keys_hd-wallets_corresponding-extended-public-key.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/corresponding-extended-public-key.gif)
+[<img src="../../images/technical_keys_hd-wallets_corresponding-extended-public-key.gif" alt="Animation showing the creation of an extended public key." width="900" height="107" />](/docs/technical/keys/hd-wallets/corresponding-extended-public-key.gif.md)
 
-![Tool Icon](../../images/icons_tool.svg) Public Key
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -307,7 +307,7 @@ An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) o
 
 The master extended private key creates **child** private keys by putting the contents of its corresponding extended public key through the HMAC function, and *adding* the result to the *original* private key.
 
-[![Animation showing the derivation of normal extended private key children.](../../images/technical_keys_hd-wallets_child-keys-advanced-private.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/child-keys-advanced-private.gif)
+[<img src="../../images/technical_keys_hd-wallets_child-keys-advanced-private.gif" alt="Animation showing the derivation of normal extended private key children." width="900" height="533" />](/docs/technical/keys/hd-wallets/child-keys-advanced-private.gif.md)
 
 
 
@@ -317,7 +317,7 @@ The master extended private key creates **child** private keys by putting the co
 
 The master extended public key creates **child** public keys by putting its contents through the HMAC function, and *adding* the result to the *original* public key.
 
-[![Animation showing the derivation of normal extended public key children.](../../images/technical_keys_hd-wallets_child-keys-advanced-public.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/child-keys-advanced-public.gif)
+[<img src="../../images/technical_keys_hd-wallets_child-keys-advanced-public.gif" alt="Animation showing the derivation of normal extended public key children." width="900" height="533" />](/docs/technical/keys/hd-wallets/child-keys-advanced-public.gif.md)
 
 
 
@@ -330,7 +330,7 @@ The master extended public key creates **child** public keys by putting its cont
 
 Now, because this time the child keys have been *adjusted* based on the **parent** private key and public key, the magic of [elliptic curve](/docs/technical/cryptography/elliptic-curve.md) mathematics means that the **child** private keys and public keys will correspond.
 
-[![Animation showing the derivation of normal extended private key and extended public key children.](../../images/technical_keys_hd-wallets_child-keys-advanced-private-public.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/child-keys-advanced-private-public.gif)
+[<img src="../../images/technical_keys_hd-wallets_child-keys-advanced-private-public.gif" alt="Animation showing the derivation of normal extended private key and extended public key children." width="900" height="533" />](/docs/technical/keys/hd-wallets/child-keys-advanced-private-public.gif.md)
 
 It seems like magic, I know, but it's just mathematics.
 
@@ -342,11 +342,11 @@ Adding a chain code means that child keys are not derived *solely* from the key.
 
 For example, we may use one of the public keys in the tree to receive a payment, which would make it visible on the [blockchain](/docs/technical/blockchain.md). If we didn't use chain codes, anyone could take this public key and derive all the children for it:
 
-[![Diagram showing how you can derive child public keys if a chain code is not used.](../../images/technical_keys_hd-wallets_without-chain-code.png)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/without-chain-code.png)
+[<img src="../../images/technical_keys_hd-wallets_without-chain-code.png" alt="Diagram showing how you can derive child public keys if a chain code is not used." width="900" height="232" />](/docs/technical/keys/hd-wallets/without-chain-code.png.md)
 
 But by using chain codes (which do not hit the blockchain), other people are unable to derive the children from the public key:
 
-[![Diagram showing how you can't derive child public keys if a chain code is used.](../../images/technical_keys_hd-wallets_with-chain-code.png)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/with-chain-code.png)
+[<img src="../../images/technical_keys_hd-wallets_with-chain-code.png" alt="Diagram showing how you can't derive child public keys if a chain code is used." width="900" height="232" />](/docs/technical/keys/hd-wallets/with-chain-code.png.md)
 
 So in other words, the chain code is additional secret data that prevents other people from deriving the children of a key.
 
@@ -360,7 +360,7 @@ Even though child keys are derived from the master extended key deterministicall
 
 So to the outside world it's as though all the private keys and public keys were generated completely independently.
 
-[![Diagram showing how the public keys in an HD wallet appear to be completely independent to the outside world.](../../images/technical_keys_hd-wallets_hd-wallet-are-keys-connected.png)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hd-wallet-are-keys-connected.png)
+[<img src="../../images/technical_keys_hd-wallets_hd-wallet-are-keys-connected.png" alt="Diagram showing how the public keys in an HD wallet appear to be completely independent to the outside world." width="900" height="353" />](/docs/technical/keys/hd-wallets/hd-wallet-are-keys-connected.png.md)
 
 ### Are the keys in an HD wallet secure?
 
@@ -370,13 +370,13 @@ However, **extended keys should be kept extra safe**, as anyone who has access t
 
 For example, if you revealed your master extended public key, other people would be able to find all the addresses in your wallet. They *can't steal anything* because they cannot generate the private keys for them, but they can still see how much bitcoin you own.
 
-[![Diagram showing how someone can derive all the child public keys from an extended public key.](../../images/technical_keys_hd-wallets_security-extended-public-key.png)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/security-extended-public-key.png)
+[<img src="../../images/technical_keys_hd-wallets_security-extended-public-key.png" alt="Diagram showing how someone can derive all the child public keys from an extended public key." width="900" height="235" />](/docs/technical/keys/hd-wallets/security-extended-public-key.png.md)
 
 Leaking a parent extended public key *and* any child private key allows someone to calculate the parent extended private key.
 
 And if they can calculate the extended private key, they can generate all the private keys at that level of the wallet (and below) **and steal your bitcoins**:
 
-[![Diagram showing how someone can derive all the child private keys from an extended public key and a single private key.](../../images/technical_keys_hd-wallets_security-extended-public-key-child-private-key.png)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/security-extended-public-key-child-private-key.png)
+[<img src="../../images/technical_keys_hd-wallets_security-extended-public-key-child-private-key.png" alt="Diagram showing how someone can derive all the child private keys from an extended public key and a single private key." width="900" height="298" />](/docs/technical/keys/hd-wallets/security-extended-public-key-child-private-key.png.md)
 
 You might not think this would be possible at first, but it is, so be aware of it.
 
@@ -387,7 +387,7 @@ You might not think this would be possible at first, but it is, so be aware of i
 
 The extended private keys and extended public keys in an HD wallet have their own address format.
 
-![Tool Icon](../../images/icons_tool.svg) Address (Extended Key)
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Address (Extended Key)
 
 Generate Random Example
 
@@ -497,7 +497,7 @@ Pieter Wuille, (on IRC)
 
 ## Summary
 
-[![Animation showing the overall structure of an HD wallet.](../../images/technical_keys_hd-wallets_hierarchical-deterministic-wallets.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hierarchical-deterministic-wallets.gif)
+[<img src="../../images/technical_keys_hd-wallets_hierarchical-deterministic-wallets.gif" alt="Animation showing the overall structure of an HD wallet." width="900" height="616" />](/docs/technical/keys/hd-wallets/hierarchical-deterministic-wallets.gif.md)
 
 A **hierarchical deterministic wallet** provides a useful method for generating new [private keys](/docs/technical/keys/private-key.md) and [public keys](/docs/technical/keys/public-key.md).
 

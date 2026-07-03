@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 A wTXID is like a [TXID](/docs/technical/transaction/input/txid.md), but a wTXID includes the [witness](/docs/technical/transaction/witness.md) data of a [transaction](/docs/technical/transaction.md).
 
@@ -6,9 +6,9 @@ For example:
 
 A **wTXID** is the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) of all of the transaction data, *including* the [marker](/docs/technical/transaction.md#structure-marker), [flag](/docs/technical/transaction.md#structure-flag), and [witness](/docs/technical/transaction.md#structure-witness):
 
-[![Diagram showing the wTXID being calculated from the raw transaction data including the marker, flag, and witness.](../../images/diagrams_png_transaction-witness-wtxid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
+[<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the marker, flag, and witness." width="764" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
 
-![Tool Icon](../../images/icons_tool.svg) wTXID
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> wTXID
 
 Random Example
 
@@ -32,9 +32,9 @@ Also known as the transaction "hash" when using `bitcoin-cli` commands
 
 Whereas a **TXID** is the HASH256 of all of the transaction data *except* the marker, flag, and witness:
 
-[![Diagram showing the TXID being calculated from the raw transaction data excluding the marker, flag, and witness.](../../images/diagrams_png_transaction-witness-txid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-txid.png)
+[<img src="../../images/diagrams_png_transaction-witness-txid.png" alt="Diagram showing the TXID being calculated from the raw transaction data excluding the marker, flag, and witness." width="764" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-txid.png)
 
-![Tool Icon](../../images/icons_tool.svg) TXID
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> TXID
 
 Random Example
 
@@ -92,7 +92,7 @@ The **wTXID** is then just the HASH256 of all of the transaction data including 
 
 You can check this for yourself by putting the data through HASH256 manually:
 
-![Tool Icon](../../images/icons_tool.svg) HASH256
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
 Random Transaction Data
 
@@ -103,10 +103,10 @@ Data (Hex)
 `0 bytes`
 
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 HASH256
@@ -119,7 +119,7 @@ SHA-256(SHA-256(data))
 
 0 secs
 
-![Tool Icon](../../images/icons_tool.svg) Reverse Bytes
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Reverse Bytes
 
 Random Example
 
@@ -158,7 +158,7 @@ And seeing as a legacy transaction does not include a marker, flag, or witness, 
 
 `25346687d5d10239c25a88193c97228327826a4ff66a36c4ba7e038f3e2ae9ed`
 
-![Tool Icon](../../images/icons_tool.svg) HASH256
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
 Random Transaction Data
 
@@ -169,10 +169,10 @@ Data (Hex)
 `0 bytes`
 
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 HASH256
@@ -185,7 +185,7 @@ SHA-256(SHA-256(data))
 
 0 secs
 
-![Tool Icon](../../images/icons_tool.svg) Reverse Bytes
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Reverse Bytes
 
 Random Example
 
@@ -210,7 +210,7 @@ You can find the wTXID of a transaction by running `bitcoin-cli getrawtransactio
 
 Committing transaction witness data to the block
 
-[![Diagram showing segwit data being committed to the block via the wtxid commitment in the scriptpubkey of the coinbase transaction.](../../images/diagrams_png_block-wtxid-commitment.png)](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
+[<img src="../../images/diagrams_png_block-wtxid-commitment.png" alt="Diagram showing segwit data being committed to the block via the wtxid commitment in the scriptpubkey of the coinbase transaction." width="810" height="499" />](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
 
 wTXIDs are used to *commit* the new data in segwit transactions to the block via a **witness root hash**.
 
@@ -256,7 +256,7 @@ If we create a merkle root from all of these wTXIDs we get the **witness root ha
 witness root hash: dbee9a868a8caa2a1ddf683af1642a88dfb7ac7ce3ecb5d043586811a41fdbf2
 ```
 
-![Tool Icon](../../images/icons_tool.svg) Merkle Root
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Merkle Root
 
 Random Example
 
@@ -298,7 +298,7 @@ wTXID commitment = HASH256(witness root hash | witness reserved value)
 wTXID commitment = 6502e8637ba29cd8a820021915339c7341223d571e5e8d66edd83786d387e715
 ```
 
-![Tool Icon](../../images/icons_tool.svg) HASH256
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
 Random Transaction Data
 
@@ -309,10 +309,10 @@ Data (Hex)
 `0 bytes`
 
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 HASH256

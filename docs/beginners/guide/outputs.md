@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 The bitcoin [transaction](/docs/beginners/guide/transactions.md) system involves sending and receiving whole "batches" of bitcoins, called outputs.
 
@@ -10,25 +10,25 @@ Let's begin this explanation of transaction outputs with the birth of a fresh ba
 
 You are [mining](/docs/beginners/guide/mining.md) bitcoins on your own. By some miracle, you have managed to mine a [block](/docs/beginners/guide/blocks.md) of transactions and earn yourself a [block reward](/docs/technical/mining/block-reward.md).
 
-[![Diagram showing the block reward being sent to an address via the coinbase transaction.](../../images/beginners_guide_outputs_00-generation-transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/00-generation-transaction.png)
+[<img src="../../images/beginners_guide_outputs_00-generation-transaction.png" alt="Diagram showing the block reward being sent to an address via the coinbase transaction." width="375" height="226" />](/docs/beginners/guide/outputs/00-generation-transaction.png.md)
 
 Every miner includes their own address at the top of each block, so if they manage to mine the block, the block reward can be sent to their address. This is claimed via a [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) (or as it used to be referred to, the "generation transaction").
 
 So this is the current state of your bitcoin address:
 
-[![Diagram showing a single 25 BTC output locked to an address.](../../images/beginners_guide_outputs_01-transaction1-before.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/01-transaction1-before.png)
+[<img src="../../images/beginners_guide_outputs_01-transaction1-before.png" alt="Diagram showing a single 25 BTC output locked to an address." width="187" height="199" />](/docs/beginners/guide/outputs/01-transaction1-before.png.md)
 
 The block reward was 25 BTC when I first wrote this article.
 
 Naturally, your first instinct is to celebrate. So let's use 1 of these bitcoins to buy some beer.
 
-[![A badly-drawn pint of beer.](../../images/beginners_guide_outputs_01-beer.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/01-beer.png)
+[<img src="../../images/beginners_guide_outputs_01-beer.png" alt="A badly-drawn pint of beer." width="150" height="115" />](/docs/beginners/guide/outputs/01-beer.png.md)
 
 Beer.
 
 Now, your other first instinct would be to chip off 1 of these bitcoins (from the block reward) to pay for this beer. This would make sense, but it's not quite how transactions work.
 
-[![Diagram showing a 1 BTC incorrectly being chipped off a larger 25 BTC input.](../../images/beginners_guide_outputs_01-transaction1-chip.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/01-transaction1-chip.png)
+[<img src="../../images/beginners_guide_outputs_01-transaction1-chip.png" alt="Diagram showing a 1 BTC incorrectly being chipped off a larger 25 BTC input." width="414" height="151" />](/docs/beginners/guide/outputs/01-transaction1-chip.png.md)
 
 Not quite. And that's one expensive beer.
 
@@ -39,7 +39,7 @@ But to make sure we *don't spend all 25 bitcoins* in a "1 bitcoin" payment, we *
 1. To the beer shop as payment
 2. Back to our own address as change
 
-[![Diagram showing a transaction where a single 25 BTC input is split into a 1 BTC and a 24 BTC output.](../../images/beginners_guide_outputs_01-transaction1.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/01-transaction1.png)
+[<img src="../../images/beginners_guide_outputs_01-transaction1.png" alt="Diagram showing a transaction where a single 25 BTC input is split into a 1 BTC and a 24 BTC output." width="474" height="232" />](/docs/beginners/guide/outputs/01-transaction1.png.md)
 
 The newly created batches are called *outputs*.
 
@@ -47,7 +47,7 @@ It's a bit of an around-the-houses way of doing it, but it achieves the same end
 
 Anyway, this is what the bitcoin addresses look like *after* the transaction:
 
-[![Diagram showing a balance of 24 BTC at one address, and 1 BTC at another address.](../../images/beginners_guide_outputs_01-transaction1-after.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/01-transaction1-after.png)
+[<img src="../../images/beginners_guide_outputs_01-transaction1-after.png" alt="Diagram showing a balance of 24 BTC at one address, and 1 BTC at another address." width="451" height="347" />](/docs/beginners/guide/outputs/01-transaction1-after.png.md)
 
 The beer shop has a new batch of 1 bitcoin, and we've sent ourselves a new batch of 24 bitcoins (as change). The original batch of 25 bitcoins has now been "used up" and can't be spent again.
 
@@ -69,13 +69,13 @@ Okay, from now on we're going to use the word *output* instead of "batch".
 
 Anyway, a few days have passed since the beer shop sold us that beer. And judging by the current state of their bitcoin address, the beer business is booming:
 
-[![Diagram showing an address with 5 unspent outputs totalling 7.5 BTC.](../../images/beginners_guide_outputs_02-transaction2-before.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/02-transaction2-before.png)
+[<img src="../../images/beginners_guide_outputs_02-transaction2-before.png" alt="Diagram showing an address with 5 unspent outputs totalling 7.5 BTC." width="170" height="242" />](/docs/beginners/guide/outputs/02-transaction2-before.png.md)
 
 The beer shop has received four new payments since we bought our beer.
 
 But as we all know, beer doesn't grow on trees. So the beer shop is on the lookout for a brand-new beer machine.
 
-[![A badly-drawn imaginary beer-making machine.](../../images/beginners_guide_outputs_02-beer-machine.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/02-beer-machine.png)
+[<img src="../../images/beginners_guide_outputs_02-beer-machine.png" alt="A badly-drawn imaginary beer-making machine." width="172" height="161" />](/docs/beginners/guide/outputs/02-beer-machine.png.md)
 
 This is what my friends call me on nights out.
 
@@ -83,7 +83,7 @@ Oh look, a lovely beer machine for the low, low price of 4.2 bitcoins.
 
 Let's buy it…
 
-[![Diagram showing a transaction spending multiple inputs and creating multiple outputs.](../../images/beginners_guide_outputs_02-transaction2.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/02-transaction2.png)
+[<img src="../../images/beginners_guide_outputs_02-transaction2.png" alt="Diagram showing a transaction spending multiple inputs and creating multiple outputs." width="696" height="226" />](/docs/beginners/guide/outputs/02-transaction2.png.md)
 
 Constructing the transaction for the beer machine.
 
@@ -97,7 +97,7 @@ When you're *spending* an output in a transaction, it's referred to as an **inpu
 
 And here's the state of the beer shop's bitcoin address after the transaction:
 
-[![Diagram showing an address with 4 spent outputs and 2 unspent outputs totalling 3.3 BTC.](../../images/beginners_guide_outputs_02-transaction2-after.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/02-transaction2-after.png)
+[<img src="../../images/beginners_guide_outputs_02-transaction2-after.png" alt="Diagram showing an address with 4 spent outputs and 2 unspent outputs totalling 3.3 BTC." width="410" height="271" />](/docs/beginners/guide/outputs/02-transaction2-after.png.md)
 
 The beer shop has used up 4 outputs, and has one new 0.3 BTC output (from the change).
 
@@ -131,7 +131,7 @@ You see, transaction fees are picked up by miners when they mine a block. So if 
 
 Anyhow, pretend we didn't send that last transaction into the network, and let's add a transaction fee to it:
 
-[![Diagram showing a transaction with a remainder that is used as the fee.](../../images/beginners_guide_outputs_03-transaction2-fee.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/03-transaction2-fee.png)
+[<img src="../../images/beginners_guide_outputs_03-transaction2-fee.png" alt="Diagram showing a transaction with a remainder that is used as the fee." width="420" height="179" />](/docs/beginners/guide/outputs/03-transaction2-fee.png.md)
 
 Okay, so where the hell is the output for the transaction fee? Well, there isn't one. But **look at the size of the outputs**.
 

@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the transaction fee as the remainder of the amount being sent.](../../images/diagrams_png_transaction-fee.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee.png)
+[<img src="../../images/diagrams_png_transaction-fee.png" alt="Diagram showing the transaction fee as the remainder of the amount being sent." width="321" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee.png)
 
 A transaction fee is the **remainder of a [transaction](/docs/technical/transaction.md)**.
 
@@ -29,11 +29,11 @@ A transaction fee acts as an **incentive** for a [miner](/docs/technical/mining.
 
 This is because miners can collect all the fees from the transactions they have included in their block via the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) (if they are able to successfully mine the block on to the [blockchain](/docs/technical/blockchain.md)).
 
-[![Diagram showing transaction fees being collected by a miners via the coinbase transaction.](../../images/diagrams_png_block-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
+[<img src="../../images/diagrams_png_block-coinbase-transaction.png" alt="Diagram showing transaction fees being collected by a miners via the coinbase transaction." width="655" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
 
 Therefore, if there are more transactions in the [memory pool](/docs/technical/mining/memory-pool.md) than can fit inside the next block, miners will choose to fill their candidate blocks with the highest-fee transaction available. This maximizes the amount of bitcoins they are able to claim if they mine the block.
 
-[![Diagram showing the a miner selecting the highest-fee transactions from the memory pool for inclusion in their candidate block.](../../images/diagrams_png_transaction-fee-miner-incentive.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-miner-incentive.png)
+[<img src="../../images/diagrams_png_transaction-fee-miner-incentive.png" alt="Diagram showing the a miner selecting the highest-fee transactions from the memory pool for inclusion in their candidate block." width="752" height="435" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-miner-incentive.png)
 
 Therefore, setting a fee on your transaction allows you to **compete with other transactions for space in the next block**. Generally speaking:
 
@@ -50,7 +50,7 @@ Miners want to maximize the amount of fees they can claim from their blocks. To 
 
 For example, a small transaction with a large fee on it is more valuable than a large transaction with the same fee on it.
 
-[![Diagram showing the two separate transaction with the same size fee, but one is larger than the other so has a lower fee/byte.](../../images/diagrams_png_transaction-fee-rate-basics.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-basics.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-basics.png" alt="Diagram showing the two separate transaction with the same size fee, but one is larger than the other so has a lower fee/byte." width="688" height="325" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-basics.png)
 
 So when comparing the fees on transactions, we take the **size of the fee** and divide it by the **size of the transaction** (in terms of how much space it takes up in a block). This is called the *feerate*, and it allows us to compare transactions to figure out which ones are more valuable to miners than others.
 
@@ -65,7 +65,7 @@ There are 3 different ways to measure feerates:
 
 ### sats/byte (Deprecated)
 
-[![Diagram showing the sats/byte feerate calculation as the fee divided by the number of bytes in the transaction.](../../images/diagrams_png_transaction-fee-rate-sats-per-byte.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-byte.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-byte.png" alt="Diagram showing the sats/byte feerate calculation as the fee divided by the number of bytes in the transaction." width="627" height="257" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-byte.png)
 
 The block limit used to be **1,000,000 bytes** (1 MB).
 
@@ -75,7 +75,7 @@ However, since the [segregated witness](/docs/technical/upgrades/segregated-witn
 
 ### sats/wu (Used Internally)
 
-[![Diagram showing the sats/wu feerate calculation as the fee divided by the number of weight units in the transaction.](../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-weight-unit.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png" alt="Diagram showing the sats/wu feerate calculation as the fee divided by the number of weight units in the transaction." width="703" height="312" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-weight-unit.png)
 
 The [block limit](/docs/technical/block.md#weight) is now **4,000,000 weight units**.
 
@@ -87,7 +87,7 @@ However, this **sats/wu** is on a different scale to the old **sats/byte** measu
 
 ### sats/vbyte (Most Common)
 
-[![Diagram showing the sats/vbyte feerate calculation as the fee divided by the number of virtual bytes in the transaction, which is the weight divided by 4.](../../images/diagrams_png_transaction-fee-rate-sats-per-vbyte.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-vbyte.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-vbyte.png" alt="Diagram showing the sats/vbyte feerate calculation as the fee divided by the number of virtual bytes in the transaction, which is the weight divided by 4." width="605" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-vbyte.png)
 
 If you divide the block limit of 4,000,000 weight units by 4, you get a **1,000,000 virtual bytes**.
 
@@ -142,7 +142,7 @@ This process is called "fee bumping", and there are two methods for doing this:
 
 [BIP 125](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki)
 
-[![Diagram showing a lower-fee transaction in the memory pool being replaced with a higher-fee transaction.](../../images/diagrams_png_transaction-replace-by-fee.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee.png)
+[<img src="../../images/diagrams_png_transaction-replace-by-fee.png" alt="Diagram showing a lower-fee transaction in the memory pool being replaced with a higher-fee transaction." width="753" height="416" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee.png)
 
 This is the simplest method.
 
@@ -156,7 +156,7 @@ If a current transaction in the memory pool doesn't have RBF enabled, then there
 
 ### 2. Child Pays For Parent (CPFP)
 
-[![Diagram showing a child transaction increasing the overall feerate of both the child and the parent transaction.](../../images/diagrams_png_transaction-child-pays-for-parent.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-child-pays-for-parent.png)
+[<img src="../../images/diagrams_png_transaction-child-pays-for-parent.png" alt="Diagram showing a child transaction increasing the overall feerate of both the child and the parent transaction." width="752" height="544" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-child-pays-for-parent.png)
 
 This is an old technique, but it still works today.
 
@@ -175,7 +175,7 @@ There's no reason to use CPFP when you can use RBF instead. But it's a handy opt
 
 What's the minimum fee you can set on a transaction?
 
-[![Diagram showing a nodes on the network rejecting transactions with feerates that do not meet their own individual minimum relay fee settings.](../../images/diagrams_png_networking-minrelayfee.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-minrelayfee.png)
+[<img src="../../images/diagrams_png_networking-minrelayfee.png" alt="Diagram showing a nodes on the network rejecting transactions with feerates that do not meet their own individual minimum relay fee settings." width="786" height="522" />](https://static.learnmeabitcoin.com/diagrams/png/networking-minrelayfee.png)
 
 You generally want to set at least a `1 sat/vbyte` fee on your transactions due to the *minimum relay fee* settings that nodes use.
 

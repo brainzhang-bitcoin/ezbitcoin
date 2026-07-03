@@ -1,12 +1,12 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing how a block hash is created by hashing the block header.](../../images/diagrams_png_block-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
+[<img src="../../images/diagrams_png_block-hash.png" alt="Diagram showing how a block hash is created by hashing the block header." width="775" height="563" />](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
 
 A block hash (or block ID) is a **unique reference** for a [block](/docs/technical/block.md) in the [blockchain](/docs/technical/blockchain.md).
 
 Every block hash is unique and is determined by the contents of the block. You can therefore use the block hash to search for a specific block in a [blockchain explorer](/explorer/). For example:
 
-* Most Recent Block: [000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5](/explorer/block/000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5)
+* Most Recent Block: [000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264)
 * Block 123,456: [0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca](/explorer/block/0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca)
 * Genesis Block: [000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)
 
@@ -52,16 +52,6 @@ The steps for creating a block hash are as follows:
 ### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 require 'digest'
 
 # ------------
@@ -117,7 +107,7 @@ Block hashes are used in two places:
 1. They are used when **searching** for a specific block in the blockchain.
 2. They are put inside the [previous block](/docs/technical/block/previous-block.md) field of the block header to **connect blocks** together in the blockchain.
 
-[![Diagram showing blocks connected together through block hashes in the block header using the previous block field.](../../images/diagrams_png_block-previous-block.png)](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
+[<img src="../../images/diagrams_png_block-previous-block.png" alt="Diagram showing blocks connected together through block hashes in the block header using the previous block field." width="397" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
 
 
 Blocks are connected by their block hashes.
@@ -150,7 +140,7 @@ By doing this you can check to see if the block hash is below the [target](/docs
 
 So it makes sense to think of the block hash as being a unique number.
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 

@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the bitcoin network as a network people running the same computer program.](../../images/beginners_guide_network_01-software_network.png)](https://static.learnmeabitcoin.com/beginners/guide/network/01-software_network.png)
+[<img src="../../images/beginners_guide_network_01-software_network.png" alt="Diagram showing the bitcoin network as a network people running the same computer program." width="600" height="416" />](/docs/beginners/guide/network/01-software_network.png.md)
 
 The Bitcoin Network is made up of individuals running the [bitcoin software](https://bitcoincore.org/en/download/).
 
@@ -10,17 +10,17 @@ This software is known as a "bitcoin client".
 
 People (well, *bitcoin clients*) on the network **talk to each other**.
 
-[![Diagram showing the computers on the bitcoin network talking to each other.](../../images/beginners_guide_network_02-software_network_talking.png)](https://static.learnmeabitcoin.com/beginners/guide/network/02-software_network_talking.png)
+[<img src="../../images/beginners_guide_network_02-software_network_talking.png" alt="Diagram showing the computers on the bitcoin network talking to each other." width="600" height="433" />](/docs/beginners/guide/network/02-software_network_talking.png.md)
 
 And by "talk to each other" I mean *pass on information* about what's going on in other parts of the network. This is done by sending each other *[messages](/docs/technical/networking.md#messages)*.
 
 For example, a message could be **information about a new *[transaction](/docs/beginners/guide/transactions.md)***.
 
-[![Diagram showing the computers on the bitcoin network sharing information about new transactions.](../../images/beginners_guide_network_03-software_network_talking_transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/network/03-software_network_talking_transaction.png)
+[<img src="../../images/beginners_guide_network_03-software_network_talking_transaction.png" alt="Diagram showing the computers on the bitcoin network sharing information about new transactions." width="600" height="452" />](/docs/beginners/guide/network/03-software_network_talking_transaction.png.md)
 
 The sharing of information (e.g. transactions) is what allows everyone on the network to keep up-to-date, which is pretty important if you want to run a digital currency on the Internet.
 
-[![Diagram showing the computers on the bitcoin network all having a copy of the latest transaction on the network.](../../images/beginners_guide_network_04-software_network_talking_transaction_consensus.png)](https://static.learnmeabitcoin.com/beginners/guide/network/04-software_network_talking_transaction_consensus.png)
+[<img src="../../images/beginners_guide_network_04-software_network_talking_transaction_consensus.png" alt="Diagram showing the computers on the bitcoin network all having a copy of the latest transaction on the network." width="600" height="400" />](/docs/beginners/guide/network/04-software_network_talking_transaction_consensus.png.md)
 
 And because all the nodes on the network work to share transactions, everyone on the network will eventually know about the latest transactions.
 
@@ -39,7 +39,7 @@ Seriously, *anyone can join the bitcoin network*. All you need is an internet co
 
 And once you're up and running, you'll be referred to as a **[node](/docs/beginners/guide/node.md)** on the bitcoin network.
 
-[![Diagram showing nodes on the bitcoin network.](../../images/beginners_guide_network_05-nodes_network.png)](https://static.learnmeabitcoin.com/beginners/guide/network/05-nodes_network.png)
+[<img src="../../images/beginners_guide_network_05-nodes_network.png" alt="Diagram showing nodes on the bitcoin network." width="600" height="416" />](/docs/beginners/guide/network/05-nodes_network.png.md)
 
 "Node" is a slightly more concise way of saying "an individual running a bitcoin client and relaying information around the network".
 

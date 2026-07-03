@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 You can measure the size of a bitcoin [transaction](/docs/technical/transaction.md) in 3 ways:
 
@@ -10,7 +10,7 @@ You can measure the size of a bitcoin [transaction](/docs/technical/transaction.
 
 *Weight Units* and *Virtual Bytes* are measurements unique to bitcoin. They both measure the size of a transaction in terms of bytes too, but they give a **discount to some parts of the transaction data** and are used when calculating how many transactions can fit inside a [block](/docs/technical/block.md).
 
-![Tool Icon](../../images/icons_tool.svg) Transaction Splitter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Splitter
 
 Random Example
 
@@ -32,7 +32,7 @@ Result
 
 ## 1. Bytes (b)
 
-[![Diagram showing the measurement of a bitcoin transaction in bytes.](../../images/diagrams_png_transaction-size.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-size.png)
+[<img src="../../images/diagrams_png_transaction-size.png" alt="Diagram showing the measurement of a bitcoin transaction in bytes." width="424" height="178" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-size.png)
 
 This is the natural way to measure the size of a transaction. It's a transaction's *actual* size in terms of how many [bytes](/docs/technical/general/bytes.md) of space it takes up.
 
@@ -71,7 +71,7 @@ There is no limit to how big a transaction can be in terms of bytes, other than 
 
 [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
 
-[![Diagram showing the measurement of a bitcoin transaction in weight units.](../../images/diagrams_png_transaction-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
+[<img src="../../images/diagrams_png_transaction-weight.png" alt="Diagram showing the measurement of a bitcoin transaction in weight units." width="699" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
 
 Every transaction has a *weight* measurement. This measurement was introduced in the [segregated witness](/docs/technical/upgrades/segregated-witness.md) upgrade. A transaction's weight is calculated by multiplying the size (in bytes) of different parts of the [transaction](/docs/technical/transaction.md) by either 4 or 1:
 
@@ -107,7 +107,7 @@ The weight measurement is important because **[blocks](/docs/technical/block.md)
 
 So when [miners](/docs/technical/mining.md) fill up their [candidate blocks](/docs/technical/mining/candidate-block.md) with transactions, they use transaction weight to determine how many transactions they can fit in their block.
 
-[![Diagram showing a block being filled up with transactions using weight as the measurement for each transaction's size.](../../images/diagrams_png_block-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
+[<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing a block being filled up with transactions using weight as the measurement for each transaction's size." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
 Using bytes for transaction sizes and the block limit was more straightforward. But this new weight measurement introduces *fairness* to the cost of spending outputs.
 
@@ -120,11 +120,11 @@ Because it helps to bring more of a balance between the cost of creating an outp
 
 The amount of data required to unlock an output (i.e. [signature](/docs/technical/keys/signature.md) data) is unfairly larger than the amount of data required to put a [lock](/docs/technical/transaction/output/scriptpubkey.md) on an output in the first place. So the new weight measurement brings the "size" of outputs and inputs in a transaction more in line with each other.
 
-[![Diagram showing the comparative size of an output and and input when measured in bytes and in weight units.](../../images/diagrams_png_transaction-weight-spending-sending-balance.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight-spending-sending-balance.png)
+[<img src="../../images/diagrams_png_transaction-weight-spending-sending-balance.png" alt="Diagram showing the comparative size of an output and and input when measured in bytes and in weight units." width="605" height="261" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight-spending-sending-balance.png)
 
 ## 3. Virtual Bytes (vBytes, vB)
 
-[![Diagram showing the measurement of a bitcoin transaction in virtual bytes.](../../images/diagrams_png_transaction-vsize.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-vsize.png)
+[<img src="../../images/diagrams_png_transaction-vsize.png" alt="Diagram showing the measurement of a bitcoin transaction in virtual bytes." width="710" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-vsize.png)
 
 The *virtual size* of a transaction is the same as its *weight* divided by 4.
 

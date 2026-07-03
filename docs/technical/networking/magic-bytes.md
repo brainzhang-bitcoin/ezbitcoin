@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a message being sent to another node with the magic bytes at the start of the message.](../../images/diagrams_png_networking-magic-bytes.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-magic-bytes.png)
+[<img src="../../images/diagrams_png_networking-magic-bytes.png" alt="Diagram showing a message being sent to another node with the magic bytes at the start of the message." width="635" height="170" />](https://static.learnmeabitcoin.com/diagrams/png/networking-magic-bytes.png)
 
 Magic bytes help **identify the separate messages** sent between nodes on the [bitcoin network](/docs/technical/networking.md).
 
@@ -73,7 +73,7 @@ Why do we use magic bytes?
 
 If you connect to a bitcoin node, the messages you get are part of a continual stream of data.
 
-[![Diagram showing a message being sent to another node with the magic bytes at the start of the message.](../../images/technical_networking_magic-bytes_magic-bytes-terminal.gif)](https://static.learnmeabitcoin.com/technical/networking/magic-bytes/magic-bytes-terminal.gif)
+[<img src="../../images/technical_networking_magic-bytes_magic-bytes-terminal.gif" alt="Diagram showing a message being sent to another node with the magic bytes at the start of the message." width="802" height="191" />](/docs/technical/networking/magic-bytes/magic-bytes-terminal.gif.md)
 
 
 Nodes receive data in streams of bytes.
@@ -98,7 +98,7 @@ So they could be different, but these are just 4 bytes that have the properties 
 * **UTF-8.** The [basic Latin UTF-8 character set](https://www.w3schools.com/charsets/ref_utf_basic_latin.asp) does not go above `7e`, so if you're encoding some text using basic UTF-8, you're not going to collide with any of the magic bytes (as they're all greater than `7e`).
 * **Integers.** If you convert `f9beb4d9` to an integer you get **4190024921**. If you also reverse the byte order to `d9b4bef9` and convert to an integer you get **3652501241**. Both of these are very large numbers, so it's less likely they're going to be used within one of the fields of raw [transaction](/docs/technical/transaction.md) data (e.g. [version](/docs/technical/transaction.md#structure-version), input count, [vout](/docs/technical/transaction.md#structure-inputs-vout), output count, amount, script size, etc.).
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -127,7 +127,7 @@ Hexadecimal (Base 16)
 
 0 secs
 
-![Tool Icon](../../images/icons_tool.svg) Reverse Bytes
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Reverse Bytes
 
 Random Example
 

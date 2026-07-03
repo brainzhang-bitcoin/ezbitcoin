@@ -1,12 +1,12 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing nodes on the Bitcoin network storing the latest transactions in their memory pool.](../../images/diagrams_png_memory-pool.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool.png)
+[<img src="../../images/diagrams_png_memory-pool.png" alt="Diagram showing nodes on the Bitcoin network storing the latest transactions in their memory pool." width="779" height="488" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool.png)
 
 Current Mempool Size:
 
-0.59 vMB
+2.54 vMB
 
-2,018 transactions
+9,648 transactions
 
 Note: This is the size of the mempool for my local node.  
 The size of your memory pool will differ depending on how long your node has been online and which nodes you are connected to.
@@ -25,7 +25,7 @@ The memory pool is used to **sort out conflicting transactions**.
 
 You see, it's possible for two different transactions spending the same bitcoins to be inserted into different parts of the [network](/docs/technical/networking.md) at the same time. Some nodes will receive the one transaction first, and some nodes will receive the other transactions first:
 
-[![Diagram showing two conflicting transactions (spending the same bitcoins) being inserted into different parts of the Bitcoin network.](../../images/diagrams_png_memory-pool-conflict.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict.png)
+[<img src="../../images/diagrams_png_memory-pool-conflict.png" alt="Diagram showing two conflicting transactions (spending the same bitcoins) being inserted into different parts of the Bitcoin network." width="779" height="586" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict.png)
 
 
 Nodes will reject the second conflicting transaction they receive, but there will still be different versions of the conflicting transaction floating around the network.
@@ -34,7 +34,7 @@ Because both of these transactions are trying to spend the same bitcoins, only *
 
 This conflict is resolved when one of the nodes on the network [mines](/docs/technical/mining.md) the transactions from *their* memory pool into a block:
 
-[![Diagram showing one of the conflicting transactions getting mined into a block and the other getting kicked out of the memory pools.](../../images/diagrams_png_memory-pool-conflict-resolved.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict-resolved.png)
+[<img src="../../images/diagrams_png_memory-pool-conflict-resolved.png" alt="Diagram showing one of the conflicting transactions getting mined into a block and the other getting kicked out of the memory pools." width="779" height="518" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict-resolved.png)
 
 
 One of the nodes will mine the next block of transactions and broadcast it across the network.
@@ -55,7 +55,7 @@ A transaction can enter a node's memory pool in a number of ways:
 
 (common)
 
-[![Diagram showing a new transaction being inserted directly into a local node on the network.](../../images/diagrams_png_memory-pool-entry-insert.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-insert.png)
+[<img src="../../images/diagrams_png_memory-pool-entry-insert.png" alt="Diagram showing a new transaction being inserted directly into a local node on the network." width="253" height="281" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-insert.png)
 
 A new transaction can be inserted directly into a node on the network.
 
@@ -67,7 +67,7 @@ You can manually insert a transaction into your local Bitcoin Core node using th
 
 (common)
 
-[![Diagram showing a new transaction being received from another node on the network.](../../images/diagrams_png_memory-pool-entry-receive.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-receive.png)
+[<img src="../../images/diagrams_png_memory-pool-entry-receive.png" alt="Diagram showing a new transaction being received from another node on the network." width="491" height="287" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-receive.png)
 
 New transactions can be received from other nodes on the network.
 
@@ -81,7 +81,7 @@ This process repeats until all nodes on the network have a copy of the latest tr
 
 (uncommon)
 
-[![Diagram showing a previously mined transactions re-entering the memory pool after a chain reorganization.](../../images/diagrams_png_memory-pool-entry-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-chain-reorganization.png)
+[<img src="../../images/diagrams_png_memory-pool-entry-chain-reorganization.png" alt="Diagram showing a previously mined transactions re-entering the memory pool after a chain reorganization." width="767" height="314" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-chain-reorganization.png)
 
 Previously mined transactions can re-enter the memory pool during a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
@@ -95,7 +95,7 @@ There are a number of reasons why a transaction will leave the memory pool:
 
 ### 1. Mined
 
-[![Diagram showing a transaction leaving the memory pool due to being mined into a block.](../../images/diagrams_png_memory-pool-exit-mined.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mined.png)
+[<img src="../../images/diagrams_png_memory-pool-exit-mined.png" alt="Diagram showing a transaction leaving the memory pool due to being mined into a block." width="658" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mined.png)
 
 This is the goal for all memory pool transactions.
 
@@ -105,7 +105,7 @@ In other words, transactions are moved from temporary storage (the memory pool) 
 
 ### 2. Mined Conflict
 
-[![Diagram showing a transaction leaving the memory pool due to a conflicting transaction being mined into a block.](../../images/diagrams_png_memory-pool-exit-mined-conflict.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mined-conflict.png)
+[<img src="../../images/diagrams_png_memory-pool-exit-mined-conflict.png" alt="Diagram showing a transaction leaving the memory pool due to a conflicting transaction being mined into a block." width="639" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mined-conflict.png)
 
 Nodes will remove any transactions from their memory pool that conflict with the transactions inside a block.
 
@@ -117,7 +117,7 @@ All the [descendants](#descendants) of a conflicting memory pool transaction wil
 
 ### 3. Replaced
 
-[![Diagram showing a transaction being removed from the memory pool due to being replaced by a higher-fee version.](../../images/diagrams_png_memory-pool-exit-replaced.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-replaced.png)
+[<img src="../../images/diagrams_png_memory-pool-exit-replaced.png" alt="Diagram showing a transaction being removed from the memory pool due to being replaced by a higher-fee version." width="609" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-replaced.png)
 
 A transaction will be removed from the memory pool if it gets replaced by a new higher-fee transaction.
 
@@ -127,7 +127,7 @@ The new higher-fee version of the transaction is more likely to get mined on to 
 
 ### 4. Time Limit
 
-[![Diagram showing a transaction leaving the memory pool after a certain amount of time.](../../images/diagrams_png_memory-pool-exit-mempoolexpiry.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mempoolexpiry.png)
+[<img src="../../images/diagrams_png_memory-pool-exit-mempoolexpiry.png" alt="Diagram showing a transaction leaving the memory pool after a certain amount of time." width="386" height="238" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-mempoolexpiry.png)
 
 Each node has a [time limit setting](#mempoolexpiry) for how long they're willing to hold on to transactions in their memory pool.
 
@@ -138,7 +138,7 @@ So if a transaction in the memory pool doesn't get mined before it reaches the t
 
 ### 5. Size Limit
 
-[![Diagram showing a low-fee transaction being removed from the memory pool when the memory pool reaches its maximum size setting.](../../images/diagrams_png_memory-pool-exit-maxmpool.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-maxmpool.png)
+[<img src="../../images/diagrams_png_memory-pool-exit-maxmpool.png" alt="Diagram showing a low-fee transaction being removed from the memory pool when the memory pool reaches its maximum size setting." width="450" height="246" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-exit-maxmpool.png)
 
 Transactions will be removed from a node's memory pool when their memory pool reaches a certain size (in megabytes).
 
@@ -180,7 +180,7 @@ This setting controls the **minimum transaction [feerate](/docs/technical/transa
 
 This setting uses an awkward BTC/kvB (kilo [virtual byte](/docs/technical/transaction/size.md#vbytes)) setting for measuring feerates. The default of 0.00001 BTC/kvB is equivalent to 1 sat/vbyte.
 
-![Tool Icon](../../images/icons_tool.svg) Unit Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unit Converter
 
 BTC
 
@@ -217,7 +217,7 @@ As a result, most nodes on the network will share a *similar* view of the memory
 
 What is the minimum mempool fee?
 
-[![Diagram showing the minimum feerate being dynamically calculated by the maximum size of the memory pool.](../../images/diagrams_png_memory-pool-minimum-fee.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-minimum-fee.png)
+[<img src="../../images/diagrams_png_memory-pool-minimum-fee.png" alt="Diagram showing the minimum feerate being dynamically calculated by the maximum size of the memory pool." width="779" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-minimum-fee.png)
 
 Each node maintains a **minimum feerate** to limit the transactions that are accepted into their memory pool.
 
@@ -255,7 +255,7 @@ This metadata includes things like; *[size](/docs/technical/transaction/size.md)
 
 ### Descendants
 
-[![Diagram showing the descendants of a transaction in the memory pool.](../../images/diagrams_png_memory-pool-descendants.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-descendants.png)
+[<img src="../../images/diagrams_png_memory-pool-descendants.png" alt="Diagram showing the descendants of a transaction in the memory pool." width="499" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-descendants.png)
 
 A descendant is the **child of a memory pool transaction**.
 
@@ -271,7 +271,7 @@ Therefore, a transaction can have multiple descendants whilst it's sat in the me
 
 Memory Pool Eviction
 
-[![Diagram showing the descendant feerate as the average feerate of a transaction and all of its descendants.](../../images/diagrams_png_memory-pool-descendant-fee-rate.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-descendant-fee-rate.png)
+[<img src="../../images/diagrams_png_memory-pool-descendant-fee-rate.png" alt="Diagram showing the descendant feerate as the average feerate of a transaction and all of its descendants." width="745" height="567" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-descendant-fee-rate.png)
 
 The descendant feerate is the ***average feerate* of a transaction and all its descendants**.
 
@@ -288,7 +288,7 @@ For example:
 
 ### Ancestors
 
-[![Diagram showing the ancestors of a transaction in the memory pool.](../../images/diagrams_png_memory-pool-ancestors.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-ancestors.png)
+[<img src="../../images/diagrams_png_memory-pool-ancestors.png" alt="Diagram showing the ancestors of a transaction in the memory pool." width="499" height="389" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-ancestors.png)
 
 An ancestor is the **parent of a memory pool transaction**.
 
@@ -300,7 +300,7 @@ So if you look up any transaction in the memory pool, it's possible that it will
 
 Candidate Block Selection
 
-[![Diagram showing the ancestor feerate as the average feerate of a transaction and all of its ancestors.](../../images/diagrams_png_memory-pool-ancestor-fee-rate.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-ancestor-fee-rate.png)
+[<img src="../../images/diagrams_png_memory-pool-ancestor-fee-rate.png" alt="Diagram showing the ancestor feerate as the average feerate of a transaction and all of its ancestors." width="745" height="612" />](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-ancestor-fee-rate.png)
 
 The ancestor feerate is the **average feerate of a transaction and all its ancestors**.
 
@@ -343,10 +343,10 @@ Shows statistics about your node's memory pool.
 $ bitcoin-cli getmempoolinfo
 {
     "loaded": true,
-    "size": 2018,
-    "bytes": 585810,
-    "usage": 3687056,
-    "total_fee": 0.00957916,
+    "size": 9648,
+    "bytes": 2539036,
+    "usage": 16003120,
+    "total_fee": 0.09412357,
     "maxmempool": 200000000,
     "mempoolminfee": 1.0e-5,
     "minrelaytxfee": 1.0e-5,

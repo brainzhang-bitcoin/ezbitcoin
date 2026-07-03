@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future.](../../images/diagrams_png_transaction-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
+[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
 
 The locktime field allows you to **prevent a [transaction](/docs/technical/transaction.md) from being [mined](/docs/technical/mining.md)** until *after* a specific block **height** or **[time](/docs/technical/block/time.md)**.
 
@@ -8,7 +8,7 @@ A transaction with a locktime in the future will not be accepted or relayed by n
 
 In other words, setting a locktime on a transaction is the equivalent of [post-dating a cheque](https://en.wikipedia.org/wiki/Post-dated_cheque).
 
-[![An image of a post-dated cheque representing a transaction with a locktime of a specific block height.](../../images/technical_transaction_locktime_cheque.jpg)](https://static.learnmeabitcoin.com/technical/transaction/locktime/cheque.jpg)
+[<img src="../../images/technical_transaction_locktime_cheque.jpg" alt="An image of a post-dated cheque representing a transaction with a locktime of a specific block height." width="633" height="280" />](/docs/technical/transaction/locktime/cheque.jpg.md)
 
 ## Usage
 
@@ -31,7 +31,7 @@ For the locktime field to be enabled, at least one of the [sequence](/docs/techn
 
 0 to 499999999
 
-[![Diagram showing the locktime field being used to set a specific block height.](../../images/diagrams_png_transaction-locktime-height.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime-height.png)
+[<img src="../../images/diagrams_png_transaction-locktime-height.png" alt="Diagram showing the locktime field being used to set a specific block height." width="724" height="344" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime-height.png)
 
 By setting the locktime between 0 (0x00000000) and 499999999 (0x1dcd64ff) you can specify that the transaction can only be mined into the blockchain *after* a specific height.
 
@@ -41,7 +41,7 @@ This is a more than suitable range, as the blockchain is not expected to reach a
 
 500000000 to 4294967295
 
-[![Diagram showing the locktime field being used to set a specific block time.](../../images/diagrams_png_transaction-locktime-time.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime-time.png)
+[<img src="../../images/diagrams_png_transaction-locktime-time.png" alt="Diagram showing the locktime field being used to set a specific block time." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime-time.png)
 
 By setting the locktime between 500000000 (0x1dcd6500) and the maximum value of 4294967295 (0xffffffff) you can specify that the transaction can only be mined into the blockchain after a specific time.
 
@@ -97,7 +97,7 @@ The locktime field in a raw transaction is in [little-endian](/docs/technical/ge
 
 So this transaction set the locktime to a block height of [790,096](/explorer/790096) (and was mined into the block after that).
 
-![Tool Icon](../../images/icons_tool.svg) Little Endian
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Little Endian
 
 +1
 

@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a transaction being removed from the blockchain in a 51% attack.](../../images/diagrams_png_blockchain-51-attack.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack.png" alt="Diagram showing a transaction being removed from the blockchain in a 51% attack." width="484" height="393" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack.png)
 
 Current Network Hashrate:
 
@@ -18,14 +18,14 @@ How does a 51% attack work?
 
 Nodes always accept the [longest known chain](/docs/technical/blockchain/longest-chain.md) of blocks as the *valid* version of the blockchain. So if you want to "undo" a transaction from the blockchain, you just need to **build a new, longer chain of blocks** *without* that transaction in it.
 
-[![Diagram showing a 51 attack to replace a transaction in a previous longest chain.](../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-build-longest-chain.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="544" height="370" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-build-longest-chain.png)
 
 
 Let's say we paid for a car in bitcoin and drove off with it.
 
 When nodes receive this new *longer* chain of blocks, they will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to *deactivate* blocks in their old longest chain, and *activate* the blocks in the new longest chain you have built.
 
-[![Diagram showing a 51 attack to replace a transaction in a previous longest chain.](../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-chain-reorganization.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="554" height="370" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-chain-reorganization.png)
 
 
 Transactions in the old longest chain are now invalid. It's as if the payment for the car never happened.
@@ -42,21 +42,21 @@ What prevents a 51% attack?
 
 Every miner is incentivized to build upon the current longest chain of blocks. So if the combined mining power of every other miner on the network is greater than yours, it makes it **incredibly difficult to outwork the other miners** to build a longer chain and replace the existing one.
 
-[![Diagram showing miners working together to extend the current longest chain.](../../images/diagrams_png_blockchain-51-attack-prevention-combined-mining.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-combined-mining.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-combined-mining.png" alt="Diagram showing miners working together to extend the current longest chain." width="733" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-combined-mining.png)
 
 
 Miners working together can build a chain faster than you can on your own.
 
 But of course, if you can actually acquire *more* mining power than all other miners combined, then you have the ability to outrun the current longest chain and build a new longer chain for everyone else to adopt.
 
-[![Diagram showing how you can build a longer chain faster than all other miners combined if you have the majority of the hashing power.](../../images/diagrams_png_blockchain-51-attack-prevention-majority-power.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-majority-power.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-majority-power.png" alt="Diagram showing how you can build a longer chain faster than all other miners combined if you have the majority of the hashing power." width="730" height="707" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-majority-power.png)
 
 
 If you have the majority of mining power, it's just a matter of time before you build a longer chain.
 
 So to help prevent this from happening, we want to make it difficult for a single miner to acquire a majority of the mining power. This is achieved by **allowing anyone in the world to mine**, and offering a **[block reward](/docs/technical/mining/block-reward.md) as an incentive** to build on the longest known chain.
 
-[![Diagram showing the block reward as an incentive for miners to extend the longest chain.](../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-incentive.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png" alt="Diagram showing the block reward as an incentive for miners to extend the longest chain." width="733" height="907" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-incentive.png)
 
 
 The block reward can only be spent when it reaches 100 blocks deep in the longest chain.
@@ -77,7 +77,7 @@ However, if you *did* manage to acquire a majority of the mining power, then it'
 
 Having said that, it requires more work to replace a larger number of blocks than it does to replace just a few. So the further down a transaction makes it into the blockchain, the more time and energy it's going to take to reverse it.
 
-[![Diagram showing how it's harder to replace blocks the further they are down the blockchain.](../../images/diagrams_png_blockchain-51-attack-depth-work.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-depth-work.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-depth-work.png" alt="Diagram showing how it's harder to replace blocks the further they are down the blockchain." width="367" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-depth-work.png)
 
 
 Transactions get harder to replace the further they get into the blockchain.
@@ -106,11 +106,11 @@ It's possible to rewrite the blockchain *without* a majority of the mining power
 
 Mining is unpredictable, so even if you've got a small amount of mining power, there's nothing to say that you wouldn't be able to get lucky and mine the next 2 blocks in a row. It's unlikely, but not impossible. The probability depends on how much mining power you have relative to everyone else.
 
-[![Diagram showing how you would need luck to rewrite the blockchain with a minority of the mining power.](../../images/diagrams_png_blockchain-51-attack-rewrite-luck.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-rewrite-luck.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-rewrite-luck.png" alt="Diagram showing how you would need luck to rewrite the blockchain with a minority of the mining power." width="733" height="699" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-rewrite-luck.png)
 
 Of course, the further down a transaction is in the blockchain, the luckier you'll need to get to be able to mine X blocks in a row. If nobody has a majority of the mining power, it gets *exponentially more difficult* to replace a transaction the further it gets into the blockchain.
 
-[![Chart showing the probability of being able to replace blocks in the blockchain based on mining power.](../../images/diagrams_png_blockchain-51-attack-mining-power-success-chart.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-mining-power-success-chart.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-mining-power-success-chart.png" alt="Chart showing the probability of being able to replace blocks in the blockchain based on mining power." width="548" height="612" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-mining-power-success-chart.png)
 
 
 If a miner has 40% of the mining power, they have roughly a 50% chance of being able to replace a transaction 5 blocks deep in the chain.
@@ -141,7 +141,7 @@ The probability of being able to rewrite blocks in the blockchain is a function 
 
 Here's the equation from the [Bitcoin Whitepaper](/bitcoin.pdf) (Section 11):
 
-[![The equation for attacking the blockchain from the Bitcoin whitepaper.](../../images/technical_blockchain_51-attack_equation-success.png)](https://static.learnmeabitcoin.com/technical/blockchain/51-attack/equation-success.png)
+[<img src="../../images/technical_blockchain_51-attack_equation-success.png" alt="The equation for attacking the blockchain from the Bitcoin whitepaper." width="523" height="264" />](/docs/technical/blockchain/51-attack/equation-success.png.md)
 
 
 The proof that blocks get harder to replace the further down they are in the chain is an important part of the system's integrity and security.
@@ -149,16 +149,6 @@ The proof that blocks get harder to replace the further down they are in the cha
 Anyway, here's what that equation looks like in Ruby code:
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # p = probability honest node finds the next block
 # q = probability attacker finds the next block
 # z = number of blocks to catch up
@@ -189,7 +179,7 @@ The equation above works out the probability of *catching up* with the longest c
 
 ### Chart
 
-[![Chart showing the probability of success for replacing blocks in the blockchain.](../../images/technical_blockchain_51-attack_success_chart_50_blocks.png)](https://static.learnmeabitcoin.com/technical/blockchain/51-attack/success_chart_50_blocks.png)
+[<img src="../../images/technical_blockchain_51-attack_success_chart_50_blocks.png" alt="Chart showing the probability of success for replacing blocks in the blockchain." width="800" height="600" />](/docs/technical/blockchain/51-attack/success_chart_50_blocks.png.md)
 
 
 There is an exponential decay in the probability of replacing a transaction the deeper it makes it into the blockchain.
@@ -202,7 +192,7 @@ Nope, not yet.
 
 Some miners have come close to reaching 50% or more of the total mining power over Bitcoin's history, but nobody has actually performed a successful 51% attack.
 
-[![Chart showing Ghash.io having close to 50% of the mining power in 2014.](../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg)](https://static.learnmeabitcoin.com/technical/blockchain/51-attack/mining-distribution-ghash-2014.jpg)
+[<img src="../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg" alt="Chart showing Ghash.io having close to 50% of the mining power in 2014." width="500" height="467" />](/docs/technical/blockchain/51-attack/mining-distribution-ghash-2014.jpg.md)
 
 
 GHash.io came close to reaching 50% in 2014.  
@@ -222,12 +212,12 @@ Firstly, we can get the current target by looking at the "[bits](/docs/technical
 
 ```
 $ bitcoin-cli getblockcount
-956471
+956479
 
-$ bitcoin-cli getblockhash 956471
-000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5
+$ bitcoin-cli getblockhash 956479
+000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264
 
-$ bitcoin-cli getblockheader 000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5 | grep bits
+$ bitcoin-cli getblockheader 000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264 | grep bits
 "bits": "17021a42",
 ```
 
@@ -237,7 +227,7 @@ Now, this "bits" value is just the target in compact format. So converting from 
 0x000000000000000000021a420000000000000000000000000000000000000000
 ```
 
-![Tool Icon](../../images/icons_tool.svg) Target Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
 
 Current
 

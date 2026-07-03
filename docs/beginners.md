@@ -1,4 +1,4 @@
-![Loading Tool](images/icons_loader-2.svg)
+<img src="images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 This section is for *beginners* who are completely new to Bitcoin and want to learn the basics of **how it works** and **how to get started** using it.
 

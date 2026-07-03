@@ -1,6 +1,6 @@
-![Loading Tool](../../../images/icons_loader-2.svg)
+<img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Annotated summary of the signing and verifying equations for Schnorr signatures.](../../../images/diagrams_png_schnorr-equations-summary.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equations-summary.png)
+[<img src="../../../images/diagrams_png_schnorr-equations-summary.png" alt="Annotated summary of the signing and verifying equations for Schnorr signatures." width="665" height="359" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equations-summary.png)
 
 Schnorr signatures are a better than [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) for creating and verifying [digital signatures](/docs/technical/keys/signature.md).
 
@@ -15,16 +15,6 @@ On this page I'll show you [how to implement](#implementation) Schnorr signature
 Schnorr Signatures (Full Code)
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # -------------------------
 # Elliptic Curve Parameters
 # -------------------------
@@ -346,16 +336,6 @@ Anyway, Schnorr signatures use the *Secp256k1* elliptic curve (same as [ECDSA](/
 Secp256k1 Parameters
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # y² = x³ + ax + b
 $a = 0
 $b = 7
@@ -378,16 +358,6 @@ Furthermore, you also need to be able to **multiply** points on an elliptic curv
 Elliptic Curve Mathematics
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # Modular Inverse: Ruby doesn't have a built-in modinv function
 def inverse(a, m = $p)
   m_orig = m         # store original modulus
@@ -494,7 +464,7 @@ This is usually represented as a 32-byte hexadecimal string:
 6c8bedef612883700a7e66e2746eba4db006fd28bdd6db8f389a8845a0e3b59d
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) Private Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Private Key
 
 Generate Random
 Reset
@@ -1059,7 +1029,7 @@ public key = {
 }
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) Public Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -1126,16 +1096,6 @@ Keys (Code)
 This snippet requires the [Secp256k1 parameters](#secp256k1-parameters) and [elliptic curve mathematics](#elliptic-curve-mathematics) code above.
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # ---------
 # Functions
 # ---------
@@ -1283,7 +1243,7 @@ Signature
 
 0 secs
 
-[![Technical diagram showing how to create a Schnorr signature in Bitcoin.](../../../images/diagrams_png_schnorr-sign.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-sign.png" alt="Technical diagram showing how to create a Schnorr signature in Bitcoin." width="786" height="1179" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-sign.png)
 
 
 
@@ -1292,16 +1252,6 @@ Sign (Code)
 This snippet requires the [Secp256k1 parameters](#secp256k1-parameters) and [elliptic curve mathematics](#elliptic-curve-mathematics) code above.
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # ---------
 # Functions
 # ---------
@@ -1431,7 +1381,7 @@ To create a Schnorr signature you need to start with the following data:
 
 To start with, calculate the public key (`P`) from the private key (`d'`) using elliptic curve multiplication.
 
-![Tool Icon](../../../images/icons_tool.svg) Number Converter
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -1460,7 +1410,7 @@ Hexadecimal (Base 16)
 
 0 secs
 
-![Tool Icon](../../../images/icons_tool.svg) EC Multiply
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> EC Multiply
 
 Generator Point
 
@@ -1544,7 +1494,7 @@ private key (d) = 0x6c8bedef612883700a7e66e2746eba4db006fd28bdd6db8f389a8845a0e3
 negated (n - d) = 0x937412109ed77c8ff581991d8b9145b10aa7dfbdf171c4ac8737d6472f528ba4
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) Public Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -1594,7 +1544,7 @@ The private nonce (`k'`) is the random element of the signature. It is construct
 
 `aux_rand_hash = hashBIP0340/aux(aux_rand)`
 
-![Tool Icon](../../../images/icons_tool.svg) Tagged Hash
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Tagged Hash
 
 Random Example
 
@@ -1640,7 +1590,7 @@ It's perfectly fine to increment the auxiliary bytes for each signature instead 
 
 `k' = int(hashBIP0340/nonce(t || P[x] || m)) % n`
 
-![Tool Icon](../../../images/icons_tool.svg) Tagged Hash
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Tagged Hash
 
 Random Example
 
@@ -1694,7 +1644,7 @@ The next step is to produce a public version of our private nonce (`k'`) that wi
 
 To create this public nonce, we use elliptic curve multiplication to multiply the generator point (`G`) by the private nonce (`k'`) calculated in the previous step.
 
-![Tool Icon](../../../images/icons_tool.svg) Number Converter
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -1723,7 +1673,7 @@ Hexadecimal (Base 16)
 
 0 secs
 
-![Tool Icon](../../../images/icons_tool.svg) EC Multiply
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> EC Multiply
 
 Generator Point
 
@@ -1795,7 +1745,7 @@ Again, all elliptic curve points within the Schnorr signature scheme in Bitcoin 
 
 `e = int(hashBIP0340/challenge(R[x] || P[x] || m)) % n`
 
-![Tool Icon](../../../images/icons_tool.svg) Tagged Hash
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Tagged Hash
 
 Random Example
 
@@ -1980,7 +1930,7 @@ R[x]:
 
 0 secs
 
-[![Technical diagram showing how to verify a Schnorr signature in Bitcoin.](../../../images/diagrams_png_schnorr-verify.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-verify.png" alt="Technical diagram showing how to verify a Schnorr signature in Bitcoin." width="787" height="979" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-verify.png)
 
 
 
@@ -1989,16 +1939,6 @@ Verify (Code)
 This snippet requires the [Secp256k1 parameters](#secp256k1-parameters) and [elliptic curve mathematics](#elliptic-curve-mathematics) code above.
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # ---------
 # Functions
 # ---------
@@ -2187,7 +2127,7 @@ If either of these are not true, the signature is invalid.
 
 `e = int(hashBIP0340/challenge(r || P[x] || m)) % n`
 
-![Tool Icon](../../../images/icons_tool.svg) Tagged Hash
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Tagged Hash
 
 Random Example
 
@@ -2277,23 +2217,13 @@ The cool thing about Schnorr signatures is that you can **verify multiple signat
 
 This is known as *batch verification*, and it's [faster](https://bitcoin.stackexchange.com/questions/80698/schnorrs-batch-validation) than verifying each signature individually.
 
-[![Technical diagram showing how to perform batch verification with Schnorr signatures in Bitcoin.](../../../images/diagrams_png_schnorr-batch-verify.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-batch-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-batch-verify.png" alt="Technical diagram showing how to perform batch verification with Schnorr signatures in Bitcoin." width="2185" height="979" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-batch-verify.png)
 
 
 
 Batch Verify (Full Code)
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # -------------------------
 # Elliptic Curve Parameters
 # -------------------------
@@ -2620,11 +2550,11 @@ Method
 
 Batch verification uses the same fundamental equation as when [verifying a single signature](#verify):
 
-[![Schnorr verify equation.](../../../images/diagrams_png_schnorr-equation-verify.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-verify.png" alt="Schnorr verify equation." width="355" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-verify.png)
 
 The only difference is that we *expand* it (including some extra multiplication with random numbers) so that we can verify multiple signatures at the same time:
 
-[![Schnorr batch verify equation.](../../../images/diagrams_png_schnorr-equation-batch-verify.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-batch-verify.png" alt="Schnorr batch verify equation." width="2037" height="61" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify.png)
 
 But don't worry, it looks more complicated than it actually is.
 
@@ -2714,23 +2644,23 @@ Where does this equation come from?
 
 The verification equation for a single signature looks like this:
 
-[![Schnorr verify equation.](../../../images/diagrams_png_schnorr-equation-verify.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-verify.png" alt="Schnorr verify equation." width="355" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-verify.png)
 
 So if you have two signatures, you can combine and verify them at the same time like so:
 
-[![Schnorr batch verify equation (step 1).](../../../images/diagrams_png_schnorr-equation-batch-verify-1.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify-1.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-batch-verify-1.png" alt="Schnorr batch verify equation (step 1)." width="945" height="61" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify-1.png)
 
 Therefore, a *general* equation for combining and verifying multiple signatures at the same time looks like this (where `u` is the total number of signatures):
 
-[![Schnorr batch verify equation (step 2).](../../../images/diagrams_png_schnorr-equation-batch-verify-2.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify-2.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-batch-verify-2.png" alt="Schnorr batch verify equation (step 2)." width="1743" height="61" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify-2.png)
 
 However, this equation isn't completely secure, as it's possible to construct a signature that will balance out the equation for an invalid signature. So to prevent this from happening, we multiply each individual verification equation by its own random number (which we call `a`). So the equation now looks like this:
 
-[![Schnorr batch verify equation (step 3).](../../../images/diagrams_png_schnorr-equation-batch-verify-3.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify-3.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-batch-verify-3.png" alt="Schnorr batch verify equation (step 3)." width="2183" height="61" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify-3.png)
 
 Lastly, we don't need to multiply the *first* verification equation by a random number, so we just leave that out:
 
-[![Schnorr batch verify equation (final).](../../../images/diagrams_png_schnorr-equation-batch-verify.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-batch-verify.png" alt="Schnorr batch verify equation (final)." width="2037" height="61" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-batch-verify.png)
 
 And that's where this batch verification equation comes from.
 
@@ -2769,7 +2699,7 @@ The reason for this is that we don't actually need the y-coordinate, as for any 
 1. An **even** y-coordinate
 2. An **odd** y-coordinate
 
-[![Diagram showing a public key point having two possible y coordinates (one even, one odd) for each x coordinate.](../../../images/diagrams_png_schnorr-public-key-y-coordinate.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-public-key-y-coordinate.png)
+[<img src="../../../images/diagrams_png_schnorr-public-key-y-coordinate.png" alt="Diagram showing a public key point having two possible y coordinates (one even, one odd) for each x coordinate." width="314" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-public-key-y-coordinate.png)
 
 And when reconstructing the full public key, we always use the **even y-coordinate** out of the two.
 
@@ -2778,16 +2708,6 @@ So for any given public key x-coordinate, we use the elliptic curve equation (`y
 #### Code
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # -------------------------
 # Elliptic Curve Parameters
 # -------------------------
@@ -2859,7 +2779,7 @@ private_key_1_encoded_public_key = dff1d77f2a671c5f36183726db2341be58feae1da2dec
 private_key_2_encoded_public_key = dff1d77f2a671c5f36183726db2341be58feae1da2deced843240f7b502ba659
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) Public Key
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -2909,11 +2829,11 @@ However, somewhat surprisingly, the fact that two private keys will produce the 
 
 In the [standard Schnorr signature scheme](#basics), the challenge (`e`) is created by hashing the public nonce (`kG`) with the message (`m`):
 
-[![Equation showing the calculation of the challenge (e) in the standard Schnorr signature scheme.](../../../images/diagrams_png_schnorr-challenge-standard.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-challenge-standard.png)
+[<img src="../../../images/diagrams_png_schnorr-challenge-standard.png" alt="Equation showing the calculation of the challenge (e) in the standard Schnorr signature scheme." width="544" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-challenge-standard.png)
 
 However, in the Bitcoin this hash also includes the x-coordinate of the public key (`Px`):
 
-[![Equation showing the calculation of the challenge (e) in the Schnorr signature scheme in Bitcoin.](../../../images/diagrams_png_schnorr-challenge-bitcoin.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-challenge-bitcoin.png)
+[<img src="../../../images/diagrams_png_schnorr-challenge-bitcoin.png" alt="Equation showing the calculation of the challenge (e) in the Schnorr signature scheme in Bitcoin." width="677" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-challenge-bitcoin.png)
 
 This is referred to as key-prefixing, and it's included to [prevent attacks when generating signatures from unhardened public keys in a HD wallet](https://bitcoin.stackexchange.com/questions/79768/a-couple-of-questions-on-schnorr-sig).
 
@@ -2921,7 +2841,7 @@ This key prefixing is also used when [generating the private nonce](#nonce-gener
 
 ### 3. Tagged Hashes
 
-![Tool Icon](../../../images/icons_tool.svg) Tagged Hash
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Tagged Hash
 
 Random Example
 
@@ -2953,7 +2873,7 @@ SHA256(SHA256(string) || SHA256(string) || data)
 
 A tagged hash is the hash of some data with an additional **tag prefix**. This method of hashing has been introduced as part of the implementation of Schnorr signatures in Bitcoin.
 
-[![Diagram showing the basic structure of a tagged hash.](../../../images/diagrams_png_schnorr-tagged-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-tagged-hash.png)
+[<img src="../../../images/diagrams_png_schnorr-tagged-hash.png" alt="Diagram showing the basic structure of a tagged hash." width="333" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-tagged-hash.png)
 
 This gives each hash a *context*, so if you hashed the same data in a different context, you wouldn't get the same hash result.
 
@@ -2962,23 +2882,13 @@ Creating a tagged hash in Bitcoin is pretty simple:
 1. Hash a string (the *tag*) that describes the context for the final hash.
 2. Hash the data with this *tag hash* (prefixing the tag hash twice).
 
-[![Technical diagram showing how to create a tagged hash in Bitcoin.](../../../images/diagrams_png_schnorr-tagged-hash-technical.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-tagged-hash-technical.png)
+[<img src="../../../images/diagrams_png_schnorr-tagged-hash-technical.png" alt="Technical diagram showing how to create a tagged hash in Bitcoin." width="469" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-tagged-hash-technical.png)
 
 
 
 Code
 
 ```
-![Copy](../../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../../images/icons_clipboard-x-white.svg)copied
-
 # -----------
 # Tagged Hash
 # -----------
@@ -3024,7 +2934,7 @@ This is a rather low-level optimization, and it's not something you need to use 
 
 ### 4. Nonce Generation
 
-[![Technical diagram showing the method for generating the private nonce for a Schnorr signature in Bitcoin.](../../../images/diagrams_png_schnorr-nonce-generation.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-nonce-generation.png)
+[<img src="../../../images/diagrams_png_schnorr-nonce-generation.png" alt="Technical diagram showing the method for generating the private nonce for a Schnorr signature in Bitcoin." width="393" height="219" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-nonce-generation.png)
 
 Every signature you create needs to include a **random nonce** (`k`).
 
@@ -3050,7 +2960,7 @@ In short, it may look complex, but it has been designed this way for a reason.
 
 A Schnorr signature is *encoded* by concatenating the 32-byte `r` value and 32-byte `s` value.
 
-[![Diagram showing the encoding of a Schnorr signature for use in Bitcoin transactions.](../../../images/diagrams_png_schnorr-signature-encoding.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-signature-encoding.png)
+[<img src="../../../images/diagrams_png_schnorr-signature-encoding.png" alt="Diagram showing the encoding of a Schnorr signature for use in Bitcoin transactions." width="601" height="238" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-signature-encoding.png)
 
 So a Schnorr signature is always **64 bytes** in length.
 
@@ -3058,7 +2968,7 @@ So a Schnorr signature is always **64 bytes** in length.
 
 For [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) signatures, the equivalent `r` and `s` values are wrapped within [DER encoding](/docs/technical/keys/signature.md#der):
 
-[![Diagram showing the encoding of an ECDSA signature for use in Bitcoin transactions.](../../../images/diagrams_png_keys-signature-der-encoding.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-signature-der-encoding.png)
+[<img src="../../../images/diagrams_png_keys-signature-der-encoding.png" alt="Diagram showing the encoding of an ECDSA signature for use in Bitcoin transactions." width="760" height="231" />](https://static.learnmeabitcoin.com/diagrams/png/keys-signature-der-encoding.png)
 
 This DER encoding results in signatures that vary between **70-72 bytes** in length.
 
@@ -3086,11 +2996,11 @@ The Schnorr signature scheme is mathematically simpler than ECDSA.
 
 This is the equation for creating a Schnorr signature:
 
-[![Schnorr sign equation.](../../../images/diagrams_png_schnorr-equation-sign.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
 
 This is the equation for creating an ECDSA signature:
 
-[![ECDSA sign equation.](../../../images/diagrams_png_ecdsa-equation-sign.png)](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign.png)
+[<img src="../../../images/diagrams_png_ecdsa-equation-sign.png" alt="ECDSA sign equation." width="440" height="67" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign.png)
 
 From a **mathematical** point of view, Schnorr signatures are more *logical* and more *elegant*.
 
@@ -3100,11 +3010,11 @@ From a **practical** point of view, they're also [provably secure](#security) an
 
 The equation for creating a Schnorr signature uses arithmetic *addition* and *multiplication* only:
 
-[![Schnorr sign equation.](../../../images/diagrams_png_schnorr-equation-sign.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
 
 On the other hand, the equation for creating a signature in ECDSA includes [elliptic curve multiplication](/docs/technical/cryptography/elliptic-curve.md#multiply) and [modular inverse](/docs/technical/cryptography/elliptic-curve.md#modular-inverse):
 
-[![ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations.](../../../images/diagrams_png_ecdsa-equation-sign-annotated.png)](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
+[<img src="../../../images/diagrams_png_ecdsa-equation-sign-annotated.png" alt="ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations." width="702" height="114" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
 
 So Schnorr signatures are mathematically more efficient, and are therefore faster to calculate.
 
@@ -3116,13 +3026,13 @@ Another efficiency benefit of Schnorr Signatures is that you can verify multiple
 
 The simplicity of the Schnorr signature equation also means that it's **provably secure**.
 
-[![Schnorr sign equation.](../../../images/diagrams_png_schnorr-equation-sign.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
 
 In other words, there is a [mathematical proof](https://crypto.stackexchange.com/questions/48616/prove-the-security-of-schnorrs-signature-scheme) that shows that Schnorr signatures cannot be broken unless you can solve the [discrete logarithm problem](#discreet-logarithm-problem).
 
 In contrast, the complexity of the equation for creating signatures in ECDSA means that there is no formal proof that it's secure. This is due to the inclusion of the elliptic curve multiplication part, which makes forming a proof difficult:
 
-[![ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations.](../../../images/diagrams_png_ecdsa-equation-sign-annotated.png)](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
+[<img src="../../../images/diagrams_png_ecdsa-equation-sign-annotated.png" alt="ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations." width="702" height="114" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
 
 There is a strong *assumption* that ECDSA is secure, but there is no actual proof. So having an actual proof of security is another win for Schnorr signatures.
 
@@ -3186,17 +3096,17 @@ But as I say, you would never have been able to figure that out unless I told yo
 
 Schnorr signatures are *linear*, whereas ESCDSA signatures are not:
 
-[![Equations showing how Schnorr signatures are linear and ECDSA signatures are non-linear.](../../../images/diagrams_png_schnorr-equation-linearity.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-linearity.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-linearity.png" alt="Equations showing how Schnorr signatures are linear and ECDSA signatures are non-linear." width="616" height="228" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-linearity.png)
 
 This means you can **add Schnorr signatures** together, which is something you cannot do with ECDSA signatures.
 
 For example, you can add public keys together in both Schnorr and ECDSA:
 
-[![Equations showing the addition of public keys.](../../../images/diagrams_png_schnorr-equation-public-key-addition.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-public-key-addition.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-public-key-addition.png" alt="Equations showing the addition of public keys." width="376" height="210" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-public-key-addition.png)
 
 But you can only add signatures together in Schnorr (due to the fact that they're *linear*):
 
-[![Equations showing the addition of Schnorr signatures.](../../../images/diagrams_png_schnorr-equation-signature-addition.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-signature-addition.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-signature-addition.png" alt="Equations showing the addition of Schnorr signatures." width="513" height="265" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-signature-addition.png)
 
 This ability to add Schnorr signatures together allows you to do useful things like [batch verification](#batch-verify), and construct efficient [multisignature](#multisignature) locking scripts.
 
@@ -3206,11 +3116,11 @@ The fact that you can add Schnorr signatures together means that you can produce
 
 For example, in the legacy [P2MS](/docs/technical/script/p2ms.md) locking script (which uses ECDSA), you have to provide each individual public key in the locking script. And to unlock it, you need to provide a signature for each of those public keys.
 
-[![Diagram showing a basic multisignature locking and unlocking script.](../../../images/diagrams_png_schnorr-multisignature-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-basic.png)
+[<img src="../../../images/diagrams_png_schnorr-multisignature-basic.png" alt="Diagram showing a basic multisignature locking and unlocking script." width="987" height="79" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-basic.png)
 
 But with Schnorr signatures, you can add all of the public keys together to create a "public key sum" and put that in the locking script instead. To unlock it, you can then create a signature for each of those public keys, then add them together and put a single "signature sum" in the unlocking script:
 
-[![Diagram showing a multisignature locking and unlocking script using the sum of public keys and the sum of signatures.](../../../images/diagrams_png_schnorr-multisignature-sum.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-sum.png)
+[<img src="../../../images/diagrams_png_schnorr-multisignature-sum.png" alt="Diagram showing a multisignature locking and unlocking script using the sum of public keys and the sum of signatures." width="1002" height="151" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-sum.png)
 
 This provides two major benefits.
 
@@ -3259,7 +3169,7 @@ n - s = 629530927508142830063209455015132838099234676573259259678607513402430128
 public key = 03f8598d649e50f593c7fa78fa279e77deb5551e0983a06fecacbe4642f8e2aa49
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) ECDSA Verify
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> ECDSA Verify
 
 Random Example
 
@@ -3327,7 +3237,7 @@ n - s = 474063180963789379331525221785297613058188258840147954295393685425706345
 sig = fc22a0d2d248490485a4d47bf85de155477068ad3fc8ba25e44e306c9ca91b6268cf0672a53474aef320873c58ef220140c79887712d30bb8e9b41621bf39e43
 ```
 
-![Tool Icon](../../../images/icons_tool.svg) Schnorr Verify
+<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Schnorr Verify
 
 Random Example
 
@@ -3459,13 +3369,13 @@ How do Schnorr signatures work?
 
 I suppose it would be a good idea to explain **how Schnorr signatures work**, and where these *signing* and *verifying* equations come from:
 
-[![The basic Schnorr signing and verifying equations.](../../../images/diagrams_png_schnorr-basics-equations.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-equations.png" alt="The basic Schnorr signing and verifying equations." width="358" height="177" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-equations.png)
 
 I'll start with the basics and work up.
 
 ### 1. Keys
 
-[![Diagram showing a private key and public key being generated as the starting point for creating a Schnorr signature.](../../../images/diagrams_png_schnorr-basics-keys.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-keys.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-keys.png" alt="Diagram showing a private key and public key being generated as the starting point for creating a Schnorr signature." width="459" height="293" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-keys.png)
 
 First of all, to be able to create a digital signature I need to generate a pair of keys:
 
@@ -3490,7 +3400,7 @@ This proof is going to be called my **digital signature** (`s`).
 
 ### 2. Nonce
 
-[![Diagram showing the nonce part of the Schnorr signature scheme.](../../../images/diagrams_png_schnorr-basics-nonce.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-nonce.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-nonce.png" alt="Diagram showing the nonce part of the Schnorr signature scheme." width="648" height="293" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-nonce.png)
 
 Before creating a digital signature, I need to generate a one-time random number called a **nonce** (`k`).
 
@@ -3504,7 +3414,7 @@ I send you this public nonce (`kG`), and because I've used the same special "mul
 
 ### 3. Challenge
 
-[![Diagram showing the challenge part of the Schnorr signature scheme.](../../../images/diagrams_png_schnorr-basics-challenge.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-challenge.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-challenge.png" alt="Diagram showing the challenge part of the Schnorr signature scheme." width="388" height="293" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-challenge.png)
 
 Now that I've sent you this public nonce (`kG`), I need you to come up with a **challenge** (`e`) and send it to me.
 
@@ -3516,7 +3426,7 @@ In short, the challenge is used to make sure that I can't cheat.
 
 ### 4. Signature
 
-[![Diagram showing the creation of the basic Schnorr signature scheme.](../../../images/diagrams_png_schnorr-basics-signature.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-signature.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-signature.png" alt="Diagram showing the creation of the basic Schnorr signature scheme." width="632" height="272" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-signature.png)
 
 I create my **digital signature** (`s`) by multiplying my private key (`d`) by the challenge (`e`), and then add the private nonce (`k`) to it.
 
@@ -3530,7 +3440,7 @@ Anyone who doesn't know the private key (`d`) for the public key (`dG`) would no
 
 So these equations are the heart of the Schnorr signature scheme:
 
-[![Basic Schnorr signing and verifying equations (interactive, and not signing a message).](../../../images/diagrams_png_schnorr-basics-signature-equations.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-signature-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-signature-equations.png" alt="Basic Schnorr signing and verifying equations (interactive, and not signing a message)." width="373" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-signature-equations.png)
 
 These are the same as the equations in the diagram above, just rearranged.
 
@@ -3538,7 +3448,7 @@ These are the same as the equations in the diagram above, just rearranged.
 
 This has all just been a bunch of equations using letters so far, so lets use some *actual numbers* to prove that these equations work.
 
-[![Simple Schnorr signature signing and verifying example using small numbers and simple arithmetic.](../../../images/diagrams_png_schnorr-basics-example.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-example.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-example.png" alt="Simple Schnorr signature signing and verifying example using small numbers and simple arithmetic." width="700" height="255" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-example.png)
 
 This example just uses **small numbers** and **simple multiplication**.
 
@@ -3562,7 +3472,7 @@ To do this, I would need to be able to *commit* to using my private nonce (`k`) 
 
 The solution is to use a [hash function](/docs/technical/cryptography/hash-function.md), and use it to hash the value of the public nonce (`kG`) to create the challenge (`e`).
 
-[![Diagram showing the creation of the challenge by the signer by using a hash function.](../../../images/diagrams_png_schnorr-basics-non-interactive-me.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-me.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-me.png" alt="Diagram showing the creation of the challenge by the signer by using a hash function." width="553" height="305" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-me.png)
 
 A hash function is perfect because it produces an unpredictable result for whatever data you feed in to it. Furthermore, by hashing the public nonce (`kG`), it means I'm committed to using the private nonce (`k`), because I won't be able to change that after the fact without it altering the challenge (`e`).
 
@@ -3570,7 +3480,7 @@ So now, instead of us having to perform an interactive exchange of `kG` and `e` 
 
 You can then use that public nonce (`kG`) to calculate the same unpredictable challenge (`e`) that I generated on my side, and use this to verify the digital signature (`s`) using the same equation as before:
 
-[![Diagram showing the challenge being calculated by the verifier in the Schnorr signature scheme.](../../../images/diagrams_png_schnorr-basics-non-interactive-you.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-you.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-you.png" alt="Diagram showing the challenge being calculated by the verifier in the Schnorr signature scheme." width="553" height="246" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-you.png)
 
 As a result, using a hash function to create the challenge (`e`) means we have converted this digital signature system from an interactive one to a **non-interactive** one. This is a very handy upgrade to our system.
 
@@ -3578,13 +3488,13 @@ Now every time I want to create a digital signature, I can send one to you along
 
 So thanks to the introduction of the hash function to create the challenge (`e`), the signing and verifying equations now look like this:
 
-[![Basic Schnorr signing and verifying equations after including a non-interactive challenge.](../../../images/diagrams_png_schnorr-basics-non-interactive-equations.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-equations.png" alt="Basic Schnorr signing and verifying equations after including a non-interactive challenge." width="514" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-equations.png)
 
 This technique of using a hash function to create the challenge non-interactively is known as a [Fiat-Shamir transformation](https://www.zkdocs.com/docs/zkdocs/protocol-primitives/fiat-shamir/).
 
 ### 7. Message signing
 
-[![Diagram showing the inclusion of a message to be signed as part of the Schnorr signature scheme.](../../../images/diagrams_png_schnorr-basics-message.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-message.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-message.png" alt="Diagram showing the inclusion of a message to be signed as part of the Schnorr signature scheme." width="874" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-message.png)
 
 Up until now I've just been using a digital signature (`s`) to prove that I am the *owner* of a public key (`dG`).
 
@@ -3600,7 +3510,7 @@ By including the message (`m`) inside this hash, I am *committing* to this messa
 
 Anyway, now that we've included the **message** as part of our signature, the signing and verifying equations look like this:
 
-[![Basic Schnorr signing and verifying equations after including a message to be signed.](../../../images/diagrams_png_schnorr-basics-message-equations.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-message-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-message-equations.png" alt="Basic Schnorr signing and verifying equations after including a message to be signed." width="621" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-message-equations.png)
 
 **These are the fundamental equations for a non-interactive Schnorr signature scheme.**  You'll see these equations (in this form or similar) every time you look at any mathematical explanation of "Schnorr signatures".
 
@@ -3624,7 +3534,7 @@ So **the equations work in the same way as before**, but the *multiply* and *add
 
 To illustrate the slightly different type of multiplication operation we're now using in our equations, I'll use the dot "⋅" operator to signify elliptic curve multiplication:
 
-[![Basic Schnorr signing and verifying equations using elliptic curve operations instead of simple addition and multiplication.](../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-elliptic-curve-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png" alt="Basic Schnorr signing and verifying equations using elliptic curve operations instead of simple addition and multiplication." width="693" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-elliptic-curve-equations.png)
 
 * A **lowercase** letter (e.g. `k`, `d`, `e`, `s`) indicates a **scalar** (a number).
 * An **uppercase** letter (e.g. `G`) indicates a **point**.
@@ -3637,7 +3547,7 @@ There are other options for being able to multiply without division, but ellipti
 
 The final Schnorr signing and verifying equations look like this:
 
-[![Basic Schnorr signing and verifying equations using elliptic curve operations.](../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-elliptic-curve-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png" alt="Basic Schnorr signing and verifying equations using elliptic curve operations." width="693" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-elliptic-curve-equations.png)
 
 But we can also simplify it:
 
@@ -3647,13 +3557,13 @@ But we can also simplify it:
 
 So if we **substitute** these terms in to our equations we get:
 
-[![Basic Schnorr signing and verifying equations using substituted terms.](../../../images/diagrams_png_schnorr-basics-summary-equations-substitute.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-summary-equations-substitute.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-summary-equations-substitute.png" alt="Basic Schnorr signing and verifying equations using substituted terms." width="611" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-summary-equations-substitute.png)
 
 And that's where these signing and verifying at the top of this page come from.
 
 Lastly, we can **rearrange** the verification equation to get:
 
-[![Basic Schnorr verification equation rearranged.](../../../images/diagrams_png_schnorr-basics-summary-equations-verification-rearrange.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-summary-equations-verification-rearrange.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-summary-equations-verification-rearrange.png" alt="Basic Schnorr verification equation rearranged." width="362" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-summary-equations-verification-rearrange.png)
 
 And that's the equation used during [verification](#verify) for Schnorr signatures in Bitcoin.
 

@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 The blk.dat files in the `~/.bitcoin/blocks/` directory contain the **raw [block](/docs/technical/block.md) data** received by your [*Bitcoin Core*](https://bitcoin.org/en/download) node.
 
@@ -68,7 +68,7 @@ See the [od command](#od) below for displaying the [hex bytes](/docs/technical/g
 
 What is the structure of a raw block?
 
-[![Diagram showing structure of the raw block data inside the blk.dat files.](../../images/diagrams_png_block-blkdat.png)](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat.png)
+[<img src="../../images/diagrams_png_block-blkdat.png" alt="Diagram showing structure of the raw block data inside the blk.dat files." width="431" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat.png)
 
 The data above can be split into five parts:
 
@@ -83,7 +83,7 @@ The size field is what allowed me to figure out that I needed to read **293 byte
 1. Convert `1d010000` from *little-endian* to *big-endian* to get `0000011d`
 2. Convert `0000011d` from *hexadecimal* to *decimal* to get `285`
 
-![Tool Icon](../../images/icons_tool.svg) Little Endian
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Little Endian
 
 +1
 
@@ -124,7 +124,7 @@ Field Size
 
 0 secs
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -380,21 +380,11 @@ To deobfuscate the raw block data, you simply use this `xor_key` and XOR it acro
 
 This `xor_key` is **8 bytes** in length, so you need to repeatedly XOR every 8 bytes of raw block data to deobfuscate it.
 
-[![Diagram showing how to use the xor_key to deobfuscate raw block data from a blk.dat file.](../../images/diagrams_png_block-blkdat-xor.png)](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat-xor.png)
+[<img src="../../images/diagrams_png_block-blkdat-xor.png" alt="Diagram showing how to use the xor_key to deobfuscate raw block data from a blk.dat file." width="765" height="178" />](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat-xor.png)
 
 Here's some simple code to show you how it works:
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # get the xor key
 file_xor = File.open("/home/username/.bitcoin/blocks/xor.dat", "r") # don't forget to change the path
 xor_key = file_xor.read # this is 8 bytes

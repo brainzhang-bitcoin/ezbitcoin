@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a candidate block as a collection of transactions from the memory pool.](../../images/diagrams_png_mining-candidate-block.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-candidate-block.png)
+[<img src="../../images/diagrams_png_mining-candidate-block.png" alt="Diagram showing a candidate block as a collection of transactions from the memory pool." width="505" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/mining-candidate-block.png)
 
 A candidate block is a **[block](/docs/technical/block.md) of [transactions](/docs/technical/transaction.md) a miner attempts to add to the [blockchain](/docs/technical/blockchain.md)**.
 
@@ -10,7 +10,7 @@ If a miner can get a block hash below the target, their candidate block can be a
 
 They will then broadcast this "mined" candidate block to the other [nodes](/docs/technical/networking/node.md) on the network, where each node will verify and add it to their blockchain too.
 
-[![Diagram showing a miner broadcasting their mined candidate block to the other nodes on the network.](../../images/diagrams_png_mining-block-broadcast.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast.png)
+[<img src="../../images/diagrams_png_mining-block-broadcast.png" alt="Diagram showing a miner broadcasting their mined candidate block to the other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast.png)
 
 In other words, a candidate block *represents* the **next block of transactions** to be added on to the blockchain.
 
@@ -20,20 +20,20 @@ What does the current candidate block look like?
 
 Here's what the *current* candidate block looks like according to my [local node](/explorer/):
 
-### Block Header Candidate Block Header Refreshing
+### Block Header <img src="../../images/icons_reload.svg" alt="Candidate Block Header Refreshing" style="height:24px; width:24px;" />
 
 |  |  |
 | --- | --- |
 | [Version](/docs/technical/block/version.md) | 0x20000000 |
-| [Previous Block](/docs/technical/block/previous-block.md) | 00000000000000000001b9c4dc446b059b686ba5a38bd1e5cf4692d4420e2f54 |
-| [Merkle Root](/docs/technical/block/merkle-root.md) | `c6797e1c1183cc9c289e4aa10ff7b2b73f5f22bac1579912a34da873d8150e66` |
-| [Time](/docs/technical/block/time.md) | 03 Jul 2026, 08:37:58 |
+| [Previous Block](/docs/technical/block/previous-block.md) | 000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264 |
+| [Merkle Root](/docs/technical/block/merkle-root.md) | `349eb7d418b9962eca5b279cf2c458e89d6fabde2e927be9cbc63d0ba291a560` |
+| [Time](/docs/technical/block/time.md) | 03 Jul 2026, 10:13:01 |
 | [Bits](/docs/technical/block/bits.md) | `17021a42` |
 | [Nonce](/docs/technical/block/nonce.md) | 0 |
 
 ### Transactions
 
-Show Transactions ![Loading Transactions](../../images/icons_loader-2.svg)
+Show Transactions <img src="../../images/icons_loader-2.svg" alt="Loading Transactions" style="height:24px; width:24px;" />
 
 * **I'm not actively trying to mine this block.** If I was, I would be adjusting the [nonce](/docs/technical/block/nonce.md) in the block header to try and get a block hash below the current target.
 * I haven't put my own [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) in this candidate block either, so it wouldn't be valid if I mined it anyway. This example is here to show you what a current candidate block looks like.
@@ -44,7 +44,7 @@ Show Transactions ![Loading Transactions](../../images/icons_loader-2.svg)
 
 How do you construct a candidate block?
 
-[![Diagram showing the steps for constructing a candidate block.](../../images/diagrams_png_block-candidate-block-construction.png)](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-construction.png)
+[<img src="../../images/diagrams_png_block-candidate-block-construction.png" alt="Diagram showing the steps for constructing a candidate block." width="597" height="499" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-construction.png)
 
 There are three basic steps to constructing a candidate block:
 
@@ -69,7 +69,7 @@ The block header contains six different fields ([version](/docs/technical/block/
 * **Previous Block:** This field is used to specify an existing block that the candidate block will be built on top of. Miners always want to build on top of the *tip* of the blockchain, because they can only claim the block reward if the block they mine ends up becoming part of the [longest chain](/docs/technical/blockchain/longest-chain.md).
 * **Merkle Root:** The merkle root is a fingerprint for all the transactions included in the block. This is important, because it means that you cannot change the contents of the block without changing the fingerprint. So again, this is why we construct the block header *after* selecting the transactions for the candidate block.
 
-![Tool Icon](../../images/icons_tool.svg) Block Header
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
 
 Random Example
 
@@ -184,7 +184,7 @@ From here, a miner can now start working on [mining](/docs/technical/mining.md) 
 
 What are the requirements for a candidate block?
 
-[![Diagram showing the requirements for a candidate block.](../../images/diagrams_png_block-candidate-block-requirements.png)](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-requirements.png)
+[<img src="../../images/diagrams_png_block-candidate-block-requirements.png" alt="Diagram showing the requirements for a candidate block." width="669" height="340" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-requirements.png)
 
 A candidate block has a few basic requirements:
 
@@ -206,7 +206,7 @@ If a miner mines a block containing invalid transactions and broadcasts it to th
 
 ### 3. Transaction parents
 
-[![Diagram showing a parent transaction coming before a child transaction in a block.](../../images/diagrams_png_transaction-child-pays-for-parent.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-child-pays-for-parent.png)
+[<img src="../../images/diagrams_png_transaction-child-pays-for-parent.png" alt="Diagram showing a parent transaction coming before a child transaction in a block." width="752" height="544" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-child-pays-for-parent.png)
 
 The parent(s) of a transaction must always come *before* the child transaction.
 
@@ -216,7 +216,7 @@ Each node validates the transactions in a block from *top to bottom*, so if you 
 
 ### 4. Size limit
 
-[![Diagram showing the block size limit in terms of weight.](../../images/diagrams_png_block-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
+[<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing the block size limit in terms of weight." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
 The maximum size of a block is **4,000,000 [weight](/docs/technical/transaction/size.md#weight) units**.
 
@@ -239,7 +239,7 @@ Signature check operations are performed by [Script](/docs/technical/script.md) 
 
 How do miners select transactions for their candidate block?
 
-[![Diagram showing the highest fee transactions being selected from the memory pool for inclusion in a candidate block.](../../images/diagrams_png_block-candidate-block-transaction-selection.png)](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-transaction-selection.png)
+[<img src="../../images/diagrams_png_block-candidate-block-transaction-selection.png" alt="Diagram showing the highest fee transactions being selected from the memory pool for inclusion in a candidate block." width="722" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-transaction-selection.png)
 
 A miner can fill their candidate block with **any transactions** they like from the [memory pool](/docs/technical/mining/memory-pool.md).
 
@@ -249,7 +249,7 @@ So if there are more transactions in the memory pool than can fit into a candida
 
 ### Ancestor Feerate
 
-[![Diagram showing a miner working out the ancestor feerate for the transactions in their memory pool.](../../images/diagrams_png_block-candidate-block-transaction-selection-ancestor-fee-rate.png)](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-transaction-selection-ancestor-fee-rate.png)
+[<img src="../../images/diagrams_png_block-candidate-block-transaction-selection-ancestor-fee-rate.png" alt="Diagram showing a miner working out the ancestor feerate for the transactions in their memory pool." width="758" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-transaction-selection-ancestor-fee-rate.png)
 
 There is one important rule that miners must follow when selecting transactions:
 
@@ -263,7 +263,7 @@ When you've got ancestors in the memory pool, the process of selecting the optim
 
 Why do miners mine empty blocks of transactions?
 
-[![Diagram showing a miner constructing an empty candidate block to work on while they select the optimum combination of transactions from the memory pool to fill it with.](../../images/diagrams_png_block-candidate-block-empty-blocks.png)](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-empty-blocks.png)
+[<img src="../../images/diagrams_png_block-candidate-block-empty-blocks.png" alt="Diagram showing a miner constructing an empty candidate block to work on while they select the optimum combination of transactions from the memory pool to fill it with." width="756" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/block-candidate-block-empty-blocks.png)
 
 You sometimes find "empty blocks" appearing in the blockchain with only *one* transaction in them.
 

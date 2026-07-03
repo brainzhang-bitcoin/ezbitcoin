@@ -1,12 +1,12 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 The blockchain is a file that contains a list of bitcoin [transactions](/docs/beginners/guide/transactions.md).
 
-[![Diagram showing the blockchain as a file on a computer.](../../images/beginners_guide_blockchain_01-blockchain_file.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/01-blockchain_file.png)
+[<img src="../../images/beginners_guide_blockchain_01-blockchain_file.png" alt="Diagram showing the blockchain as a file on a computer." width="194" height="237" />](/docs/beginners/guide/blockchain/01-blockchain_file.png.md)
 
 Everyone on the [bitcoin network](/docs/beginners/guide/network.md) shares a copy of this file, and it updates regularly with the latest transactions.
 
-[![Diagram showing the blockchain as a file being shared by computers on a network.](../../images/beginners_guide_blockchain_02-bitcoin_network.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/02-bitcoin_network.png)
+[<img src="../../images/beginners_guide_blockchain_02-bitcoin_network.png" alt="Diagram showing the blockchain as a file being shared by computers on a network." width="481" height="544" />](/docs/beginners/guide/blockchain/02-bitcoin_network.png.md)
 
 ## Why is the blockchain important?
 
@@ -24,7 +24,7 @@ Because transactions aren't added to the file individually. Instead, they are bu
 
 Also, these blocks are *linked* together, which prevents anyone from modifying blocks that are already in the chain (as any changes would break the links between them). So **linked**blocks, or block**chain**.
 
-[![Diagram showing the blockchain as a series of blocks (of transactions) linked together.](../../images/beginners_guide_blockchain_03-blocks_chains.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/03-blocks_chains.png)
+[<img src="../../images/beginners_guide_blockchain_03-blocks_chains.png" alt="Diagram showing the blockchain as a series of blocks (of transactions) linked together." width="515" height="433" />](/docs/beginners/guide/blockchain/03-blocks_chains.png.md)
 
 The *chaining* of blocks is a security feature. This makes it impossible to tamper with the blockchain without anyone noticing.
 
@@ -34,7 +34,7 @@ Furthermore, the process of adding transactions in *blocks* makes it easier for 
 
 The blockchain is shared by the [nodes](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/beginners/guide/network.md), similar to how a totally legit and non-copyrighted video file might be shared on the [BitTorrent network](https://en.wikipedia.org/wiki/BitTorrent).
 
-[![Diagram showing the blockchain being shared and updated with new blocks on a network.](../../images/beginners_guide_blockchain_04-blocks_sharing.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/04-blocks_sharing.png)
+[<img src="../../images/beginners_guide_blockchain_04-blocks_sharing.png" alt="Diagram showing the blockchain being shared and updated with new blocks on a network." width="481" height="544" />](/docs/beginners/guide/blockchain/04-blocks_sharing.png.md)
 
 So if my file hasn't got the latest blocks of transactions, someone will share them with me to get me up-to-date.
 

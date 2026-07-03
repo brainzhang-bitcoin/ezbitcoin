@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Table showing hexadecimal numbers with corresponding decimal numbers.](../../images/diagrams_png_numbers-hexadecimal-key.png)](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-key.png)
+[<img src="../../images/diagrams_png_numbers-hexadecimal-key.png" alt="Table showing hexadecimal numbers with corresponding decimal numbers." width="779" height="79" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-key.png)
 
 The hexadecimal numbering system uses the **digits 0-9 and the characters A-F** to represent the numbers **0-15**.
 
@@ -57,7 +57,7 @@ We don't usually prefix decimal numbers with 0d (unless it makes sense to do so)
 
 ## Hexadecimal to Decimal
 
-[![Diagram showing how to convert hexadecimal to decimal.](../../images/diagrams_png_numbers-hexadecimal-decimal-conversion.png)](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-decimal-conversion.png)
+[<img src="../../images/diagrams_png_numbers-hexadecimal-decimal-conversion.png" alt="Diagram showing how to convert hexadecimal to decimal." width="768" height="181" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-decimal-conversion.png)
 
 To convert hexadecimal to decimal, you multiply each character by increasing powers of 16.
 
@@ -93,38 +93,18 @@ You don't have to be able to convert hexadecimal to decimal in your head, but it
 You can convert hexadecimal strings to decimal in any good programming language. There should be built-in functions to make it easy, so you shouldn't have to perform the conversion manually.
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # hexadecimal to decimal
 puts "02A13B".to_i(16) #=> 172347
 ```
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # hexadecimal to decimal
 echo "ibase=16; 02A13B" | bc #=> 172347
 ```
 
 ## Decimal to Hexadecimal
 
-[![Diagram showing how to convert decimal to hexadecimal.](../../images/diagrams_png_numbers-decimal-hexadecimal-conversion.png)](https://static.learnmeabitcoin.com/diagrams/png/numbers-decimal-hexadecimal-conversion.png)
+[<img src="../../images/diagrams_png_numbers-decimal-hexadecimal-conversion.png" alt="Diagram showing how to convert decimal to hexadecimal." width="620" height="344" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-decimal-hexadecimal-conversion.png)
 
 To convert decimal to hexadecimal, you just need to keep dividing by 16.
 
@@ -148,31 +128,11 @@ Hexadecimal = 1A4F
 ### Code Examples
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # decimal to hexadecimal
 puts 6735.to_s(16) #=> 1a4f
 ```
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # decimal to hexadecimal
 echo "obase=16; 6735" | bc #=> 1A4F
 ```
@@ -181,12 +141,12 @@ echo "obase=16; 6735" | bc #=> 1A4F
 
 What's the use of hexadecimal?
 
-[![Diagram showing bytes of data represented in binary, decimal, and hexadecimal.](../../images/diagrams_png_bytes-hexadecimal.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-hexadecimal.png)
+[<img src="../../images/diagrams_png_bytes-hexadecimal.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="772" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-hexadecimal.png)
 
 You will encounter lots of hexadecimal characters when working with raw data in Bitcoin. For example, here's a random private key:
 
 ```
-25be2890d1c4140c792d0b4e650974e364272a8b439c78b3bef42c7d4c68ff9c
+b97bb553a077ee8bc49337a4e920ff0535ac2e8a00e22c26660d38663da3b6b6
 ```
 
 This private key represents 32 bytes of data.

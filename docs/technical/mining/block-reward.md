@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the height of a block in the blockchain as its distance from the genesis block.](../../images/diagrams_png_mining-block-reward.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward.png)
+[<img src="../../images/diagrams_png_mining-block-reward.png" alt="Diagram showing the height of a block in the blockchain as its distance from the genesis block." width="490" height="400" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward.png)
 
 Most Recent Block Reward:
 
@@ -20,7 +20,7 @@ It is claimed via a [coinbase transaction](/docs/technical/mining/coinbase-trans
 
 Where does the block reward come from?
 
-[![Diagram showing the block reward being collected by a coinbase transaction and as the sum of the block subsidy and transaction fees in the block.](../../images/diagrams_png_mining-block-reward-source.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-source.png)
+[<img src="../../images/diagrams_png_mining-block-reward-source.png" alt="Diagram showing the block reward being collected by a coinbase transaction and as the sum of the block subsidy and transaction fees in the block." width="691" height="302" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-source.png)
 
 The block reward consists of two parts:
 
@@ -69,7 +69,7 @@ The block reward serves two purposes:
 
 ### 1. Incentive
 
-[![Diagram showing a miner collecting the block reward as compensation for the cost of mining a block on to the blockchain.](../../images/diagrams_png_mining-block-reward-incentive.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-incentive.png)
+[<img src="../../images/diagrams_png_mining-block-reward-incentive.png" alt="Diagram showing a miner collecting the block reward as compensation for the cost of mining a block on to the blockchain." width="431" height="522" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-incentive.png)
 
 As already mentioned, the block reward provides an **incentive for miners to add new blocks on to the [blockchain](/docs/technical/blockchain.md)**.
 
@@ -89,7 +89,7 @@ So the block reward doesn't *prevent* a miner from performing a 51% attack, but 
 
 ### 2. Distribution
 
-[![Diagram showing an interval of 10 minutes between new block rewards being issued, and the block rewards as the source of bitcoins in new transactions.](../../images/diagrams_png_mining-block-reward-distribution.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-distribution.png)
+[<img src="../../images/diagrams_png_mining-block-reward-distribution.png" alt="Diagram showing an interval of 10 minutes between new block rewards being issued, and the block rewards as the source of bitcoins in new transactions." width="575" height="627" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-distribution.png)
 
 The block reward (well, the *block subsidy*) is used to **distribute new bitcoins into the network**.
 
@@ -111,7 +111,7 @@ This creates a *fixed supply* of bitcoin, where the issuance of new coins dimini
 
 This table shows the dates and amounts for previous and upcoming Bitcoin halvings. The current block subsidy is highlighted.
 
-Current Height: 956,472
+Current Height: 956,479
 
 | Halving | Height | Subsidy (BTC) | Date | Total Mined (BTC) |
 | --- | --- | --- | --- | --- |
@@ -157,16 +157,6 @@ Total Supply: 20,999,999.9769 BTC
 Here's some simple Ruby code for calculating the block subsidy based on block height.
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # function for calculating the subsidy for a given height (in satoshis)
 def subsidy(height) 
   # calculate how many halvings there have been based on the height
@@ -196,7 +186,7 @@ This is pretty much the same as *dividing by 2*, except the result of division i
 
 You can see what I mean by entering 5000000000 (the initial block subsidy in satoshis) into the *decimal* field of the number converter tool below, and then removing the rightmost bits from the *binary* field (which is equivalent to performing a right bit shift):
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 

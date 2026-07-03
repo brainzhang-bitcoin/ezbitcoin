@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the target being stored in the bits field of a block header.](../../images/diagrams_png_block-bits.png)](https://static.learnmeabitcoin.com/diagrams/png/block-bits.png)
+[<img src="../../images/diagrams_png_block-bits.png" alt="Diagram showing the target being stored in the bits field of a block header." width="646" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-bits.png)
 
 The bits field contains a compact representation of the [target](/docs/technical/mining/target.md).
 
@@ -28,7 +28,7 @@ Bits`0 bytes`
 
 How does the bits field represent the target?
 
-[![Diagram showing the exponent and coefficient of the bits field and how they convert to a full 32-byte target value.](../../images/diagrams_png_block-bits-to-target.png)](https://static.learnmeabitcoin.com/diagrams/png/block-bits-to-target.png)
+[<img src="../../images/diagrams_png_block-bits-to-target.png" alt="Diagram showing the exponent and coefficient of the bits field and how they convert to a full 32-byte target value." width="832" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/block-bits-to-target.png)
 
 The bits field has two parts:
 
@@ -58,16 +58,6 @@ Target: 00000000000000000005dd010000000000000000000000000000000000000000
 ## Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # bits
 exponent = 0x17
 coefficient = 0x05dd01
@@ -135,7 +125,7 @@ See here: [Why 1D00FFFF and not 1CFFFFFF as target in genesis block](https://bit
 
 Anyway, this target-to-bits conversion is what miners do when creating a bits field for their block header after a [target recalculation](/docs/technical/mining/target.md#adjustment).
 
-![Tool Icon](../../images/icons_tool.svg) Target Adjustment
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
 
 Previous Adjustment
 Current Target

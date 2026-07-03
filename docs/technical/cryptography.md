@@ -1,4 +1,4 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 > Cryptography is the practice and study of techniques for secure communication in the presence of adversarial behavior.
 
@@ -13,11 +13,11 @@ You might think that being a "cryptocurrency" means there's all kinds of cryptog
 
 ## 1. Hash Function
 
-[![Diagram showing data being put into a hash function and a fingerprint coming out the other side.](../images/diagrams_png_hash-function.png)](https://static.learnmeabitcoin.com/diagrams/png/hash-function.png)
+[<img src="../images/diagrams_png_hash-function.png" alt="Diagram showing data being put into a hash function and a fingerprint coming out the other side." width="741" height="215" />](https://static.learnmeabitcoin.com/diagrams/png/hash-function.png)
 
 A [hash function](/docs/technical/cryptography/hash-function.md) is a tool that creates **fingerprints for data**.
 
-![Tool Icon](../images/icons_tool.svg) SHA-256 (Text)
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> SHA-256 (Text)
 
 Text
 
@@ -26,7 +26,7 @@ Enter any string of characters
 `0 characters`
 
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 SHA-256(text)
@@ -43,19 +43,19 @@ It takes in any amount of data, and *scrambles* and *compresses* it to produce a
 
 For example, we hash [transaction data](/docs/technical/transaction.md) to create [TXIDs](/docs/technical/transaction/input/txid.md), and we hash [block data](/docs/technical/block.md) to get [block hashes](/docs/technical/block/hash.md). This gives us unique references for each transaction and block, which we can use to look them up in a [blockchain explorer](/explorer/).
 
-[![Diagram showing a TXID being created by hashing transaction data.](../images/diagrams_png_transaction-txid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-txid.png)
+[<img src="../images/diagrams_png_transaction-txid.png" alt="Diagram showing a TXID being created by hashing transaction data." width="764" height="276" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-txid.png)
 
 
 A *TXID* is the hash of transaction data.
 
-[![Diagram showing a block hash being created by hashing the block header data in a block.](../images/diagrams_png_block-hash-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/block-hash-basic.png)
+[<img src="../images/diagrams_png_block-hash-basic.png" alt="Diagram showing a block hash being created by hashing the block header data in a block." width="646" height="295" />](https://static.learnmeabitcoin.com/diagrams/png/block-hash-basic.png)
 
 
 A *block hash* is the hash of a block header.
 
 Furthermore, every transaction is connected to a block through a [merkle root](/docs/technical/block/merkle-root.md), and every block is connected to another block by referencing the hash of a [previous block](/docs/technical/block/previous-block.md).
 
-[![Diagram showing a transactions connected to a block via the merkle root, and blocks connected together by their block hashes.](../images/diagrams_png_block-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
+[<img src="../images/diagrams_png_block-hash.png" alt="Diagram showing a transactions connected to a block via the merkle root, and blocks connected together by their block hashes." width="775" height="563" />](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
 
 
 Hashes are used to *connect* all the data in the [blockchain](/docs/technical/blockchain.md) together.
@@ -64,7 +64,7 @@ But what makes Bitcoin an *invention* is that Satoshi came up with the idea to u
 
 In short, the result of the hash function is *uncontrollable*; you don't know what the result of the hash function is going to be until you actually hash the data. Satoshi used this property to create a form of lottery, where a new [block](/docs/technical/block.md) can only be added to the [blockchain](/docs/technical/blockchain.md) if someone is able to get a [block hash](/docs/technical/block/hash.md) below a certain [target](/docs/technical/mining/target.md) value.
 
-[![Diagram showing a block hash needing to get below a target value for it to be added on to the blockchain.](../images/diagrams_png_mining-block-header-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash.png)
+[<img src="../images/diagrams_png_mining-block-header-hash.png" alt="Diagram showing a block hash needing to get below a target value for it to be added on to the blockchain." width="841" height="454" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash.png)
 
 
 The block hash is used in conjunction with a target to create a network-wide lottery.
@@ -78,14 +78,14 @@ Anyway, there are [various flavors of hash function](https://en.wikipedia.org/wi
 1. [SHA-256](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) (2001) – The primary hash function used throughout Bitcoin.
      
 
-   ![Tool Icon](../images/icons_tool.svg) SHA-256
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> SHA-256
 
    Data (Hex)
 
    `0 bytes`
 
 
-   ![Hash Function Icon](../images/icons_hash-function.svg)
+   <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
    SHA-256
 
    SHA-256(data)
@@ -98,14 +98,14 @@ Anyway, there are [various flavors of hash function](https://en.wikipedia.org/wi
 2. [RIPEMD-160](https://homes.esat.kuleuven.be/~bosselae/ripemd160/pdf/AB-9601/AB-9601.pdf) (1996) – A secondary hash function, only used for [shortening public keys](/docs/technical/keys/public-key/hash.md).
      
 
-   ![Tool Icon](../images/icons_tool.svg) RIPEMD-160
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> RIPEMD-160
 
    Data (Hex)
 
    `0 bytes`
 
 
-   ![Hash Function Icon](../images/icons_hash-function.svg)
+   <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
    RIPEMD-160
 
    RIPEMD-160(data)
@@ -120,17 +120,17 @@ Anyway, there are [various flavors of hash function](https://en.wikipedia.org/wi
 
 Public key cryptography involves using mathematics to create a *pair* of keys: a [private key](/docs/technical/keys/private-key.md) and a [public key](/docs/technical/keys/public-key.md).
 
-[![Diagram showing a private key and public key pair.](../images/diagrams_png_keys-public-key-and-private-key-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key-and-private-key-basic.png)
+[<img src="../images/diagrams_png_keys-public-key-and-private-key-basic.png" alt="Diagram showing a private key and public key pair." width="189" height="166" />](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key-and-private-key-basic.png)
 
 These are basically two very large numbers. And due to the special cryptographic mathematics used to create these keys, you can give away the public key, but nobody can work backwards from it to figure out the private key.
 
 This isn't particularly useful on its own. However, part of public key cryptography is the ability to use the private key to create what's known as a [digital signature](/docs/technical/keys/signature.md), and this will also have a unique mathematical connection to the public key.
 
-[![Diagram showing a private key being used to create a signature that has a mathematical connection to the public key.](../images/diagrams_png_keys-public-key-and-digital-signature-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key-and-digital-signature-basic.png)
+[<img src="../images/diagrams_png_keys-public-key-and-digital-signature-basic.png" alt="Diagram showing a private key being used to create a signature that has a mathematical connection to the public key." width="514" height="177" />](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key-and-digital-signature-basic.png)
 
 Anyway, Bitcoin utilizes this kind of public key cryptography as the basis for the locking mechanism inside [transactions](/docs/technical/transaction.md):
 
-[![Diagram showing an input being unlocked by using a private key to create a signature that corresponds to the public key inside an output.](../images/diagrams_png_keys.png)](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
+[<img src="../images/diagrams_png_keys.png" alt="Diagram showing an input being unlocked by using a private key to create a signature that corresponds to the public key inside an output." width="696" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
 
 When you want to "receive" bitcoins, someone will create a transaction that *locks* a set amount of bitcoins (an [output](/docs/technical/transaction/output.md)) to your public key.
 
@@ -148,7 +148,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 1. [ECDSA](https://www.secg.org/sec1-v2.pdf) (1998) – The first public key cryptosystem used within Bitcoin.
      
 
-   ![Tool Icon](../images/icons_tool.svg) Public Key
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
    Generate Random
 
@@ -190,7 +190,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 
    0 secs
 
-   ![Tool Icon](../images/icons_tool.svg) ECDSA Sign
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> ECDSA Sign
 
    Random Example
 
@@ -243,7 +243,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 
    0 secs
 
-   ![Tool Icon](../images/icons_tool.svg) ECDSA Verify
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> ECDSA Verify
 
    Random Example
 
@@ -291,7 +291,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 2. [Schnorr Signatures](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki) (1990) – A more efficient alternative to ECDSA. The [patent](https://patents.google.com/patent/US4995082) for this cryptosystem expired in 2010 (a year after Bitcoin was first released). It was integrated into Bitcoin as part of the [Taproot](/docs/technical/upgrades/taproot.md) upgrade in 2021.
      
 
-   ![Tool Icon](../images/icons_tool.svg) Schnorr Sign
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Schnorr Sign
 
    Random Example
 
@@ -408,7 +408,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 
    0 secs
 
-   ![Tool Icon](../images/icons_tool.svg) Schnorr Verify
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Schnorr Verify
 
    Random Example
 
@@ -542,14 +542,14 @@ Public key cryptography has been around since the 1970s.
 
 Before this, data could only be encrypted and decrypted using the *same key* (**symmetric encryption**). This worked well, but the problem was that you had to share the same key between two people, which was a nightmare for security, as it's difficult to share a single key without someone else getting their hands on it.
 
-[![Diagram showing a single private key being used for encryption and decryption.](../images/diagrams_png_keys-symmetric-encryption.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-symmetric-encryption.png)
+[<img src="../images/diagrams_png_keys-symmetric-encryption.png" alt="Diagram showing a single private key being used for encryption and decryption." width="412" height="222" />](https://static.learnmeabitcoin.com/diagrams/png/keys-symmetric-encryption.png)
 
 
 Symmetric encryption.
 
 Public key cryptography solved this problem by allowing you to use a *pair of keys* (**asymmetric encryption**) instead. Now you can hand out a public key for people to encrypt data with, and this can be decrypted using the corresponding private key.
 
-[![Diagram showing a private key and public key pair being used for encryption and decryption.](../images/diagrams_png_keys-asymmetric-encryption.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-asymmetric-encryption.png)
+[<img src="../images/diagrams_png_keys-asymmetric-encryption.png" alt="Diagram showing a private key and public key pair being used for encryption and decryption." width="412" height="222" />](https://static.learnmeabitcoin.com/diagrams/png/keys-asymmetric-encryption.png)
 
 
 Asymmetric encryption.

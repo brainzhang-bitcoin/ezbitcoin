@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing how the compact size field indicates the upcoming size or item count.](../../images/diagrams_png_bytes-compact-size.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size.png)
+[<img src="../../images/diagrams_png_bytes-compact-size.png" alt="Diagram showing how the compact size field indicates the upcoming size or item count." width="775" height="295" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size.png)
 
 A compact size field is used in [network messages](/docs/technical/networking.md#messages) to indicate the **size of an upcoming field** or the **number of upcoming fields**.
 
@@ -40,7 +40,7 @@ Note: Bytes encoding the integer are in little endian.
 
 A compact size field is a variable-length [byte](/docs/technical/general/bytes.md) structure. The *leading byte* indicates the **size** of the field, and also indicates the bytes that contain the **number**.
 
-[![Diagram showing the prefixes used for compact size fields and the corresponding field sizes.](../../images/diagrams_png_bytes-compact-size-prefix.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size-prefix.png)
+[<img src="../../images/diagrams_png_bytes-compact-size-prefix.png" alt="Diagram showing the prefixes used for compact size fields and the corresponding field sizes." width="367" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size-prefix.png)
 
 | Leading Byte | Number | Range | Field Size | Example |
 | --- | --- | --- | --- | --- |
@@ -248,16 +248,6 @@ It's a minor space-saving technique. But when you have multiple of these fields 
 Here's a quick code example showing how you can convert between an integer and compact size in Ruby:
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # pack()       - converts an integer to raw bytes of a specific length and byte order (e.g. little-endian) based on the directive given
 # unpack("H*") - converts raw bytes to a hexadecimal string
 

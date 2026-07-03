@@ -1,4 +1,4 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 So you've [bought some bitcoin](/docs/beginners/exchanges.md), and you're sitting on an amount that's starting to make you feel a bit anxious.
 
@@ -8,7 +8,7 @@ Below are the *simplest* and most *effective* steps you can take toward **securi
 
 ## 1. Hardware Wallet
 
-[![Diagram showing a hardware wallet not having a direct connection to the Internet.](../images/diagrams_png_beginners-wallets-hardware-wallet.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-hardware-wallet.png)
+[<img src="../images/diagrams_png_beginners-wallets-hardware-wallet.png" alt="Diagram showing a hardware wallet not having a direct connection to the Internet." width="722" height="318" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-hardware-wallet.png)
 
 First and foremost, the biggest step you can take to protect your bitcoins is to get a *hardware wallet*.
 
@@ -29,7 +29,7 @@ It would still take some time and effort to extract the private keys from your h
 
 ## 2. Passphrase
 
-[![Diagram showing the private keys and addresses generated from a seed plus passphrase.](../images/beginners_security_passphrase.gif)](https://static.learnmeabitcoin.com/beginners/security/passphrase.gif)
+[<img src="../images/beginners_security_passphrase.gif" alt="Diagram showing the private keys and addresses generated from a seed plus passphrase." width="533" height="442" />](/docs/beginners/security/passphrase.gif.md)
 
 
 Using a passphrase allows you to create a completely different wallet from your initial seed.
@@ -44,7 +44,7 @@ Naturally this also means that you'll need to **backup your passphrase** in addi
 
 Using a passphrase is not essential, but it's an easy and effective security upgrade.
 
-![Tool Icon](../images/icons_tool.svg) Mnemonic Seed
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Mnemonic Seed
 
 Generate Random
 Reset
@@ -435,8 +435,8 @@ For example, if you had access to the most powerful computer in the world, it wo
 
 | Seed Size | Time to Crack |
 | --- | --- |
-| 12 words | 11,837 billion years |
-| 24 words | 4,028,186,323,853,522,712,123,817,333,770,733,572,063,232 billion years |
+| 12 words | 11,815 billion years |
+| 24 words | 4,020,557,286,295,325,548,893,299,578,907,195,707,752,448 billion years |
 |
 
 See [calculation](#12-vs-24-word-seed-calculation) for how I got these numbers
@@ -468,7 +468,7 @@ These numbers are calculated by raising 2 to the power of the number of bits of 
 Now, let's assume the combined [hashrate](/docs/technical/blockchain/51-attack.md) of all the miners on the bitcoin network constitutes the biggest "computer" in the world (or at least one of the biggest). With all this computing power, we can see that this "computer" has the ability to perform this many hashes per second:
 
 ```
-Bitcoin hashes per second = 933389022828990300160
+Bitcoin hashes per second = 935160135489377927168
 ```
 
 You can get this data using `bitcoin-cli getmininginfo`
@@ -476,28 +476,28 @@ You can get this data using `bitcoin-cli getmininginfo`
 In addition, you actually need to perform [2,048 hashes to generate each individual seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed). Using this information, we can divide the *hashes per second* by the number of hashes required to generate each seed to calculate how many seeds the fastest computer in the world can generate per second:
 
 ```
-seeds per second = 455756358803217920
+seeds per second = 456621159906922816
 ```
 
 So if we divide all of the possible combinations of each seed by the number of seeds the biggest computer can generate per second, we can work out how many seconds it would take to run through all the possible seeds:
 
 ```
-12 words = 746632187018727473684 seconds
-24 words = 254065767818089370140004284374072424387854683575189206325753 seconds
+12 words = 745218130036508313528 seconds
+24 words = 253584589161218754926938008578650677148511103196174980847779 seconds
 ```
 
 And if we divide that by the number of seconds in a year (31536000), we get:
 
 ```
-12 words = 23675551338747 years
-24 words = 8056372647707044968924539712521322437463682254413660 years
+12 words = 23630711885987 years
+24 words = 8041114572590650524065766380601556226170443404241976 years
 ```
 
 Lastly, when determining how long it would take for an attacker to crack a password, we base this on how long it would take for them to run through [half](https://security.stackexchange.com/questions/257519/how-many-bits-of-entropy-should-a-password-have-to-be-reasonably-future-proof-1) of the total combinations. So if we divide this time by 2 we get:
 
 ```
-12 words = 11837775669373 years
-24 words = 4028186323853522484462269856260661218731841127206830 years
+12 words = 11815355942993 years
+24 words = 4020557286295325262032883190300778113085221702120988 years
 ```
 
 And that's how long it would take to crack each type of seed.
@@ -510,16 +510,6 @@ So whilst there is a significant difference between a 12-word and 24-word seed i
 ##### Code
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # Calculate the number of years to crack different lengths of seeds in bitcoin
 
 # 12 words = 128 bits of entropy

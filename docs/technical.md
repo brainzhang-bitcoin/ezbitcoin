@@ -1,6 +1,6 @@
-![Loading Tool](images/icons_loader-2.svg)
+<img src="images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-# Technical Icon Technical
+# <img src="images/icons_file-text.svg" alt="Technical Icon" style="width:52px; height:52px" /> Technical
 
 This is a complete technical guide to bitcoin.
 
@@ -16,7 +16,7 @@ This is because the best way to learn how to become a bitcoin developer is to ac
 
 ## Code examples are in these boxes
 
-![Ruby Icon](images/icons_ruby.svg)
+<img src="images/icons_ruby.svg" alt="Ruby Icon" style="width:52px; height:52px" />
 
 Most of the code examples are in [Ruby](https://www.ruby-lang.org/en/) because I think it's the easiest language to read.
 
@@ -35,7 +35,7 @@ This is completely optional, but I'd recommend installing Linux.
 * **[Xubuntu](https://xubuntu.org/)** – This is my Linux distribution of choice. It's just the popular [Ubuntu](https://ubuntu.com/) bundled with the lightweight and functional [XFCE](https://xfce.org/) desktop environment. It's easy to use, and is a good starting point if you're moving from Mac or Windows, because everything just works out of the box.
     
 
-  [![Screenshot of my desktop.](images/technical_my-setup-2020.png)](https://static.learnmeabitcoin.com/technical/my-setup-2020.png)
+  [<img src="images/technical_my-setup-2020.png" alt="Screenshot of my desktop." width="960" height="540" />](/docs/technical/my-setup-2020.png.md)
 
 
   This is what my desktop looks like. I was making this [SHA256 animation](https://www.youtube.com/watch?v=f9EbD6iY9zI) at the time.
@@ -48,7 +48,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 ### Install Bitcoin Core
 
-![Bitcoin Logo](images/svg_bitcoin-logo.svg)
+<img src="images/svg_bitcoin-logo.svg" alt="Bitcoin Logo" style="width: 24px; height: 24px;" />
 
 If you're going to be working with bitcoin, it's a good idea to install [Bitcoin Core](https://bitcoin.org/en/download) (the original bitcoin program).
 
@@ -78,12 +78,12 @@ You can list all of the available commands by running `bitcoin-cli help`.
 
 ### Use your favorite programming language
 
-![Python Icon](images/icons_python.svg)
-![Ruby Icon](images/icons_ruby.svg)
-![Javascript Icon](images/icons_javascript.svg)
-![Golang Icon](images/icons_go.svg)
-![C++ Icon](images/icons_cpp.svg)
-![PHP Icon](images/icons_php.svg)
+<img src="images/icons_python.svg" alt="Python Icon" style="width:52px; height:52px" />
+<img src="images/icons_ruby.svg" alt="Ruby Icon" style="width:52px; height:52px" />
+<img src="images/icons_javascript.svg" alt="Javascript Icon" style="width:52px; height:52px" />
+<img src="images/icons_go.svg" alt="Golang Icon" style="width:52px; height:52px" />
+<img src="images/icons_cpp.svg" alt="C++ Icon" style="width:52px; height:52px" />
+<img src="images/icons_php.svg" alt="PHP Icon" style="width:52px; height:52px" />
 
 **You can work with bitcoin in *any* programming language you like**, so you might as well use your favorite.
 
@@ -122,13 +122,13 @@ If I had to provide you with a specific route to take, I'd say these are the **t
    Generate
 
    ```
-   private key: d7e59ef51ed9889a218086021c3a9d883250434719efde12ec86a60eef566ec5
-   public key:  03e79f1ddd24311b4988bf5089d8f8d4b41b581f7202a42bb80d6dd0eb0cf0ce48
-   address:     1CX78rJhYpYuJ6TvoHP3HDHopm9PeKN7pd
+   private key: 7f8d051973cb85a72916ab28966fb389656af5d4e1ff68c3f20e44706c15add3
+   public key:  027287f9c695c85e5f292dd7169fc2739cbf52885425c5cb69045080ca8d4d25a5
+   address:     1PZnUgqGQhjfC3vEPHMBxBQBVFmsxaxa7P
    ```
 2. **Decoding a [transaction](/docs/technical/transaction.md).** Learning how to decode a raw transaction will teach you a lot about the structure of a bitcoin transaction, and they make up 99% of the data inside the [blockchain](/docs/technical/blockchain.md).  
 
-   ![Tool Icon](images/icons_tool.svg) Transaction Splitter
+   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Splitter
 
    Random Example
 
@@ -148,7 +148,7 @@ If I had to provide you with a specific route to take, I'd say these are the **t
    0 secs
 3. **Creating your own transaction.** After decoding a transaction, you're all set to create your own. This is a much bigger milestone (so take your time), but it's the natural next step. [Signing](/docs/technical/keys/signature.md) it will be the tricky part, but if you can successfully send your own bitcoin transaction into the [network](/docs/technical/networking.md), then you can safely say that you're a pretty good bitcoin programmer.  
 
-   ![Tool Icon](images/icons_tool.svg) Transaction Builder
+   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Transaction Builder
 
    Random Example
 
@@ -247,7 +247,7 @@ And if you can create you own bitcoin transactions, there's nothing else in bitc
 
 ### Write command line tools
 
-[![Screencast showing bitcoin command line tools being used in the terminal.](images/technical_command-line-tools.gif)](https://static.learnmeabitcoin.com/technical/command-line-tools.gif)
+[<img src="images/technical_command-line-tools.gif" alt="Screencast showing bitcoin command line tools being used in the terminal." width="728" height="183" />](/docs/technical/command-line-tools.gif.md)
 
 Writing command-line tools is a good way to get started with programming for bitcoin.
 
@@ -257,7 +257,7 @@ Some basic command line tools that will prove to be very useful over the long ru
 
 * **Hash Functions** - It's handy to have a quick and easy way to get the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) or [HASH160](/docs/technical/cryptography/hash-function.md#hash160) of some data, because they're used everywhere in Bitcoin.  
 
-  ![Tool Icon](images/icons_tool.svg) HASH256
+  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
   Random Transaction Data
 
@@ -268,10 +268,10 @@ Some basic command line tools that will prove to be very useful over the long ru
   `0 bytes`
 
 
-  ![Hash Function Icon](images/icons_hash-function.svg)
+  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
-  ![Hash Function Icon](images/icons_hash-function.svg)
+  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
   HASH256
@@ -284,7 +284,7 @@ Some basic command line tools that will prove to be very useful over the long ru
 
   0 secs
 
-  ![Tool Icon](images/icons_tool.svg) HASH160
+  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH160
 
   Data (Hex)
 
@@ -293,10 +293,10 @@ Some basic command line tools that will prove to be very useful over the long ru
   `0 bytes`
 
 
-  ![Hash Function Icon](images/icons_hash-function.svg)
+  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
-  ![Hash Function Icon](images/icons_hash-function.svg)
+  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   RIPEMD-160
 
   HASH160
@@ -310,7 +310,7 @@ Some basic command line tools that will prove to be very useful over the long ru
   0 secs
 * **Reversing Byte Order** - This one is invaluable to me. You often need to reverse the [byte order](/docs/technical/general/byte-order.md) of [TXIDs](/docs/technical/transaction/input/txid.md) and [block hashes](/docs/technical/block/hash.md), because the byte order you use within raw transaction data and block data is the reverse of what you use to search for them in a [blockchain explorer](/explorer/). Furthermore, most fields in raw bitcoin data are in "[little-endian](/docs/technical/general/little-endian.md)", so you'll often find yourself needing to reverse the byte order before converting numbers between hexadecimal and decimal  
 
-  ![Tool Icon](images/icons_tool.svg) Reverse Bytes
+  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Reverse Bytes
 
   Random Example
 
@@ -330,7 +330,7 @@ Some basic command line tools that will prove to be very useful over the long ru
   0 secs
 * **Number Converter** - I can't tell you how many times I've converted something from [hexadecimal](/docs/technical/general/hexadecimal.md) to decimal (and vice versa). You can use an online tool if you want, but there's nothing quite like firing up a terminal and converting a number using a script you've written yourself.  
 
-  ![Tool Icon](images/icons_tool.svg) Number Converter
+  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
   Binary (Base 2)
 

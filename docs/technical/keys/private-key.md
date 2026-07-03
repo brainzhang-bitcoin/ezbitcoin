@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a private key as a random number.](../../images/diagrams_png_keys-private-key.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-private-key.png)
+[<img src="../../images/diagrams_png_keys-private-key.png" alt="Diagram showing a private key as a random number." width="316" height="102" />](https://static.learnmeabitcoin.com/diagrams/png/keys-private-key.png)
 
 A private key is a very large **random number**.
 
@@ -558,16 +558,6 @@ To create a private key you just need to **generate a random 256-[bit](/docs/tec
 The critical part to generating a private key is to use a *reliable* source of randomness. If you're using Linux, a reliable source of randomness is [/dev/urandom](https://linux.die.net/man/4/urandom):
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # generate 256 bits of random data
 urandom = File.open("/dev/urandom")    # urandom is a "file"
 bytes = urandom.read(32)               # read 32 bytes from it (256 bits)
@@ -599,16 +589,6 @@ The standard "`rand()`" functions in most languages are just quick and easy ways
 For example:
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # simple random number (do not use for generating private keys)
 puts rand(1..115792089237316195423570985008687907852837564279074904382605163141518161494336)
 
@@ -643,7 +623,7 @@ You'll usually see raw private keys displayed as 32-byte [hexadecimal](/docs/tec
 
 This is the **same a random number**, it's just a different way of displaying it (using hexadecimal digits instead of decimal digits).
 
-![Tool Icon](../../images/icons_tool.svg) Number Converter
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Number Converter
 
 Binary (Base 2)
 
@@ -713,7 +693,7 @@ Base58 encoding of above data
 
 How are private keys used in Bitcoin?
 
-[![Diagram showing how a private key is used to create a public key and signatures, and how they're used to lock and unlock bitcoins in transactions.](../../images/diagrams_png_keys.png)](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
+[<img src="../../images/diagrams_png_keys.png" alt="Diagram showing how a private key is used to create a public key and signatures, and how they're used to lock and unlock bitcoins in transactions." width="696" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
 
 A private key is the starting point for calculating a public key.
 

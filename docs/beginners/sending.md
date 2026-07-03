@@ -1,4 +1,4 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 So you've just [bought some bitcoin](/docs/beginners/exchanges.md) and withdrawn them to your [wallet](/docs/beginners/wallets.md). Now you want to *send* some bitcoins to someone else.
 
@@ -10,14 +10,14 @@ In this guide I'll give you a quick overview of **how to make your first bitcoin
 
 How do you make a transaction?
 
-[![Diagram showing xxx.](../images/diagrams_png_beginners-sending-wallet.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-wallet.png)
+[<img src="../images/diagrams_png_beginners-sending-wallet.png" alt="Diagram showing xxx." width="632" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-wallet.png)
 
 The process for making a bitcoin transaction is the same for any [bitcoin wallet](/docs/beginners/wallets.md) you use:
 
 1. **Enter the address.** This is where you want to "send" the bitcoins.
 2. **Enter the amount.** The amount of bitcoins you want to send. This will most likely be in BTC or satoshis.  
 
-   ![Tool Icon](../images/icons_tool.svg) Unit Converter
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unit Converter
 
    BTC
 
@@ -61,23 +61,23 @@ When you click "send", your wallet sends your transaction in to one of the [node
 
 From here it gets relayed from node to node until every node on the network has a copy of your transaction.
 
-[![Animation showing a bitcoin transaction being sent to a node and getting relayed across the network.](../images/beginners_sending_send-transaction.gif)](https://static.learnmeabitcoin.com/beginners/sending/send-transaction.gif)
+[<img src="../images/beginners_sending_send-transaction.gif" alt="Animation showing a bitcoin transaction being sent to a node and getting relayed across the network." width="800" height="502" />](/docs/beginners/sending/send-transaction.gif.md)
 
 At first, your transaction gets stored in the [memory pool](/docs/technical/mining/memory-pool.md) of each node, which is like a temporary "waiting area" for transactions that have recently been broadcast across the network.
 
-[![Animation showing a transaction getting stored in each node's memory.](../images/beginners_sending_memory-pool.gif)](https://static.learnmeabitcoin.com/beginners/sending/memory-pool.gif)
+[<img src="../images/beginners_sending_memory-pool.gif" alt="Animation showing a transaction getting stored in each node's memory." width="800" height="502" />](/docs/beginners/sending/memory-pool.gif.md)
 
 After roughly 10 minutes, one of the nodes on the network will [mine](/docs/beginners/guide/mining.md) the latest transactions from their memory pool on to their [blockchain](/docs/beginners/guide/blockchain.md).
 
 They will then share this new [block](/docs/beginners/guide/blocks.md) of transactions with the other nodes on the network.
 
-[![Animation showing a new block of transactions being added on to the blockchain.](../images/beginners_sending_transaction-blockchain.gif)](https://static.learnmeabitcoin.com/beginners/sending/transaction-blockchain.gif)
+[<img src="../images/beginners_sending_transaction-blockchain.gif" alt="Animation showing a new block of transactions being added on to the blockchain." width="800" height="427" />](/docs/beginners/sending/transaction-blockchain.gif.md)
 
 Upon receiving this block, each node will verify it and add it to their blockchain too.
 
 As a result, each of the nodes will update their blockchain to include the latest transactions that have been moved from the memory pool (temporary storage) to the blockchain (permanent storage):
 
-[![Diagram showing the blockchain as permanent storage for transactions.](../images/diagrams_png_beginners-sending-blockchain-network.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-network.png)
+[<img src="../images/diagrams_png_beginners-sending-blockchain-network.png" alt="Diagram showing the blockchain as permanent storage for transactions." width="983" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-network.png)
 
 And if your transaction gets included in a block, then your transaction has been **confirmed** and the payment is complete.
 
@@ -95,21 +95,21 @@ Each node has the opportunity to try and add the transactions from their memory 
 
 To add transactions on to the blockchain, a *miner* gathers transactions from their memory pool into a container called a [candidate block](/docs/technical/mining/candidate-block.md). From here, the miner *uses energy* to try and "mine" this block on to the blockchain.
 
-[![Diagram showing a miner using processing power to try and mine a candidate block on to the blockchain.](../images/diagrams_png_beginners-sending-miner.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner.png)
+[<img src="../images/diagrams_png_beginners-sending-miner.png" alt="Diagram showing a miner using processing power to try and mine a candidate block on to the blockchain." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner.png)
 
 
 Any node on the network can become a miner.
 
 As a result the *mining* process is basically a **network-wide competition**, where any node on the network has a chance of mining the next block. A node that can mine faster has a better chance of mining the next block, but the process of mining is *unpredictable*, so no single node is in control of adding blocks to the blockchain.
 
-[![Diagram showing multiple miners on the network trying to add the next block to the blockchain.](../images/diagrams_png_beginners-sending-miners.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miners.png)
+[<img src="../images/diagrams_png_beginners-sending-miners.png" alt="Diagram showing multiple miners on the network trying to add the next block to the blockchain." width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miners.png)
 
 
 Any of these miners could be the one to mine the next block on to the blockchain.
 
 After about 10 minutes (on average), one of the miners will eventually mine the next block of transactions and share it with all the other nodes on the network. Each node then checks the block (to make sure it is valid and has been mined correctly) and adds it to their blockchain too.
 
-[![Diagram showing a miner mining a block and sending it to the other nodes on the network.](../images/diagrams_png_beginners-sending-mined-block.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mined-block.png)
+[<img src="../images/diagrams_png_beginners-sending-mined-block.png" alt="Diagram showing a miner mining a block and sending it to the other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mined-block.png)
 
 
 Nodes across the network update their blockchain with the newly-mined block.
@@ -142,19 +142,19 @@ Why?
 
 Because a [candidate block](/docs/technical/mining/candidate-block.md) can only hold a certain amount of data. So if a lot of people are making transactions at the same time, there may be more transactions inside the [memory pool](/docs/technical/mining/memory-pool.md) than can fit inside a block:
 
-[![Diagram showing more transaction in the memory pool than can fit into a candidate block.](../images/diagrams_png_beginners-sending-memory-pool-overflow.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-memory-pool-overflow.png)
+[<img src="../images/diagrams_png_beginners-sending-memory-pool-overflow.png" alt="Diagram showing more transaction in the memory pool than can fit into a candidate block." width="371" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-memory-pool-overflow.png)
 
 **Note:** A block can hold [roughly 2MB](/docs/technical/block.md#weight) of transaction data, but the memory pool can hold [300MB+](/docs/technical/mining/memory-pool.md#size-limit)
 
 Therefore, miners will choose to populate their candidate blocks with transactions that have the **highest fees** on them, because they can collect these fees (via the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md)) if they are successful in mining the block.
 
-[![Diagram showing a mining selecting the highest-fee transactions from the memory pool to fill their candidate block.](../images/diagrams_png_beginners-sending-miner-highest-fees.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner-highest-fees.png)
+[<img src="../images/diagrams_png_beginners-sending-miner-highest-fees.png" alt="Diagram showing a mining selecting the highest-fee transactions from the memory pool to fill their candidate block." width="371" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner-highest-fees.png)
 
 Because at the end of the day, most miners want to make as much money as possible from mining.
 
 So when there are a lot of transactions in the memory pool, the higher the fee you place on your transaction, the higher the "priority" your transaction has for getting included in a block, and the faster it will get mined.
 
-[![Animation showing how you can set a fee on a transaction when sending bitcoins from a wallet.](../images/beginners_sending_wallet-set-fee.gif)](https://static.learnmeabitcoin.com/beginners/sending/wallet-set-fee.gif)
+[<img src="../images/beginners_sending_wallet-set-fee.gif" alt="Animation showing how you can set a fee on a transaction when sending bitcoins from a wallet." width="800" height="366" />](/docs/beginners/sending/wallet-set-fee.gif.md)
 
 * **The memory pool is like a queue.** Transactions with the highest fees are at the front.
 * **The transaction fee effectively determines a transaction's *position* in the memory pool.** The higher the fee, the *more quickly* it will be mined.
@@ -166,9 +166,9 @@ This depends on **how quickly you want your transaction to be mined** based on h
 
 Current Mempool Size:
 
-1.12 vMB
+2.38 vMB
 
-4,270 transactions
+8,900 transactions
 
 Note: This is the size of the mempool for my local node.  
 The size of your memory pool will differ depending on how long your node has been online and which nodes you are connected to.
@@ -210,14 +210,14 @@ By setting a **low fee** on your transaction you're putting it at "the back of t
 
 This is fine, but it means that you're going to be waiting for a *quiet period* where the memory pool is cleared out so that your transaction can be included in a block.
 
-[![Animation showing a low fee transaction being included in a block after all the higher-fee transactions have been mined into blocks.](../images/beginners_sending_mempool-low-fee.gif)](https://static.learnmeabitcoin.com/beginners/sending/mempool-low-fee.gif)
+[<img src="../images/beginners_sending_mempool-low-fee.gif" alt="Animation showing a low fee transaction being included in a block after all the higher-fee transactions have been mined into blocks." width="800" height="366" />](/docs/beginners/sending/mempool-low-fee.gif.md)
 
 
 Lower-fee transactions will eventually get included in a block if there are no higher-fee transactions left in the memory pool.
 
 However, transactions will only stay in a node's memory pool for **2 weeks** (see [mempoolexpiry](/docs/technical/mining/memory-pool.md#mempoolexpiry)), and after this time period a node will **remove the transaction from its memory pool**. If this happens, your transaction will disappear from the network, and it's as if your transaction never happened.
 
-[![Diagram showing a transaction being removed from the memory pool if it hasn't been mined in a certain amount of time.](../images/diagrams_png_beginners-sending-mempool-expiry.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mempool-expiry.png)
+[<img src="../images/diagrams_png_beginners-sending-mempool-expiry.png" alt="Diagram showing a transaction being removed from the memory pool if it hasn't been mined in a certain amount of time." width="262" height="506" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mempool-expiry.png)
 
 
 Transactions only wait around in the memory pool for a set amount of time.
@@ -239,7 +239,7 @@ As a quick guide:
 
 A *confirmation* is when your transaction gets mined into a block. Additional confirmations are when further blocks are mined *on top* of the block your transaction was included in.
 
-[![Diagram showing confirmations as the depth of a transaction in the blockchain.](../images/beginners_sending_confirmations.gif)](https://static.learnmeabitcoin.com/beginners/sending/confirmations.gif)
+[<img src="../images/beginners_sending_confirmations.gif" alt="Diagram showing confirmations as the depth of a transaction in the blockchain." width="800" height="519" />](/docs/beginners/sending/confirmations.gif.md)
 
 
 The number of confirmations refers to how deep your transaction is in the blockchain.
@@ -250,7 +250,7 @@ Well, I know I said that you cannot remove a transaction from the blockchain, bu
 
 This has not yet happened in Bitcoin, but as I say, it's *technically* possible.
 
-[![Diagram showing the decreasing likelihood of a miner being able to replace an increasing number of blocks at the top of the blockchain.](../images/diagrams_png_beginners-sending-replacing-blocks.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-replacing-blocks.png)
+[<img src="../images/diagrams_png_beginners-sending-replacing-blocks.png" alt="Diagram showing the decreasing likelihood of a miner being able to replace an increasing number of blocks at the top of the blockchain." width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-replacing-blocks.png)
 
 
 It becomes exponentially more difficult for a miner to remove a transaction the deeper it makes its way down the blockchain.
@@ -259,7 +259,7 @@ So this is why it's sometimes recommended to wait for **6 confirmations** (or mo
 
 A more reasonable amount of time to wait to be confident that a transaction isn't going to be undone is **2 confirmations**. This is because the top block in the blockchain has a tendency to change around with another block during natural [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
-[![Diagram showing a chain reorganization where the top block of the blockchain is replaced with a different one.](../images/diagrams_png_beginners-sending-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-chain-reorganization.png)
+[<img src="../images/diagrams_png_beginners-sending-chain-reorganization.png" alt="Diagram showing a chain reorganization where the top block of the blockchain is replaced with a different one." width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-chain-reorganization.png)
 
 
 Chain reorganizations happen when two blocks are mined at the same time and compete for the same spot in the chain.
@@ -288,7 +288,7 @@ Here are a few handy blockchain explorers:
 
 Now, a blockchain explorer is basically just a website that acts as a *window* into a bitcoin [node](/docs/technical/networking/node.md). So by entering your TXID, you're just asking the explorer to look into its blockchain (or memory pool) and show you the details of a transaction it has received.
 
-[![Diagram showing a blockchain explorer as a window into the data of a running Bitcoin node.](../images/diagrams_png_beginners-sending-blockchain-explorers.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-explorers.png)
+[<img src="../images/diagrams_png_beginners-sending-blockchain-explorers.png" alt="Diagram showing a blockchain explorer as a window into the data of a running Bitcoin node." width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-explorers.png)
 
 
 Block explorers just display the data from inside their blockchain (and memory pool).

@@ -1,14 +1,4 @@
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # Work with bytes directly using hexadecimal characters to represent each byte.
 bytes = "\xF9\xBE\xB4\xD9" #=> (jargon - tries to display character encoding for each byte value)
 

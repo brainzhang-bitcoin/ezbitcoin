@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the UTXOs as the unspent outputs in a graph of transactions.](../../images/diagrams_png_transaction-utxo.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo.png)
+[<img src="../../images/diagrams_png_transaction-utxo.png" alt="Diagram showing the UTXOs as the unspent outputs in a graph of transactions." width="714" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo.png)
 
 A UTXO is an ***unspent* transaction output**.
 
@@ -25,17 +25,17 @@ When your node receives a new transaction from the [network](/docs/technical/net
 
 If the transaction's inputs are all unspent outputs (UTXOs), then the transaction is valid:
 
-[![Diagram showing a valid transaction spending an unspent output from a previous transaction.](../../images/diagrams_png_transaction-utxo-spending-valid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-valid.png)
+[<img src="../../images/diagrams_png_transaction-utxo-spending-valid.png" alt="Diagram showing a valid transaction spending an unspent output from a previous transaction." width="714" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-valid.png)
 
 However, if the transaction is trying to spend an output that has already been spent in a previous transaction, then the transaction is invalid and will be rejected:
 
-[![Diagram showing an invalid transaction trying to spend an output from a previous transaction that has already been spent.](../../images/diagrams_png_transaction-utxo-spending-invalid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-invalid.png)
+[<img src="../../images/diagrams_png_transaction-utxo-spending-invalid.png" alt="Diagram showing an invalid transaction trying to spend an output from a previous transaction that has already been spent." width="714" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-invalid.png)
 
 ### 2. Calculating address balance
 
 The "balance" of an [address](/docs/technical/keys/address.md) is the sum of all the UTXOs locked to that address:
 
-[![Diagram showing the balance of an address as the sum of the unspent outputs that are locked to that address.](../../images/diagrams_png_transaction-utxo-address-balance.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-address-balance.png)
+[<img src="../../images/diagrams_png_transaction-utxo-address-balance.png" alt="Diagram showing the balance of an address as the sum of the unspent outputs that are locked to that address." width="325" height="677" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-address-balance.png)
 
 You can see the balance of addresses on blockchain explorers like [mempool.space](https://mempool.space) and [bitcoinexplorer.org](https://bitcoinexplorer.org).
 

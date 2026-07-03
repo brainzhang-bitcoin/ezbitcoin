@@ -1,4 +1,4 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 **The introductory code on this page works for nodes up to [v26.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-26.2.md).**
 
@@ -8,23 +8,13 @@ If you're running a v27.0 node or above, you can still communicate with it using
 
 Here's a quick guide on how to *connect to* and *communicate with* a node on the Bitcoin network.
 
-[![Terminal animation showing a connection to a bitcoin node and the messages being sent.](../images/technical_networking_networking-terminal.gif)](https://static.learnmeabitcoin.com/technical/networking/networking-terminal.gif)
+[<img src="../images/technical_networking_networking-terminal.gif" alt="Terminal animation showing a connection to a bitcoin node and the messages being sent." width="1080" height="256" />](/docs/technical/networking/networking-terminal.gif.md)
 
 
 
 Networking (Full Code)
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # Sockets are in the standard library in Ruby
 require 'socket'
 
@@ -288,14 +278,14 @@ Bitcoin is a computer program. You can [download](https://bitcoin.org/en/downloa
 
 It runs on an open port on your computer, which means anyone can connect to it and communicate with it across the Internet.
 
-[![Diagram showing a connection to a computer via a port.](../images/diagrams_png_networking.png)](https://static.learnmeabitcoin.com/diagrams/png/networking.png)
+[<img src="../images/diagrams_png_networking.png" alt="Diagram showing a connection to a computer via a port." width="737" height="355" />](https://static.learnmeabitcoin.com/diagrams/png/networking.png)
 
 
 Computers connect to each other through "ports". Bitcoin uses port `8333` by default.
 
 When you run Bitcoin, it uses ports to connect to other computers running the same program. So when you have lots of people running Bitcoin, you end up with a network of computers connected together and communicating with each other.
 
-[![Diagram showing nodes on the Bitcoin network communicating with each other.](../images/diagrams_png_networking-network-chatter.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-network-chatter.png)
+[<img src="../images/diagrams_png_networking-network-chatter.png" alt="Diagram showing nodes on the Bitcoin network communicating with each other." width="786" height="397" />](https://static.learnmeabitcoin.com/diagrams/png/networking-network-chatter.png)
 
 
 Computers on the Bitcoin network share the latest [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md) with each other.
@@ -308,7 +298,7 @@ And trust me, if *I* can connect to a Bitcoin node, anyone can.
 
 ## 1. Connecting
 
-[![Diagram showing a connection to a Bitcoin node via port <code>8333</code> and a local IP.](../images/diagrams_png_networking-connecting.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-connecting.png)
+[<img src="../images/diagrams_png_networking-connecting.png" alt="Diagram showing a connection to a Bitcoin node via port <code>8333</code> and a local IP." width="773" height="287" />](https://static.learnmeabitcoin.com/diagrams/png/networking-connecting.png)
 
 First things first, two quick facts you need to know about the Bitcoin program:
 
@@ -318,16 +308,6 @@ First things first, two quick facts you need to know about the Bitcoin program:
 So all you need to connect to a Bitcoin node is the **IP address** of the computer it's running on, and the ability to make **TCP connections** from your programming language. For example:
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # Sockets are in the standard library in Ruby
 require 'socket'
 
@@ -356,7 +336,7 @@ regtest = 18444
 
 A "message" is just a structured piece of data that Bitcoin nodes send to each other over the network. They all have the same format:
 
-[![Diagram of a network message being sent from one Bitcoin node to another.](../images/diagrams_png_networking-message.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-message.png)
+[<img src="../images/diagrams_png_networking-message.png" alt="Diagram of a network message being sent from one Bitcoin node to another." width="773" height="212" />](https://static.learnmeabitcoin.com/diagrams/png/networking-message.png)
 
 Here's an example of what an *actual* Bitcoin message looks like:
 
@@ -404,7 +384,7 @@ Header: (version message)
 * **[Magic Bytes](/docs/technical/networking/magic-bytes.md):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
 * **Command:** This indicates the type of message being sent. You can send different types of messages in the Bitcoin protocol, and they contain different types of information. It's a 12-byte field containing the *ASCII* encoding of the name of the message type. The one in this example says that we are sending a "version" message, which is used to send information about ourselves to another node.
 
-  ![Tool Icon](../images/icons_tool.svg) ASCII
+  <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> ASCII
 
   Example
 
@@ -480,16 +460,6 @@ As I say, this is one of the more complicated messages, so don't let it put you 
 Here's some example code for constructing a "version" message in Ruby:
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 require 'digest' # needed for creating checksums
 
 # Handy functions for getting data in the right format for messages
@@ -564,7 +534,7 @@ Before we can start receiving data, we need to perform a "handshake". This hands
 
 In the Bitcoin protocol, the handshake works like this:
 
-[![Diagram of a the sequence of messages in the handshake in the Bitcoin protocol.](../images/diagrams_png_networking-handshake.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-handshake.png)
+[<img src="../images/diagrams_png_networking-handshake.png" alt="Diagram of a the sequence of messages in the handshake in the Bitcoin protocol." width="741" height="355" />](https://static.learnmeabitcoin.com/diagrams/png/networking-handshake.png)
 
 So the handshake is basically a 2-step process:
 
@@ -616,16 +586,6 @@ Now we've got our messages ready, we just need to send them to the node we've co
 Here's some Ruby code showing how to manually construct each message, and how to write/read bytes to/from the socket connection:
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # 1. Send Version Message
 
 # Prepare version message
@@ -718,7 +678,7 @@ The node we've just connected to will continuously send us new messages after th
 
 This is what the new messages are going to look like:
 
-[![Diagram showing the messages in the Bitcoin protocol that a node will receive shortly after connecting to another node.](../images/diagrams_png_networking-receiving-data.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-receiving-data.png)
+[<img src="../images/diagrams_png_networking-receiving-data.png" alt="Diagram showing the messages in the Bitcoin protocol that a node will receive shortly after connecting to another node." width="743" height="469" />](https://static.learnmeabitcoin.com/diagrams/png/networking-receiving-data.png)
 
 You may receive some different messages before the "inv" messages shown in the diagram above, depending on what protocol version you're using. I'm just going to ignore them for now as they're not critically important.
 
@@ -729,16 +689,6 @@ I'll explain what these "inv" messages are and how to respond to them in a momen
 The following code is similar to the code from before, except this time we've put it in a *loop* to continuously read from the socket.
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # Keep reading messages
 loop do
 
@@ -806,7 +756,7 @@ You can then respond to these "inv" messages listing all the specific transactio
 
 Then, after you've sent your "getdata" message, the node will send you the full transactions and blocks you've requested in subsequent "tx" and "block" messages:
 
-[![Diagram showing the message sequence for requesting transactions and blocks in the Bitcoin protocol.](../images/diagrams_png_networking-getting-transactions-and-blocks.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-getting-transactions-and-blocks.png)
+[<img src="../images/diagrams_png_networking-getting-transactions-and-blocks.png" alt="Diagram showing the message sequence for requesting transactions and blocks in the Bitcoin protocol." width="742" height="393" />](https://static.learnmeabitcoin.com/diagrams/png/networking-getting-transactions-and-blocks.png)
 
 ### Inv
 
@@ -890,16 +840,6 @@ Anyway, after sending your "getdata" message, the node will proceed to send you 
 Here's some Ruby code that responds to every "inv" with a "getdata" message requesting everything in the payload:
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # Keep reading messages
 loop do
 
@@ -997,7 +937,7 @@ Here's a [full list](https://en.bitcoin.it/wiki/Protocol_documentation#Message_t
 
 One last thing before you go: the node you've just connected to will occasionally send you "ping" messages to see if you're still there. So if you want to keep the connection alive, you'll need to respond with timely "pong" messages.
 
-[![Diagram showing the message sequence for keeping a connection alive in the Bitcoin protocol via ping and pong messages.](../images/diagrams_png_networking-keeping-connected.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-keeping-connected.png)
+[<img src="../images/diagrams_png_networking-keeping-connected.png" alt="Diagram showing the message sequence for keeping a connection alive in the Bitcoin protocol via ping and pong messages." width="741" height="242" />](https://static.learnmeabitcoin.com/diagrams/png/networking-keeping-connected.png)
 
 ### Ping
 
@@ -1030,16 +970,6 @@ So by adding one last adjustment to our loop, we can now keep the connection ope
 ## Code
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 # Keep reading messages
 loop do
 

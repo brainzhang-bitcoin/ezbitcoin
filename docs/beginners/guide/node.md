@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing nodes on the bitcoin network.](../../images/beginners_guide_network_05-nodes_network.png)](https://static.learnmeabitcoin.com/beginners/guide/network/05-nodes_network.png)
+[<img src="../../images/beginners_guide_network_05-nodes_network.png" alt="Diagram showing nodes on the bitcoin network." width="600" height="416" />](/docs/beginners/guide/network/05-nodes_network.png.md)
 
 A Bitcoin node is just a **computer that is running the [Bitcoin program](https://bitcoincore.org/en/download/)**.
 
@@ -18,7 +18,7 @@ A node has three jobs:
 
 Each node (bitcoin client) has been programmed to follow a set of rules. By following these rules a node is able to check the transactions it receives and only relay them if everything is cool. If there are any problems, the transaction isn't passed on.
 
-[![Diagram showing a node validating transactions before relaying them.](../../images/beginners_guide_node_01-node_rules.png)](https://static.learnmeabitcoin.com/beginners/guide/node/01-node_rules.png)
+[<img src="../../images/beginners_guide_node_01-node_rules.png" alt="Diagram showing a node validating transactions before relaying them." width="503" height="520" />](/docs/beginners/guide/node/01-node_rules.png.md)
 
 Your node ain't gonna be relaying any dodgy transactions.
 
@@ -33,7 +33,7 @@ Now, there are two types of transactions that nodes share:
 1. **Fresh transactions** – transactions that have recently entered the network.
 2. **Confirmed transactions** – transactions that have been "confirmed" and written to a file. These are shared in [blocks](/docs/beginners/guide/blocks.md) of transactions (as opposed to individually).
 
-[![Diagram showing a node sharing fresh transactions and blocks of confirmed transactions.](../../images/beginners_guide_node_01-node_transaction_type_sharing.png)](https://static.learnmeabitcoin.com/beginners/guide/node/01-node_transaction_type_sharing.png)
+[<img src="../../images/beginners_guide_node_01-node_transaction_type_sharing.png" alt="Diagram showing a node sharing fresh transactions and blocks of confirmed transactions." width="588" height="554" />](/docs/beginners/guide/node/01-node_transaction_type_sharing.png.md)
 
 Don't worry about the difference between these two right now. It will all become clear in [mining](/docs/beginners/guide/mining.md) and [blocks](/docs/beginners/guide/blocks.md).
 
@@ -41,7 +41,7 @@ Don't worry about the difference between these two right now. It will all become
 
 As mentioned, each node also keeps blocks of *confirmed* transactions. These are held together in a file called the [blockchain](/docs/beginners/guide/blockchain.md).
 
-[![Diagram showing a node keeping a copy of confirmed transactions (the blockchain).](../../images/beginners_guide_node_02-node_blockchain.png)](https://static.learnmeabitcoin.com/beginners/guide/node/02-node_blockchain.png)
+[<img src="../../images/beginners_guide_node_02-node_blockchain.png" alt="Diagram showing a node keeping a copy of confirmed transactions (the blockchain)." width="391" height="188" />](/docs/beginners/guide/node/02-node_blockchain.png.md)
 
 Fresh transactions are bounced around the network until they are etched into the blockchain, which is **permanent storage** for transactions.
 
@@ -67,7 +67,7 @@ Nope.
 
 You can send and receive bitcoins without having to run a node. You just need to get the transaction *in* to the bitcoin network and you're good to go.
 
-[![Diagram showing a transaction being inserted into a single node propagating the entire bitcoin network.](../../images/beginners_guide_node_03-nodes_network_insert_transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/node/03-nodes_network_insert_transaction.png)
+[<img src="../../images/beginners_guide_node_03-nodes_network_insert_transaction.png" alt="Diagram showing a transaction being inserted into a single node propagating the entire bitcoin network." width="566" height="321" />](/docs/beginners/guide/node/03-nodes_network_insert_transaction.png.md)
 
 If you send a message to just *one* node about a transaction, it will eventually propagate the entire network.
 

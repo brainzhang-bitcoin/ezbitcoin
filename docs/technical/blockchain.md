@@ -1,12 +1,12 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the blockchain as a file stored by nodes on the bitcoin network.](../images/diagrams_png_blockchain.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain.png)
+[<img src="../images/diagrams_png_blockchain.png" alt="Diagram showing the blockchain as a file stored by nodes on the bitcoin network." width="340" height="604" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain.png)
 
 Current Blockchain Size:
 
-856.91 GB
+856.92 GB
 
-956,471 blocks
+956,479 blocks
 
 Note: This is the size of the blockchain for my local node.  
 The size of your blockchain will differ depending on how many [chain reorganizations](/docs/technical/blockchain/chain-reorganization.md) your node has experienced and how many [stale blocks](/docs/technical/blockchain/chain-reorganization.md#stale-blocks) you have stored on disk.
@@ -19,17 +19,25 @@ But ultimately, the blockchain is **permanent storage for bitcoin transactions**
 
 ## Live Bitcoin Blockchain:
 
-Tip: 956,471 (0 blocks away) ⇈
+Tip: 956,479 (0 blocks away) ⇈
 
 Next 0 blocks ↑
 
 | [Height](/docs/technical/blockchain/height.md) | [Block Hash](/docs/technical/block/hash.md) | Txs | Size | Avg [Feerate](/docs/technical/transaction/fee.md#sats-per-vbyte) AFR | Time (UTC) |
 | --- | --- | --- | --- | --- | --- |
-| [956,471](/explorer/block/000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5) 956,471 | [000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5](/explorer/block/000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5) | 4,811 | 1.00/1.00 vMB | 1 | 23 mins, 10 secs ago |
-| [956,470](/explorer/block/00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691) 956,470 | [00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691](/explorer/block/00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691) | 4,361 | 1.00/1.00 vMB | 1 | 31 mins, 30 secs ago |
-| [956,469](/explorer/block/000000000000000000005be2d95a0d27c094beafdb1b8c2bf7ca66835904ce24) 956,469 | [000000000000000000005be2d95a0d27c094beafdb1b8c2bf7ca66835904ce24](/explorer/block/000000000000000000005be2d95a0d27c094beafdb1b8c2bf7ca66835904ce24) | 3,817 | 1.00/1.00 vMB | 3 | 36 mins, 43 secs ago |
-| [956,468](/explorer/block/0000000000000000000169558ed73978cbd4158e8a519b6d419ee2f02a864edb) 956,468 | [0000000000000000000169558ed73978cbd4158e8a519b6d419ee2f02a864edb](/explorer/block/0000000000000000000169558ed73978cbd4158e8a519b6d419ee2f02a864edb) | 5,364 | 1.00/1.00 vMB | 0 | 56 mins, 10 secs ago |
-| [956,467](/explorer/block/0000000000000000000097fa1a5fec797ddc890357ee11d291590175b15c10c7) 956,467 | [0000000000000000000097fa1a5fec797ddc890357ee11d291590175b15c10c7](/explorer/block/0000000000000000000097fa1a5fec797ddc890357ee11d291590175b15c10c7) | 6,453 | 1.00/1.00 vMB | 1 | 58 mins, 28 secs ago |
+| [956,479](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264) 956,479 | [000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264) | 6,825 | 1.00/1.00 vMB | 0 | 51 mins, 14 secs ago |
+| [956,478](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) 956,478 | [000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) | 1,734 | 0.43/1.00 vMB | 3 | 53 mins, 31 secs ago |
+| [956,477](/explorer/block/000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100) 956,477 | [000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100](/explorer/block/000000000000000000002c0a4bbbd933f15946021264162b74ce5c45b49a2100) | 5,826 | 1.00/1.00 vMB | 1 | 59 mins, 39 secs ago |
+| [956,476](/explorer/block/000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce) 956,476 | [000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce](/explorer/block/000000000000000000000be1b133d433b3e0b0bf69f9368c20715ccf22ce85ce) | 4,861 | 1.00/1.00 vMB | 1 | 1 hr, 4 mins ago |
+| [956,475](/explorer/block/000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9) 956,475 | [000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9](/explorer/block/000000000000000000000aad5f4e9a1b745a856f53e4c613253b8275284221e9) | 5,870 | 1.00/1.00 vMB | 0 | 1 hr, 10 mins ago |
+| [956,474](/explorer/block/000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a) 956,474 | [000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a](/explorer/block/000000000000000000001075120ee6594b359a02eda683e7c1ec3830838e281a) | 4,675 | 1.00/1.00 vMB | 2 | 03 Jul 2026, 08:56 |
+| [956,473](/explorer/block/00000000000000000001d570b3ae04d7465553432cd3566e0f879056df68ea86) 956,473 | [00000000000000000001d570b3ae04d7465553432cd3566e0f879056df68ea86](/explorer/block/00000000000000000001d570b3ae04d7465553432cd3566e0f879056df68ea86) | 3,570 | 1.00/1.00 vMB | 2 | 03 Jul 2026, 08:45 |
+| [956,472](/explorer/block/00000000000000000001b9c4dc446b059b686ba5a38bd1e5cf4692d4420e2f54) 956,472 | [00000000000000000001b9c4dc446b059b686ba5a38bd1e5cf4692d4420e2f54](/explorer/block/00000000000000000001b9c4dc446b059b686ba5a38bd1e5cf4692d4420e2f54) | 4,539 | 1.00/1.00 vMB | 3 | 03 Jul 2026, 08:35 |
+| [956,471](/explorer/block/000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5) 956,471 | [000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5](/explorer/block/000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5) | 4,811 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 08:10 |
+| [956,470](/explorer/block/00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691) 956,470 | [00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691](/explorer/block/00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691) | 4,361 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 08:02 |
+| [956,469](/explorer/block/000000000000000000005be2d95a0d27c094beafdb1b8c2bf7ca66835904ce24) 956,469 | [000000000000000000005be2d95a0d27c094beafdb1b8c2bf7ca66835904ce24](/explorer/block/000000000000000000005be2d95a0d27c094beafdb1b8c2bf7ca66835904ce24) | 3,817 | 1.00/1.00 vMB | 3 | 03 Jul 2026, 07:57 |
+| [956,468](/explorer/block/0000000000000000000169558ed73978cbd4158e8a519b6d419ee2f02a864edb) 956,468 | [0000000000000000000169558ed73978cbd4158e8a519b6d419ee2f02a864edb](/explorer/block/0000000000000000000169558ed73978cbd4158e8a519b6d419ee2f02a864edb) | 5,364 | 1.00/1.00 vMB | 0 | 03 Jul 2026, 07:37 |
+| [956,467](/explorer/block/0000000000000000000097fa1a5fec797ddc890357ee11d291590175b15c10c7) 956,467 | [0000000000000000000097fa1a5fec797ddc890357ee11d291590175b15c10c7](/explorer/block/0000000000000000000097fa1a5fec797ddc890357ee11d291590175b15c10c7) | 6,453 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 07:35 |
 | [956,466](/explorer/block/000000000000000000002d17cb7d778198a0aa3431b3b46d51b59ca634e776e2) 956,466 | [000000000000000000002d17cb7d778198a0aa3431b3b46d51b59ca634e776e2](/explorer/block/000000000000000000002d17cb7d778198a0aa3431b3b46d51b59ca634e776e2) | 4,261 | 1.00/1.00 vMB | 2 | 03 Jul 2026, 07:32 |
 | [956,465](/explorer/block/000000000000000000010a9a845dc3848addcc57f10100433084f3569135e3ee) 956,465 | [000000000000000000010a9a845dc3848addcc57f10100433084f3569135e3ee](/explorer/block/000000000000000000010a9a845dc3848addcc57f10100433084f3569135e3ee) | 7,018 | 1.00/1.00 vMB | 0 | 03 Jul 2026, 07:15 |
 | [956,464](/explorer/block/0000000000000000000164651ea5612d3393a9b03e9316c68622c52bae3a9474) 956,464 | [0000000000000000000164651ea5612d3393a9b03e9316c68622c52bae3a9474](/explorer/block/0000000000000000000164651ea5612d3393a9b03e9316c68622c52bae3a9474) | 6,392 | 1.00/1.00 vMB | 0 | 03 Jul 2026, 07:14 |
@@ -38,24 +46,16 @@ Next 0 blocks ↑
 | [956,461](/explorer/block/000000000000000000014d1167cec7411a139d4310ce86132d0ff728d28bad1c) 956,461 | [000000000000000000014d1167cec7411a139d4310ce86132d0ff728d28bad1c](/explorer/block/000000000000000000014d1167cec7411a139d4310ce86132d0ff728d28bad1c) | 5,170 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 07:04 |
 | [956,460](/explorer/block/00000000000000000001209aeacef29b29526bcf9cffc95274676c8e198af91b) 956,460 | [00000000000000000001209aeacef29b29526bcf9cffc95274676c8e198af91b](/explorer/block/00000000000000000001209aeacef29b29526bcf9cffc95274676c8e198af91b) | 3,649 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 06:59 |
 | [956,459](/explorer/block/0000000000000000000098f2e73eb0fcbb5301edda9392b2fe08dad2b1b64be8) 956,459 | [0000000000000000000098f2e73eb0fcbb5301edda9392b2fe08dad2b1b64be8](/explorer/block/0000000000000000000098f2e73eb0fcbb5301edda9392b2fe08dad2b1b64be8) | 3,963 | 1.00/1.00 vMB | 3 | 03 Jul 2026, 06:57 |
-| [956,458](/explorer/block/00000000000000000000a4c8c948ff781bba6bbee2b45dfb17b20eff7ef5109d) 956,458 | [00000000000000000000a4c8c948ff781bba6bbee2b45dfb17b20eff7ef5109d](/explorer/block/00000000000000000000a4c8c948ff781bba6bbee2b45dfb17b20eff7ef5109d) | 4,786 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 06:24 |
-| [956,457](/explorer/block/000000000000000000020b63a54a24fb42f8bd593071a0110f53dfbcbeae4108) 956,457 | [000000000000000000020b63a54a24fb42f8bd593071a0110f53dfbcbeae4108](/explorer/block/000000000000000000020b63a54a24fb42f8bd593071a0110f53dfbcbeae4108) | 5,965 | 1.00/1.00 vMB | 0 | 03 Jul 2026, 06:21 |
-| [956,456](/explorer/block/00000000000000000001bdfa05c14d453c673fc512ded3c60973bc3574826a96) 956,456 | [00000000000000000001bdfa05c14d453c673fc512ded3c60973bc3574826a96](/explorer/block/00000000000000000001bdfa05c14d453c673fc512ded3c60973bc3574826a96) | 5,045 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 06:18 |
-| [956,455](/explorer/block/00000000000000000000c399af1349fbbd19c01574c4ea213cb6acbd7756cd81) 956,455 | [00000000000000000000c399af1349fbbd19c01574c4ea213cb6acbd7756cd81](/explorer/block/00000000000000000000c399af1349fbbd19c01574c4ea213cb6acbd7756cd81) | 4,286 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 06:14 |
-| [956,454](/explorer/block/00000000000000000001dc15d8200f80b11366ed3751450b14df5c2250653627) 956,454 | [00000000000000000001dc15d8200f80b11366ed3751450b14df5c2250653627](/explorer/block/00000000000000000001dc15d8200f80b11366ed3751450b14df5c2250653627) | 3,629 | 1.00/1.00 vMB | 3 | 03 Jul 2026, 06:07 |
-| [956,453](/explorer/block/0000000000000000000007e9ffd10aa5388a6486169353a6465871daa871f5e1) 956,453 | [0000000000000000000007e9ffd10aa5388a6486169353a6465871daa871f5e1](/explorer/block/0000000000000000000007e9ffd10aa5388a6486169353a6465871daa871f5e1) | 1,199 | 0.36/1.00 vMB | 2 | 03 Jul 2026, 05:36 |
-| [956,452](/explorer/block/00000000000000000000c5e748a50e60fe12b401dffcec4b936077864ff3093b) 956,452 | [00000000000000000000c5e748a50e60fe12b401dffcec4b936077864ff3093b](/explorer/block/00000000000000000000c5e748a50e60fe12b401dffcec4b936077864ff3093b) | 5,459 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 05:33 |
-| [956,451](/explorer/block/0000000000000000000121cdc6e03aadcee17730a886860a05c76dc12c2e6d3e) 956,451 | [0000000000000000000121cdc6e03aadcee17730a886860a05c76dc12c2e6d3e](/explorer/block/0000000000000000000121cdc6e03aadcee17730a886860a05c76dc12c2e6d3e) | 4,278 | 1.00/1.00 vMB | 2 | 03 Jul 2026, 05:28 |
 
 Previous 10 blocks ↓
 
-Total Size: 856.91 GB
+Total Size: 856.92 GB
 
 ## Download
 
 How do you get a copy of the blockchain?
 
-[![Diagram showing the blockchain being downloaded from other nodes on the network.](../images/diagrams_png_blockchain-download.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-download.png)
+[<img src="../images/diagrams_png_blockchain-download.png" alt="Diagram showing the blockchain being downloaded from other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-download.png)
 
 The easiest way to get a copy of the blockchain is to run a Bitcoin node.
 
@@ -73,13 +73,13 @@ It can take a while to download the full blockchain when you run Bitcoin for the
 
 How are new blocks added to the blockchain?
 
-[![Diagram showing the a block being mined on to the blockchain by a node on the network.](../images/diagrams_png_blockchain-mining.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-mining.png)
+[<img src="../images/diagrams_png_blockchain-mining.png" alt="Diagram showing the a block being mined on to the blockchain by a node on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-mining.png)
 
 New blocks of transactions must be [mined](/docs/technical/mining.md) on to the blockchain.
 
 In short, the process of mining involves collecting transactions from the [memory pool](/docs/technical/mining/memory-pool.md) into a [candidate block](/docs/technical/mining/candidate-block.md), and then using *processing power* to produce a [block hash](/docs/technical/block/hash.md) that is below a specific [target](/docs/technical/mining/target.md) value. This means that any node on the network can mine a new block, but you need to *use energy* to be able to do so.
 
-![Tool Icon](../images/icons_tool.svg) Block Hash
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Hash
 
 Random Example
 
@@ -103,7 +103,7 @@ Used externally when searching for blocks on block explorers
 
 0 secs
 
-![Tool Icon](../images/icons_tool.svg) Target Adjustment
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
 
 Previous Adjustment
 Current Target
@@ -147,7 +147,7 @@ Note: This target value has been truncated slightly for storage in the bits fiel
 
 When a node (or "miner") successfully mines a new block, they will share it with the other nodes on the network. When other nodes receive this new block, they will add it to their blockchain, and miners will start trying to mine a new block *on top* of it.
 
-[![Diagram showing a newly-mined block being propagated to other on the network.](../images/diagrams_png_blockchain-mining-propagation.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-mining-propagation.png)
+[<img src="../images/diagrams_png_blockchain-mining-propagation.png" alt="Diagram showing a newly-mined block being propagated to other on the network." width="983" height="531" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-mining-propagation.png)
 
 As a result, miners are constantly working to extend the blockchain with new blocks of transactions.
 
@@ -162,7 +162,7 @@ Can two blocks be mined at the same time?
 
 As the blockchain is being built, it's perfectly normal for two blocks to be mined at the same time.
 
-[![Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time.](../images/diagrams_png_blockchain-fork.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork.png)
+[<img src="../images/diagrams_png_blockchain-fork.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork.png)
 
 
 If two blocks are mined at the same time it will cause a temporary "fork" in the chain.
@@ -175,7 +175,7 @@ This disagreement is resolved when the next block is mined. The next block will 
 
 As a result, nodes with the shorter chain will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to move out blocks from their old active chain in favor of blocks that make up a new longer chain.
 
-[![Diagram showing a temporary fork in the blockchain being resolved via a chain reorganization.](../images/diagrams_png_blockchain-fork-reorg.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg.png)
+[<img src="../images/diagrams_png_blockchain-fork-reorg.png" alt="Diagram showing a temporary fork in the blockchain being resolved via a chain reorganization." width="983" height="582" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg.png)
 
 
 A fork is resolved when a new block is mined, as this will create a new longest chain.
@@ -194,14 +194,14 @@ Nodes always adopt the [longest chain](/docs/technical/blockchain/longest-chain.
 
 As a result, this allows you to "undo" or reverse a bitcoin transaction from the blockchain.
 
-[![Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain.](../images/diagrams_png_blockchain-fork-reorg-longest-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg-longest-chain.png)
+[<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg-longest-chain.png)
 
 
 If you build a new longest chain of blocks, other nodes will adopt it as their blockchain.
 
 However, the problem is that all miners are incentivized to always be building on top of the longest known chain. This means that the combined processing power of miners on the network will be focused on building one single chain, which will be built faster than any chain you could build on your own.
 
-[![Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain.](../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg-longest-chain-network-power.png)
+[<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg-longest-chain-network-power.png)
 
 
 Miners naturally work to extend the current longest chain.
@@ -228,7 +228,7 @@ The blockchain is split into multiple files named `blk00000.dat`, `blk00001.dat`
 
 ## Summary
 
-[![Diagram showing a blockchain being built by nodes across a network of computers.](../images/technical_blockchain_animation.png)](https://static.learnmeabitcoin.com/technical/blockchain/blockchain.gif)
+[<img src="../images/technical_blockchain_animation.png" alt="Diagram showing a blockchain being built by nodes across a network of computers." width="1058" height="595" />](/docs/technical/blockchain/blockchain.gif.md)
 
 
 Click on the image to see a nice and slow visualization of a blockchain being built over time, including a chain reorganization.

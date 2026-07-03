@@ -1,10 +1,10 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the height of a block in the blockchain as its distance from the genesis block.](../../images/diagrams_png_blockchain-height.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height.png)
+[<img src="../../images/diagrams_png_blockchain-height.png" alt="Diagram showing the height of a block in the blockchain as its distance from the genesis block." width="329" height="622" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height.png)
 
 Current Height:
 
-[956,471](/explorer/956471#blockchain)
+[956,479](/explorer/956479#blockchain)
 
 Note: This is the height of the block at the tip of the blockchain.
 
@@ -24,12 +24,12 @@ There are **two major adjustments** that take place in Bitcoin at *specific heig
 
 2,016 blocks
 
-[![Diagram showing the target adjustment taking place on every 2016th block.](../../images/diagrams_png_blockchain-height-target.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-target.png)
+[<img src="../../images/diagrams_png_blockchain-height-target.png" alt="Diagram showing the target adjustment taking place on every 2016th block." width="314" height="524" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-target.png)
 
 |  |  |
 | --- | --- |
-| Next Adjustment | 957,600 (1,129 blocks away) |
-| Current Height | 956,471 |
+| Next Adjustment | 957,600 (1,121 blocks away) |
+| Current Height | 956,479 |
 
 The [target](/docs/technical/mining/target.md) adjusts after every 2,016 blocks (roughly every 2 weeks).
 
@@ -41,12 +41,12 @@ For example, the first target adjustment took place at a block height of [2,016]
 
 210,000 blocks
 
-[![Diagram showing the block subsidy halving on every 210,000th block.](../../images/diagrams_png_blockchain-height-halving.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-halving.png)
+[<img src="../../images/diagrams_png_blockchain-height-halving.png" alt="Diagram showing the block subsidy halving on every 210,000th block." width="378" height="740" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-halving.png)
 
 |  |  |
 | --- | --- |
-| Next Halving | 1,050,000 (93,529 blocks away) |
-| Current Height | 956,471 |
+| Next Halving | 1,050,000 (93,521 blocks away) |
+| Current Height | 956,479 |
 
 The [block subsidy](/docs/technical/mining/block-reward.md#block-subsidy) halves after every 210,000 blocks (roughly every 4 years).
 
@@ -60,7 +60,7 @@ The *height* is used in a few other places in Bitcoin, primarily to do with the 
 
 #### Locktime
 
-[![Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future.](../../images/diagrams_png_transaction-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
+[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
 
 The [locktime](/docs/technical/transaction/locktime.md) field can be used to **prevent a transaction from being mined until *after* a specific height**.
 
@@ -68,7 +68,7 @@ For example, if you set a locktime of **500,000** on a transaction, that transac
 
 #### Relative Locktime
 
-[![Diagram showing the sequence field being used to set a relative locktime on the transaction.](../../images/diagrams_png_transaction-sequence-relative-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-relative-locktime.png)
+[<img src="../../images/diagrams_png_transaction-sequence-relative-locktime.png" alt="Diagram showing the sequence field being used to set a relative locktime on the transaction." width="741" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-relative-locktime.png)
 
 [Relative locktime](/docs/technical/transaction/input/sequence.md#relative-locktime) can be used to prevent a transaction from being mined until the [output](/docs/technical/transaction/output.md) it's spending has reached a certain *depth* in the blockchain.
 
@@ -76,7 +76,7 @@ For example, if you set a relative locktime of **100** blocks on a transaction [
 
 #### Coinbase Transaction
 
-[![Diagram showing the height of the current block being included inside the coinbase transaction for that block.](../../images/diagrams_png_blockchain-height-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-coinbase-transaction.png)
+[<img src="../../images/diagrams_png_blockchain-height-coinbase-transaction.png" alt="Diagram showing the height of the current block being included inside the coinbase transaction for that block." width="329" height="437" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-coinbase-transaction.png)
 
 Starting from block [227,836](/explorer/227836#blockchain), all [coinbase transactions](/docs/technical/mining/coinbase-transaction.md) **must contain the height** of the block they are going to be mined in.
 
@@ -90,14 +90,14 @@ Is the height a unique identifier for a block?
 
 During the [mining](/docs/technical/mining.md) process, it's possible that two blocks will get mined at the same time. Therefore, there can be two different blocks competing for the same height in the blockchain:
 
-[![Diagram showing two blocks competing for the same height at the top of the blockchain.](../../images/diagrams_png_blockchain-height-competing.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-competing.png)
+[<img src="../../images/diagrams_png_blockchain-height-competing.png" alt="Diagram showing two blocks competing for the same height at the top of the blockchain." width="477" height="630" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-competing.png)
 
 
 This is a normal part of how bitcoin works.
 
 Consequently, depending on which block gets built on top of first, there is a chance a block occupying a height close to the top of the chain will change:
 
-[![Diagram showing a different block occupying a specific height in the blockchain after a chain reorganization.](../../images/diagrams_png_blockchain-height-competing-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-competing-chain-reorganization.png)
+[<img src="../../images/diagrams_png_blockchain-height-competing-chain-reorganization.png" alt="Diagram showing a different block occupying a specific height in the blockchain after a chain reorganization." width="457" height="660" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-height-competing-chain-reorganization.png)
 
 
 This is known as a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
@@ -115,21 +115,21 @@ This command returns the current **height** of the blockchain.
 
 ```
 $ bitcoin-cli getblockcount
-956471
+956479
 ```
 
-The height of the blockchain is currently 956,471. But because counting starts at *zero*, there are technically 956,472 blocks in the blockchain in total. This is not a terribly useful fact, but I thought I would mention it anyway.
+The height of the blockchain is currently 956,479. But because counting starts at *zero*, there are technically 956,480 blocks in the blockchain in total. This is not a terribly useful fact, but I thought I would mention it anyway.
 
 ### `bitcoin-cli getblockhash [height]`
 
 This command returns the block hash for a specific height in the blockchain.
 
 ```
-$ bitcoin-cli getblockhash 956471
-000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5
+$ bitcoin-cli getblockhash 956479
+000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264
 ```
 
-As mentioned, the height is not a reliable way to reference blocks near the top of the blockchain. For example, if you were to use `bitcoin-cli getblockhash 956471` to get the block hash for the block currently at the top of the chain, the result may change if a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) takes place.
+As mentioned, the height is not a reliable way to reference blocks near the top of the blockchain. For example, if you were to use `bitcoin-cli getblockhash 956479` to get the block hash for the block currently at the top of the chain, the result may change if a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) takes place.
 
 If your node holds multiple blocks at the same height, this command will return the block hash for the block that is part of the current [longest chain](/docs/technical/blockchain/longest-chain.md). If there are multiple blocks at the tip of your chain, your node will consider the *first* block it receives as part of the current longest chain (but again, this is liable to change if there is a chain reorganization).
 
@@ -138,23 +138,23 @@ If your node holds multiple blocks at the same height, this command will return 
 This command provides basic information about a block, including its height.
 
 ```
-$ bitcoin-cli getblockheader 000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5
+$ bitcoin-cli getblockheader 000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264
 {
-    "hash": "000000000000000000006124edc0696e0918b53eb5132f0728f34a50f1fd24d5",
+    "hash": "000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264",
     "confirmations": 1,
-    "height": 956471,
-    "version": 872415232,
-    "versionHex": "34000000",
-    "merkleroot": "d6a6f3d8b6c4d37bfcf6959e03a9e69c5050696919d533ff19fafd46ca19a1af",
-    "time": 1783066235,
-    "mediantime": 1783063970,
-    "nonce": 914481153,
+    "height": 956479,
+    "version": 537010176,
+    "versionHex": "20022000",
+    "merkleroot": "ef0e0162fee593e41fe2c14d89a19046d706178ae5cf69956c3ff5ca87ca45cf",
+    "time": 1783070289,
+    "mediantime": 1783068995,
+    "nonce": 3263904042,
     "bits": "17021a42",
     "target": "000000000000000000021a420000000000000000000000000000000000000000",
     "difficulty": 133869853540305.4,
-    "chainwork": "000000000000000000000000000000000000000134cd152c185fde26dc120668",
-    "nTx": 4811,
-    "previousblockhash": "00000000000000000001ec048885e8386fd3d5b1f56248214e40586b57f80691"
+    "chainwork": "000000000000000000000000000000000000000134d0e337eef3b345d0a8d660",
+    "nTx": 6825,
+    "previousblockhash": "000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8"
 }
 ```
 

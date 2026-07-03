@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![An overview of the structure of a merkle tree and the merkle root being placed in the block header.](../../images/diagrams_png_block-merkle-root.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root.png)
+[<img src="../../images/diagrams_png_block-merkle-root.png" alt="An overview of the structure of a merkle tree and the merkle root being placed in the block header." width="767" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root.png)
 
 A merkle root is created by [hashing](/docs/technical/cryptography/hash-function.md) together pairs of [TXID](/docs/technical/transaction/input/txid.md)s to get a short and unique **fingerprint for all the [transactions](/docs/technical/transaction.md) in a [block](/docs/technical/block.md)**.
 
@@ -46,7 +46,7 @@ A merkle root is created by hashing TXIDs in a tree-like structure.
 2. Take the resulting hashes and hash those together in pairs.
 3. Repeat until you are left with a single hash.
 
-[![Technical diagram of a merkle tree structure.](../../images/diagrams_png_block-merkle-root-technical-diagram.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-technical-diagram.png)
+[<img src="../../images/diagrams_png_block-merkle-root-technical-diagram.png" alt="Technical diagram of a merkle tree structure." width="684" height="280" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-technical-diagram.png)
 
 
 
@@ -55,16 +55,6 @@ A merkle root is created by hashing TXIDs in a tree-like structure.
 Here's some Ruby code for creating a merkle root from a list of `TXID`s. The code is fairly readable, so it's worth reading through the steps even if you don't consider yourself to be a programmer.
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 require 'digest' # Need this for the SHA256 hash function
 
 # Hash function used in the merkle root function (and in bitcoin in general)
@@ -136,11 +126,11 @@ This structure for hashing a list of items together is known as a **merkle tree*
 
 I mean we *could* just hash all the TXIDs together in one go. That would create a fingerprint for all the transactions in the block, and that would work. But later on if we wanted to find out if a specific TXID was used to create that fingerprint, we would need to know **all** the other TXIDs:
 
-[![Without a merkle tree you would need all of the TXIDs in the block to recreate the final hash.](../../images/diagrams_png_block-merkle-root-fingerprint-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-hash.png)
+[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-hash.png" alt="Without a merkle tree you would need all of the TXIDs in the block to recreate the final hash." width="756" height="333" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-hash.png)
 
 This is where merkle trees come in. If we use a *merkle tree* instead, we only need to know **some** of the *branches* along the path of the tree to check that a TXID was used to create the root hash:
 
-[![With a merkle tree you only need the specific branches (the merkle proof) to reconstruct the final hash (the merkle root)](../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree.png)
+[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree.png" alt="With a merkle tree you only need the specific branches (the merkle proof) to reconstruct the final hash (the merkle root)" width="756" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree.png)
 
 This pathway is known as the *merkle proof*.
 
@@ -148,7 +138,7 @@ So by using a merkle tree, we can find out if a transaction is part of a block w
 
 And if you're dealing with blocks that have 2,000+ transactions in them, merkle trees become much more efficient than having all the TXIDs hashed together in one go.
 
-[![Diagram showing how merkle trees save on bandwidth when verifying the presence of a transaction in larger blocks.](../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree-big.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree-big.png)
+[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree-big.png" alt="Diagram showing how merkle trees save on bandwidth when verifying the presence of a transaction in larger blocks." width="979" height="794" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree-big.png)
 
 ### Merkle Proof Example
 
@@ -200,7 +190,7 @@ Thanks to merkle trees, you can create *lightweight wallets* (or "thin nodes") t
 
 These wallets just download and store [block headers](/docs/technical/block.md#header) (80 bytes each, instead of 1 MB+ blocks), and use the merkle roots inside them (along with *merkle proofs* they receive from [full archival nodes](/docs/technical/networking/node.md#archival-node)) to verify that a transaction has made it into a block.
 
-[![Block headers are just 80 bytes, whereas each block can be 1,000,000+ bytes.](../../images/diagrams_png_block-merkle-root-thin-nodes.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-thin-nodes.png)
+[<img src="../../images/diagrams_png_block-merkle-root-thin-nodes.png" alt="Block headers are just 80 bytes, whereas each block can be 1,000,000+ bytes." width="756" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-thin-nodes.png)
 
 A popular example of a lightweight wallet is [Electrum](https://electrum.org).
 
@@ -214,7 +204,7 @@ I have no experience with these though, so here are some interesting links inste
 Because [Ralph *Merkle*](https://en.wikipedia.org/wiki/Ralph_Merkle) patented the idea in 1979.
 
 Common Misconception.
-![Angela Merkel Root](../../images/technical_block_merkle-root_angela-merkel-root.png)
+<img src="../../images/technical_block_merkle-root_angela-merkel-root.png" alt="Angela Merkel Root" width="542" height="460" />
 
 ## Resources
 

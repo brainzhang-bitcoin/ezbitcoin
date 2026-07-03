@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a node as part of a network of computers running the Bitcoin program.](../../images/diagrams_png_node.png)](https://static.learnmeabitcoin.com/diagrams/png/node.png)
+[<img src="../../images/diagrams_png_node.png" alt="Diagram showing a node as part of a network of computers running the Bitcoin program." width="779" height="420" />](https://static.learnmeabitcoin.com/diagrams/png/node.png)
 
 A node is a computer running the Bitcoin program.
 
@@ -20,7 +20,7 @@ A node has two main jobs:
 
 ### 1. Keep a copy of the blockchain
 
-[![Diagram showing a node joining the Bitcoin network and downloading a copy of the blockchain.](../../images/diagrams_png_node-blockchain.png)](https://static.learnmeabitcoin.com/diagrams/png/node-blockchain.png)
+[<img src="../../images/diagrams_png_node-blockchain.png" alt="Diagram showing a node joining the Bitcoin network and downloading a copy of the blockchain." width="779" height="473" />](https://static.learnmeabitcoin.com/diagrams/png/node-blockchain.png)
 
 When you run Bitcoin for the first time, it will connect to other nodes on the network to download a full copy of the [blockchain](/docs/technical/blockchain.md).
 
@@ -30,9 +30,9 @@ Downloading the full blockchain also means that it's **replicated on another com
 
 Current Blockchain Size:
 
-856.91 GB
+856.92 GB
 
-956,472 blocks
+956,479 blocks
 
 Note: This is the size of the blockchain for my local node.  
 The size of your blockchain will differ depending on how many [chain reorganizations](/docs/technical/blockchain/chain-reorganization.md) your node has experienced and how many [stale blocks](/docs/technical/blockchain/chain-reorganization.md#stale-blocks) you have stored on disk.
@@ -49,14 +49,14 @@ As a result, a node is constantly working to **enforce rules** and **transmit da
 
 #### Transaction relay:
 
-[![Diagram showing nodes relaying new transactions across the network and adding them to their memory pools.](../../images/diagrams_png_node-relay-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/node-relay-transaction.png)
+[<img src="../../images/diagrams_png_node-relay-transaction.png" alt="Diagram showing nodes relaying new transactions across the network and adding them to their memory pools." width="779" height="476" />](https://static.learnmeabitcoin.com/diagrams/png/node-relay-transaction.png)
 
 
 New transactions get added to the [memory pool](/docs/technical/mining/memory-pool.md).
 
 #### Block relay:
 
-[![Diagram showing nodes relaying new blocks across the network and adding them to their blockchains.](../../images/diagrams_png_node-relay-block.png)](https://static.learnmeabitcoin.com/diagrams/png/node-relay-block.png)
+[<img src="../../images/diagrams_png_node-relay-block.png" alt="Diagram showing nodes relaying new blocks across the network and adding them to their blockchains." width="779" height="476" />](https://static.learnmeabitcoin.com/diagrams/png/node-relay-block.png)
 
 
 New blocks get written to the [blockchain](/docs/technical/blockchain.md).
@@ -72,7 +72,7 @@ There are a few system requirements that will help the program run smoothly:
 ### Disk Space
 :   Recommended: 2+ TB
 
-    * Current Blockchain Size: 856.91 GB
+    * Current Blockchain Size: 856.92 GB
 
     First and foremost, you'll need a big enough hard drive to store the [blockchain](/docs/technical/blockchain.md).
 
@@ -83,7 +83,7 @@ There are a few system requirements that will help the program run smoothly:
 ### RAM
 :   Recommended: 2+ GB
 
-    * Current Mempool Size: 0.68 vMB
+    * Current Mempool Size: 2.57 vMB
 
     RAM is used for storing the latest transactions in the [mempool](/docs/technical/mining/memory-pool.md), as well as for storing [UTXOs](/docs/technical/transaction/utxo.md) to help speed up the validation of new transactions and blocks.
 
@@ -93,7 +93,7 @@ There are a few system requirements that will help the program run smoothly:
 :   Recommended: 2+ TB/month
 
     * Incoming: 2.24 GB/day (average)
-    * Outgoing: 25.21 GB/day (average)
+    * Outgoing: 25.20 GB/day (average)
 
     A node is constantly sending and receiving data ([transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md)) to and from other nodes on the network, so you will need enough bandwidth to cover this.
 
@@ -119,7 +119,7 @@ Satoshi Nakamoto, [Cryptography Mailing List (Bitcoin P2P e-cash paper)](https:/
 
 How does a node communicate with other nodes?
 
-[![Diagram showing a node communicating with another node by sending a message over a TCP connection.](../../images/diagrams_png_node-communication.png)](https://static.learnmeabitcoin.com/diagrams/png/node-communication.png)
+[<img src="../../images/diagrams_png_node-communication.png" alt="Diagram showing a node communicating with another node by sending a message over a TCP connection." width="767" height="238" />](https://static.learnmeabitcoin.com/diagrams/png/node-communication.png)
 
 A node communicates with other nodes by sending lots of individual [messages](/docs/technical/networking.md#messages).
 
@@ -129,7 +129,7 @@ Each node must also follow a specific *Bitcoin protocol* when communicating, whi
 
 So other than following a unique protocol, there's nothing special about the way nodes communicate with each other. In the same way your computer and my server had to connect to each other and follow a protocol for downloading this webpage ([HTTP](https://en.wikipedia.org/wiki/HTTP)), Bitcoin nodes have their own custom protocol for sending and receiving transactions and blocks (Bitcoin Protocol).
 
-Your node will maintain a TCP connection with a number of other nodes on the network, so your node will be sending and receiving lots of messages between multiple computers at the same time. For example, the node running on this website currently has **`114` incoming** and **`10` outgoing** connections.
+Your node will maintain a TCP connection with a number of other nodes on the network, so your node will be sending and receiving lots of messages between multiple computers at the same time. For example, the node running on this website currently has **`113` incoming** and **`10` outgoing** connections.
 
 **The Bitcoin Network is completely open and accessible to anyone.** So as long as you follow the rules for connecting and sending messages, anyone can write their own software for communicating with a node. See [networking](/docs/technical/networking.md) for details.
 
@@ -141,7 +141,7 @@ There are a few reasons why you might want to run your own Bitcoin node.
 
 ### 1. Trust
 
-[![Diagram showing a person relying on a third-party node for information about a transaction.](../../images/diagrams_png_node-trust.png)](https://static.learnmeabitcoin.com/diagrams/png/node-trust.png)
+[<img src="../../images/diagrams_png_node-trust.png" alt="Diagram showing a person relying on a third-party node for information about a transaction." width="779" height="510" />](https://static.learnmeabitcoin.com/diagrams/png/node-trust.png)
 
 Running your own node means you **don't have to trust anyone else for information about transactions**.
 
@@ -157,7 +157,7 @@ Common phrase used in Bitcoin
 
 ### 2. Privacy
 
-[![Diagram showing a person broadcasting a transaction via a third-party server.](../../images/diagrams_png_node-privacy.png)](https://static.learnmeabitcoin.com/diagrams/png/node-privacy.png)
+[<img src="../../images/diagrams_png_node-privacy.png" alt="Diagram showing a person broadcasting a transaction via a third-party server." width="779" height="586" />](https://static.learnmeabitcoin.com/diagrams/png/node-privacy.png)
 
 Running your own node means you **do not have to share your [transactions](/docs/technical/transaction.md) with third-party services**.
 
@@ -207,7 +207,7 @@ There are a few different terms that describe the different *types* of node on t
 
 ### Full Node
 
-[![Diagram showing a full node validating all of the new blocks and transactions they receive.](../../images/diagrams_png_node-full-node.png)](https://static.learnmeabitcoin.com/diagrams/png/node-full-node.png)
+[<img src="../../images/diagrams_png_node-full-node.png" alt="Diagram showing a full node validating all of the new blocks and transactions they receive." width="779" height="473" />](https://static.learnmeabitcoin.com/diagrams/png/node-full-node.png)
 
 A full node is a node that can keep up with the blockchain and **validate** the blocks and transactions it receives.
 
@@ -219,7 +219,7 @@ There are two types of "full node":
 
 #### 1. Archival Node
 
-[![Diagram showing a archival node keeping a complete copy of the blockchain.](../../images/diagrams_png_node-full-node-archival.png)](https://static.learnmeabitcoin.com/diagrams/png/node-full-node-archival.png)
+[<img src="../../images/diagrams_png_node-full-node-archival.png" alt="Diagram showing a archival node keeping a complete copy of the blockchain." width="779" height="454" />](https://static.learnmeabitcoin.com/diagrams/png/node-full-node-archival.png)
 
 An archival node keeps a **full copy of the blockchain**.
 
@@ -227,7 +227,7 @@ This means it can replicate the entire blockchain to any new nodes joining the n
 
 #### 2. Pruned Node
 
-[![Diagram showing a pruned node deleting older blocks from its blockchain.](../../images/diagrams_png_node-full-node-pruned.png)](https://static.learnmeabitcoin.com/diagrams/png/node-full-node-pruned.png)
+[<img src="../../images/diagrams_png_node-full-node-pruned.png" alt="Diagram showing a pruned node deleting older blocks from its blockchain." width="779" height="454" />](https://static.learnmeabitcoin.com/diagrams/png/node-full-node-pruned.png)
 
 A pruned node **does not keep a full copy of the blockchain**.
 
@@ -257,14 +257,14 @@ A common type of lightweight node is what's known as an SPV wallet (e.g. [Electr
 
 An SPV wallet only receives the [block headers](/docs/technical/block.md#header) of the blockchain (which are much smaller than complete blocks), which allows them to keep up with what the longest chain **looks like**:
 
-[![Diagram showing an SPV client only receiving block headers instead of full blocks.](../../images/diagrams_png_node-spv-client.png)](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client.png)
+[<img src="../../images/diagrams_png_node-spv-client.png" alt="Diagram showing an SPV client only receiving block headers instead of full blocks." width="779" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client.png)
 
 
 Block headers are only 160 bytes. Complete blocks are typically 1,000,000+ bytes.
 
 It can then request *proof* from a full node to confirm whether a specific transaction is in a specific block:
 
-[![Diagram showing an SPV client receiving a proof that can be used with a block header to confirm a transaction is part of a block.](../../images/diagrams_png_node-spv-client-proof.png)](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client-proof.png)
+[<img src="../../images/diagrams_png_node-spv-client-proof.png" alt="Diagram showing an SPV client receiving a proof that can be used with a block header to confirm a transaction is part of a block." width="722" height="272" />](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client-proof.png)
 
 
 This is known as a [merkle proof](/docs/technical/block/merkle-root.md#merkle-proof).
@@ -275,7 +275,7 @@ However, whilst an SPV wallet uses minimal bandwidth and disk space (and can ver
 
 For example, a full node could construct a valid block header and send it to an SPV wallet, but the *actual* block could contain invalid transactions. In other words, a full node can **lie** to a lightweight node if they want to.
 
-[![Diagram showing an SPV client receiving a proof with a block header created from an invalid block.](../../images/diagrams_png_node-spv-client-proof-invalid-block.png)](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client-proof-invalid-block.png)
+[<img src="../../images/diagrams_png_node-spv-client-proof-invalid-block.png" alt="Diagram showing an SPV client receiving a proof with a block header created from an invalid block." width="752" height="314" />](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client-proof-invalid-block.png)
 
 
 The proof and block header are valid, but the block header was created from an invalid block of transactions. So the SPV client thinks it has received a payment, but the transaction inside the block is actually invalid.

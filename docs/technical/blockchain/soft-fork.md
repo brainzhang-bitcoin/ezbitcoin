@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a soft fork in the blockchain.](../../images/diagrams_png_blockchain-forks-soft-fork.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork.png)
+[<img src="../../images/diagrams_png_blockchain-forks-soft-fork.png" alt="Diagram showing a soft fork in the blockchain." width="543" height="457" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork.png)
 
 A soft fork is when an upgrade is made to the Bitcoin software that is *compatible* with the previous versions of the software.
 
@@ -11,7 +11,7 @@ To summarize the difference between a soft fork and a [hard fork](/docs/technica
 
 With a soft fork, [nodes](/docs/technical/networking/node.md) that do not upgrade their software will still be able to accept [blocks](/docs/technical/block.md)/[transactions](/docs/technical/transaction.md) created by the upgraded software. Therefore, nodes that do not upgrade will be able to keep up to date with the [blockchain](/docs/technical/blockchain.md) and not get left behind.
 
-[![Diagram showing a soft fork on the bitcoin network, with old nodes that have not upgraded receiving the new blocks from the upgraded nodes.](../../images/diagrams_png_blockchain-forks-soft-fork-network.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-network.png)
+[<img src="../../images/diagrams_png_blockchain-forks-soft-fork-network.png" alt="Diagram showing a soft fork on the bitcoin network, with old nodes that have not upgraded receiving the new blocks from the upgraded nodes." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-network.png)
 
 To make a soft-forking change successful, you only need a *majority* of the [miners](/docs/technical/mining.md) on the network to upgrade to the new version of the software. Because if you have a majority of miners upgrade, their mining power will build the [longest chain](/docs/technical/blockchain/longest-chain.md) of upgraded blocks (which the old nodes will adopt).
 
@@ -27,7 +27,7 @@ For example, let's say the block size limit is 1 MB (block capacity is now measu
 
 When upgraded miners begin to mine these smaller blocks, old nodes will still see these new blocks as valid, so there will be no branching of the blockchain like there would be in a [hard fork](/docs/technical/blockchain/hard-fork.md).
 
-[![Diagram showing old nodes on the network accepting the new blocks (from the soft fork upgrade) on to their blockchain.](../../images/diagrams_png_blockchain-forks-soft-fork-compatibility.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-compatibility.png)
+[<img src="../../images/diagrams_png_blockchain-forks-soft-fork-compatibility.png" alt="Diagram showing old nodes on the network accepting the new blocks (from the soft fork upgrade) on to their blockchain." width="983" height="518" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-compatibility.png)
 
 ## Method
 
@@ -37,7 +37,7 @@ To make a soft fork successful, you want a **majority of miners to upgrade** to 
 
 This is because nodes will always accept the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks, so if the majority of miners are working on mining the upgraded blocks with the restricted rules, the old nodes will naturally adopt it as their blockchain.
 
-[![Diagram showing nodes adopting the longest chain of new blocks, despite some miners still mining old blocks.](../../images/diagrams_png_blockchain-forks-soft-fork-majority.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-majority.png)
+[<img src="../../images/diagrams_png_blockchain-forks-soft-fork-majority.png" alt="Diagram showing nodes adopting the longest chain of new blocks, despite some miners still mining old blocks." width="983" height="548" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-majority.png)
 
 So even if a minority of old miners continue to build the blockchain with old blocks, they will not be able to compete with the speed at which the new blocks are being mined by the upgraded miners, so old nodes will adopt the same version of the blockchain as the upgraded nodes.
 
@@ -49,7 +49,7 @@ The main risk with a soft fork is if you **do not get a majority of the miners t
 
 This will result in the blockchain splitting in two, as a majority of old miners will continue to mine old blocks that are incompatible with the new version of the software.
 
-[![Diagram showing a majority of old miners building the longest chain with old blocks, creating a chain split between a blockchain with old blocks and a blockchain with upgraded blocks.](../../images/diagrams_png_blockchain-forks-soft-fork-split.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-split.png)
+[<img src="../../images/diagrams_png_blockchain-forks-soft-fork-split.png" alt="Diagram showing a majority of old miners building the longest chain with old blocks, creating a chain split between a blockchain with old blocks and a blockchain with upgraded blocks." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-split.png)
 
 And because old blocks form the longest available chain, old nodes will adopt this as their blockchain. However, the upgraded nodes will reject these old blocks (because those blocks are now invalid according to their upgraded rules), and they will adopt the longest available chain containing only the new blocks instead.
 
@@ -57,7 +57,7 @@ So once again, just like in a hard fork, you have two parallel versions of the b
 
 However, unlike a hard fork where the two chains can never converge, this chain split can be resolved by **getting more mining power on to the new chain**. If the upgraded miners are able to build the longest chain, the old nodes will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to adopt the blockchain made out of the new blocks.
 
-[![Diagram showing old nodes reorganizing their chain once a majority of miners build the longest chain with the new blocks.](../../images/diagrams_png_blockchain-forks-soft-fork-reconverge.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-reconverge.png)
+[<img src="../../images/diagrams_png_blockchain-forks-soft-fork-reconverge.png" alt="Diagram showing old nodes reorganizing their chain once a majority of miners build the longest chain with the new blocks." width="983" height="601" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-forks-soft-fork-reconverge.png)
 
 So by getting a majority of miners to upgrade, you "encourage" everyone on the network to keep up to date with the same version of the blockchain.
 
@@ -200,7 +200,7 @@ For example:
 00100000 00000000 00000000 00000100 = Bit 2 = Taproot (BIP 341)
 ```
 
-![Tool Icon](../../images/icons_tool.svg) Version Bits
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Version Bits
 
 Random Example
 

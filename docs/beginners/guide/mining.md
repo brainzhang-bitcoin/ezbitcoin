@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 Bitcoin mining is the process of **adding [transactions](/docs/beginners/guide/transactions.md) to the [blockchain](/docs/beginners/guide/blockchain.md)**.
 
@@ -8,13 +8,13 @@ Every [node](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/begin
 
 Each node stores the new transactions they receive in their *memory pool*.
 
-[![Diagram showing a memory pool inside each node on the bitcoin network.](../../images/beginners_guide_mining_01-network-memory-pool.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/01-network-memory-pool.png)
+[<img src="../../images/beginners_guide_mining_01-network-memory-pool.png" alt="Diagram showing a memory pool inside each node on the bitcoin network." width="776" height="392" />](/docs/beginners/guide/mining/01-network-memory-pool.png.md)
 
 The *memory pool* is a node's temporary storage area for new transactions.
 
 Each node also has the option to try and "mine" the transactions in their memory pool into a permanent **file**. This file is a ledger of every bitcoin transaction, and it's called the *blockchain*.
 
-[![Diagram showing how each node contains a memory pool and a blockchain.](../../images/beginners_guide_mining_02-node-pool-block.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/02-node-pool-block.png)
+[<img src="../../images/beginners_guide_mining_02-node-pool-block.png" alt="Diagram showing how each node contains a memory pool and a blockchain." width="417" height="212" />](/docs/beginners/guide/mining/02-node-pool-block.png.md)
 
 You could think of the memory pool as containing "floating" transactions, and the blockchain as containing "archived" transactions.
 
@@ -26,7 +26,7 @@ This processing power is required due to the presence of a specific type of *cha
 
 Okay, imagine you're a node. At any moment in time you can condense the transactions in your memory pool into a single "string" of numbers and letters.
 
-[![Diagram showing a hash of all the transactions in the memory pool.](../../images/beginners_guide_mining_03-node-pool-string.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/03-node-pool-string.png)
+[<img src="../../images/beginners_guide_mining_03-node-pool-string.png" alt="Diagram showing a hash of all the transactions in the memory pool." width="449" height="221" />](/docs/beginners/guide/mining/03-node-pool-string.png.md)
 
 
 This string represents all of the transactions in your memory pool.
@@ -37,13 +37,13 @@ Now, your objective is to [hash](/docs/technical/cryptography/hash-function.md) 
 
 Most of the time you will get a result that isn't even close:
 
-[![Diagram showing a hash of all the transactions in the memory pool along with an unsuccessful nonce.](../../images/beginners_guide_mining_04-node-pool-string-nonce.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/04-node-pool-string-nonce.png)
+[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce.png" alt="Diagram showing a hash of all the transactions in the memory pool along with an unsuccessful nonce." width="632" height="212" />](/docs/beginners/guide/mining/04-node-pool-string-nonce.png.md)
 
 But if you keep going you may stumble upon a number that works:
 
-[![Diagram showing a hash of all the transactions in the memory pool along with a successful nonce.](../../images/beginners_guide_mining_04-node-pool-string-nonce-success.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/04-node-pool-string-nonce-success.png)
+[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce-success.png" alt="Diagram showing a hash of all the transactions in the memory pool along with a successful nonce." width="627" height="211" />](/docs/beginners/guide/mining/04-node-pool-string-nonce-success.png.md)
 
-![Tool Icon](../../images/icons_tool.svg) Example Hash Function
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Example Hash Function
 
 Text
 
@@ -52,7 +52,7 @@ Enter any string of characters
 `0 characters`
 
 
-![Hash Function Icon](../../images/icons_hash-function.svg)
+<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 SHA-256(text)
@@ -71,7 +71,7 @@ But if you are lucky enough to find a successful hash result, the transactions i
 
 Furthermore, you'll also receive a [block reward](/docs/technical/mining/block-reward.md) for your effort (which also includes any [fees](/docs/technical/transaction/fee.md) from the transactions you've added to the blockchain).
 
-[![Diagram showing a block reward being won after successfully mining a block.](../../images/beginners_guide_mining_04-node-pool-string-nonce-success-reward.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/04-node-pool-string-nonce-success-reward.png)
+[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce-success-reward.png" alt="Diagram showing a block reward being won after successfully mining a block." width="441" height="275" />](/docs/beginners/guide/mining/04-node-pool-string-nonce-success-reward.png.md)
 
 Note: The block reward is no longer 25 BTC (I originally wrote this article in 2015).
 
@@ -89,7 +89,7 @@ Because mining allows the entire bitcoin network to agree on which transactions 
 
 When you make a bitcoin transaction, not all nodes on the network will hear about it instantly. Instead, transactions travel across the bitcoin network by being passed from one node to the next.
 
-[![Diagram showing a transaction propagating the network.](../../images/beginners_guide_mining_05-network-transaction-propagation.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/05-network-transaction-propagation.png)
+[<img src="../../images/beginners_guide_mining_05-network-transaction-propagation.png" alt="Diagram showing a transaction propagating the network." width="899" height="392" />](/docs/beginners/guide/mining/05-network-transaction-propagation.png.md)
 
 *Propagation* is the word used to describe the way transactions travel across the network.
 
@@ -99,7 +99,7 @@ For example, you could buy a beer with some bitcoins, then quickly attempt to bu
 
 In other words, some good ol' **fraud**.
 
-[![Diagram showing a second transaction propagating the network at the same time as the first.](../../images/beginners_guide_mining_06-network-transaction-propagation-pizza.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/06-network-transaction-propagation-pizza.png)
+[<img src="../../images/beginners_guide_mining_06-network-transaction-propagation-pizza.png" alt="Diagram showing a second transaction propagating the network at the same time as the first." width="899" height="471" />](/docs/beginners/guide/mining/06-network-transaction-propagation-pizza.png.md)
 
 So what's going on here?
 
@@ -114,7 +114,7 @@ Mining, of course.
 
 The **first** node on the network to complete the challenge will add the transactions in *their* memory pool on to the blockchain.
 
-[![Diagram showing how the bitcoin network resolves the double-spend when a new block is mined.](../../images/beginners_guide_mining_07-network-transaction-resolution.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/07-network-transaction-resolution.png)
+[<img src="../../images/beginners_guide_mining_07-network-transaction-resolution.png" alt="Diagram showing how the bitcoin network resolves the double-spend when a new block is mined." width="899" height="489" />](/docs/beginners/guide/mining/07-network-transaction-resolution.png.md)
 
 For example, if a node with the pizza transaction successfully mines a block, then that's the transaction that gets added to the blockchain, and the beer transaction gets kicked out of the network.
 
@@ -136,7 +136,7 @@ So in other words, this mining competition prevents any single miner from having
 
 Mining through the Bitcoin Core client is no longer possible.
 
-[![Screenshot of the setgenerate command for mining in Bitcoin Core.](../../images/beginners_guide_mining_setgenerate-true.jpg)](https://static.learnmeabitcoin.com/beginners/guide/mining/setgenerate-true.jpg)
+[<img src="../../images/beginners_guide_mining_setgenerate-true.jpg" alt="Screenshot of the setgenerate command for mining in Bitcoin Core." width="478" height="453" />](/docs/beginners/guide/mining/setgenerate-true.jpg.md)
 
 This functionality was completely removed in 2016:
 

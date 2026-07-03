@@ -1,6 +1,6 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks.](../../images/diagrams_png_block-version.png)](https://static.learnmeabitcoin.com/diagrams/png/block-version.png)
+[<img src="../../images/diagrams_png_block-version.png" alt="Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks." width="639" height="404" />](https://static.learnmeabitcoin.com/diagrams/png/block-version.png)
 
 The 4-byte version field in the [block header](/docs/technical/block.md#header) is used by miners to ***signal* readiness for proposed [soft-forks](/docs/technical/blockchain/soft-fork.md)**.
 

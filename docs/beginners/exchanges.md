@@ -1,4 +1,4 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 Here's a shortlist of what I think are the **best exchanges** for buying bitcoin online.
 
@@ -69,7 +69,7 @@ What does this mean for you?
 
 Well, let's say you decide to send those bitcoins to a secret shop. That's cool, but if that secret shop ever got raided (for whatever reason) and their bitcoins/addresses were found, it would be possible to see all the transactions that the shop had received. As a result, seeing as the bitcoins you sent there were tagged to your ID, it would be possible to find out that *you* sent bitcoins to that shop.
 
-[![Diagram showing how buying a bitcoin from an exchange that requires ID tags those bitcoins to your identity.](../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-exchanges-id-privacy-transaction.png)
+[<img src="../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png" alt="Diagram showing how buying a bitcoin from an exchange that requires ID tags those bitcoins to your identity." width="983" height="473" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-exchanges-id-privacy-transaction.png)
 
 I wouldn't dissuade anyone from buying bitcoins from companies that ask for your ID, but it's important to be aware of how they operate. Just remember that bitcoin [transactions](/docs/technical/transaction.md) are connected together, and so the privacy of your coins depends on you *not creating links* from your identity to the [addresses](/docs/technical/keys/address.md) you use.
 
@@ -101,7 +101,7 @@ Buying bitcoin online can be a pretty intimidating experience, especially if you
 
 Some exchanges can be quite technical and are designed for experienced traders, and it's not always clear what's going on if you haven't used them before. Whereas other exchanges are designed for beginners, and simplify the process as much as possible.
 
-[![Screenshot of the old TradeOgre exchange.](../images/beginners_exchanges_screenshot-tradeogre.jpg)](https://static.learnmeabitcoin.com/beginners/exchanges/screenshot-tradeogre.jpg)
+[<img src="../images/beginners_exchanges_screenshot-tradeogre.jpg" alt="Screenshot of the old TradeOgre exchange." width="600" height="347" />](/docs/beginners/exchanges/screenshot-tradeogre.jpg.md)
 
 
 This kind of interface isn't going to be everyone's cup of tea.
@@ -116,11 +116,11 @@ The best method is to start simple and work your way up.
 
 Fundamentally, the way you buy bitcoin is to buy them from someone who is selling them.
 
-[![Animation showing a person buying bitcoins from another person directly.](../images/beginners_exchanges_buy-bitcoin-person.gif)](https://static.learnmeabitcoin.com/beginners/exchanges/buy-bitcoin-person.gif)
+[<img src="../images/beginners_exchanges_buy-bitcoin-person.gif" alt="Animation showing a person buying bitcoins from another person directly." width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-person.gif.md)
 
 But of course, not everyone knows someone who has bitcoins to sell, so companies have popped up that sell bitcoin for a living. These are called exchanges, and they offer a *convenient* way to buy bitcoin online.
 
-[![Animation showing a person buying bitcoins from a company (i.e. an exchange).](../images/beginners_exchanges_buy-bitcoin-company.gif)](https://static.learnmeabitcoin.com/beginners/exchanges/buy-bitcoin-company.gif)
+[<img src="../images/beginners_exchanges_buy-bitcoin-company.gif" alt="Animation showing a person buying bitcoins from a company (i.e. an exchange)." width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-company.gif.md)
 
 So this page lists what I think are the best exchanges for buying bitcoin online.
 
@@ -136,7 +136,7 @@ So what's the alternative?
 
 Well, if *you* want to have complete control over your bitcoins (which I recommend), then you need to *withdraw* the bitcoins to your own [wallet](/docs/beginners/wallets.md). By withdrawing you are asking the company to create a [transaction](/docs/technical/transaction.md) to lock up an amount of bitcoins to one of your [addresses](/docs/technical/keys/address.md). This means you will have the [keys](/docs/technical/keys.md) that allow you to transfer the bitcoins, which means that nobody else has control of them except for you.
 
-[![Animation showing a person withdrawing bitcoins from an exchange to their wallet.](../images/beginners_exchanges_withdraw.gif)](https://static.learnmeabitcoin.com/beginners/exchanges/withdraw.gif)
+[<img src="../images/beginners_exchanges_withdraw.gif" alt="Animation showing a person withdrawing bitcoins from an exchange to their wallet." width="800" height="378" />](/docs/beginners/exchanges/withdraw.gif.md)
 
 **Having complete ownership and control of your money is one of the key principles of Bitcoin.** This is why I recommend withdrawing bitcoins from an exchange to your wallet if you can, as this is what gives you the freedom that Bitcoin was designed for.
 

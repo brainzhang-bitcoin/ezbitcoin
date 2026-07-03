@@ -1,4 +1,4 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 A public key is the counterpart to a [private key](/docs/technical/keys/private-key.md).
 
@@ -7,7 +7,7 @@ And similar to a private key, it's displayed as a [hexadecimal](/docs/technical/
 For example:
 
 ```
-0322406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e10
+03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
 ```
 
 If we didn't end up shortening this public key to an [address](/docs/technical/keys/address.md), this would be the "account number" that you send bitcoins to when making a [transaction](/docs/beginners/guide/transactions.md).
@@ -30,17 +30,17 @@ It'll be easier if I show you...
 
 Like this:
 
-[![A simple graph showing the shape of an elliptic curve.](../../images/beginners_guide_public-keys_01-elliptic-curve.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/01-elliptic-curve.png)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve.png" alt="A simple graph showing the shape of an elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve.png.md)
 
 Furthermore, the [elliptic curve used in Bitcoin](/docs/technical/cryptography/elliptic-curve.md) comes with a specific *starting point*.
 
-[![A simple graph showing the generator point on an elliptic curve.](../../images/beginners_guide_public-keys_01-elliptic-curve-g.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/01-elliptic-curve-g.png)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g.png" alt="A simple graph showing the generator point on an elliptic curve." width="272" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g.png.md)
 
 We call this starting point the *generator point* (G).
 
 And if we were to do some "multiplication" on this curve (e.g. "multiplying" the starting point by 2), we would move around the curve like this.
 
-[![Diagram showing elliptic curve multiplication.](../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/01-elliptic-curve-g-multiplication.png)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png" alt="Diagram showing elliptic curve multiplication." width="476" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g-multiplication.png.md)
 
 The fact that we can draw a tangent anywhere on the curve and it intersects *one* other point on the curve is a special feature of elliptic curves.
 
@@ -63,13 +63,13 @@ In the above example we multiplied `G` by 2 to get `2G`.
 To get a public key, we multiply `G` by our private key.
 
 ```
-private key = f18f3c944012871ad7b90a4aaf457b8e679b3021349edc5bad7b1753e857001f
-private key = 109260473740431031271649203294974511900235291483950379992408167175706784497695
+private key = 62132aa90f42874faae316b40190b0f4306300e9a0e00d636bf1a4ffc8716199
+private key = 44360523686575499951926356314921230805999682578161446845471888997559888339353
 
-public key  = 109260473740431031271649203294974511900235291483950379992408167175706784497695 * G
+public key  = 44360523686575499951926356314921230805999682578161446845471888997559888339353 * G
 ```
 
-![Tool Icon](../../images/icons_tool.svg) EC Multiply
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> EC Multiply
 
 Generator Point
 
@@ -119,27 +119,27 @@ Steps
 
 Or in other words, "bounce around the elliptic curve private key number of times".
 
-[![Diagram showing multiplication on an elliptic curve.](../../images/beginners_guide_public-keys_02-public-key-multiplication.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/02-public-key-multiplication.png)
+[<img src="../../images/beginners_guide_public-keys_02-public-key-multiplication.png" alt="Diagram showing multiplication on an elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/02-public-key-multiplication.png.md)
 
 The final resting point on the elliptic curve will give you a set of co-ordinates, and these co-ordinates form the public key.
 
 So if these are the coordinates we end up with after multiplying `G` by our private key:
 
 ```
-x = 15492482017498539452774967995455736955834329920153210634105963099022205349392
-y = 66484543299854344167676653054794377465478015196270132341507299112734572147511
+x = 79501086185442349843693847274906543406531753578810518737095233142215568708309
+y = 69919270316357694283546792236970490308989664412014609961442098166755831692197
 ```
 
 Then all we have to do is convert both to hexadecimal and smush them together...
 
 ```
-public key (x) = 22406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e10
-public key (y) = 92fceb0155aaeadfe714c2c71aedaa1745f4c904675bdf29e24081e34623f337
+public key (x) = afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
+public key (y) = 9a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
 
-public key (x,y) = 22406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e1092fceb0155aaeadfe714c2c71aedaa1745f4c904675bdf29e24081e34623f337
+public key (x,y) = afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
 ```
 
-![Tool Icon](../../images/icons_tool.svg) Public Key
+<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Public Key
 
 Generate Random
 
@@ -188,7 +188,7 @@ And ta da! A public key!
 This is the *old* (long) format of public key, which means I've got to put an `04` at the start. Like this:
 
 ```
-public key = 0422406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e1092fceb0155aaeadfe714c2c71aedaa1745f4c904675bdf29e24081e34623f337
+public key = 04afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
 ```
 
 To find out why this is the case, I'm afraid you're going to have to read through the section about [compressed public keys](#compressed-public-keys).
@@ -201,7 +201,7 @@ This is because the elliptic curve is an *equation* (`y^2 = x^3 + 7`), which mea
 
 However, due to the `y^2` part of the equation, the `y` could be a *positive* or *negative* number:
 
-[![Diagram showing two possible y-coordinates for a given x coordinate on the elliptic curve.](../../images/beginners_guide_public-keys_03-y-polarity.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/03-y-polarity.png)
+[<img src="../../images/beginners_guide_public-keys_03-y-polarity.png" alt="Diagram showing two possible y-coordinates for a given x coordinate on the elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity.png.md)
 
 So the only extra information you need to find the correct `y` co-ordinate is to know whether the `y` co-ordinate is *above* or *below* the x-axis. And due to the way elliptic curves work:
 
@@ -215,13 +215,13 @@ In Bitcoin, the polarity of the `y` co-ordinate is represented by a prefix:
 * `02` = even
 * `03` = odd
 
-[![Diagram showing how a prefix is used to represent one of two possible y-coordinates on the elliptic curve.](../../images/beginners_guide_public-keys_03-y-polarity-prefix.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/03-y-polarity-prefix.png)
+[<img src="../../images/beginners_guide_public-keys_03-y-polarity-prefix.png" alt="Diagram showing how a prefix is used to represent one of two possible y-coordinates on the elliptic curve." width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity-prefix.png.md)
 
 So whereas an old-school uncompressed public key will begin with `04`, a **compressed public key** will begin with either `02` or `03`:
 
 ```
-public key (uncompressed) = 0422406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e1092fceb0155aaeadfe714c2c71aedaa1745f4c904675bdf29e24081e34623f337
-public key (compressed)   = 0322406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e10
+public key (uncompressed) = 04afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59a94e79317110f6ebb9d7d26fc6c57cb507bea9646dc73f950fb4e7c5c61bba5
+public key (compressed)   = 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
 ```
 
 Much shorter.
@@ -254,11 +254,11 @@ As a result:
 1. I can put my private key through some more elliptic curve mathematics to get ***a new value*** (called a digital signature).
 2. I can put my public key through some other elliptic curve mathematics to get ***a new value***.
 
-[![Diagram showing two separate values being calculated from the private key and public key independently.](../../images/beginners_guide_public-keys_04-keys-ec-math.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/04-keys-ec-math.png)
+[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math.png" alt="Diagram showing two separate values being calculated from the private key and public key independently." width="501" height="220" />](/docs/beginners/guide/public-keys/04-keys-ec-math.png.md)
 
 Now, there will be some small *overlap* between these new values:
 
-[![Diagram showing and overlap between the two separate values calculated from the private key and public key independently.](../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/04-keys-ec-math-verification.png)
+[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png" alt="Diagram showing and overlap between the two separate values calculated from the private key and public key independently." width="501" height="209" />](/docs/beginners/guide/public-keys/04-keys-ec-math-verification.png.md)
 
 And this overlap is enough to prove that there is a *mathematical connection* between the public key and private key.
 

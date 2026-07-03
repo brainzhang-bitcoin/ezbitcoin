@@ -1,9 +1,9 @@
-![Loading Tool](../../images/icons_loader-2.svg)
+<img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 * [BIP 173: Bech32](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 * [BIP 350: Bech32m](https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki)
 
-[![Diagram showing the structure of a Bech32 address.](../../images/diagrams_png_keys-bech32.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32.png)
+[<img src="../../images/diagrams_png_keys-bech32.png" alt="Diagram showing the structure of a Bech32 address." width="1038" height="397" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32.png)
 
 Bech32 ("besh thirty-two") is an **[address](/docs/technical/keys/address.md) format** used for representing *segwit locking scripts* like [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md), and [P2TR](/docs/technical/script/p2tr.md).
 
@@ -99,13 +99,13 @@ Base58 Address
 
 1MHKKX3cN2RnWrxnzg9kLfPzi6vCd1B2H7
 
-[![Example Base58 address QR code (case sensitive).](../../images/technical_keys_bech32_base58-qr.png)](https://static.learnmeabitcoin.com/technical/keys/bech32/base58-qr.png)
+[<img src="../../images/technical_keys_bech32_base58-qr.png" alt="Example Base58 address QR code (case sensitive)." width="93" height="93" />](/docs/technical/keys/bech32/base58-qr.png.md)
 
 Bech32 Address
 
 BC1QMEU8D90HWHFHM49GHGN5ZFGEXDPJSSPZGN28T4
 
-[![Example Bech32 address QR code (case-insensitive).](../../images/technical_keys_bech32_bech32-qr-ignorecase.png)](https://static.learnmeabitcoin.com/technical/keys/bech32/bech32-qr-ignorecase.png)
+[<img src="../../images/technical_keys_bech32_bech32-qr-ignorecase.png" alt="Example Bech32 address QR code (case-insensitive)." width="81" height="81" />](/docs/technical/keys/bech32/bech32-qr-ignorecase.png.md)
 
 As you can see, even though the Bech32 address has more characters, the ability to use alphanumeric mode means the QR code uses less data overall.
 
@@ -211,7 +211,7 @@ That's a simplified explanation of the process, but that's basically how it work
 
 Here's a step-by-step guide:
 
-[![Diagram showing how to encode a segwit ScriptPubKey into a Bech32 address.](../../images/diagrams_png_keys-bech32-encode.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-encode.png)
+[<img src="../../images/diagrams_png_keys-bech32-encode.png" alt="Diagram showing how to encode a segwit ScriptPubKey into a Bech32 address." width="1383" height="951" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-encode.png)
 
 The Bech32 encoding is only designed to work for segwit locking scripts (i.e. P2WPKH, P2WSH, P2TR). This is because they follow a specific pattern required for Bech32 encoding (they essentially require a **version number** and some **bytes of data**).
 
@@ -471,16 +471,6 @@ bech32    = bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 ### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # --------
 # settings
 # --------
@@ -798,7 +788,7 @@ To do this, you basically convert the base32 characters into their corresponding
 
 Here's a step-by-step guide:
 
-[![Diagram showing how to decode a Bech32 address to a segwit ScriptPubKey.](../../images/diagrams_png_keys-bech32-decode.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-decode.png)
+[<img src="../../images/diagrams_png_keys-bech32-decode.png" alt="Diagram showing how to decode a Bech32 address to a segwit ScriptPubKey." width="1414" height="959" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-decode.png)
 
 
 
@@ -1009,16 +999,6 @@ Seeing as this is **version 0** with a **20-byte witness program**, we can tell 
 ### Code
 
 ```
-![Copy](../../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../../images/icons_clipboard-x-white.svg)copied
-
 # --------
 # settings
 # --------
@@ -1299,7 +1279,7 @@ The checksum algorithm uses [BCH codes](https://en.wikipedia.org/wiki/BCH_code),
 
 I don't know enough about BCH codes to explain the design of the algorithm, so I'll just show you *how to calculate the checksum* instead.
 
-[![Diagram showing how to calculate the checksum for a Bech32 address.](../../images/diagrams_png_keys-bech32-checksum-algorithm.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-checksum-algorithm.png)
+[<img src="../../images/diagrams_png_keys-bech32-checksum-algorithm.png" alt="Diagram showing how to calculate the checksum for a Bech32 address." width="1383" height="1829" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-checksum-algorithm.png)
 
 
 
@@ -1326,7 +1306,7 @@ The *size* byte from the ScriptPubKey and the *separator* in the address are not
 
 ### 2. Expand human-readable part
 
-[![Diagram showing how to expand the human-readable part into 5-bit groups.](../../images/diagrams_png_keys-bech32-checksum-hrp-expand.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-checksum-hrp-expand.png)
+[<img src="../../images/diagrams_png_keys-bech32-checksum-hrp-expand.png" alt="Diagram showing how to expand the human-readable part into 5-bit groups." width="369" height="288" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-checksum-hrp-expand.png)
 
 The *human-readable part* is used as the prefix for the address. This needs to be included as part of the checksum so that we can detect if it has been entered correctly.
 

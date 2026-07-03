@@ -1,6 +1,6 @@
-![Loading Tool](../images/icons_loader-2.svg)
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[![Diagram showing a node on the bitcoin network mining a new block on to the blockchain.](../images/diagrams_png_mining.png)](https://static.learnmeabitcoin.com/diagrams/png/mining.png)
+[<img src="../images/diagrams_png_mining.png" alt="Diagram showing a node on the bitcoin network mining a new block on to the blockchain." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/mining.png)
 
 Mining is the process of trying to add a new [block](/docs/technical/block.md) of [transactions](/docs/technical/transaction.md) on to the [blockchain](/docs/technical/blockchain.md).
 
@@ -8,7 +8,7 @@ It's a **network-wide competition** where any [node](/docs/technical/networking/
 
 When a new block is mined, it gets broadcast across the network, where each node independently verifies and adds it on to their blockchain.
 
-[![Diagram showing a mined block being broadcast across the network and nodes adding it to their blockchain.](../images/diagrams_png_mining-broadcast.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-broadcast.png)
+[<img src="../images/diagrams_png_mining-broadcast.png" alt="Diagram showing a mined block being broadcast across the network and nodes adding it to their blockchain." width="983" height="531" />](https://static.learnmeabitcoin.com/diagrams/png/mining-broadcast.png)
 
 
 Nodes update their blockchains with the new block.
@@ -25,19 +25,19 @@ The mining process begins by filling a [candidate block](/docs/technical/mining/
 
 This candidate block is what we're going to try and mine on to our blockchain (and then send to everyone else so they can add it to their blockchain too).
 
-[![Diagram showing a miner filling a candidate block with transactions from their memory pool.](../images/diagrams_png_mining-candidate-block.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-candidate-block.png)
+[<img src="../images/diagrams_png_mining-candidate-block.png" alt="Diagram showing a miner filling a candidate block with transactions from their memory pool." width="505" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/mining-candidate-block.png)
 
 
 Every node keeps a copy of the latest transactions in their memory pool.
 
 Next we construct a [block header](/docs/technical/block.md#header) for this candidate block. This is basically a short summary of all of the data inside the block, which includes a *reference to an existing block* in the blockchain that we want to build on.
 
-[![Diagram showing a block header for a candidate block, containing a previous block hash and a merkle root.](../images/diagrams_png_mining-block-header.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header.png)
+[<img src="../images/diagrams_png_mining-block-header.png" alt="Diagram showing a block header for a candidate block, containing a previous block hash and a merkle root." width="501" height="435" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header.png)
 
 
 You refer to a previous block by its [block hash](/docs/technical/block/hash.md). A summary of all the transactions in the block is contained in the [merkle root](/docs/technical/block/merkle-root.md).
 
-![Tool Icon](../images/icons_tool.svg) Block Header
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
 
 Random Example
 
@@ -148,12 +148,12 @@ Now we are ready to start *mining* this block.
 
 To do this, we put this block's **block header** through the SHA-256 [hash function](/docs/technical/cryptography/hash-function.md) *twice* (called HASH256 for short), and hope that the number it spits out is below the current [target](/docs/technical/mining/target.md).
 
-[![Diagram showing a block hash trying to get below a specific target value.](../images/diagrams_png_mining-block-header-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash.png)
+[<img src="../images/diagrams_png_mining-block-header-hash.png" alt="Diagram showing a block hash trying to get below a specific target value." width="841" height="454" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash.png)
 
 
 The target is the number your block hash must get below to add the block on to the blockchain.
 
-![Tool Icon](../images/icons_tool.svg) HASH256
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
 Random Transaction Data
 
@@ -164,10 +164,10 @@ Data (Hex)
 `0 bytes`
 
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 HASH256
@@ -182,7 +182,7 @@ SHA-256(SHA-256(data))
 
 If the hash of your block header *isn't* below the target, you can *keep trying* by incrementing the [nonce](/docs/technical/block/nonce.md) field in the block header. This allows you to keep the same basic block header, but get a completely different hash result for it.
 
-[![Diagram showing a miner adjusting the nonce field in the block header to produce a different block hash.](../images/diagrams_png_mining-block-header-hash-nonce.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash-nonce.png)
+[<img src="../images/diagrams_png_mining-block-header-hash-nonce.png" alt="Diagram showing a miner adjusting the nonce field in the block header to produce a different block hash." width="838" height="453" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash-nonce.png)
 
 
 The mining process is basically hashing a block header as fast as you can to try and be the first node to get a low enough result.
@@ -197,14 +197,14 @@ If a miner manages to get a block hash for their candidate block below the targe
 
 Each node will then confirm that the block header hashes below the target, then add this "mined" block on to their blockchain.
 
-[![Diagram showing a newly-mined block being broadcast to the other nodes on the network.](../images/diagrams_png_mining-block-broadcast.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast.png)
+[<img src="../images/diagrams_png_mining-block-broadcast.png" alt="Diagram showing a newly-mined block being broadcast to the other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast.png)
 
 
 Congratulations, you have just mined a block of transactions onto the blockchain.
 
 From here, each node will stop working on their own candidate block, construct a new one (with fresh transactions from their memory pool), and start trying to build on top of this new block in the chain.
 
-[![Diagram showing miners constructing a new candidate block to build on top of the newly-mined block.](../images/diagrams_png_mining-block-broadcast-restart-mining.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast-restart-mining.png)
+[<img src="../images/diagrams_png_mining-block-broadcast-restart-mining.png" alt="Diagram showing miners constructing a new candidate block to build on top of the newly-mined block." width="983" height="522" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-broadcast-restart-mining.png)
 
 
 Miners start trying to add the next batch of transactions on to the chain.
@@ -233,11 +233,11 @@ Who can mine blocks?
 
 This means we have a network-wide competition where any node on the network could be the one to add the next batch of transactions on to the blockchain.
 
-[![Diagram showing how any node on the network can choose to try and mine blocks.](../images/diagrams_png_mining-competition.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-competition.png)
+[<img src="../images/diagrams_png_mining-competition.png" alt="Diagram showing how any node on the network can choose to try and mine blocks." width="983" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/mining-competition.png)
 
 However, although anyone can try mining, being able to perform hash calculations *as fast as possible* improves your chances of successfully mining the next block.
 
-[![Diagram showing how a miner on the network with specialized hardware can out-compete a miner without specialized hardware.](../images/diagrams_png_mining-competition-hardware.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-competition-hardware.png)
+[<img src="../images/diagrams_png_mining-competition-hardware.png" alt="Diagram showing how a miner on the network with specialized hardware can out-compete a miner without specialized hardware." width="983" height="521" />](https://static.learnmeabitcoin.com/diagrams/png/mining-competition-hardware.png)
 
 > Anyone's chance of finding a solution at any time is proportional to their CPU power.
 
@@ -255,18 +255,18 @@ If you are able to mine a block you can claim a **block reward**.
 
 You see, when you construct a candidate block, you can put your own special transaction at the top of the block. This is called the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md), and it allows you to send yourself a fixed amount of bitcoins that did not previously exist.
 
-[![Diagram showing the coinbase transaction at the top of a block of transactions.](../images/diagrams_png_mining-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-coinbase-transaction.png)
+[<img src="../images/diagrams_png_mining-coinbase-transaction.png" alt="Diagram showing the coinbase transaction at the top of a block of transactions." width="983" height="219" />](https://static.learnmeabitcoin.com/diagrams/png/mining-coinbase-transaction.png)
 
 
 The coinbase transaction is the first transaction in a block.
 
 So if you end up mining this block, you would be able to spend the bitcoins you claimed from the coinbase transaction *after* the block reaches 100 blocks deep in the [longest chain](/docs/technical/blockchain/longest-chain.md).
 
-[![Diagram showing how the block reward can be spent after the block reaches 100 blocks deep in the blockchain.](../images/diagrams_png_mining-block-reward-longest-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-longest-chain.png)
+[<img src="../images/diagrams_png_mining-block-reward-longest-chain.png" alt="Diagram showing how the block reward can be spent after the block reaches 100 blocks deep in the blockchain." width="983" height="295" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-longest-chain.png)
 
 Therefore, this **block reward acts as an incentive** for miners to mine new blocks and continually try to extend the *longest* known chain of blocks.
 
-[![Diagram showing how all miners focus on building upon the current longest chain so they can spend the block reward later on.](../images/diagrams_png_mining-block-reward-longest-chain-building.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-longest-chain-building.png)
+[<img src="../images/diagrams_png_mining-block-reward-longest-chain-building.png" alt="Diagram showing how all miners focus on building upon the current longest chain so they can spend the block reward later on." width="983" height="355" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-longest-chain-building.png)
 
 * **Sending bitcoins that did not previously exist is only allowed in the coinbase transaction.** This makes the coinbase transaction the source of all new bitcoins.
 * **The presence of the block reward is why this process is called "mining".** However, from a technical point of view, mining is mainly concerned with adding new transactions to the blockchain.
@@ -277,16 +277,16 @@ How long does it take to mine a block?
 
 The mining system is designed so that one miner across the bitcoin network will successfully mine a new block **once every 10 minutes** (on average).
 
-[![Diagram showing a node on the network mining a new block once every 10 minutes (on average).](../images/diagrams_png_mining-target-ten-minutes.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-target-ten-minutes.png)
+[<img src="../images/diagrams_png_mining-target-ten-minutes.png" alt="Diagram showing a node on the network mining a new block once every 10 minutes (on average)." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/mining-target-ten-minutes.png)
 
 The timing is controlled by the [target](/docs/technical/mining/target.md), which is like a limbo pole that a block's hash has to get under for the block to be allowed on to the blockchain.
 
-[![Diagram showing nodes on the network agreeing on a target value for the current height of the blockchain.](../images/diagrams_png_mining-target-nodes.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-target-nodes.png)
+[<img src="../images/diagrams_png_mining-target-nodes.png" alt="Diagram showing nodes on the network agreeing on a target value for the current height of the blockchain." width="983" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/mining-target-nodes.png)
 
 
 Each node agrees upon the target value for the current height of the blockchain.
 
-![Tool Icon](../images/icons_tool.svg) Target Adjustment
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
 
 Previous Adjustment
 Current Target
@@ -330,7 +330,7 @@ Note: This target value has been truncated slightly for storage in the bits fiel
 
 If blocks are mined faster than 10 minutes on average over a two-week period (e.g. because more miners join the network), the target will adjust downwards so that it becomes *more difficult* to mine a block, and so the average time between blocks reverts back to around 10 minutes.
 
-[![Diagram showing nodes on the network adjusting the target value after 2,016 blocks to keep 10 minutes between blocks.](../images/diagrams_png_mining-target-nodes-adjust.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-target-nodes-adjust.png)
+[<img src="../images/diagrams_png_mining-target-nodes-adjust.png" alt="Diagram showing nodes on the network adjusting the target value after 2,016 blocks to keep 10 minutes between blocks." width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/mining-target-nodes-adjust.png)
 
 
 Each node adjusts the target independently, but they will each calculate the *same target* if they have the *same chain of blocks*.
@@ -345,7 +345,7 @@ The mining system **allows computers across a network to resolve conflicts** wit
 
 Bitcoin runs across a network of *independent* computers, so it's possible to create two conflicting transactions (sending the same bitcoins to different places) and insert them in to different nodes on the network at the same time. Some nodes will receive **transaction A** first, and other nodes will receive **transaction B** first.
 
-[![Diagram showing a double spend where two conflicting transactions are inserted in to different parts of the network at the same time.](../images/diagrams_png_mining-double-spend.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-double-spend.png)
+[<img src="../images/diagrams_png_mining-double-spend.png" alt="Diagram showing a double spend where two conflicting transactions are inserted in to different parts of the network at the same time." width="983" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/mining-double-spend.png)
 
 
 How can all the computers agree on which transaction should make it into the blockchain?
@@ -354,7 +354,7 @@ But thanks to the mechanism of mining, **only one of these transactions will mak
 
 Eventually, one of the nodes on the network will mine a block of transactions from *their* memory pool, and broadcast this block to the rest of the network. When nodes receive this block, they will add it to their chain and **remove any conflicting transactions from their memory pool**.
 
-[![Diagram showing a double spend being resolved when a block of transactions is mined.](../images/diagrams_png_mining-double-spend-resolved.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-double-spend-resolved.png)
+[<img src="../images/diagrams_png_mining-double-spend-resolved.png" alt="Diagram showing a double spend being resolved when a block of transactions is mined." width="983" height="541" />](https://static.learnmeabitcoin.com/diagrams/png/mining-double-spend-resolved.png)
 
 As a result, the process of mining acts as a sorting mechanism for transactions across a network of computers; the *mined* blocks have the final say on which transactions belong in the blockchain.
 
@@ -376,7 +376,7 @@ For example, here's what the block header for [block 100,000](/explorer/block/00
 
 Now you've got a block header, you try and "mine" it by putting it through [HASH256](/docs/technical/cryptography/hash-function.md#hash256). You keep incrementing the [nonce](/docs/technical/block/nonce.md) value as you go to try and get a result below the [target](/docs/technical/mining/target.md).
 
-![Tool Icon](../images/icons_tool.svg) HASH256
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
 Random Transaction Data
 
@@ -387,10 +387,10 @@ Data (Hex)
 `0 bytes`
 
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
-![Hash Function Icon](../images/icons_hash-function.svg)
+<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
 SHA-256
 
 HASH256
@@ -433,7 +433,7 @@ Nonce    Hash256
 * The nonce is a 4-byte field in [little-endian](/docs/technical/general/little-endian.md) byte order.
 * **The result of hashing the raw block header through HASH256 will appear to be *backwards* at first.** This is because block hashes are displayed in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) on blockchain explorers.
 
-![Tool Icon](../images/icons_tool.svg) Reverse Bytes
+<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Reverse Bytes
 
 Random Example
 
@@ -461,16 +461,6 @@ The code is simpler than you might think. The only tricky part is getting the [b
 ### Mining Simulator
 
 ```
-![Copy](../images/icons_clipboard-white.svg)
-
-
-
-![Copied](../images/icons_clipboard-check-white.svg)copied
-
-
-
-![Failed](../images/icons_clipboard-x-white.svg)copied
-
 require 'digest/sha2'
 
 # -----------------
@@ -564,17 +554,17 @@ For example:
 ```
 $ bitcoin-cli getmininginfo
 {
-    "blocks": 956472,
-    "currentblockweight": 2150476,
-    "currentblocktx": 1904,
+    "blocks": 956479,
+    "currentblockweight": 3999974,
+    "currentblocktx": 4392,
     "bits": "17021a42",
     "difficulty": 133869853540305.4,
     "target": "000000000000000000021a420000000000000000000000000000000000000000",
-    "networkhashps": 9.224574509210502e+20,
-    "pooledtx": 1917,
+    "networkhashps": 9.351601354893779e+20,
+    "pooledtx": 9571,
     "chain": "main",
     "next": {
-        "height": 956473,
+        "height": 956480,
         "bits": "17021a42",
         "difficulty": 133869853540305.4,
         "target": "000000000000000000021a420000000000000000000000000000000000000000"
