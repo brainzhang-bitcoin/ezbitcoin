@@ -55,6 +55,8 @@ def test_transform_html_to_markdown():
           <a href="/beginners/wallets/">Wallets</a>
           <a href="/technical/keys-addresses/wif#header">WIF</a>
           <img src="/images/beginners/what-is-bitcoin/btc.png" alt="Bitcoin logo" />
+          <img src="/assets/icons/tool.svg" alt="Tool Icon" />
+          <img src="/images/diagram.png" style="width: 100px; height: 50px;" alt="Sized Diagram" />
           <pre class="ruby relative">
             <div class="clipboard-code pointer" data-clipboard-target="code">
               <div class="copy"><img src="/assets/icons/clipboard-white.svg" alt="Copy" /></div>
@@ -74,16 +76,22 @@ def test_transform_html_to_markdown():
     
     assert "# What is Bitcoin?" in md_content
     assert "Bitcoin is a currency." in md_content
-    # Link should be converted to relative local link
+    # Standard image converted to Markdown syntax
     assert "![Bitcoin logo](../images/beginners_what-is-bitcoin_btc.png)" in md_content
+    # SVG Icon preserved as HTML img tag with size
+    assert '<img src="../images/icons_tool.svg" alt="Tool Icon" style="width: 24px; height: 24px;" />' in md_content
+    # Styled image preserved as HTML img tag with style
+    assert '<img src="../images/diagram.png" alt="Sized Diagram" style="width: 100px; height: 50px;" />' in md_content
+
     # Check that links are rewritten correctly
     assert "[Wallets](/docs/beginners/wallets.md)" in md_content
     assert "[WIF](/docs/technical/keys-addresses/wif.md#header)" in md_content
     # Check code block conversion and clipboard stripping
     assert "def hello()" in md_content
     assert "![Copy]" not in md_content
-    assert len(images) == 1
+    assert len(images) == 3
     assert images[0]["local_filename"] == "beginners_what-is-bitcoin_btc.png"
+
 
 
 

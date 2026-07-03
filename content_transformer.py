@@ -1,7 +1,40 @@
 from bs4 import BeautifulSoup
-from markdownify import markdownify as md
+from markdownify import MarkdownConverter
 from urllib.parse import urljoin, urlparse
 from image_manager import sanitize_filename, get_relative_img_path
+
+class CustomConverter(MarkdownConverter):
+    def convert_img(self, el, text, *args, **kwargs):
+        src = el.get('src', '')
+        alt = el.get('alt', '')
+        style = el.get('style', '')
+        width = el.get('width', '')
+        height = el.get('height', '')
+        
+        # Keep as HTML img tag if it's an SVG, has 'icon' in the URL, or has size attributes
+        is_icon = src.endswith('.svg') or 'icon' in src.lower() or 'logo' in src.lower() or style or width or height
+        
+        if is_icon:
+            attrs = []
+            if src:
+                attrs.append(f'src="{src}"')
+            if alt:
+                attrs.append(f'alt="{alt}"')
+            if width:
+                attrs.append(f'width="{width}"')
+            if height:
+                attrs.append(f'height="{height}"')
+            if style:
+                attrs.append(f'style="{style}"')
+            else:
+                # Default style for icons without explicit styling
+                if src.endswith('.svg') or 'icon' in src.lower():
+                    attrs.append('style="width: 24px; height: 24px;"')
+            return f'<img {" ".join(attrs)} />'
+            
+        return super().convert_img(el, text, *args, **kwargs)
+
+
 
 def transform_html_to_markdown(html_content: str, md_filepath: str) -> tuple[str, list[dict]]:
     soup = BeautifulSoup(html_content, "lxml")
@@ -22,7 +55,6 @@ def transform_html_to_markdown(html_content: str, md_filepath: str) -> tuple[str
     images_to_download = []
     base_url = "https://learnmeabitcoin.com/"
 
-    
     for img in content_area.find_all("img"):
         src = img.get("src")
         if src:
@@ -48,7 +80,9 @@ def transform_html_to_markdown(html_content: str, md_filepath: str) -> tuple[str
                 new_href += f"#{parsed.fragment}"
             a["href"] = new_href
 
-    # Convert cleaned HTML to markdown
-    markdown_content = md(str(content_area), heading_style="ATX")
+    # Convert cleaned HTML to markdown using CustomConverter
+    converter = CustomConverter(heading_style="ATX")
+    markdown_content = converter.convert(str(content_area))
     return markdown_content.strip(), images_to_download
+
 
