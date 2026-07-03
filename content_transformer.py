@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from markdownify import markdownify as md
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from image_manager import sanitize_filename, get_relative_img_path
 
 def transform_html_to_markdown(html_content: str, md_filepath: str) -> tuple[str, list[dict]]:
@@ -32,6 +32,19 @@ def transform_html_to_markdown(html_content: str, md_filepath: str) -> tuple[str
                 "local_filename": local_filename
             })
             
+    # Rewrite target links (e.g. /beginners/wallets/ -> /docs/beginners/wallets.md)
+    for a in content_area.find_all("a", href=True):
+        href = a["href"]
+        parsed = urlparse(href)
+        # Check if it points to the target directories
+        path = parsed.path.strip("/")
+        if path.startswith("beginners") or path.startswith("technical"):
+            new_href = f"/docs/{path}.md"
+            if parsed.fragment:
+                new_href += f"#{parsed.fragment}"
+            a["href"] = new_href
+
     # Convert cleaned HTML to markdown
     markdown_content = md(str(content_area), heading_style="ATX")
     return markdown_content.strip(), images_to_download
+

@@ -52,6 +52,8 @@ def test_transform_html_to_markdown():
         <div id="content">
           <h1>What is Bitcoin?</h1>
           <p>Bitcoin is a currency.</p>
+          <a href="/beginners/wallets/">Wallets</a>
+          <a href="/technical/keys-addresses/wif#header">WIF</a>
           <img src="/images/beginners/what-is-bitcoin/btc.png" alt="Bitcoin logo" />
         </div>
       </body>
@@ -64,6 +66,10 @@ def test_transform_html_to_markdown():
     assert "Bitcoin is a currency." in md_content
     # Link should be converted to relative local link
     assert "![Bitcoin logo](../images/beginners_what-is-bitcoin_btc.png)" in md_content
+    # Check that links are rewritten correctly
+    assert "[Wallets](/docs/beginners/wallets.md)" in md_content
+    assert "[WIF](/docs/technical/keys-addresses/wif.md#header)" in md_content
     assert len(images) == 1
     assert images[0]["local_filename"] == "beginners_what-is-bitcoin_btc.png"
+
 
