@@ -2,9 +2,9 @@
 
 [![Diagram showing the location of the previous block field inside the block header and how it connects the current block to the block below it in the blockchain.](../../images/diagrams_png_block-previous-block.png)](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block.png)
 
-The previous block field in the [block header](/technical/block/#header) contains the [hash](/technical/block/hash/) of a previous block that the block **builds on**.
+The previous block field in the [block header](/docs/technical/block.md#header) contains the [hash](/docs/technical/block/hash.md) of a previous block that the block **builds on**.
 
-Each block links to a previous block, and this creates a *chain of blocks*. Or, as it's more commonly known, a [blockchain](/technical/blockchain/).
+Each block links to a previous block, and this creates a *chain of blocks*. Or, as it's more commonly known, a [blockchain](/docs/technical/blockchain.md).
 
 ## Example
 
@@ -20,11 +20,11 @@ You can visit every block in the blockchain by starting at the tip and following
 
 ## Usage
 
-When constructing a [candidate block](/technical/mining/candidate-block/), a [miner](/technical/mining/) will put the block hash of the current **tip of the blockchain** in the previous block field.
+When constructing a [candidate block](/docs/technical/mining/candidate-block.md), a [miner](/docs/technical/mining.md) will put the block hash of the current **tip of the blockchain** in the previous block field.
 
 [![Diagram showing how a candidate block referencing the tip of the blockchain through the previous block field in the block header.](../../images/diagrams_png_block-previous-block-tip.png)](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block-tip.png)
 
-All miners want to extend the current longest known chain of blocks, because the [longest chain](/technical/blockchain/longest-chain/) is what all nodes adopt as the *canonical* version of the blockchain, and they can only collect the [block reward](/technical/mining/block-reward/) if the block makes it 100 blocks deep into the longest chain.
+All miners want to extend the current longest known chain of blocks, because the [longest chain](/docs/technical/blockchain/longest-chain.md) is what all nodes adopt as the *canonical* version of the blockchain, and they can only collect the [block reward](/docs/technical/mining/block-reward.md) if the block makes it 100 blocks deep into the longest chain.
 
 > **canonical** – authorized; recognized; accepted
 
@@ -32,7 +32,7 @@ All miners want to extend the current longest known chain of blocks, because the
 
 You can find the block at the current tip of the blockchain by running `bitcoin-cli getbestblockhash`.
 
-**All blocks must build upon an existing previous block.** If you put a hash in the previous block field of a block that does not exist, the block will be invalid and will be rejected by nodes on the [network](/technical/networking/).
+**All blocks must build upon an existing previous block.** If you put a hash in the previous block field of a block that does not exist, the block will be invalid and will be rejected by nodes on the [network](/docs/technical/networking.md).
 
 ## Purpose
 
@@ -40,14 +40,14 @@ Why do blocks contain the hash of a previous block?
 
 The previous block field is what **connects blocks together** in the blockchain.
 
-A [block hash](/technical/block/hash/) is a unique reference for a block, and it's determined by the contents of the block. So by including a previous block's hash in the block header, you can create a reliable chain of data, where each chunk of data (i.e. block of transactions) is linked to the one before it.
+A [block hash](/docs/technical/block/hash.md) is a unique reference for a block, and it's determined by the contents of the block. So by including a previous block's hash in the block header, you can create a reliable chain of data, where each chunk of data (i.e. block of transactions) is linked to the one before it.
 
 [![Diagram showing how block hashes are used to create a chain of blocks.](../../images/diagrams_png_block-previous-block-hash-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block-hash-chain.png)
 
 
 The blockchain is just a chain of blocks connected by block hashes.
 
-So if you tried to modify the content of an older block (e.g. by replacing or removing a [transaction](/technical/transaction/)), this will change the hash for that block, and it will no longer be part of the same chain of blocks, because the block that builds upon it will no longer be referring to it anymore.
+So if you tried to modify the content of an older block (e.g. by replacing or removing a [transaction](/docs/technical/transaction.md)), this will change the hash for that block, and it will no longer be part of the same chain of blocks, because the block that builds upon it will no longer be referring to it anymore.
 
 [![Diagram showing how changing the contents of a block will change its hash, and will therefore break the link in the blockchain.](../../images/diagrams_png_block-previous-block-hash-chain-break.png)](https://static.learnmeabitcoin.com/diagrams/png/block-previous-block-hash-chain-break.png)
 

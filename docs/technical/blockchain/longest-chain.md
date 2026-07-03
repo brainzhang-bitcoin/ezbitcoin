@@ -7,7 +7,7 @@ Current Longest Chain:
 * **Height:** 956471
 * **[Chainwork](#chainwork):** 0x000000000000000000000000000000000000000134cd152c185fde26dc120668
 
-The longest chain is what Bitcoin nodes accept as the **valid version** of the [blockchain](/technical/blockchain/).
+The longest chain is what Bitcoin nodes accept as the **valid version** of the [blockchain](/docs/technical/blockchain.md).
 
 The longest chain rule **allows every node on the network to agree** on what the blockchain looks like, and therefore agree on the same transaction history.
 
@@ -23,7 +23,7 @@ What is the longest chain?
 
 The longest chain is the chain of blocks that took the **most effort to build**.
 
-In short, to add a new block to the blockchain you need to [use processing power](/technical/mining/), which means that every block on the blockchain requires a certain amount of *energy* to get there.
+In short, to add a new block to the blockchain you need to [use processing power](/docs/technical/mining.md), which means that every block on the blockchain requires a certain amount of *energy* to get there.
 
 [![Diagram showing a computer processor being used to mine a block on to the blockchain.](../../images/diagrams_png_blockchain-longest-chain-block-energy.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-block-energy.png)
 
@@ -46,7 +46,7 @@ Is the longest chain the one with the most blocks?
 
 You'd think that the *longest* chain is simply the one with the most blocks in it, but the chain that required the most energy to build is **not necessarily the one with the most blocks in it**.
 
-This is because changes to the [difficulty](/beginners/guide/difficulty/) mean that some blocks are going to require more energy to mine than others.
+This is because changes to the [difficulty](/docs/beginners/guide/difficulty.md) mean that some blocks are going to require more energy to mine than others.
 
 For example, within the same difficulty period every new block requires the same amount of effort to be mined, and therefore adds the same amount of "work" to the chain:
 
@@ -88,15 +88,15 @@ The total chainwork is the sum of the average number of expected hashes to mine 
 
 ### Calculation
 
-The process of [mining](/technical/mining/) involves hashing a [block header](/technical/block/#header).
+The process of [mining](/docs/technical/mining.md) involves hashing a [block header](/docs/technical/block.md#header).
 
-Every time you perform a hash, the [hash function](/technical/cryptography/hash-function/) spits out a *256-bit number*, which can be any number from `0` to:
+Every time you perform a hash, the [hash function](/docs/technical/cryptography/hash-function.md) spits out a *256-bit number*, which can be any number from `0` to:
 
 ```
 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ```
 
-To successfully mine this block on to the blockchain, this hash result needs to be *less than or equal to the [target](/technical/mining/target/) value* for that particular height in the chain. The target for the [first ever block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) was set at:
+To successfully mine this block on to the blockchain, this hash result needs to be *less than or equal to the [target](/docs/technical/mining/target.md) value* for that particular height in the chain. The target for the [first ever block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) was set at:
 
 ```
 0x00000000ffff0000000000000000000000000000000000000000000000000000
@@ -116,7 +116,7 @@ This means you would need to perform `0x0100010001` (4295032833) hashes on avera
 
 So to work out the **total chainwork of a chain**, you just work out the expected hashes for each block and add them all up.
 
-You can find out what the target was for each block by looking at the [bits](/technical/block/bits/) field in the [block header](/technical/block/#header).
+You can find out what the target was for each block by looking at the [bits](/docs/technical/block/bits.md) field in the [block header](/docs/technical/block.md#header).
 
 #### Average Hashes Explained
 
@@ -128,7 +128,7 @@ Let's say you're randomly generating numbers between 1 and 100, and you're hopin
 
 So on average **you'll need to generate 20 numbers** to get one that is below **5**.
 
-This is exactly the same kind of calculation that takes place in Bitcoin, but just with bigger numbers (and usually calculated using [hexadecimal](/technical/general/hexadecimal/) values instead).
+This is exactly the same kind of calculation that takes place in Bitcoin, but just with bigger numbers (and usually calculated using [hexadecimal](/docs/technical/general/hexadecimal.md) values instead).
 
 ### Example
 
@@ -187,7 +187,7 @@ Here are two situations where this proves to be useful:
 
 ### 1. Resolving disagreements when two blocks are mined at the same time.
 
-Due to the fact that bitcoin operates on a [network](/technical/networking/), it's possible for two independent computers to mine a block at the same time. In this situation, nodes across the network will end up being in disagreement about which of these two blocks should be at the top of the blockchain.
+Due to the fact that bitcoin operates on a [network](/docs/technical/networking.md), it's possible for two independent computers to mine a block at the same time. In this situation, nodes across the network will end up being in disagreement about which of these two blocks should be at the top of the blockchain.
 
 [![Diagram showing two blocks mined at the same time across the network causing a temporary fork in the chain.](../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined.png)
 
@@ -199,7 +199,7 @@ However, this situation can be resolved by having nodes adopt the longest chain 
 [![Diagram showing a temporary fork being resolved via a chain reorganization.](../../images/diagrams_png_blockchain-longest-chain-two-blocks-mined-reorg.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-two-blocks-mined-reorg.png)
 
 
-Nodes are happy to abandon the shorter chain in favor of the new longer one. This is known as a [chain reorganization](/technical/blockchain/chain-reorganization/).
+Nodes are happy to abandon the shorter chain in favor of the new longer one. This is known as a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
 So even though nodes can be in disagreement at any given time (due to the unpredictability of mining and the speed of broadcasting data across a network), adopting the longest available chain means that nodes will always *eventually* agree on the same view of the blockchain.
 
@@ -207,14 +207,14 @@ So even though nodes can be in disagreement at any given time (due to the unpred
 
 The fact that nodes always adopt the longest chain as the valid version of the blockchain means that it is very difficult to replace blocks (and therefore transactions) already in the chain.
 
-If someone wanted to replace a [transaction](/technical/transaction/) in the blockchain, they would need to work to build a **new longest chain to replace the current one**.
+If someone wanted to replace a [transaction](/docs/technical/transaction.md) in the blockchain, they would need to work to build a **new longest chain to replace the current one**.
 
 However, if the majority of miners are continually working to extend the same current longest chain, an individual miner won't be able to compete to outwork the combined effort of all the other miners.
 
 [![Diagram showing how adopting the longest chain makes it difficult for attackers to rewrite the blockchain.](../../images/diagrams_png_blockchain-longest-chain-protection.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-protection.png)
 
 
-You would need the majority of mining power to be able to out-run all other miners and build a new longest chain (known as a [51% Attack](/technical/blockchain/51-attack/)).
+You would need the majority of mining power to be able to out-run all other miners and build a new longest chain (known as a [51% Attack](/docs/technical/blockchain/51-attack.md)).
 
 As a result, the combined effort of miners coordinating to extend the same chain protects existing blocks and transactions from being replaced by a single miner.
 
@@ -226,7 +226,7 @@ Satoshi Nakamoto, [bitcointalk.org](https://bitcointalk.org/index.php?topic=6.ms
 
 ### Why do miners choose to build on the longest chain?
 
-Because a miner can claim a [block reward](/technical/mining/block-reward/) if they are able to mine a block.
+Because a miner can claim a [block reward](/docs/technical/mining/block-reward.md) if they are able to mine a block.
 
 However, the bitcoins from this block reward can only be spent if the block becomes **100 blocks deep in the *longest chain***. Therefore, this block reward incentivizes miners to always try and mine new blocks that will become part of the longest chain (by always trying to build on to the current longest one).
 
@@ -235,13 +235,13 @@ However, the bitcoins from this block reward can only be spent if the block beco
 
 A block reward can only be spent if the block is part of the longest chain.
 
-Miners initially claim the block reward through the [coinbase transaction](/technical/mining/coinbase-transaction/).
+Miners initially claim the block reward through the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md).
 
 ### What happens to transactions that are not part of the longest chain?
 
-A [transaction](/technical/transaction/) inside a block that is not part of the longest chain is **invalid**.
+A [transaction](/docs/technical/transaction.md) inside a block that is not part of the longest chain is **invalid**.
 
-If you try to spend the [outputs](/technical/transaction/output/) from a transaction that is not in the longest chain, nodes would not accept this new transaction nor try to mine it into a block. This is because nodes only consider the **longest chain as the valid history of transactions**, and anything outside of that is not a valid transaction.
+If you try to spend the [outputs](/docs/technical/transaction/output.md) from a transaction that is not in the longest chain, nodes would not accept this new transaction nor try to mine it into a block. This is because nodes only consider the **longest chain as the valid history of transactions**, and anything outside of that is not a valid transaction.
 
 [![Diagram showing a transaction that is not part of the longest chain as being invalid.](../../images/diagrams_png_blockchain-longest-chain-invalid-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-longest-chain-invalid-transaction.png)
 
@@ -250,7 +250,7 @@ The outputs in a transaction not in the longest chain are unspendable.
 
 So only the transactions inside the longest chain are considered to be part of the valid transaction history, and any transactions outside of it effectively never took place.
 
-**I recommend that you wait for a transaction to make it to 2 or more blocks deep into the blockchain before you consider bitcoins to be "yours".** There is always a chance that the topmost blocks in the blockchain could change due to a [chain reorganization](/technical/blockchain/chain-reorganization/), making previously valid blocks and transactions invalid.
+**I recommend that you wait for a transaction to make it to 2 or more blocks deep into the blockchain before you consider bitcoins to be "yours".** There is always a chance that the topmost blocks in the blockchain could change due to a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md), making previously valid blocks and transactions invalid.
 
 ## Commands
 

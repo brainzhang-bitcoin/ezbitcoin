@@ -1,10 +1,10 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-Bitcoin mining is the process of **adding [transactions](/beginners/guide/transactions/) to the [blockchain](/beginners/guide/blockchain/)**.
+Bitcoin mining is the process of **adding [transactions](/docs/beginners/guide/transactions.md) to the [blockchain](/docs/beginners/guide/blockchain.md)**.
 
 ## How does mining work?
 
-Every [node](/beginners/guide/node/) on the [bitcoin network](/beginners/guide/network/) shares information about new transactions.
+Every [node](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/beginners/guide/network.md) shares information about new transactions.
 
 Each node stores the new transactions they receive in their *memory pool*.
 
@@ -31,9 +31,9 @@ Okay, imagine you're a node. At any moment in time you can condense the transact
 
 This string represents all of the transactions in your memory pool.
 
-This "string" is basically a [hash](/technical/cryptography/hash-function/) of the transactions in the memory pool
+This "string" is basically a [hash](/docs/technical/cryptography/hash-function.md) of the transactions in the memory pool
 
-Now, your objective is to [hash](/technical/cryptography/hash-function/) this string with *another number* (called a *[nonce](/technical/block/nonce/)*) to try and get a new string that **begins with a certain number of zeros**.
+Now, your objective is to [hash](/docs/technical/cryptography/hash-function.md) this string with *another number* (called a *[nonce](/docs/technical/block/nonce.md)*) to try and get a new string that **begins with a certain number of zeros**.
 
 Most of the time you will get a result that isn't even close:
 
@@ -69,15 +69,15 @@ Now, this sounds easy enough, but it's actually very difficult. The process is u
 
 But if you are lucky enough to find a successful hash result, the transactions in your memory pool get added to the blockchain, and every other node on the network will add your block of transactions to their blockchain too.
 
-Furthermore, you'll also receive a [block reward](/technical/mining/block-reward/) for your effort (which also includes any [fees](/technical/transaction/fee/) from the transactions you've added to the blockchain).
+Furthermore, you'll also receive a [block reward](/docs/technical/mining/block-reward.md) for your effort (which also includes any [fees](/docs/technical/transaction/fee.md) from the transactions you've added to the blockchain).
 
 [![Diagram showing a block reward being won after successfully mining a block.](../../images/beginners_guide_mining_04-node-pool-string-nonce-success-reward.png)](https://static.learnmeabitcoin.com/beginners/guide/mining/04-node-pool-string-nonce-success-reward.png)
 
 Note: The block reward is no longer 25 BTC (I originally wrote this article in 2015).
 
-The "certain number of zeros" comes from the [difficulty](/beginners/guide/difficulty/). This changes based on the speed of mining across the network – the faster people mine, the greater the difficulty becomes, and the more zeros are needed at the start (which helps to keep the time between blocks consistent).
+The "certain number of zeros" comes from the [difficulty](/docs/beginners/guide/difficulty.md). This changes based on the speed of mining across the network – the faster people mine, the greater the difficulty becomes, and the more zeros are needed at the start (which helps to keep the time between blocks consistent).
 
-This is a slightly simplified version of how blocks are added to the blockchain. For more detail, check out [blocks](/beginners/guide/blocks/).
+This is a slightly simplified version of how blocks are added to the blockchain. For more detail, check out [blocks](/docs/beginners/guide/blocks.md).
 
 ## Why is mining important?
 

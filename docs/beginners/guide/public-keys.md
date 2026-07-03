@@ -1,8 +1,8 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-A public key is the counterpart to a [private key](/technical/keys/private-key/).
+A public key is the counterpart to a [private key](/docs/technical/keys/private-key.md).
 
-And similar to a private key, it's displayed as a [hexadecimal](/technical/general/hexadecimal/) string.
+And similar to a private key, it's displayed as a [hexadecimal](/docs/technical/general/hexadecimal.md) string.
 
 For example:
 
@@ -10,7 +10,7 @@ For example:
 0322406f1fe31f7179a85dedde622fe492ec37448a22d11bc122d16bd2f8576e10
 ```
 
-If we didn't end up shortening this public key to an [address](/technical/keys/address/), this would be the "account number" that you send bitcoins to when making a [transaction](/beginners/guide/transactions/).
+If we didn't end up shortening this public key to an [address](/docs/technical/keys/address.md), this would be the "account number" that you send bitcoins to when making a [transaction](/docs/beginners/guide/transactions.md).
 
 Anyway, here's the interesting part: **your public key is calculated *from* your private key**.
 
@@ -20,7 +20,7 @@ You insert a private key into a special *mathematical function*, and the result 
 
 ### What is this function?
 
-It's called **[elliptic curve multiplication](/technical/cryptography/elliptic-curve/#multiply)**.
+It's called **[elliptic curve multiplication](/docs/technical/cryptography/elliptic-curve.md#multiply)**.
 
 This basically involves "bouncing" around the graph of an elliptic curve until you end up at a final set of co-ordinates on the graph, and these resulting co-ordinates are your public key.
 
@@ -32,7 +32,7 @@ Like this:
 
 [![A simple graph showing the shape of an elliptic curve.](../../images/beginners_guide_public-keys_01-elliptic-curve.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/01-elliptic-curve.png)
 
-Furthermore, the [elliptic curve used in Bitcoin](/technical/cryptography/elliptic-curve/) comes with a specific *starting point*.
+Furthermore, the [elliptic curve used in Bitcoin](/docs/technical/cryptography/elliptic-curve.md) comes with a specific *starting point*.
 
 [![A simple graph showing the generator point on an elliptic curve.](../../images/beginners_guide_public-keys_01-elliptic-curve-g.png)](https://static.learnmeabitcoin.com/beginners/guide/public-keys/01-elliptic-curve-g.png)
 
@@ -171,7 +171,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -226,7 +226,7 @@ public key (compressed)   = 0322406f1fe31f7179a85dedde622fe492ec37448a22d11bc122
 
 Much shorter.
 
-This seems like a lot of effort to save on a small amount of data, but because public keys are used within almost all transactions, it does end up saving a lot of space in the [blockchain](/beginners/guide/blockchain/) over time.
+This seems like a lot of effort to save on a small amount of data, but because public keys are used within almost all transactions, it does end up saving a lot of space in the [blockchain](/docs/beginners/guide/blockchain.md) over time.
 
 ## Why do we use elliptic curve multiplication to make public keys?
 
@@ -237,9 +237,9 @@ Because elliptic curves have two useful properties when creating a private/publi
    > A trapdoor function is a function that is easy to compute in one direction, yet difficult to compute in the opposite direction (finding its inverse) without special information, called the "trapdoor".
 2. **The public key has a *mathematical connection* to the private key.** As a result, it's possible to prove this connection (with a little more mathematics) without having to reveal your private key.
 
-   So if I give you my public key (or [address](/technical/keys/address/)), I can prove to you that I "own" it without having to show you my private key.
+   So if I give you my public key (or [address](/docs/technical/keys/address.md)), I can prove to you that I "own" it without having to show you my private key.
 
-   This feature is especially handy when making bitcoin [transactions](/beginners/guide/transactions/). Your public key can be placed into a transaction when you want to receive bitcoins, and you do not have to reveal the private key directly when you want to spend them later on (see [digital signatures](/beginners/guide/digital-signatures/)). As a result, this means that nobody can acquire the private key and use it to spend bitcoins that have been locked to the same public key.
+   This feature is especially handy when making bitcoin [transactions](/docs/beginners/guide/transactions.md). Your public key can be placed into a transaction when you want to receive bitcoins, and you do not have to reveal the private key directly when you want to spend them later on (see [digital signatures](/docs/beginners/guide/digital-signatures.md)). As a result, this means that nobody can acquire the private key and use it to spend bitcoins that have been locked to the same public key.
 
    When I say *prove* that I own a public key, I mean "show that I possess the private key that the public key was created from".
 

@@ -2,7 +2,7 @@
 
 [![Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks.](../../images/diagrams_png_block-version.png)](https://static.learnmeabitcoin.com/diagrams/png/block-version.png)
 
-The 4-byte version field in the [block header](/technical/block/#header) is used by miners to ***signal* readiness for proposed [soft-forks](/technical/blockchain/soft-fork/)**.
+The 4-byte version field in the [block header](/docs/technical/block.md#header) is used by miners to ***signal* readiness for proposed [soft-forks](/docs/technical/blockchain/soft-fork.md)**.
 
 Version numbers are used in software to signify upgrades or the addition of new features. However, bitcoin is decentralized, so there's no central authority to force everyone to upgrade to new versions of the software. Therefore, it's ideal if the majority of the network can agree to proposed changes in advance.
 
@@ -33,9 +33,9 @@ Due to these upgrades, the required minimum version number for a block is now `0
 
 ## Version Bits
 
-In 2015 the version field was changed to be used as a [bit field](/technical/general/bytes/#bit-field), which allows miners to signal for up to 29 proposed new features at the same time.
+In 2015 the version field was changed to be used as a [bit field](/docs/technical/general/bytes.md#bit-field), which allows miners to signal for up to 29 proposed new features at the same time.
 
-Different [bits](/technical/general/bytes/#bit) in the 32-bit (4-byte) version field can be designated at the same time to signal readiness for a different [soft fork](/technical/blockchain/soft-fork/). So all you have to do to signal readiness for a specific upgrade is turn a specific bit "on" (i.e. set it to **1**).
+Different [bits](/docs/technical/general/bytes.md#bit) in the 32-bit (4-byte) version field can be designated at the same time to signal readiness for a different [soft fork](/docs/technical/blockchain/soft-fork.md). So all you have to do to signal readiness for a specific upgrade is turn a specific bit "on" (i.e. set it to **1**).
 
 Random Example
 
@@ -132,7 +132,7 @@ The following bits have been used for upgrades:
 
 To use "version bits" for signaling, you have to set the first 3 bits to `0b001` (as specified in [BIP 9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki)). This is just a requirement that indicates that you're making use of the version field as a bit field for signaling. So this is why you can only signal for a maximum of 29 different upgrades at the same time (32 - 3 = 29 bits).
 
-Each proposal has its own time period for signaling, where a specific number of blocks have to signal for the upgrade over a specific window for it to become activated. With the [taproot upgrade](/technical/upgrades/taproot/) for example, 90% of blocks over a 2016-block [target](/technical/mining/target/) adjustment period had to signal for the upgrade (starting on 24 April 2021 and ending 11 August 2021), which eventually did happen, and the deployment activated at block height [709,632](/explorer/709632#blockchain).
+Each proposal has its own time period for signaling, where a specific number of blocks have to signal for the upgrade over a specific window for it to become activated. With the [taproot upgrade](/docs/technical/upgrades/taproot.md) for example, 90% of blocks over a 2016-block [target](/docs/technical/mining/target.md) adjustment period had to signal for the upgrade (starting on 24 April 2021 and ending 11 August 2021), which eventually did happen, and the deployment activated at block height [709,632](/explorer/709632#blockchain).
 
 You can view the past and current upgrades being voted for via `bitcoin-cli getblockchaininfo`.
 
@@ -159,10 +159,10 @@ After around the block height [411,000](/explorer/411000#blockchain) the version
 * `0x20000001` - Version bits being used to signal for the CSV upgrade.
   + Version Bits: `0b00100000000000000000000000000001`
   + Example: [000000000000000004983f04183f2a6ae7f1cdf6ddb8f4b3f79e39e14392db4c](/explorer/block/000000000000000004983f04183f2a6ae7f1cdf6ddb8f4b3f79e39e14392db4c) (Height [416,498](/explorer/416498#blockchain))
-* `0x20000002` - Version bits being used to signal for the [Segwit upgrade](/technical/upgrades/segregated-witness/).
+* `0x20000002` - Version bits being used to signal for the [Segwit upgrade](/docs/technical/upgrades/segregated-witness.md).
   + Version Bits: `0b00100000000000000000000000000010`
   + Example: [0000000000000000001094a0145695e4228c21cbbc6be40507f728c6b7d6f16a](/explorer/block/0000000000000000001094a0145695e4228c21cbbc6be40507f728c6b7d6f16a) (Height [471,329](/explorer/471329#blockchain))
-* `0x20000004` - Version bits being used to signal for the [Taproot upgrade](/technical/upgrades/taproot/).
+* `0x20000004` - Version bits being used to signal for the [Taproot upgrade](/docs/technical/upgrades/taproot.md).
   + Version Bits: `0b00100000000000000000000000000100`
   + Example: [00000000000000000004f065fae967b93540f321076684fe926d4e7bfbcd77ab](/explorer/block/00000000000000000004f065fae967b93540f321076684fe926d4e7bfbcd77ab) (Height [703,353](/explorer/703353#blockchain))
 
@@ -202,7 +202,7 @@ This bit cannot be set to 1, or the version will be invalid:
 
 ## Extra Nonce
 
-There are no restrictions on what values you can put in the version field (other than it must be a minimum of `0x00000004`, and the first bit must not be `1`), so miners sometimes use it as an [extra nonce](/technical/block/nonce/#extranonce) when mining.
+There are no restrictions on what values you can put in the version field (other than it must be a minimum of `0x00000004`, and the first bit must not be `1`), so miners sometimes use it as an [extra nonce](/docs/technical/block/nonce.md#extranonce) when mining.
 
 This is why since around block height [600,000](/explorer/600000#blockchain) (also before, but more so since then) you often see some "weird" version numbers in the block header that do not correspond to any proposed upgrades. For example:
 
@@ -210,7 +210,7 @@ This is why since around block height [600,000](/explorer/600000#blockchain) (al
   + Version Bits: `0b00101000010001001010000000000000`
   + Example: [00000000000000000479bbbf51d485ddc7b161998b6f54049e576b09fd72e363](/explorer/block/00000000000000000479bbbf51d485ddc7b161998b6f54049e576b09fd72e363) (Height [791,617](/explorer/791617#blockchain))
 
-Again, these version numbers are signaling for anything in particular; they've just been adjusted so the miner can continue [hashing](/technical/cryptography/hash-function/) their current block without having to rebuild it completely.
+Again, these version numbers are signaling for anything in particular; they've just been adjusted so the miner can continue [hashing](/docs/technical/cryptography/hash-function.md) their current block without having to rebuild it completely.
 
 ## Resources
 

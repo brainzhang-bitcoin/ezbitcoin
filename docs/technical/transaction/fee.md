@@ -2,9 +2,9 @@
 
 [![Diagram showing the transaction fee as the remainder of the amount being sent.](../../images/diagrams_png_transaction-fee.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee.png)
 
-A transaction fee is the **remainder of a [transaction](/technical/transaction/)**.
+A transaction fee is the **remainder of a [transaction](/docs/technical/transaction.md)**.
 
-If you add up all the [input](/technical/transaction/input/) values and subtract all the [output](/technical/transaction/output/) values, the amount left over is the fee. For example:
+If you add up all the [input](/docs/technical/transaction/input.md) values and subtract all the [output](/docs/technical/transaction/output.md) values, the amount left over is the fee. For example:
 
 Transaction: [82b81a39d1b6bff8366eab2297f61db7ac34b7d901f5cfc40143ca704ded980e](/explorer/tx/82b81a39d1b6bff8366eab2297f61db7ac34b7d901f5cfc40143ca704ded980e)
 
@@ -25,13 +25,13 @@ Be careful, as *any* amount of satoshis left over in a transaction will be taken
 
 Why set a fee on a transaction?
 
-A transaction fee acts as an **incentive** for a [miner](/technical/mining/) to include your transaction in their [candidate block](/technical/mining/candidate-block/).
+A transaction fee acts as an **incentive** for a [miner](/docs/technical/mining.md) to include your transaction in their [candidate block](/docs/technical/mining/candidate-block.md).
 
-This is because miners can collect all the fees from the transactions they have included in their block via the [coinbase transaction](/technical/mining/coinbase-transaction/) (if they are able to successfully mine the block on to the [blockchain](/technical/blockchain/)).
+This is because miners can collect all the fees from the transactions they have included in their block via the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) (if they are able to successfully mine the block on to the [blockchain](/docs/technical/blockchain.md)).
 
 [![Diagram showing transaction fees being collected by a miners via the coinbase transaction.](../../images/diagrams_png_block-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
 
-Therefore, if there are more transactions in the [memory pool](/technical/mining/memory-pool/) than can fit inside the next block, miners will choose to fill their candidate blocks with the highest-fee transaction available. This maximizes the amount of bitcoins they are able to claim if they mine the block.
+Therefore, if there are more transactions in the [memory pool](/docs/technical/mining/memory-pool.md) than can fit inside the next block, miners will choose to fill their candidate blocks with the highest-fee transaction available. This maximizes the amount of bitcoins they are able to claim if they mine the block.
 
 [![Diagram showing the a miner selecting the highest-fee transactions from the memory pool for inclusion in their candidate block.](../../images/diagrams_png_transaction-fee-miner-incentive.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-miner-incentive.png)
 
@@ -71,15 +71,15 @@ The block limit used to be **1,000,000 bytes** (1 MB).
 
 So naturally the value of a transaction to a miner was measured in **satoshis per byte**, or **sats/byte** for short.
 
-However, since the [segregated witness](/technical/upgrades/segregated-witness/) upgrade ([BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)) we now use a new *weight* measurement to determine how many transactions can fit inside a block…
+However, since the [segregated witness](/docs/technical/upgrades/segregated-witness.md) upgrade ([BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)) we now use a new *weight* measurement to determine how many transactions can fit inside a block…
 
 ### sats/wu (Used Internally)
 
 [![Diagram showing the sats/wu feerate calculation as the fee divided by the number of weight units in the transaction.](../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-weight-unit.png)
 
-The [block limit](/technical/block/#weight) is now **4,000,000 weight units**.
+The [block limit](/docs/technical/block.md#weight) is now **4,000,000 weight units**.
 
-The size of transactions are now measured in terms of their [weight](/technical/transaction/size/#weight), which multiplies the size of most of the transaction data by 4. However, the new [witness](/technical/transaction/witness/) data gets multiplied by 1, which effectively gives it a discount relative to the other parts of the transaction.
+The size of transactions are now measured in terms of their [weight](/docs/technical/transaction/size.md#weight), which multiplies the size of most of the transaction data by 4. However, the new [witness](/docs/technical/transaction/witness.md) data gets multiplied by 1, which effectively gives it a discount relative to the other parts of the transaction.
 
 So because blocks now have a maximum *weight* limit, miners measure the feerates of transactions in **satoshis per weight unit** (or **sats/wu** for short).
 
@@ -91,9 +91,9 @@ However, this **sats/wu** is on a different scale to the old **sats/byte** measu
 
 If you divide the block limit of 4,000,000 weight units by 4, you get a **1,000,000 virtual bytes**.
 
-And if you divide the weight of a transaction by 4 too, you get back down to pretty much using the same **sats/byte** measurement as before. But now every byte of witness data only counts as 0.25 of a byte, which is why we refer to this measurement as [virtual bytes](/technical/transaction/size/#vbytes) instead of actual bytes.
+And if you divide the weight of a transaction by 4 too, you get back down to pretty much using the same **sats/byte** measurement as before. But now every byte of witness data only counts as 0.25 of a byte, which is why we refer to this measurement as [virtual bytes](/docs/technical/transaction/size.md#vbytes) instead of actual bytes.
 
-The **sats/vbyte** measurement means that the feerates for newer [segwit transactions](/technical/transaction/#example-segwit) are kept in line with the feerates for legacy transactions measured in **sats/byte**. For example:
+The **sats/vbyte** measurement means that the feerates for newer [segwit transactions](/docs/technical/transaction.md#example-segwit) are kept in line with the feerates for legacy transactions measured in **sats/byte**. For example:
 
 Legacy Transaction: [a04c291e586b10f6db4d38bcba414dea2fd39d53745763d13c49026af1f09262](/explorer/tx/a04c291e586b10f6db4d38bcba414dea2fd39d53745763d13c49026af1f09262)
 
@@ -129,7 +129,7 @@ Internally in Bitcoin we only care about transactions in terms of weight units. 
 
 How can you increase the fee on a transaction?
 
-If there are lots of transactions in the [memory pool](/technical/mining/memory-pool/) and you've sent a **low-fee transaction** into the [network](/technical/networking/), you may end up waiting for some time for the transaction to get mined.
+If there are lots of transactions in the [memory pool](/docs/technical/mining/memory-pool.md) and you've sent a **low-fee transaction** into the [network](/docs/technical/networking.md), you may end up waiting for some time for the transaction to get mined.
 
 If this happens, you may want to *increase the fee* on your transaction while it's still sitting in the memory pool. This *increases the incentive* for a miner to include your transaction in their next block, which will subsequently speed up the time it takes for your transaction to get mined.
 
@@ -146,7 +146,7 @@ This process is called "fee bumping", and there are two methods for doing this:
 
 This is the simplest method.
 
-To enable this feature you just need to set one of the [sequence](/technical/transaction/input/sequence/) values on your transaction to 0xFFFFFFFD or below. Then whilst this transaction is in the memory pool, you have the option to send a new version of the transaction with a higher fee on it into the memory pool, and this higher-fee transaction will directly replace the old low-fee transaction.
+To enable this feature you just need to set one of the [sequence](/docs/technical/transaction/input/sequence.md) values on your transaction to 0xFFFFFFFD or below. Then whilst this transaction is in the memory pool, you have the option to send a new version of the transaction with a higher fee on it into the memory pool, and this higher-fee transaction will directly replace the old low-fee transaction.
 
 And that's all there is to it. If a node or miner receives a transaction that spends the same inputs (but this time with a higher fee), they will be happy to evict the original transaction from their mempool and keep the new higher-fee transaction instead.
 
@@ -162,7 +162,7 @@ This is an old technique, but it still works today.
 
 Basically, this technique takes advantage of two facts:
 
-1. You can spend the [output](/technical/transaction/output/) of a transaction whilst it's still in the memory pool.
+1. You can spend the [output](/docs/technical/transaction/output.md) of a transaction whilst it's still in the memory pool.
 2. A miner must always include the "parents" of any transaction they include in a block (if the parents are also in the memory pool).
 
 Therefore, if you've got a low-fee transaction sitting in the memory pool, you can incentivize a miner to include that transaction in their next block by spending one of its outputs in a new transaction, and putting a suitably large fee on that new transaction to **make it worth including the first transaction**.
@@ -183,7 +183,7 @@ Each node can choose their own minimum relay fee. This setting is used so that n
 
 The current default minimum relay fee is `1 sat/vbyte`.
 
-However, the minimum relay fee is a *policy* and not a consensus rule, so it's not impossible for a zero-fee transaction to get mined into the [blockchain](/technical/blockchain/). It just means that any node you send a transaction to with a feerate below this setting will not accept or relay it to other nodes.
+However, the minimum relay fee is a *policy* and not a consensus rule, so it's not impossible for a zero-fee transaction to get mined into the [blockchain](/docs/technical/blockchain.md). It just means that any node you send a transaction to with a feerate below this setting will not accept or relay it to other nodes.
 
 So basically, unless you know a miner or can mine the transaction yourself, the fee you set on your transaction needs to be above the minimum relay fee of the nodes/miners you're broadcasting your transaction to.
 

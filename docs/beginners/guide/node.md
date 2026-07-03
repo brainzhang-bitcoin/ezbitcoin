@@ -4,7 +4,7 @@
 
 A Bitcoin node is just a **computer that is running the [Bitcoin program](https://bitcoincore.org/en/download/)**.
 
-More importantly, it is *connected to other computers* (running the same program) to create a [network](/beginners/guide/network/).
+More importantly, it is *connected to other computers* (running the same program) to create a [network](/docs/beginners/guide/network.md).
 
 ## What does a node do?
 
@@ -12,7 +12,7 @@ A node has three jobs:
 
 1. Follow the rules
 2. Share information
-3. Keep a copy of confirmed [transactions](/beginners/guide/transactions/)
+3. Keep a copy of confirmed [transactions](/docs/beginners/guide/transactions.md)
 
 ### 1. Follow the rules
 
@@ -26,20 +26,20 @@ For example, one rule is that a person must own an equal or greater amount of bi
 
 ### 2. Share information
 
-A node's main job is to share information with other nodes, and the core information a node shares is **[transactions](/beginners/guide/transactions/)**.
+A node's main job is to share information with other nodes, and the core information a node shares is **[transactions](/docs/beginners/guide/transactions.md)**.
 
 Now, there are two types of transactions that nodes share:
 
 1. **Fresh transactions** – transactions that have recently entered the network.
-2. **Confirmed transactions** – transactions that have been "confirmed" and written to a file. These are shared in [blocks](/beginners/guide/blocks/) of transactions (as opposed to individually).
+2. **Confirmed transactions** – transactions that have been "confirmed" and written to a file. These are shared in [blocks](/docs/beginners/guide/blocks.md) of transactions (as opposed to individually).
 
 [![Diagram showing a node sharing fresh transactions and blocks of confirmed transactions.](../../images/beginners_guide_node_01-node_transaction_type_sharing.png)](https://static.learnmeabitcoin.com/beginners/guide/node/01-node_transaction_type_sharing.png)
 
-Don't worry about the difference between these two right now. It will all become clear in [mining](/beginners/guide/mining/) and [blocks](/beginners/guide/blocks/).
+Don't worry about the difference between these two right now. It will all become clear in [mining](/docs/beginners/guide/mining.md) and [blocks](/docs/beginners/guide/blocks.md).
 
 ### 3. Keep a copy of confirmed transactions
 
-As mentioned, each node also keeps blocks of *confirmed* transactions. These are held together in a file called the [blockchain](/beginners/guide/blockchain/).
+As mentioned, each node also keeps blocks of *confirmed* transactions. These are held together in a file called the [blockchain](/docs/beginners/guide/blockchain.md).
 
 [![Diagram showing a node keeping a copy of confirmed transactions (the blockchain).](../../images/beginners_guide_node_02-node_blockchain.png)](https://static.learnmeabitcoin.com/beginners/guide/node/02-node_blockchain.png)
 
@@ -47,7 +47,7 @@ Fresh transactions are bounced around the network until they are etched into the
 
 Each node has a copy of the blockchain for safe keeping, and shares it with other nodes if their copy isn't up-to-date.
 
-The process of adding fresh transactions to the blockchain is called [mining](/beginners/guide/mining/).
+The process of adding fresh transactions to the blockchain is called [mining](/docs/beginners/guide/mining.md).
 
 ## Who controls the bitcoin nodes?
 
@@ -71,4 +71,4 @@ You can send and receive bitcoins without having to run a node. You just need to
 
 If you send a message to just *one* node about a transaction, it will eventually propagate the entire network.
 
-If you're using a [wallet](/beginners/wallets/) for example, they will feed the transactions you make into the network for you.
+If you're using a [wallet](/docs/beginners/wallets.md) for example, they will feed the transactions you make into the network for you.

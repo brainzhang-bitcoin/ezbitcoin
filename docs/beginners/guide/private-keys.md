@@ -6,13 +6,13 @@ For example:
 
 Generate
 
-But to be more precise, a private key is a random **256-[bit](/technical/general/bytes/#bit)** number:
+But to be more precise, a private key is a random **256-[bit](/docs/technical/general/bytes.md#bit)** number:
 
 Yes, this is still a *number*. It's just in *binary*, which is how numbers are stored in a computer. Because you know, Bitcoin is a computer program after all.
 
 Anyway, we can easily convert this private key from *binary* to *decimal*:
 
-Or to *[hexadecimal](/technical/general/hexadecimal/)*:
+Or to *[hexadecimal](/docs/technical/general/hexadecimal.md)*:
 
 It doesn't make a difference. They're all the same number, and they're all the same private key.
 
@@ -55,7 +55,7 @@ A 256-bit number is a number that can be stored inside 256 *bits* of data.
 
 ### What is a bit?
 
-A [bit](/technical/general/bytes/#bit) is the smallest unit of data inside a computer.
+A [bit](/docs/technical/general/bytes.md#bit) is the smallest unit of data inside a computer.
 
 | Unit | Size |
 | --- | --- |
@@ -163,7 +163,7 @@ random.SystemRandom().randint(1, 11579208923731619542357098500868790785283756427
 
 **Be careful when generating random numbers using a programming language.** The default "random" functions in most programming languages aren't usually random enough, so make sure that the function you're using is described as being "cryptographically secure".
 
-### 3. Hash some random data using the SHA-256 [hash function](/technical/cryptography/hash-function/).
+### 3. Hash some random data using the SHA-256 [hash function](/docs/technical/cryptography/hash-function.md).
 
 Inserting *random* data into the SHA-256 will return a 32-byte (256-bit) **hexadecimal** result, which can be used as a private key:
 
@@ -205,7 +205,7 @@ As a result, most guides will make you fearful about generating your own private
 
 But don't let all that fearmongering stop you. As long as you're cautious you'll be fine.
 
-**A valid private key is actually slightly less than the maximum 256-bit number.** So if you're generating a private key, you will need to check that it's within the [valid range](/technical/keys/private-key/#range) before trying to use it. It's rare that this happens, but it's important to check.
+**A valid private key is actually slightly less than the maximum 256-bit number.** So if you're generating a private key, you will need to check that it's within the [valid range](/docs/technical/keys/private-key.md#range) before trying to use it. It's rare that this happens, but it's important to check.
 
 **The fact that anyone can create their own "account" by simply generating a random number is an important feature of Bitcoin.** It means that no one is in control of issuing accounts, which means bitcoin is accessible to anyone who can generate a large random number.
 

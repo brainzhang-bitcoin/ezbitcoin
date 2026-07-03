@@ -4,7 +4,7 @@
 
 A checksum is a small piece of data that allows you to check if another piece of **data is the same as expected**.
 
-They're most commonly found within [addresses](/technical/keys/address/) to detect typos. This helps to prevent sending bitcoins to the wrong address.
+They're most commonly found within [addresses](/docs/technical/keys/address.md) to detect typos. This helps to prevent sending bitcoins to the wrong address.
 
 Random Example
 
@@ -16,7 +16,7 @@ Some bytes of data you want to create a checksum for
 
 Checksum
 
-First 4 bytes of [hash256](/technical/cryptography/hash-function/#hash256)(data)
+First 4 bytes of [hash256](/docs/technical/cryptography/hash-function.md#hash256)(data)
 
 `Expected:`
 
@@ -48,12 +48,12 @@ Where are checksums used in Bitcoin?
 
 Here are a few examples of where checksums are used in Bitcoin:
 
-* **[Addresses](/technical/keys/address/)** – Every Base58 address (ones that start with a 1 or 3) contains a checksum. This helps to prevent losing bitcoins by sending them to the incorrect address if you make a typo.
-* **[WIF Private Keys](/technical/keys/private-key/wif/)** – A WIF private key is like an address format for a private key. These also contain checksums, so you can be informed if you're importing an incorrect private key into a wallet.
-* **[Extended Keys](/technical/keys/hd-wallets/extended-keys/)** – Every extended private key and extended public key contains its own checksum. Again, this allows you to detect errors when transcribing them.
-* **[Network Messages](/technical/networking/#messages)** – Every message that gets sent between nodes on the network has a checksum attached to it. This allows you to detect if the message has been tampered with, or if the message has been corrupted during transmission.
+* **[Addresses](/docs/technical/keys/address.md)** – Every Base58 address (ones that start with a 1 or 3) contains a checksum. This helps to prevent losing bitcoins by sending them to the incorrect address if you make a typo.
+* **[WIF Private Keys](/docs/technical/keys/private-key/wif.md)** – A WIF private key is like an address format for a private key. These also contain checksums, so you can be informed if you're importing an incorrect private key into a wallet.
+* **[Extended Keys](/docs/technical/keys/hd-wallets/extended-keys.md)** – Every extended private key and extended public key contains its own checksum. Again, this allows you to detect errors when transcribing them.
+* **[Network Messages](/docs/technical/networking.md#messages)** – Every message that gets sent between nodes on the network has a checksum attached to it. This allows you to detect if the message has been tampered with, or if the message has been corrupted during transmission.
 
-Modern [Bech32](/technical/keys/bech32/) addresses also contain checksums, but they're more complex than the simple checksums described on this page.
+Modern [Bech32](/docs/technical/keys/bech32.md) addresses also contain checksums, but they're more complex than the simple checksums described on this page.
 
 ## Creating
 
@@ -61,7 +61,7 @@ How do you create a checksum?
 
 [![Diagram showing a checksum as the first 4 bytes of the HASH256 of some data.](../../images/diagrams_png_bytes-checksum-create.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-checksum-create.png)
 
-A checksum is created by taking the **first 4 [bytes](/technical/general/bytes/) of the [HASH256](/technical/cryptography/hash-function/#hash256) of some data**.
+A checksum is created by taking the **first 4 [bytes](/docs/technical/general/bytes.md) of the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) of some data**.
 
 For example:
 
@@ -217,7 +217,7 @@ How reliable are checksums in Bitcoin?
 
 There is a **1 in 4,294,967,295** chance that a checksum will not detect an error.
 
-A checksum is 4 [bytes](/technical/general/bytes/) in size. This means that there are only 0xFFFFFFFF (4,294,967,295) possible checksums, so there is a chance that two different pieces of data will end up having the same checksum.
+A checksum is 4 [bytes](/docs/technical/general/bytes.md) in size. This means that there are only 0xFFFFFFFF (4,294,967,295) possible checksums, so there is a chance that two different pieces of data will end up having the same checksum.
 
 In other words, if you make a typo when entering an address, there is roughly a **one in four billion** chance that the resulting checksum will inadvertently be the same and **the typo will not be detected**.
 
@@ -249,7 +249,7 @@ abb+6
 
 The checksum would no longer match the sum of the characters (`abb` = 1 + 2 + 2 = 5), and I would know that I've made a mistake somewhere. So by "checking" the "sum", I can see that something has gone wrong somewhere. Hence, the name "checksum".
 
-Anyway, in Bitcoin we actually use a [hash function](/technical/cryptography/hash-function/) to create the checksum, which is a more reliable fingerprint for the data than simply summing characters. Nonetheless, it does the same job, and that's why we still call this extra piece of error-detection data a *checksum*.
+Anyway, in Bitcoin we actually use a [hash function](/docs/technical/cryptography/hash-function.md) to create the checksum, which is a more reliable fingerprint for the data than simply summing characters. Nonetheless, it does the same job, and that's why we still call this extra piece of error-detection data a *checksum*.
 
 Thanks to [Greg Maxwell](https://nt4tn.net/) for the quick computer science lesson on (and the history of) checksums.
 

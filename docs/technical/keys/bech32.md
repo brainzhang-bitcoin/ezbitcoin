@@ -5,9 +5,9 @@
 
 [![Diagram showing the structure of a Bech32 address.](../../images/diagrams_png_keys-bech32.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32.png)
 
-Bech32 ("besh thirty-two") is an **[address](/technical/keys/address/) format** used for representing *segwit locking scripts* like [P2WPKH](/technical/script/p2wpkh/), [P2WSH](/technical/script/p2wsh/), and [P2TR](/technical/script/p2tr/).
+Bech32 ("besh thirty-two") is an **[address](/docs/technical/keys/address.md) format** used for representing *segwit locking scripts* like [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md), and [P2TR](/docs/technical/script/p2tr.md).
 
-It was introduced shortly after the [Segregated Witness](/technical/upgrades/segregated-witness/) upgrade to provide a better address format for the new segwit locking scripts. It is an improvement over the legacy [Base58](/technical/keys/base58/) format.
+It was introduced shortly after the [Segregated Witness](/docs/technical/upgrades/segregated-witness.md) upgrade to provide a better address format for the new segwit locking scripts. It is an improvement over the legacy [Base58](/docs/technical/keys/base58.md) format.
 
 Here are some examples of what they look like:
 
@@ -25,7 +25,7 @@ On this page I'll show you how to **encode** and **decode** a Bech32 address, an
 
 What are the advantages of Bech32?
 
-Bech32 is more *user-friendly* and more *efficient* than the legacy [Base58](/technical/keys/base58/) format for addresses.
+Bech32 is more *user-friendly* and more *efficient* than the legacy [Base58](/docs/technical/keys/base58.md) format for addresses.
 
 In short, it's an *upgrade* compared to Base58.
 
@@ -47,7 +47,7 @@ The fact that Bech32 uses fewer characters compared to Base58 (i.e. base 32 inst
 
 #### 2. Friendly character set
 
-This is not really an "upgrade" as [Base58](/technical/keys/base58/) does something similar, but Bech32 **does not use characters that look similar to each other**.
+This is not really an "upgrade" as [Base58](/docs/technical/keys/base58.md) does something similar, but Bech32 **does not use characters that look similar to each other**.
 
 To be precise, the *data* part of the address uses all alphanumeric characters except for "1", "b", "i", and "o":
 
@@ -78,7 +78,7 @@ Bech32 addresses use an improved [checksum algorithm](#checksum) that allows you
 
 To summarize the differences:
 
-* **[Base58 Checksum](/technical/keys/base58/#base58check)** — Allows you to identify if the address has been entered correctly or incorrectly.
+* **[Base58 Checksum](/docs/technical/keys/base58.md#base58check)** — Allows you to identify if the address has been entered correctly or incorrectly.
 * **Bech32 Checksum** — Allows you to identify if the address has been entered correctly or incorrectly. Furthermore, if the address has been entered incorrectly, it can locate *where* the errors are, and offer *suggestions* to fix it.
 
 So in short, the Bech32 checksum is *smarter*.
@@ -113,13 +113,13 @@ As you can see, even though the Bech32 address has more characters, the ability 
 
 #### 2. Faster [encoding](#encode)
 
-It's faster to calculate a [Bech32 checksum](#checksum) than a [Base58 checksum](/technical/keys/base58/#base58check), which means it's faster to encode Bech32 addresses.
+It's faster to calculate a [Bech32 checksum](#checksum) than a [Base58 checksum](/docs/technical/keys/base58.md#base58check), which means it's faster to encode Bech32 addresses.
 
-I know the Bech32 checksum algorithm looks pretty complicated, but it's still faster than the [double-SHA256](/technical/cryptography/hash-function/#hash256) required to create the Base58 checksum.
+I know the Bech32 checksum algorithm looks pretty complicated, but it's still faster than the [double-SHA256](/docs/technical/cryptography/hash-function.md#hash256) required to create the Base58 checksum.
 
 #### 3. Faster [decoding](#decode)
 
-The characters in a Bech32 address *map* to specific values, which is faster than the *modular arithmetic* on big numbers required to [decode a Base58 address](/technical/keys/base58/#decode).
+The characters in a Bech32 address *map* to specific values, which is faster than the *modular arithmetic* on big numbers required to [decode a Base58 address](/docs/technical/keys/base58.md#decode).
 
 Base58 is not spectacularly slow to encode/decode compared to Bech32, but Bech32 is more efficient nonetheless.
 
@@ -203,9 +203,9 @@ Address`0 characters`
 
 Convert a ScriptPubKey to a Bech32 address
 
-A [ScriptPubKey](/technical/transaction/output/scriptpubkey/) for a *segwit locking script* (e.g. [P2WPKH](/technical/script/p2wpkh/), [P2WSH](/technical/script/p2wsh/), [P2TR](/technical/script/p2tr/)) can be converted to a Bech32 address.
+A [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) for a *segwit locking script* (e.g. [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md), [P2TR](/docs/technical/script/p2tr.md)) can be converted to a Bech32 address.
 
-The bulk of the encoding process involves converting the ScriptPubKey [bytes](/technical/general/bytes/) into binary (1s and 0s), splitting those 1s and 0s into **5-bit groups**, and then converting those 5-bit groups into their corresponding **base32 characters**.
+The bulk of the encoding process involves converting the ScriptPubKey [bytes](/docs/technical/general/bytes.md) into binary (1s and 0s), splitting those 1s and 0s into **5-bit groups**, and then converting those 5-bit groups into their corresponding **base32 characters**.
 
 That's a simplified explanation of the process, but that's basically how it works. The hardest part is calculating the [checksum](#encode-step-6).
 
@@ -236,7 +236,7 @@ You need to choose the human-readable part early on, as this is going to be used
 
 Next, grab the complete ScriptPubKey that you want to convert to Bech32.
 
-Here's an example [P2WPKH](/technical/script/p2wpkh/) ScriptPubKey:
+Here's an example [P2WPKH](/docs/technical/script/p2wpkh.md) ScriptPubKey:
 
 `0014751e76e8199196d454941c45d1b3a323f1433bd6`
 
@@ -309,13 +309,13 @@ This data has the most influence over what our final Bech32 address looks like.
 
 Next, we need to convert the version number of the ScriptPubKey to a **5-bit integer value**.
 
-In our example the version byte is `00`, which corresponds to the [opcode](/technical/script/#opcodes) `OP_0`. Therefore, the version number of this ScriptPubKey is **0**. This can then be represented as a 5-bit binary value:
+In our example the version byte is `00`, which corresponds to the [opcode](/docs/technical/script.md#opcodes) `OP_0`. Therefore, the version number of this ScriptPubKey is **0**. This can then be represented as a 5-bit binary value:
 
 ```
 version = 00000
 ```
 
-**Use the number represented by the opcode, not the byte value.** The `OP_1` to `OP_16` [opcodes](/technical/script/#opcodes) use the bytes in the range `51` to `60`. So it's important to convert the byte to its corresponding `OP_N` opcode to get the correct version number, rather than using the value of the byte directly.
+**Use the number represented by the opcode, not the byte value.** The `OP_1` to `OP_16` [opcodes](/docs/technical/script.md#opcodes) use the bytes in the range `51` to `60`. So it's important to convert the byte to its corresponding `OP_N` opcode to get the correct version number, rather than using the value of the byte directly.
 
 * The version number influences the first character after the prefix of the final address.
   + A version 0 segwit locking script starts with bc1**q** (P2WPKH or P2WSH)
@@ -341,7 +341,7 @@ If we convert each byte to bits, we get:
 witness program = 01110101 00011110 01110110 11101000 00011001 10010001 10010110 11010100 01010100 10010100 00011100 01000101 11010001 10110011 10100011 00100011 11110001 01000011 00111011 11010110
 ```
 
-There are 8 bits in a [byte](/technical/general/bytes/).
+There are 8 bits in a [byte](/docs/technical/general/bytes.md).
 
 
 
@@ -932,7 +932,7 @@ If the checksums match, we know that the address has been entered correctly and 
 
 ### 4. Version
 
-Next, the *version* integer needs to be converted to a **hex byte** corresponding to a `OP_N` [opcode](/technical/script/#opcodes).
+Next, the *version* integer needs to be converted to a **hex byte** corresponding to a `OP_N` [opcode](/docs/technical/script.md#opcodes).
 
 For example:
 
@@ -1001,7 +1001,7 @@ If we *combine* these 3 pieces of data, we have our complete ScriptPubKey:
 scriptpubkey = 0014751e76e8199196d454941c45d1b3a323f1433bd6
 ```
 
-Seeing as this is **version 0** with a **20-byte witness program**, we can tell this is a [P2WPKH](/technical/script/p2wpkh/) locking script.
+Seeing as this is **version 0** with a **20-byte witness program**, we can tell this is a [P2WPKH](/docs/technical/script/p2wpkh.md) locking script.
 
 
 
@@ -1295,7 +1295,7 @@ How do you calculate a Bech32 checksum?
 
 The most complex part of the Bech32 encoding is **calculating the *checksum***.
 
-The checksum algorithm uses [BCH codes](https://en.wikipedia.org/wiki/BCH_code), which allows for error correction across the data (which is not possible with the [simple checksum](/technical/keys/checksum/) used in [Base58](/technical/keys/base58/)). This makes the Bech32 checksum a lot more useful, but also more complex to calculate.
+The checksum algorithm uses [BCH codes](https://en.wikipedia.org/wiki/BCH_code), which allows for error correction across the data (which is not possible with the [simple checksum](/docs/technical/keys/checksum.md) used in [Base58](/docs/technical/keys/base58.md)). This makes the Bech32 checksum a lot more useful, but also more complex to calculate.
 
 I don't know enough about BCH codes to explain the design of the algorithm, so I'll just show you *how to calculate the checksum* instead.
 
@@ -2101,8 +2101,8 @@ The only difference is that you use a **different [constant](#checksum-step-5)**
 
 | Version | Constant | Address Type(s) |
 | --- | --- | --- |
-| 0 | `0b000000000000000000000000000001` | [P2WPKH](/technical/script/p2wpkh/), [P2WSH](/technical/script/p2wsh/) |
-| 1+ | `0b101011110010000011000010100011` | [P2TR](/technical/script/p2tr/) |
+| 0 | `0b000000000000000000000000000001` | [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md) |
+| 1+ | `0b101011110010000011000010100011` | [P2TR](/docs/technical/script/p2tr.md) |
 
 Everything else about the Bech32 encoding remains the same.
 
@@ -2130,7 +2130,7 @@ It's not perfect, I know. But it'll do.
 
 ## Summary
 
-Bech32 is simply a **better format for addresses** compared to [Base58](/technical/keys/base58/).
+Bech32 is simply a **better format for addresses** compared to [Base58](/docs/technical/keys/base58.md).
 
 Base58 was/is handy because it gives you a nice character set to work with, and a simple checksum to detect errors. But Bech32 offers a bunch of useful *improvements*:
 
@@ -2144,16 +2144,16 @@ Base58 was a pretty good effort, and you can't blame Satoshi for it not being pe
 
 We still use **Base58** for *legacy locking scripts*, *private keys*, and *extended keys*:
 
-* [P2PKH](/technical/script/p2pkh/) (*2009 - present*)
-* [P2SH](/technical/script/p2sh/) (*2012 - present*)
-* [WIF Private Keys](/technical/keys/private-key/wif/) (*2011 - present*)
-* [Extended Keys](/technical/keys/hd-wallets/extended-keys/) (*2012 - present*)
+* [P2PKH](/docs/technical/script/p2pkh.md) (*2009 - present*)
+* [P2SH](/docs/technical/script/p2sh.md) (*2012 - present*)
+* [WIF Private Keys](/docs/technical/keys/private-key/wif.md) (*2011 - present*)
+* [Extended Keys](/docs/technical/keys/hd-wallets/extended-keys.md) (*2012 - present*)
 
 But **Bech32** is now used for all *modern locking scripts*:
 
-* [P2WPKH](/technical/script/p2wpkh/) (*2017 - present*)
-* [P2WSH](/technical/script/p2wsh/) (*2017 - present*)
-* [P2TR](/technical/script/p2tr/) (*2021 - present*)
+* [P2WPKH](/docs/technical/script/p2wpkh.md) (*2017 - present*)
+* [P2WSH](/docs/technical/script/p2wsh.md) (*2017 - present*)
+* [P2TR](/docs/technical/script/p2tr.md) (*2021 - present*)
 
 The only crushing downside of Bech32 is that the [base32 character set](#friendly-character-set) does not include the letter "b", so I can't construct a [vanity address](https://github.com/10gic/vanitygen-plusplus) with the word "beer" in it (hence why I still use a Base58 address for [donations](/donate/)). But that's just something I need to live with.
 

@@ -2,9 +2,9 @@
 
 [![Diagram showing a node on the bitcoin network mining a new block on to the blockchain.](../images/diagrams_png_mining.png)](https://static.learnmeabitcoin.com/diagrams/png/mining.png)
 
-Mining is the process of trying to add a new [block](/technical/block/) of [transactions](/technical/transaction/) on to the [blockchain](/technical/blockchain/).
+Mining is the process of trying to add a new [block](/docs/technical/block.md) of [transactions](/docs/technical/transaction.md) on to the [blockchain](/docs/technical/blockchain.md).
 
-It's a **network-wide competition** where any [node](/technical/networking/node/) on the network can *work* to try and add the next block on to the chain.
+It's a **network-wide competition** where any [node](/docs/technical/networking/node.md) on the network can *work* to try and add the next block on to the chain.
 
 When a new block is mined, it gets broadcast across the network, where each node independently verifies and adds it on to their blockchain.
 
@@ -21,7 +21,7 @@ The system is designed so that a new block is mined **once every 10 minutes** on
 
 How does mining work?
 
-The mining process begins by filling a [candidate block](/technical/mining/candidate-block/) with transactions from your node's [memory pool](/technical/mining/memory-pool/).
+The mining process begins by filling a [candidate block](/docs/technical/mining/candidate-block.md) with transactions from your node's [memory pool](/docs/technical/mining/memory-pool.md).
 
 This candidate block is what we're going to try and mine on to our blockchain (and then send to everyone else so they can add it to their blockchain too).
 
@@ -30,12 +30,12 @@ This candidate block is what we're going to try and mine on to our blockchain (a
 
 Every node keeps a copy of the latest transactions in their memory pool.
 
-Next we construct a [block header](/technical/block/#header) for this candidate block. This is basically a short summary of all of the data inside the block, which includes a *reference to an existing block* in the blockchain that we want to build on.
+Next we construct a [block header](/docs/technical/block.md#header) for this candidate block. This is basically a short summary of all of the data inside the block, which includes a *reference to an existing block* in the blockchain that we want to build on.
 
 [![Diagram showing a block header for a candidate block, containing a previous block hash and a merkle root.](../images/diagrams_png_mining-block-header.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header.png)
 
 
-You refer to a previous block by its [block hash](/technical/block/hash/). A summary of all the transactions in the block is contained in the [merkle root](/technical/block/merkle-root/).
+You refer to a previous block by its [block hash](/docs/technical/block/hash.md). A summary of all the transactions in the block is contained in the [merkle root](/docs/technical/block/merkle-root.md).
 
 ![Tool Icon](../images/icons_tool.svg) Block Header
 
@@ -146,7 +146,7 @@ This is the HASH256 of the hex block header. It's also in reverse byte order, be
 
 Now we are ready to start *mining* this block.
 
-To do this, we put this block's **block header** through the SHA-256 [hash function](/technical/cryptography/hash-function/) *twice* (called HASH256 for short), and hope that the number it spits out is below the current [target](/technical/mining/target/).
+To do this, we put this block's **block header** through the SHA-256 [hash function](/docs/technical/cryptography/hash-function.md) *twice* (called HASH256 for short), and hope that the number it spits out is below the current [target](/docs/technical/mining/target.md).
 
 [![Diagram showing a block hash trying to get below a specific target value.](../images/diagrams_png_mining-block-header-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash.png)
 
@@ -180,7 +180,7 @@ SHA-256(SHA-256(data))
 
 0 secs
 
-If the hash of your block header *isn't* below the target, you can *keep trying* by incrementing the [nonce](/technical/block/nonce/) field in the block header. This allows you to keep the same basic block header, but get a completely different hash result for it.
+If the hash of your block header *isn't* below the target, you can *keep trying* by incrementing the [nonce](/docs/technical/block/nonce.md) field in the block header. This allows you to keep the same basic block header, but get a completely different hash result for it.
 
 [![Diagram showing a miner adjusting the nonce field in the block header to produce a different block hash.](../images/diagrams_png_mining-block-header-hash-nonce.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash-nonce.png)
 
@@ -247,20 +247,20 @@ As a result, miners with the most processing power (or "hashing power") are more
 
 But still, nothing is stopping you from mining if you want to.
 
-## [Block Reward](/technical/mining/block-reward/)
+## [Block Reward](/docs/technical/mining/block-reward.md)
 
 What's the incentive to mine blocks?
 
 If you are able to mine a block you can claim a **block reward**.
 
-You see, when you construct a candidate block, you can put your own special transaction at the top of the block. This is called the [coinbase transaction](/technical/mining/coinbase-transaction/), and it allows you to send yourself a fixed amount of bitcoins that did not previously exist.
+You see, when you construct a candidate block, you can put your own special transaction at the top of the block. This is called the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md), and it allows you to send yourself a fixed amount of bitcoins that did not previously exist.
 
 [![Diagram showing the coinbase transaction at the top of a block of transactions.](../images/diagrams_png_mining-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-coinbase-transaction.png)
 
 
 The coinbase transaction is the first transaction in a block.
 
-So if you end up mining this block, you would be able to spend the bitcoins you claimed from the coinbase transaction *after* the block reaches 100 blocks deep in the [longest chain](/technical/blockchain/longest-chain/).
+So if you end up mining this block, you would be able to spend the bitcoins you claimed from the coinbase transaction *after* the block reaches 100 blocks deep in the [longest chain](/docs/technical/blockchain/longest-chain.md).
 
 [![Diagram showing how the block reward can be spent after the block reaches 100 blocks deep in the blockchain.](../images/diagrams_png_mining-block-reward-longest-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-longest-chain.png)
 
@@ -279,7 +279,7 @@ The mining system is designed so that one miner across the bitcoin network will 
 
 [![Diagram showing a node on the network mining a new block once every 10 minutes (on average).](../images/diagrams_png_mining-target-ten-minutes.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-target-ten-minutes.png)
 
-The timing is controlled by the [target](/technical/mining/target/), which is like a limbo pole that a block's hash has to get under for the block to be allowed on to the blockchain.
+The timing is controlled by the [target](/docs/technical/mining/target.md), which is like a limbo pole that a block's hash has to get under for the block to be allowed on to the blockchain.
 
 [![Diagram showing nodes on the network agreeing on a target value for the current height of the blockchain.](../images/diagrams_png_mining-target-nodes.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-target-nodes.png)
 
@@ -360,13 +360,13 @@ As a result, the process of mining acts as a sorting mechanism for transactions 
 
 Better still, thanks to the fact that anyone can mine, no single node on the network is ever in complete control of which transactions make it into the blockchain.
 
-**A single miner can control which transactions make it on to the blockchain if they can acquire a *majority* of the mining power.** This is known as a [51% attack](/technical/blockchain/51-attack/).
+**A single miner can control which transactions make it on to the blockchain if they can acquire a *majority* of the mining power.** This is known as a [51% attack](/docs/technical/blockchain/51-attack.md).
 
 ## Technical
 
 How do you mine a block?
 
-To mine a block, you start by constructing a [block header](/technical/block/#header) for your candidate block.
+To mine a block, you start by constructing a [block header](/docs/technical/block.md#header) for your candidate block.
 
 For example, here's what the block header for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) would have *started* out like:
 
@@ -374,7 +374,7 @@ For example, here's what the block header for [block 100,000](/explorer/block/00
 0100000050120119172a610421a6c3011dd330d9df07b63616c2cc1f1cd00200000000006657a9252aacd5c0b2940996ecff952228c3067cc38d4885efb5a4ac4247e9f337221b4d4c86041b00000000
 ```
 
-Now you've got a block header, you try and "mine" it by putting it through [HASH256](/technical/cryptography/hash-function/#hash256). You keep incrementing the [nonce](/technical/block/nonce/) value as you go to try and get a result below the [target](/technical/mining/target/).
+Now you've got a block header, you try and "mine" it by putting it through [HASH256](/docs/technical/cryptography/hash-function.md#hash256). You keep incrementing the [nonce](/docs/technical/block/nonce.md) value as you go to try and get a result below the [target](/docs/technical/mining/target.md).
 
 ![Tool Icon](../images/icons_tool.svg) HASH256
 
@@ -430,8 +430,8 @@ Nonce    Hash256
 0f2b5710: 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506
 ```
 
-* The nonce is a 4-byte field in [little-endian](/technical/general/little-endian/) byte order.
-* **The result of hashing the raw block header through HASH256 will appear to be *backwards* at first.** This is because block hashes are displayed in [reverse byte order](/technical/general/byte-order/#reverse-byte-order) on blockchain explorers.
+* The nonce is a 4-byte field in [little-endian](/docs/technical/general/little-endian.md) byte order.
+* **The result of hashing the raw block header through HASH256 will appear to be *backwards* at first.** This is because block hashes are displayed in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) on blockchain explorers.
 
 ![Tool Icon](../images/icons_tool.svg) Reverse Bytes
 
@@ -456,7 +456,7 @@ Reversed
 
 Here's some Ruby code that shows how you can mine a block (like the one above).
 
-The code is simpler than you might think. The only tricky part is getting the [block header](/technical/block/#header) data in the correct format before hashing it.
+The code is simpler than you might think. The only tricky part is getting the [block header](/docs/technical/block.md#header) data in the correct format before hashing it.
 
 ### Mining Simulator
 
@@ -537,11 +537,11 @@ end
 
 ### `bitcoin-cli getblocktemplate`
 
-This command grabs transactions from your node's [memory pool](/technical/mining/memory-pool/) and returns the data you need to start mining a new block.
+This command grabs transactions from your node's [memory pool](/docs/technical/mining/memory-pool.md) and returns the data you need to start mining a new block.
 
 Annoyingly, you also have to provide an awkward array to specify the kind of block template you want (see [BIP22](https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki)). This is what I typically use: `bitcoin-cli getblocktemplate '{"rules": ["segwit"]}'`
 
-This command returns the key block header information like the `previous block`, `time`, and `bits`, but you will need to construct the [merkle root](/technical/block/merkle-root/) yourself.
+This command returns the key block header information like the `previous block`, `time`, and `bits`, but you will need to construct the [merkle root](/docs/technical/block/merkle-root.md) yourself.
 
 ### `bitcoin-cli submitblock [hex]`
 
@@ -553,7 +553,7 @@ For example, this is the [genesis block](/explorer/block/000000000019d6689c085ae
 $ bitcoin-cli submitblock 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-**This is a complete raw [block](/technical/block/).** It must include the block header, the transaction count, and all the raw transaction data.
+**This is a complete raw [block](/docs/technical/block.md).** It must include the block header, the transaction count, and all the raw transaction data.
 
 ### `bitcoin-cli getmininginfo`
 

@@ -1,6 +1,6 @@
 ![Loading Tool](../images/icons_loader-2.svg)
 
-So you've just [bought some bitcoin](/beginners/exchanges/) and withdrawn them to your [wallet](/beginners/wallets/). Now you want to *send* some bitcoins to someone else.
+So you've just [bought some bitcoin](/docs/beginners/exchanges.md) and withdrawn them to your [wallet](/docs/beginners/wallets.md). Now you want to *send* some bitcoins to someone else.
 
 This is where you need to make a *transaction*.
 
@@ -12,7 +12,7 @@ How do you make a transaction?
 
 [![Diagram showing xxx.](../images/diagrams_png_beginners-sending-wallet.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-wallet.png)
 
-The process for making a bitcoin transaction is the same for any [bitcoin wallet](/beginners/wallets/) you use:
+The process for making a bitcoin transaction is the same for any [bitcoin wallet](/docs/beginners/wallets.md) you use:
 
 1. **Enter the address.** This is where you want to "send" the bitcoins.
 2. **Enter the amount.** The amount of bitcoins you want to send. This will most likely be in BTC or satoshis.  
@@ -49,27 +49,27 @@ From here you'll just need to wait for the transaction to get added to the *bloc
 
 **Always triple-check the *amount* and the *address*.** You cannot "undo" bitcoin transactions, so if you send bitcoins to the wrong address, you're not going to get them back.
 
-**Don't worry too much about typos in the address.** The address contains a [checksum](/technical/keys/checksum/), which means your wallet will detect if it's invalid. So you don't have to check every individual character to make sure the address is correct – I usually just check the first and last 4 or 5 characters.
+**Don't worry too much about typos in the address.** The address contains a [checksum](/docs/technical/keys/checksum.md), which means your wallet will detect if it's invalid. So you don't have to check every individual character to make sure the address is correct – I usually just check the first and last 4 or 5 characters.
 
-**Use the TXID to track your transaction.** When you *send* your transaction your wallet will give you a [TXID](/technical/transaction/input/txid/), which is a unique *reference number* that you can use to check the status of your transaction on any [blockchain explorer](/explorer/).
+**Use the TXID to track your transaction.** When you *send* your transaction your wallet will give you a [TXID](/docs/technical/transaction/input/txid.md), which is a unique *reference number* that you can use to check the status of your transaction on any [blockchain explorer](/explorer/).
 
 ## Process
 
 What happens when you make a transaction?
 
-When you click "send", your wallet sends your transaction in to one of the [nodes](/beginners/guide/node/) on the [bitcoin network](/beginners/guide/network/).
+When you click "send", your wallet sends your transaction in to one of the [nodes](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/beginners/guide/network.md).
 
 From here it gets relayed from node to node until every node on the network has a copy of your transaction.
 
 [![Animation showing a bitcoin transaction being sent to a node and getting relayed across the network.](../images/beginners_sending_send-transaction.gif)](https://static.learnmeabitcoin.com/beginners/sending/send-transaction.gif)
 
-At first, your transaction gets stored in the [memory pool](/technical/mining/memory-pool/) of each node, which is like a temporary "waiting area" for transactions that have recently been broadcast across the network.
+At first, your transaction gets stored in the [memory pool](/docs/technical/mining/memory-pool.md) of each node, which is like a temporary "waiting area" for transactions that have recently been broadcast across the network.
 
 [![Animation showing a transaction getting stored in each node's memory.](../images/beginners_sending_memory-pool.gif)](https://static.learnmeabitcoin.com/beginners/sending/memory-pool.gif)
 
-After roughly 10 minutes, one of the nodes on the network will [mine](/beginners/guide/mining/) the latest transactions from their memory pool on to their [blockchain](/beginners/guide/blockchain/).
+After roughly 10 minutes, one of the nodes on the network will [mine](/docs/beginners/guide/mining.md) the latest transactions from their memory pool on to their [blockchain](/docs/beginners/guide/blockchain.md).
 
-They will then share this new [block](/beginners/guide/blocks/) of transactions with the other nodes on the network.
+They will then share this new [block](/docs/beginners/guide/blocks.md) of transactions with the other nodes on the network.
 
 [![Animation showing a new block of transactions being added on to the blockchain.](../images/beginners_sending_transaction-blockchain.gif)](https://static.learnmeabitcoin.com/beginners/sending/transaction-blockchain.gif)
 
@@ -91,9 +91,9 @@ If not, you'll just have to keep waiting for your transaction to make it from th
 
 How does a transaction make it into the blockchain?
 
-Each node has the opportunity to try and add the transactions from their memory pool on to their blockchain. This process is known as [**mining**](/beginners/guide/mining/).
+Each node has the opportunity to try and add the transactions from their memory pool on to their blockchain. This process is known as [**mining**](/docs/beginners/guide/mining.md).
 
-To add transactions on to the blockchain, a *miner* gathers transactions from their memory pool into a container called a [candidate block](/technical/mining/candidate-block/). From here, the miner *uses energy* to try and "mine" this block on to the blockchain.
+To add transactions on to the blockchain, a *miner* gathers transactions from their memory pool into a container called a [candidate block](/docs/technical/mining/candidate-block.md). From here, the miner *uses energy* to try and "mine" this block on to the blockchain.
 
 [![Diagram showing a miner using processing power to try and mine a candidate block on to the blockchain.](../images/diagrams_png_beginners-sending-miner.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner.png)
 
@@ -120,7 +120,7 @@ As a result, miners are constantly working to extend the blockchain with new blo
 
 ### Why do transactions have to be mined?
 
-The mechanism of [mining](/technical/mining/) is important for the following reasons:
+The mechanism of [mining](/docs/technical/mining.md) is important for the following reasons:
 
 1. **Prevents conflicting transactions from being written to the blockchain.** If two conflicting transactions are sent into the network (e.g. trying to send the same bitcoins to two different places), then only *one* of those transactions will be written to the blockchain.
 2. **Any node can mine the next block of transactions.** Due to the fact that the mining mechanism is unpredictable, *any* node is in with a chance of mining the next block, which means that no single node is in complete control of the transactions that get added to the blockchain.
@@ -134,19 +134,19 @@ Or in other words, it's what allows Bitcoin to maintain a secure ledger of trans
 
 What are transaction fees?
 
-Every bitcoin transaction includes a [fee](/technical/transaction/fee/).
+Every bitcoin transaction includes a [fee](/docs/technical/transaction/fee.md).
 
-These fees are collected by miners, and therefore act as an **incentive for miners to include your transaction in a [block](/technical/block/)**.
+These fees are collected by miners, and therefore act as an **incentive for miners to include your transaction in a [block](/docs/technical/block.md)**.
 
 Why?
 
-Because a [candidate block](/technical/mining/candidate-block/) can only hold a certain amount of data. So if a lot of people are making transactions at the same time, there may be more transactions inside the [memory pool](/technical/mining/memory-pool/) than can fit inside a block:
+Because a [candidate block](/docs/technical/mining/candidate-block.md) can only hold a certain amount of data. So if a lot of people are making transactions at the same time, there may be more transactions inside the [memory pool](/docs/technical/mining/memory-pool.md) than can fit inside a block:
 
 [![Diagram showing more transaction in the memory pool than can fit into a candidate block.](../images/diagrams_png_beginners-sending-memory-pool-overflow.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-memory-pool-overflow.png)
 
-**Note:** A block can hold [roughly 2MB](/technical/block/#weight) of transaction data, but the memory pool can hold [300MB+](/technical/mining/memory-pool/#size-limit)
+**Note:** A block can hold [roughly 2MB](/docs/technical/block.md#weight) of transaction data, but the memory pool can hold [300MB+](/docs/technical/mining/memory-pool.md#size-limit)
 
-Therefore, miners will choose to populate their candidate blocks with transactions that have the **highest fees** on them, because they can collect these fees (via the [coinbase transaction](/technical/mining/coinbase-transaction/)) if they are successful in mining the block.
+Therefore, miners will choose to populate their candidate blocks with transactions that have the **highest fees** on them, because they can collect these fees (via the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md)) if they are successful in mining the block.
 
 [![Diagram showing a mining selecting the highest-fee transactions from the memory pool to fill their candidate block.](../images/diagrams_png_beginners-sending-miner-highest-fees.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-miner-highest-fees.png)
 
@@ -162,7 +162,7 @@ So when there are a lot of transactions in the memory pool, the higher the fee y
 
 ### What fee should I put on my transaction?
 
-This depends on **how quickly you want your transaction to be mined** based on how many transactions are currently waiting in the [memory pool](/technical/mining/memory-pool/):
+This depends on **how quickly you want your transaction to be mined** based on how many transactions are currently waiting in the [memory pool](/docs/technical/mining/memory-pool.md):
 
 Current Mempool Size:
 
@@ -175,7 +175,7 @@ The size of your memory pool will differ depending on how long your node has bee
 
 The faster you want your transaction to get mined, the higher the fee you should use.
 
-Therefore, a good wallet uses the **current size of the memory pool** to recommend various [feerates](/technical/transaction/fee/#feerates) based on how many *blocks* you'd like your transaction to be mined within:
+Therefore, a good wallet uses the **current size of the memory pool** to recommend various [feerates](/docs/technical/transaction/fee.md#feerates) based on how many *blocks* you'd like your transaction to be mined within:
 
 | Blocks | Time (estimate) | Feerate |
 | --- | --- | --- |
@@ -186,18 +186,18 @@ Therefore, a good wallet uses the **current size of the memory pool** to recomme
 | 144 | 1 day | 1 sats/vbyte |
 | 432 | 3 days | 1 sats/vbyte |
 
-Note: A new block is [mined](/technical/mining/) every 10 minutes (on average).
+Note: A new block is [mined](/docs/technical/mining.md) every 10 minutes (on average).
 
-* **These feerates come from Bitcoin Core's `bitcoin-cli estimatesmartfee` command.** This is what most [bitcoin wallets](/beginners/wallets/) use for fee recommendations.
-* **These are *estimates*.** Nobody can guarantee when your transaction will get mined, as more transactions could enter the [network](/technical/networking/) after you made your transaction and push your transaction toward the back of the queue.
-* **Fee sizes are sorted by [sats/vbyte](/technical/transaction/fee/#sats-per-vbyte).** This is the size of the fee in *satoshis* divided by the size of the transaction in *virtual bytes*. This is because miners want to get the most in fees for the amount of space each transaction takes up in a [block](/technical/block/).
+* **These feerates come from Bitcoin Core's `bitcoin-cli estimatesmartfee` command.** This is what most [bitcoin wallets](/docs/beginners/wallets.md) use for fee recommendations.
+* **These are *estimates*.** Nobody can guarantee when your transaction will get mined, as more transactions could enter the [network](/docs/technical/networking.md) after you made your transaction and push your transaction toward the back of the queue.
+* **Fee sizes are sorted by [sats/vbyte](/docs/technical/transaction/fee.md#sats-per-vbyte).** This is the size of the fee in *satoshis* divided by the size of the transaction in *virtual bytes*. This is because miners want to get the most in fees for the amount of space each transaction takes up in a [block](/docs/technical/block.md).
 
 You can always choose to set your own **custom fee** on your transaction too. You can check out the current status of the memory pool yourself and decide on a fee that you think will work best for your needs.
 
 But in general:
 
-* If there are **more** transactions in the memory pool than can fit inside a [candidate block](/technical/mining/candidate-block/), you will need to use a suitably high fee to compete with the other transactions in the memory pool to get inside an upcoming block.
-* If there are **fewer** transactions in the memory pool than can fit inside a candidate block, you can set the [minimum fee](/technical/mining/memory-pool/#minimum-fee) of 1 sat/vbyte.
+* If there are **more** transactions in the memory pool than can fit inside a [candidate block](/docs/technical/mining/candidate-block.md), you will need to use a suitably high fee to compete with the other transactions in the memory pool to get inside an upcoming block.
+* If there are **fewer** transactions in the memory pool than can fit inside a candidate block, you can set the [minimum fee](/docs/technical/mining/memory-pool.md#minimum-fee) of 1 sat/vbyte.
 
 * **It's useful to check out the state of the memory pool when deciding what size transaction fee to use:**
   + [mempool.space](https://mempool.space) – shows a visualization of upcoming blocks and the range of transaction fees within each block.
@@ -215,14 +215,14 @@ This is fine, but it means that you're going to be waiting for a *quiet period* 
 
 Lower-fee transactions will eventually get included in a block if there are no higher-fee transactions left in the memory pool.
 
-However, transactions will only stay in a node's memory pool for **2 weeks** (see [mempoolexpiry](/technical/mining/memory-pool/#mempoolexpiry)), and after this time period a node will **remove the transaction from its memory pool**. If this happens, your transaction will disappear from the network, and it's as if your transaction never happened.
+However, transactions will only stay in a node's memory pool for **2 weeks** (see [mempoolexpiry](/docs/technical/mining/memory-pool.md#mempoolexpiry)), and after this time period a node will **remove the transaction from its memory pool**. If this happens, your transaction will disappear from the network, and it's as if your transaction never happened.
 
 [![Diagram showing a transaction being removed from the memory pool if it hasn't been mined in a certain amount of time.](../images/diagrams_png_beginners-sending-mempool-expiry.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-mempool-expiry.png)
 
 
 Transactions only wait around in the memory pool for a set amount of time.
 
-* **Most wallets allow you to [bump the fee](/technical/transaction/input/sequence/#replace-by-fee) of your transaction whilst it's still in the memory pool.** So if your transaction is taking too long to get mined, you can increase the size of the fee on that transaction to speed up the process.
+* **Most wallets allow you to [bump the fee](/docs/technical/transaction/input/sequence.md#replace-by-fee) of your transaction whilst it's still in the memory pool.** So if your transaction is taking too long to get mined, you can increase the size of the fee on that transaction to speed up the process.
 * You can always re-broadcast your transaction to the network if it leaves the memory pool.
 
 **Do not consider a bitcoin transaction as final until it has been confirmed.** Transactions with very low fees in may not get mined, and will disappear from the network if they've been sat in the memory pool for too long.
@@ -234,8 +234,8 @@ How many confirmations should I wait for?
 As a quick guide:
 
 * **1 confirmation** is usually good enough.
-* **2 confirmations** is better if you want to protect against an uncommon [chain reorganization](/technical/blockchain/chain-reorganization/).
-* **3+ confirmations** is only required if you are concerned about a [network-scale attack](/technical/blockchain/51-attack/) to reverse your transaction.
+* **2 confirmations** is better if you want to protect against an uncommon [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
+* **3+ confirmations** is only required if you are concerned about a [network-scale attack](/docs/technical/blockchain/51-attack.md) to reverse your transaction.
 
 A *confirmation* is when your transaction gets mined into a block. Additional confirmations are when further blocks are mined *on top* of the block your transaction was included in.
 
@@ -246,7 +246,7 @@ The number of confirmations refers to how deep your transaction is in the blockc
 
 Why does this matter?
 
-Well, I know I said that you cannot remove a transaction from the blockchain, but it is technically possible for it to happen. Due to the way the [blockchain](/technical/blockchain/) works, a [bad miner](/technical/blockchain/51-attack/) with a lot of mining power could use their energy to build a new [longer blockchain](/technical/blockchain/longest-chain/) for nodes to adopt, and replace blocks (and transactions) that are already in the chain.
+Well, I know I said that you cannot remove a transaction from the blockchain, but it is technically possible for it to happen. Due to the way the [blockchain](/docs/technical/blockchain.md) works, a [bad miner](/docs/technical/blockchain/51-attack.md) with a lot of mining power could use their energy to build a new [longer blockchain](/docs/technical/blockchain/longest-chain.md) for nodes to adopt, and replace blocks (and transactions) that are already in the chain.
 
 This has not yet happened in Bitcoin, but as I say, it's *technically* possible.
 
@@ -257,7 +257,7 @@ It becomes exponentially more difficult for a miner to remove a transaction the 
 
 So this is why it's sometimes recommended to wait for **6 confirmations** (or more) to be sure a transaction cannot be reversed, because at this point it's no longer "computationally feasible" for a miner to replace that number of blocks. However, unless you're protecting yourself from a bad miner performing an attack against the entire network, this is overkill.
 
-A more reasonable amount of time to wait to be confident that a transaction isn't going to be undone is **2 confirmations**. This is because the top block in the blockchain has a tendency to change around with another block during natural [chain reorganization](/technical/blockchain/chain-reorganization/).
+A more reasonable amount of time to wait to be confident that a transaction isn't going to be undone is **2 confirmations**. This is because the top block in the blockchain has a tendency to change around with another block during natural [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
 [![Diagram showing a chain reorganization where the top block of the blockchain is replaced with a different one.](../images/diagrams_png_beginners-sending-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-chain-reorganization.png)
 
@@ -278,7 +278,7 @@ How can I check the status of my transaction?
 
 One of the coolest things about bitcoin is that you can use [blockchain explorers](/explorer/) to see the status of your transactions in real time.
 
-When you make a bitcoin transaction, your wallet should give you the [TXID](/technical/transaction/input/txid/) for that transaction. This is like a unique reference number for the transaction, and you can use it to find the transaction in a blockchain explorer.
+When you make a bitcoin transaction, your wallet should give you the [TXID](/docs/technical/transaction/input/txid.md) for that transaction. This is like a unique reference number for the transaction, and you can use it to find the transaction in a blockchain explorer.
 
 Here are a few handy blockchain explorers:
 
@@ -286,7 +286,7 @@ Here are a few handy blockchain explorers:
 * [bitref.com](https://bitref.com) – A clean, fast, blockchain explorer. Nice and simple.
 * [learnmeabitcoin.com/explorer/](/explorer/) – This is an explorer I made. It's not terribly popular, but it is a fully-functioning blockchain explorer nonetheless.
 
-Now, a blockchain explorer is basically just a website that acts as a *window* into a bitcoin [node](/technical/networking/node/). So by entering your TXID, you're just asking the explorer to look into its blockchain (or memory pool) and show you the details of a transaction it has received.
+Now, a blockchain explorer is basically just a website that acts as a *window* into a bitcoin [node](/docs/technical/networking/node.md). So by entering your TXID, you're just asking the explorer to look into its blockchain (or memory pool) and show you the details of a transaction it has received.
 
 [![Diagram showing a blockchain explorer as a window into the data of a running Bitcoin node.](../images/diagrams_png_beginners-sending-blockchain-explorers.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-sending-blockchain-explorers.png)
 
@@ -295,9 +295,9 @@ Block explorers just display the data from inside their blockchain (and memory p
 
 I won't cover all the details of what explorers can show you, but some of the things I find most useful are:
 
-* **The number of confirmations.** Is my transaction still in the [memory pool](/technical/mining/memory-pool/), or has it been mined into a [block](/technical/block/)?
-* **The movement of bitcoins.** Which [addresses](/technical/keys/address/) did the bitcoins come from, and which addresses are they being locked up to?
-* **The locks on the bitcoins.** What [locking scripts](/technical/script/) were placed on the bitcoins?
+* **The number of confirmations.** Is my transaction still in the [memory pool](/docs/technical/mining/memory-pool.md), or has it been mined into a [block](/docs/technical/block.md)?
+* **The movement of bitcoins.** Which [addresses](/docs/technical/keys/address.md) did the bitcoins come from, and which addresses are they being locked up to?
+* **The locks on the bitcoins.** What [locking scripts](/docs/technical/script.md) were placed on the bitcoins?
 
 Anyway, your wallet will probably tell you the basic information about your transaction (such as whether it has been confirmed or not), but a blockchain explorer allows you to dig into the details of the transaction, which is pretty cool.
 
@@ -307,12 +307,12 @@ You can also find the status of transactions from your own Bitcoin Core node usi
 
 Here are my top tips for making bitcoin transactions:
 
-* Use a [wallet](/beginners/wallets/) that you feel comfortable with.
+* Use a [wallet](/docs/beginners/wallets.md) that you feel comfortable with.
 * Set the **lowest fee** you can get away with.
 * Follow the transaction's progress with a [blockchain explorer](/explorer/).
   + **1 confirmation** is enough most of the time.
-  + 2 confirmations is better if you want to be extra sure in the rare case of a natural [chain reorganization](/technical/blockchain/chain-reorganization/).
-  + 3+ confirmations is overkill unless you're afraid someone is going to orchestrate a [network-scale attack](/technical/blockchain/51-attack/) to undo your transaction.
+  + 2 confirmations is better if you want to be extra sure in the rare case of a natural [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
+  + 3+ confirmations is overkill unless you're afraid someone is going to orchestrate a [network-scale attack](/docs/technical/blockchain/51-attack.md) to undo your transaction.
 
 You'll get the hang of it after your first few transactions.
 

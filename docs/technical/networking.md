@@ -298,7 +298,7 @@ When you run Bitcoin, it uses ports to connect to other computers running the sa
 [![Diagram showing nodes on the Bitcoin network communicating with each other.](../images/diagrams_png_networking-network-chatter.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-network-chatter.png)
 
 
-Computers on the Bitcoin network share the latest [transactions](/technical/transaction/) and [blocks](/technical/block/) with each other.
+Computers on the Bitcoin network share the latest [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md) with each other.
 
 Anyway, the cool thing about Bitcoin is **you can write your own basic program to connect to a node if you want to**. You just need to know how to speak its language.
 
@@ -337,7 +337,7 @@ socket = TCPSocket.open("162.120.69.182", 8333) # local computer = 127.0.0.1
 
 And there we have a connection to a Bitcoin node.
 
-But that's pretty boring on its own. To start *receiving* data (like actual [transactions](/technical/transaction/) and [blocks](/technical/block/)), you need to start by sending it some *messages* first.
+But that's pretty boring on its own. To start *receiving* data (like actual [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md)), you need to start by sending it some *messages* first.
 
 * See [Finding Nodes](#finding-nodes) if you don't already have an IP to connect to. The easiest method is to connect to your own local node (`127.0.0.1`), or you could try connecting to the node running on this server if you prefer (`162.120.69.182`).
 * You can use this [Bitnodes.io tool](https://bitnodes.io/#join-the-network) to check if a remote node is accepting incoming connections.
@@ -367,7 +367,7 @@ Payload: 7E1101000000000000000000C515CF61000000000000000000000000000000000000000
 
 This looks like jargon right now, but it will make sense in a moment.
 
-When you construct a message to send to another node, you're basically taking normal human-readable data (like numbers and text) and converting them to computer-readable [bytes](/technical/general/bytes/) that can be sent across the network more efficiently.
+When you construct a message to send to another node, you're basically taking normal human-readable data (like numbers and text) and converting them to computer-readable [bytes](/docs/technical/general/bytes.md) that can be sent across the network more efficiently.
 
 Therefore, the trick to sending messages in Bitcoin is just getting a bunch of data into the *correct format*.
 
@@ -401,7 +401,7 @@ Header: (version message)
 
 ##### Fields
 
-* **[Magic Bytes](/technical/networking/magic-bytes/):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
+* **[Magic Bytes](/docs/technical/networking/magic-bytes.md):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
 * **Command:** This indicates the type of message being sent. You can send different types of messages in the Bitcoin protocol, and they contain different types of information. It's a 12-byte field containing the *ASCII* encoding of the name of the message type. The one in this example says that we are sending a "version" message, which is used to send information about ourselves to another node.
 
   ![Tool Icon](../images/icons_tool.svg) ASCII
@@ -426,7 +426,7 @@ Header: (version message)
 
   0 secs
 * **Size:** This is the size of the upcoming payload. This indicates how many bytes you need to read from the socket to get the full message being sent.
-* **[Checksum](/technical/keys/checksum/):** This is a small fingerprint for the payload. It allows us to quickly check that the data in the payload hasn't been tampered with during transit. It's created by double-hashing the payload, then taking the first 4 bytes of the result.
+* **[Checksum](/docs/technical/keys/checksum.md):** This is a small fingerprint for the payload. It allows us to quickly check that the data in the payload hasn't been tampered with during transit. It's created by double-hashing the payload, then taking the first 4 bytes of the result.
 
 #### Payload
 
@@ -546,7 +546,7 @@ header      = magic_bytes + command + size + checksum
 message = header + payload
 ```
 
-**The trickiest part is making sure you convert the data into the correct bytes and the correct order.** That's where all those utility functions in the code above come in. But once you've got the hang of converting to [hexadecimal](/technical/general/hexadecimal/) and converting byte orders to [little-endian](/technical/general/little-endian/), it's not so bad.
+**The trickiest part is making sure you convert the data into the correct bytes and the correct order.** That's where all those utility functions in the code above come in. But once you've got the hang of converting to [hexadecimal](/docs/technical/general/hexadecimal.md) and converting byte orders to [little-endian](/docs/technical/general/little-endian.md), it's not so bad.
 
 And this is what our final "version" message looks like as a string of hexadecimal bytes:
 
@@ -824,7 +824,7 @@ Payload: (inv)
 
 #### Inventory
 
-The "Inventory" part of the payload is *another* data structure in itself. But it's pretty simple: it's just a list of [transaction hashes](/technical/transaction/input/txid/) and/or [block hashes](/technical/block/hash/):
+The "Inventory" part of the payload is *another* data structure in itself. But it's pretty simple: it's just a list of [transaction hashes](/docs/technical/transaction/input/txid.md) and/or [block hashes](/docs/technical/block/hash.md):
 
 ```
 Inventory:
@@ -859,7 +859,7 @@ So if you want *all* of the transactions and blocks in the "inv", you can just r
 
 SegWit Transactions
 
-To request the full transaction data for new [segwit transactions](/technical/transaction/#example-segwit) (i.e. including the [witness](/technical/transaction/witness/) data), you must change the *type* field in the [inventory](#inventory) part of your "getdata" message from:
+To request the full transaction data for new [segwit transactions](/docs/technical/transaction.md#example-segwit) (i.e. including the [witness](/docs/technical/transaction/witness.md) data), you must change the *type* field in the [inventory](#inventory) part of your "getdata" message from:
 
 * `01 00 00 00 = MSG_TX`
 * `02 00 00 00 = MSG_BLOCK`

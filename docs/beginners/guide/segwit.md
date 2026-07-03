@@ -2,23 +2,23 @@
 
 [BIP 141: Segregated Witness](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
 
-The Segregated Witness (*SegWit*) upgrade in 2017 changed the structure of [transaction data](/technical/transaction/) in Bitcoin.
+The Segregated Witness (*SegWit*) upgrade in 2017 changed the structure of [transaction data](/docs/technical/transaction.md) in Bitcoin.
 
-The main reason for this upgrade was to fix **transaction malleability** (I'll explain this in a moment). The other significant change was a **[block size](/technical/block/#weight) increase**.
+The main reason for this upgrade was to fix **transaction malleability** (I'll explain this in a moment). The other significant change was a **[block size](/docs/technical/block.md#weight) increase**.
 
 ## What was the main change?
 
 ### Legacy transaction
 
-In a [legacy transaction](/technical/transaction/#example-legacy), the unlocking code (and [signatures](/technical/keys/signature/)) sit *next* to each [input](/technical/transaction/input/), so the unlocking code is spread throughout the transaction data.
+In a [legacy transaction](/docs/technical/transaction.md#example-legacy), the unlocking code (and [signatures](/docs/technical/keys/signature.md)) sit *next* to each [input](/docs/technical/transaction/input.md), so the unlocking code is spread throughout the transaction data.
 
-The [TXID](/technical/transaction/input/txid/) is then created from the **entire transaction data**:
+The [TXID](/docs/technical/transaction/input/txid.md) is then created from the **entire transaction data**:
 
 [![Diagram showing the position of signatures in a legacy transaction and the TXID being created from the entire transaction data.](../../images/beginners_guide_segwit_txid.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/txid.png)
 
 ### SegWit transaction
 
-In a [segwit transaction](/technical/transaction/#example-segwit), however, all of the unlocking code (and signatures) are moved to the *end* of the transaction data instead.
+In a [segwit transaction](/docs/technical/transaction.md#example-segwit), however, all of the unlocking code (and signatures) are moved to the *end* of the transaction data instead.
 
 The TXID is then created from all of the transaction data, **except for the unlocking code**:
 
@@ -39,13 +39,13 @@ If you were to refer to this validation code as *witness* data (as a cryptograph
 
 ### 1. Fixes transaction malleability
 
-In Bitcoin, **transaction malleability** refers to the fact that the **[TXID](/technical/transaction/input/txid/) of a transaction can be changed by altering the [signatures](/technical/keys/signature/)**:
+In Bitcoin, **transaction malleability** refers to the fact that the **[TXID](/docs/technical/transaction/input/txid.md) of a transaction can be changed by altering the [signatures](/docs/technical/keys/signature.md)**:
 
 [![Diagram showing the TXID of a legacy transaction being changed by altering the signatures inside the transaction data.](../../images/beginners_guide_segwit_transaction-malleability.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/transaction-malleability.png)
 
-A signature can be altered by inverting the [s value](/technical/keys/signature/#legacy-step-6). The signature is still valid and the transaction has the same effect, but the TXID is different.
+A signature can be altered by inverting the [s value](/docs/technical/keys/signature.md#legacy-step-6). The signature is still valid and the transaction has the same effect, but the TXID is different.
 
-This means that when you send a legacy transaction into the network, any [node](/beginners/guide/node/) has the ability to change the TXID before passing it on:
+This means that when you send a legacy transaction into the network, any [node](/docs/beginners/guide/node.md) has the ability to change the TXID before passing it on:
 
 [![Diagram showing the TXID of a legacy transaction being modified after the transaction has been sent into the bitcoin network.](../../images/beginners_guide_segwit_transaction-malleability-network.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/transaction-malleability-network.png)
 
@@ -59,13 +59,13 @@ So in other words, SegWit makes TXIDs *reliable*.
 
 ### 2. Increased block capacity
 
-Due to the fact that the unlocking code was moved to a *new* [witness field](/technical/transaction/witness/) in the transaction data, the way block sizes were calculated could also be changed.
+Due to the fact that the unlocking code was moved to a *new* [witness field](/docs/technical/transaction/witness.md) in the transaction data, the way block sizes were calculated could also be changed.
 
-Previously, transactions were measured in [bytes](/technical/transaction/size/#bytes), and the block size limit was 1,000,000 bytes (1 MB):
+Previously, transactions were measured in [bytes](/docs/technical/transaction/size.md#bytes), and the block size limit was 1,000,000 bytes (1 MB):
 
 [![Diagram showing transactions and block capacity measured in bytes.](../../images/beginners_guide_segwit_block-size-bytes.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/block-size-bytes.png)
 
-With SegWit, transactions are *no longer measured in bytes*. Instead, transactions and blocks were given a new metric called [weight](/technical/transaction/size/#weight):
+With SegWit, transactions are *no longer measured in bytes*. Instead, transactions and blocks were given a new metric called [weight](/docs/technical/transaction/size.md#weight):
 
 [![Diagram showing transactions and block capacity measured in weight units.](../../images/beginners_guide_segwit_block-size-weight.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/block-size-weight.png)
 
@@ -75,7 +75,7 @@ With SegWit, transactions are *no longer measured in bytes*. Instead, transactio
 
 So basically, the block size limit is multiplied by 4 to give you the new *block weight limit*.
 
-Each byte in a transaction is then also multiplied by 4 to give you a [transaction weight](/technical/transaction/size/#weight). However, you only multiply the bytes of witness data by 1, which basically gives you a 75% discount on how much space the "unlocking code" takes up in a block.
+Each byte in a transaction is then also multiplied by 4 to give you a [transaction weight](/docs/technical/transaction/size.md#weight). However, you only multiply the bytes of witness data by 1, which basically gives you a 75% discount on how much space the "unlocking code" takes up in a block.
 
 So you could say that unlocking data takes up a *quarter* of the space it used to, which means there's more space in the block overall for transaction data.
 
@@ -110,7 +110,7 @@ Now, if a block can now weigh a maximum of 4,000,000 weight units, we can work o
 
 So you could say this was effectively a block size limit increase to **1.8 MB**.
 
-1. I got this 60% figure by running through [blk.dat](/technical/block/blkdat/) files and adding up the `scriptSig` data for all the transactions in a block, and comparing it to the total size of the block. I haven't done an exhaustive test, but 60% seems like a fair average. For example, here are the result for [blk00700.dat](blk00700_scriptsig.txt).
+1. I got this 60% figure by running through [blk.dat](/docs/technical/block/blkdat.md) files and adding up the `scriptSig` data for all the transactions in a block, and comparing it to the total size of the block. I haven't done an exhaustive test, but 60% seems like a fair average. For example, here are the result for [blk00700.dat](blk00700_scriptsig.txt).
 
 ## Why were the changes implemented in this way?
 
@@ -136,11 +136,11 @@ Because if you didn't, you would end up with a network that builds two different
 
 [![Diagram showing the blockchain being split in to two separate versions due to a hard-forking change.](../../images/beginners_guide_segwit_hardfork-blockchain.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/hardfork-blockchain.png)
 
-This is known as a [hard fork](/technical/blockchain/hard-fork/). It can work, but it's risky, and will cause problems for those who do not upgrade.
+This is known as a [hard fork](/docs/technical/blockchain/hard-fork.md). It can work, but it's risky, and will cause problems for those who do not upgrade.
 
 ### How did SegWit avoid a hard fork?
 
-Instead of SegWit being a hard fork, it was implemented as a [soft fork](/technical/blockchain/soft-fork/).
+Instead of SegWit being a hard fork, it was implemented as a [soft fork](/docs/technical/blockchain/soft-fork.md).
 
 With the SegWit upgrade, **transactions and blocks *still follow* the current rules of the bitcoin network**, so all nodes still see SegWit blocks as valid. Therefore, "old" nodes will accept these "new" blocks and add them to their blockchains too.
 
@@ -166,17 +166,17 @@ This was when nodes started enforcing the new consensus rules of the SegWit upgr
 
 The Segregated Witness upgrade came into effect when **95%** of miners signaled readiness for it.
 
-Miners can signal their readiness by using a designated [version number](/technical/block/version/) in the blocks they mine.
+Miners can signal their readiness by using a designated [version number](/docs/technical/block/version.md) in the blocks they mine.
 
 [![Diagram showing the version field in the block header.](../../images/beginners_guide_segwit_signal-block-version.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/signal-block-version.png)
 
-The version field is part of the [block header](/technical/block/#header).
+The version field is part of the [block header](/docs/technical/block.md#header).
 
 So when 95% of blocks had this version number, SegWit was scheduled for activation:
 
 [![Diagram showing how the SegWit upgrade was scheduled for the next retarget period after a successful signaling period.](../../images/beginners_guide_segwit_signal-blockchain-activation.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/signal-blockchain-activation.png)
 
-The 95% threshold is calculated within a [target](/technical/mining/target/) readjustment period. If the 95% threshold is met, the soft fork is activated at the start of the *next* target adjustment period (which is 2016 blocks, or roughly 2 weeks).
+The 95% threshold is calculated within a [target](/docs/technical/mining/target.md) readjustment period. If the 95% threshold is met, the soft fork is activated at the start of the *next* target adjustment period (which is 2016 blocks, or roughly 2 weeks).
 
 ### Was there a time limit on activation?
 
@@ -231,11 +231,11 @@ Consequently, the SegWit upgrade was activated 2,016 blocks (roughly 2 weeks) la
 
 ### Why were *miners* given the decision on activation?
 
-Because if you want a soft fork to be successful, you want a majority of miners [mining](/beginners/guide/mining/) the "new" type of blocks on to the blockchain.
+Because if you want a soft fork to be successful, you want a majority of miners [mining](/docs/beginners/guide/mining.md) the "new" type of blocks on to the blockchain.
 
 This is so the blockchain with "new" blocks on it will outpace any blockchain being built with "old" blocks (from any non-upgraded miners who could still be mining).
 
-As a result, the "new" blockchain will be built faster than any blockchain being built with "old" blocks, so all nodes will naturally adopt the same [longest chain](/technical/blockchain/longest-chain/):
+As a result, the "new" blockchain will be built faster than any blockchain being built with "old" blocks, so all nodes will naturally adopt the same [longest chain](/docs/technical/blockchain/longest-chain.md):
 
 [![Diagram showing a majority of miners building the longest chain with new blocks after the SegWit upgrade.](../../images/beginners_guide_segwit_miners-softfork.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/miners-softfork.png)
 
@@ -247,7 +247,7 @@ It's not necessarily that miners are the most knowledgeable group for deciding u
 
 ## What happens if I don't run the SegWit upgrade?
 
-If you're running an old node (e.g. [Bitcoin Core v0.13.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.13.0.md) or below), any SegWit nodes that you are connected to will strip out all of the [witness data](/technical/transaction/witness/) from transactions before sending them to you.
+If you're running an old node (e.g. [Bitcoin Core v0.13.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.13.0.md) or below), any SegWit nodes that you are connected to will strip out all of the [witness data](/docs/technical/transaction/witness.md) from transactions before sending them to you.
 
 [![Diagram showing an old node not receiving the witness data from segwit transactions when connected to an upgraded node.](../../images/beginners_guide_segwit_old-node-witness-data.png)](https://static.learnmeabitcoin.com/beginners/guide/segwit/old-node-witness-data.png)
 
@@ -263,7 +263,7 @@ So basically, your node will get a "lightweight" version of SegWit transactions.
 That's the spirit.
 
 * **Bitcoin Core** – Just make sure you're using version [0.13.1](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.13.1.md) or greater.
-* **Other Wallets** – Almost all modern [wallets](/beginners/wallets/) these days support SegWit transactions.
+* **Other Wallets** – Almost all modern [wallets](/docs/beginners/wallets.md) these days support SegWit transactions.
 
 SegWit has been around for so long now that it's unlikely that you'll run into any software that does not support it (unless it's obviously old).
 

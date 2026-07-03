@@ -1,6 +1,6 @@
 ![Loading Tool](../images/icons_loader-2.svg)
 
-So you've [bought some bitcoin](/beginners/exchanges/), and you're sitting on an amount that's starting to make you feel a bit anxious.
+So you've [bought some bitcoin](/docs/beginners/exchanges.md), and you're sitting on an amount that's starting to make you feel a bit anxious.
 
 What can you do to protect them?
 
@@ -17,11 +17,11 @@ These are my top recommendations:
 Wallet | Level | Released || [Trezor](https://trezor.io/) | Beginner | 2014 |
 | [Coldcard](https://coldcard.com/) | Advanced | 2018 |
 
-A hardware wallet is a small device that you connect to your computer when you want to send and receive bitcoins. However, **all of the [private keys](/technical/keys/private-key/) are stored inside the device and are never exposed to the Internet**.
+A hardware wallet is a small device that you connect to your computer when you want to send and receive bitcoins. However, **all of the [private keys](/docs/technical/keys/private-key.md) are stored inside the device and are never exposed to the Internet**.
 
 As a result, you're *disconnecting* your private keys from the Internet and protecting your bitcoins from digital attacks. So the only way someone can steal your bitcoins is if they can get physical access to your device (or seed).
 
-[Software wallets](/beginners/wallets/#type-software-wallet) are convenient for day-to-day usage, but if you're using a software wallet on your everyday computer, you're leaving your bitcoins vulnerable to malware and viruses. It's not guaranteed that your bitcoins will get stolen from your software wallet, but the fact that they *could* should be enough to make you strongly consider investing in a hardware wallet for storing your bitcoins.
+[Software wallets](/docs/beginners/wallets.md#type-software-wallet) are convenient for day-to-day usage, but if you're using a software wallet on your everyday computer, you're leaving your bitcoins vulnerable to malware and viruses. It's not guaranteed that your bitcoins will get stolen from your software wallet, but the fact that they *could* should be enough to make you strongly consider investing in a hardware wallet for storing your bitcoins.
 
 So if you're in any way anxious about the amount of bitcoin you hold, a hardware wallet is the solution.
 
@@ -34,7 +34,7 @@ It would still take some time and effort to extract the private keys from your h
 
 Using a passphrase allows you to create a completely different wallet from your initial seed.
 
-Using a passphrase in conjunction with your [seed](/technical/keys/hd-wallets/mnemonic-seed/) is a simple and effective way to add an **extra layer of security** to your bitcoins.
+Using a passphrase in conjunction with your [seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md) is a simple and effective way to add an **extra layer of security** to your bitcoins.
 
 If you use a passphrase, the only way someone can steal your bitcoins is if they can gain access to *both* your seed and your passphrase. So if someone stumbled upon your seed, they wouldn't be able to recover your private keys unless they were able to find your passphrase as well.
 
@@ -363,7 +363,7 @@ PBKDF2
 
 It's a good idea to consider storing your seed on something *solid*.
 
-The first step in [setting up a wallet](/beginners/wallets/#setup) is to write your seed down on paper. This is good advice, as this means you will only have a *physical* copy of the seed, which means it's kept away from the Internet and all the attacks that can come from it.
+The first step in [setting up a wallet](/docs/beginners/wallets.md#setup) is to write your seed down on paper. This is good advice, as this means you will only have a *physical* copy of the seed, which means it's kept away from the Internet and all the attacks that can come from it.
 
 However, paper isn't great if your house catches on fire.
 
@@ -449,7 +449,7 @@ So don't get bogged down in the security benefits of a 12-word vs 24-word seed; 
 
 #### Calculation
 
-The two different seed phrase sizes contain the following [bits](/technical/general/bytes/#bit) of entropy:
+The two different seed phrase sizes contain the following [bits](/docs/technical/general/bytes.md#bit) of entropy:
 
 ```
 12 words = 128 bits
@@ -465,7 +465,7 @@ In other words, there are this many different combinations for each seed size:
 
 These numbers are calculated by raising 2 to the power of the number of bits of entropy (e.g. `2^128`)
 
-Now, let's assume the combined [hashrate](/technical/blockchain/51-attack/) of all the miners on the bitcoin network constitutes the biggest "computer" in the world (or at least one of the biggest). With all this computing power, we can see that this "computer" has the ability to perform this many hashes per second:
+Now, let's assume the combined [hashrate](/docs/technical/blockchain/51-attack.md) of all the miners on the bitcoin network constitutes the biggest "computer" in the world (or at least one of the biggest). With all this computing power, we can see that this "computer" has the ability to perform this many hashes per second:
 
 ```
 Bitcoin hashes per second = 933389022828990300160
@@ -473,7 +473,7 @@ Bitcoin hashes per second = 933389022828990300160
 
 You can get this data using `bitcoin-cli getmininginfo`
 
-In addition, you actually need to perform [2,048 hashes to generate each individual seed](/technical/keys/hd-wallets/mnemonic-seed/#mnemonic-to-seed). Using this information, we can divide the *hashes per second* by the number of hashes required to generate each seed to calculate how many seeds the fastest computer in the world can generate per second:
+In addition, you actually need to perform [2,048 hashes to generate each individual seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed). Using this information, we can divide the *hashes per second* by the number of hashes required to generate each seed to calculate how many seeds the fastest computer in the world can generate per second:
 
 ```
 seeds per second = 455756358803217920
@@ -504,7 +504,7 @@ And that's how long it would take to crack each type of seed.
 
 So whilst there is a significant difference between a 12-word and 24-word seed in terms of how long it takes to brute-force each one, in practical terms you're only going from "impossible" to "even more impossible".
 
-* I'm assuming it would be faster to perform [2048 hashes of the mnemonic sentence to calculate each seed](/technical/keys/hd-wallets/mnemonic-seed/#mnemonic-to-seed) than it would be to run through all possible combinations of raw 512-bit seeds.
+* I'm assuming it would be faster to perform [2048 hashes of the mnemonic sentence to calculate each seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed) than it would be to run through all possible combinations of raw 512-bit seeds.
 * These calculations assume you're using a seed phrase without a passphrase. If you add a passphrase, you add more entropy, and it will take even longer again.
 
 ##### Code

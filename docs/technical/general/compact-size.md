@@ -2,7 +2,7 @@
 
 [![Diagram showing how the compact size field indicates the upcoming size or item count.](../../images/diagrams_png_bytes-compact-size.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size.png)
 
-A compact size field is used in [network messages](/technical/networking/#messages) to indicate the **size of an upcoming field** or the **number of upcoming fields**.
+A compact size field is used in [network messages](/docs/technical/networking.md#messages) to indicate the **size of an upcoming field** or the **number of upcoming fields**.
 
 It can store numbers between 0 and 18446744073709551615.
 
@@ -38,7 +38,7 @@ Note: Bytes encoding the integer are in little endian.
 
 ## Structure
 
-A compact size field is a variable-length [byte](/technical/general/bytes/) structure. The *leading byte* indicates the **size** of the field, and also indicates the bytes that contain the **number**.
+A compact size field is a variable-length [byte](/docs/technical/general/bytes.md) structure. The *leading byte* indicates the **size** of the field, and also indicates the bytes that contain the **number**.
 
 [![Diagram showing the prefixes used for compact size fields and the corresponding field sizes.](../../images/diagrams_png_bytes-compact-size-prefix.png)](https://static.learnmeabitcoin.com/diagrams/png/bytes-compact-size-prefix.png)
 
@@ -49,7 +49,7 @@ A compact size field is a variable-length [byte](/technical/general/bytes/) stru
 | `FE` | Next 4 bytes | 65536 - 4294967295 | 5 bytes | `FEA0860100` (100,000) |
 | `FF` | Next 8 bytes | 4294967296 - 18446744073709551615 | 9 bytes | `FF00E40B5402000000` (10,000,000,000) |
 
-**Note:** The bytes containing the number are in [little-endian](/technical/general/little-endian/).
+**Note:** The bytes containing the number are in [little-endian](/docs/technical/general/little-endian.md).
 
 So for small numbers of 252 or less, you just use a single byte. But for larger numbers you use a prefix of `FD`, `FE`, or `FF`, and the integer is contained in the next 2, 4, or 8 bytes.
 
@@ -63,21 +63,21 @@ You can actually use the `FF` prefix and then use the next 8 bytes of `000000000
 
 ## Examples
 
-Here are some examples of the different compact size prefixes found inside [transaction](/technical/transaction/) data:
+Here are some examples of the different compact size prefixes found inside [transaction](/docs/technical/transaction.md) data:
 
 ### `FC` (and below)
 
 A single-byte of `FC` or below is by far the most common:
 
-* [a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d](/explorer/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d) – This is the famous [pizza transaction](https://bitcointalk.org/index.php?topic=137.0). To form the 10,000 BTC [output](/technical/transaction/output/), this transaction collected 131 [inputs](/technical/transaction/input/) together, so the input count was a single byte compact size field of `83`.
+* [a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d](/explorer/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d) – This is the famous [pizza transaction](https://bitcointalk.org/index.php?topic=137.0). To form the 10,000 BTC [output](/docs/technical/transaction/output.md), this transaction collected 131 [inputs](/docs/technical/transaction/input.md) together, so the input count was a single byte compact size field of `83`.
 
 This is just one quick example. You can look up any transaction in the blockchain and you'll find simple single-byte compact size fields. They're everywhere.
 
 ### `FD`
 
-You'll occasionally run into the `FD` prefix every now and then. This happens when there's a higher-than-average input/output count, or if a [scriptsig](/technical/transaction/input/scriptsig/)/[scriptpubkey](/technical/transaction/output/scriptpubkey/) is unusually large:
+You'll occasionally run into the `FD` prefix every now and then. This happens when there's a higher-than-average input/output count, or if a [scriptsig](/docs/technical/transaction/input/scriptsig.md)/[scriptpubkey](/docs/technical/transaction/output/scriptpubkey.md) is unusually large:
 
-* [6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b](/explorer/tx/6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b) – This transaction has 965 inputs, so the compact size field is `FDC503` (don't forget that the last two bytes are in [little-endian](/technical/general/little-endian/), so `03C5` = 965).
+* [6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b](/explorer/tx/6bb9c31f15c6940d4bd664054e398e420425339aadc65e8c491cf1151fe7ff4b) – This transaction has 965 inputs, so the compact size field is `FDC503` (don't forget that the last two bytes are in [little-endian](/docs/technical/general/little-endian.md), so `03C5` = 965).
 * [e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455](/explorer/tx/e411dbebd2f7d64dafeef9b14b5c59ec60c36779d43f850e5e347abee1e1a455) – This transaction has an unusually large scriptpubkey (it has `OP_CHECKSIG` repeated multiple times for some reason). The script is 4,026 bytes in length, so the compact size field is `FDBA0F`.
 * [3454605a6e24181a6061574720e93a79689865e7952c56c330ebcb98fa95e936](/explorer/tx/3454605a6e24181a6061574720e93a79689865e7952c56c330ebcb98fa95e936) – This transaction has 254 outputs. Whilst a single byte can hold the number 254 in normal circumstances, when using a compact size field the maximum single-byte value is 252. So in this instance the `FD` prefix was used and the number 254 was encoded in the next 2 bytes instead, resulting in a compact size field of `FDFE00`
 
@@ -85,12 +85,12 @@ You'll occasionally run into the `FD` prefix every now and then. This happens wh
 
 You'll *very rarely* come across the `FE` or `FF` prefixes (for numbers greater than 65,535).
 
-This is because the maximum scriptpubkey/scriptsig size is 10,000 bytes (see [script.h](https://github.com/bitcoin/bitcoin/blob/master/src/script/script.h)). Furthermore, due to the block size limit of 4,000,000 [weight](/technical/block/#weight) units, it would be impossible to have more than 65,535 inputs in a single transaction, and it would be incredibly difficult to have more than 65,535 outputs.
+This is because the maximum scriptpubkey/scriptsig size is 10,000 bytes (see [script.h](https://github.com/bitcoin/bitcoin/blob/master/src/script/script.h)). Furthermore, due to the block size limit of 4,000,000 [weight](/docs/technical/block.md#weight) units, it would be impossible to have more than 65,535 inputs in a single transaction, and it would be incredibly difficult to have more than 65,535 outputs.
 
 #### Minimum transaction input and output sizes
 
-* The minimum *[input](/technical/transaction/input/)* size is 41 bytes (32 byte [TXID](/technical/transaction/input/txid/) + 4 byte [VOUT](/technical/transaction/input/vout/) + 1 byte [scriptsig](/technical/transaction/input/scriptsig/) + 4 byte [sequence](/technical/transaction/input/sequence/)). So if you put 65,535 of these in a transaction, it would be 2.686 MB (10,747,740 [weight units](/technical/transaction/size/#weight)) in size, which is larger than the maximum size for an entire block.
-* The minimum *[output](/technical/transaction/output/)* size is 9 bytes (8 byte amount + 1 byte [scriptpubkey](/technical/transaction/output/scriptpubkey/)). So if you put 65,535 of these in a transaction, it would take you up to 0.589 MB (2,359,260 weight units), which *would* technically fit inside a block.
+* The minimum *[input](/docs/technical/transaction/input.md)* size is 41 bytes (32 byte [TXID](/docs/technical/transaction/input/txid.md) + 4 byte [VOUT](/docs/technical/transaction/input/vout.md) + 1 byte [scriptsig](/docs/technical/transaction/input/scriptsig.md) + 4 byte [sequence](/docs/technical/transaction/input/sequence.md)). So if you put 65,535 of these in a transaction, it would be 2.686 MB (10,747,740 [weight units](/docs/technical/transaction/size.md#weight)) in size, which is larger than the maximum size for an entire block.
+* The minimum *[output](/docs/technical/transaction/output.md)* size is 9 bytes (8 byte amount + 1 byte [scriptpubkey](/docs/technical/transaction/output/scriptpubkey.md)). So if you put 65,535 of these in a transaction, it would take you up to 0.589 MB (2,359,260 weight units), which *would* technically fit inside a block.
 
 On the mainnet chain:
 
@@ -111,13 +111,13 @@ Here's where you'll most commonly find compact size fields:
 
 ### Transaction Data
 
-Compact size fields are used throughout raw [transactions](/technical/transaction/). They're used for indicating:
+Compact size fields are used throughout raw [transactions](/docs/technical/transaction.md). They're used for indicating:
 
-* The number of [inputs](/technical/transaction/input/).
-* The number of [outputs](/technical/transaction/output/).
-* The size of the [scriptsig](/technical/transaction/input/scriptsig/).
-* The size of the [scriptpubkey](/technical/transaction/output/scriptpubkey/).
-* The number of [witness](/technical/transaction/witness/) elements. ([Segwit](/technical/upgrades/segregated-witness/) Transactions)
+* The number of [inputs](/docs/technical/transaction/input.md).
+* The number of [outputs](/docs/technical/transaction/output.md).
+* The size of the [scriptsig](/docs/technical/transaction/input/scriptsig.md).
+* The size of the [scriptpubkey](/docs/technical/transaction/output/scriptpubkey.md).
+* The number of [witness](/docs/technical/transaction/witness.md) elements. ([Segwit](/docs/technical/upgrades/segregated-witness.md) Transactions)
   + The size of each witness element.
 
 Here's an example legacy transaction ([414719d592b73341b77497165d9f46f6eff6c243469265f95d920b779c7a0492](/explorer/tx/414719d592b73341b77497165d9f46f6eff6c243469265f95d920b779c7a0492)). I've split the raw transaction data into individual fields and highlighted the compact size fields in green:
@@ -177,19 +177,19 @@ ffff001d
 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-It sits between the [block header](/technical/block/#header) and the transactions. This is the only time the compact size field is used inside a raw block (not including the transactions).
+It sits between the [block header](/docs/technical/block.md#header) and the transactions. This is the only time the compact size field is used inside a raw block (not including the transactions).
 
 ### Network Messages
 
-The compact size field is used inside the various [messages](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types) that nodes send to each other on the bitcoin [network](/technical/networking/).
+The compact size field is used inside the various [messages](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types) that nodes send to each other on the bitcoin [network](/docs/technical/networking.md).
 
-For example, the payload of an ["inv" message](/technical/networking/#inv) uses a compact size field to indicate the number of upcoming items:
+For example, the payload of an ["inv" message](/docs/technical/networking.md#inv) uses a compact size field to indicate the number of upcoming items:
 
 ```
 01 01000000aa325e9122aa39ca18c75aabe2a3ceaf9802acd1a40720925bfd77fff58ed821
 ```
 
-This message indicates that there is one item in the list, and it's this TXID: [21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa](/explorer/tx/21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa) ([reverse byte order](/technical/general/byte-order/#reverse-byte-order)).
+This message indicates that there is one item in the list, and it's this TXID: [21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa](/explorer/tx/21d88ef5ff77fd5b922007a4d1ac0298afcea3e2ab5ac718ca39aa22915e32aa) ([reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order)).
 
 *Transactions* and *blocks* are actually messages that get sent across the bitcoin network too. So the compact size field helps to save space in the serialized *messages* that get sent between nodes. You always want to send the least amount of data across the wire as possible (for efficiency), so that's why compact size is useful.
 
@@ -241,7 +241,7 @@ Number  | Bytes
  TOTAL BYTES = 24
 ```
 
-It's a minor space-saving technique. But when you have multiple of these fields in a transaction, and hundreds of thousands of transactions traveling between computers every day (and billions of transactions stored in the [blockchain](/technical/blockchain/)), the bytes add up.
+It's a minor space-saving technique. But when you have multiple of these fields in a transaction, and hundreds of thousands of transactions traveling between computers every day (and billions of transactions stored in the [blockchain](/docs/technical/blockchain.md)), the bytes add up.
 
 ## Code
 

@@ -2,14 +2,14 @@
 
 [![Diagram of showing the sequence fields alongside each transaction input.](../../../images/diagrams_png_transaction-sequence.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence.png)
 
-The sequence field can be found inside every transaction [input](/technical/transaction/input/). It gives you control over when a transaction **can be mined** or if a transaction **can be replaced** whilst it's in the [mempool](/technical/mining/memory-pool/).
+The sequence field can be found inside every transaction [input](/docs/technical/transaction/input.md). It gives you control over when a transaction **can be mined** or if a transaction **can be replaced** whilst it's in the [mempool](/docs/technical/mining/memory-pool.md).
 
-In more technical terms, you can say that the sequence field has control over the "finality" of a transaction, as in whether a transaction is in its "final" state before it gets mined into a block. If it's not in its "final" state, then it's possible for it to be replaced before it ends up in the [blockchain](/technical/blockchain/).
+In more technical terms, you can say that the sequence field has control over the "finality" of a transaction, as in whether a transaction is in its "final" state before it gets mined into a block. If it's not in its "final" state, then it's possible for it to be replaced before it ends up in the [blockchain](/docs/technical/blockchain.md).
 
 These are the most common settings:
 
 * <=0xFFFFFFFE — **Locktime.**  
-  This setting enables the transaction's [locktime](/technical/transaction/locktime/) field to be used.
+  This setting enables the transaction's [locktime](/docs/technical/transaction/locktime.md) field to be used.
 * <=0xFFFFFFFD — **Replace By Fee (RBF)**.  
   This setting enables the RBF feature, which allows you to replace a transaction with a higher-fee one if it's still in the mempool.
 * <=0xEFFFFFFF — **Relative Locktime**.  
@@ -66,7 +66,7 @@ You only need to set *one* of the sequence fields to enable **locktime** or **RB
 
 [![Diagram showing the sequence field being set to enable the locktime field of a transaction.](../../../images/diagrams_png_transaction-sequence-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-locktime.png)
 
-You can enable the [locktime](/technical/transaction/locktime/) field for the entire transaction if you set *any* of the input sequence values to 0xFFFFFFE or below.
+You can enable the [locktime](/docs/technical/transaction/locktime.md) field for the entire transaction if you set *any* of the input sequence values to 0xFFFFFFE or below.
 
 For example:
 
@@ -80,11 +80,11 @@ By default, the [Bitcoin Core](https://bitcoin.org/en/bitcoin-core/) wallet sets
 
 ### Usage
 
-If you want a transaction to only be able to be [mined](/technical/mining/) at some point in the future, you need to make use of the locktime field at the end of the transaction.
+If you want a transaction to only be able to be [mined](/docs/technical/mining.md) at some point in the future, you need to make use of the locktime field at the end of the transaction.
 
 To enable the locktime field, you need to set one of the sequence values in your transaction to 0xFFFFFFFE or below.
 
-You can then set the locktime field to between 0 and 499999999 for the transaction to be able to be mined after a certain block [height](/technical/blockchain/height/), or between 500000000 and 4294967295 for it to be mined after a specific point in time (i.e. a Unix timestamp).
+You can then set the locktime field to between 0 and 499999999 for the transaction to be able to be mined after a certain block [height](/docs/technical/blockchain/height.md), or between 500000000 and 4294967295 for it to be mined after a specific point in time (i.e. a Unix timestamp).
 
 ![Tool Icon](../../../images/icons_tool.svg) Unix Time
 
@@ -106,7 +106,7 @@ Date
 
 [![Diagram showing the sequence field being set to enable the replace by fee feature on a transaction.](../../../images/diagrams_png_transaction-sequence-replace-by-fee.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-replace-by-fee.png)
 
-You can allow for a transaction to be replaced by a higher-fee transaction later on (whilst it's still in the [memory pool](/technical/mining/memory-pool/)) by setting the sequence value on *any* of its inputs to 0xFFFFFFFD or below.
+You can allow for a transaction to be replaced by a higher-fee transaction later on (whilst it's still in the [memory pool](/docs/technical/mining/memory-pool.md)) by setting the sequence value on *any* of its inputs to 0xFFFFFFFD or below.
 
 For example:
 
@@ -118,7 +118,7 @@ This value is **1 less** than the [locktime](#locktime) setting above, which mea
 
 ### Usage
 
-Let's say you've created a transaction and sent it into the [network](/technical/networking/), but you've set an annoyingly low [fee](/technical/transaction/fee/) on it.
+Let's say you've created a transaction and sent it into the [network](/docs/technical/networking.md), but you've set an annoyingly low [fee](/docs/technical/transaction/fee.md) on it.
 
 If there's a high volume of high-fee transactions on the network, your transaction may end up hanging around in the memory pool waiting to get mined. Normally you wouldn't be able to undo or replace this transaction until it gets mined or expires from the memory pool, but this could take a few days.
 
@@ -130,7 +130,7 @@ A few notes on using RBF:
 
 * **You do not need to increase or decrease the sequence number in the replacement transaction.** All that matters is that the replacement transaction has a higher fee.
 * **You can replace transactions over and over again as long as the new transaction has a higher fee than the one you're replacing.** The more replacements you make, the higher the fee will need to be each time to surpass the fees on the previous replacement transactions.
-* **You can send the coins to a different destination (i.e. create different [outputs](/technical/transaction/output/)) in the replacement transaction if you want.** This is why this is sometimes referred to as "Full RBF", as other RBF proposals required the replacement transaction to have the same outputs.
+* **You can send the coins to a different destination (i.e. create different [outputs](/docs/technical/transaction/output.md)) in the replacement transaction if you want.** This is why this is sometimes referred to as "Full RBF", as other RBF proposals required the replacement transaction to have the same outputs.
 
 **RBF is transaction-wide, not input-specific.** Setting a sequence of 0xFFFFFFFD or below on any input makes the *whole transaction* replaceable. So if you have a number of other inputs in the same transaction, those individual inputs can also be spent in a higher-fee transaction *even if* you gave them the maximum sequence of 0xFFFFFFFF.
 
@@ -144,16 +144,16 @@ The fee on the replacement transaction must be enough to cover the *minimum rela
 RBF Transaction Minimum Fee = Minimum Relay Fee + Previous Transaction Fee(s)
 ```
 
-**[Minimum Relay Fee](/technical/transaction/fee/#minimum-relay-fee):**
+**[Minimum Relay Fee](/docs/technical/transaction/fee.md#minimum-relay-fee):**
 
-This is the *minimum* fee you have to put on a transaction for a node to accept it into their memory pools. Each node can set this fee independently, but the default is 1 sat/[vbyte](/technical/transaction/size/#vbytes). This helps to prevent anyone from spamming the network with "free" transactions.
+This is the *minimum* fee you have to put on a transaction for a node to accept it into their memory pools. Each node can set this fee independently, but the default is 1 sat/[vbyte](/docs/technical/transaction/size.md#vbytes). This helps to prevent anyone from spamming the network with "free" transactions.
 
 
 
 
 ### RBF Examples
 
-Let's say the minimum relay fee is currently **1 sat/[vbyte](/technical/transaction/size/#vbytes)**.
+Let's say the minimum relay fee is currently **1 sat/[vbyte](/docs/technical/transaction/size.md#vbytes)**.
 
 For a simple *replace by fee* transaction (where the replacement transaction is exactly the same as the original), the fee on the replacement transaction just needs to be at least *double* that of the transaction you want to replace:
 
@@ -211,7 +211,7 @@ Relative locktime allows you to **specify an amount of time or number of blocks 
 
 So whereas the transaction locktime allows you to specify an *absolute* time when a transaction can be mined, relative locktime allows you to specify a relative amount of time (from when an output was mined) before the transaction spending it can be mined.
 
-To set the relative locktime on an input you need to view the sequence as a field of 32 individual bits (i.e. a [bit field](/technical/general/bytes/#bit-field)):
+To set the relative locktime on an input you need to view the sequence as a field of 32 individual bits (i.e. a [bit field](/docs/technical/general/bytes.md#bit-field)):
 
 Sequence (Little Endian)
 

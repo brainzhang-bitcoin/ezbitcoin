@@ -2,15 +2,15 @@
 
 [![Diagram showing a message being sent to another node with the magic bytes at the start of the message.](../../images/diagrams_png_networking-magic-bytes.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-magic-bytes.png)
 
-Magic bytes help **identify the separate messages** sent between nodes on the [bitcoin network](/technical/networking/).
+Magic bytes help **identify the separate messages** sent between nodes on the [bitcoin network](/docs/technical/networking.md).
 
-For example, when [connecting to a node](/technical/networking/#connecting) with your own code, *every message* you receive from that node will start with `f9beb4d9`, and every message you send should begin with the same magic bytes.
+For example, when [connecting to a node](/docs/technical/networking.md#connecting) with your own code, *every message* you receive from that node will start with `f9beb4d9`, and every message you send should begin with the same magic bytes.
 
 ## Bitcoin
 
 What are the magic bytes in Bitcoin?
 
-The magic bytes used in Bitcoin are 4 [bytes](/technical/general/bytes/) in length, and they are different for each network:
+The magic bytes used in Bitcoin are 4 [bytes](/docs/technical/general/bytes.md) in length, and they are different for each network:
 
 | Network | Magic Bytes |
 | --- | --- |
@@ -22,19 +22,19 @@ The magic bytes used in Bitcoin are 4 [bytes](/technical/general/bytes/) in leng
 
 Where can you find magic bytes?
 
-This is a raw "[version](/technical/networking/#version)" message, which is the first message you'll receive when connecting to a node:
+This is a raw "[version](/docs/technical/networking.md#version)" message, which is the first message you'll receive when connecting to a node:
 
 ```
 f9beb4d976657273696f6e00000000006f0000004aae42a47c11010005000000000000001436396400000000010000000000000000000000000000000000ffffc1207f8db0d0050000000000000000000000000000000000ffff8a4414c5208df66af23ecba5bd68192f5361746f7368693a302e31322e3128626974636f7265292fc8fb0b0001
 ```
 
-And this is a raw "tx" message containing a single [transaction](/technical/transaction/):
+And this is a raw "tx" message containing a single [transaction](/docs/technical/transaction.md):
 
 ```
 f9beb4d9747800000000000000000000e00000006a86deb701000000015ac5ae0a2ba96622c9b79de2c339084c8b1d30f63bb55a315f354db4d9a6abcf010000006b4830450221009ad52459e1e8bd5e758399cc0be963c75726c5089499465d9aa79ffb304ecd3802207d73ea58047f4d1f857b400cbff725ef562b7ada1c26e763c5a1aa6d29d2fdf401210234b7b614fcc0e4d926747d491992d8cc133f076bd79095eddf60c34b0e3fef4affffffff02390205000000000017a914ea3b6d7e92e05370bc8a61d3f05dbfdc90bb1d9587d1df3000000000001976a91425f0800454530549ed93747a6449aefe2618203988ac00000000
 ```
 
-If you print out the genesis block from the [raw blockchain files](/technical/block/blkdat/) of your local node, you'll see that it's stored on disk along with the magic bytes too:
+If you print out the genesis block from the [raw blockchain files](/docs/technical/block/blkdat.md) of your local node, you'll see that it's stored on disk along with the magic bytes too:
 
 ```
 $ hexdump -C -n 293 blk00000.dat
@@ -94,9 +94,9 @@ This quote above was originally in the chainparams.cpp file, but has since been 
 
 So they could be different, but these are just 4 bytes that have the properties that make for good-enough magic bytes on the Bitcoin network.
 
-* **ASCII.** If you convert the bytes `f9beb4d9` to [Extended ASCII](https://en.wikipedia.org/wiki/Extended_ASCII) you get `ù¾´Ù`, which makes for an unlikely string of characters to be unintentionally placed inside the [scriptsig](/technical/transaction/input/scriptsig/) of a [coinbase transaction](/technical/mining/coinbase-transaction/) by a miner, or as a text string in an [OP\_RETURN](/technical/script/return/) output.
+* **ASCII.** If you convert the bytes `f9beb4d9` to [Extended ASCII](https://en.wikipedia.org/wiki/Extended_ASCII) you get `ù¾´Ù`, which makes for an unlikely string of characters to be unintentionally placed inside the [scriptsig](/docs/technical/transaction/input/scriptsig.md) of a [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) by a miner, or as a text string in an [OP\_RETURN](/docs/technical/script/return.md) output.
 * **UTF-8.** The [basic Latin UTF-8 character set](https://www.w3schools.com/charsets/ref_utf_basic_latin.asp) does not go above `7e`, so if you're encoding some text using basic UTF-8, you're not going to collide with any of the magic bytes (as they're all greater than `7e`).
-* **Integers.** If you convert `f9beb4d9` to an integer you get **4190024921**. If you also reverse the byte order to `d9b4bef9` and convert to an integer you get **3652501241**. Both of these are very large numbers, so it's less likely they're going to be used within one of the fields of raw [transaction](/technical/transaction/) data (e.g. [version](/technical/transaction/#structure-version), input count, [vout](/technical/transaction/#structure-inputs-vout), output count, amount, script size, etc.).
+* **Integers.** If you convert `f9beb4d9` to an integer you get **4190024921**. If you also reverse the byte order to `d9b4bef9` and convert to an integer you get **3652501241**. Both of these are very large numbers, so it's less likely they're going to be used within one of the fields of raw [transaction](/docs/technical/transaction.md) data (e.g. [version](/docs/technical/transaction.md#structure-version), input count, [vout](/docs/technical/transaction.md#structure-inputs-vout), output count, amount, script size, etc.).
 
 ![Tool Icon](../../images/icons_tool.svg) Number Converter
 

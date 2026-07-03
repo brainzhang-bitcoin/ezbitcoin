@@ -2,7 +2,7 @@
 
 To send and receive bitcoins you need some sort of "account number" and "password".
 
-In Bitcoin, we call these a [public key](/beginners/guide/public-keys/) and a [private key](/beginners/guide/private-keys/).
+In Bitcoin, we call these a [public key](/docs/beginners/guide/public-keys.md) and a [private key](/docs/beginners/guide/private-keys.md).
 
 [![Diagram showing a public key as an account number and a private key as the password.](../../images/beginners_guide_keys-addresses_01-private-public.png)](https://static.learnmeabitcoin.com/beginners/guide/keys-addresses/01-private-public.png)
 
@@ -24,13 +24,13 @@ So to summarize:
 
 All the keys used in Bitcoin are randomly generated on your computer.
 
-### [Private Key](/beginners/guide/private-keys/)
+### [Private Key](/docs/beginners/guide/private-keys.md)
 
 It all starts with the private key, which is just a **randomly generated number**:
 
 [![Illustration showing a private key being produced by a random number generator.](../../images/beginners_guide_keys-addresses_02-random-private.png)](https://static.learnmeabitcoin.com/beginners/guide/keys-addresses/02-random-private.png)
 
-But because this number is so large, we usually display it in [hexadecimal](/technical/general/hexadecimal/) format:
+But because this number is so large, we usually display it in [hexadecimal](/docs/technical/general/hexadecimal.md) format:
 
 [![Diagram showing a private key converted to hexadecimal format.](../../images/beginners_guide_keys-addresses_02-random-private-hex.png)](https://static.learnmeabitcoin.com/beginners/guide/keys-addresses/02-random-private-hex.png)
 
@@ -48,7 +48,7 @@ For example:
 
 A private key can be any number between **1** and **115792089237316195423570985008687907852837564279074904382605163141518161494336**.
 
-### [Public Key](/beginners/guide/public-keys/)
+### [Public Key](/docs/beginners/guide/public-keys.md)
 
 You use your private key to calculate your public key.
 
@@ -68,7 +68,7 @@ We just shove the private key (which is a number after all) in to this function,
 
 Now, there are two benefits of using this particular function:
 
-1. **There is a mathematical connection between the private key and public key.** This will come in handy later on when we want to spend our bitcoins in a [transaction](/beginners/guide/transactions/).  
+1. **There is a mathematical connection between the private key and public key.** This will come in handy later on when we want to spend our bitcoins in a [transaction](/docs/beginners/guide/transactions.md).  
    ![Illustration showing how the private key fits the public key like a traditional key and lock.](../../images/beginners_guide_keys-addresses_03-public-private-mathematical-fit.png)
 2. **It's not possible to figure out the private key from the public key**. Even though the public key is calculated *from* the private key, we're using what's known as a "one-way" function, so you can't work backwards from the public key to calculate the private key.
 
@@ -89,7 +89,7 @@ So let's make it a bit prettier and call it an address.
 
 Thank goodness.
 
-All we've done here is *compress* the public key (using [hash functions](/technical/cryptography/hash-function/)), and convert it to a format that doesn't use any characters that look similar to each other when written down (called [Base58](/technical/keys/base58/)).
+All we've done here is *compress* the public key (using [hash functions](/docs/technical/cryptography/hash-function.md)), and convert it to a format that doesn't use any characters that look similar to each other when written down (called [Base58](/docs/technical/keys/base58.md)).
 
 So it's still not the shortest and sweetest piece of data you've ever seen, but it *is* an improvement.
 
@@ -111,7 +111,7 @@ Because your public key and address are worked out *from* your private key, **yo
 
 So if worse comes to worst, if you ever need to send your address to someone, you can just work it out from your private key.
 
-You're most likely going to be using a [wallet](/beginners/wallets/), so managing your individual private keys and addresses isn't really an issue. The only thing you need to keep safe when using a wallet is your [seed](/technical/keys/hd-wallets/mnemonic-seed/).
+You're most likely going to be using a [wallet](/docs/beginners/wallets.md), so managing your individual private keys and addresses isn't really an issue. The only thing you need to keep safe when using a wallet is your [seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md).
 
 ## What happens if I lose my private key?
 

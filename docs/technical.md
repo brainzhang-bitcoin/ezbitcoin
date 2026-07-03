@@ -54,7 +54,7 @@ If you're going to be working with bitcoin, it's a good idea to install [Bitcoin
 
 There are a few benefits to running your own local bitcoin node:
 
-* **Access to raw bitcoin data.** By running a full node on your local computer you can quickly and easily access raw [block](/technical/block/) and [transaction](/technical/transaction/) data without having to rely on a third-party API:  
+* **Access to raw bitcoin data.** By running a full node on your local computer you can quickly and easily access raw [block](/docs/technical/block.md) and [transaction](/docs/technical/transaction.md) data without having to rely on a third-party API:  
 
   ```
   bitcoin-cli getrawtransaction <txid>
@@ -66,7 +66,7 @@ There are a few benefits to running your own local bitcoin node:
   bitcoin-cli decoderawtransaction <raw transaction data>
   bitcoin-cli decodescript <hex script>
   ```
-* **Sending raw transactions.** If you're in the business of constructing your own raw [transactions](/technical/transaction/), you can send them into the bitcoin network via your own local node:  
+* **Sending raw transactions.** If you're in the business of constructing your own raw [transactions](/docs/technical/transaction.md), you can send them into the bitcoin network via your own local node:  
 
   ```
   bitcoin-cli sendrawtransaction <raw transaction data>
@@ -117,7 +117,7 @@ In short, don't get hung up on which language is "best" for bitcoin. The best la
 
 If I had to provide you with a specific route to take, I'd say these are the **three** most practical (and satisfying) milestones when learning how to program with bitcoin:
 
-1. **Generating your own [keys](/technical/keys/).** This is the perfect place to start. Try generating your own [private key](/technical/keys/private-key/), [public key](/technical/keys/public-key/), and [address](/technical/keys/address/). Then import the private key into a wallet, and see if you get the same address as the one you generated.  
+1. **Generating your own [keys](/docs/technical/keys.md).** This is the perfect place to start. Try generating your own [private key](/docs/technical/keys/private-key.md), [public key](/docs/technical/keys/public-key.md), and [address](/docs/technical/keys/address.md). Then import the private key into a wallet, and see if you get the same address as the one you generated.  
 
    Generate
 
@@ -126,7 +126,7 @@ If I had to provide you with a specific route to take, I'd say these are the **t
    public key:  03e79f1ddd24311b4988bf5089d8f8d4b41b581f7202a42bb80d6dd0eb0cf0ce48
    address:     1CX78rJhYpYuJ6TvoHP3HDHopm9PeKN7pd
    ```
-2. **Decoding a [transaction](/technical/transaction/).** Learning how to decode a raw transaction will teach you a lot about the structure of a bitcoin transaction, and they make up 99% of the data inside the [blockchain](/technical/blockchain/).  
+2. **Decoding a [transaction](/docs/technical/transaction.md).** Learning how to decode a raw transaction will teach you a lot about the structure of a bitcoin transaction, and they make up 99% of the data inside the [blockchain](/docs/technical/blockchain.md).  
 
    ![Tool Icon](images/icons_tool.svg) Transaction Splitter
 
@@ -146,7 +146,7 @@ If I had to provide you with a specific route to take, I'd say these are the **t
 
 
    0 secs
-3. **Creating your own transaction.** After decoding a transaction, you're all set to create your own. This is a much bigger milestone (so take your time), but it's the natural next step. [Signing](/technical/keys/signature/) it will be the tricky part, but if you can successfully send your own bitcoin transaction into the [network](/technical/networking/), then you can safely say that you're a pretty good bitcoin programmer.  
+3. **Creating your own transaction.** After decoding a transaction, you're all set to create your own. This is a much bigger milestone (so take your time), but it's the natural next step. [Signing](/docs/technical/keys/signature.md) it will be the tricky part, but if you can successfully send your own bitcoin transaction into the [network](/docs/technical/networking.md), then you can safely say that you're a pretty good bitcoin programmer.  
 
    ![Tool Icon](images/icons_tool.svg) Transaction Builder
 
@@ -255,7 +255,7 @@ This is especially true if you don't have an idea for a project yet. Plus, if yo
 
 Some basic command line tools that will prove to be very useful over the long run are:
 
-* **Hash Functions** - It's handy to have a quick and easy way to get the [HASH256](/technical/cryptography/hash-function/#hash256) or [HASH160](/technical/cryptography/hash-function/#hash160) of some data, because they're used everywhere in Bitcoin.  
+* **Hash Functions** - It's handy to have a quick and easy way to get the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) or [HASH160](/docs/technical/cryptography/hash-function.md#hash160) of some data, because they're used everywhere in Bitcoin.  
 
   ![Tool Icon](images/icons_tool.svg) HASH256
 
@@ -308,7 +308,7 @@ Some basic command line tools that will prove to be very useful over the long ru
 
 
   0 secs
-* **Reversing Byte Order** - This one is invaluable to me. You often need to reverse the [byte order](/technical/general/byte-order/) of [TXIDs](/technical/transaction/input/txid/) and [block hashes](/technical/block/hash/), because the byte order you use within raw transaction data and block data is the reverse of what you use to search for them in a [blockchain explorer](/explorer/). Furthermore, most fields in raw bitcoin data are in "[little-endian](/technical/general/little-endian/)", so you'll often find yourself needing to reverse the byte order before converting numbers between hexadecimal and decimal  
+* **Reversing Byte Order** - This one is invaluable to me. You often need to reverse the [byte order](/docs/technical/general/byte-order.md) of [TXIDs](/docs/technical/transaction/input/txid.md) and [block hashes](/docs/technical/block/hash.md), because the byte order you use within raw transaction data and block data is the reverse of what you use to search for them in a [blockchain explorer](/explorer/). Furthermore, most fields in raw bitcoin data are in "[little-endian](/docs/technical/general/little-endian.md)", so you'll often find yourself needing to reverse the byte order before converting numbers between hexadecimal and decimal  
 
   ![Tool Icon](images/icons_tool.svg) Reverse Bytes
 
@@ -328,7 +328,7 @@ Some basic command line tools that will prove to be very useful over the long ru
 
 
   0 secs
-* **Number Converter** - I can't tell you how many times I've converted something from [hexadecimal](/technical/general/hexadecimal/) to decimal (and vice versa). You can use an online tool if you want, but there's nothing quite like firing up a terminal and converting a number using a script you've written yourself.  
+* **Number Converter** - I can't tell you how many times I've converted something from [hexadecimal](/docs/technical/general/hexadecimal.md) to decimal (and vice versa). You can use an online tool if you want, but there's nothing quite like firing up a terminal and converting a number using a script you've written yourself.  
 
   ![Tool Icon](images/icons_tool.svg) Number Converter
 
@@ -396,7 +396,7 @@ This is just a handful of cool tools that I know have been made by *individuals*
 
 So just go ahead and create something useful that doesn't already exist, then make it available for other people to use, and see what happens.
 
-**Be responsible.** You need to be very careful if you're creating a tool that handles [private keys](/technical/keys/private-key/) or creates [transactions](/technical/transaction/) for other people (e.g. a wallet). It's one thing to make your own mistakes and lose your own coins, but it's another to make mistakes that cause other people to lose coins, so don't take it lightly.
+**Be responsible.** You need to be very careful if you're creating a tool that handles [private keys](/docs/technical/keys/private-key.md) or creates [transactions](/docs/technical/transaction.md) for other people (e.g. a wallet). It's one thing to make your own mistakes and lose your own coins, but it's another to make mistakes that cause other people to lose coins, so don't take it lightly.
 
 **Share your work on [GitHub](https://github.com/).** This is a good way to share your code with the world, and it's also a good way to display your experience if you're looking to get a job (if that's the direction you want to go in).
 
@@ -404,7 +404,7 @@ So just go ahead and create something useful that doesn't already exist, then ma
 
 Don't let anyone make you think that you can't be a bitcoin programmer.
 
-Bitcoin is decentralized, open-source software. You can generate your own [keys](/technical/keys/) and construct your own [transactions](/technical/transaction/) if you want to, and nobody can stop you. That's part of what makes bitcoin, bitcoin.
+Bitcoin is decentralized, open-source software. You can generate your own [keys](/docs/technical/keys.md) and construct your own [transactions](/docs/technical/transaction.md) if you want to, and nobody can stop you. That's part of what makes bitcoin, bitcoin.
 
 I'm sure some people will want to convince you that you need some kind of qualification to work with bitcoin, but allow me to tell you, you don't. Everything you need can be learnt for free on the Internet, or even by just looking at the [bitcoin source code](https://github.com/bitcoin/bitcoin/). The only real qualification you need to work on bitcoin is the desire to contribute, and everything else can be learnt along the way.
 

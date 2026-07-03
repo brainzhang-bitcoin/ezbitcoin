@@ -10,11 +10,11 @@ This is just information, so it can be easily represented in a single line of da
 
 [![Diagram showing a transaction as a line of data.](../../images/beginners_guide_transactions_01-transaction-table-data.png)](https://static.learnmeabitcoin.com/beginners/guide/transactions/01-transaction-table-data.png)
 
-And when you "make a transaction", you just send this *transaction data* into the [bitcoin network](/beginners/guide/network/).
+And when you "make a transaction", you just send this *transaction data* into the [bitcoin network](/docs/beginners/guide/network.md).
 
 [![Diagram showing a transaction being sent into the bitcoin network.](../../images/beginners_guide_transactions_01-transaction-table-data-network.png)](https://static.learnmeabitcoin.com/beginners/guide/transactions/01-transaction-table-data-network.png)
 
-Eventually, one of the [nodes](/beginners/guide/node/) on the network will [mine](/beginners/guide/mining/) your transaction into a [block](/beginners/guide/blocks/), and this block (with your transaction in it) will be added to the permanent file of transactions (called the [blockchain](/beginners/guide/blockchain/)).
+Eventually, one of the [nodes](/docs/beginners/guide/node.md) on the network will [mine](/docs/beginners/guide/mining.md) your transaction into a [block](/docs/beginners/guide/blocks.md), and this block (with your transaction in it) will be added to the permanent file of transactions (called the [blockchain](/docs/beginners/guide/blockchain.md)).
 
 [![Diagram showing a transaction being mined into a block on the blockchain.](../../images/beginners_guide_transactions_01-transaction-table-data-network-mined.png)](https://static.learnmeabitcoin.com/beginners/guide/transactions/01-transaction-table-data-network-mined.png)
 
@@ -22,7 +22,7 @@ And that's all a bitcoin transaction is – a simple line of data that gets sent
 
 ## How does a bitcoin transaction work?
 
-A bitcoin [address](/technical/keys/address/) is like an *account number* that holds bitcoins.
+A bitcoin [address](/docs/technical/keys/address.md) is like an *account number* that holds bitcoins.
 
 However, when you make a transaction, it's not like taking an exact amount of coins out of a pot and moving them into another.
 
@@ -56,13 +56,13 @@ This may seem awkward at first, I know, but it's a precise way of doing it from 
 
 ### Summary
 
-1. Your [wallet](/beginners/wallets/) gives you a bitcoin address. Bitcoins arrive at this address in batches, called *outputs*.
+1. Your [wallet](/docs/beginners/wallets.md) gives you a bitcoin address. Bitcoins arrive at this address in batches, called *outputs*.
 2. A bitcoin transaction is the process of using these outputs (as inputs) to create new outputs that belong to someone else's address.
 3. All of this can be represented by a single line of data.
 
 [![Diagram showing a complete bitcoin transaction represented as a single line of data.](../../images/beginners_guide_transactions_02-address1-address2-change-data.png)](https://static.learnmeabitcoin.com/beginners/guide/transactions/02-address1-address2-change-data.png)
 
-For more details on how this system of outputs works, check out [outputs](/beginners/guide/outputs/).
+For more details on how this system of outputs works, check out [outputs](/docs/beginners/guide/outputs.md).
 
 ## What prevents other people from spending my bitcoins?
 
@@ -78,7 +78,7 @@ And if you create a transaction *without* unlocking these outputs, nodes on the 
 
 [![Diagram showing a node rejecting a transaction where the inputs have not been unlocked.](../../images/beginners_guide_transactions_03-output-locks-rejected.png)](https://static.learnmeabitcoin.com/beginners/guide/transactions/03-output-locks-rejected.png)
 
-But fortunately for you, each address comes with a unique [private key](/technical/keys/private-key/):
+But fortunately for you, each address comes with a unique [private key](/docs/technical/keys/private-key.md):
 
 [![Diagram showing an address with a corresponding private key.](../../images/beginners_guide_transactions_03-address-key.png)](https://static.learnmeabitcoin.com/beginners/guide/transactions/03-address-key.png)
 

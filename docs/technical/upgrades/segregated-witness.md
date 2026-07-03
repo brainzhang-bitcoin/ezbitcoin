@@ -10,7 +10,7 @@ Segregated Witness (SegWit) was a major upgrade to the Bitcoin software activate
 
 The main changes were a **new transaction structure**, a **block size increase**, and the addition of a **new address format**.
 
-**This page lists the *technical changes* introduced in the Segregated Witness upgrade.** For an introduction on why and how the upgrade took place, check out the [beginner's guide to SegWit](/beginners/guide/segwit/).
+**This page lists the *technical changes* introduced in the Segregated Witness upgrade.** For an introduction on why and how the upgrade took place, check out the [beginner's guide to SegWit](/docs/beginners/guide/segwit.md).
 
 ## Motivation
 
@@ -18,11 +18,11 @@ Why was Segregated Witness introduced?
 
 The primary reason for the Segregated Witness upgrade was to **fix transaction malleability**.
 
-Before Segregated Witness, the [TXID](/technical/transaction/input/txid/)s for [legacy transactions](/technical/transaction/#example-legacy) were created from the *entire transaction data*, including the [signatures](/technical/keys/signature/).
+Before Segregated Witness, the [TXID](/docs/technical/transaction/input/txid.md)s for [legacy transactions](/docs/technical/transaction.md#example-legacy) were created from the *entire transaction data*, including the [signatures](/docs/technical/keys/signature.md).
 
-However, it's possible to [adjust the signatures](/technical/keys/signature/#legacy-step-6) inside a transaction and for them to remain valid, and this would have a knock-on effect to the TXID. This meant that it was possible for someone to change the TXID of your transaction after you sent it into the [network](/technical/networking/).
+However, it's possible to [adjust the signatures](/docs/technical/keys/signature.md#legacy-step-6) inside a transaction and for them to remain valid, and this would have a knock-on effect to the TXID. This meant that it was possible for someone to change the TXID of your transaction after you sent it into the [network](/docs/technical/networking.md).
 
-The problem with this is that any transactions that depend on this TXID (i.e. transactions that spend one of the [outputs](/technical/transaction/output/) while it was still in the [memory pool](/technical/mining/memory-pool/)) would become invalid. In other words, a miner could "cancel" the [descendants](/technical/mining/memory-pool/#descendants) of memory pool transactions and prevent them from getting [mined](/technical/mining/) into a block.
+The problem with this is that any transactions that depend on this TXID (i.e. transactions that spend one of the [outputs](/docs/technical/transaction/output.md) while it was still in the [memory pool](/docs/technical/mining/memory-pool.md)) would become invalid. In other words, a miner could "cancel" the [descendants](/docs/technical/mining/memory-pool.md#descendants) of memory pool transactions and prevent them from getting [mined](/docs/technical/mining.md) into a block.
 
 Therefore, the primary change in the Segregated Witness upgrade was a modification to the transaction data structure so that the signatures were no longer included as part of the TXID calculation, making TXIDs dependable and allowing you to confidently spend the outputs of transactions whilst they are still in the memory pool.
 
@@ -40,13 +40,13 @@ I'll start with the most significant changes first (the ones you're most likely 
 
 [![Diagram showing the new witness section of a transaction used for unlocking inputs.](../../images/diagrams_png_transaction-witness.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness.png)
 
-The primary change was the addition of a new [segwit transaction](/technical/transaction/#example-segwit) structure.
+The primary change was the addition of a new [segwit transaction](/docs/technical/transaction.md#example-segwit) structure.
 
-These new segwit transactions include a **new [witness](/technical/transaction/witness/) section** that holds the unlocking code (i.e. signatures) for the [new locking scripts](#locking-scripts) introduced in the upgrade.
+These new segwit transactions include a **new [witness](/docs/technical/transaction/witness.md) section** that holds the unlocking code (i.e. signatures) for the [new locking scripts](#locking-scripts) introduced in the upgrade.
 
-So whereas legacy transactions would use the [ScriptSig](/technical/transaction/input/scriptsig/) field to unlock inputs, segwit transactions now use the new *witness* section instead.
+So whereas legacy transactions would use the [ScriptSig](/docs/technical/transaction/input/scriptsig.md) field to unlock inputs, segwit transactions now use the new *witness* section instead.
 
-* Legacy locking scripts (e.g. [P2PKH](/technical/script/p2pkh/), [P2SH](/technical/script/p2sh/)) still need to be unlocked using the ScriptSig field. It's only the new locking scripts (e.g. [P2WPKH](/technical/script/p2wpkh/), [P2WSH](/technical/script/p2wsh/)) that use the new witness field for unlocking.
+* Legacy locking scripts (e.g. [P2PKH](/docs/technical/script/p2pkh.md), [P2SH](/docs/technical/script/p2sh.md)) still need to be unlocked using the ScriptSig field. It's only the new locking scripts (e.g. [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md)) that use the new witness field for unlocking.
 * Legacy transactions that do not use the witness section for unlocking inputs are therefore still vulnerable to transaction malleability.
 
 ![Tool Icon](../../images/icons_tool.svg) Transaction Splitter
@@ -73,7 +73,7 @@ Result
 
 [![Diagram showing the size calculation of a transaction in terms of weight.](../../images/diagrams_png_transaction-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
 
-With the addition of the [new witness field](#transaction-structure), transactions were also given a **new [size](/technical/transaction/size/) calculation called [weight](/technical/transaction/size/#weight)**.
+With the addition of the [new witness field](#transaction-structure), transactions were also given a **new [size](/docs/technical/transaction/size.md) calculation called [weight](/docs/technical/transaction/size.md#weight)**.
 
 Instead of measuring the size of a transaction purely on the number of bytes, different parts of the transaction data were given *specific multipliers* so that some parts of a transaction would "weigh less" than others:
 
@@ -82,9 +82,9 @@ Instead of measuring the size of a transaction purely on the number of bytes, di
 | Legacy Data | bytes x 4 |
 | Segwit Data | bytes x 1 |
 
-As a result, the unlocking code in a segwit transaction *weighs less* than the unlocking code in a legacy transaction, effectively giving a size discount (and reduced [fee](/technical/transaction/fee/) costs) to anyone using new segwit transactions.
+As a result, the unlocking code in a segwit transaction *weighs less* than the unlocking code in a legacy transaction, effectively giving a size discount (and reduced [fee](/docs/technical/transaction/fee.md) costs) to anyone using new segwit transactions.
 
-#### [Virtual Bytes](/technical/transaction/size/#vbytes)
+#### [Virtual Bytes](/docs/technical/transaction/size.md#vbytes)
 
 The virtual bytes measurement is equivalent to the *weight* measurement, but with different multipliers:
 
@@ -95,7 +95,7 @@ The virtual bytes measurement is equivalent to the *weight* measurement, but wit
 
 With virtual bytes, legacy transactions maintain the same size measurement, and new segwit transactions can be *compared* to the size of legacy transactions in terms of "virtual bytes".
 
-You'll typically see the virtual bytes measurement on [blockchain explorers](/explorer/), but internally Bitcoin uses weight to determine how many transactions can fit inside a [block](/technical/block/).
+You'll typically see the virtual bytes measurement on [blockchain explorers](/explorer/), but internally Bitcoin uses weight to determine how many transactions can fit inside a [block](/docs/technical/block.md).
 
 ![Tool Icon](../../images/icons_tool.svg) Transaction Splitter
 
@@ -121,7 +121,7 @@ Result
 
 [![Diagram showing the block size limit in terms of weight.](../../images/diagrams_png_block-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
-Using the [new weight calculation](#transaction-size-calculation) for transactions, the [block size limit](/technical/block/#weight) was changed from **1,000,000 *bytes*** to **4,000,0000 *weight units***.
+Using the [new weight calculation](#transaction-size-calculation) for transactions, the [block size limit](/docs/technical/block.md#weight) was changed from **1,000,000 *bytes*** to **4,000,0000 *weight units***.
 
 This results in a block size increase that is **up to 4 times bigger** than the old block size limit.
 
@@ -131,16 +131,16 @@ Seeing as transaction data always contains *some legacy data* along with the new
 
 Two new locking script patterns were introduced to take advantage of the [new witness field](#transaction-structure) for unlocking certain types of outputs:
 
-1. [P2WPKH](/technical/script/p2wpkh/)
+1. [P2WPKH](/docs/technical/script/p2wpkh.md)
    [![A diagram showing the structure of a P2WPKH.](../../images/diagrams_png_script-p2wpkh.png)](https://static.learnmeabitcoin.com/diagrams/png/script-p2wpkh.png)
-2. [P2WSH](/technical/script/p2wsh/)
+2. [P2WSH](/docs/technical/script/p2wsh.md)
    [![A diagram showing the structure of a P2WSH.](../../images/diagrams_png_script-p2wsh.png)](https://static.learnmeabitcoin.com/diagrams/png/script-p2wsh.png)
 
-These are *functionally* the same as the legacy [P2PKH](/technical/script/p2pkh/) and [P2SH](/technical/script/p2sh/) locking scripts.
+These are *functionally* the same as the legacy [P2PKH](/docs/technical/script/p2pkh.md) and [P2SH](/docs/technical/script/p2sh.md) locking scripts.
 
-The main difference is that P2WPKH and P2WSH are unlocked using the [witness](/technical/transaction/witness/) area of a transaction instead of the [ScriptSig](/technical/transaction/input/scriptsig/).
+The main difference is that P2WPKH and P2WSH are unlocked using the [witness](/docs/technical/transaction/witness.md) area of a transaction instead of the [ScriptSig](/docs/technical/transaction/input/scriptsig.md).
 
-**The new P2WPKH and P2WSH locking scripts *do not* use the traditional [Script](/technical/script/) language for locking and unlocking.** They use a fixed structure of bytes instead, and have their own hard-coded method for execution. But nonetheless, they are still functionally the same as P2PKH and P2SH.
+**The new P2WPKH and P2WSH locking scripts *do not* use the traditional [Script](/docs/technical/script.md) language for locking and unlocking.** They use a fixed structure of bytes instead, and have their own hard-coded method for execution. But nonetheless, they are still functionally the same as P2PKH and P2SH.
 
 ![Tool Icon](../../images/icons_tool.svg) Script
 
@@ -177,7 +177,7 @@ Address`0 characters`
 
 ### 5. Address Format
 
-The [new P2WPKH and P2WSH locking scripts](#locking-scripts) use the new **[Bech32](/technical/keys/bech32/) address format**.
+The [new P2WPKH and P2WSH locking scripts](#locking-scripts) use the new **[Bech32](/docs/technical/keys/bech32.md) address format**.
 
 These Bech32 addresses allow for **better error-detection** and are **easier to transcribe**.
 
@@ -216,25 +216,25 @@ Bech32 encoding of the ScriptPubKey
 
 0 secs
 
-So whereas legacy P2PKH and P2SH locking scripts continue to use [Base58](/technical/keys/base58/) addresses, the new P2WPKH and P2WSH locking scripts use Bech32 addresses instead.
+So whereas legacy P2PKH and P2SH locking scripts continue to use [Base58](/docs/technical/keys/base58.md) addresses, the new P2WPKH and P2WSH locking scripts use Bech32 addresses instead.
 
 ### 6. Signature Algorithm
 
-The [new P2WPKH and P2WSH locking scripts](#locking-scripts) also make use of a **[new signature algorithm](/technical/keys/signature/#segwit-algorithm)**.
+The [new P2WPKH and P2WSH locking scripts](#locking-scripts) also make use of a **[new signature algorithm](/docs/technical/keys/signature.md#segwit-algorithm)**.
 
-This new "segwit signature algorithm" is designed to be more efficient than the [legacy signing algorithm](/technical/keys/signature/#legacy-algorithm).
+This new "segwit signature algorithm" is designed to be more efficient than the [legacy signing algorithm](/docs/technical/keys/signature.md#legacy-algorithm).
 
 So now the process for creating signatures to unlock P2WPKH and P2WSH locking scripts is different to the process for creating signatures for legacy locking scripts (e.g. P2PKH and P2SH).
 
-**Both the legacy and new segwit signature algorithm still use [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/).** It's just that now the method for *preparing the transaction data* for signing is different when you want to unlock P2WPKH and P2WSH locking scripts.
+**Both the legacy and new segwit signature algorithm still use [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md).** It's just that now the method for *preparing the transaction data* for signing is different when you want to unlock P2WPKH and P2WSH locking scripts.
 
 ### 7. wTXID Commitment
 
 [![Diagram showing the wtxid commitment inside a block.](../../images/diagrams_png_block-wtxid-commitment.png)](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
 
-Due to the fact that [new segwit transactions](#transaction-structure) contain data that is no longer part of the [TXID](/technical/transaction/input/txid/), this new witness data needs to be *committed* to the block via a [wTXID commitment](/technical/transaction/wtxid/#commitment).
+Due to the fact that [new segwit transactions](#transaction-structure) contain data that is no longer part of the [TXID](/docs/technical/transaction/input/txid.md), this new witness data needs to be *committed* to the block via a [wTXID commitment](/docs/technical/transaction/wtxid.md#commitment).
 
-So in addition to the TXID (which does not include the new fields in a segwit transaction), each transaction also has a [wTXID](/technical/transaction/wtxid/) that is calculated by hashing all the data in a segwit transaction (which does includes the new fields in a segwit transaction).
+So in addition to the TXID (which does not include the new fields in a segwit transaction), each transaction also has a [wTXID](/docs/technical/transaction/wtxid.md) that is calculated by hashing all the data in a segwit transaction (which does includes the new fields in a segwit transaction).
 
 [![Diagram showing the wTXID being calculated from the raw transaction data including the new segwit fields.](../../images/diagrams_png_transaction-witness-wtxid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
 
@@ -288,18 +288,18 @@ Also known as the transaction "hash" when using `bitcoin-cli` commands
 
 0 secs
 
-So when constructing a block, a miner will now also calculate a [merkle root](/technical/block/merkle-root/) for all of the wTXIDs in the block and include this in the block via a wTXID commitment in the [coinbase transaction](/technical/mining/coinbase-transaction/).
+So when constructing a block, a miner will now also calculate a [merkle root](/docs/technical/block/merkle-root.md) for all of the wTXIDs in the block and include this in the block via a wTXID commitment in the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md).
 
 As a result, this wTXID commitment **prevents anyone from modifying the witness data** for the transactions included in a block.
 
-* The wTXID is placed inside the coinbase transaction because it's the only part of a block that can include new additional data without causing a [hard fork](/technical/blockchain/hard-fork/).
-* Seeing as a [legacy transaction](/technical/transaction/#example-legacy) does not include any new segwit fields, its wTXID will be the same as its TXID.
+* The wTXID is placed inside the coinbase transaction because it's the only part of a block that can include new additional data without causing a [hard fork](/docs/technical/blockchain/hard-fork.md).
+* Seeing as a [legacy transaction](/docs/technical/transaction.md#example-legacy) does not include any new segwit fields, its wTXID will be the same as its TXID.
 
 ### 8. Network Messages
 
-When communicating with other nodes on the [network](/technical/networking/), you now have to specifically **request for a node to send you the full transaction data for segwit transactions** (i.e. including the [new witness data](#transaction-structure)).
+When communicating with other nodes on the [network](/docs/technical/networking.md), you now have to specifically **request for a node to send you the full transaction data for segwit transactions** (i.e. including the [new witness data](#transaction-structure)).
 
-So whereas in a [`getdata`](/technical/networking/#getdata) message the *type* field would be one of the following:
+So whereas in a [`getdata`](/docs/technical/networking.md#getdata) message the *type* field would be one of the following:
 
 * `01000000 = MSG_TX`
 * `02000000 = MSG_BLOCK`
@@ -311,13 +311,13 @@ To request a transaction or block including the new witness data you need to use
 
 ### 9. Other
 
-* In addition to legacy bytes getting multiplied by 4 during the [new transaction size calculation](#transaction-size-calculation), all [signature](/technical/keys/signature/) operations (e.g. `OP_CHECKSIG`, `OP_CHECKMULTISIG`, `OP_CHECKSIGVERIFY`, `OP_CHECKMULTISIGVERIFY`) in a legacy transaction are multiplied by 4 too. This is important when calculating how many signature operations are in a block, as a block has a [limit of **80,000** signature operations](/technical/mining/candidate-block/#requirement-sigops) (sigops).
+* In addition to legacy bytes getting multiplied by 4 during the [new transaction size calculation](#transaction-size-calculation), all [signature](/docs/technical/keys/signature.md) operations (e.g. `OP_CHECKSIG`, `OP_CHECKMULTISIG`, `OP_CHECKSIGVERIFY`, `OP_CHECKMULTISIGVERIFY`) in a legacy transaction are multiplied by 4 too. This is important when calculating how many signature operations are in a block, as a block has a [limit of **80,000** signature operations](/docs/technical/mining/candidate-block.md#requirement-sigops) (sigops).
 
 ## Summary
 
 As you can see, Segregated Witness introduced **multiple technical changes** to Bitcoin in one go.
 
-Many of these changes also seem unnecessarily complex at first, but that's because technical workarounds were required to be able to introduce these changes as a [soft fork as opposed to a hard fork](/beginners/guide/segwit/#why-were-the-changes-implemented-in-this-way).
+Many of these changes also seem unnecessarily complex at first, but that's because technical workarounds were required to be able to introduce these changes as a [soft fork as opposed to a hard fork](/docs/beginners/guide/segwit.md#why-were-the-changes-implemented-in-this-way).
 
 However, depending on what you're working on, you probably do not need to include all of the changes in your software; you can just implement the changes that are relevant to your tool (e.g. you probably don't need to worry about the new [network messages](#network-messages) if you're developing a wallet).
 

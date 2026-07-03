@@ -15,7 +15,7 @@ You might think that being a "cryptocurrency" means there's all kinds of cryptog
 
 [![Diagram showing data being put into a hash function and a fingerprint coming out the other side.](../images/diagrams_png_hash-function.png)](https://static.learnmeabitcoin.com/diagrams/png/hash-function.png)
 
-A [hash function](/technical/cryptography/hash-function/) is a tool that creates **fingerprints for data**.
+A [hash function](/docs/technical/cryptography/hash-function.md) is a tool that creates **fingerprints for data**.
 
 ![Tool Icon](../images/icons_tool.svg) SHA-256 (Text)
 
@@ -41,7 +41,7 @@ SHA-256(text)
 
 It takes in any amount of data, and *scrambles* and *compresses* it to produce a short, unique result called a "hash". And because these "hashes" are unique for each piece of data, they're perfect for use as *reference numbers*.
 
-For example, we hash [transaction data](/technical/transaction/) to create [TXIDs](/technical/transaction/input/txid/), and we hash [block data](/technical/block/) to get [block hashes](/technical/block/hash/). This gives us unique references for each transaction and block, which we can use to look them up in a [blockchain explorer](/explorer/).
+For example, we hash [transaction data](/docs/technical/transaction.md) to create [TXIDs](/docs/technical/transaction/input/txid.md), and we hash [block data](/docs/technical/block.md) to get [block hashes](/docs/technical/block/hash.md). This gives us unique references for each transaction and block, which we can use to look them up in a [blockchain explorer](/explorer/).
 
 [![Diagram showing a TXID being created by hashing transaction data.](../images/diagrams_png_transaction-txid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-txid.png)
 
@@ -53,16 +53,16 @@ A *TXID* is the hash of transaction data.
 
 A *block hash* is the hash of a block header.
 
-Furthermore, every transaction is connected to a block through a [merkle root](/technical/block/merkle-root/), and every block is connected to another block by referencing the hash of a [previous block](/technical/block/previous-block/).
+Furthermore, every transaction is connected to a block through a [merkle root](/docs/technical/block/merkle-root.md), and every block is connected to another block by referencing the hash of a [previous block](/docs/technical/block/previous-block.md).
 
 [![Diagram showing a transactions connected to a block via the merkle root, and blocks connected together by their block hashes.](../images/diagrams_png_block-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
 
 
-Hashes are used to *connect* all the data in the [blockchain](/technical/blockchain/) together.
+Hashes are used to *connect* all the data in the [blockchain](/docs/technical/blockchain.md) together.
 
-But what makes Bitcoin an *invention* is that Satoshi came up with the idea to use a hash function as the basis for **[mining](/technical/mining/)**.
+But what makes Bitcoin an *invention* is that Satoshi came up with the idea to use a hash function as the basis for **[mining](/docs/technical/mining.md)**.
 
-In short, the result of the hash function is *uncontrollable*; you don't know what the result of the hash function is going to be until you actually hash the data. Satoshi used this property to create a form of lottery, where a new [block](/technical/block/) can only be added to the [blockchain](/technical/blockchain/) if someone is able to get a [block hash](/technical/block/hash/) below a certain [target](/technical/mining/target/) value.
+In short, the result of the hash function is *uncontrollable*; you don't know what the result of the hash function is going to be until you actually hash the data. Satoshi used this property to create a form of lottery, where a new [block](/docs/technical/block.md) can only be added to the [blockchain](/docs/technical/blockchain.md) if someone is able to get a [block hash](/docs/technical/block/hash.md) below a certain [target](/docs/technical/mining/target.md) value.
 
 [![Diagram showing a block hash needing to get below a target value for it to be added on to the blockchain.](../images/diagrams_png_mining-block-header-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-header-hash.png)
 
@@ -95,7 +95,7 @@ Anyway, there are [various flavors of hash function](https://en.wikipedia.org/wi
 
 
    0 secs
-2. [RIPEMD-160](https://homes.esat.kuleuven.be/~bosselae/ripemd160/pdf/AB-9601/AB-9601.pdf) (1996) – A secondary hash function, only used for [shortening public keys](/technical/keys/public-key/hash/).
+2. [RIPEMD-160](https://homes.esat.kuleuven.be/~bosselae/ripemd160/pdf/AB-9601/AB-9601.pdf) (1996) – A secondary hash function, only used for [shortening public keys](/docs/technical/keys/public-key/hash.md).
      
 
    ![Tool Icon](../images/icons_tool.svg) RIPEMD-160
@@ -118,21 +118,21 @@ Anyway, there are [various flavors of hash function](https://en.wikipedia.org/wi
 
 ## 2. Public Key Cryptography
 
-Public key cryptography involves using mathematics to create a *pair* of keys: a [private key](/technical/keys/private-key/) and a [public key](/technical/keys/public-key/).
+Public key cryptography involves using mathematics to create a *pair* of keys: a [private key](/docs/technical/keys/private-key.md) and a [public key](/docs/technical/keys/public-key.md).
 
 [![Diagram showing a private key and public key pair.](../images/diagrams_png_keys-public-key-and-private-key-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key-and-private-key-basic.png)
 
 These are basically two very large numbers. And due to the special cryptographic mathematics used to create these keys, you can give away the public key, but nobody can work backwards from it to figure out the private key.
 
-This isn't particularly useful on its own. However, part of public key cryptography is the ability to use the private key to create what's known as a [digital signature](/technical/keys/signature/), and this will also have a unique mathematical connection to the public key.
+This isn't particularly useful on its own. However, part of public key cryptography is the ability to use the private key to create what's known as a [digital signature](/docs/technical/keys/signature.md), and this will also have a unique mathematical connection to the public key.
 
 [![Diagram showing a private key being used to create a signature that has a mathematical connection to the public key.](../images/diagrams_png_keys-public-key-and-digital-signature-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-public-key-and-digital-signature-basic.png)
 
-Anyway, Bitcoin utilizes this kind of public key cryptography as the basis for the locking mechanism inside [transactions](/technical/transaction/):
+Anyway, Bitcoin utilizes this kind of public key cryptography as the basis for the locking mechanism inside [transactions](/docs/technical/transaction.md):
 
 [![Diagram showing an input being unlocked by using a private key to create a signature that corresponds to the public key inside an output.](../images/diagrams_png_keys.png)](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
 
-When you want to "receive" bitcoins, someone will create a transaction that *locks* a set amount of bitcoins (an [output](/technical/transaction/output/)) to your public key.
+When you want to "receive" bitcoins, someone will create a transaction that *locks* a set amount of bitcoins (an [output](/docs/technical/transaction/output.md)) to your public key.
 
 Then, when you want to "send" these bitcoins to someone else, you create a digital signature using your private key, and this *unlocks* the bitcoins so that you can send them on to someone else.
 
@@ -180,7 +180,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 
    The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-   An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+   An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
    `0 bytes`
 
@@ -288,7 +288,7 @@ Anyway, there are [various flavors of public key cryptosystems](https://en.wikip
 
 
    0 secs
-2. [Schnorr Signatures](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki) (1990) – A more efficient alternative to ECDSA. The [patent](https://patents.google.com/patent/US4995082) for this cryptosystem expired in 2010 (a year after Bitcoin was first released). It was integrated into Bitcoin as part of the [Taproot](/technical/upgrades/taproot/) upgrade in 2021.
+2. [Schnorr Signatures](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki) (1990) – A more efficient alternative to ECDSA. The [patent](https://patents.google.com/patent/US4995082) for this cryptosystem expired in 2010 (a year after Bitcoin was first released). It was integrated into Bitcoin as part of the [Taproot](/docs/technical/upgrades/taproot.md) upgrade in 2021.
      
 
    ![Tool Icon](../images/icons_tool.svg) Schnorr Sign
@@ -560,7 +560,7 @@ RSA is primarily used for *encryption*, where data is encrypted by anyone using 
 
 The first formal proposal for digital signatures was actually [DSA](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm) (Digital Signature Algorithm) (**1991**). This uses the same principles of public key cryptography, but was designed specifically for creating digital signatures only.
 
-DSA was improved upon by [Schnorr Signatures](/technical/cryptography/elliptic-curve/schnorr/) (**1990**) and [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/) (Elliptic Curve Digital Signature Algorithm) (**1998**). These use the [elliptic curve](/technical/cryptography/elliptic-curve/) to improve the efficiency of creating and verifying digital signatures.
+DSA was improved upon by [Schnorr Signatures](/docs/technical/cryptography/elliptic-curve/schnorr.md) (**1990**) and [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) (Elliptic Curve Digital Signature Algorithm) (**1998**). These use the [elliptic curve](/docs/technical/cryptography/elliptic-curve.md) to improve the efficiency of creating and verifying digital signatures.
 
 Public key cryptography can be used for *encryption* and/or *authentication*. However, Bitcoin uses the *authentication* (digital signatures) side of public key cryptography.
 
@@ -568,8 +568,8 @@ Public key cryptography can be used for *encryption* and/or *authentication*. Ho
 
 Satoshi didn't invent any new kind of cryptography for use within Bitcoin; they simply utilized existing cryptographic tools to build the first decentralized electronic payment system:
 
-1. **[Hash Function](/technical/cryptography/hash-function/)** – Used for [mining](/technical/mining/) and connecting the [blockchain](/technical/blockchain/) together.
-2. **Digital Signatures** (e.g. [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/)) – Used for locking and unlocking bitcoins in [transactions](/technical/transaction/).
+1. **[Hash Function](/docs/technical/cryptography/hash-function.md)** – Used for [mining](/docs/technical/mining.md) and connecting the [blockchain](/docs/technical/blockchain.md) together.
+2. **Digital Signatures** (e.g. [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)) – Used for locking and unlocking bitcoins in [transactions](/docs/technical/transaction.md).
 
 It's possible that Satoshi didn't know the internal details of **hash functions** and **public key cryptography**. However, this wasn't important, as they knew *enough* about their properties to be able to combine them in a creative way to develop a system that had not previously existed.
 

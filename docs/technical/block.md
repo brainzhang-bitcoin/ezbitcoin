@@ -2,13 +2,13 @@
 
 [![Diagram of the structure of a bitcoin block showing the block header fields and the transactions.](../images/diagrams_png_block.png)](https://static.learnmeabitcoin.com/diagrams/png/block.png)
 
-A block is a container for [transactions](/technical/transaction/).
+A block is a container for [transactions](/docs/technical/transaction.md).
 
-At the top of every block is a **block header**, which summarizes all of the data in the block. This contains a fingerprint ([merkle root](/technical/block/merkle-root/)) of all the transactions in the block, as well as a reference to a previous block.
+At the top of every block is a **block header**, which summarizes all of the data in the block. This contains a fingerprint ([merkle root](/docs/technical/block/merkle-root.md)) of all the transactions in the block, as well as a reference to a previous block.
 
-Miners repeatedly [hash](/technical/cryptography/hash-function/) this block header to try and get a result below the current [target](/technical/mining/target/). If you can get a [block hash](/technical/block/hash/) below the target, the block can be added on to the [blockchain](/technical/blockchain/). This process is called [mining](/technical/mining/).
+Miners repeatedly [hash](/docs/technical/cryptography/hash-function.md) this block header to try and get a result below the current [target](/docs/technical/mining/target.md). If you can get a [block hash](/docs/technical/block/hash.md) below the target, the block can be added on to the [blockchain](/docs/technical/blockchain.md). This process is called [mining](/docs/technical/mining.md).
 
-Newly mined blocks get sent between nodes on the bitcoin [network](/technical/networking/), and are permanently stored on disk as part of the blockchain.
+Newly mined blocks get sent between nodes on the bitcoin [network](/docs/technical/networking.md), and are permanently stored on disk as part of the blockchain.
 
 > Nodes collect new transactions into a block, hash them into a hash tree, and scan through nonce values to make the block's hash satisfy proof-of-work requirements. When they solve the proof-of-work, they broadcast the block to everyone and the block is added to the block chain.
 
@@ -32,13 +32,13 @@ Block
 
 | Field | Size | Format | Description |
 | --- | --- | --- | --- |
-| [Version](#version) | 4 bytes | [little-endian](/technical/general/little-endian/) | The version number for the block. |
-| [Previous Block](#previous-block) | 32 bytes | [natural byte order](/technical/general/byte-order/#natural-byte-order) | The block hash of a previous block this block is building on top of. |
+| [Version](#version) | 4 bytes | [little-endian](/docs/technical/general/little-endian.md) | The version number for the block. |
+| [Previous Block](#previous-block) | 32 bytes | [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order) | The block hash of a previous block this block is building on top of. |
 | [Merkle Root](#merkle-root) | 32 bytes | natural byte order | A fingerprint for all of the transactions included in the block. |
 | [Time](#time) | 4 bytes | little-endian | The current time as a Unix timestamp. |
 | [Bits](#bits) | 4 bytes | little-endian | A compact representation of the current target. |
 | [Nonce](#nonce) | 4 bytes | little-endian |  |
-| Transaction Count | compact | [compact size](/technical/general/compact-size/) | The number of upcoming transactions included in the block. |
+| Transaction Count | compact | [compact size](/docs/technical/general/compact-size.md) | The number of upcoming transactions included in the block. |
 | Transactions | variable | transaction data | All of the raw transactions included in the block concatenated together. |
 
 **Note:** Rows in highlighted in gray are part of the block header.
@@ -49,7 +49,7 @@ Block
 
 Every raw block begins with a block *header*.
 
-The block header contains a **summary of the block's contents**, and is used to create the [block hash](/technical/block/hash/).
+The block header contains a **summary of the block's contents**, and is used to create the [block hash](/docs/technical/block/hash.md).
 
 ![Tool Icon](../images/icons_tool.svg) Block Header
 
@@ -158,7 +158,7 @@ This is the HASH256 of the hex block header. It's also in reverse byte order, be
 
 0 secs
 
-### [Version](/technical/block/version/)
+### [Version](/docs/technical/block/version.md)
 
 * Size: 4 bytes
 * Type: signed integer / bit field
@@ -169,11 +169,11 @@ This is the HASH256 of the hex block header. It's also in reverse byte order, be
 
 The *version* field is used to **signal for upgrades** to Bitcoin.
 
-It was originally just a simple integer that marked an update to block structure after a [soft fork](/technical/blockchain/soft-fork/), but now it's used by miners as a way to vote for upgrades to the software.
+It was originally just a simple integer that marked an update to block structure after a [soft fork](/docs/technical/blockchain/soft-fork.md), but now it's used by miners as a way to vote for upgrades to the software.
 
 #### BIP 9
 
-Since 2015 and the introduction of [BIP 9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki) the 4-byte version field is now interpreted as a [bit field](/technical/general/bytes/#bit-field), where each bit can be assigned to a new potential upgrade. Miners signal their readiness for upgrades by turning specific bits on, and upgrades can be locked in for activation once enough miners signal for the same upgrade over a specific period of time.
+Since 2015 and the introduction of [BIP 9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki) the 4-byte version field is now interpreted as a [bit field](/docs/technical/general/bytes.md#bit-field), where each bit can be assigned to a new potential upgrade. Miners signal their readiness for upgrades by turning specific bits on, and upgrades can be locked in for activation once enough miners signal for the same upgrade over a specific period of time.
 
 The default block version using a BIP 9 bit field is 0b00100000000000000000000000000000. In hex this is 0x20000000. This does not signal for any proposed upgrades.
 
@@ -183,7 +183,7 @@ If you look at most blocks since 2016 they will appear to have unusually large "
 
 
 
-### [Previous Block](/technical/block/previous-block/)
+### [Previous Block](/docs/technical/block/previous-block.md)
 
 * Size: 32 bytes
 * Type: plain bytes
@@ -194,7 +194,7 @@ If you look at most blocks since 2016 they will appear to have unusually large "
 
 The *previous block* field contains the **hash of an existing block**, which is what the current block builds upon.
 
-All miners want to extend the [longest chain](/technical/blockchain/longest-chain/) of blocks. This is because the longest chain of blocks is what all nodes adopt as the "correct" blockchain. So by adding a block to the "correct" chain, the miner will be able to collect the [block reward](/technical/mining/block-reward/) if they're able to successfully mine their block.
+All miners want to extend the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks. This is because the longest chain of blocks is what all nodes adopt as the "correct" blockchain. So by adding a block to the "correct" chain, the miner will be able to collect the [block reward](/docs/technical/mining/block-reward.md) if they're able to successfully mine their block.
 
 If you built upon a block lower down in the chain, your block would not be part of the longest chain, so you would not be able to collect the block reward, and your efforts for mining the block would be wasted.
 
@@ -203,7 +203,7 @@ So in other words, when you create a new block, the *previous block* field conta
 * The *previous block* field in the block header is what connects blocks together in a chain, hence the term "block chain".
 * There are no blocks before the [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f), so its *previous block* field is all zeros.
 
-### [Merkle Root](/technical/block/merkle-root/)
+### [Merkle Root](/docs/technical/block/merkle-root.md)
 
 * Size: 32 bytes
 * Type: plain bytes
@@ -222,7 +222,7 @@ TXID List
 
 A list of TXIDs separated by *spaces*, *commas*, or *new lines*. Quotes and brackets are ignored.
 
-The TXIDs should be input in [reverse byte order](/technical/general/byte-order/#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/technical/general/byte-order/#natural-byte-order) before the merkle root is calculated.
+The TXIDs should be input in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order) before the merkle root is calculated.
 
 
 
@@ -249,7 +249,7 @@ The merkle root prevents the block contents from being changed by someone else. 
 
 So the merkle root is like putting a tamper-resistant seal on the block.
 
-### [Time](/technical/block/time/)
+### [Time](/docs/technical/block/time.md)
 
 * Size: 4 bytes
 * Type: unsigned integer
@@ -278,7 +278,7 @@ This time does not have to be exact; it's just a rough indicator of when the blo
 
 So it's possible that a block higher up in the chain could have an earlier *time* than a block lower down in the chain. It doesn't matter though because the time field is not critical to the order of blocks.
 
-### [Bits](/technical/block/bits/)
+### [Bits](/docs/technical/block/bits.md)
 
 * Size: 4 bytes
 * Format: little-endian
@@ -306,7 +306,7 @@ Bits`0 bytes`
 
 0 secs
 
-The bits field is a **compact representation of the [target](/technical/mining/target/)** at the time the block was mined.
+The bits field is a **compact representation of the [target](/docs/technical/mining/target.md)** at the time the block was mined.
 
 Every block needs to get below a specific target value for it to be considered valid (i.e. for it to get added on to the blockchain). But instead of storing the full 32-byte target value in the block header, we use the compact 4-byte "bits" encoding instead.
 
@@ -315,11 +315,11 @@ The basic format of the bits field is:
 * The last 3 bytes contain the rough *precision* of the full target.
 * The first byte indicates *"how many bytes to the left"* those 3 bytes sit in a full 32-byte field.
 
-I don't know why this field is named "bits". It's a confusing name seeing as we already have the terms *[bits](/technical/general/bytes/#bit)* for measurements of data (i.e. 8 bits in a byte), but that's what it's called anyway.
+I don't know why this field is named "bits". It's a confusing name seeing as we already have the terms *[bits](/docs/technical/general/bytes.md#bit)* for measurements of data (i.e. 8 bits in a byte), but that's what it's called anyway.
 
 This compact representation of the target is the *actual value* the block hash needs to get below when mining. The full target itself does have more precision when it's initially calculated, but this compact *bits* field with lower precision is the actual threshold the block hash needs to get below.
 
-### [Nonce](/technical/block/nonce/)
+### [Nonce](/docs/technical/block/nonce.md)
 
 * Size: 4 bytes
 * Type: unsigned integer
@@ -328,13 +328,13 @@ This compact representation of the target is the *actual value* the block hash n
 
 [![Diagram showing the nonce field in the block header.](../images/diagrams_png_block-nonce.png)](https://static.learnmeabitcoin.com/diagrams/png/block-nonce.png)
 
-This field is short for "number used once". It's basically a **spare field** in the block header that you can increment to get different [hash](/technical/cryptography/hash-function/) results for the block header.
+This field is short for "number used once". It's basically a **spare field** in the block header that you can increment to get different [hash](/docs/technical/cryptography/hash-function.md) results for the block header.
 
-I like to call it the "[mining](/technical/mining/) field".
+I like to call it the "[mining](/docs/technical/mining.md) field".
 
 So when you're trying to mine a block, instead of having to reconstruct the entire block for every attempt, you can just increment the nonce field and get a completely different hash result for the same block of transactions.
 
-Every block you see in the blockchain shows the "magic" nonce value that just so happened to produce a block hash that was below the [target](/technical/mining/target/) at the time. There is no skill in finding the right nonce; it's just about trying different nonces as fast as you can and hoping to get lucky.
+Every block you see in the blockchain shows the "magic" nonce value that just so happened to produce a block hash that was below the [target](/docs/technical/mining/target.md) at the time. There is no skill in finding the right nonce; it's just about trying different nonces as fast as you can and hoping to get lucky.
 
 * **Not every block will have a "magic" nonce value.** In fact, most blocks' headers will not produce a low enough hash even if you completely exhaust the nonce field.
 * The nonce field is only 4 bytes in size, so the exact same block can have up to 4294967295 (`0xffffffff`) attempts at being hashed before the nonce field is exhausted. After that, the block needs to be reconstructed (or at least the time field updated) to create a different block header to work on.
@@ -348,7 +348,7 @@ After the block header we have the actual transaction data. This is just a serie
 ### Transaction Count
 
 * Size: variable
-* Type: [compact size](/technical/general/compact-size/)
+* Type: [compact size](/docs/technical/general/compact-size.md)
 * Example: `01`
 
 ![Tool Icon](../images/icons_tool.svg) Compact Size
@@ -383,7 +383,7 @@ Note: Bytes encoding the integer are in little endian.
 
 The first piece of data after the block header is actually a transaction count indicating the **number of upcoming transactions in the block**. It's a compact size field, so it's usually either 1 or 3 bytes in size (depending on how many transactions are in the block).
 
-### [Coinbase Transaction](/technical/mining/coinbase-transaction/)
+### [Coinbase Transaction](/docs/technical/mining/coinbase-transaction.md)
 
 [![Diagram showing the position of a coinbase transaction as the first transaction in a block.](../images/diagrams_png_block-coinbase-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
 
@@ -391,27 +391,27 @@ The first piece of data after the block header is actually a transaction count i
 
 Satoshi Nakamoto, [Bitcoin v0.1 (main.h)](https://github.com/Maguines/Bitcoin-v0.1/tree/master/bitcoin0.1/src/main.h#L794)
 
-The *first* transaction in every block is the coinbase transaction. This is a **special transaction that miners place inside the block to collect the [block reward](/technical/mining/block-reward/)** (*block subsidy* + *[transaction fees](/technical/transaction/fee/)*).
+The *first* transaction in every block is the coinbase transaction. This is a **special transaction that miners place inside the block to collect the [block reward](/docs/technical/mining/block-reward.md)** (*block subsidy* + *[transaction fees](/docs/technical/transaction/fee.md)*).
 
-The main technical difference between a coinbase transaction and a "regular" transaction is that a coinbase transaction doesn't "spend" any existing bitcoins. Instead, the [input](/technical/transaction/input/) to a coinbase transaction is blank (all zeros), and the amount of the [output](/technical/transaction/output/) is the value of the block reward.
+The main technical difference between a coinbase transaction and a "regular" transaction is that a coinbase transaction doesn't "spend" any existing bitcoins. Instead, the [input](/docs/technical/transaction/input.md) to a coinbase transaction is blank (all zeros), and the amount of the [output](/docs/technical/transaction/output.md) is the value of the block reward.
 
 A coinbase transaction is a requirement for every block. Without one the block would be invalid.
 
-Miners often put custom signatures and messages in the [scriptsig](/technical/transaction/input/scriptsig/) of their coinbase transaction. This is because a coinbase transaction doesn't need to *unlock* any existing coins, so miners are free to put any kind of data they like into the scriptsig.
+Miners often put custom signatures and messages in the [scriptsig](/docs/technical/transaction/input/scriptsig.md) of their coinbase transaction. This is because a coinbase transaction doesn't need to *unlock* any existing coins, so miners are free to put any kind of data they like into the scriptsig.
 
-### Regular [Transactions](/technical/transaction/)
+### Regular [Transactions](/docs/technical/transaction.md)
 
 [![Diagram showing the position of the regular transaction below the coinbase transaction in a block.](../images/diagrams_png_block-regular-transactions.png)](https://static.learnmeabitcoin.com/diagrams/png/block-regular-transactions.png)
 
 Following the coinbase transaction we have all the "regular" transactions, concatenated one after the other.
 
-These transactions are selected from the [memory pool](/technical/mining/memory-pool/) when the miner constructs the block. A miner can include as many or as few transactions in their block as they like (up to the [block size limit](#weight)). However, miners are incentivized to include as many transactions as they can so that they can maximize the amount they can earn if they are successful in mining the block.
+These transactions are selected from the [memory pool](/docs/technical/mining/memory-pool.md) when the miner constructs the block. A miner can include as many or as few transactions in their block as they like (up to the [block size limit](#weight)). However, miners are incentivized to include as many transactions as they can so that they can maximize the amount they can earn if they are successful in mining the block.
 
 Miners are responsible for checking that each transaction in their block must be valid, otherwise the entire block will be considered invalid and cannot be added to the blockchain.
 
 Parent transactions must always come before child transactions in a block. So if a transaction spends an output, that output must have been created by a transaction in a previous block or earlier on in the same block.
 
-## [Block Hash](/technical/block/hash/)
+## [Block Hash](/docs/technical/block/hash.md)
 
 [![Diagram showing the position of the regular transaction below the coinbase transaction in a block.](../images/diagrams_png_block-hash.png)](https://static.learnmeabitcoin.com/diagrams/png/block-hash.png)
 
@@ -444,9 +444,9 @@ A block hash is created by double-SHA256'ing the block header. The block hash is
 * The block hash can be used to reference a previous block to build on, which is what *chains* the blocks together.
 * The block hash can be used to look up a block in a block explorer.
 
-The block hash is in [reverse byte order](/technical/general/byte-order/#reverse-byte-order) when searching for a block in a block explorer.
+The block hash is in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) when searching for a block in a block explorer.
 
-And as mentioned, during the process of [mining](/technical/mining/) the block hash must get below the current [target](/technical/mining/target/) for the block to get added on to the blockchain. That's why all block hashes start with a bunch of zeros.
+And as mentioned, during the process of [mining](/docs/technical/mining.md) the block hash must get below the current [target](/docs/technical/mining/target.md) for the block to get added on to the blockchain. That's why all block hashes start with a bunch of zeros.
 
 ## Weight
 
@@ -457,9 +457,9 @@ What is the maximum size of a block?
 A block has a maximum capacity of **4,000,000 weight units**.
 
 * The block header is a fixed size of 320 weight units (80 bytes).
-* Each transaction then has its own weight, typically around 550-850 [weight units](/technical/transaction/size/#weight) each (but this can vary significantly).
+* Each transaction then has its own weight, typically around 550-850 [weight units](/docs/technical/transaction/size.md#weight) each (but this can vary significantly).
 
-### [Transaction Weight](/technical/transaction/size/#weight)
+### [Transaction Weight](/docs/technical/transaction/size.md#weight)
 
 The average transaction is typically around 550-850 weight units, but this can vary significantly depending on the number of inputs and outputs in the transaction.
 
@@ -476,7 +476,7 @@ So in general, the more inputs and outputs in a transaction, the more space it t
 
 Where can you find raw block data?
 
-If you're running a Bitcoin Core node, the raw block data for the blockchain is stored in the [blkXXXXX.dat](/technical/block/blkdat/) files in the `blocks/` directory:
+If you're running a Bitcoin Core node, the raw block data for the blockchain is stored in the [blkXXXXX.dat](/docs/technical/block/blkdat.md) files in the `blocks/` directory:
 
 ```
 Linux:   ~/.bitcoin/blocks/
@@ -518,4 +518,4 @@ $ bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60
 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-Alternatively, you can receive the latest blocks that have been mined by [connecting to a node on the network](/technical/networking/).
+Alternatively, you can receive the latest blocks that have been mined by [connecting to a node on the network](/docs/technical/networking.md).

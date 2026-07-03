@@ -1,10 +1,10 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-A wTXID is like a [TXID](/technical/transaction/input/txid/), but a wTXID includes the [witness](/technical/transaction/witness/) data of a [transaction](/technical/transaction/).
+A wTXID is like a [TXID](/docs/technical/transaction/input/txid.md), but a wTXID includes the [witness](/docs/technical/transaction/witness.md) data of a [transaction](/docs/technical/transaction.md).
 
 For example:
 
-A **wTXID** is the [HASH256](/technical/cryptography/hash-function/#hash256) of all of the transaction data, *including* the [marker](/technical/transaction/#structure-marker), [flag](/technical/transaction/#structure-flag), and [witness](/technical/transaction/#structure-witness):
+A **wTXID** is the [HASH256](/docs/technical/cryptography/hash-function.md#hash256) of all of the transaction data, *including* the [marker](/docs/technical/transaction.md#structure-marker), [flag](/docs/technical/transaction.md#structure-flag), and [witness](/docs/technical/transaction.md#structure-witness):
 
 [![Diagram showing the wTXID being calculated from the raw transaction data including the marker, flag, and witness.](../../images/diagrams_png_transaction-witness-wtxid.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
 
@@ -68,7 +68,7 @@ The diagrams above do not show the marker and flag fields.
 
 How do you create a wTXID?
 
-From a technical perspective, a wTXID is calculated by [hashing](/technical/cryptography/hash-function/) the following fields of a serialized raw transaction:
+From a technical perspective, a wTXID is calculated by [hashing](/docs/technical/cryptography/hash-function.md) the following fields of a serialized raw transaction:
 
 ```
 wTXID = HASH256([version][marker][flag][inputs][outputs][witness][locktime])
@@ -138,7 +138,7 @@ Reversed
 
 0 secs
 
-**Byte Order.** Don't forget that TXIDs and wTXIDs are displayed in [reverse byte order](/technical/general/byte-order/#reverse-byte-order), so the initial result of the HASH256 will be in natural byte order (which means that the result looks backwards at first).
+**Byte Order.** Don't forget that TXIDs and wTXIDs are displayed in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order), so the initial result of the HASH256 will be in natural byte order (which means that the result looks backwards at first).
 
 ### Legacy Transaction
 
@@ -218,11 +218,11 @@ wTXIDs are used to *commit* the new data in segwit transactions to the block via
 
 [cryptography.fandom.com](https://cryptography.fandom.com/wiki/Commitment_scheme)
 
-For example, all of the legacy transaction data is committed to the [block header](/technical/block/#header) by creating a [merkle root](/technical/block/merkle-root/) of all the TXIDs in the block.
+For example, all of the legacy transaction data is committed to the [block header](/docs/technical/block.md#header) by creating a [merkle root](/docs/technical/block/merkle-root.md) of all the TXIDs in the block.
 
-However, the TXIDs do not include the marker, flag, and witness data. So for all blocks since the [Segregated Witness](/technical/upgrades/segregated-witness/) upgrade, we also create a **merkle root for all of the wTXIDs**, and commit that to the block by creating a *witness root hash*.
+However, the TXIDs do not include the marker, flag, and witness data. So for all blocks since the [Segregated Witness](/docs/technical/upgrades/segregated-witness.md) upgrade, we also create a **merkle root for all of the wTXIDs**, and commit that to the block by creating a *witness root hash*.
 
-This *witness root hash* gets HASH256'd with the [*witness reserved value*](/technical/transaction/witness/#witness-reserved-value) to create a **wTXID commitment**. This gets placed inside the [ScriptPubKey](/technical/transaction/output/scriptpubkey/) of one of the [outputs](/technical/transaction/output/) of the [coinbase transaction](/technical/mining/coinbase-transaction/).
+This *witness root hash* gets HASH256'd with the [*witness reserved value*](/docs/technical/transaction/witness.md#witness-reserved-value) to create a **wTXID commitment**. This gets placed inside the [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) of one of the [outputs](/docs/technical/transaction/output.md) of the [coinbase transaction](/docs/technical/mining/coinbase-transaction.md).
 
 So now there is a commitment for all the new segwit transaction data placed inside the block. So if anyone tries to change the contents of the witness data in any of the transactions in the block, it will not match the wTXID commitment and the block will be invalid.
 
@@ -266,7 +266,7 @@ TXID List
 
 A list of TXIDs separated by *spaces*, *commas*, or *new lines*. Quotes and brackets are ignored.
 
-The TXIDs should be input in [reverse byte order](/technical/general/byte-order/#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/technical/general/byte-order/#natural-byte-order) before the merkle root is calculated.
+The TXIDs should be input in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order) before the merkle root is calculated.
 
 
 
@@ -336,9 +336,9 @@ You'll see that the wTXID commitment is contained within the last 32 bytes of th
 * The first 4 bytes `aa21a9ed` is just a fixed header used to identify that this output contains the wTXID commitment.
 * The next 32 bytes `6502e8637ba29cd8a820021915339c7341223d571e5e8d66edd83786d387e715` is the same wTXID commitment we have just calculated.
 
-All coinbase transactions since the [segregated witness](/technical/upgrades/segregated-witness/) upgrade must include this commitment to the witness data. They all have to include an output with this script pattern: starting with `OP_RETURN`, followed by a `OP_PUSHBYTES_36` that contains a 4-byte header followed by the 32-byte wTXID commitment.
+All coinbase transactions since the [segregated witness](/docs/technical/upgrades/segregated-witness.md) upgrade must include this commitment to the witness data. They all have to include an output with this script pattern: starting with `OP_RETURN`, followed by a `OP_PUSHBYTES_36` that contains a 4-byte header followed by the 32-byte wTXID commitment.
 
-The wTXID commitment can be contained inside *any* of the outputs of the coinbase transaction. If there are multiple outputs with this structure for some reason, the highest [output index number](/technical/transaction/input/vout/) that contains this wTXID commitment structure will be taken as the commitment.
+The wTXID commitment can be contained inside *any* of the outputs of the coinbase transaction. If there are multiple outputs with this structure for some reason, the highest [output index number](/docs/technical/transaction/input/vout.md) that contains this wTXID commitment structure will be taken as the commitment.
 
 ## Usage
 
@@ -350,9 +350,9 @@ wTXIDs are only used internally in Bitcoin to create a commitment for the new se
 
 Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/55337/segwit-and-previous-hash-txid-or-wtxid-or-either/55339#55339)
 
-So you wouldn't use the wTXID to look up a transaction in the [blockchain](/technical/blockchain/) or anything like that.
+So you wouldn't use the wTXID to look up a transaction in the [blockchain](/docs/technical/blockchain.md) or anything like that.
 
-**You still use the [TXID](/technical/transaction/input/txid/) to look up transactions in the blockchain.** A TXID is still a unique identifier of a transaction, as it still hashes the *effect* of a transaction (moving coins from existing [outputs](/technical/transaction/output/) to new outputs), which is always unique to each transaction. The [witness](/technical/transaction/witness/) data is only important for transaction *validation* (unlocking the inputs), and this does not make the transaction data any more unique than it already is.
+**You still use the [TXID](/docs/technical/transaction/input/txid.md) to look up transactions in the blockchain.** A TXID is still a unique identifier of a transaction, as it still hashes the *effect* of a transaction (moving coins from existing [outputs](/docs/technical/transaction/output.md) to new outputs), which is always unique to each transaction. The [witness](/docs/technical/transaction/witness.md) data is only important for transaction *validation* (unlocking the inputs), and this does not make the transaction data any more unique than it already is.
 
 > Signatures inside a transaction actually don't describe the effect of a transaction. A transaction moves coins around, reassigns them. But the signature is only there to prove that the transaction was authorized, it doesn't change its effect.
 

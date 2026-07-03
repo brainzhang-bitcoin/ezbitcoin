@@ -4,7 +4,7 @@
 
 A private key is a very large **random number**.
 
-It's used as the source for creating a [public key](/technical/keys/public-key/).
+It's used as the source for creating a [public key](/docs/technical/keys/public-key.md).
 
 Generate Random
 Reset
@@ -553,7 +553,7 @@ Hexadecimal
 
 How do you create a private key?
 
-To create a private key you just need to **generate a random 256-[bit](/technical/general/bytes/#bit) number**[\*](#range).
+To create a private key you just need to **generate a random 256-[bit](/docs/technical/general/bytes.md#bit) number**[\*](#range).
 
 The critical part to generating a private key is to use a *reliable* source of randomness. If you're using Linux, a reliable source of randomness is [/dev/urandom](https://linux.die.net/man/4/urandom):
 
@@ -586,9 +586,9 @@ min: 1
 max: 115792089237316195423570985008687907852837564279074904382605163141518161494336
 ```
 
-This maximum value is `n-1`, where [`n`](/technical/cryptography/elliptic-curve/#parameters-n) is the number of points on the [elliptic curve](/technical/cryptography/elliptic-curve/) used in Bitcoin (*secp256k1*). This is slightly less than the maximum value for a 256-bit number.
+This maximum value is `n-1`, where [`n`](/docs/technical/cryptography/elliptic-curve.md#parameters-n) is the number of points on the [elliptic curve](/docs/technical/cryptography/elliptic-curve.md) used in Bitcoin (*secp256k1*). This is slightly less than the maximum value for a 256-bit number.
 
-So if you're generating a random 256-bit (32-[byte](/technical/general/bytes/)) number, you want to check it's not above the maximum value before using it.
+So if you're generating a random 256-bit (32-[byte](/docs/technical/general/bytes.md)) number, you want to check it's not above the maximum value before using it.
 
 ### Cryptographically secure random numbers
 
@@ -621,7 +621,7 @@ puts SecureRandom.random_number(1..115792089237316195423570985008687907852837564
 
 So for whatever programming language you're using, make sure you search for how to generate "cryptographically secure random numbers" to find out which function you should be using (instead of the default functions you may be familiar with).
 
-For example, the [libbitcoin](https://github.com/libbitcoin) library (specifically the `bx seed` command line tool) caused the loss of over $900,000 worth of bitcoin in 2023 due to not using cryptographically secure random numbers for generating [seed phrases](/technical/keys/hd-wallets/mnemonic-seed/). For a full explanation of what happened and why, see [Milk Sad](https://milksad.info/disclosure.html).
+For example, the [libbitcoin](https://github.com/libbitcoin) library (specifically the `bx seed` command line tool) caused the loss of over $900,000 worth of bitcoin in 2023 due to not using cryptographically secure random numbers for generating [seed phrases](/docs/technical/keys/hd-wallets/mnemonic-seed.md). For a full explanation of what happened and why, see [Milk Sad](https://milksad.info/disclosure.html).
 
 It's sometimes easier to generate *random bytes* instead of random numbers. So you can always just generate 32 random bytes and use that as your private key, as that's equivalent to generating a 256-bit number.
 
@@ -639,7 +639,7 @@ A private key is ultimately just a random number, so it's perfectly fine to stor
 
 ### Hexadecimal (most common)
 
-You'll usually see raw private keys displayed as 32-byte [hexadecimal](/technical/general/hexadecimal/) strings in tutorials and on websites. For example:
+You'll usually see raw private keys displayed as 32-byte [hexadecimal](/docs/technical/general/hexadecimal.md) strings in tutorials and on websites. For example:
 
 This is the **same a random number**, it's just a different way of displaying it (using hexadecimal digits instead of decimal digits).
 
@@ -674,9 +674,9 @@ Hexadecimal (Base 16)
 
 ### WIF (Wallet Import Format)
 
-A private key can be converted to [WIF](/technical/keys/private-key/wif/) (Wallet Import Format) for convenience. For example:
+A private key can be converted to [WIF](/docs/technical/keys/private-key/wif.md) (Wallet Import Format) for convenience. For example:
 
-This is like an [address](/technical/keys/address/) format for private keys. It's sometimes used when importing a private key into a wallet (e.g. [Electrum](https://electrum.org/)).
+This is like an [address](/docs/technical/keys/address.md) format for private keys. It's sometimes used when importing a private key into a wallet (e.g. [Electrum](https://electrum.org/)).
 
 Generate Random
 
@@ -717,9 +717,9 @@ How are private keys used in Bitcoin?
 
 A private key is the starting point for calculating a public key.
 
-A private key is also used to generate [signatures](/technical/keys/signature/), and these signatures have a mathematical connection to the public key. These mathematical connections are what allow you to [lock](/technical/transaction/output/scriptpubkey/) and [unlock](/technical/transaction/input/scriptsig/) bitcoins when making [transactions](/technical/transaction/).
+A private key is also used to generate [signatures](/docs/technical/keys/signature.md), and these signatures have a mathematical connection to the public key. These mathematical connections are what allow you to [lock](/docs/technical/transaction/output/scriptpubkey.md) and [unlock](/docs/technical/transaction/input/scriptsig.md) bitcoins when making [transactions](/docs/technical/transaction.md).
 
-Private keys themselves do not appear publicly in the [blockchain](/technical/blockchain/). The purpose of a private key is to be kept private (hence the name), so they should be stored securely on your computer and only used when generating signatures to unlock bitcoins (which is what a [bitcoin wallet](/beginners/wallets/) does when you make a transaction).
+Private keys themselves do not appear publicly in the [blockchain](/docs/technical/blockchain.md). The purpose of a private key is to be kept private (hence the name), so they should be stored securely on your computer and only used when generating signatures to unlock bitcoins (which is what a [bitcoin wallet](/docs/beginners/wallets.md) does when you make a transaction).
 
 ## Security
 

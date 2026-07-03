@@ -8,13 +8,13 @@ Current Difficulty:
 
 Height: [956,471](/explorer/956471)
 
-The difficulty is a number that represents how difficult it is for miners to add new [blocks](/beginners/guide/blocks/) of [transactions](/beginners/guide/transactions/) to the [blockchain](/beginners/guide/blockchain/).
+The difficulty is a number that represents how difficult it is for miners to add new [blocks](/docs/beginners/guide/blocks.md) of [transactions](/docs/beginners/guide/transactions.md) to the [blockchain](/docs/beginners/guide/blockchain.md).
 
 It **adjusts every 2 weeks** to ensure that it takes 10 minutes (on average) to add new blocks to the blockchain.
 
 ## Why is the difficulty important?
 
-The difficulty ensures that blocks of transactions are added to the blockchain at **regular intervals** during [mining](/beginners/guide/mining/), even as more miners join the [network](/beginners/guide/network/).
+The difficulty ensures that blocks of transactions are added to the blockchain at **regular intervals** during [mining](/docs/beginners/guide/mining.md), even as more miners join the [network](/docs/beginners/guide/network.md).
 
 If the difficulty stayed the same, it would gradually take less and less time to add new blocks to the blockchain as new miners join the network.
 
@@ -24,7 +24,7 @@ So the difficulty adjustments mean that the blockchain gets updated consistently
 
 The difficulty adjusts **every 2,016 blocks** (roughly every 2 weeks)
 
-At this interval, each [node](/beginners/guide/node/) takes the *expected time* for the last 2,016 blocks to be mined (2016 x 10 minutes), and divides it by the *actual time* it took:
+At this interval, each [node](/docs/beginners/guide/node.md) takes the *expected time* for the last 2,016 blocks to be mined (2016 x 10 minutes), and divides it by the *actual time* it took:
 
 ```
 expected / actual
@@ -103,7 +103,7 @@ Therefore, I use the *difficulty* to control the *target*, which in turn control
 
 ### 2. Bitcoin example
 
-The difficulty in bitcoin works in exactly the same way – it's used to set a target value, and miners keep generating numbers ([hashing](/technical/cryptography/hash-function/) their candidate [blocks](/beginners/guide/blocks/)) in the hope that they will find a [block hash](/technical/block/hash/) below the target value:
+The difficulty in bitcoin works in exactly the same way – it's used to set a target value, and miners keep generating numbers ([hashing](/docs/technical/cryptography/hash-function.md) their candidate [blocks](/docs/beginners/guide/blocks.md)) in the hope that they will find a [block hash](/docs/technical/block/hash.md) below the target value:
 
 [![Diagram showing a block hash trying to get below a target value.](../../images/beginners_guide_difficulty_02-bitcoin_target_hash.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/02-bitcoin_target_hash.png)
 
@@ -119,7 +119,7 @@ Even though that difficulty number looks big, the target is still absurdly diffi
 
 #### Hexadecimal numbers
 
-Because these target numbers are so big, we typically display them in the shorter [hexadecimal](/technical/general/hexadecimal/) format.
+Because these target numbers are so big, we typically display them in the shorter [hexadecimal](/docs/technical/general/hexadecimal.md) format.
 
 [![Diagram showing the target and range in hexadecimal.](../../images/beginners_guide_difficulty_02-bitcoin_range_target_hex.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/02-bitcoin_range_target_hex.png)
 
@@ -179,7 +179,7 @@ Awkwardly, the difficulty is usually given in decimal format, whereas block hash
 [![Diagram showing the target and range in hexadecimal.](../../images/beginners_guide_difficulty_blockheader_hexadecimal_decimal.png)](https://static.learnmeabitcoin.com/beginners/guide/difficulty/blockheader_hexadecimal_decimal.png)
 
 
-The target is hexadecimal, but it is stored in a compact format in the block header called [bits](/technical/block/bits/).
+The target is hexadecimal, but it is stored in a compact format in the block header called [bits](/docs/technical/block/bits.md).
 
 But as I say, they're both numbers, so you can still work with them if you convert them to the same format.
 
@@ -412,7 +412,7 @@ You can find the current difficulty using the `bitcoin-cli getdifficulty` comman
 
 ## Summary
 
-The **[target](/technical/mining/target/)** is the actual limbo pole that block hashes have to get below for a new block to be added on the blockchain.
+The **[target](/docs/technical/mining/target.md)** is the actual limbo pole that block hashes have to get below for a new block to be added on the blockchain.
 
 The **difficulty** is just a measure of how much the target has moved from its initial starting value. Or in other words, how much more difficult it is to mine a block compared to when the blockchain first started.
 

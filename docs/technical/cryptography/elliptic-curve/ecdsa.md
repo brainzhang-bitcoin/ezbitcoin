@@ -4,11 +4,11 @@
 
 Bitcoin uses a digital signature system called ECDSA to control the ownership of bitcoins.
 
-In short, a digital signature system allows you to generate your own [private](/technical/keys/private-key/)/[public](/technical/keys/public-key/) key pair. You can then use the private key to generate [signatures](/technical/keys/signature/) that prove you are the owner of the public key, without having to reveal the private key.
+In short, a digital signature system allows you to generate your own [private](/docs/technical/keys/private-key.md)/[public](/docs/technical/keys/public-key.md) key pair. You can then use the private key to generate [signatures](/docs/technical/keys/signature.md) that prove you are the owner of the public key, without having to reveal the private key.
 
-This system is used in Bitcoin to allow people to receive and send bitcoins in [transactions](/technical/transaction/).
+This system is used in Bitcoin to allow people to receive and send bitcoins in [transactions](/docs/technical/transaction.md).
 
-Anyone can generate their own pair of keys, and then anyone can send (or "lock") an [output](/technical/transaction/output/) to your public key. Nobody can steal these bitcoins, because only the person with the correct private key for this public key is able to generate valid signatures to "unlock" the bitcoins and use them as an [input](/technical/transaction/input/) in a future transaction.
+Anyone can generate their own pair of keys, and then anyone can send (or "lock") an [output](/docs/technical/transaction/output.md) to your public key. Nobody can steal these bitcoins, because only the person with the correct private key for this public key is able to generate valid signatures to "unlock" the bitcoins and use them as an [input](/docs/technical/transaction/input.md) in a future transaction.
 
 I don't know enough about cryptography to explain *why* ECDSA works, but I can show you *how* ECDSA works.
 
@@ -281,11 +281,11 @@ The mathematical backbone of ECDSA
 
 Elliptic curve multiplication.
 
-ECDSA uses the [elliptic curve](/technical/cryptography/elliptic-curve/) as the basis for a digital signature system.
+ECDSA uses the [elliptic curve](/docs/technical/cryptography/elliptic-curve.md) as the basis for a digital signature system.
 
 In summary, public keys and signatures are just **points** on an elliptic curve. If both of these points are created from the same private key (a large number), there will be a *geometric connection* between them that proves that the person who created the signature also created (or "owns") the public key too.
 
-I'm not going to cover the [mathematics of elliptic curves](/technical/cryptography/elliptic-curve/#mathematics) here, but all we need to use ECDSA in Bitcoin is to be able to **[multiply](/technical/cryptography/elliptic-curve/#multiply) a point on the elliptic curve**.
+I'm not going to cover the [mathematics of elliptic curves](/docs/technical/cryptography/elliptic-curve.md#mathematics) here, but all we need to use ECDSA in Bitcoin is to be able to **[multiply](/docs/technical/cryptography/elliptic-curve.md#multiply) a point on the elliptic curve**.
 
 ![Tool Icon](../../../images/icons_tool.svg) EC Multiply
 
@@ -337,7 +337,7 @@ Steps
 
 In short, "multiplication" on the elliptic curve basically means taking a starting point on the curve, and bouncing around it a certain number of times to end up at a new point of the curve. The special property of this "multiplication" operation is that it's not possible to "go backwards", which is why the elliptic curve is used for cryptographic systems such as digital signatures.
 
-Anyway, here's the code for performing elliptic curve multiplication (using the [parameters](/technical/cryptography/elliptic-curve/#parameters) for the *Secp256k1* curve used in Bitcoin):
+Anyway, here's the code for performing elliptic curve multiplication (using the [parameters](/docs/technical/cryptography/elliptic-curve.md#parameters) for the *Secp256k1* curve used in Bitcoin):
 
 ## Secp256k1 Parameters
 
@@ -1075,8 +1075,8 @@ Steps
 
 We create pairs of **keys** using elliptic curve multiplication:
 
-* [private key](/technical/keys/private-key/) (`d`) — A large randomly-generated number between 0 and the [number of points on the curve](/technical/cryptography/elliptic-curve/#parameters-n) (`[0...n-1]`)
-* [public key](/technical/keys/public-key/) (`Q`) — The [generator point](/technical/cryptography/elliptic-curve/#parameters-g) (`G`) multiplied by the private key (`d`).
+* [private key](/docs/technical/keys/private-key.md) (`d`) — A large randomly-generated number between 0 and the [number of points on the curve](/docs/technical/cryptography/elliptic-curve.md#parameters-n) (`[0...n-1]`)
+* [public key](/docs/technical/keys/public-key.md) (`Q`) — The [generator point](/docs/technical/cryptography/elliptic-curve.md#parameters-g) (`G`) multiplied by the private key (`d`).
 
 [![Animation showing how to create a public key by multiplying the generator point by a private key.](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif)](https://static.learnmeabitcoin.com/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key.gif)
 
@@ -1110,7 +1110,7 @@ Given a public key point `Q`, there's no easy way to work out the private key `d
 
 The only way to work out the private key would be to manually multiply the generator point `G` by different numbers to see if you can get the same public key, and this brute-force approach is going to be impossibly slow if someone has used a very large number for their private key.
 
-Therefore, *elliptic curve multiplication* is known as a **trapdoor function** (because it's easy to go one way but difficult to go the other), which is a key component of all [public key cryptography](/technical/cryptography/#public-key-cryptography).
+Therefore, *elliptic curve multiplication* is known as a **trapdoor function** (because it's easy to go one way but difficult to go the other), which is a key component of all [public key cryptography](/docs/technical/cryptography.md#public-key-cryptography).
 
 Furthermore, the one-way mathematical connection between the private key and public key means that you can use both independently to calculate the same points on the elliptic curve later on, which comes in very handy when constructing a system for creating digital signatures.
 
@@ -1170,7 +1170,7 @@ Low:
 To sign a message you need three things:
 
 1. **Random Number** (`k`) — This introduces an element of randomness in to our signatures, which is important for security. It means that every signature we generate will be different, even if we sign the same message twice.
-2. **Message Hash** (`z`) — This is the *hash* of the message we want to sign. [Hashing](/technical/cryptography/hash-function/) the message gives us a small and unique fingerprint for it, and it's more efficient to sign this fingerprint than it is to sign a large blob of data. You have a choice of which hash algorithm to use, but the one most commonly used with *secp256k1* is [SHA-256](/technical/cryptography/hash-function/#sha256).
+2. **Message Hash** (`z`) — This is the *hash* of the message we want to sign. [Hashing](/docs/technical/cryptography/hash-function.md) the message gives us a small and unique fingerprint for it, and it's more efficient to sign this fingerprint than it is to sign a large blob of data. You have a choice of which hash algorithm to use, but the one most commonly used with *secp256k1* is [SHA-256](/docs/technical/cryptography/hash-function.md#sha256).
 3. **Private Key** (`d`) — The source of a public key (that we've made publicly available).
 
 An actual signature is then made of two parts:
@@ -1188,7 +1188,7 @@ An ECDSA signature contains the x-coordinate of a random point on the curve.
 
 ECDSA Sign Equation
 
-The `⁻¹` notation indicates the [modular inverse](/technical/cryptography/elliptic-curve/#modular-inverse) of that number. Here the modular multiplicative inverse is found `mod n` (the number of points on the curve).
+The `⁻¹` notation indicates the [modular inverse](/docs/technical/cryptography/elliptic-curve.md#modular-inverse) of that number. Here the modular multiplicative inverse is found `mod n` (the number of points on the curve).
 
 These two `[r, s]` values are the "digital signature".
 
@@ -1329,7 +1329,7 @@ s₁ = k⁻¹(z₁ + (k * s₂ - z₂)) mod n
 k = (z₁ - z₂) * (s₁ - s₂)⁻¹ mod n
 ```
 
-Remember that multiplying by `(s₁ - s₂)⁻¹` means multiplying by the [*modular multiplicative inverse*](/technical/cryptography/elliptic-curve/#modular-inverse) of `(s₁ - s₂)`, which is the same thing as "division" in elliptic curve mathematics.
+Remember that multiplying by `(s₁ - s₂)⁻¹` means multiplying by the [*modular multiplicative inverse*](/docs/technical/cryptography/elliptic-curve.md#modular-inverse) of `(s₁ - s₂)`, which is the same thing as "division" in elliptic curve mathematics.
 
 And after we've worked out `k`, we can use it in `s = k⁻¹(z + r * d) mod n` again to work out `d`.
 
@@ -1551,7 +1551,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -1647,11 +1647,11 @@ And that's the same calculation that was used to generate the random point in th
 
 The best way to get the hang of ECDSA is to try coding it yourself.
 
-The hardest part is not usually the [elliptic curve mathematics](/technical/cryptography/elliptic-curve/#mathematics), but actually preparing and formatting the resulting [signatures](/technical/keys/signature/) for use inside bitcoin transactions later on. Also, it's not always easy to work with big numbers in some programming languages, so you may need to use special functions to perform the elliptic curve operations.
+The hardest part is not usually the [elliptic curve mathematics](/docs/technical/cryptography/elliptic-curve.md#mathematics), but actually preparing and formatting the resulting [signatures](/docs/technical/keys/signature.md) for use inside bitcoin transactions later on. Also, it's not always easy to work with big numbers in some programming languages, so you may need to use special functions to perform the elliptic curve operations.
 
 Other than that, the code is not as difficult as you may have initially thought.
 
-Of course, I wouldn't recommend using this code in your most recent mission-critical system, but it should help you get started with creating your own public keys and signing your own [transactions](/technical/transaction/) in Bitcoin without using an ECDSA library, should you want to.
+Of course, I wouldn't recommend using this code in your most recent mission-critical system, but it should help you get started with creating your own public keys and signing your own [transactions](/docs/technical/transaction.md) in Bitcoin without using an ECDSA library, should you want to.
 
 Have fun.
 

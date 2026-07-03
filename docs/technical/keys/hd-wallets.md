@@ -9,9 +9,9 @@ A hierarchical deterministic wallet (or "HD Wallet") is a wallet that generates 
 * **Hierarchical** – The keys and addresses can be organized into a *tree*.
 * **Deterministic** – The keys and addresses are always generated in the *same way*.
 
-So basically, an HD Wallet allows you to generate billions of [private keys](/technical/keys/private-key/) using a single [seed](/technical/keys/hd-wallets/mnemonic-seed/). So as long as you remember the seed, you'll always be able to recover the same keys and [addresses](/technical/keys/address/).
+So basically, an HD Wallet allows you to generate billions of [private keys](/docs/technical/keys/private-key.md) using a single [seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md). So as long as you remember the seed, you'll always be able to recover the same keys and [addresses](/docs/technical/keys/address.md).
 
-This makes them much more user-friendly than early [bitcoin wallets](/beginners/wallets/) that generated and stored private keys individually.
+This makes them much more user-friendly than early [bitcoin wallets](/docs/beginners/wallets.md) that generated and stored private keys individually.
 
 The most interesting feature of HD wallets is that you can generate new public keys *without* having to generate the private keys for them at the same time.
 
@@ -28,7 +28,7 @@ Almost all modern wallets (since 2013) are hierarchical deterministic.
 
 ### Mnemonic Sentence
 
-When you create an HD wallet you will be given a 12 or 24-word [mnemonic sentence](/technical/keys/hd-wallets/mnemonic-seed/). This is the source of the *seed*, which is then used to generate all the keys and addresses in your wallet.
+When you create an HD wallet you will be given a 12 or 24-word [mnemonic sentence](/docs/technical/keys/hd-wallets/mnemonic-seed.md). This is the source of the *seed*, which is then used to generate all the keys and addresses in your wallet.
 
 For example:
 
@@ -41,7 +41,7 @@ New Seed
 
 ### Derivation Paths
 
-The keys in your HD wallet will be generated using one of the following [derivation paths](/technical/keys/hd-wallets/derivation-paths/) depending on the type of [addresses](/technical/keys/address/) you want to use:
+The keys in your HD wallet will be generated using one of the following [derivation paths](/docs/technical/keys/hd-wallets/derivation-paths.md) depending on the type of [addresses](/docs/technical/keys/address.md) you want to use:
 
 ```
 m/44'/0'/0' <- 1addresses (P2PKH)
@@ -55,7 +55,7 @@ What are the benefits of a HD wallet?
 
 ### 1. Single backup
 
-In a basic wallet, you would generate pairs of [private keys](/technical/keys/private-key/) and [public keys](/technical/keys/public-key/) independently each time you want to receive bitcoins.
+In a basic wallet, you would generate pairs of [private keys](/docs/technical/keys/private-key.md) and [public keys](/docs/technical/keys/public-key.md) independently each time you want to receive bitcoins.
 
 [![Diagram showing individual private and public keys generated in a non-HD Wallet.](../../images/technical_keys_hd-wallets_basic-wallet.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/basic-wallet.gif)
 
@@ -64,7 +64,7 @@ Basic Wallet.
 
 This works perfectly fine, but it means that you would need to back up your wallet *every time you receive a new payment*.
 
-However, with a hierarchical deterministic wallet, you can use a single **[seed](/technical/keys/hd-wallets/mnemonic-seed/)** to create a **[master private key](/technical/keys/hd-wallets/extended-keys/#master-extended-key)**, and you can use this to generate billions of "child" private keys and public keys.
+However, with a hierarchical deterministic wallet, you can use a single **[seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md)** to create a **[master private key](/docs/technical/keys/hd-wallets/extended-keys.md#master-extended-key)**, and you can use this to generate billions of "child" private keys and public keys.
 
 [![Diagram showing private and public keys generated from a single seed in an HD Wallet.](../../images/technical_keys_hd-wallets_hd-wallet.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hd-wallet.gif)
 
@@ -77,7 +77,7 @@ So now all you need to back up is the **seed**, as the master private key you cr
 
 Another cool thing about hierarchical deterministic wallets is the *hierarchical* part.
 
-Each [**child key**](/technical/keys/hd-wallets/extended-keys/#child-key-derivation) in the wallet can also **generate its own keys**, which means you can create a **tree structure** (or *hierarchy*) to organize the keys in your wallet.
+Each [**child key**](/docs/technical/keys/hd-wallets/extended-keys.md#child-key-derivation) in the wallet can also **generate its own keys**, which means you can create a **tree structure** (or *hierarchy*) to organize the keys in your wallet.
 
 [![Diagram showing the hierarchical structure of keys in an HD wallet.](../../images/technical_keys_hd-wallets_hierarchical.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hierarchical.gif)
 
@@ -105,13 +105,13 @@ This is also useful for things like **hardware wallets** – you can keep your p
 
 The following is a **visual overview** of how HD wallets work.
 
-For technical details, see [extended keys](/technical/keys/hd-wallets/extended-keys/).
+For technical details, see [extended keys](/docs/technical/keys/hd-wallets/extended-keys.md).
 
 ### 1. Seed
 
 [![Diagram showing a 64-byte seed used as the source for an HD Wallet.](../../images/diagrams_png_hd-wallets-seed.png)](https://static.learnmeabitcoin.com/diagrams/png/hd-wallets-seed.png)
 
-To create an HD wallet, you start by generating 64 random [bytes](/technical/general/bytes/). This is our **seed**.
+To create an HD wallet, you start by generating 64 random [bytes](/docs/technical/general/bytes.md). This is our **seed**.
 
 #### Example
 
@@ -161,7 +161,7 @@ We use these 64 bytes to create our **master** extended private key.
 * The **first** 32 bytes is the private key.
 * The **last** 32 bytes is the chain code.
 
-The chain code is just an extra 32 bytes that we couple with the private key to create what we call an [extended key](/technical/keys/hd-wallets/extended-keys/).
+The chain code is just an extra 32 bytes that we couple with the private key to create what we call an [extended key](/docs/technical/keys/hd-wallets/extended-keys.md).
 
 #### Example
 
@@ -169,7 +169,7 @@ An "extended key" is just a normal key coupled with a chain code.
 
 **Why do we hash the seed?** We *could* directly use the 64 byte seed to create the master extended private key. However, future child extended keys are created using the HMAC, so it's good to be consistent with how we create both.
 
-The private key embedded inside an extended key can be used to create a corresponding [public key](/technical/keys/public-key/) as normal:
+The private key embedded inside an extended key can be used to create a corresponding [public key](/docs/technical/keys/public-key.md) as normal:
 
 ![Tool Icon](../../images/icons_tool.svg) Public Key
 
@@ -203,7 +203,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -228,14 +228,14 @@ We also include an **index** number each time, which allows us to create multipl
 
 By changing the **index** you get a completely different result from the hash function.
 
-So essentially, new private keys are generated by [hashing](/technical/cryptography/hash-function/) the master extended private key with an **index** number.
+So essentially, new private keys are generated by [hashing](/docs/technical/cryptography/hash-function.md) the master extended private key with an **index** number.
 
 
 
 
 #### Example
 
-There is an extra mathematical step when calculating the child private key after hashing the parent extended private key. So that's why you won't get the correct results by simply putting the (32-byte private key | 4-byte index) and (32-byte chain code) through the HMAC. See [extended keys](/technical/keys/hd-wallets/extended-keys/) for details.
+There is an extra mathematical step when calculating the child private key after hashing the parent extended private key. So that's why you won't get the correct results by simply putting the (32-byte private key | 4-byte index) and (32-byte chain code) through the HMAC. See [extended keys](/docs/technical/keys/hd-wallets/extended-keys.md) for details.
 
 An extended key can generate 2,147,483,648 of these "basic" (hardened) child keys.
 
@@ -289,7 +289,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -328,7 +328,7 @@ The master extended public key creates **child** public keys by putting its cont
   + **Normal** = 2,147,483,648 (indexes `0` to `2147483647`)
   + **Hardened** = 2,147,483,648 (indexes `2147483648` to `4294967295`)
 
-Now, because this time the child keys have been *adjusted* based on the **parent** private key and public key, the magic of [elliptic curve](/technical/cryptography/elliptic-curve/) mathematics means that the **child** private keys and public keys will correspond.
+Now, because this time the child keys have been *adjusted* based on the **parent** private key and public key, the magic of [elliptic curve](/docs/technical/cryptography/elliptic-curve.md) mathematics means that the **child** private keys and public keys will correspond.
 
 [![Animation showing the derivation of normal extended private key and extended public key children.](../../images/technical_keys_hd-wallets_child-keys-advanced-private-public.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/child-keys-advanced-private-public.gif)
 
@@ -340,7 +340,7 @@ It seems like magic, I know, but it's just mathematics.
 
 Adding a chain code means that child keys are not derived *solely* from the key.
 
-For example, we may use one of the public keys in the tree to receive a payment, which would make it visible on the [blockchain](/technical/blockchain/). If we didn't use chain codes, anyone could take this public key and derive all the children for it:
+For example, we may use one of the public keys in the tree to receive a payment, which would make it visible on the [blockchain](/docs/technical/blockchain.md). If we didn't use chain codes, anyone could take this public key and derive all the children for it:
 
 [![Diagram showing how you can derive child public keys if a chain code is not used.](../../images/technical_keys_hd-wallets_without-chain-code.png)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/without-chain-code.png)
 
@@ -354,7 +354,7 @@ So in other words, the chain code is additional secret data that prevents other 
 
 **No**.
 
-You cannot tell that any two public keys (or [addresses](/technical/keys/address/)) in the tree are part of the same wallet (i.e. derived from the same master extended key).
+You cannot tell that any two public keys (or [addresses](/docs/technical/keys/address.md)) in the tree are part of the same wallet (i.e. derived from the same master extended key).
 
 Even though child keys are derived from the master extended key deterministically, the actual private keys and public keys themselves do not share any resemblance to each other.
 
@@ -401,7 +401,7 @@ Legacy ([BIP 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)
  Extended Private Key (xprv)
  Extended Public Key (xpub)
 
-Note: 1addresses ([P2PKH](/technical/script/p2pkh/))
+Note: 1addresses ([P2PKH](/docs/technical/script/p2pkh.md))
 
 
 Segwit ([BIP 49](https://github.com/bitcoin/bips/blob/master/bip-0049.mediawiki))
@@ -415,7 +415,7 @@ Segwit ([BIP 84](https://github.com/bitcoin/bips/blob/master/bip-0084.mediawiki)
  Extended Private Key (zprv)
  Extended Public Key (zpub)
 
-Note: bc1addresses ([P2WPKH](/technical/script/p2wpkh/))
+Note: bc1addresses ([P2WPKH](/docs/technical/script/p2wpkh.md))
 
 Depth
 
@@ -472,11 +472,11 @@ Base58 encoding of the serialized extended key and checksum
 
 For example, this is what our master extended private key looks like when serialized:
 
-We can then make this into an address by [base58check](/technical/keys/base58/#base58check) encoding it:
+We can then make this into an address by [base58check](/docs/technical/keys/base58.md#base58check) encoding it:
 
 This is now a more useful format for our extended private key, as it's easier to share between computers and import in to wallets.
 
-See [extended key address](/technical/keys/hd-wallets/extended-keys/#address) for details.
+See [extended key address](/docs/technical/keys/hd-wallets/extended-keys.md#address) for details.
 
 ## History
 
@@ -499,15 +499,15 @@ Pieter Wuille, (on IRC)
 
 [![Animation showing the overall structure of an HD wallet.](../../images/technical_keys_hd-wallets_hierarchical-deterministic-wallets.gif)](https://static.learnmeabitcoin.com/technical/keys/hd-wallets/hierarchical-deterministic-wallets.gif)
 
-A **hierarchical deterministic wallet** provides a useful method for generating new [private keys](/technical/keys/private-key/) and [public keys](/technical/keys/public-key/).
+A **hierarchical deterministic wallet** provides a useful method for generating new [private keys](/docs/technical/keys/private-key.md) and [public keys](/docs/technical/keys/public-key.md).
 
 It's *deterministic* because all of the child keys are generated from a single seed in the **same way** each time, and it's *hierarchical* because you can organize the keys into a **tree structure** (or hierarchy). The additional benefit is that it's possible to derive the public keys in the wallet without having any knowledge of the private keys, which is pretty amazing.
 
 Here are some more technical explanations if you're interested in the details of HD wallets:
 
-* [Mnemonic Seed](/technical/keys/hd-wallets/mnemonic-seed/) – Generating a user-friendly seed for your HD wallet.
-* [Extended Keys](/technical/keys/hd-wallets/extended-keys/) –Creating a master extended key, and deriving children from it.
-* [Derivation Paths](/technical/keys/hd-wallets/derivation-paths/) – Common hierarchies used by wallets for organizing keys.
+* [Mnemonic Seed](/docs/technical/keys/hd-wallets/mnemonic-seed.md) – Generating a user-friendly seed for your HD wallet.
+* [Extended Keys](/docs/technical/keys/hd-wallets/extended-keys.md) –Creating a master extended key, and deriving children from it.
+* [Derivation Paths](/docs/technical/keys/hd-wallets/derivation-paths.md) – Common hierarchies used by wallets for organizing keys.
 
 ## Resources
 

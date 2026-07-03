@@ -1,10 +1,10 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-The blockchain is a file that contains a list of bitcoin [transactions](/beginners/guide/transactions/).
+The blockchain is a file that contains a list of bitcoin [transactions](/docs/beginners/guide/transactions.md).
 
 [![Diagram showing the blockchain as a file on a computer.](../../images/beginners_guide_blockchain_01-blockchain_file.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/01-blockchain_file.png)
 
-Everyone on the [bitcoin network](/beginners/guide/network/) shares a copy of this file, and it updates regularly with the latest transactions.
+Everyone on the [bitcoin network](/docs/beginners/guide/network.md) shares a copy of this file, and it updates regularly with the latest transactions.
 
 [![Diagram showing the blockchain as a file being shared by computers on a network.](../../images/beginners_guide_blockchain_02-bitcoin_network.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/02-bitcoin_network.png)
 
@@ -12,7 +12,7 @@ Everyone on the [bitcoin network](/beginners/guide/network/) shares a copy of th
 
 The blockchain tells you **how many bitcoins each person owns**.
 
-This is because having *a complete list of transactions* allows you to work out how many bitcoins are located at each [address](/technical/keys/address/). Therefore, you can figure out how many bitcoins each person has.
+This is because having *a complete list of transactions* allows you to work out how many bitcoins are located at each [address](/docs/technical/keys/address.md). Therefore, you can figure out how many bitcoins each person has.
 
 So the blockchain is like a logbook, or a *ledger*.
 
@@ -32,7 +32,7 @@ Furthermore, the process of adding transactions in *blocks* makes it easier for 
 
 ## How is the blockchain shared?
 
-The blockchain is shared by the [nodes](/beginners/guide/node/) on the [bitcoin network](/beginners/guide/network/), similar to how a totally legit and non-copyrighted video file might be shared on the [BitTorrent network](https://en.wikipedia.org/wiki/BitTorrent).
+The blockchain is shared by the [nodes](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/beginners/guide/network.md), similar to how a totally legit and non-copyrighted video file might be shared on the [BitTorrent network](https://en.wikipedia.org/wiki/BitTorrent).
 
 [![Diagram showing the blockchain being shared and updated with new blocks on a network.](../../images/beginners_guide_blockchain_04-blocks_sharing.png)](https://static.learnmeabitcoin.com/beginners/guide/blockchain/04-blocks_sharing.png)
 
@@ -70,6 +70,6 @@ Mac
 
 The actual blockchain data is stored in files with names like: `blk00000.dat`. There's also `blk00001.dat`, `blk00002.dat`, and so on. Splitting the blockchain into multiple files makes it easier to work with than having one huge file.
 
-However, these [.dat files](/technical/block/blkdat/) contain data designed for a computer to read, so if you open one using a text editor you'll see a bunch of mumbo-jumbo. But trust me, all the transactions are in there.
+However, these [.dat files](/docs/technical/block/blkdat.md) contain data designed for a computer to read, so if you open one using a text editor you'll see a bunch of mumbo-jumbo. But trust me, all the transactions are in there.
 
 If you want to browse around a readable version of the blockchain, try my [blockchain explorer](/explorer/). I basically take the data from the raw blockchain files (the very same copies you have), *parse* them, and display the contents on a web page.

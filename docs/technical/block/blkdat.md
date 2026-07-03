@@ -1,8 +1,8 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-The blk.dat files in the `~/.bitcoin/blocks/` directory contain the **raw [block](/technical/block/) data** received by your [*Bitcoin Core*](https://bitcoin.org/en/download) node.
+The blk.dat files in the `~/.bitcoin/blocks/` directory contain the **raw [block](/docs/technical/block.md) data** received by your [*Bitcoin Core*](https://bitcoin.org/en/download) node.
 
-These blk.dat files basically store the entire [blockchain](/technical/blockchain/).
+These blk.dat files basically store the entire [blockchain](/docs/technical/blockchain.md).
 
 ## Location
 
@@ -22,7 +22,7 @@ You can change the location of the block data directory by setting the `datadir=
 
 How are the blockchain files organized?
 
-Every [block](/technical/block/) that your node receives gets appended to a blk.dat file. But instead of the entire blockchain being stored in one massive file, they are split into multiple blk\*.dat files.
+Every [block](/docs/technical/block.md) that your node receives gets appended to a blk.dat file. But instead of the entire blockchain being stored in one massive file, they are split into multiple blk\*.dat files.
 
 * ~/.bitcoin/blocks/
   1. blk00000.dat
@@ -62,7 +62,7 @@ Nonetheless, we can look at the [genesis block](/explorer/block/000000000019d668
 f9beb4d9 1d010000 01000000 0000000000000000000000000000000000000000000000000000000000000000 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a 29ab5f49 ffff001d 1dac2b7c 01 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-See the [od command](#od) below for displaying the [hex bytes](/technical/general/bytes/#representing-bytes) from a binary file.
+See the [od command](#od) below for displaying the [hex bytes](/docs/technical/general/bytes.md#representing-bytes) from a binary file.
 
 ## Structure
 
@@ -72,11 +72,11 @@ What is the structure of a raw block?
 
 The data above can be split into five parts:
 
-1. The [**magic bytes**](/technical/networking/magic-bytes/) (4 bytes) is a message delimiter indicating the start of a block.
-2. The **size** (4 bytes) indicates the size of the upcoming block in [bytes](/technical/general/bytes/).
-3. The [**block header**](/technical/block/#header) (80 bytes) is a summary of the block data.
-4. The **tx count** ([compact size](/technical/general/compact-size/)) indicates how many transactions are in the block.
-5. The [**transaction data**](/technical/transaction/) (variable) is all of the transactions in the block concatenated one after the other.
+1. The [**magic bytes**](/docs/technical/networking/magic-bytes.md) (4 bytes) is a message delimiter indicating the start of a block.
+2. The **size** (4 bytes) indicates the size of the upcoming block in [bytes](/docs/technical/general/bytes.md).
+3. The [**block header**](/docs/technical/block.md#header) (80 bytes) is a summary of the block data.
+4. The **tx count** ([compact size](/docs/technical/general/compact-size.md)) indicates how many transactions are in the block.
+5. The [**transaction data**](/docs/technical/transaction.md) (variable) is all of the transactions in the block concatenated one after the other.
 
 The size field is what allowed me to figure out that I needed to read **293 bytes** to get the whole block in the example above. The size of the block is indicated as `1d010000`, so to get this in human format:
 
@@ -159,7 +159,7 @@ So the actual block itself is only 285 bytes. But then there is an extra 8 bytes
 
 How can you read raw blockchain data?
 
-As mentioned, the data inside a blk.dat file is *binary*, so you're probably not getting to see anything useful if you open one up in a regular text editor. But no matter, because binary data can be easily displayed as [hexadecimal](/technical/general/hexadecimal/) bytes, and there are a few commands that can help:
+As mentioned, the data inside a blk.dat file is *binary*, so you're probably not getting to see anything useful if you open one up in a regular text editor. But no matter, because binary data can be easily displayed as [hexadecimal](/docs/technical/general/hexadecimal.md) bytes, and there are a few commands that can help:
 
 ### 1. `xxd`
 
@@ -223,7 +223,7 @@ $ od -x --endian=big -N 293 -An blk00000.dat
 
 ### 3. `hexdump`
 
-This is similar to `xxd` and `od`, but it also gives you the option of displaying [ASCII](/technical/general/bytes/#text) text from the data (which is also handy for looking at messages contained inside transaction data).
+This is similar to `xxd` and `od`, but it also gives you the option of displaying [ASCII](/docs/technical/general/bytes.md#text) text from the data (which is also handy for looking at messages contained inside transaction data).
 
 ```
 $ hexdump -C -s 8 -n 285 blk00000.dat

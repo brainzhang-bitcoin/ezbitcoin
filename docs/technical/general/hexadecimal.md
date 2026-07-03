@@ -6,7 +6,7 @@ The hexadecimal numbering system uses the **digits 0-9 and the characters A-F** 
 
 So basically the hexadecimal system (16 symbols) is an extension of the decimal system (10 symbols). This means you can represent numbers from 0 to 15 using just one symbol.
 
-This system is useful for representing [bytes](/technical/general/bytes/), because half a byte has 16 different combinations, so you can represent a whole byte using just 2 hexadecimal symbols. That's why a lot of the data you see in Bitcoin (e.g. [private keys](/technical/keys/private-key/), [transactions](/technical/transaction/)) is in hexadecimal.
+This system is useful for representing [bytes](/docs/technical/general/bytes.md), because half a byte has 16 different combinations, so you can represent a whole byte using just 2 hexadecimal symbols. That's why a lot of the data you see in Bitcoin (e.g. [private keys](/docs/technical/keys/private-key.md), [transactions](/docs/technical/transaction.md)) is in hexadecimal.
 
 The letters in hexadecimal can be **uppercase or lowercase**, it doesn't matter (e.g. 1337af is the same as 1337AF).
 
@@ -86,7 +86,7 @@ Any number to the power of zero is 1. For example, 100 = 1, and 160 = 1.
 
 You don't have to be able to convert hexadecimal to decimal in your head, but it's good to remember that ultimately you're just looking at numbers when you're looking at hexadecimal digits and characters.
 
-**[Little-Endian](/technical/general/little-endian/).** Most numbers stored within fields in bitcoin data (e.g. [vout](/technical/transaction/#structure-inputs-vout), [amount](/technical/transaction/#structure-outputs-amount)) are in *little-endian* (where the bytes are in reverse order), so you need to reverse the order of bytes first before converting to decimal.
+**[Little-Endian](/docs/technical/general/little-endian.md).** Most numbers stored within fields in bitcoin data (e.g. [vout](/docs/technical/transaction.md#structure-inputs-vout), [amount](/docs/technical/transaction.md#structure-outputs-amount)) are in *little-endian* (where the bytes are in reverse order), so you need to reverse the order of bytes first before converting to decimal.
 
 ### Code Examples
 
@@ -177,7 +177,7 @@ puts 6735.to_s(16) #=> 1a4f
 echo "obase=16; 6735" | bc #=> 1A4F
 ```
 
-## [Bytes](/technical/general/bytes/)
+## [Bytes](/docs/technical/general/bytes.md)
 
 What's the use of hexadecimal?
 
@@ -224,7 +224,7 @@ Tip: The *lowest value* bit is on the right →
 
 Tip: Half of a byte is called a "nibble". But that's not important to know for Bitcoin.
 
-For example, rather than displaying all eight individual [bits](/technical/general/bytes/#bit) using binary like `10110101`, we can shorten it two hexadecimal characters `B5` instead (because `1011` = `B` and `0101` = `5`).
+For example, rather than displaying all eight individual [bits](/docs/technical/general/bytes.md#bit) using binary like `10110101`, we can shorten it two hexadecimal characters `B5` instead (because `1011` = `B` and `0101` = `5`).
 
 So basically, the hexadecimal system is a *convenient* system for displaying raw bytes of data.
 

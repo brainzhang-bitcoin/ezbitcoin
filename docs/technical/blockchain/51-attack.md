@@ -8,7 +8,7 @@ Current Network Hashrate:
 
 See [calculation](#hashpower)
 
-A 51% attack refers to the act of intentionally building a new [longest chain](/technical/blockchain/longest-chain/) of [blocks](/technical/block/) to replace blocks already in the [blockchain](/technical/blockchain/). This allows you to **replace [transactions](/technical/transaction/)** that have previously been [mined](/technical/mining/) into the blockchain.
+A 51% attack refers to the act of intentionally building a new [longest chain](/docs/technical/blockchain/longest-chain.md) of [blocks](/docs/technical/block.md) to replace blocks already in the [blockchain](/docs/technical/blockchain.md). This allows you to **replace [transactions](/docs/technical/transaction.md)** that have previously been [mined](/docs/technical/mining.md) into the blockchain.
 
 This kind of attack is easiest to perform when you have a ***majority* of the mining power**, which is why it's referred to as a "majority attack" or a "51% attack".
 
@@ -16,25 +16,25 @@ This kind of attack is easiest to perform when you have a ***majority* of the mi
 
 How does a 51% attack work?
 
-Nodes always accept the [longest known chain](/technical/blockchain/longest-chain/) of blocks as the *valid* version of the blockchain. So if you want to "undo" a transaction from the blockchain, you just need to **build a new, longer chain of blocks** *without* that transaction in it.
+Nodes always accept the [longest known chain](/docs/technical/blockchain/longest-chain.md) of blocks as the *valid* version of the blockchain. So if you want to "undo" a transaction from the blockchain, you just need to **build a new, longer chain of blocks** *without* that transaction in it.
 
 [![Diagram showing a 51 attack to replace a transaction in a previous longest chain.](../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-build-longest-chain.png)
 
 
 Let's say we paid for a car in bitcoin and drove off with it.
 
-When nodes receive this new *longer* chain of blocks, they will perform a [chain reorganization](/technical/blockchain/chain-reorganization/) to *deactivate* blocks in their old longest chain, and *activate* the blocks in the new longest chain you have built.
+When nodes receive this new *longer* chain of blocks, they will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to *deactivate* blocks in their old longest chain, and *activate* the blocks in the new longest chain you have built.
 
 [![Diagram showing a 51 attack to replace a transaction in a previous longest chain.](../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-chain-reorganization.png)
 
 
 Transactions in the old longest chain are now invalid. It's as if the payment for the car never happened.
 
-So by building a new longest chain to replace an existing one, you are effectively **rewriting the blockchain** and creating a new history of transactions that every node on the [network](/technical/networking/) will adopt. As a result, you have reversed transactions that we previously thought to have been a permanent part of the blockchain.
+So by building a new longest chain to replace an existing one, you are effectively **rewriting the blockchain** and creating a new history of transactions that every node on the [network](/docs/technical/networking.md) will adopt. As a result, you have reversed transactions that we previously thought to have been a permanent part of the blockchain.
 
 But performing a successful 51% attack is not easy.
 
-You would want to include a *replacement* transaction in the new chain to send the bitcoins to a *new* destination (e.g. to your [address](/technical/keys/address/) and not to the car dealer's). Otherwise, the original transaction could get re-mined into the new chain.
+You would want to include a *replacement* transaction in the new chain to send the bitcoins to a *new* destination (e.g. to your [address](/docs/technical/keys/address.md) and not to the car dealer's). Otherwise, the original transaction could get re-mined into the new chain.
 
 ## Prevention
 
@@ -54,7 +54,7 @@ But of course, if you can actually acquire *more* mining power than all other mi
 
 If you have the majority of mining power, it's just a matter of time before you build a longer chain.
 
-So to help prevent this from happening, we want to make it difficult for a single miner to acquire a majority of the mining power. This is achieved by **allowing anyone in the world to mine**, and offering a **[block reward](/technical/mining/block-reward/) as an incentive** to build on the longest known chain.
+So to help prevent this from happening, we want to make it difficult for a single miner to acquire a majority of the mining power. This is achieved by **allowing anyone in the world to mine**, and offering a **[block reward](/docs/technical/mining/block-reward.md) as an incentive** to build on the longest known chain.
 
 [![Diagram showing the block reward as an incentive for miners to extend the longest chain.](../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png)](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-incentive.png)
 
@@ -212,13 +212,13 @@ Even if a miner gets over 50% mining power, it doesn't necessarily mean that the
 
 ### How much hashpower do I need to perform a 51% attack?
 
-You can use the current [target](/technical/mining/target/) value to estimate how much hash power you would need to get majority control.
+You can use the current [target](/docs/technical/mining/target.md) value to estimate how much hash power you would need to get majority control.
 
 The target moves up and down based on how much quickly all miners on the network are able to mine new blocks. We can therefore use it to figure out how fast we need to be able to hash to outpace the current speed of the network.
 
 #### 1. Find the current target
 
-Firstly, we can get the current target by looking at the "[bits](/technical/block/bits/)" field inside the block header of the most recently mined block.
+Firstly, we can get the current target by looking at the "[bits](/docs/technical/block/bits.md)" field inside the block header of the most recently mined block.
 
 ```
 $ bitcoin-cli getblockcount
@@ -257,7 +257,7 @@ Bits`0 bytes`
 
 0 secs
 
-And that's the number that all miners need to get a [block hash](/technical/block/hash/) below to mine a block.
+And that's the number that all miners need to get a [block hash](/docs/technical/block/hash.md) below to mine a block.
 
 #### 2. Calculate the average number of hashes required to mine the next block
 
@@ -272,7 +272,7 @@ So that tells us that we need to do `574975416304515007119360` hashes on average
 
 Or in other words, this is roughly the combined number of hashes all the miners on the network are performing **every 10 minutes**.
 
-See the [chainwork calculation explanation](/technical/blockchain/longest-chain/#calculation) for more information on how we get this "expected number of hashes".
+See the [chainwork calculation explanation](/docs/technical/blockchain/longest-chain.md#calculation) for more information on how we get this "expected number of hashes".
 
 #### 3. Convert to hashes per second
 

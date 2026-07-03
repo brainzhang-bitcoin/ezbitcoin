@@ -1,6 +1,6 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-Every [output](/beginners/guide/outputs/) in a [transaction](/beginners/guide/transactions/) has a lock on it. This lock is a **set of requirements** that must be met to spend the output in a future transaction.
+Every [output](/docs/beginners/guide/outputs.md) in a [transaction](/docs/beginners/guide/transactions.md) has a lock on it. This lock is a **set of requirements** that must be met to spend the output in a future transaction.
 
 So in other words, these locks prevent bitcoins from being stolen (i.e. someone else spending your bitcoins), as every output we receive is *encumbered* by a lock.
 
@@ -10,7 +10,7 @@ For example, a typical lock reads something like this:
 
 ## When do locks get placed on outputs?
 
-As we know, a [transaction](/beginners/guide/transactions/) takes existing outputs and creates new ones from them:
+As we know, a [transaction](/docs/beginners/guide/transactions.md) takes existing outputs and creates new ones from them:
 
 [![Diagram showing a simple transaction with inputs and outputs.](../../images/beginners_guide_locks_02-transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/02-transaction.png)
 
@@ -22,13 +22,13 @@ So when we want to send bitcoins to a friend, we create a new output, and add a 
 
 [![Diagram showing a simple transaction with inputs and outputs, and the outputs are locked to addresses.](../../images/beginners_guide_locks_02-transaction-locks-addresses.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/02-transaction-locks-addresses.png)
 
-As a result, this new output will effectively "belong" to our friend, because they are the only person who has the [private key](/beginners/guide/private-keys/) required to unlock the bitcoins locked to this [address](/technical/keys/address/), so nobody else will be able to spend it.
+As a result, this new output will effectively "belong" to our friend, because they are the only person who has the [private key](/docs/beginners/guide/private-keys.md) required to unlock the bitcoins locked to this [address](/docs/technical/keys/address.md), so nobody else will be able to spend it.
 
 ### Where do bitcoins live?
 
 As you may have noticed, you're never really "sending" bitcoins directly from your computer to someone else's computer.
 
-Instead, you're constructing a transaction that creates new outputs (with locks on them), sending this transaction data into the [bitcoin network](/beginners/guide/network/), and waiting for it to get mined into the [blockchain](/beginners/guide/blockchain/).
+Instead, you're constructing a transaction that creates new outputs (with locks on them), sending this transaction data into the [bitcoin network](/docs/beginners/guide/network.md), and waiting for it to get mined into the [blockchain](/docs/beginners/guide/blockchain.md).
 
 [![Diagram showing a transaction with inputs and outputs getting mined on to the blockchain.](../../images/beginners_guide_locks_aside-overview.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/aside-overview.png)
 
@@ -50,7 +50,7 @@ So the blockchain stores outputs, and you can spend any of these outputs any tim
 
 ## What does a lock look like?
 
-Locks are written in a basic programming language called [Script](/technical/script/).
+Locks are written in a basic programming language called [Script](/docs/technical/script.md).
 
 It's a bit tricky to explain the workings of an entire programming language in one diagram, but here we go:
 
@@ -60,7 +60,7 @@ This is a simplified example of a locking script; it's not exactly what Script l
 
 Now, the most interesting part of this locking script is the `CHECKPRIVATEKEY` part, which is a *function* that we use to help set the requirements for the lock.
 
-So for this particular output, we've *set a lock* that wants to compare the address 1EUXSxuUVy2PC5enGXR1a3yxbEjNWMHuem with a [private key](/beginners/guide/private-keys/).
+So for this particular output, we've *set a lock* that wants to compare the address 1EUXSxuUVy2PC5enGXR1a3yxbEjNWMHuem with a [private key](/docs/beginners/guide/private-keys.md).
 
 If we can provide this lock with the correct private key (which the owner of the address keeps secret), we can unlock it and spend it in a transaction.
 
@@ -88,7 +88,7 @@ Astute observation.
 
 Confession: We don't actually put our private key into the unlocking script.
 
-You see, to save us from giving our private key away within the transaction data, we use the private key to create something called a [digital signature](/beginners/guide/digital-signatures/) instead:
+You see, to save us from giving our private key away within the transaction data, we use the private key to create something called a [digital signature](/docs/beginners/guide/digital-signatures.md) instead:
 
 [![Diagram showing a digital signature being created from a private key and being placed into an unlocking script.](../../images/beginners_guide_locks_05-unlocking-script-digitalsignature.png)](https://static.learnmeabitcoin.com/beginners/guide/locks/05-unlocking-script-digitalsignature.png)
 
@@ -102,7 +102,7 @@ And thanks to the mathematics of digital signatures and the `CHECKSIG` function,
 
 Awesome.
 
-There are many different functions available in the [Script](/technical/script/) programming language. The `CHECKSIG` function is designed for locking an output to a specific address, but you can use others (and in various combinations) to create much more complex locks.
+There are many different functions available in the [Script](/docs/technical/script.md) programming language. The `CHECKSIG` function is designed for locking an output to a specific address, but you can use others (and in various combinations) to create much more complex locks.
 
 For example, you could create a lock that can only be unlocked after a specific date, or a lock that can only be unlocked by the owners of two (or more) different addresses.
 

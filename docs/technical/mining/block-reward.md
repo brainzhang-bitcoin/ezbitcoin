@@ -12,9 +12,9 @@ Block Subsidy:    3.125 BTC
 
 Transaction Fees: 0.0058941 BTC
 
-The block reward is an amount of bitcoins that a miner can collect for [mining](/technical/mining/) a [block](/technical/block/).
+The block reward is an amount of bitcoins that a miner can collect for [mining](/docs/technical/mining.md) a [block](/docs/technical/block.md).
 
-It is claimed via a [coinbase transaction](/technical/mining/coinbase-transaction/), and provides an **incentive** for miners to mine new blocks on to the [blockchain](/technical/blockchain/).
+It is claimed via a [coinbase transaction](/docs/technical/mining/coinbase-transaction.md), and provides an **incentive** for miners to mine new blocks on to the [blockchain](/docs/technical/blockchain.md).
 
 ## Source
 
@@ -37,7 +37,7 @@ Height: [913,801](/explorer/913801#blockchain)
 
 The block subsidy is a set amount of **new bitcoins** that a miner is allowed to send themselves for mining a block.
 
-The size of the block subsidy is based on the [height](/technical/blockchain/height/) of the block.
+The size of the block subsidy is based on the [height](/docs/technical/blockchain/height.md) of the block.
 
 See [halving](#halving) section for a full table of past, current, and future block subsidies.
 
@@ -51,15 +51,15 @@ Height: [913,801](/explorer/913801#blockchain)
 
 The block reward also consists of all the **fees** from the transactions included in the block.
 
-A [transaction fee](/technical/transaction/fee/) is an amount of bitcoin that doesn't get "used up" in a transaction, and miners are able to claim these "leftover" bitcoins as part of the block reward too.
+A [transaction fee](/docs/technical/transaction/fee.md) is an amount of bitcoin that doesn't get "used up" in a transaction, and miners are able to claim these "leftover" bitcoins as part of the block reward too.
 
-Miners fill their [candidate blocks](/technical/mining/candidate-block/) with transactions from the [memory pool](/technical/mining/memory-pool/) that contain the highest fees on them to maximize the amount of bitcoins they can claim from the block reward. Therefore, setting a high fee on a transaction acts as an incentive for miners to include your transaction in their next block.
+Miners fill their [candidate blocks](/docs/technical/mining/candidate-block.md) with transactions from the [memory pool](/docs/technical/mining/memory-pool.md) that contain the highest fees on them to maximize the amount of bitcoins they can claim from the block reward. Therefore, setting a high fee on a transaction acts as an incentive for miners to include your transaction in their next block.
 
 > The incentive can also be funded with transaction fees. If the output value of a transaction is less than its input value, the difference is a transaction fee that is added to the incentive value of the block containing the transaction.
 
 Satoshi Nakamoto, [Bitcoin Whitepaper](/bitcoin.pdf)
 
-The block reward will be made up entirely of [transaction fees](/technical/transaction/fee/) when there's no more block subsidy left.
+The block reward will be made up entirely of [transaction fees](/docs/technical/transaction/fee.md) when there's no more block subsidy left.
 
 ## Purpose
 
@@ -71,15 +71,15 @@ The block reward serves two purposes:
 
 [![Diagram showing a miner collecting the block reward as compensation for the cost of mining a block on to the blockchain.](../../images/diagrams_png_mining-block-reward-incentive.png)](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-incentive.png)
 
-As already mentioned, the block reward provides an **incentive for miners to add new blocks on to the [blockchain](/technical/blockchain/)**.
+As already mentioned, the block reward provides an **incentive for miners to add new blocks on to the [blockchain](/docs/technical/blockchain.md)**.
 
-It requires *energy* to try and mine new blocks on the blockchain, so the block reward compensates miners for the processing power they use during [mining](/technical/mining/).
+It requires *energy* to try and mine new blocks on the blockchain, so the block reward compensates miners for the processing power they use during [mining](/docs/technical/mining.md).
 
 And if the block reward is substantial enough, it encourages *more* miners to join the network to help build the blockchain, which in turn makes the blockchain even more secure (as it would require more energy for a single miner to attempt to rewrite the blockchain).
 
 #### 51% Attacks
 
-The block reward also helps to discourage against [51% attacks](/technical/blockchain/51-attack/).
+The block reward also helps to discourage against [51% attacks](/docs/technical/blockchain/51-attack.md).
 
 If a miner can acquire a majority of the mining power, they have the *ability* to rewrite the blockchain, effectively allowing them to reverse transactions and "steal back" bitcoins from previous transactions they have made.
 
@@ -275,7 +275,7 @@ When can you spend the block reward?
 
 The block reward can only be spent by a miner when the block reaches over **100 blocks deep** in the blockchain.
 
-See [coinbase maturity](/technical/mining/coinbase-transaction/#coinbase-maturity).
+See [coinbase maturity](/docs/technical/mining/coinbase-transaction.md#coinbase-maturity).
 
 ## Notes
 

@@ -1,6 +1,6 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-The bitcoin [transaction](/beginners/guide/transactions/) system involves sending and receiving whole "batches" of bitcoins, called outputs.
+The bitcoin [transaction](/docs/beginners/guide/transactions.md) system involves sending and receiving whole "batches" of bitcoins, called outputs.
 
 Simple enough, but the only way to really understand how outputs work is to look at a few example transactions.
 
@@ -8,11 +8,11 @@ Simple enough, but the only way to really understand how outputs work is to look
 
 Let's begin this explanation of transaction outputs with the birth of a fresh batch of bitcoins…
 
-You are [mining](/beginners/guide/mining/) bitcoins on your own. By some miracle, you have managed to mine a [block](/beginners/guide/blocks/) of transactions and earn yourself a [block reward](/technical/mining/block-reward/).
+You are [mining](/docs/beginners/guide/mining.md) bitcoins on your own. By some miracle, you have managed to mine a [block](/docs/beginners/guide/blocks.md) of transactions and earn yourself a [block reward](/docs/technical/mining/block-reward.md).
 
 [![Diagram showing the block reward being sent to an address via the coinbase transaction.](../../images/beginners_guide_outputs_00-generation-transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/outputs/00-generation-transaction.png)
 
-Every miner includes their own address at the top of each block, so if they manage to mine the block, the block reward can be sent to their address. This is claimed via a [coinbase transaction](/technical/mining/coinbase-transaction/) (or as it used to be referred to, the "generation transaction").
+Every miner includes their own address at the top of each block, so if they manage to mine the block, the block reward can be sent to their address. This is claimed via a [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) (or as it used to be referred to, the "generation transaction").
 
 So this is the current state of your bitcoin address:
 
@@ -103,7 +103,7 @@ The beer shop has used up 4 outputs, and has one new 0.3 BTC output (from the ch
 
 Once again, the *outputs* that were used as *inputs* have been "spent", and can't be used again.
 
-The "unspent" outputs, however, are still good for spending, so we call these the *unspent transaction outputs* ([UTXOs](/technical/transaction/utxo/)).
+The "unspent" outputs, however, are still good for spending, so we call these the *unspent transaction outputs* ([UTXOs](/docs/technical/transaction/utxo.md)).
 
 The balance of an address is the sum of the address's UTXOs.
 
@@ -123,11 +123,11 @@ Any of these combinations of inputs would be fine. You can figure out the change
 
 ## Where do transaction fees come from?
 
-Ah yes, we've not included a [transaction fee](/technical/transaction/fee/) in either of the last two transactions.
+Ah yes, we've not included a [transaction fee](/docs/technical/transaction/fee.md) in either of the last two transactions.
 
 Without a transaction fee, those two transactions will probably take a while to get included in a block (if ever). This is because a transaction fee gives your transaction *priority*.
 
-You see, transaction fees are picked up by miners when they mine a block. So if there are lots of transactions waiting in the [memory pool](/technical/mining/memory-pool/), adding a transaction fee provides an *incentive* for miners to include your transaction in their next block.
+You see, transaction fees are picked up by miners when they mine a block. So if there are lots of transactions waiting in the [memory pool](/docs/technical/mining/memory-pool.md), adding a transaction fee provides an *incentive* for miners to include your transaction in their next block.
 
 Anyhow, pretend we didn't send that last transaction into the network, and let's add a transaction fee to it:
 
@@ -139,4 +139,4 @@ The total of the outputs is less than the total of the inputs, which means that 
 
 And that's all transaction fees are – the remainder of a transaction.
 
-**The amount that's left over in a transaction always gets picked up by a miner.** So if you manually constructed a transaction and forgot to create a change output for yourself, the miner would pick up the amount you left behind, no matter how much it is. This is not something to worry about if you're using a [wallet](/beginners/wallets/) to construct your transactions for you though, as they will always take care of the change for you.
+**The amount that's left over in a transaction always gets picked up by a miner.** So if you manually constructed a transaction and forgot to create a change output for yourself, the miner would pick up the amount you left behind, no matter how much it is. This is not something to worry about if you're using a [wallet](/docs/beginners/wallets.md) to construct your transactions for you though, as they will always take care of the change for you.

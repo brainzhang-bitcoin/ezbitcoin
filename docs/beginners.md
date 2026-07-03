@@ -4,22 +4,22 @@ This section is for *beginners* who are completely new to Bitcoin and want to le
 
 Start here:
 
-[How Does Bitcoin Work?](/beginners/how-does-bitcoin-work/)
+[How Does Bitcoin Work?](/docs/beginners/how-does-bitcoin-work.md)
 
 ## Getting started
 
 So you want to get started *using* bitcoin? Here are the basic steps:
 
-[Wallets](/beginners/wallets/)
+[Wallets](/docs/beginners/wallets.md)
 :   A quick guide to bitcoin wallets, and recommendations on which ones to use.
 
-[Exchanges](/beginners/exchanges/)
+[Exchanges](/docs/beginners/exchanges.md)
 :   Recommendations on the best exchanges to buy bitcoins from.
 
-[Sending](/beginners/sending/)
+[Sending](/docs/beginners/sending.md)
 :   How to send and receive bitcoin using a bitcoin wallet.
 
-[Security](/beginners/security/)
+[Security](/docs/beginners/security.md)
 :   How to keep your bitcoins secure.
 
 ## Guide
@@ -30,19 +30,19 @@ I wrote this guide when I was **first learning about Bitcoin**. I wanted to writ
 
 So if you have no idea about how bitcoin works and want to get up to speed as quickly as possible, this guide is for you.
 
-* [The Bitcoin Network](/beginners/guide/network/)
-* [Node](/beginners/guide/node/)
-* [Mining](/beginners/guide/mining/)
-* [The Blockchain](/beginners/guide/blockchain/)
-* [Blocks](/beginners/guide/blocks/)
-* [Difficulty](/beginners/guide/difficulty/)
-* [Transactions](/beginners/guide/transactions/)
-* [Outputs](/beginners/guide/outputs/)
-* [Locks](/beginners/guide/locks/)
-* [Keys & Addresses](/beginners/guide/keys-addresses/)
-* [Private Keys](/beginners/guide/private-keys/)
-* [Public Keys](/beginners/guide/public-keys/)
-* [Digital Signatures](/beginners/guide/digital-signatures/)
-* [SegWit](/beginners/guide/segwit/)
+* [The Bitcoin Network](/docs/beginners/guide/network.md)
+* [Node](/docs/beginners/guide/node.md)
+* [Mining](/docs/beginners/guide/mining.md)
+* [The Blockchain](/docs/beginners/guide/blockchain.md)
+* [Blocks](/docs/beginners/guide/blocks.md)
+* [Difficulty](/docs/beginners/guide/difficulty.md)
+* [Transactions](/docs/beginners/guide/transactions.md)
+* [Outputs](/docs/beginners/guide/outputs.md)
+* [Locks](/docs/beginners/guide/locks.md)
+* [Keys & Addresses](/docs/beginners/guide/keys-addresses.md)
+* [Private Keys](/docs/beginners/guide/private-keys.md)
+* [Public Keys](/docs/beginners/guide/public-keys.md)
+* [Digital Signatures](/docs/beginners/guide/digital-signatures.md)
+* [SegWit](/docs/beginners/guide/segwit.md)
 
-**This guide is completely non-technical and should only take about 60 minutes.** If you want to learn more, see the [technical section](/technical/) for more detailed explanations.
+**This guide is completely non-technical and should only take about 60 minutes.** If you want to learn more, see the [technical section](/docs/technical.md) for more detailed explanations.

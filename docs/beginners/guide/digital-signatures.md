@@ -1,16 +1,16 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-A digital signature is used to show that you know the [private key](/beginners/guide/private-keys/) connected to a [public key](/beginners/guide/public-keys/), **without having to reveal the private key**.
+A digital signature is used to show that you know the [private key](/docs/beginners/guide/private-keys.md) connected to a [public key](/docs/beginners/guide/public-keys.md), **without having to reveal the private key**.
 
 [![Illustration showing how a digital signature is created from a private key and proves you are the owner of the public key.](../../images/beginners_guide_digital-signatures_01-digital-signature-usage.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/01-digital-signature-usage.png)
 
-So if anyone ever asks if you have the private key for a specific public key (or [address](/technical/keys/address/)), you can give them a digital signature to prove it.
+So if anyone ever asks if you have the private key for a specific public key (or [address](/docs/technical/keys/address.md)), you can give them a digital signature to prove it.
 
 ## Why do we use digital signatures in Bitcoin?
 
-When you make a [transaction](/beginners/guide/transactions/), you need to unlock the [outputs](/beginners/guide/outputs/) you want to spend.
+When you make a [transaction](/docs/beginners/guide/transactions.md), you need to unlock the [outputs](/docs/beginners/guide/outputs.md) you want to spend.
 
-To do this you need to show that you "own" the output. This is done by proving that you know the private key of the address the output is [locked](/beginners/guide/locks/) to:
+To do this you need to show that you "own" the output. This is done by proving that you know the private key of the address the output is [locked](/docs/beginners/guide/locks.md) to:
 
 [![Diagram showing transaction data containing an input with a lock on it.](../../images/beginners_guide_digital-signatures_02-transaction-data.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/02-transaction-data.png)
 
@@ -24,7 +24,7 @@ So how can we unlock outputs without giving away our private key?
 
 ### Enter the digital signature
 
-A digital signature can be created *from* a private key to prove that we know the private key for an [address](/technical/keys/address/).
+A digital signature can be created *from* a private key to prove that we know the private key for an [address](/docs/technical/keys/address.md).
 
 This means we can use a digital signature to unlock outputs without having to give away our private key:
 
@@ -46,7 +46,7 @@ Therefore, each digital signature is *connected to the transaction* it is being 
 
 [![Diagram showing how a digital signature is tied to the transaction data it is being used in.](../../images/beginners_guide_digital-signatures_03-digital-signature-environment.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/03-digital-signature-environment.png)
 
-So if someone tries to use this digital signature in a different transaction, it will not match the transaction data that was used to create it, and [nodes](/beginners/guide/node/) on the [bitcoin network](/beginners/guide/network/) will reject it.
+So if someone tries to use this digital signature in a different transaction, it will not match the transaction data that was used to create it, and [nodes](/docs/beginners/guide/node.md) on the [bitcoin network](/docs/beginners/guide/network.md) will reject it.
 
 [![Diagram showing how a digital signature must be contained within the same transaction data that was used to create it for it to be valid.](../../images/beginners_guide_digital-signatures_03-digital-signature-environment-different.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/03-digital-signature-environment-different.png)
 
@@ -78,7 +78,7 @@ A digital signature contains two parts:
 
 Start by generating a large random number.
 
-You then multiply this with the generator point on the elliptic curve (the same generator point used when making a [public key](/beginners/guide/public-keys/)):
+You then multiply this with the generator point on the elliptic curve (the same generator point used when making a [public key](/docs/beginners/guide/public-keys.md)):
 
 [![Diagram showing the generator point being multiplied by a large random number.](../../images/beginners_guide_digital-signatures_04-signing-random-point.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/04-signing-random-point.png)
 
@@ -117,7 +117,7 @@ And hey presto, we have the vital "signature" part of our digital signature. We'
 
 Mr. D Signature.
 
-This entire signature then goes into the [unlocking code](/technical/transaction/input/scriptsig/) section of a transaction:
+This entire signature then goes into the [unlocking code](/docs/technical/transaction/input/scriptsig.md) section of a transaction:
 
 [![Diagram showing the rough location of a digital signature inside a transaction.](../../images/beginners_guide_digital-signatures_05-verifying-goal.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/05-verifying-goal.png)
 
@@ -155,7 +155,7 @@ And if the x-coordinate of this third point is the same as the x-coordinate of t
 
 [![Diagram showing the x coordinate of point 3 being equal to the x coordinate of the random point in the signature.](../../images/beginners_guide_digital-signatures_05-verifying-final.png)](https://static.learnmeabitcoin.com/beginners/guide/digital-signatures/05-verifying-final.png)
 
-**This is a simplified explanation of the mathematics involved in digital signatures.** For a more technical explanation, see [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/).
+**This is a simplified explanation of the mathematics involved in digital signatures.** For a more technical explanation, see [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md).
 
 ## Resources
 

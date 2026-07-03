@@ -2,13 +2,13 @@
 
 [![Annotated summary of the signing and verifying equations for Schnorr signatures.](../../../images/diagrams_png_schnorr-equations-summary.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equations-summary.png)
 
-Schnorr signatures are a better than [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/) for creating and verifying [digital signatures](/technical/keys/signature/).
+Schnorr signatures are a better than [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) for creating and verifying [digital signatures](/docs/technical/keys/signature.md).
 
 They're simpler, more efficient, and more secure than ECDSA.
 
 Furthermore, the simpler mathematics also allows you to *add* signatures together, as well as [verify multiple signatures](#batch-verify) at the same time. These are two features that are not available with ECDSA.
 
-Anyway, Schnorr signatures were added to Bitcoin in 2021 as part of the [Taproot](/technical/upgrades/taproot/) upgrade, and are currently used for unlocking [P2TR](/technical/script/p2tr/) locking scripts.
+Anyway, Schnorr signatures were added to Bitcoin in 2021 as part of the [Taproot](/docs/technical/upgrades/taproot.md) upgrade, and are currently used for unlocking [P2TR](/docs/technical/script/p2tr.md) locking scripts.
 
 On this page I'll show you [how to implement](#implementation) Schnorr signatures in Bitcoin, and also give a brief explanation of [how they work](#basics).
 
@@ -339,9 +339,9 @@ puts " result:      fail" if point3[:x] != int(r)
 
 How do you create a Schnorr signature?
 
-Firstly, Schnorr signatures use **elliptic curve cryptography**. It's not essential to understand [elliptic curve mathematics](/technical/cryptography/elliptic-curve/#mathematics) before implementing Schnorr signatures, but it helps.
+Firstly, Schnorr signatures use **elliptic curve cryptography**. It's not essential to understand [elliptic curve mathematics](/docs/technical/cryptography/elliptic-curve.md#mathematics) before implementing Schnorr signatures, but it helps.
 
-Anyway, Schnorr signatures use the *Secp256k1* elliptic curve (same as [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/)):
+Anyway, Schnorr signatures use the *Secp256k1* elliptic curve (same as [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)):
 
 Secp256k1 Parameters
 
@@ -373,7 +373,7 @@ $G = {
 }
 ```
 
-Furthermore, you also need to be able to **multiply** points on an elliptic curve (same as [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/)):
+Furthermore, you also need to be able to **multiply** points on an elliptic curve (same as [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)):
 
 Elliptic Curve Mathematics
 
@@ -482,7 +482,7 @@ To create and verify Schnorr signatures, you need to start by generating a **pai
 1. [Private Key](#private-key)
 2. [Public Key](#public-key)
 
-These [private keys](/technical/keys/private-key/) and [public keys](/technical/keys/public-key/) are almost exactly the same as the ones you're already generating in Bitcoin.
+These [private keys](/docs/technical/keys/private-key.md) and [public keys](/docs/technical/keys/public-key.md) are almost exactly the same as the ones you're already generating in Bitcoin.
 
 #### 1. Private Key
 
@@ -1091,7 +1091,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -1111,7 +1111,7 @@ d02372c4789c6a1d6cf6cf137cc708153a4dbf70ec3ecd0b578476c5a2b4be56
 
 **Public keys for Schnorr signatures in Bitcoin always use the *even* y-coordinate**. So information about the y-coordinate is not included as part of the encoded public key.
 
-You can convert a typical [compressed public key](/technical/keys/public-key/#compressed) to a public key for use in Schnorr signatures by simply removing the first byte (which is used to indicate the polarity of the y-coordinate):
+You can convert a typical [compressed public key](/docs/technical/keys/public-key.md#compressed) to a public key for use in Schnorr signatures by simply removing the first byte (which is used to indicate the polarity of the y-coordinate):
 
 ```
 compressed public key = 03d02372c4789c6a1d6cf6cf137cc708153a4dbf70ec3ecd0b578476c5a2b4be56
@@ -1576,7 +1576,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -2649,7 +2649,7 @@ Now, seeing as we could have a varying number of signatures, it's helpful to def
 
 We start by generating a random number for each triplet.
 
-The recommended way to generate these random numbers is to start by creating an initial "seed" (see [BIP 340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki)). This seed is the [SHA-256](/technical/cryptography/hash-function/#sha256) hash of the `public keys`, `messages`, and `signatures` from each of the triplets concatenated together:
+The recommended way to generate these random numbers is to start by creating an initial "seed" (see [BIP 340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki)). This seed is the [SHA-256](/docs/technical/cryptography/hash-function.md#sha256) hash of the `public keys`, `messages`, and `signatures` from each of the triplets concatenated together:
 
 `seed = SHA-256( public keys || messages || signatures)`
 
@@ -2762,7 +2762,7 @@ I don't know enough about cryptography to explain the technical details behind e
 
 When using Schnorr signatures in Bitcoin, a public key is encoded as the 32-byte **x-coordinate only**.
 
-This [saves space](https://medium.com/blockstream/reducing-bitcoin-transaction-sizes-with-x-only-pubkeys-f86476af05d7) compared to using 33-byte [compressed public keys](/technical/keys/public-key/#compressed) or 65-byte [uncompressed public keys](/technical/keys/public-key/#uncompressed).
+This [saves space](https://medium.com/blockstream/reducing-bitcoin-transaction-sizes-with-x-only-pubkeys-f86476af05d7) compared to using 33-byte [compressed public keys](/docs/technical/keys/public-key.md#compressed) or 65-byte [uncompressed public keys](/docs/technical/keys/public-key.md#uncompressed).
 
 The reason for this is that we don't actually need the y-coordinate, as for any given x-coordinate there are only two possible y-coordinates:
 
@@ -2839,7 +2839,7 @@ end
 puts "y: #{y}" #=> 20300379699400900502742728010166238706652234274974693180220049387639537150104
 ```
 
-The initial method of finding the y-coordinate from an x-coordinate is the same as when [decompressing a public key](/technical/keys/public-key/#decompress).
+The initial method of finding the y-coordinate from an x-coordinate is the same as when [decompressing a public key](/docs/technical/keys/public-key.md#decompress).
 
 * Using the even y-coordinate every time means we don't have to try both possible y coordinates during [signature verification](#verify).
 * Calculating the full public key point (x, y) from an encoded public key requires an extra step, but it's considered worth it to save an extra 1 byte of space in the blockchain for each public key.
@@ -2891,7 +2891,7 @@ Compression
 
 The elliptic curve is symmetrical along the x-axis, so a *compressed* public key only needs to store the full x-coordinate and whether the y-coordinate is even or odd.
 
-An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs. The corresponding y-coordinate is assumed to be even.
+An x-only public key is used in [Taproot](/docs/technical/upgrades/taproot.md) outputs. The corresponding y-coordinate is assumed to be even.
 
 `0 bytes`
 
@@ -2901,7 +2901,7 @@ An x-only public key is used in [Taproot](/technical/upgrades/taproot/) outputs.
 
 0 secs
 
-The second private key in this example is the *additive inverse* of the first private key (i.e. I negated it by subtracting it from the [number of points on the curve](/technical/cryptography/elliptic-curve/#parameters)). This "inverted" private key produces the exact same x-coordinate for the public key, but with the opposing y-coordinate instead.
+The second private key in this example is the *additive inverse* of the first private key (i.e. I negated it by subtracting it from the [number of points on the curve](/docs/technical/cryptography/elliptic-curve.md#parameters)). This "inverted" private key produces the exact same x-coordinate for the public key, but with the opposing y-coordinate instead.
 
 However, somewhat surprisingly, the fact that two private keys will produce the same public key [does not weaken the security of Schnorr signatures in Bitcoin](https://bitcoin.stackexchange.com/questions/90118/why-is-no-security-lost-by-using-32-byte-public-keys-in-schnorr-signatures-inste).
 
@@ -3028,7 +3028,7 @@ This is a rather low-level optimization, and it's not something you need to use 
 
 Every signature you create needs to include a **random nonce** (`k`).
 
-In most signature schemes (e.g. [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/)), this nonce is just a randomly-generated number. But in the implementation of Schnorr signatures in Bitcoin, we use a **specific method** for generating each nonce.
+In most signature schemes (e.g. [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)), this nonce is just a randomly-generated number. But in the implementation of Schnorr signatures in Bitcoin, we use a **specific method** for generating each nonce.
 
 In short:
 
@@ -3056,7 +3056,7 @@ So a Schnorr signature is always **64 bytes** in length.
 
 #### Schnorr vs. ECDSA Signature Encoding
 
-For [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/) signatures, the equivalent `r` and `s` values are wrapped within [DER encoding](/technical/keys/signature/#der):
+For [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) signatures, the equivalent `r` and `s` values are wrapped within [DER encoding](/docs/technical/keys/signature.md#der):
 
 [![Diagram showing the encoding of an ECDSA signature for use in Bitcoin transactions.](../../../images/diagrams_png_keys-signature-der-encoding.png)](https://static.learnmeabitcoin.com/diagrams/png/keys-signature-der-encoding.png)
 
@@ -3072,7 +3072,7 @@ Satoshi likely used DER encoding because it was the standard method for encoding
 
 What are the benefits of Schnorr signatures?
 
-There are a number of benefits to using Schnorr signatures compared to [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/):
+There are a number of benefits to using Schnorr signatures compared to [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md):
 
 1. [Simplicity](#simplicity)
 2. [Efficiency](#efficiency)
@@ -3102,7 +3102,7 @@ The equation for creating a Schnorr signature uses arithmetic *addition* and *mu
 
 [![Schnorr sign equation.](../../../images/diagrams_png_schnorr-equation-sign.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
 
-On the other hand, the equation for creating a signature in ECDSA includes [elliptic curve multiplication](/technical/cryptography/elliptic-curve/#multiply) and [modular inverse](/technical/cryptography/elliptic-curve/#modular-inverse):
+On the other hand, the equation for creating a signature in ECDSA includes [elliptic curve multiplication](/docs/technical/cryptography/elliptic-curve.md#multiply) and [modular inverse](/docs/technical/cryptography/elliptic-curve.md#modular-inverse):
 
 [![ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations.](../../../images/diagrams_png_ecdsa-equation-sign-annotated.png)](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
 
@@ -3162,7 +3162,7 @@ The only way to find out that `k` is `15` is to run through all of the possible 
 315 mod 17 = 6    <- found the answer
 ```
 
-It's not difficult to find the answer when working with small numbers, but when you're working with extremely large numbers (as we do in [cryptography](/technical/cryptography/)), finding a value for `k` becomes impossible.
+It's not difficult to find the answer when working with small numbers, but when you're working with extremely large numbers (as we do in [cryptography](/docs/technical/cryptography.md)), finding a value for `k` becomes impossible.
 
 For example, see if you can find out what `k` is this time:
 
@@ -3180,7 +3180,7 @@ The answer is:
 k = 93350855816723809765951314891371850338090431368773987746149549196975035370474
 ```
 
-But as I say, you would never have been able to figure that out unless I told you (or you've got [a few billion years](/beginners/security/#12-vs-24-word-seed) to brute-force your way to the answer).
+But as I say, you would never have been able to figure that out unless I told you (or you've got [a few billion years](/docs/beginners/security.md#12-vs-24-word-seed) to brute-force your way to the answer).
 
 ### 4. Linearity
 
@@ -3204,7 +3204,7 @@ This ability to add Schnorr signatures together allows you to do useful things l
 
 The fact that you can add Schnorr signatures together means that you can produce a single signature that is valid for the **sum of multiple public keys**.
 
-For example, in the legacy [P2MS](/technical/script/p2ms/) locking script (which uses ECDSA), you have to provide each individual public key in the locking script. And to unlock it, you need to provide a signature for each of those public keys.
+For example, in the legacy [P2MS](/docs/technical/script/p2ms.md) locking script (which uses ECDSA), you have to provide each individual public key in the locking script. And to unlock it, you need to provide a signature for each of those public keys.
 
 [![Diagram showing a basic multisignature locking and unlocking script.](../../../images/diagrams_png_schnorr-multisignature-basic.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-basic.png)
 
@@ -3228,11 +3228,11 @@ Schnorr signatures are **non-malleable**, whereas ECDSA signatures are malleable
 
 So non-malleability is preferable.
 
-Signature malleability has been a bit of an annoyance in Bitcoin's history, as it meant that [TXID](/technical/transaction/input/txid/)s could be adjusted after you had sent a [transaction](/technical/transaction/) into the network. For example, a miner could take your transaction, negate the `s` value in one of the signatures, and the TXID would end up being different.
+Signature malleability has been a bit of an annoyance in Bitcoin's history, as it meant that [TXID](/docs/technical/transaction/input/txid.md)s could be adjusted after you had sent a [transaction](/docs/technical/transaction.md) into the network. For example, a miner could take your transaction, negate the `s` value in one of the signatures, and the TXID would end up being different.
 
-This "transaction malleability" wasn't a huge problem, as the transaction would still get [mined](/technical/mining/) and the coins would be sent to the same place. It just meant that TXIDs were not 100% reliable, so you couldn't build any applications on top of bitcoin that depended on a transaction's TXID remaining the same after you sent it into the network.
+This "transaction malleability" wasn't a huge problem, as the transaction would still get [mined](/docs/technical/mining.md) and the coins would be sent to the same place. It just meant that TXIDs were not 100% reliable, so you couldn't build any applications on top of bitcoin that depended on a transaction's TXID remaining the same after you sent it into the network.
 
-Transaction malleability in Bitcoin was largely "patched" through [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki) (using the low s-value only) and [Segwit](/technical/upgrades/segregated-witness/) (signatures no longer influence the TXID), but the underlying malleability still exists in ECDSA.
+Transaction malleability in Bitcoin was largely "patched" through [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki) (using the low s-value only) and [Segwit](/docs/technical/upgrades/segregated-witness.md) (signatures no longer influence the TXID), but the underlying malleability still exists in ECDSA.
 
 If Schnorr signatures had been used in Bitcoin from the start, transaction malleability would never have been a problem.
 
@@ -3560,7 +3560,7 @@ So what if *I* was able to create the challenge (`e`) number instead?
 
 To do this, I would need to be able to *commit* to using my private nonce (`k`) in some way, whilst also being able to create an unpredictable number for the challenge (`e`) on my side without being able to change my mind about the private nonce (`k`) afterwards.
 
-The solution is to use a [hash function](/technical/cryptography/hash-function/), and use it to hash the value of the public nonce (`kG`) to create the challenge (`e`).
+The solution is to use a [hash function](/docs/technical/cryptography/hash-function.md), and use it to hash the value of the public nonce (`kG`) to create the challenge (`e`).
 
 [![Diagram showing the creation of the challenge by the signer by using a hash function.](../../../images/diagrams_png_schnorr-basics-non-interactive-me.png)](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-me.png)
 
@@ -3592,7 +3592,7 @@ This is cool, but it would be even more useful if I could *sign a message*, so i
 
 This is like signing things in real life. Your signature on its own is unique enough to prove that *you* made it, but we usually put signatures on things like contracts to show that we have agreed to them. The message (`m`) here is the "contract" we want to put our signature (`s`) on.
 
-In Bitcoin for example, this message is usually [transaction data](/technical/transaction/). By signing the transaction data, we can prove that we are the owner of the public key that some bitcoins have been locked to (so they can be unlocked), whilst also agreeing to the destination that we're sending the coins to. Nobody can then change this transaction data (e.g. try to send the coins somewhere else) without invalidating the signature.
+In Bitcoin for example, this message is usually [transaction data](/docs/technical/transaction.md). By signing the transaction data, we can prove that we are the owner of the public key that some bitcoins have been locked to (so they can be unlocked), whilst also agreeing to the destination that we're sending the coins to. Nobody can then change this transaction data (e.g. try to send the coins somewhere else) without invalidating the signature.
 
 Anyway, to sign a message, I just need to include this message (`m`) as part of my signature (`s`) somehow. This is done by **including the message (`m`) as part of the hash** when I'm creating the challenge (`e`).
 
@@ -3612,13 +3612,13 @@ Up until now we've been using simple multiplication inside of our equations. But
 
 What we need is a special type of "multiplication" that has the same properties as normal multiplication (so our equations still work), but doesn't have a reverse "division" operation.
 
-This is where [elliptic curves](/technical/cryptography/elliptic-curve/) come in.
+This is where [elliptic curves](/docs/technical/cryptography/elliptic-curve.md) come in.
 
-There is actually a [multiplication operation](/technical/cryptography/elliptic-curve/#multiply) that works on *points* of an elliptic curve: you can take one *point* on the curve (e.g. `G`), multiply it by a *number* (e.g. `d`), and it will produce a completely new point on the same curve (e.g `dG`). But interestingly, if you give someone this new point (`dG`), there is no operation that allows you to "divide" by `G` to work out what `d` was.
+There is actually a [multiplication operation](/docs/technical/cryptography/elliptic-curve.md#multiply) that works on *points* of an elliptic curve: you can take one *point* on the curve (e.g. `G`), multiply it by a *number* (e.g. `d`), and it will produce a completely new point on the same curve (e.g `dG`). But interestingly, if you give someone this new point (`dG`), there is no operation that allows you to "divide" by `G` to work out what `d` was.
 
 This is perfect for our system, and it's the reason why the mathematics of Schnorr signatures is performed over an **elliptic curve**.
 
-Furthermore, you can [add](/technical/cryptography/elliptic-curve/#add) two points on an elliptic curve too, which is important because we also need to add two points during verification (`kG` + `edG`)
+Furthermore, you can [add](/docs/technical/cryptography/elliptic-curve.md#add) two points on an elliptic curve too, which is important because we also need to add two points during verification (`kG` + `edG`)
 
 So **the equations work in the same way as before**, but the *multiply* and *addition* operations now take place using points on an *elliptic curve* rather than using simple arithmetic multiplication and addition that we've been using up to this point.
 
@@ -3663,7 +3663,7 @@ Why weren't Schnorr signatures used in Bitcoin from the start?
 
 The Schnorr signature scheme was under patent when Bitcoin was first being developed.
 
-Satoshi used the OpenSSL library for the cryptography used in Bitcoin, and Schnorr signatures were not available in this library at the time, so they used [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/) instead. So even though Schnorr signatures are simpler and more useful than ECDSA, they were not a viable option at the time Bitcoin was created.
+Satoshi used the OpenSSL library for the cryptography used in Bitcoin, and Schnorr signatures were not available in this library at the time, so they used [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) instead. So even though Schnorr signatures are simpler and more useful than ECDSA, they were not a viable option at the time Bitcoin was created.
 
 Here's a brief history:
 
@@ -3684,7 +3684,7 @@ Here's a brief history:
 
 **Schnorr signatures are an upgrade from ECDSA** for creating and verifying digital signatures in Bitcoin.
 
-The only reason we didn't use Schnorr signatures from the start is because they were patented until 2010, so [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/) was the next best option (which does the job, just not as elegantly). But since the patent has expired, we're free to use Schnorr signatures and take advantage of all the benefits that come with them.
+The only reason we didn't use Schnorr signatures from the start is because they were patented until 2010, so [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) was the next best option (which does the job, just not as elegantly). But since the patent has expired, we're free to use Schnorr signatures and take advantage of all the benefits that come with them.
 
 In slightly stronger terms:
 

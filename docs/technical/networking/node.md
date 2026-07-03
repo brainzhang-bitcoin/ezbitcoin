@@ -4,7 +4,7 @@
 
 A node is a computer running the Bitcoin program.
 
-It connects to other nodes on the [network](/technical/networking/) to share information about [transactions](/technical/transaction/) and [blocks](/technical/block/).
+It connects to other nodes on the [network](/docs/technical/networking.md) to share information about [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md).
 
 > A node is any device that sends, receives, or processes data connected to a network.
 
@@ -22,7 +22,7 @@ A node has two main jobs:
 
 [![Diagram showing a node joining the Bitcoin network and downloading a copy of the blockchain.](../../images/diagrams_png_node-blockchain.png)](https://static.learnmeabitcoin.com/diagrams/png/node-blockchain.png)
 
-When you run Bitcoin for the first time, it will connect to other nodes on the network to download a full copy of the [blockchain](/technical/blockchain/).
+When you run Bitcoin for the first time, it will connect to other nodes on the network to download a full copy of the [blockchain](/docs/technical/blockchain.md).
 
 This allows your node to **get up to date** with the current state of the blockchain, so you can start receiving (and validating) the latest transactions and blocks being sent around the network.
 
@@ -35,13 +35,13 @@ Current Blockchain Size:
 956,472 blocks
 
 Note: This is the size of the blockchain for my local node.  
-The size of your blockchain will differ depending on how many [chain reorganizations](/technical/blockchain/chain-reorganization/) your node has experienced and how many [stale blocks](/technical/blockchain/chain-reorganization/#stale-blocks) you have stored on disk.
+The size of your blockchain will differ depending on how many [chain reorganizations](/docs/technical/blockchain/chain-reorganization.md) your node has experienced and how many [stale blocks](/docs/technical/blockchain/chain-reorganization.md#stale-blocks) you have stored on disk.
 
 Bitcoin is a lot like [torrent](https://en.wikipedia.org/wiki/BitTorrent), where many different computers are seeding the same file (the blockchain).
 
 ### 2. Validate and relay new transactions and blocks.
 
-After downloading the latest copy of the blockchain, a node can **start receiving the latest [transactions](/technical/transaction/) and [blocks](/technical/block/)**.
+After downloading the latest copy of the blockchain, a node can **start receiving the latest [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md)**.
 
 Each node checks the transactions and blocks it receive against a set of rules to make sure they are *valid*, before relaying them on to the nodes they are connected to.
 
@@ -52,14 +52,14 @@ As a result, a node is constantly working to **enforce rules** and **transmit da
 [![Diagram showing nodes relaying new transactions across the network and adding them to their memory pools.](../../images/diagrams_png_node-relay-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/node-relay-transaction.png)
 
 
-New transactions get added to the [memory pool](/technical/mining/memory-pool/).
+New transactions get added to the [memory pool](/docs/technical/mining/memory-pool.md).
 
 #### Block relay:
 
 [![Diagram showing nodes relaying new blocks across the network and adding them to their blockchains.](../../images/diagrams_png_node-relay-block.png)](https://static.learnmeabitcoin.com/diagrams/png/node-relay-block.png)
 
 
-New blocks get written to the [blockchain](/technical/blockchain/).
+New blocks get written to the [blockchain](/docs/technical/blockchain.md).
 
 ## Requirements
 
@@ -74,7 +74,7 @@ There are a few system requirements that will help the program run smoothly:
 
     * Current Blockchain Size: 856.91 GB
 
-    First and foremost, you'll need a big enough hard drive to store the [blockchain](/technical/blockchain/).
+    First and foremost, you'll need a big enough hard drive to store the [blockchain](/docs/technical/blockchain.md).
 
     The blockchain also grows at a rate of around **100 GB/year**, so you'll need to have enough available disk space to keep up if you plan on running a node for an extended period of time.
 
@@ -85,7 +85,7 @@ There are a few system requirements that will help the program run smoothly:
 
     * Current Mempool Size: 0.68 vMB
 
-    RAM is used for storing the latest transactions in the [mempool](/technical/mining/memory-pool/), as well as for storing [UTXOs](/technical/transaction/utxo/) to help speed up the validation of new transactions and blocks.
+    RAM is used for storing the latest transactions in the [mempool](/docs/technical/mining/memory-pool.md), as well as for storing [UTXOs](/docs/technical/transaction/utxo.md) to help speed up the validation of new transactions and blocks.
 
     You don't need a huge amount of RAM to run Bitcoin, but the more you can give it, the more efficiently it will run.
 
@@ -95,7 +95,7 @@ There are a few system requirements that will help the program run smoothly:
     * Incoming: 2.24 GB/day (average)
     * Outgoing: 25.21 GB/day (average)
 
-    A node is constantly sending and receiving data ([transactions](/technical/transaction/) and [blocks](/technical/block/)) to and from other nodes on the network, so you will need enough bandwidth to cover this.
+    A node is constantly sending and receiving data ([transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md)) to and from other nodes on the network, so you will need enough bandwidth to cover this.
 
     It's not an exorbitant amount of data, but a Bitcoin node is going to use significantly more bandwidth than you'd use browsing websites and sending emails.
 
@@ -121,7 +121,7 @@ How does a node communicate with other nodes?
 
 [![Diagram showing a node communicating with another node by sending a message over a TCP connection.](../../images/diagrams_png_node-communication.png)](https://static.learnmeabitcoin.com/diagrams/png/node-communication.png)
 
-A node communicates with other nodes by sending lots of individual [messages](/technical/networking/#messages).
+A node communicates with other nodes by sending lots of individual [messages](/docs/technical/networking.md#messages).
 
 These messages are sent via TCP (Transmission Control Protocol), which is a common way for two computers on a network to communicate with each other.
 
@@ -131,7 +131,7 @@ So other than following a unique protocol, there's nothing special about the way
 
 Your node will maintain a TCP connection with a number of other nodes on the network, so your node will be sending and receiving lots of messages between multiple computers at the same time. For example, the node running on this website currently has **`114` incoming** and **`10` outgoing** connections.
 
-**The Bitcoin Network is completely open and accessible to anyone.** So as long as you follow the rules for connecting and sending messages, anyone can write their own software for communicating with a node. See [networking](/technical/networking/) for details.
+**The Bitcoin Network is completely open and accessible to anyone.** So as long as you follow the rules for connecting and sending messages, anyone can write their own software for communicating with a node. See [networking](/docs/technical/networking.md) for details.
 
 ## Benefits
 
@@ -159,22 +159,22 @@ Common phrase used in Bitcoin
 
 [![Diagram showing a person broadcasting a transaction via a third-party server.](../../images/diagrams_png_node-privacy.png)](https://static.learnmeabitcoin.com/diagrams/png/node-privacy.png)
 
-Running your own node means you **do not have to share your [transactions](/technical/transaction/) with third-party services**.
+Running your own node means you **do not have to share your [transactions](/docs/technical/transaction.md) with third-party services**.
 
-If you're not running your own node, you need to use a third-party website or wallet that *is* running a node to send transactions into the [network](/technical/networking/) for you. These third-party services can track your requests along with your IP to help build a picture of your activities.
+If you're not running your own node, you need to use a third-party website or wallet that *is* running a node to send transactions into the [network](/docs/technical/networking.md) for you. These third-party services can track your requests along with your IP to help build a picture of your activities.
 
 As you can imagine, this isn't great for privacy.
 
 However, by running your own node you can broadcast transactions directly via your own node, so they're no longer going through a middle-man before making it into the network. Similarly, you can get data from your own blockchain without having to use a third-party blockchain explorer website.
 
-Again, I've never had a problem with using trustworthy [wallets](/beginners/wallets/) or [blockchain explorers](/explorer/) (yet), but it's important to be aware that there's a *potential* privacy leak if you do.
+Again, I've never had a problem with using trustworthy [wallets](/docs/beginners/wallets.md) or [blockchain explorers](/explorer/) (yet), but it's important to be aware that there's a *potential* privacy leak if you do.
 
 ### 3. Support the network
 
 Running your own node supports the network in two ways:
 
-1. **Blockchain replication.** Bitcoin is hard to kill because the entire history of transactions is replicated around the world, so adding another node to the network makes Bitcoin *more resilient*. For example, if every other node on the network blew up and lost its copy of the [blockchain](/technical/blockchain/), you would effectively be holding up the entire system until other nodes could re-download the blockchain from you.
-2. **Data transmission.** Bitcoin works because lots of individual nodes cooperate to spread the latest [transactions](/technical/transaction/) and [blocks](/technical/block/) across the network. So by running a node, you're adding another relay to the network. For example, if a bunch of nodes went down and some nodes couldn't connect to each other for some reason, your node could end up being a vital link between different parts of the network.
+1. **Blockchain replication.** Bitcoin is hard to kill because the entire history of transactions is replicated around the world, so adding another node to the network makes Bitcoin *more resilient*. For example, if every other node on the network blew up and lost its copy of the [blockchain](/docs/technical/blockchain.md), you would effectively be holding up the entire system until other nodes could re-download the blockchain from you.
+2. **Data transmission.** Bitcoin works because lots of individual nodes cooperate to spread the latest [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md) across the network. So by running a node, you're adding another relay to the network. For example, if a bunch of nodes went down and some nodes couldn't connect to each other for some reason, your node could end up being a vital link between different parts of the network.
 
 Running a node is like seeding a torrent file; and everyone loves a seeder.
 
@@ -235,7 +235,7 @@ Instead, a pruned node *receives* a complete copy of the blockchain, but it dele
 
 So whilst a pruned node is useful because it can still enforce the rules of the system (i.e. validate and relay new blocks and transactions), the only thing it cannot do is serve a complete copy of the blockchain to new nodes joining the network.
 
-A node keeps a copy of all the [UTXOs](/technical/transaction/utxo/) in a separate database, so even though a pruned node deletes older blocks as it goes, it will always have a full copy of UTXOs to reference to allow it to validate new transactions and blocks.
+A node keeps a copy of all the [UTXOs](/docs/technical/transaction/utxo.md) in a separate database, so even though a pruned node deletes older blocks as it goes, it will always have a full copy of UTXOs to reference to allow it to validate new transactions and blocks.
 
 ### Lightweight Node
 
@@ -255,7 +255,7 @@ Simple Payment Verification
 
 A common type of lightweight node is what's known as an SPV wallet (e.g. [Electrum](https://electrum.org/)).
 
-An SPV wallet only receives the [block headers](/technical/block/#header) of the blockchain (which are much smaller than complete blocks), which allows them to keep up with what the longest chain **looks like**:
+An SPV wallet only receives the [block headers](/docs/technical/block.md#header) of the blockchain (which are much smaller than complete blocks), which allows them to keep up with what the longest chain **looks like**:
 
 [![Diagram showing an SPV client only receiving block headers instead of full blocks.](../../images/diagrams_png_node-spv-client.png)](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client.png)
 
@@ -267,7 +267,7 @@ It can then request *proof* from a full node to confirm whether a specific trans
 [![Diagram showing an SPV client receiving a proof that can be used with a block header to confirm a transaction is part of a block.](../../images/diagrams_png_node-spv-client-proof.png)](https://static.learnmeabitcoin.com/diagrams/png/node-spv-client-proof.png)
 
 
-This is known as a [merkle proof](/technical/block/merkle-root/#merkle-proof).
+This is known as a [merkle proof](/docs/technical/block/merkle-root.md#merkle-proof).
 
 Thanks to this proof, the SPV wallet can be confident that the transaction is indeed inside the block, and they can update the balance of the wallet.
 
@@ -280,13 +280,13 @@ For example, a full node could construct a valid block header and send it to an 
 
 The proof and block header are valid, but the block header was created from an invalid block of transactions. So the SPV client thinks it has received a payment, but the transaction inside the block is actually invalid.
 
-It would take a lot of effort for a full node to lie to an SPV wallet in this way, as the full node would need to [mine](/technical/mining/) an invalid block on purpose. So an SPV wallet operates under the assumption that it would be too costly for a full node to want to lie to them.
+It would take a lot of effort for a full node to lie to an SPV wallet in this way, as the full node would need to [mine](/docs/technical/mining.md) an invalid block on purpose. So an SPV wallet operates under the assumption that it would be too costly for a full node to want to lie to them.
 
 If you want to be *sure* that all the transactions you're seeing are valid without having to trust anyone, you need to run a full node.
 
 ### Miner
 
-A miner is someone who works to take transactions from the [memory pool](/technical/mining/memory-pool/) and add them to the [blockchain](/technical/blockchain/).
+A miner is someone who works to take transactions from the [memory pool](/docs/technical/mining/memory-pool.md) and add them to the [blockchain](/docs/technical/blockchain.md).
 
 However:
 
@@ -295,7 +295,7 @@ However:
 
 In the [Bitcoin Whitepaper](/bitcoin.pdf), nodes are sometimes referred to as miners, and miners are always considered to be running as full nodes.
 
-However, **a miner does not need to be performing the job of a node**. Instead, a miner can simply connect to a full node to get the information they need to build a [candidate block](/technical/mining/candidate-block/), and then send the block back to the full node when they're done.
+However, **a miner does not need to be performing the job of a node**. Instead, a miner can simply connect to a full node to get the information they need to build a [candidate block](/docs/technical/mining/candidate-block.md), and then send the block back to the full node when they're done.
 
 So whilst it's easiest to think of a *miner* as being a "full node that mines blocks", technically speaking a *node* and a *miner* can be separated to perform two distinct roles.
 
@@ -323,7 +323,7 @@ All the `bitcoin-cli` commands mentioned on this website assume you're running a
 
 There's nothing stopping you from writing **your own node software** if you want to.
 
-The Bitcoin [network](/technical/networking/) is completely open, so if you can figure out how to [connect](/technical/networking/#connecting) to other nodes and follow the rules of the network (i.e. you can send and receive [transactions](/technical/transaction/) and [blocks](/technical/block/)), then you'll be able to use Bitcoin using your very own software. Which is pretty cool.
+The Bitcoin [network](/docs/technical/networking.md) is completely open, so if you can figure out how to [connect](/docs/technical/networking.md#connecting) to other nodes and follow the rules of the network (i.e. you can send and receive [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md)), then you'll be able to use Bitcoin using your very own software. Which is pretty cool.
 
 However, some people think it would be better if there weren't too many (or any) competing implementations of the Bitcoin software:
 

@@ -5,16 +5,16 @@
 
 An elliptic curve is used as the basis for some cryptographic systems.
 
-The structure of the elliptic curve allows you to perform a mathematical function ("[multiply](#multiply)") to move around the points on the curve in one direction, without being able to travel in the reverse direction. This is known as a "trapdoor function", and it's the key feature of elliptic curves that makes them ideal for use in [public key cryptography](/technical/cryptography/#public-key-cryptography).
+The structure of the elliptic curve allows you to perform a mathematical function ("[multiply](#multiply)") to move around the points on the curve in one direction, without being able to travel in the reverse direction. This is known as a "trapdoor function", and it's the key feature of elliptic curves that makes them ideal for use in [public key cryptography](/docs/technical/cryptography.md#public-key-cryptography).
 
-So in short, **elliptic curves have mathematical properties that make them useful for cryptography**, and they're part of the digital [signature](/technical/keys/signature/) system used in Bitcoin ([ECDSA](/technical/cryptography/elliptic-curve/ecdsa/)).
+So in short, **elliptic curves have mathematical properties that make them useful for cryptography**, and they're part of the digital [signature](/docs/technical/keys/signature.md) system used in Bitcoin ([ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)).
 
 * You don't need to know about elliptic curves to work with Bitcoin, so don't stress yourself with feeling like you need to learn about all this stuff unless you really want to.
 * It's safer and easier to use an elliptic curve library in your programming language to handle all of this rather than coding it yourself.
 
 ## Parameters (Secp256k1)
 
-Satoshi chose the **secp256k1** curve for use with [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/), which has the following parameters:
+Satoshi chose the **secp256k1** curve for use with [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md), which has the following parameters:
 
 ```
 ![Copy](../../images/icons_clipboard-white.svg)
@@ -141,7 +141,7 @@ For illustrative purposes I'll use the *smooth* curve for the rest of this tutor
 
 There are a few mathematical operations that you can perform on *points* on the elliptic curve. The **two main operations** are [`double()`](#double) and [`add()`](#add), and these can then be combined to perform [`multiply()`](#multiply).
 
-These operations are the building blocks of elliptic curve cryptography, and are used for generating [public keys](/technical/keys/public-key/) and [signatures](/technical/keys/signature/) in [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/).
+These operations are the building blocks of elliptic curve cryptography, and are used for generating [public keys](/docs/technical/keys/public-key.md) and [signatures](/docs/technical/keys/signature.md) in [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md).
 
 * [Modular Inverse](#modular-inverse)
 * [Double](#double)
@@ -570,7 +570,7 @@ This article just covers the basic **mathematical operations used on elliptic cu
 
 Anyway, this `multiply()` operation allows you to move around points on the curve in one direction, but there is no mathematical operation that allows you to "undo" this movement, and this property is what makes elliptic curves so useful for cryptography.
 
-All of this elliptic curve mathematics is used as the basis for the digital signature systems used in Bitcoin: [ECDSA](/technical/cryptography/elliptic-curve/ecdsa/) and [Schnorr](/technical/cryptography/elliptic-curve/schnorr/) (added in 2021 as part of the [Taproot](/technical/upgrades/taproot/) upgrade).
+All of this elliptic curve mathematics is used as the basis for the digital signature systems used in Bitcoin: [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) and [Schnorr](/docs/technical/cryptography/elliptic-curve/schnorr.md) (added in 2021 as part of the [Taproot](/docs/technical/upgrades/taproot.md) upgrade).
 
 ## Resources
 

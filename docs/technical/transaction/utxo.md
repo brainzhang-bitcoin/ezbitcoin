@@ -4,7 +4,7 @@
 
 A UTXO is an ***unspent* transaction output**.
 
-Every bitcoin [transaction](/technical/transaction/) creates [outputs](/technical/transaction/output/) that can be consumed as [inputs](/technical/transaction/input/) in future transactions. UTXOs are simply the transaction outputs that have not been consumed yet and can still be used for spending.
+Every bitcoin [transaction](/docs/technical/transaction.md) creates [outputs](/docs/technical/transaction/output.md) that can be consumed as [inputs](/docs/technical/transaction/input.md) in future transactions. UTXOs are simply the transaction outputs that have not been consumed yet and can still be used for spending.
 
 So if you think of bitcoins as being part of one big graph of transactions, the UTXOs are at the ends of it.
 
@@ -21,7 +21,7 @@ Keeping track of UTXOs is useful for two reasons:
 
 ### 1. Validating transactions
 
-When your node receives a new transaction from the [network](/technical/networking/), it needs to validate that all of its inputs are referencing outputs that have **not already been spent**.
+When your node receives a new transaction from the [network](/docs/technical/networking.md), it needs to validate that all of its inputs are referencing outputs that have **not already been spent**.
 
 If the transaction's inputs are all unspent outputs (UTXOs), then the transaction is valid:
 
@@ -33,13 +33,13 @@ However, if the transaction is trying to spend an output that has already been s
 
 ### 2. Calculating address balance
 
-The "balance" of an [address](/technical/keys/address/) is the sum of all the UTXOs locked to that address:
+The "balance" of an [address](/docs/technical/keys/address.md) is the sum of all the UTXOs locked to that address:
 
 [![Diagram showing the balance of an address as the sum of the unspent outputs that are locked to that address.](../../images/diagrams_png_transaction-utxo-address-balance.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-address-balance.png)
 
 You can see the balance of addresses on blockchain explorers like [mempool.space](https://mempool.space) and [bitcoinexplorer.org](https://bitcoinexplorer.org).
 
-**It's important to note that bitcoins don't "live" inside addresses.** Bitcoins are held inside [outputs](/technical/transaction/output/), and an address is essentially a *lock* that can be placed on top of an output. Therefore, the balance of an address is just the sum of all the UTXOs that have been locked to that address.
+**It's important to note that bitcoins don't "live" inside addresses.** Bitcoins are held inside [outputs](/docs/technical/transaction/output.md), and an address is essentially a *lock* that can be placed on top of an output. Therefore, the balance of an address is just the sum of all the UTXOs that have been locked to that address.
 
 ## Location
 
@@ -51,18 +51,18 @@ In [Bitcoin Core](https://bitcoin.org/en/bitcoin-core/), all of the UTXOs are st
 ~/.bitcoin/chainstate
 ```
 
-This is a separate database that gets stored in memory (RAM), which makes it faster to access than having to trawl through the [raw blockchain files](/technical/block/blkdat/) to check if an output has been spent or not.
+This is a separate database that gets stored in memory (RAM), which makes it faster to access than having to trawl through the [raw blockchain files](/docs/technical/block/blkdat.md) to check if an output has been spent or not.
 
 The chainstate database is a simple [LevelDB](https://github.com/google/leveldb) **key:value** store that contains the following information:
 
-* **Key** - This is made up of the [TXID](/technical/transaction/input/txid/):[VOUT](/technical/transaction/input/vout/) for each output. This is known as an "outpoint", and every output in the blockchain has its own unique outpoint, which means it can be used as a reference for looking up each individual output directly.
+* **Key** - This is made up of the [TXID](/docs/technical/transaction/input/txid.md):[VOUT](/docs/technical/transaction/input/vout.md) for each output. This is known as an "outpoint", and every output in the blockchain has its own unique outpoint, which means it can be used as a reference for looking up each individual output directly.
 * **Value** - The value for each UTXO in the database contains the following fields:
-  + **Height** - The [height](/technical/blockchain/height/) of the [block](/technical/block/) containing the UTXO.
-  + **Coinbase** - Whether the UTXO is from a [coinbase transaction](/technical/mining/coinbase-transaction/) or not. This is important because outputs from coinbase transactions cannot be spent until the transaction is 100 blocks deep in the blockchain.
+  + **Height** - The [height](/docs/technical/blockchain/height.md) of the [block](/docs/technical/block.md) containing the UTXO.
+  + **Coinbase** - Whether the UTXO is from a [coinbase transaction](/docs/technical/mining/coinbase-transaction.md) or not. This is important because outputs from coinbase transactions cannot be spent until the transaction is 100 blocks deep in the blockchain.
   + **Amount** - The value of the output in satoshis.
-  + **Locking Code** - This is the [locking code](/technical/transaction/output/scriptpubkey/) that was placed on the output. This is important because every output needs to be *unlocked* when its being spent in a transaction, so this allows you to quickly check if the unlocking code on the input satisfies the conditions of the locking code on the output.
+  + **Locking Code** - This is the [locking code](/docs/technical/transaction/output/scriptpubkey.md) that was placed on the output. This is important because every output needs to be *unlocked* when its being spent in a transaction, so this allows you to quickly check if the unlocking code on the input satisfies the conditions of the locking code on the output.
 
-The chainstate database gets updated with each new transaction that gets mined into the [blockchain](/technical/blockchain/); UTXOs that get spent in a transaction are removed from the database, and the new outputs are added to the database.
+The chainstate database gets updated with each new transaction that gets mined into the [blockchain](/docs/technical/blockchain.md); UTXOs that get spent in a transaction are removed from the database, and the new outputs are added to the database.
 
 You can find out some basic information about the UTXO set from your local node by running the `bitcoin-cli gettxoutsetinfo`:
 

@@ -11,9 +11,9 @@ Current Mempool Size:
 Note: This is the size of the mempool for my local node.  
 The size of your memory pool will differ depending on how long your node has been online and which nodes you are connected to.
 
-The memory pool (mempool) is a **waiting area** for new [transactions](/technical/transaction/).
+The memory pool (mempool) is a **waiting area** for new [transactions](/docs/technical/transaction.md).
 
-New transactions are stored in a [node](/technical/networking/node/)'s memory pool while they're waiting to get [mined](/technical/mining/) on to the [blockchain](/technical/blockchain/).
+New transactions are stored in a [node](/docs/technical/networking/node.md)'s memory pool while they're waiting to get [mined](/docs/technical/mining.md) on to the [blockchain](/docs/technical/blockchain.md).
 
 **Do not rely on memory pool transactions.** Not all transactions will make it from the memory pool (temporary storage) to the blockchain (permanent storage).
 
@@ -23,16 +23,16 @@ Why does the memory pool exist?
 
 The memory pool is used to **sort out conflicting transactions**.
 
-You see, it's possible for two different transactions spending the same bitcoins to be inserted into different parts of the [network](/technical/networking/) at the same time. Some nodes will receive the one transaction first, and some nodes will receive the other transactions first:
+You see, it's possible for two different transactions spending the same bitcoins to be inserted into different parts of the [network](/docs/technical/networking.md) at the same time. Some nodes will receive the one transaction first, and some nodes will receive the other transactions first:
 
 [![Diagram showing two conflicting transactions (spending the same bitcoins) being inserted into different parts of the Bitcoin network.](../../images/diagrams_png_memory-pool-conflict.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict.png)
 
 
 Nodes will reject the second conflicting transaction they receive, but there will still be different versions of the conflicting transaction floating around the network.
 
-Because both of these transactions are trying to spend the same bitcoins, only *one* of them should be written to the [blockchain](/technical/blockchain/). So which of these conflicting transactions should make it into the blockchain?
+Because both of these transactions are trying to spend the same bitcoins, only *one* of them should be written to the [blockchain](/docs/technical/blockchain.md). So which of these conflicting transactions should make it into the blockchain?
 
-This conflict is resolved when one of the nodes on the network [mines](/technical/mining/) the transactions from *their* memory pool into a block:
+This conflict is resolved when one of the nodes on the network [mines](/docs/technical/mining.md) the transactions from *their* memory pool into a block:
 
 [![Diagram showing one of the conflicting transactions getting mined into a block and the other getting kicked out of the memory pools.](../../images/diagrams_png_memory-pool-conflict-resolved.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-conflict-resolved.png)
 
@@ -41,7 +41,7 @@ One of the nodes will mine the next block of transactions and broadcast it acros
 
 Upon receiving this newly-mined block, nodes will add this block on to the blockchain, and **kick out any conflicting transactions** from their memory pool.
 
-So the memory pool is part of a *sorting mechanism* ([mining](/technical/mining/)) that prevents conflicting transactions from being written to the blockchain.
+So the memory pool is part of a *sorting mechanism* ([mining](/docs/technical/mining.md)) that prevents conflicting transactions from being written to the blockchain.
 
 The memory pool plays a crucial role in preventing conflicting transactions from being written to the blockchain, and is the reason why you have to *wait* for transactions to get mined.
 
@@ -61,7 +61,7 @@ A new transaction can be inserted directly into a node on the network.
 
 From here the node will *broadcast* the transaction to the other nodes on the network so they can add it to their memory pool too.
 
-You can manually insert a transaction into your local Bitcoin Core node using the `bitcoin-cli sendrawtransaction` command. Alternatively, your [wallet](/beginners/wallets/) will insert your transaction into a node when you send someone bitcoins.
+You can manually insert a transaction into your local Bitcoin Core node using the `bitcoin-cli sendrawtransaction` command. Alternatively, your [wallet](/docs/beginners/wallets.md) will insert your transaction into a node when you send someone bitcoins.
 
 ### 2. Received from another node
 
@@ -71,7 +71,7 @@ You can manually insert a transaction into your local Bitcoin Core node using th
 
 New transactions can be received from other nodes on the network.
 
-Nodes continually broadcast the latest transactions they've received to the nodes they are connected to. So if a node advertises a transaction that your node does not have, your node will [request](/technical/networking/#requesting-transactions-and-blocks) it and add it to their memory pool too.
+Nodes continually broadcast the latest transactions they've received to the nodes they are connected to. So if a node advertises a transaction that your node does not have, your node will [request](/docs/technical/networking.md#requesting-transactions-and-blocks) it and add it to their memory pool too.
 
 This process repeats until all nodes on the network have a copy of the latest transactions in their memory pools.
 
@@ -83,9 +83,9 @@ This process repeats until all nodes on the network have a copy of the latest tr
 
 [![Diagram showing a previously mined transactions re-entering the memory pool after a chain reorganization.](../../images/diagrams_png_memory-pool-entry-chain-reorganization.png)](https://static.learnmeabitcoin.com/diagrams/png/memory-pool-entry-chain-reorganization.png)
 
-Previously mined transactions can re-enter the memory pool during a [chain reorganization](/technical/blockchain/chain-reorganization/).
+Previously mined transactions can re-enter the memory pool during a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
-Sometimes a node will perform a chain reorganization, where a new [longest chain](/technical/blockchain/longest-chain/) is found that replaces some of the blocks in the node's previous longest blockchain. If any of the transactions in the blocks being replaced are *not* found in the blocks of the new longest chain, they will get recycled back into your node's memory pool (and re-broadcast again) for the chance to get re-mined into a future block.
+Sometimes a node will perform a chain reorganization, where a new [longest chain](/docs/technical/blockchain/longest-chain.md) is found that replaces some of the blocks in the node's previous longest blockchain. If any of the transactions in the blocks being replaced are *not* found in the blocks of the new longest chain, they will get recycled back into your node's memory pool (and re-broadcast again) for the chance to get re-mined into a future block.
 
 ## Exit
 
@@ -99,7 +99,7 @@ There are a number of reasons why a transaction will leave the memory pool:
 
 This is the goal for all memory pool transactions.
 
-When a miner [mines](/technical/mining/) a new block of transactions, they will broadcast it to the other nodes on the network. When a node receives this block, any transactions in their memory pool that are inside that block will be removed from their memory pool and connected to the block instead.
+When a miner [mines](/docs/technical/mining.md) a new block of transactions, they will broadcast it to the other nodes on the network. When a node receives this block, any transactions in their memory pool that are inside that block will be removed from their memory pool and connected to the block instead.
 
 In other words, transactions are moved from temporary storage (the memory pool) to permanent storage (the blockchain).
 
@@ -121,7 +121,7 @@ All the [descendants](#descendants) of a conflicting memory pool transaction wil
 
 A transaction will be removed from the memory pool if it gets replaced by a new higher-fee transaction.
 
-This will happen if an existing transaction in the memory pool has the [replace-by-fee](/technical/transaction/input/sequence/#replace-by-fee) (RBF) setting, and then a new transaction gets broadcast to the network that *spends the same bitcoins* but with a suitably higher fee.
+This will happen if an existing transaction in the memory pool has the [replace-by-fee](/docs/technical/transaction/input/sequence.md#replace-by-fee) (RBF) setting, and then a new transaction gets broadcast to the network that *spends the same bitcoins* but with a suitably higher fee.
 
 The new higher-fee version of the transaction is more likely to get mined on to the blockchain, so a node will kick out the old transaction in favor of the new one.
 
@@ -176,9 +176,9 @@ This setting controls **how many hours** your node will hold on to transactions 
 
 default = 0.00001 BTC/kvB (1 sat/vbyte)
 
-This setting controls the **minimum transaction [feerate](/technical/transaction/fee/#feerates)** for a transaction to be added to your node's mempool.
+This setting controls the **minimum transaction [feerate](/docs/technical/transaction/fee.md#feerates)** for a transaction to be added to your node's mempool.
 
-This setting uses an awkward BTC/kvB (kilo [virtual byte](/technical/transaction/size/#vbytes)) setting for measuring feerates. The default of 0.00001 BTC/kvB is equivalent to 1 sat/vbyte.
+This setting uses an awkward BTC/kvB (kilo [virtual byte](/docs/technical/transaction/size.md#vbytes)) setting for measuring feerates. The default of 0.00001 BTC/kvB is equivalent to 1 sat/vbyte.
 
 ![Tool Icon](../../images/icons_tool.svg) Unit Converter
 
@@ -249,9 +249,9 @@ Does the memory pool have a structure?
 
 The memory pool doesn't have a defined structure; it's just a **pool of unconfirmed transactions**.
 
-However, the transactions in the memory pool include some additional [metadata](#getmempoolentry) to help with sorting for inclusion in a [candidate block](/technical/mining/candidate-block/).
+However, the transactions in the memory pool include some additional [metadata](#getmempoolentry) to help with sorting for inclusion in a [candidate block](/docs/technical/mining/candidate-block.md).
 
-This metadata includes things like; *[size](/technical/transaction/size/)*, *[fee](/technical/transaction/fee/)*, *[descendants](#descendants)*, and *[ancestors](#ancestors)*.
+This metadata includes things like; *[size](/docs/technical/transaction/size.md)*, *[fee](/docs/technical/transaction/fee.md)*, *[descendants](#descendants)*, and *[ancestors](#ancestors)*.
 
 ### Descendants
 
@@ -259,13 +259,13 @@ This metadata includes things like; *[size](/technical/transaction/size/)*, *[fe
 
 A descendant is the **child of a memory pool transaction**.
 
-In other words, it's a transaction that *spends an existing memory pool transaction*. So if a transaction is sitting in the memory pool, it's possible to create a *child* transaction that spends the [output](/technical/transaction/output/)(s) of that transaction, and send that transaction into the memory pool too.
+In other words, it's a transaction that *spends an existing memory pool transaction*. So if a transaction is sitting in the memory pool, it's possible to create a *child* transaction that spends the [output](/docs/technical/transaction/output.md)(s) of that transaction, and send that transaction into the memory pool too.
 
 Therefore, a transaction can have multiple descendants whilst it's sat in the memory pool.
 
 **The parent of a child transaction must always get mined first.** A child transaction *depends* on its parent getting mined before it can get mined (because otherwise it would be trying to spend bitcoins that do not exist). The parent could get mined in an earlier block, or higher up in the same block as the child. Either way, you can't mine a child transaction without its parent.
 
-**Descendant Limits.** A memory pool transaction can have a maximum of 25 descendants. The total size of the descendants is also limited to 101,000 [virtual bytes](/technical/transaction/size/#vbytes) (101 kvB). (see [policy.h](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.h))
+**Descendant Limits.** A memory pool transaction can have a maximum of 25 descendants. The total size of the descendants is also limited to 101,000 [virtual bytes](/docs/technical/transaction/size.md#vbytes) (101 kvB). (see [policy.h](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.h))
 
 #### Descendant Feerate
 
@@ -284,7 +284,7 @@ For example:
 * **Higher Descendant Feerate:** A single transaction may have a low-enough feerate to make it a candidate for eviction. However, if there is a descendant transaction with a very large feerate attached to it, the descendant feerate will be higher, so it might be worth keeping that particular transaction because it's more likely it will get mined into a block in the near future (because you can't mine a high-fee descendant without its parent).
 * **Lower Descendant Feerate:** If a single transaction has a low enough feerate for eviction *and* the descendant feerate is the same (or lower), then we can happily evict that transaction and all of the descendants. This is because all the descendants *depend* on that transaction, so they're not going to be able to get mined into a block without it.
 
-**Average Feerate.** The average feerate is the sum of the transaction fees divided by the sum of the transaction sizes. It's the same [feerate](/technical/transaction/fee/#feerates) calculation as with a single transaction, but spread across multiple transactions.
+**Average Feerate.** The average feerate is the sum of the transaction fees divided by the sum of the transaction sizes. It's the same [feerate](/docs/technical/transaction/fee.md#feerates) calculation as with a single transaction, but spread across multiple transactions.
 
 ### Ancestors
 
@@ -292,7 +292,7 @@ For example:
 
 An ancestor is the **parent of a memory pool transaction**.
 
-A memory pool transaction *depends* on its ancestor(s) for getting mined into a block. This is because you can't include a transaction in a block that spends an [output](/technical/transaction/output/) that doesn't exist (or hasn't been created yet).
+A memory pool transaction *depends* on its ancestor(s) for getting mined into a block. This is because you can't include a transaction in a block that spends an [output](/docs/technical/transaction/output.md) that doesn't exist (or hasn't been created yet).
 
 So if you look up any transaction in the memory pool, it's possible that it will have multiple ancestors, and these ancestors must get mined before that particular transaction can get mined.
 
@@ -304,7 +304,7 @@ Candidate Block Selection
 
 The ancestor feerate is the **average feerate of a transaction and all its ancestors**.
 
-It's used when determining *which transactions to select* for inclusion in a [candidate block](/technical/mining/candidate-block/).
+It's used when determining *which transactions to select* for inclusion in a [candidate block](/docs/technical/mining/candidate-block.md).
 
 A miner has to include all the ancestors of a transaction in their block. So they work out the ancestor feerate for each transaction to determine whether it's worth including that specific transaction *and all of its ancestors*, versus including a different transaction with a similar feerate (but without any ancestors).
 
@@ -313,7 +313,7 @@ For example:
 * **Lower Ancestor Feerate:** A single transaction may have a high-enough feerate to make it worth including in a candidate block. However, if it has ancestors with very low feerates, this brings the ancestor feerate down and could mean that it's not actually worth including the transaction in the block (compared to other transactions with a lower absolute feerate but no ancestors).
 * **Higher Ancestor Feerate:** A higher ancestor feerate doesn't improve a transaction's chances of getting included in a block, as a miner can simply mine the ancestors and ignore the current transaction if the feerate isn't high enough.
 
-**[Child Pays For Parent (CPFP)](/technical/transaction/fee/#cpfp).** You can increase the chances of getting a memory pool transaction mined by creating a child with a large fee. This will increase the average feerate, which makes the parent transaction more attractive to a miner.
+**[Child Pays For Parent (CPFP)](/docs/technical/transaction/fee.md#cpfp).** You can increase the chances of getting a memory pool transaction mined by creating a child with a large fee. This will increase the average feerate, which makes the parent transaction more attractive to a miner.
 
 ## Location
 
@@ -358,7 +358,7 @@ $ bitcoin-cli getmempoolinfo
 
 ### `bitcoin-cli getrawmempool`
 
-Shows the [TXIDs](/technical/transaction/input/txid/) for all the transactions in your node's memory pool.
+Shows the [TXIDs](/docs/technical/transaction/input/txid.md) for all the transactions in your node's memory pool.
 
 ### `bitcoin-cli getmempoolentry <txid>`
 

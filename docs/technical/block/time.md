@@ -2,9 +2,9 @@
 
 [![Diagram showing the location of the time field inside the block header.](../../images/diagrams_png_block-time.png)](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
 
-The time field in the [block header](/technical/block/#header) indicates the **rough time a block was created**.
+The time field in the [block header](/docs/technical/block.md#header) indicates the **rough time a block was created**.
 
-Miners put the current time in the block header when they construct their [candidate block](/technical/mining/candidate-block/). It contains a Unix Timestamp (the number of seconds since 01 January 1970), which is what computer programs typically use to store specific points in time.
+Miners put the current time in the block header when they construct their [candidate block](/docs/technical/mining/candidate-block.md). It contains a Unix Timestamp (the number of seconds since 01 January 1970), which is what computer programs typically use to store specific points in time.
 
 For example, the [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f) contains the timestamp 1231006505, which represents the date *03 Jan 2009, 18:15:05*.
 
@@ -24,11 +24,11 @@ Date
 
 Does block time influence the order of blocks?
 
-The timestamps **do not** influence the order of blocks in the [blockchain](/technical/blockchain/).
+The timestamps **do not** influence the order of blocks in the [blockchain](/docs/technical/blockchain.md).
 
 In fact, it's possible for a block to have an earlier timestamp than the block it builds on top of. For example:
 
-* Block [790,402](/explorer/790402#blockchain) = 19 May 2023, 04:22 (2 minutes "before" the [previous block](/technical/block/previous-block/))
+* Block [790,402](/explorer/790402#blockchain) = 19 May 2023, 04:22 (2 minutes "before" the [previous block](/docs/technical/block/previous-block.md))
 * Block [790,401](/explorer/790401#blockchain) = 19 May 2023, 04:24
 
 Another particularly bad example is from 2011 where a block has a time of almost 2 hours "before" the block before it:
@@ -74,7 +74,7 @@ The network adjusted time is your local time plus the median offset of all the n
 [![Diagram showing the network average time being calculated based on the timestamps sent by connected nodes](../../images/diagrams_png_networking-network-adjusted-time.png)](https://static.learnmeabitcoin.com/diagrams/png/networking-network-adjusted-time.png)
 
 
-Nodes send a UTC timestamp of their local time when they [connect](/technical/networking/) to each other.
+Nodes send a UTC timestamp of their local time when they [connect](/docs/technical/networking.md) to each other.
 
 For example:
 
@@ -119,7 +119,7 @@ Besides being a rough indicator of when the block was mined, the block's timesta
 
 [![Diagram showing a target recalculation based on the time between the last 2015 blocks.](../../images/diagrams_png_target-period.png)](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
 
-The timestamps in block headers are used to work out whether blocks are being mined more quickly or more slowly than expected over a 2016-block period, and the [target](/technical/mining/target/) is adjusted accordingly.
+The timestamps in block headers are used to work out whether blocks are being mined more quickly or more slowly than expected over a 2016-block period, and the [target](/docs/technical/mining/target.md) is adjusted accordingly.
 
 ![Tool Icon](../../images/icons_tool.svg) Target Adjustment
 
@@ -167,7 +167,7 @@ Note: This target value has been truncated slightly for storage in the bits fiel
 
 [![Diagram showing the locktime being used to prevent a transaction being mined until a specific time in the future.](../../images/diagrams_png_transaction-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
 
-A transaction can include a specific [locktime](/technical/transaction/locktime/) to prevent it from being mined in a block until it's less a valid time field in a block header.
+A transaction can include a specific [locktime](/docs/technical/transaction/locktime.md) to prevent it from being mined in a block until it's less a valid time field in a block header.
 
 ## Notes
 

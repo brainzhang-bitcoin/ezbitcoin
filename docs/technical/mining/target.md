@@ -8,11 +8,11 @@ Height: [956,473](/explorer/956473) (the upcoming block)
 
 `000000000000000000021a420000000000000000000000000000000000000000`
 
-The target is a number that a [block hash](/technical/block/hash/) for a [candidate block](/technical/mining/candidate-block/) must get **equal to or below** to add the block on to the [blockchain](/technical/blockchain/).
+The target is a number that a [block hash](/docs/technical/block/hash.md) for a [candidate block](/docs/technical/mining/candidate-block.md) must get **equal to or below** to add the block on to the [blockchain](/docs/technical/blockchain.md).
 
-It is used during the process of [mining](/technical/mining/).
+It is used during the process of [mining](/docs/technical/mining.md).
 
-The target is adjusted every 2016 blocks (roughly every two weeks) to try and ensure that blocks are mined **once every 10 minutes** on average. This creates a *consistent time* between blocks, and a *consistent issuance* of new bitcoins (via the [block reward](/technical/mining/block-reward/)).
+The target is adjusted every 2016 blocks (roughly every two weeks) to try and ensure that blocks are mined **once every 10 minutes** on average. This creates a *consistent time* between blocks, and a *consistent issuance* of new bitcoins (via the [block reward](/docs/technical/mining/block-reward.md)).
 
 > To compensate for increasing hardware speed and varying interest in running nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour. If they're generated too fast, the difficulty increases.
 
@@ -574,7 +574,7 @@ On every 2016th block, each node will look at the time between the previous 2015
 
 [![Diagram showing the target period between the genesis block and the 2016th block along with the timestamp of each block.](../../images/diagrams_png_target-period.png)](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
 
-Each block contains a [timestamp](/technical/block/time/) in its block header. This timestamp is in *Unix Time*, which is the number of seconds since 01 Jan 1970, 00:00:00.
+Each block contains a [timestamp](/docs/technical/block/time.md) in its block header. This timestamp is in *Unix Time*, which is the number of seconds since 01 Jan 1970, 00:00:00.
 
 ![Tool Icon](../../images/icons_tool.svg) Unix Time
 
@@ -610,9 +610,9 @@ How do nodes calculate the same target?
 
 Satoshi Nakamoto, [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.org/emails/cryptography/10/#selection-73.260-73.383)
 
-Each [node](/technical/networking/node/) on the network operates *independently*, so there is no central authority to determine the current target value.
+Each [node](/docs/technical/networking/node.md) on the network operates *independently*, so there is no central authority to determine the current target value.
 
-However, because nodes always adopt the [longest chain](/technical/blockchain/longest-chain/) of blocks as their blockchain, they will each **calculate the same target**.
+However, because nodes always adopt the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks as their blockchain, they will each **calculate the same target**.
 
 For example, when you run Bitcoin for the first time, your node will perform the [initial block download](https://btcinformation.org/en/developer-guide#initial-block-download) and calculate the targets as it goes. And because you're receiving the same blocks as everyone else, you will end up calculating the same current target when you reach the tip of the blockchain.
 
@@ -644,7 +644,7 @@ It's preferable to have miners working on extending the *same chain of blocks* a
 
 If blocks are being mined faster than they can be broadcast across the network, it will result in miners regularly working on top of "old" blocks in the blockchain (because they haven't had a chance to receive the latest blocks yet).
 
-This will result in miners building multiple competing blockchains; only one of these will become the [longest](/technical/blockchain/longest-chain/), so some miners will end up **wasting energy** working to build on top of a competing chain only for it to be left behind due to a [chain reorganization](/technical/blockchain/chain-reorganization/).
+This will result in miners building multiple competing blockchains; only one of these will become the [longest](/docs/technical/blockchain/longest-chain.md), so some miners will end up **wasting energy** working to build on top of a competing chain only for it to be left behind due to a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md).
 
 [![Diagram showing miners working on building two different blockchains due to not receiving the latest blocks quickly enough.](../../images/diagrams_png_target-block-propagation-mining-split.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-propagation-mining-split.png)
 
@@ -668,7 +668,7 @@ So thanks to the target, you can be confident that new bitcoins will be minted a
 
 Where can you find the target?
 
-The target gets stored in the [bits](/technical/block/bits/) field in the [block header](/technical/block/#header) of every block.
+The target gets stored in the [bits](/docs/technical/block/bits.md) field in the [block header](/docs/technical/block.md#header) of every block.
 
 [![Diagram showing the target being stored in the bits field of a block header.](../../images/diagrams_png_target-block-header-bits.png)](https://static.learnmeabitcoin.com/diagrams/png/target-block-header-bits.png)
 
@@ -698,7 +698,7 @@ Bits`0 bytes`
 
 ### `bitcoin-cli getblocktemplate`
 
-This is the simplest way to get the **current target**. When you request a block template (for [mining](/technical/mining/) purposes) it will also return the current target.
+This is the simplest way to get the **current target**. When you request a block template (for [mining](/docs/technical/mining.md) purposes) it will also return the current target.
 
 This command returns a lot of data, so it's best to [grep](https://www.man7.org/linux/man-pages/man1/grep.1.html) for the target.
 
@@ -710,7 +710,7 @@ $ bitcoin-cli getblocktemplate '{"rules": ["segwit"]}' | grep target
 
 ### `bitcoin-cli getdifficulty`
 
-Alternatively, to get the **current target** you can ask for the current [difficulty](/beginners/guide/difficulty/), which you can then convert to the target:
+Alternatively, to get the **current target** you can ask for the current [difficulty](/docs/beginners/guide/difficulty.md), which you can then convert to the target:
 
 ```
 $ bitcoin-cli getdifficulty
@@ -747,7 +747,7 @@ Difficulty
 
 ### `bitcoin-cli getblockheader [block hash]`
 
-This command allows you to find a **previous target** for a specific block. The target at the time of mining is stored in every block header in [bits](/technical/block/bits/) format, which you can convert to a full target value.
+This command allows you to find a **previous target** for a specific block. The target at the time of mining is stored in every block header in [bits](/docs/technical/block/bits.md) format, which you can convert to a full target value.
 
 ```
 $ bitcoin-cli getblockheader 000000000000000002e9533a4fe03bb251b3fdb30ffaa384aad133b7fae594cf
@@ -857,7 +857,7 @@ puts target
 
 **Off-by-one error.** Target adjustments are actually calculated using the time across **2015** blocks (e.g. 403199 - 401184 = 2015), and not across 2016 blocks as you would expect. This was an implementation error in the code, and it still exists today.
 
-**Official Target.** The *actual* target that miners need to get below when mining is the truncated target that gets stored in the [bits](/technical/block/bits/) field. So it's not actually the full-precision target that you get after a target adjustment calculation.
+**Official Target.** The *actual* target that miners need to get below when mining is the truncated target that gets stored in the [bits](/docs/technical/block/bits.md) field. So it's not actually the full-precision target that you get after a target adjustment calculation.
 
 ## FAQs
 
@@ -865,15 +865,15 @@ puts target
 
 I don't think anyone except Satoshi knows why **10 minutes** was chosen exactly.
 
-My guess is that it seemed *long enough* to allow blocks to propagate around the network (to minimize [chain reorganizations](/technical/blockchain/chain-reorganization/)), and *short enough* to not have to wait too long for new transactions to get mined on to the blockchain.
+My guess is that it seemed *long enough* to allow blocks to propagate around the network (to minimize [chain reorganizations](/docs/technical/blockchain/chain-reorganization.md)), and *short enough* to not have to wait too long for new transactions to get mined on to the blockchain.
 
 And **10** is a nice round number.
 
 ### What causes blocks to be mined faster or slower than every 10 minutes?
 
-Firstly, [mining](/technical/mining/) is *unpredictable*, so you never know when a miner is going to find the next block with a block hash below the current target.
+Firstly, [mining](/docs/technical/mining.md) is *unpredictable*, so you never know when a miner is going to find the next block with a block hash below the current target.
 
-Secondly (and most importantly), miners can join and leave the network at any time, which affects the speed at which blocks can be mined. For example, the more miners that join the network, the more [hashing](/technical/cryptography/hash-function/) there is taking place, and the more likely it is a new block will be mined in under 10 minutes.
+Secondly (and most importantly), miners can join and leave the network at any time, which affects the speed at which blocks can be mined. For example, the more miners that join the network, the more [hashing](/docs/technical/cryptography/hash-function.md) there is taking place, and the more likely it is a new block will be mined in under 10 minutes.
 
 ## Resources
 

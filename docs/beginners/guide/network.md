@@ -12,9 +12,9 @@ People (well, *bitcoin clients*) on the network **talk to each other**.
 
 [![Diagram showing the computers on the bitcoin network talking to each other.](../../images/beginners_guide_network_02-software_network_talking.png)](https://static.learnmeabitcoin.com/beginners/guide/network/02-software_network_talking.png)
 
-And by "talk to each other" I mean *pass on information* about what's going on in other parts of the network. This is done by sending each other *[messages](/technical/networking/#messages)*.
+And by "talk to each other" I mean *pass on information* about what's going on in other parts of the network. This is done by sending each other *[messages](/docs/technical/networking.md#messages)*.
 
-For example, a message could be **information about a new *[transaction](/beginners/guide/transactions/)***.
+For example, a message could be **information about a new *[transaction](/docs/beginners/guide/transactions.md)***.
 
 [![Diagram showing the computers on the bitcoin network sharing information about new transactions.](../../images/beginners_guide_network_03-software_network_talking_transaction.png)](https://static.learnmeabitcoin.com/beginners/guide/network/03-software_network_talking_transaction.png)
 
@@ -37,7 +37,7 @@ As mentioned, **anyone with an active Internet connection and running a bitcoin 
 
 Seriously, *anyone can join the bitcoin network*. All you need is an internet connection and a [bitcoin client](https://bitcoin.org/en/download), which is a piece of software like any other.
 
-And once you're up and running, you'll be referred to as a **[node](/beginners/guide/node/)** on the bitcoin network.
+And once you're up and running, you'll be referred to as a **[node](/docs/beginners/guide/node.md)** on the bitcoin network.
 
 [![Diagram showing nodes on the bitcoin network.](../../images/beginners_guide_network_05-nodes_network.png)](https://static.learnmeabitcoin.com/beginners/guide/network/05-nodes_network.png)
 
@@ -49,7 +49,7 @@ That's the spirit.
 
 All you need to do is download (and run) a [bitcoin client](https://bitcoincore.org/en/download/).
 
-When you run the client it will connect to other nodes and start downloading a full copy of the [blockchain](/beginners/guide/blockchain/) (the file that contains all the verified transactions). After that, your client will start receiving transactions from other nodes and relaying them around the network.
+When you run the client it will connect to other nodes and start downloading a full copy of the [blockchain](/docs/beginners/guide/blockchain.md) (the file that contains all the verified transactions). After that, your client will start receiving transactions from other nodes and relaying them around the network.
 
 Congratulations, you are now a node on the bitcoin network.
 

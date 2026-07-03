@@ -2,9 +2,9 @@
 
 [![An overview of the structure of a merkle tree and the merkle root being placed in the block header.](../../images/diagrams_png_block-merkle-root.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root.png)
 
-A merkle root is created by [hashing](/technical/cryptography/hash-function/) together pairs of [TXID](/technical/transaction/input/txid/)s to get a short and unique **fingerprint for all the [transactions](/technical/transaction/) in a [block](/technical/block/)**.
+A merkle root is created by [hashing](/docs/technical/cryptography/hash-function.md) together pairs of [TXID](/docs/technical/transaction/input/txid.md)s to get a short and unique **fingerprint for all the [transactions](/docs/technical/transaction.md) in a [block](/docs/technical/block.md)**.
 
-This merkle root is placed in a [block header](/technical/block/#header) to prevent the contents of the block from being tampered with later on. So if someone tries to add or remove a transaction from the block, the merkle root for the transactions inside the block will no longer match the merkle root inside the block header.
+This merkle root is placed in a [block header](/docs/technical/block.md#header) to prevent the contents of the block from being tampered with later on. So if someone tries to add or remove a transaction from the block, the merkle root for the transactions inside the block will no longer match the merkle root inside the block header.
 
 In other words, the merkle root is what connects the block header to the transactions in the block.
 
@@ -16,7 +16,7 @@ TXID List
 
 A list of TXIDs separated by *spaces*, *commas*, or *new lines*. Quotes and brackets are ignored.
 
-The TXIDs should be input in [reverse byte order](/technical/general/byte-order/#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/technical/general/byte-order/#natural-byte-order) before the merkle root is calculated.
+The TXIDs should be input in [reverse byte order](/docs/technical/general/byte-order.md#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](/docs/technical/general/byte-order.md#natural-byte-order) before the merkle root is calculated.
 
 
 
@@ -124,7 +124,7 @@ result = merkleroot(txids)
 puts result.scan(/../).reverse.join('') #=> f3e94742aca4b5ef85488dc37c06c3282295ffec960994b2c0d5ac2a25a95766
 ```
 
-**[Byte Order](/technical/general/byte-order/):** The TXIDs must be in natural byte order when creating the merkle root. The resulting merkle root will also be in natural byte order, but it gets displayed in reverse byte order on [blockchain explorers](/explorer/).
+**[Byte Order](/docs/technical/general/byte-order.md):** The TXIDs must be in natural byte order when creating the merkle root. The resulting merkle root will also be in natural byte order, but it gets displayed in reverse byte order on [blockchain explorers](/explorer/).
 
 If there is only *one* transaction in a block, the merkle root will be the same as the TXID for that transaction.
 
@@ -198,7 +198,7 @@ Whilst merkle roots take a little more effort to construct in the first place, t
 
 Thanks to merkle trees, you can create *lightweight wallets* (or "thin nodes") that can verify when a transaction has made it into a block, **without the overhead of having to download and store the entire the blockchain**.
 
-These wallets just download and store [block headers](/technical/block/#header) (80 bytes each, instead of 1 MB+ blocks), and use the merkle roots inside them (along with *merkle proofs* they receive from [full archival nodes](/technical/networking/node/#archival-node)) to verify that a transaction has made it into a block.
+These wallets just download and store [block headers](/docs/technical/block.md#header) (80 bytes each, instead of 1 MB+ blocks), and use the merkle roots inside them (along with *merkle proofs* they receive from [full archival nodes](/docs/technical/networking/node.md#archival-node)) to verify that a transaction has made it into a block.
 
 [![Block headers are just 80 bytes, whereas each block can be 1,000,000+ bytes.](../../images/diagrams_png_block-merkle-root-thin-nodes.png)](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-thin-nodes.png)
 

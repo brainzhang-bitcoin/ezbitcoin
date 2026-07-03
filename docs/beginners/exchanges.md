@@ -71,7 +71,7 @@ Well, let's say you decide to send those bitcoins to a secret shop. That's cool,
 
 [![Diagram showing how buying a bitcoin from an exchange that requires ID tags those bitcoins to your identity.](../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png)](https://static.learnmeabitcoin.com/diagrams/png/beginners-exchanges-id-privacy-transaction.png)
 
-I wouldn't dissuade anyone from buying bitcoins from companies that ask for your ID, but it's important to be aware of how they operate. Just remember that bitcoin [transactions](/technical/transaction/) are connected together, and so the privacy of your coins depends on you *not creating links* from your identity to the [addresses](/technical/keys/address/) you use.
+I wouldn't dissuade anyone from buying bitcoins from companies that ask for your ID, but it's important to be aware of how they operate. Just remember that bitcoin [transactions](/docs/technical/transaction.md) are connected together, and so the privacy of your coins depends on you *not creating links* from your identity to the [addresses](/docs/technical/keys/address.md) you use.
 
 I do not believe requiring ID to buy bitcoin is in true spirit of Bitcoin, but these kinds of exchanges do make for a convenient and easy way to get your first bitcoins.
 
@@ -134,18 +134,18 @@ It's like "buying" gold from a website, but only seeing the amount of gold in yo
 
 So what's the alternative?
 
-Well, if *you* want to have complete control over your bitcoins (which I recommend), then you need to *withdraw* the bitcoins to your own [wallet](/beginners/wallets/). By withdrawing you are asking the company to create a [transaction](/technical/transaction/) to lock up an amount of bitcoins to one of your [addresses](/technical/keys/address/). This means you will have the [keys](/technical/keys/) that allow you to transfer the bitcoins, which means that nobody else has control of them except for you.
+Well, if *you* want to have complete control over your bitcoins (which I recommend), then you need to *withdraw* the bitcoins to your own [wallet](/docs/beginners/wallets.md). By withdrawing you are asking the company to create a [transaction](/docs/technical/transaction.md) to lock up an amount of bitcoins to one of your [addresses](/docs/technical/keys/address.md). This means you will have the [keys](/docs/technical/keys.md) that allow you to transfer the bitcoins, which means that nobody else has control of them except for you.
 
 [![Animation showing a person withdrawing bitcoins from an exchange to their wallet.](../images/beginners_exchanges_withdraw.gif)](https://static.learnmeabitcoin.com/beginners/exchanges/withdraw.gif)
 
 **Having complete ownership and control of your money is one of the key principles of Bitcoin.** This is why I recommend withdrawing bitcoins from an exchange to your wallet if you can, as this is what gives you the freedom that Bitcoin was designed for.
 
-By withdrawing to your wallet, you are now also in control of the [security](/beginners/security/) of those bitcoins. It's perfectly manageable, but don't take it lightly.
+By withdrawing to your wallet, you are now also in control of the [security](/docs/beginners/security.md) of those bitcoins. It's perfectly manageable, but don't take it lightly.
 
 ## What next?
 
-After you've bought your first bitcoin, you should consider withdrawing them to your own [wallet](/beginners/wallets/).
+After you've bought your first bitcoin, you should consider withdrawing them to your own [wallet](/docs/beginners/wallets.md).
 
-From here, you can start making transactions and [sending bitcoins](/beginners/sending/) to other people and businesses.
+From here, you can start making transactions and [sending bitcoins](/docs/beginners/sending.md) to other people and businesses.
 
 This is where the fun begins.

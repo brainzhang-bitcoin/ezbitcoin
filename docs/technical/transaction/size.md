@@ -1,14 +1,14 @@
 ![Loading Tool](../../images/icons_loader-2.svg)
 
-You can measure the size of a bitcoin [transaction](/technical/transaction/) in 3 ways:
+You can measure the size of a bitcoin [transaction](/docs/technical/transaction.md) in 3 ways:
 
 1. **[Bytes](#bytes) (b)** – Transaction size on disk.
 2. **[Weight Units](#weight) (wu)** – For fitting transactions into a block.
-3. **[Virtual Bytes](#vbytes) (vB)** – For comparing [feerates](/technical/transaction/fee/) between transactions.
+3. **[Virtual Bytes](#vbytes) (vB)** – For comparing [feerates](/docs/technical/transaction/fee.md) between transactions.
 
 *Bytes* is the most straightforward unit. It's used for measuring any amount of data on a computer.
 
-*Weight Units* and *Virtual Bytes* are measurements unique to bitcoin. They both measure the size of a transaction in terms of bytes too, but they give a **discount to some parts of the transaction data** and are used when calculating how many transactions can fit inside a [block](/technical/block/).
+*Weight Units* and *Virtual Bytes* are measurements unique to bitcoin. They both measure the size of a transaction in terms of bytes too, but they give a **discount to some parts of the transaction data** and are used when calculating how many transactions can fit inside a [block](/docs/technical/block.md).
 
 ![Tool Icon](../../images/icons_tool.svg) Transaction Splitter
 
@@ -34,9 +34,9 @@ Result
 
 [![Diagram showing the measurement of a bitcoin transaction in bytes.](../../images/diagrams_png_transaction-size.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-size.png)
 
-This is the natural way to measure the size of a transaction. It's a transaction's *actual* size in terms of how many [bytes](/technical/general/bytes/) of space it takes up.
+This is the natural way to measure the size of a transaction. It's a transaction's *actual* size in terms of how many [bytes](/docs/technical/general/bytes.md) of space it takes up.
 
-Bytes are used when measuring how big a transaction is when it's being sent across the [network](/technical/networking/), or how much space it takes up on disk (e.g. when stored in [blockchain files](/technical/block/blkdat/)).
+Bytes are used when measuring how big a transaction is when it's being sent across the [network](/docs/technical/networking.md), or how much space it takes up on disk (e.g. when stored in [blockchain files](/docs/technical/block/blkdat.md)).
 
 Measuring the size of a transaction in bytes was more important when the block size limit was also measured in bytes (1,000,000 bytes, or 1 megabyte). However, the block size limit is now based on *weight* instead.
 
@@ -52,11 +52,11 @@ Size: 226 bytes
 
 There are 226 bytes in this transaction.
 
-You can check this for yourself, because every 2 [hexadecimal](/technical/general/hexadecimal/) characters represents 1 byte.
+You can check this for yourself, because every 2 [hexadecimal](/docs/technical/general/hexadecimal.md) characters represents 1 byte.
 
 #### Typical transaction sizes
 
-The size of a transaction in *bytes* mostly **depends on how many [inputs](/technical/transaction/input/) and [outputs](/technical/transaction/output/)** are in the transaction. Here are the average sizes for typical transactions (with standard [P2PKH](/technical/script/p2pkh/) locking scripts on the outputs):
+The size of a transaction in *bytes* mostly **depends on how many [inputs](/docs/technical/transaction/input.md) and [outputs](/docs/technical/transaction/output.md)** are in the transaction. Here are the average sizes for typical transactions (with standard [P2PKH](/docs/technical/script/p2pkh.md) locking scripts on the outputs):
 
 * Inputs: 1, Outputs: 1 = 191 or 192 bytes
 * Inputs: 1, Outputs: 2 = 225 or 226 bytes *(most common)*
@@ -65,7 +65,7 @@ The size of a transaction in *bytes* mostly **depends on how many [inputs](/tech
 
 The more inputs and outputs there are in a transaction, the bigger it gets.
 
-There is no limit to how big a transaction can be in terms of bytes, other than the fact that it needs to be able to fit inside a [block](/technical/block/).
+There is no limit to how big a transaction can be in terms of bytes, other than the fact that it needs to be able to fit inside a [block](/docs/technical/block.md).
 
 ## 2. Weight Units (wu)
 
@@ -73,7 +73,7 @@ There is no limit to how big a transaction can be in terms of bytes, other than 
 
 [![Diagram showing the measurement of a bitcoin transaction in weight units.](../../images/diagrams_png_transaction-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
 
-Every transaction has a *weight* measurement. This measurement was introduced in the [segregated witness](/technical/upgrades/segregated-witness/) upgrade. A transaction's weight is calculated by multiplying the size (in bytes) of different parts of the [transaction](/technical/transaction/) by either 4 or 1:
+Every transaction has a *weight* measurement. This measurement was introduced in the [segregated witness](/docs/technical/upgrades/segregated-witness.md) upgrade. A transaction's weight is calculated by multiplying the size (in bytes) of different parts of the [transaction](/docs/technical/transaction.md) by either 4 or 1:
 
 | Field | Multiplier |
 | --- | --- |
@@ -85,7 +85,7 @@ Every transaction has a *weight* measurement. This measurement was introduced in
 | witness | x1 |
 | locktime | x4 |
 
-This therefore gives a *discount* to the [witness](/technical/transaction/witness/) data.
+This therefore gives a *discount* to the [witness](/docs/technical/transaction/witness.md) data.
 
 ### Example
 
@@ -103,9 +103,9 @@ There are 226 bytes in this transaction. Out of those, 116 bytes are `non-witnes
 
 ### Block Limit (4,000,000 weight units)
 
-The weight measurement is important because **[blocks](/technical/block/) can hold up to 4,000,000 weight units** of transaction data.
+The weight measurement is important because **[blocks](/docs/technical/block.md) can hold up to 4,000,000 weight units** of transaction data.
 
-So when [miners](/technical/mining/) fill up their [candidate blocks](/technical/mining/candidate-block/) with transactions, they use transaction weight to determine how many transactions they can fit in their block.
+So when [miners](/docs/technical/mining.md) fill up their [candidate blocks](/docs/technical/mining/candidate-block.md) with transactions, they use transaction weight to determine how many transactions they can fit in their block.
 
 [![Diagram showing a block being filled up with transactions using weight as the measurement for each transaction's size.](../../images/diagrams_png_block-weight.png)](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
 
@@ -116,9 +116,9 @@ Using bytes for transaction sizes and the block limit was more straightforward. 
 
 ### Why does witness data weigh less?
 
-Because it helps to bring more of a balance between the cost of creating an output and the cost of spending an output (in terms of [transaction fees](/technical/transaction/fee/)).
+Because it helps to bring more of a balance between the cost of creating an output and the cost of spending an output (in terms of [transaction fees](/docs/technical/transaction/fee.md)).
 
-The amount of data required to unlock an output (i.e. [signature](/technical/keys/signature/) data) is unfairly larger than the amount of data required to put a [lock](/technical/transaction/output/scriptpubkey/) on an output in the first place. So the new weight measurement brings the "size" of outputs and inputs in a transaction more in line with each other.
+The amount of data required to unlock an output (i.e. [signature](/docs/technical/keys/signature.md) data) is unfairly larger than the amount of data required to put a [lock](/docs/technical/transaction/output/scriptpubkey.md) on an output in the first place. So the new weight measurement brings the "size" of outputs and inputs in a transaction more in line with each other.
 
 [![Diagram showing the comparative size of an output and and input when measured in bytes and in weight units.](../../images/diagrams_png_transaction-weight-spending-sending-balance.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight-spending-sending-balance.png)
 
@@ -183,4 +183,4 @@ So in summary:
 
 * [BIP 141 (Transaction size calculations)](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#transaction-size-calculations)
 * [Is there a difference between bytes and virtual bytes (vbytes)?](https://bitcoin.stackexchange.com/questions/89385/is-there-a-difference-between-bytes-and-virtual-bytes-vbytes)
-* Thanks to [luke-jr](https://github.com/luke-jr) for explaining to me on IRC how multiplying non-witness data by 4 helps to create a balance between the costs of creating and spending [UTXOs](/technical/transaction/utxo/).
+* Thanks to [luke-jr](https://github.com/luke-jr) for explaining to me on IRC how multiplying non-witness data by 4 helps to create a balance between the costs of creating and spending [UTXOs](/docs/technical/transaction/utxo.md).

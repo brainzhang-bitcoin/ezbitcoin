@@ -2,9 +2,9 @@
 
 [![Diagram showing the target being stored in the bits field of a block header.](../../images/diagrams_png_block-bits.png)](https://static.learnmeabitcoin.com/diagrams/png/block-bits.png)
 
-The bits field contains a compact representation of the [target](/technical/mining/target/).
+The bits field contains a compact representation of the [target](/docs/technical/mining/target.md).
 
-It indicates what the [block hash](/technical/block/hash/) has to be below for the block to be [mined](/technical/mining/), and it has to represent the correct target value for the height of the block in the [blockchain](/technical/blockchain/).
+It indicates what the [block hash](/docs/technical/block/hash.md) has to be below for the block to be [mined](/docs/technical/mining.md), and it has to represent the correct target value for the height of the block in the [blockchain](/docs/technical/blockchain.md).
 
 Current
 
@@ -133,7 +133,7 @@ That's why some bits fields have a coefficient that starts with `00`.
 
 See here: [Why 1D00FFFF and not 1CFFFFFF as target in genesis block](https://bitcoin.stackexchange.com/questions/113535/why-1d00ffff-and-not-1cffffff-as-target-in-genesis-block)
 
-Anyway, this target-to-bits conversion is what miners do when creating a bits field for their block header after a [target recalculation](/technical/mining/target/#adjustment).
+Anyway, this target-to-bits conversion is what miners do when creating a bits field for their block header after a [target recalculation](/docs/technical/mining/target.md#adjustment).
 
 ![Tool Icon](../../images/icons_tool.svg) Target Adjustment
 
@@ -214,7 +214,7 @@ But as I say, this loss of precision here isn't a big deal. I've never seen a bl
 
 However, there was no need for Satoshi to include a compact representation of the target in the block header. Nodes calculate target values internally, so having the target in the block header is redundant.
 
-Nonetheless, that's what Satoshi decided to do, probably as some sort of convenience. Removing it would involve a [hard-fork](/technical/blockchain/hard-fork/), and it wouldn't be worth the effort, so that's why it's still a part of the block header today.
+Nonetheless, that's what Satoshi decided to do, probably as some sort of convenience. Removing it would involve a [hard-fork](/docs/technical/blockchain/hard-fork.md), and it wouldn't be worth the effort, so that's why it's still a part of the block header today.
 
 ## Terminology
 
@@ -222,7 +222,7 @@ Why is it called "bits"?
 
 I don't know why the field is called "bits". Satoshi never explained the reason behind their choice for the name of this field.
 
-It's a bit awkward though, as a "[bit](/technical/general/bytes/#bit)" is the word used for the smallest unit of data (i.e. 8 bits in a byte), which is a bit confusing.
+It's a bit awkward though, as a "[bit](/docs/technical/general/bytes.md#bit)" is the word used for the smallest unit of data (i.e. 8 bits in a byte), which is a bit confusing.
 
 Maybe it's because they were storing *some bits* from the target (and not the full precision), so "bits" was a quick and easy name for the field. I mean, we all use quick variable names when in the middle of programming, and they don't always turn out to be perfect.
 

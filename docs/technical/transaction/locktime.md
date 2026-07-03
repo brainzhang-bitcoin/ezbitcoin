@@ -2,7 +2,7 @@
 
 [![Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future.](../../images/diagrams_png_transaction-locktime.png)](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
 
-The locktime field allows you to **prevent a [transaction](/technical/transaction/) from being [mined](/technical/mining/)** until *after* a specific block **height** or **[time](/technical/block/time/)**.
+The locktime field allows you to **prevent a [transaction](/docs/technical/transaction.md) from being [mined](/docs/technical/mining.md)** until *after* a specific block **height** or **[time](/docs/technical/block/time.md)**.
 
 A transaction with a locktime in the future will not be accepted or relayed by nodes either, so you have to store it locally until the locktime you have set on the transaction has passed.
 
@@ -16,16 +16,16 @@ How does locktime work?
 
 The locktime field is 4 bytes in size and can hold values between 0 (0x00000000) and 4294967295 (0xffffffff).
 
-You can set a specific block [height](/technical/blockchain/height/) or [time](/technical/block/time/) by using different *ranges* of values:
+You can set a specific block [height](/docs/technical/blockchain/height.md) or [time](/docs/technical/block/time.md) by using different *ranges* of values:
 
 | Locktime | Description |
 | --- | --- |
 | <=499999999 | Transaction cannot be mined until *after* a specific **height**. |
 | >=500000000 | Transaction cannot be mined until *after* a specific **time**. |
 
-This is also known as "absolute locktime", as you're setting a specific height or time in the future. It's also possible to set a [relative locktime](/technical/transaction/input/sequence/#relative-locktime) on a transaction if you prefer.
+This is also known as "absolute locktime", as you're setting a specific height or time in the future. It's also possible to set a [relative locktime](/docs/technical/transaction/input/sequence.md#relative-locktime) on a transaction if you prefer.
 
-For the locktime field to be enabled, at least one of the [sequence](/technical/transaction/input/sequence/) values on the [inputs](/technical/transaction/input/) must be set to 0xfffffffe or below. If all of the inputs' sequence values are set to the maximum value of 0xffffffff, the transaction is considered "final" and the locktime feature is disabled.
+For the locktime field to be enabled, at least one of the [sequence](/docs/technical/transaction/input/sequence.md) values on the [inputs](/docs/technical/transaction/input.md) must be set to 0xfffffffe or below. If all of the inputs' sequence values are set to the maximum value of 0xffffffff, the transaction is considered "final" and the locktime feature is disabled.
 
 ### Height
 
@@ -59,7 +59,7 @@ Date
 
 0 secs
 
-The actual time restriction is then based on the [time](/technical/block/time/) field inside a [block header](/technical/block/#header). The time set inside a block is controlled by the miner, and whilst it's usually pretty close to the current time, it can sometimes be an hour or two out.
+The actual time restriction is then based on the [time](/docs/technical/block/time.md) field inside a [block header](/docs/technical/block.md#header). The time set inside a block is controlled by the miner, and whilst it's usually pretty close to the current time, it can sometimes be an hour or two out.
 
 This range of values allows you to set a locktime between *05 Nov 1985, 00:53:20* and *07 Feb 2106, 06:28:15*.
 
@@ -93,7 +93,7 @@ The locktime field is always the **last 4 bytes** of a transaction:
 
 Transaction: [f168381d64b32d7b03b3f0b82cadba72e815351686e3bff2b8b5ab92f65a58bf](/explorer/tx/f168381d64b32d7b03b3f0b82cadba72e815351686e3bff2b8b5ab92f65a58bf)
 
-The locktime field in a raw transaction is in [little-endian](/technical/general/little-endian/). So in the example above, if we reverse the byte order of `500e0c00` we get `000c0e50`, and if we convert that from [hexadecimal](/technical/general/hexadecimal/) to decimal we get 790096.
+The locktime field in a raw transaction is in [little-endian](/docs/technical/general/little-endian.md). So in the example above, if we reverse the byte order of `500e0c00` we get `000c0e50`, and if we convert that from [hexadecimal](/docs/technical/general/hexadecimal.md) to decimal we get 790096.
 
 So this transaction set the locktime to a block height of [790,096](/explorer/790096) (and was mined into the block after that).
 

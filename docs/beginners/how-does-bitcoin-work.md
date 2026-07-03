@@ -23,7 +23,7 @@ Bitcoin is just a **computer program**. You can [download](https://bitcoin.org/e
 
 [![Illustration showing the bitcoin program being download on to a computer.](../images/beginners_how-does-bitcoin-work_1_1_program.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/1_1_program.png)
 
-When you run the program for the first time, it will connect to other computers running the same program, and they will *start sharing a file* with you. This file is called the [**blockchain**](/technical/blockchain/), which is a big list of [*transactions*](/technical/transaction/).
+When you run the program for the first time, it will connect to other computers running the same program, and they will *start sharing a file* with you. This file is called the [**blockchain**](/docs/technical/blockchain.md), which is a big list of [*transactions*](/docs/technical/transaction.md).
 
 [![Diagram showing a network of computers sharing a file of transactions (the blockchain).](../images/beginners_how-does-bitcoin-work_1_2_network.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/1_2_network.png)
 
@@ -31,7 +31,7 @@ When a new transaction enters the network, it gets *relayed* from computer to co
 
 [![Diagram showing a transaction being relayed across computers on a network before being added to the shared file (the blockchain).](../images/beginners_how-does-bitcoin-work_1_3_network_transactions.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/1_3_network_transactions.png)
 
-As a result, the Bitcoin program creates a large **[network](/technical/networking/) of computers** that communicate with each other to **share a file and update it with new transactions**.
+As a result, the Bitcoin program creates a large **[network](/docs/technical/networking.md) of computers** that communicate with each other to **share a file and update it with new transactions**.
 
 ## What problem does Bitcoin solve?
 
@@ -49,7 +49,7 @@ Now if you're creating an electronic payment system without a central authority,
 
 So who's to *decide* which transaction came "first" and should be the only one written to the file?
 
-Bitcoin solves this problem by forcing nodes to keep all the transactions they receive *in [memory](/technical/mining/memory-pool/)* before writing them to a file. Then, at 10-minute intervals, a *random node* on the network will add the transactions from their memory on to the file.
+Bitcoin solves this problem by forcing nodes to keep all the transactions they receive *in [memory](/docs/technical/mining/memory-pool.md)* before writing them to a file. Then, at 10-minute intervals, a *random node* on the network will add the transactions from their memory on to the file.
 
 [![Diagram showing a single node on the network adding the transactions from their memory on to the shared file.](../images/beginners_how-does-bitcoin-work_2_2_why_mining.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/2_2_why_mining.png)
 
@@ -59,25 +59,25 @@ As a result, no double-spend transactions will ever be written to the file, and 
 
 [![Diagram showing nodes on the network accepting the updated version of the file and removing the conflicting transaction from their memory.](../images/beginners_how-does-bitcoin-work_2_3_why_solved.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/2_3_why_solved.png)
 
-This process of adding transactions on to the file is called [**mining**](/technical/mining/), and it's a network-wide *competition* that cannot be controlled by a single node on the network.
+This process of adding transactions on to the file is called [**mining**](/docs/technical/mining.md), and it's a network-wide *competition* that cannot be controlled by a single node on the network.
 
 ## How does mining work?
 
 Mining is the process of adding new blocks of transactions on to the blockchain.
 
-To start with, each node stores the latest [transactions](/technical/transaction/) they have received in their [**memory pool**](/technical/mining/memory-pool/), which is just temporary memory on their computer.
+To start with, each node stores the latest [transactions](/docs/technical/transaction.md) they have received in their [**memory pool**](/docs/technical/mining/memory-pool.md), which is just temporary memory on their computer.
 
-Any node can then try and *mine* the transactions from their memory pool on to the shared file (the [**blockchain**](/technical/blockchain/)).
+Any node can then try and *mine* the transactions from their memory pool on to the shared file (the [**blockchain**](/docs/technical/blockchain.md)).
 
-To do this, a node will gather the transactions from its memory pool into a container called a [**block**](/technical/block/), and then use *processing power* to try and add this block of transactions onto the blockchain.
+To do this, a node will gather the transactions from its memory pool into a container called a [**block**](/docs/technical/block.md), and then use *processing power* to try and add this block of transactions onto the blockchain.
 
 [![Diagram showing a node on the network collecting transactions from their memory pool into a block and adding it on to the blockchain.](../images/beginners_how-does-bitcoin-work_3_1_mining.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/3_1_mining.png)
 
-So where does this processing power come in? Well, to add this block to the blockchain, you must feed your block of transactions in to something called a [**hash function**](/technical/cryptography/hash-function/). A hash function is basically a mini computer program that will take in any amount of data, scramble it, and spit out a completely unique (and unpredictable) number.
+So where does this processing power come in? Well, to add this block to the blockchain, you must feed your block of transactions in to something called a [**hash function**](/docs/technical/cryptography/hash-function.md). A hash function is basically a mini computer program that will take in any amount of data, scramble it, and spit out a completely unique (and unpredictable) number.
 
 [![Diagram showing data being fed into a hash function and a random number coming out.](../images/beginners_how-does-bitcoin-work_3_2_hash_function.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/3_2_hash_function.png)
 
-For your block to be successfully added on to the blockchain, this number (or [**block hash**](/technical/block/hash/)) must be **equal to or below** the [**target**](/technical/mining/target/), which is a threshold that everyone on the network agrees upon.
+For your block to be successfully added on to the blockchain, this number (or [**block hash**](/docs/technical/block/hash.md)) must be **equal to or below** the [**target**](/docs/technical/mining/target.md), which is a threshold that everyone on the network agrees upon.
 
 [![Diagram showing the hash of a block trying to get below a target value.](../images/beginners_how-does-bitcoin-work_3_3_mining_block_hash.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/3_3_mining_block_hash.png)
 
@@ -101,15 +101,15 @@ As an incentive to use processing power to try and add new blocks of transaction
 
 [![Diagram showing the block reward for mining a new block on to the blockchain.](../images/beginners_how-does-bitcoin-work_3_5_mining_block_reward.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/3_5_mining_block_reward.png)
 
-This batch of new bitcoins is called the **[block reward](/technical/mining/block-reward/)**, and is the reason why the process is called "mining".
+This batch of new bitcoins is called the **[block reward](/docs/technical/mining/block-reward.md)**, and is the reason why the process is called "mining".
 
 ## Why is the file called the "blockchain"?
 
-Transactions are not added to the file individually – they are collected together and added in blocks. Each of these new blocks *builds on top of* an existing one, and so the file is made up of a *chain* of **blocks**; hence, [**blockchain**](/technical/blockchain/).
+Transactions are not added to the file individually – they are collected together and added in blocks. Each of these new blocks *builds on top of* an existing one, and so the file is made up of a *chain* of **blocks**; hence, [**blockchain**](/docs/technical/blockchain.md).
 
 [![Diagram showing a block specifying a previous block to build on top of.](../images/beginners_how-does-bitcoin-work_4_1_blockchain.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/4_1_blockchain.png)
 
-Furthermore, every node on the network **will always adopt the [longest chain](/technical/blockchain/longest-chain/) of blocks they receive** as the "official" version of the blockchain.
+Furthermore, every node on the network **will always adopt the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks they receive** as the "official" version of the blockchain.
 
 This means that miners will always try to build on top of the "tip" of the longest known chain of blocks, as any transactions that are not part of the longest chain will be invalid.
 
@@ -125,11 +125,11 @@ In other words, the entire history of transactions (and your money) is protected
 
 ## How do transactions work?
 
-You can think of the blockchain as being a storage facility for *safe deposit boxes*, which we call [**outputs**](/technical/transaction/output/). These outputs are just containers that hold various amounts of bitcoin.
+You can think of the blockchain as being a storage facility for *safe deposit boxes*, which we call [**outputs**](/docs/technical/transaction/output.md). These outputs are just containers that hold various amounts of bitcoin.
 
 [![Diagram showing the blockchain storing lots of individual outputs.](../images/beginners_how-does-bitcoin-work_5_1_outputs.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/5_1_outputs.png)
 
-When you make a bitcoin [**transaction**](/technical/transaction/), you select some outputs and *unlock* them, then create new outputs and put new [locks](/technical/transaction/output/scriptpubkey/) on them.
+When you make a bitcoin [**transaction**](/docs/technical/transaction.md), you select some outputs and *unlock* them, then create new outputs and put new [locks](/docs/technical/transaction/output/scriptpubkey.md) on them.
 
 [![Diagram showing a transaction selecting an output from the blockchain and creating a new output from it.](../images/beginners_how-does-bitcoin-work_5_2_transaction.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/5_2_transaction.png)
 
@@ -149,43 +149,43 @@ Lastly, when a transaction gets mined on to the blockchain, the outputs that wer
 
 ## How do you own bitcoins?
 
-To be able to "receive" bitcoins, you need to have your own set of [keys](/technical/keys/).
+To be able to "receive" bitcoins, you need to have your own set of [keys](/docs/technical/keys.md).
 
-This set of keys is like your *account number* and *password*, except in Bitcoin they're called your [public key](/technical/keys/public-key/) and your [private key](/technical/keys/private-key/).
+This set of keys is like your *account number* and *password*, except in Bitcoin they're called your [public key](/docs/technical/keys/public-key.md) and your [private key](/docs/technical/keys/private-key.md).
 
 For example, if I wanted to send you some bitcoins, you would first need to give me your public key. When I create my transaction, I would place your public key *inside* the lock on the output (the safe deposit box). And when you want to send these bitcoins on to someone else, you would use your private key to unlock this output.
 
 [![Diagram showing a public key and a private key pair being used to lock and unlock outputs in a transaction.](../images/beginners_how-does-bitcoin-work_6_1_keys.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/6_1_keys.png)
 
-So where can you get a public key and private key? Well, with the help of [cryptography](/technical/cryptography/) you can actually **generate them yourself**.
+So where can you get a public key and private key? Well, with the help of [cryptography](/docs/technical/cryptography.md) you can actually **generate them yourself**.
 
 In short, your private key is just a large *random number*, and your public key is a number *calculated from* this private key. But the clever part is; you can give your public key to someone else, but they cannot work backwards from it to work out the private key.
 
 [![Diagram showing an example private key and public key, with the public key being calculated from the private key.](../images/beginners_how-does-bitcoin-work_6_2_keys_generate.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/6_2_keys_generate.png)
 
-Now, when you want to unlock bitcoins that are assigned to your public key, you use your private key to create what's called a [digital signature](/technical/keys/signature/). This signature proves that you are the owner of the public key (and therefore can unlock the bitcoins), *without having to reveal your private key*. This signature is also only valid for the transaction it was created for, so it cannot be used to unlock other bitcoins locked to the same public key.
+Now, when you want to unlock bitcoins that are assigned to your public key, you use your private key to create what's called a [digital signature](/docs/technical/keys/signature.md). This signature proves that you are the owner of the public key (and therefore can unlock the bitcoins), *without having to reveal your private key*. This signature is also only valid for the transaction it was created for, so it cannot be used to unlock other bitcoins locked to the same public key.
 
 [![Diagram showing a private key being used to create a digital signature, which is then used to unlock an output in a transaction.](../images/beginners_how-does-bitcoin-work_6_3_keys_digital_signature.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/6_3_keys_digital_signature.png)
 
-This system is known as [Public Key Cryptography](/technical/cryptography/#public-key-cryptography), and has been available since 1978 (see [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))). Bitcoin makes use of this system to allow anyone to create keys for sending and receiving bitcoins securely, without the need of a central authority to issue accounts and passwords.
+This system is known as [Public Key Cryptography](/docs/technical/cryptography.md#public-key-cryptography), and has been available since 1978 (see [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))). Bitcoin makes use of this system to allow anyone to create keys for sending and receiving bitcoins securely, without the need of a central authority to issue accounts and passwords.
 
-In Bitcoin we convert the public key to a more user-friendly [address](/technical/keys/address/), which is what you'll typically use when sending and receiving payments.
+In Bitcoin we convert the public key to a more user-friendly [address](/docs/technical/keys/address.md), which is what you'll typically use when sending and receiving payments.
 
 ## Summary
 
 [![Diagram showing a summary of how bitcoin works.](../images/beginners_how-does-bitcoin-work_7_1_bitcoin_system.png)](https://static.learnmeabitcoin.com/beginners/how-does-bitcoin-work/7_1_bitcoin_system.png)
 
-To use Bitcoin, you generate your own [private key](/technical/keys/private-key/) and [public key](/technical/keys/public-key/). Your private key is a very large random number, and your public key is calculated from it. These keys can be easily generated on your computer, or even on something as simple as a calculator. Most people, however, use a [bitcoin wallet](/beginners/wallets/) to help generate and manage their keys.
+To use Bitcoin, you generate your own [private key](/docs/technical/keys/private-key.md) and [public key](/docs/technical/keys/public-key.md). Your private key is a very large random number, and your public key is calculated from it. These keys can be easily generated on your computer, or even on something as simple as a calculator. Most people, however, use a [bitcoin wallet](/docs/beginners/wallets.md) to help generate and manage their keys.
 
-To receive bitcoins, you give the person sending them to you your public key. This person then creates a [transaction](/technical/transaction/) where they unlock bitcoins that they own, and create a new "safe deposit box" of bitcoins and put your public key inside the lock.
+To receive bitcoins, you give the person sending them to you your public key. This person then creates a [transaction](/docs/technical/transaction.md) where they unlock bitcoins that they own, and create a new "safe deposit box" of bitcoins and put your public key inside the lock.
 
-This transaction is then sent to a [node](/technical/networking/node/), where it's relayed from computer to computer until every node on the [network](/technical/networking/) has a copy of the transaction. From here, each node has the opportunity to try and *mine* the latest transactions they have received on to the [blockchain](/technical/blockchain/).
+This transaction is then sent to a [node](/docs/technical/networking/node.md), where it's relayed from computer to computer until every node on the [network](/docs/technical/networking.md) has a copy of the transaction. From here, each node has the opportunity to try and *mine* the latest transactions they have received on to the [blockchain](/docs/technical/blockchain.md).
 
-The process of [mining](/technical/mining/) involves a node collecting transactions from its [memory pool](/technical/mining/memory-pool/) into a [block](/technical/block/), and repeatedly [hashing](/technical/cryptography/hash-function/) the block (with a minor adjustment each time) to try and get a [block hash](/technical/block/hash/) below the current [target](/technical/mining/target/) value.
+The process of [mining](/docs/technical/mining.md) involves a node collecting transactions from its [memory pool](/docs/technical/mining/memory-pool.md) into a [block](/docs/technical/block.md), and repeatedly [hashing](/docs/technical/cryptography/hash-function.md) the block (with a minor adjustment each time) to try and get a [block hash](/docs/technical/block/hash.md) below the current [target](/docs/technical/mining/target.md) value.
 
-The first miner to find a block hash below the target will add the block to their [blockchain](/technical/blockchain/), and broadcast this block to the other nodes on the network. Each node will then verify and add this block to their blockchain (removing any conflicting transactions from their memory pool in the process), and restart the mining process to try and build on top of this new block in the chain.
+The first miner to find a block hash below the target will add the block to their [blockchain](/docs/technical/blockchain.md), and broadcast this block to the other nodes on the network. Each node will then verify and add this block to their blockchain (removing any conflicting transactions from their memory pool in the process), and restart the mining process to try and build on top of this new block in the chain.
 
-Lastly, the miner who mined this block will have placed their own [special transaction](/technical/mining/coinbase-transaction/) inside the block, which allows them to collect a set amount of bitcoins that did not already exist. This [block reward](/technical/mining/block-reward/) acts as an incentive for nodes to continue to build the blockchain, whilst simultaneously distributing new coins across the bitcoin network.
+Lastly, the miner who mined this block will have placed their own [special transaction](/docs/technical/mining/coinbase-transaction.md) inside the block, which allows them to collect a set amount of bitcoins that did not already exist. This [block reward](/docs/technical/mining/block-reward.md) acts as an incentive for nodes to continue to build the blockchain, whilst simultaneously distributing new coins across the bitcoin network.
 
 ## Conclusion
 
