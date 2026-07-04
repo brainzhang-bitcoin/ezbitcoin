@@ -1,0 +1,170 @@
+[project]
+site_name = "EzBitcoin - 极简比特币讲解"
+site_url = "https://ezbitcoin.brainz.fun/"
+docs_dir = "docs"
+
+[theme]
+name = "material"
+primary = "indigo"
+accent = "indigo"
+features = [
+    "navigation.tabs",
+    "navigation.sections",
+    "navigation.top",
+    "search.suggest",
+    "search.highlight"
+]
+palette = [
+    { media = "(prefers-color-scheme: light)", scheme = "default", primary = "indigo", accent = "indigo", toggle = { icon = "material/weather-night", name = "切换至暗色模式" } },
+    { media = "(prefers-color-scheme: dark)", scheme = "slate", primary = "indigo", accent = "indigo", toggle = { icon = "material/weather-sunny", name = "切换至亮色模式" } }
+]
+
+[nav]
+"主页" = "README.md"
+
+"新手指南" = [
+    { "新手导读" = "beginners.md" },
+    { "比特币是如何工作的？" = "beginners/how-does-bitcoin-work.md" },
+    { "如何选择钱包" = "beginners/wallets.md" },
+    { "如何选择交易所" = "beginners/exchanges.md" },
+    { "如何发送与接收" = "beginners/sending.md" },
+    { "安全与存储防范" = "beginners/security.md" },
+    { "新手图解手册" = [
+        { "比特币网络" = "beginners/guide/network.md" },
+        { "节点" = "beginners/guide/node.md" },
+        { "挖矿" = "beginners/guide/mining.md" },
+        { "区块链" = "beginners/guide/blockchain.md" },
+        { "区块" = "beginners/guide/blocks.md" },
+        { "难度" = "beginners/guide/difficulty.md" },
+        { "交易" = "beginners/guide/transactions.md" },
+        { "交易输出" = "beginners/guide/outputs.md" },
+        { "锁定与解锁" = "beginners/guide/locks.md" },
+        { "密钥与地址" = "beginners/guide/keys-addresses.md" },
+        { "私钥" = "beginners/guide/private-keys.md" },
+        { "公钥" = "beginners/guide/public-keys.md" },
+        { "数字签名" = "beginners/guide/digital-signatures.md" },
+        { "隔离见证 (SegWit)" = "beginners/guide/segwit.md" }
+    ]},
+    { "推荐科普博文" = [
+        { "美国政府是如何没收大量比特币的" = "beginners/how-us-government-seizes-bitcoins.md" },
+        { "远古矿工转移8万枚比特币" = "beginners/ancient-miners-move-bitcoins.md" },
+        { "十行代码挑战世界金融体系" = "beginners/ten-lines-of-code-challenge-financial-system.md" },
+        { "澳本聪是中本聪吗？(二)" = "beginners/is-craig-wright-real-satoshi-part2.md" },
+        { "《The Internet of Money》读书笔记" = "beginners/the-internet-of-money-reading-notes.md" },
+        { "《The Book of Satoshi》读书笔记" = "beginners/the-book-of-satoshi-reading-notes.md" },
+        { "比特币的过去，现在和未来" = "beginners/bitcoin-past-present-future.md" },
+        { "祝比特币10岁生日快乐" = "beginners/happy-10th-birthday-bitcoin.md" }
+    ]}
+]
+
+"技术核心" = [
+    { "技术指南主页" = "technical.md" },
+    { "区块与区块链" = [
+        { "区块总览" = "technical/block.md" },
+        { "比特币的 Blockchain - Part 1" = "technical/blockchain/bitcoin-blockchain-part1.md" },
+        { "比特币的 Blockchain - Part 2" = "technical/blockchain/bitcoin-blockchain-part2.md" },
+        { "区块哈希值 (Hash)" = "technical/block/hash.md" },
+        { "前一区块哈希" = "technical/block/previous-block.md" },
+        { "默克尔根" = "technical/block/merkle-root.md" },
+        { "时间戳" = "technical/block/time.md" },
+        { "难度目标 Bits" = "technical/block/bits.md" },
+        { "随机数 Nonce" = "technical/block/nonce.md" },
+        { "版本号 Version" = "technical/block/version.md" },
+        { "blk.dat 数据结构" = "technical/block/blkdat.md" },
+        { "区块链总览" = "technical/blockchain.md" },
+        { "区块高度 (Height)" = "technical/blockchain/height.md" },
+        { "最长链原则" = "technical/blockchain/longest-chain.md" },
+        { "51% 攻击" = "technical/blockchain/51-attack.md" },
+        { "硬分叉 (Hard Fork)" = "technical/blockchain/hard-fork.md" },
+        { "软分叉 (Soft Fork)" = "technical/blockchain/soft-fork.md" }
+    ]},
+    { "密码学" = [
+        { "密码学总览" = "technical/cryptography.md" },
+        { "提高比特币私钥碰撞几率的思路" = "technical/cryptography/bitcoin-private-key-collision-ideas.md" },
+        { "哈希函数" = "technical/cryptography/hash-function.md" },
+        { "椭圆曲线" = "technical/cryptography/elliptic-curve.md" },
+        { "ECDSA 算法" = "technical/cryptography/elliptic-curve/ecdsa.md" },
+        { "Schnorr 算法" = "technical/cryptography/elliptic-curve/schnorr.md" }
+    ]},
+    { "密钥与地址" = [
+        { "密钥总览" = "technical/keys.md" },
+        { "私钥" = "technical/keys/private-key.md" },
+        { "WIF 格式私钥" = "technical/keys/private-key/wif.md" },
+        { "公钥" = "technical/keys/public-key.md" },
+        { "公钥哈希" = "technical/keys/public-key/hash.md" },
+        { "数字签名" = "technical/keys/signature.md" },
+        { "比特币地址" = "technical/keys/address.md" },
+        { "Base58 校验和" = "technical/keys/checksum.md" },
+        { "Bech32 编码" = "technical/keys/bech32.md" },
+        { "HD 确定性钱包" = "technical/keys/hd-wallets.md" },
+        { "助记词种子" = "technical/keys/hd-wallets/mnemonic-seed.md" },
+        { "扩展密钥" = "technical/keys/hd-wallets/extended-keys.md" },
+        { "派生路径" = "technical/keys/hd-wallets/derivation-paths.md" }
+    ]},
+    { "比特币交易" = [
+        { "交易总览" = "technical/transaction.md" },
+        { "比特币的交易 - Part 5" = "technical/transaction/bitcoin-transaction-part5.md" },
+        { "比特币的交易 - Part 6" = "technical/transaction/bitcoin-transaction-part6.md" },
+        { "未花费交易输出 (UTXO)" = "technical/transaction/utxo.md" },
+        { "交易输入 (Input)" = "technical/transaction/input.md" },
+        { "ScriptSig 解锁脚本" = "technical/transaction/input/scriptsig.md" },
+        { "Sequence 序列号" = "technical/transaction/input/sequence.md" },
+        { "Vout 输出索引" = "technical/transaction/input/vout.md" },
+        { "交易输出 (Output)" = "technical/transaction/output.md" },
+        { "ScriptPubKey 锁定脚本" = "technical/transaction/output/scriptpubkey.md" },
+        { "交易手续费" = "technical/transaction/fee.md" },
+        { "锁定时间 (Locktime)" = "technical/transaction/locktime.md" },
+        { "交易大小与虚拟大小" = "technical/transaction/size.md" },
+        { "见证数据" = "technical/transaction/witness.md" },
+        { "Wtxid 见证交易哈希" = "technical/transaction/wtxid.md" },
+        { "部分签名交易 (PSBT)" = "technical/transaction/psbt.md" }
+    ]},
+    { "比特币脚本" = [
+        { "脚本语言总览" = "technical/script.md" },
+        { "P2PK" = "technical/script/p2pk.md" },
+        { "P2PKH" = "technical/script/p2pkh.md" },
+        { "P2MS" = "technical/script/p2ms.md" },
+        { "P2SH" = "technical/script/p2sh.md" },
+        { "P2WPKH" = "technical/script/p2wpkh.md" },
+        { "P2WSH" = "technical/script/p2wsh.md" },
+        { "P2SH-P2WPKH" = "technical/script/p2sh-p2wpkh.md" },
+        { "P2SH-P2WSH" = "technical/script/p2sh-p2wsh.md" },
+        { "P2TR" = "technical/script/p2tr.md" },
+        { "OP_RETURN 脚本" = "technical/script/return.md" }
+    ]},
+    { "CS 基础知识" = [
+        { "十六进制" = "technical/general/hexadecimal.md" },
+        { "字节" = "technical/general/bytes.md" },
+        { "字节序 (Byte Order)" = "technical/general/byte-order.md" },
+        { "可变长度整数" = "technical/general/compact-size.md" }
+    ]}
+]
+
+"网络与挖矿" = [
+    { "挖矿总览" = "technical/mining.md" },
+    { "区块奖励" = "technical/mining/block-reward.md" },
+    { "币基交易" = "technical/mining/coinbase-transaction.md" },
+    { "内存池" = "technical/mining/memory-pool.md" },
+    { "候选区块" = "technical/mining/candidate-block.md" },
+    { "目标值" = "technical/mining/target.md" },
+    { "网络协议总览" = "technical/networking.md" },
+    { "系统服务 Systemd 启动配置" = "technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md" },
+    { "理想中的全节点实现" = "technical/networking/ideal-bitcoin-full-node-implementation.md" },
+    { "网络节点" = "technical/networking/node.md" },
+    { "魔法字节" = "technical/networking/magic-bytes.md" },
+    { "隔离见证 (SegWit)" = "technical/upgrades/segregated-witness.md" },
+    { "主根升级 (Taproot)" = "technical/upgrades/taproot.md" }
+]
+
+"闪电网络" = [
+    { "闪电网络与 Lnd 技术" = "technical/lightning.md" },
+    { "Lnd 启动扫描速度慢分析" = "technical/lightning/lnd-low-rescan-speed-startup.md" },
+    { "如何通过 lnd-cli 关闭通道" = "technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md" },
+    { "闪电网络基础与原理 - Part 0" = "technical/lightning/hello-lightning-network-part0.md" },
+    { "闪电网络基础与原理 - Part 1" = "technical/lightning/hello-lightning-network-part1.md" },
+    { "闪电网络基础与原理 - Part 2" = "technical/lightning/hello-lightning-network-part2.md" },
+    { "闪电网络基础与原理 - Part 3" = "technical/lightning/hello-lightning-network-part3.md" },
+    { "闪电网络节点搭建与配置小抄" = "technical/lightning/setup-lightning-node-cheat-sheet.md" },
+    { "Eltoo 闪电和离线契约更新机制" = "technical/lightning/eltoo-lightning-offchain-contracts.md" },
+    { "闪电网络的慢慢成长之路" = "technical/lightning/lightning-network-gradual-growth.md" }
+]
