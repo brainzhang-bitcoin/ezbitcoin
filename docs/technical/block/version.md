@@ -1,8 +1,8 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_block-version.png" alt="Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks." width="639" height="404" />](https://static.learnmeabitcoin.com/diagrams/png/block-version.png)
+[<img src="../../images/diagrams_png_block-version.png" alt="Diagram showing the location of the nonce field inside the block header and how the last 29 bits are used to signal readiness for soft forks." width="639" height="404" />](../../images/diagrams_png_block-version.png)
 
-矿工使用[区块头](/docs/technical/block.md#header)中 4 字节的 version（版本）字段来***指示 (signal)***对提议的[软分叉](/docs/technical/blockchain/soft-fork.md)的准备就绪状态。
+矿工使用[区块头](../block.md#header)中 4 字节的 version（版本）字段来***指示 (signal)***对提议的[软分叉](../blockchain/soft-fork.md)的准备就绪状态。
 
 版本号在软件中用于表示升级或添加新功能。然而，比特币是去中心化的，因此没有中央机构强制每个人升级到新版本的软件。因此，如果网络的大多数成员能提前对提议的更改达成一致，那将是最理想的。
 
@@ -33,9 +33,9 @@
 
 ## 版本位 (Version Bits)
 
-在 2015 年，version 字段被更改为用作[位字段](/docs/technical/general/bytes.md#bit-field)，这允许矿工同时指示多达 29 个提议的新功能。
+在 2015 年，version 字段被更改为用作[位字段](../general/bytes.md#bit-field)，这允许矿工同时指示多达 29 个提议的新功能。
 
-32 位 (4字节) version 字段中的不同[位](/docs/technical/general/bytes.md#bit)可以同时被指定为指示对不同[软分叉](/docs/technical/blockchain/soft-fork.md)的就绪状态。所以您要指示对特定升级的就绪状态，只需将特定位置为“开”（即将其设置为 **1**）。
+32 位 (4字节) version 字段中的不同[位](../general/bytes.md#bit)可以同时被指定为指示对不同[软分叉](../blockchain/soft-fork.md)的就绪状态。所以您要指示对特定升级的就绪状态，只需将特定位置为“开”（即将其设置为 **1**）。
 
 随机示例
 
@@ -133,7 +133,7 @@
 
 要使用“版本位”进行指示，您必须将前 3 位设置为 `0b001`（如 [BIP 9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki) 中所规定）。这只是一个要求，表明您正在使用 version 字段作为指示状态的位字段。所以这就是为什么您同时最多只能指示 29 个不同的升级（32 - 3 = 29 位）。
 
-每个提案都有其自己的指示时间段，其中在特定窗口内必须有特定数量的区块指示该升级才能使其被激活。例如，在 [Taproot 升级](/docs/technical/upgrades/taproot.md)期间，在 2016 个区块的[target](/docs/technical/mining/target.md)调整周期内，必须有 90% 的区块指示该升级（从 2021 年 4 月 24 日开始到 2021 年 8 月 11 日结束），这最终确实发生了，并且部署在区块高度 [709,632](/explorer/709632#blockchain) 处激活。
+每个提案都有其自己的指示时间段，其中在特定窗口内必须有特定数量的区块指示该升级才能使其被激活。例如，在 [Taproot 升级](../upgrades/taproot.md)期间，在 2016 个区块的[target](../mining/target.md)调整周期内，必须有 90% 的区块指示该升级（从 2021 年 4 月 24 日开始到 2021 年 8 月 11 日结束），这最终确实发生了，并且部署在区块高度 [709,632](/explorer/709632#blockchain) 处激活。
 
 您可以通过 `bitcoin-cli getblockchaininfo` 查看过去和当前投票支持的升级。
 
@@ -160,10 +160,10 @@
 * `0x20000001` - 用于指示 CSV 升级的版本位。
   + 版本位 (Version Bits): `0b00100000000000000000000000000001`
   + 示例: [000000000000000004983f04183f2a6ae7f1cdf6ddb8f4b3f79e39e14392db4c](/explorer/block/000000000000000004983f04183f2a6ae7f1cdf6ddb8f4b3f79e39e14392db4c) (高度 [416,498](/explorer/416498#blockchain))
-* `0x20000002` - 用于指示 [SegWit 升级](/docs/technical/upgrades/segregated-witness.md)的版本位。
+* `0x20000002` - 用于指示 [SegWit 升级](../upgrades/segregated-witness.md)的版本位。
   + 版本位 (Version Bits): `0b00100000000000000000000000000010`
   + 示例: [0000000000000000001094a0145695e4228c21cbbc6be40507f728c6b7d6f16a](/explorer/block/0000000000000000001094a0145695e4228c21cbbc6be40507f728c6b7d6f16a) (高度 [471,329](/explorer/471329#blockchain))
-* `0x20000004` - 用于指示 [Taproot 升级](/docs/technical/upgrades/taproot.md)的版本位。
+* `0x20000004` - 用于指示 [Taproot 升级](../upgrades/taproot.md)的版本位。
   + 版本位 (Version Bits): `0b00100000000000000000000000000100`
   + 示例: [00000000000000000004f065fae967b93540f321076684fe926d4e7bfbcd77ab](/explorer/block/00000000000000000004f065fae967b93540f321076684fe926d4e7bfbcd77ab) (高度 [703,353](/explorer/703353#blockchain))
 
@@ -203,7 +203,7 @@ This bit cannot be set to 1, or the version will be invalid:
 
 ## Extra Nonce
 
-对您在 version 字段中放入什么值并没有太多的限制（除了它必须是最低 `0x00000004`，并且首位不能是 `1` 之外），因此矿工有时会在挖矿时将其用作 [extra nonce](/docs/technical/block/nonce.md#extranonce)。
+对您在 version 字段中放入什么值并没有太多的限制（除了它必须是最低 `0x00000004`，并且首位不能是 `1` 之外），因此矿工有时会在挖矿时将其用作 [extra nonce](nonce.md#extranonce)。
 
 这就是为什么大约自区块高度 [600,000](/explorer/600000#blockchain) 以来（此前也有，但此后更多），您经常在区块头中看到一些“奇怪”的版本号，它们并不对应任何提议的升级。例如：
 
@@ -211,7 +211,7 @@ This bit cannot be set to 1, or the version will be invalid:
   + 版本位 (Version Bits): `0b00101000010001001010000000000000`
   + 示例: [00000000000000000479bbbf51d485ddc7b161998b6f54049e576b09fd72e363](/explorer/block/00000000000000000479bbbf51d485ddc7b161998b6f54049e576b09fd72e363) (高度 [791,617](/explorer/791617#blockchain))
 
-再次强调，这些版本号并不表示什么特定的信息；它们只是被矿工调整了，以便能够继续对当前的区块进行[哈希运算](/docs/technical/cryptography/hash-function.md)，而无需完全重建区块。
+再次强调，这些版本号并不表示什么特定的信息；它们只是被矿工调整了，以便能够继续对当前的区块进行[哈希运算](../cryptography/hash-function.md)，而无需完全重建区块。
 
 ## 资源
 

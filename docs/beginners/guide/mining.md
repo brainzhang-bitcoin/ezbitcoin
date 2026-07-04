@@ -1,20 +1,20 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-比特币挖矿是将**[交易](/docs/beginners/guide/transactions.md)添加到[区块链](/docs/beginners/guide/blockchain.md)**的过程。
+比特币挖矿是将**[交易](transactions.md)添加到[区块链](blockchain.md)**的过程。
 
 ## 挖矿是如何工作的？
 
-[比特币网络](/docs/beginners/guide/network.md)上的每个[节点](/docs/beginners/guide/node.md)都会共享有关新交易的信息。
+[比特币网络](network.md)上的每个[节点](node.md)都会共享有关新交易的信息。
 
 每个节点都将接收到的新交易保存在其*内存池*中。
 
-[<img src="../../images/beginners_guide_mining_01-network-memory-pool.png" alt="展示比特币网络中每个节点内部的内存池图表。" width="776" height="392" />](/docs/beginners/guide/mining/01-network-memory-pool.png.md)
+[<img src="../../images/beginners_guide_mining_01-network-memory-pool.png" alt="展示比特币网络中每个节点内部的内存池图表。" width="776" height="392" />](../../images/beginners_guide_mining_01-network-memory-pool.png)
 
 *内存池*是节点存放新交易的临时存储区。
 
 每个节点还可以选择尝试将内存池中的交易“开采”到永久的**文件**中。这个文件是每笔比特币交易的分类账，被称为*区块链*。
 
-[<img src="../../images/beginners_guide_mining_02-node-pool-block.png" alt="展示每个节点包含内存池和区块链的图表。" width="417" height="212" />](/docs/beginners/guide/mining/02-node-pool-block.png.md)
+[<img src="../../images/beginners_guide_mining_02-node-pool-block.png" alt="展示每个节点包含内存池和区块链的图表。" width="417" height="212" />](../../images/beginners_guide_mining_02-node-pool-block.png)
 
 你可以将内存池看作包含“浮动”交易的区域，而将区块链看作包含“存档”交易的区域。
 
@@ -26,21 +26,21 @@
 
 好的，想象一下你是一个节点。在任何时刻，你都可以将内存池中的交易压缩成一串由数字和字母组成的单个“字符串”。
 
-[<img src="../../images/beginners_guide_mining_03-node-pool-string.png" alt="展示内存池中所有交易哈希值的图表。" width="449" height="221" />](/docs/beginners/guide/mining/03-node-pool-string.png.md)
+[<img src="../../images/beginners_guide_mining_03-node-pool-string.png" alt="展示内存池中所有交易哈希值的图表。" width="449" height="221" />](../../images/beginners_guide_mining_03-node-pool-string.png)
 
 这个字符串代表了你内存池中的所有交易。
 
-这个“字符串”基本上是内存池中所有交易的[哈希值](/docs/technical/cryptography/hash-function.md)。
+这个“字符串”基本上是内存池中所有交易的[哈希值](../../technical/cryptography/hash-function.md)。
 
-现在，你的目标是将这个字符串与*另一个数字*（被称为 *[Nonce](/docs/technical/block/nonce.md)*）一起进行[哈希](/docs/technical/cryptography/hash-function.md)计算，以尝试获得一个**以一定数量的零开头**的新字符串。
+现在，你的目标是将这个字符串与*另一个数字*（被称为 *[Nonce](../../technical/block/nonce.md)*）一起进行[哈希](../../technical/cryptography/hash-function.md)计算，以尝试获得一个**以一定数量的零开头**的新字符串。
 
 大多数情况下，你会得到一个相差甚远的结果：
 
-[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce.png" alt="展示内存池中所有交易的哈希值以及一个未成功 Nonce 的图表。" width="632" height="212" />](/docs/beginners/guide/mining/04-node-pool-string-nonce.png.md)
+[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce.png" alt="展示内存池中所有交易的哈希值以及一个未成功 Nonce 的图表。" width="632" height="212" />](../../images/beginners_guide_mining_04-node-pool-string-nonce.png)
 
 但是如果你继续下去，你可能会碰巧找到一个起作用的数字：
 
-[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce-success.png" alt="展示内存池中所有交易的哈希值以及一个成功 Nonce 的图表。" width="627" height="211" />](/docs/beginners/guide/mining/04-node-pool-string-nonce-success.png.md)
+[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce-success.png" alt="展示内存池中所有交易的哈希值以及一个成功 Nonce 的图表。" width="627" height="211" />](../../images/beginners_guide_mining_04-node-pool-string-nonce-success.png)
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 哈希函数示例
 
@@ -68,15 +68,15 @@ SHA-256(text)
 
 但是，如果你有幸找到了一个成功的哈希结果，你内存池中的交易就会被添加到区块链中，并且网络上的所有其他节点也会将你的交易区块添加到他们的区块链中。
 
-此外，你还将因为付出努力而获得[区块奖励](/docs/technical/mining/block-reward.md)（这也包括你添加到区块链中的交易带来的所有[交易费](/docs/technical/transaction/fee.md)）。
+此外，你还将因为付出努力而获得[区块奖励](../../technical/mining/block-reward.md)（这也包括你添加到区块链中的交易带来的所有[交易费](../../technical/transaction/fee.md)）。
 
-[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce-success-reward.png" alt="展示在成功开采区块后赢得区块奖励的图表。" width="441" height="275" />](/docs/beginners/guide/mining/04-node-pool-string-nonce-success-reward.png.md)
+[<img src="../../images/beginners_guide_mining_04-node-pool-string-nonce-success-reward.png" alt="展示在成功开采区块后赢得区块奖励的图表。" width="441" height="275" />](../../images/beginners_guide_mining_04-node-pool-string-nonce-success-reward.png)
 
 注意：区块奖励已不再是 25 BTC（我最初写这篇文章是在 2015 年）。
 
-“一定数量的零”来源于[难度](/docs/beginners/guide/difficulty.md)。这会根据整个网络的挖矿速度而发生变化——人们开采的速度越快，难度就越高，开头所需要的零也就越多（这有助于保持区块之间的时间间隔稳定）。
+“一定数量的零”来源于[难度](difficulty.md)。这会根据整个网络的挖矿速度而发生变化——人们开采的速度越快，难度就越高，开头所需要的零也就越多（这有助于保持区块之间的时间间隔稳定）。
 
-这是对区块如何添加到区块链的略微简化的版本。欲了解更多细节，请查看[区块](/docs/beginners/guide/blocks.md)。
+这是对区块如何添加到区块链的略微简化的版本。欲了解更多细节，请查看[区块](blocks.md)。
 
 ## 为什么挖矿很重要？
 
@@ -88,7 +88,7 @@ SHA-256(text)
 
 当你进行一笔比特币交易时，网络上的所有节点并不会立即收到通知。相反，交易通过在节点之间传递来在比特币网络中进行传播。
 
-[<img src="../../images/beginners_guide_mining_05-network-transaction-propagation.png" alt="展示交易在网络中传播的图表。" width="899" height="392" />](/docs/beginners/guide/mining/05-network-transaction-propagation.png.md)
+[<img src="../../images/beginners_guide_mining_05-network-transaction-propagation.png" alt="展示交易在网络中传播的图表。" width="899" height="392" />](../../images/beginners_guide_mining_05-network-transaction-propagation.png)
 
 *传播*是用来描述交易在网络中传输方式的词。
 
@@ -98,7 +98,7 @@ SHA-256(text)
 
 换句话说，这就是某种**欺诈**。
 
-[<img src="../../images/beginners_guide_mining_06-network-transaction-propagation-pizza.png" alt="展示第二笔交易与第一笔交易同时在网络中传播的图表。" width="899" height="471" />](/docs/beginners/guide/mining/06-network-transaction-propagation-pizza.png.md)
+[<img src="../../images/beginners_guide_mining_06-network-transaction-propagation-pizza.png" alt="展示第二笔交易与第一笔交易同时在网络中传播的图表。" width="899" height="471" />](../../images/beginners_guide_mining_06-network-transaction-propagation-pizza.png)
 
 那么这里发生了什么？
 
@@ -113,7 +113,7 @@ SHA-256(text)
 
 网络上**第一个**完成挑战的节点会将*其*内存池中的交易添加到区块链中。
 
-[<img src="../../images/beginners_guide_mining_07-network-transaction-resolution.png" alt="展示当新区块被开采时，比特币网络如何解决双重支付的图表。" width="899" height="489" />](/docs/beginners/guide/mining/07-network-transaction-resolution.png.md)
+[<img src="../../images/beginners_guide_mining_07-network-transaction-resolution.png" alt="展示当新区块被开采时，比特币网络如何解决双重支付的图表。" width="899" height="489" />](../../images/beginners_guide_mining_07-network-transaction-resolution.png)
 
 例如，如果包含披萨交易的节点成功开采了一个区块，那么该交易就会被添加到区块链中，而啤酒交易则会被踢出网络。
 
@@ -135,7 +135,7 @@ SHA-256(text)
 
 通过 Bitcoin Core 客户端进行挖矿已不再可能。
 
-[<img src="../../images/beginners_guide_mining_setgenerate-true.jpg" alt="在 Bitcoin Core 中用于挖矿的 setgenerate 命令屏幕截图。" width="478" height="453" />](/docs/beginners/guide/mining/setgenerate-true.jpg.md)
+[<img src="../../images/beginners_guide_mining_setgenerate-true.jpg" alt="在 Bitcoin Core 中用于挖矿的 setgenerate 命令屏幕截图。" width="478" height="453" />](../../images/beginners_guide_mining_setgenerate-true.jpg)
 
 此功能已在 2016 年被完全移除：
 

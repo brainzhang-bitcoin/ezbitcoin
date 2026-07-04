@@ -1,14 +1,14 @@
 <img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../../images/diagrams_png_ecdsa-bitcoin.png" alt="Diagram showing how ECDSA is used to lock and unlock outputs in bitcoin transactions." width="862" height="420" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-bitcoin.png)
+[<img src="../../../images/diagrams_png_ecdsa-bitcoin.png" alt="Diagram showing how ECDSA is used to lock and unlock outputs in bitcoin transactions." width="862" height="420" />](../../../images/diagrams_png_ecdsa-bitcoin.png)
 
 比特币使用一种名为 ECDSA 的数字签名系统来控制比特币的所有权。
 
-简而言之，数字签名系统允许您生成自己的[私钥](/docs/technical/keys/private-key.md)/[公钥](/docs/technical/keys/public-key.md)对。然后，您可以使用私钥生成[签名](/docs/technical/keys/signature.md)来证明您是公钥的所有者，而无需泄露私钥。
+简而言之，数字签名系统允许您生成自己的[私钥](../../keys/private-key.md)/[公钥](../../keys/public-key.md)对。然后，您可以使用私钥生成[签名](../../keys/signature.md)来证明您是公钥的所有者，而无需泄露私钥。
 
-此系统在比特币中用于允许人们在[交易](/docs/technical/transaction.md)中接收和发送比特币。
+此系统在比特币中用于允许人们在[交易](../../transaction.md)中接收和发送比特币。
 
-任何人都可以生成自己的一对密钥，然后任何人都可以向您的公钥发送（或“锁定”）一个[输出](/docs/technical/transaction/output.md)。没有人可以盗取这些比特币，因为只有拥有该公钥对应正确私钥的人，才能生成有效的签名来“解锁”这些比特币，并将其作为未来交易中的[输入](/docs/technical/transaction/input.md)使用。
+任何人都可以生成自己的一对密钥，然后任何人都可以向您的公钥发送（或“锁定”）一个[输出](../../transaction/output.md)。没有人可以盗取这些比特币，因为只有拥有该公钥对应正确私钥的人，才能生成有效的签名来“解锁”这些比特币，并将其作为未来交易中的[输入](../../transaction/input.md)使用。
 
 我对比特币密码学的了解还不够深入，无法解释*为什么* ECDSA 能起作用，但我可以向您展示 ECDSA 是*如何*运作的。
 
@@ -264,15 +264,15 @@ puts transaction #=> 0100000001b7994a0db2f373a29227e1d90da883c6ce1cb0dd2d6812e45
 
 ECDSA 的数学支柱
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/point-multiply.gif.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](../../../images/technical_cryptography_elliptic-curve_point-multiply.gif)
 
 椭圆曲线点乘 (Elliptic curve multiplication)
 
-ECDSA 使用[椭圆曲线](/docs/technical/cryptography/elliptic-curve.md)作为数字签名系统的基础。
+ECDSA 使用[椭圆曲线](../elliptic-curve.md)作为数字签名系统的基础。
 
 简而言之，公钥和签名都只是椭圆曲线上的**点 (points)**。如果这两个点是由同一个私钥（一个庞大的数字）创建的，那么它们之间将存在*几何关联*，证明创建签名的人同时也创建（或“拥有”）了该公钥。
 
-在此我不会涉及[椭圆曲线数学](/docs/technical/cryptography/elliptic-curve.md#mathematics)，但我们在比特币中使用 ECDSA 所需要的一切仅仅是能够**[乘以椭圆曲线上的点](/docs/technical/cryptography/elliptic-curve.md#multiply)**。
+在此我不会涉及[椭圆曲线数学](../elliptic-curve.md#mathematics)，但我们在比特币中使用 ECDSA 所需要的一切仅仅是能够**[乘以椭圆曲线上的点](../elliptic-curve.md#multiply)**。
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 椭圆曲线乘法 (EC Multiply)
 
@@ -319,7 +319,7 @@ y:
 
 简而言之，椭圆曲线上的“乘法”基本上是指在曲线上面选择一个起点，并在曲线上弹跳一定次数以到达曲线上一个新的点。这种“乘法”运算的特殊性质在于无法“反向求出”，这就是为什么椭圆曲线被用于数字签名等密码学系统的原因。
 
-无论如何，以下是执行椭圆曲线点乘的代码（使用比特币中使用的 *Secp256k1* 曲线的[参数](/docs/technical/cryptography/elliptic-curve.md#parameters)）：
+无论如何，以下是执行椭圆曲线点乘的代码（使用比特币中使用的 *Secp256k1* 曲线的[参数](../elliptic-curve.md#parameters)）：
 
 ## Secp256k1 参数
 
@@ -1231,16 +1231,16 @@ y:
 
 我们使用椭圆曲线点乘来创建**密钥对**：
 
-* [private key](/docs/technical/keys/private-key.md) (`d`) — 一个介于 0 到[曲线上的点数](/docs/technical/cryptography/elliptic-curve.md#parameters-n)（`[0...n-1]`）之间的随机生成大整数。
-* [public key](/docs/technical/keys/public-key.md) (`Q`) — [基点](/docs/technical/cryptography/elliptic-curve.md#parameters-g) (`G`) 乘以 private key (`d`) 的点乘结果。
+* [private key](../../keys/private-key.md) (`d`) — 一个介于 0 到[曲线上的点数](../elliptic-curve.md#parameters-n)（`[0...n-1]`）之间的随机生成大整数。
+* [public key](../../keys/public-key.md) (`Q`) — [基点](../elliptic-curve.md#parameters-g) (`G`) 乘以 private key (`d`) 的点乘结果。
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif" alt="Animation showing how to create a public key by multiplying the generator point by a private key." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key.gif.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif" alt="Animation showing how to create a public key by multiplying the generator point by a private key." width="330" height="330" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key.gif)
 
 `d` 是私钥 (一个整数)  
 `G` 是基点 (一个椭圆曲线点)  
 `Q` 是公钥 (一个椭圆曲线点)
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png" alt="Equation for multiplying a point on an elliptic curve." width="150" height="48" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/latex-point-multiply.png.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png" alt="Equation for multiplying a point on an elliptic curve." width="150" height="48" />](../../../images/technical_cryptography_elliptic-curve_latex-point-multiply.png)
 
 所以在椭圆曲线密码学中，私钥仅仅是一个大**随机整数**（小于曲线上的点数），而其对应的公钥仅仅是**曲线上的一个点**。
 
@@ -1256,13 +1256,13 @@ public key  = {
 
 #### 陷门函数 (Trapdoor Function)
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png" alt="Equation for multiplying a point on an elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-multiply-public-key-trapdoor.png.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png" alt="Equation for multiplying a point on an elliptic curve." width="330" height="330" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-multiply-public-key-trapdoor.png)
 
 给定公钥点 `Q`，没有简单的方法可以反向推导出用于创建它的私钥 `d`。
 
 推导私钥的唯一方法是用不同的数字手动点乘基点 `G`，看看能否得到相同的公钥，如果有人使用了一个非常庞大的数字作为其私钥，这种暴力方法将慢得令人绝望。
 
-因此，*椭圆曲线乘法*被称为**陷门函数 (trapdoor function)**（因为向一个方向进行很容易，但反向进行却极难），这是所有[公钥密码学](/docs/technical/cryptography.md#public-key-cryptography)的核心要素。
+因此，*椭圆曲线乘法*被称为**陷门函数 (trapdoor function)**（因为向一个方向进行很容易，但反向进行却极难），这是所有[公钥密码学](../../cryptography.md#public-key-cryptography)的核心要素。
 
 此外，私钥和公钥之间的单向数学关联意味着，您可以在以后分别使用这两者来计算椭圆曲线上的相同点，这在构建用于创建数字签名的系统时非常有用。
 
@@ -1312,7 +1312,7 @@ Low:
 要签署消息，您需要三样东西：
 
 1. **随机数** (`k`) — 这在我们的签名中引入了随机性元素，这对于安全至关重要。这意味着即使我们对同一条消息签署两次，我们生成的每一个签名都会是不同的。
-2. **消息哈希** (`z`) — 这是我们想要签署的消息的*哈希*。对消息进行[哈希运算](/docs/technical/cryptography/hash-function.md)为我们提供了一个简短且唯一的指纹，对该指纹进行签名比对庞大的数据块进行签名更有效率。您可以选择要使用的哈希算法，但与 *secp256k1* 结合使用最常见的是 [SHA-256](/docs/technical/cryptography/hash-function.md#sha256)。
+2. **消息哈希** (`z`) — 这是我们想要签署的消息的*哈希*。对消息进行[哈希运算](../hash-function.md)为我们提供了一个简短且唯一的指纹，对该指纹进行签名比对庞大的数据块进行签名更有效率。您可以选择要使用的哈希算法，但与 *secp256k1* 结合使用最常见的是 [SHA-256](../hash-function.md#sha256)。
 3. **私钥** (`d`) — 对应已公开的公钥的源泉。
 
 实际的签名由两部分组成：
@@ -1320,15 +1320,15 @@ Low:
 * `r` — **曲线上的一个随机点。** 我们使用随机数 `k` 并点乘基点以获得随机点 `R`。实际上我们仅使用该点的 *x 坐标*，并将其称为小写 `r`。
 * `s` — **随机点附带的一个数字。** 这是一个结合了*消息哈希* `z` 和私钥 `d` 创建出的唯一数字，它还使用 `r` 绑定到该随机点。
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif" alt="Animation showing a random point being used as part of the signature in ECDSA." width="330" height="381" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-sign.gif.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif" alt="Animation showing a random point being used as part of the signature in ECDSA." width="330" height="381" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-sign.gif)
 
 ECDSA 签名包含曲线上随机点的 x 坐标。
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png" alt="Equation for creating a signature in ECDSA." width="393" height="158" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/latex-sign.png.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png" alt="Equation for creating a signature in ECDSA." width="393" height="158" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-sign.png)
 
 ECDSA 签名方程
 
-`⁻¹` 符号表示该数字的[模逆](/docs/technical/cryptography/elliptic-curve.md#modular-inverse)。在这里，模乘逆元是 `mod n`（曲线上的点数）求解的。
+`⁻¹` 符号表示该数字的[模逆](../elliptic-curve.md#modular-inverse)。在这里，模乘逆元是 `mod n`（曲线上的点数）求解的。
 
 这两个 `[r, s]` 值就是“数字签名”。
 
@@ -1456,7 +1456,7 @@ s₁ = k⁻¹(z₁ + (k * s₂ - z₂)) mod n
 k = (z₁ - z₂) * (s₁ - s₂)⁻¹ mod n
 ```
 
-请记住，乘以 `(s₁ - s₂)⁻¹` 意味着乘以 `(s₁ - s₂)` 的[*模乘逆元*](/docs/technical/cryptography/elliptic-curve.md#modular-inverse)，这在椭圆曲线数学中等同于“除法”。
+请记住，乘以 `(s₁ - s₂)⁻¹` 意味着乘以 `(s₁ - s₂)` 的[*模乘逆元*](../elliptic-curve.md#modular-inverse)，这在椭圆曲线数学中等同于“除法”。
 
 在求出 `k` 之后，我们可以将其再次代入 `s = k⁻¹(z + r * d) mod n` 中以求出 `d`。
 
@@ -1471,7 +1471,7 @@ d = (k * s₁ - z₁) * r⁻¹ mod n
 
 在数学符号中，私钥恢复如下所示：
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png" alt="Equation for private key recovery in ECDSA." width="350" height="186" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/latex-private-key-recovery.png.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png" alt="Equation for private key recovery in ECDSA." width="350" height="186" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-private-key-recovery.png)
 
 **因此，请确保您每次创建签名时，始终使用安全的随机值作为 `k`。** 如果有人发现您为同一公钥签署不同消息时使用了相同的 `r` 值，他们只需几毫秒即可恢复您的私钥。
 
@@ -1567,11 +1567,11 @@ y:
 
 我们现在可以将这两个点相加得到 **点 3**：
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif" alt="Animation showing the verification of an ECDSA signature on the elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/point-verify.gif.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif" alt="Animation showing the verification of an ECDSA signature on the elliptic curve." width="330" height="330" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_point-verify.gif)
 
 椭圆曲线上的 ECDSA 验证。
 
-[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png" alt="Equation for verifying a signature in ECDSA." width="418" height="56" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/ecdsa/latex-verify.png.md)
+[<img src="../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png" alt="Equation for verifying a signature in ECDSA." width="418" height="56" />](../../../images/technical_cryptography_elliptic-curve_ecdsa_latex-verify.png)
 
 ECDSA 验证方程
 
@@ -1660,7 +1660,7 @@ y:
 
 椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标以及 y 坐标是奇数还是偶数即可。
 
-在 [Taproot](/docs/technical/upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
+在 [Taproot](../../upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
 
 `0 bytes`
 
@@ -1741,11 +1741,11 @@ R = k * G
 
 熟练掌握 ECDSA 的最佳方式是尝试自己编写代码。
 
-最困难的部分通常不是[椭圆曲线数学](/docs/technical/cryptography/elliptic-curve.md#mathematics)，而是在之后实际为用于比特币交易内的生成的[签名](/docs/technical/keys/signature.md)准备格式并进行编码。此外，在某些编程语言中处理大数并不总是很容易，因此您可能需要使用特殊的库函数来执行椭圆曲线运算。
+最困难的部分通常不是[椭圆曲线数学](../elliptic-curve.md#mathematics)，而是在之后实际为用于比特币交易内的生成的[签名](../../keys/signature.md)准备格式并进行编码。此外，在某些编程语言中处理大数并不总是很容易，因此您可能需要使用特殊的库函数来执行椭圆曲线运算。
 
 除此之外，代码并不像您最初想象的那么困难。
 
-当然，我不建议在您最新的任务关键型系统中使用这些代码，但如果您想在不使用外部 ECDSA 库的情况下，在比特币中创建自己的公钥并签署您自己的[交易](/docs/technical/transaction.md)，它应该能帮助您开始。
+当然，我不建议在您最新的任务关键型系统中使用这些代码，但如果您想在不使用外部 ECDSA 库的情况下，在比特币中创建自己的公钥并签署您自己的[交易](../../transaction.md)，它应该能帮助您开始。
 
 祝您玩得开心。
 

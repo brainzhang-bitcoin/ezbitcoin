@@ -1,8 +1,8 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-公钥是[私钥](/docs/technical/keys/private-key.md)的对应物。
+公钥是[私钥](../../technical/keys/private-key.md)的对应物。
 
-与私钥类似，它显示为一个[十六进制](/docs/technical/general/hexadecimal.md)字符串。
+与私钥类似，它显示为一个[十六进制](../../technical/general/hexadecimal.md)字符串。
 
 例如：
 
@@ -10,7 +10,7 @@
 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d5
 ```
 
-如果我们不把这个公钥缩短为[地址](/docs/technical/keys/address.md)，那么在进行[交易](/docs/beginners/guide/transactions.md)时，它就是你向其发送比特币的“账号”。
+如果我们不把这个公钥缩短为[地址](../../technical/keys/address.md)，那么在进行[交易](transactions.md)时，它就是你向其发送比特币的“账号”。
 
 总之，这里是很有趣的部分：**你的公钥是由你的私钥计算出来的**。
 
@@ -20,7 +20,7 @@
 
 ### 这个函数是什么？
 
-它被称为**[椭圆曲线乘法](/docs/technical/cryptography/elliptic-curve.md#multiply)**。
+它被称为**[椭圆曲线乘法](../../technical/cryptography/elliptic-curve.md#multiply)**。
 
 这基本上包括在椭圆曲线的图表上不断“弹跳”，直到你最终落在图表上的一组最终坐标上，这些结果坐标就是你的公钥。
 
@@ -30,17 +30,17 @@
 
 像这样：
 
-[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve.png" alt="展示椭圆曲线形状的简单图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve.png.md)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve.png" alt="展示椭圆曲线形状的简单图表。" width="257" height="257" />](../../images/beginners_guide_public-keys_01-elliptic-curve.png)
 
-此外，[比特币中使用的椭圆曲线](/docs/technical/cryptography/elliptic-curve.md)带有一个特定的*起点*。
+此外，[比特币中使用的椭圆曲线](../../technical/cryptography/elliptic-curve.md)带有一个特定的*起点*。
 
-[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g.png" alt="展示椭圆曲线生成点的简单图表。" width="272" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g.png.md)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g.png" alt="展示椭圆曲线生成点的简单图表。" width="272" height="257" />](../../images/beginners_guide_public-keys_01-elliptic-curve-g.png)
 
 我们把这个起点称为*生成点* (G)。
 
 如果我们要在这条曲线上做一些“乘法”（例如将起点“乘以” 2），我们就会像这样在曲线上移动。
 
-[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png" alt="展示椭圆曲线乘法的图表。" width="476" height="257" />](/docs/beginners/guide/public-keys/01-elliptic-curve-g-multiplication.png.md)
+[<img src="../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png" alt="展示椭圆曲线乘法的图表。" width="476" height="257" />](../../images/beginners_guide_public-keys_01-elliptic-curve-g-multiplication.png)
 
 我们可以在曲线上的任何地方画一条切线，且它与曲线上的*另一个*点相交，这是椭圆曲线的一个特殊特征。
 
@@ -119,7 +119,7 @@ y:
 
 或者换句话说，“在椭圆曲线上弹跳私钥数字所代表的次数”。
 
-[<img src="../../images/beginners_guide_public-keys_02-public-key-multiplication.png" alt="展示椭圆曲线乘法的图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/02-public-key-multiplication.png.md)
+[<img src="../../images/beginners_guide_public-keys_02-public-key-multiplication.png" alt="展示椭圆曲线乘法的图表。" width="257" height="257" />](../../images/beginners_guide_public-keys_02-public-key-multiplication.png)
 
 椭圆曲线上的最终落脚点将给你一组坐标，这些坐标构成了公钥。
 
@@ -171,7 +171,7 @@ y:
 
 椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标，以及 y 坐标是奇数还是偶数。
 
-仅 x 的公钥用于 [Taproot](/docs/technical/upgrades/taproot.md) 输出中。对应的 y 坐标被假定为偶数。
+仅 x 的公钥用于 [Taproot](../../technical/upgrades/taproot.md) 输出中。对应的 y 坐标被假定为偶数。
 
 `0 字节`
 
@@ -201,7 +201,7 @@ public key = 04afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59
 
 然而，由于方程中 `y^2` 部分的存在，`y` 可以是一个*正数*或*负数*：
 
-[<img src="../../images/beginners_guide_public-keys_03-y-polarity.png" alt="展示在椭圆曲线给定 x 坐标下两个可能 y 坐标的图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity.png.md)
+[<img src="../../images/beginners_guide_public-keys_03-y-polarity.png" alt="展示在椭圆曲线给定 x 坐标下两个可能 y 坐标的图表。" width="257" height="257" />](../../images/beginners_guide_public-keys_03-y-polarity.png)
 
 所以，找到正确的 `y` 坐标所需的唯一额外信息就是知道 `y` 坐标是在 x 轴*上方*还是*下方*。而根据椭圆曲线的工作原理：
 
@@ -215,7 +215,7 @@ public key = 04afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2dd4b2f57bdad2d59
 * `02` = 偶数
 * `03` = 奇数
 
-[<img src="../../images/beginners_guide_public-keys_03-y-polarity-prefix.png" alt="展示如何使用前缀代表椭圆曲线上两个可能 y 坐标之一的图表。" width="257" height="257" />](/docs/beginners/guide/public-keys/03-y-polarity-prefix.png.md)
+[<img src="../../images/beginners_guide_public-keys_03-y-polarity-prefix.png" alt="展示如何使用前缀代表椭圆曲线上两个可能 y 坐标之一的图表。" width="257" height="257" />](../../images/beginners_guide_public-keys_03-y-polarity-prefix.png)
 
 因此，旧式的未压缩公钥以 `04` 开头，而**压缩公钥**则以 `02` 或 `03` 开头：
 
@@ -226,7 +226,7 @@ public key (compressed)   = 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2d
 
 短了许多。
 
-这看起来像为省去一小部分数据付出了很多努力，但由于几乎所有交易中都会使用公钥，这确实在随着时间的推移为[区块链](/docs/beginners/guide/blockchain.md)节省了大量空间。
+这看起来像为省去一小部分数据付出了很多努力，但由于几乎所有交易中都会使用公钥，这确实在随着时间的推移为[区块链](blockchain.md)节省了大量空间。
 
 ## 为什么我们使用椭圆曲线乘法来制作公钥？
 
@@ -237,9 +237,9 @@ public key (compressed)   = 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2d
    > 陷门函数是一个单向函数，在一个方向上很容易计算，而在相反方向上（寻找它的逆）很难计算，除非有特殊的被称为“陷门”的信息。
 2. **公钥与私钥有*数学上的联系***。因此，在不需要透露你的私钥的情况下证明这种联系（利用稍微多一些的数学）是可能的。
 
-   所以如果我给你我的公钥（或[地址](/docs/technical/keys/address.md)），我可以向你证明我“拥有”它，而不需要给你看我的私钥。
+   所以如果我给你我的公钥（或[地址](../../technical/keys/address.md)），我可以向你证明我“拥有”它，而不需要给你看我的私钥。
 
-   这个特性在进行比特币[交易](/docs/beginners/guide/transactions.md)时尤其好用。当你想要接收比特币时，你的公钥可以被放入交易中，而当你稍后想要花费它们时，你不需要直接泄露私钥（见[数字签名](/docs/beginners/guide/digital-signatures.md)）。因此，这意味着没有人可以获取私钥并用它来花费锁定在相同公钥下的比特币。
+   这个特性在进行比特币[交易](transactions.md)时尤其好用。当你想要接收比特币时，你的公钥可以被放入交易中，而当你稍后想要花费它们时，你不需要直接泄露私钥（见[数字签名](digital-signatures.md)）。因此，这意味着没有人可以获取私钥并用它来花费锁定在相同公钥下的比特币。
 
    当我所说*证明*我拥有一个公钥时，我的意思是“展示我拥有创建该公钥对应的私钥”。
 
@@ -254,11 +254,11 @@ public key (compressed)   = 03afc4052aa75b35ea6f688a113ae2d358a3aa55539e070d7d2d
 1. 我可以让我的私钥经过更多的椭圆曲线数学计算，以得到***一个新值***（称为数字签名）。
 2. 我可以让我的公钥经过其他的椭圆曲线数学计算，以得到***一个新值***。
 
-[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math.png" alt="展示分别从私钥和公钥独立计算出两个独立数值的图表。" width="501" height="220" />](/docs/beginners/guide/public-keys/04-keys-ec-math.png.md)
+[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math.png" alt="展示分别从私钥和公钥独立计算出两个独立数值的图表。" width="501" height="220" />](../../images/beginners_guide_public-keys_04-keys-ec-math.png)
 
 现在，在这些新值之间会存在一些微小的*重叠*：
 
-[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png" alt="展示独立从私钥和公钥计算出的两个独立数值之间重叠部分的图表。" width="501" height="209" />](/docs/beginners/guide/public-keys/04-keys-ec-math-verification.png.md)
+[<img src="../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png" alt="展示独立从私钥和公钥计算出的两个独立数值之间重叠部分的图表。" width="501" height="209" />](../../images/beginners_guide_public-keys_04-keys-ec-math-verification.png)
 
 而这个重叠部分就足以证明公钥和私钥之间存在*数学连接*。
 

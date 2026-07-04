@@ -25,6 +25,6 @@ Each group is delegated to an independent subagent instance executing concurrent
 ## 3. Subagent Translation Guidelines
 
 Each subagent will adhere to the following rules:
-1. **Format Conservation**: Under no circumstance should Markdown syntax elements, HTML tag structures, or hyperlinks (e.g. `[link](/docs/path.md)`) be broken or translated.
+1. **Format Conservation**: Under no circumstance should Markdown syntax elements, HTML tag structures, or hyperlinks (e.g. `[link](/path.md)`) be broken or translated.
 2. **Code Blocks**: Code and comments inside fenced code blocks (` ``` `) must remain unchanged.
 3. **Overwriting**: Overwrite the original files to preserve the exact file structure.

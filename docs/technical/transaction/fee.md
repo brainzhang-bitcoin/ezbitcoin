@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_transaction-fee.png" alt="Diagram showing the transaction fee as the remainder of the amount being sent." width="321" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee.png)
+[<img src="../../images/diagrams_png_transaction-fee.png" alt="Diagram showing the transaction fee as the remainder of the amount being sent." width="321" height="329" />](../../images/diagrams_png_transaction-fee.png)
 
 交易手续费（transaction fee）是**交易中的剩余部分**。
 
-如果你将所有 [input](/docs/technical/transaction/input.md) 的数值相加，并减去所有 [output](/docs/technical/transaction/output.md) 的数值，剩下的金额就是手续费。例如：
+如果你将所有 [input](input.md) 的数值相加，并减去所有 [output](output.md) 的数值，剩下的金额就是手续费。例如：
 
 交易：[82b81a39d1b6bff8366eab2297f61db7ac34b7d901f5cfc40143ca704ded980e](/explorer/tx/82b81a39d1b6bff8366eab2297f61db7ac34b7d901f5cfc40143ca704ded980e)
 
@@ -25,15 +25,15 @@ fee      =   45000 satoshis
 
 为什么要在交易中设置手续费？
 
-交易手续费为[矿工](/docs/technical/mining.md)将你的交易包含在他们的[候选区块](/docs/technical/mining/candidate-block.md)中提供了**激励**。
+交易手续费为[矿工](../mining.md)将你的交易包含在他们的[候选区块](../mining/candidate-block.md)中提供了**激励**。
 
-这是因为矿工可以通过 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易收集他们打包在区块中的所有交易手续费（如果他们能成功地将该区块开采到[区块链](/docs/technical/blockchain.md)上）。
+这是因为矿工可以通过 [Coinbase](../mining/coinbase-transaction.md) 交易收集他们打包在区块中的所有交易手续费（如果他们能成功地将该区块开采到[区块链](../blockchain.md)上）。
 
-[<img src="../../images/diagrams_png_block-coinbase-transaction.png" alt="Diagram showing transaction fees being collected by a miners via the coinbase transaction." width="655" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/block-coinbase-transaction.png)
+[<img src="../../images/diagrams_png_block-coinbase-transaction.png" alt="Diagram showing transaction fees being collected by a miners via the coinbase transaction." width="655" height="329" />](../../images/diagrams_png_block-coinbase-transaction.png)
 
-因此，如果[内存池](/docs/technical/mining/memory-pool.md)中的交易数量超出了下一个区块能容纳的范围，矿工就会选择用可获得的手续费最高的交易填满他们的候选区块。这能最大化他们在挖出区块时可以领取的比特币数量。
+因此，如果[内存池](../mining/memory-pool.md)中的交易数量超出了下一个区块能容纳的范围，矿工就会选择用可获得的手续费最高的交易填满他们的候选区块。这能最大化他们在挖出区块时可以领取的比特币数量。
 
-[<img src="../../images/diagrams_png_transaction-fee-miner-incentive.png" alt="Diagram showing the a miner selecting the highest-fee transactions from the memory pool for inclusion in their candidate block." width="752" height="435" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-miner-incentive.png)
+[<img src="../../images/diagrams_png_transaction-fee-miner-incentive.png" alt="Diagram showing the a miner selecting the highest-fee transactions from the memory pool for inclusion in their candidate block." width="752" height="435" />](../../images/diagrams_png_transaction-fee-miner-incentive.png)
 
 因此，在你的交易中设置手续费允许你**与其他交易竞争下一个区块中的空间**。通常来说：
 
@@ -50,7 +50,7 @@ fee      =   45000 satoshis
 
 例如，一笔手续费较高的小额交易，比一笔手续费相同但体积较大的交易对矿工而言更有价值。
 
-[<img src="../../images/diagrams_png_transaction-fee-rate-basics.png" alt="Diagram showing the two separate transaction with the same size fee, but one is larger than the other so has a lower fee/byte." width="688" height="325" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-basics.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-basics.png" alt="Diagram showing the two separate transaction with the same size fee, but one is larger than the other so has a lower fee/byte." width="688" height="325" />](../../images/diagrams_png_transaction-fee-rate-basics.png)
 
 因此，在比较交易费用时，我们会将**手续费大小**除以**交易大小**（根据交易在区块中占用的空间计算）。这被称为*费率（feerate）*，它允许我们对比交易，以找出哪些交易对矿工来说更具价值。
 
@@ -65,21 +65,21 @@ fee      =   45000 satoshis
 
 ### sats/byte
 
-[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-byte.png" alt="Diagram showing the sats/byte feerate calculation as the fee divided by the number of bytes in the transaction." width="627" height="257" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-byte.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-byte.png" alt="Diagram showing the sats/byte feerate calculation as the fee divided by the number of bytes in the transaction." width="627" height="257" />](../../images/diagrams_png_transaction-fee-rate-sats-per-byte.png)
 
 区块限制曾经是 **1,000,000 字节** (1 MB)。
 
 因此，交易对矿工的价值自然是以**每字节多少聪**（或简称为 **sats/byte**）来衡量的。
 
-然而，自 [SegWit](/docs/technical/upgrades/segregated-witness.md) 升级（[BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)）以来，我们现在使用一种新的 *重量* 测量方法来确定区块中可以容纳多少笔交易……
+然而，自 [SegWit](../upgrades/segregated-witness.md) 升级（[BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)）以来，我们现在使用一种新的 *重量* 测量方法来确定区块中可以容纳多少笔交易……
 
 ### sats/wu
 
-[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png" alt="Diagram showing the sats/wu feerate calculation as the fee divided by the number of weight units in the transaction." width="703" height="312" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-weight-unit.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png" alt="Diagram showing the sats/wu feerate calculation as the fee divided by the number of weight units in the transaction." width="703" height="312" />](../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png)
 
-[区块限制](/docs/technical/block.md#weight)现在是 **4,000,000 重量单位 (weight units)**。
+[区块限制](../block.md#weight)现在是 **4,000,000 重量单位 (weight units)**。
 
-交易的大小现在根据其[重量](/docs/technical/transaction/size.md#weight)来衡量，这会将大多数交易数据的体积乘以 4。然而，新的 [witness](/docs/technical/transaction/witness.md) 数据会乘以 1，这相当于相对于交易的其他部分给予了折扣。
+交易的大小现在根据其[重量](size.md#weight)来衡量，这会将大多数交易数据的体积乘以 4。然而，新的 [witness](witness.md) 数据会乘以 1，这相当于相对于交易的其他部分给予了折扣。
 
 因为现在的区块有最大 *重量* 限制，矿工会以**每重量单位聪数**（或简称为 **sats/wu**）来衡量交易的费率。
 
@@ -87,13 +87,13 @@ fee      =   45000 satoshis
 
 ### sats/vbyte
 
-[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-vbyte.png" alt="Diagram showing the sats/vbyte feerate calculation as the fee divided by the number of virtual bytes in the transaction, which is the weight divided by 4." width="605" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-vbyte.png)
+[<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-vbyte.png" alt="Diagram showing the sats/vbyte feerate calculation as the fee divided by the number of virtual bytes in the transaction, which is the weight divided by 4." width="605" height="310" />](../../images/diagrams_png_transaction-fee-rate-sats-per-vbyte.png)
 
 如果将 4,000,000 重量单位的区块限制除以 4，你将得到 **1,000,000 虚拟字节 (virtual bytes)**。
 
-同样地，如果将交易的重量也除以 4，你将回到几乎与之前相同的 **sats/byte** 度量标准。但现在，每字节 witness 数据仅算作 0.25 字节，这就是我们将该度量标准称为[虚拟字节](/docs/technical/transaction/size.md#vbytes)而非实际字节的原因。
+同样地，如果将交易的重量也除以 4，你将回到几乎与之前相同的 **sats/byte** 度量标准。但现在，每字节 witness 数据仅算作 0.25 字节，这就是我们将该度量标准称为[虚拟字节](size.md#vbytes)而非实际字节的原因。
 
-**sats/vbyte** 测量意味着较新的 [SegWit](/docs/technical/transaction.md#example-segwit) 交易费率保持与旧版交易按 **sats/byte** 测量的费率一致。例如：
+**sats/vbyte** 测量意味着较新的 [SegWit](../transaction.md#example-segwit) 交易费率保持与旧版交易按 **sats/byte** 测量的费率一致。例如：
 
 旧版交易：[a04c291e586b10f6db4d38bcba414dea2fd39d53745763d13c49026af1f09262](/explorer/tx/a04c291e586b10f6db4d38bcba414dea2fd39d53745763d13c49026af1f09262)
 
@@ -129,7 +129,7 @@ sats/vbyte:   72
 
 如何增加交易的手续费？
 
-如果[内存池](/docs/technical/mining/memory-pool.md)中有许多交易，并且你在[网络](/docs/technical/networking.md)中发送了一笔**低手续费交易**，你可能需要等待相当长的时间交易才会被挖出。
+如果[内存池](../mining/memory-pool.md)中有许多交易，并且你在[网络](../networking.md)中发送了一笔**低手续费交易**，你可能需要等待相当长的时间交易才会被挖出。
 
 如果发生这种情况，你可能希望在交易仍在内存池中等待时*增加其手续费*。这会*增加矿工*将你的交易打包进他们下一个区块的意愿，从而加速你的交易被打包挖出的时间。
 
@@ -142,11 +142,11 @@ sats/vbyte:   72
 
 [BIP 125](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki)
 
-[<img src="../../images/diagrams_png_transaction-replace-by-fee.png" alt="Diagram showing a lower-fee transaction in the memory pool being replaced with a higher-fee transaction." width="753" height="416" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee.png)
+[<img src="../../images/diagrams_png_transaction-replace-by-fee.png" alt="Diagram showing a lower-fee transaction in the memory pool being replaced with a higher-fee transaction." width="753" height="416" />](../../images/diagrams_png_transaction-replace-by-fee.png)
 
 这是最简单的方法。
 
-要启用此功能，你只需将交易中的 [sequence](/docs/technical/transaction/input/sequence.md) 值之一设置为 0xFFFFFFFD 或更低。接着，当这笔交易待在内存池中时，你可以选择将一个包含更高手续费的新版本交易发送到内存池中，这笔高手续费交易将直接替代旧的低手续费交易。
+要启用此功能，你只需将交易中的 [sequence](input/sequence.md) 值之一设置为 0xFFFFFFFD 或更低。接着，当这笔交易待在内存池中时，你可以选择将一个包含更高手续费的新版本交易发送到内存池中，这笔高手续费交易将直接替代旧的低手续费交易。
 
 就是这样。如果节点或矿工收到一笔花费相同 input 的交易（但这次手续费更高），他们会乐意从他们的内存池中驱逐原始交易，并保留新的高手续费交易。
 
@@ -156,13 +156,13 @@ Replace By Fee 允许你*直接*替换内存池中的交易。
 
 ### 2. Child Pays For Parent (CPFP)
 
-[<img src="../../images/diagrams_png_transaction-child-pays-for-parent.png" alt="Diagram showing a child transaction increasing the overall feerate of both the child and the parent transaction." width="752" height="544" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-child-pays-for-parent.png)
+[<img src="../../images/diagrams_png_transaction-child-pays-for-parent.png" alt="Diagram showing a child transaction increasing the overall feerate of both the child and the parent transaction." width="752" height="544" />](../../images/diagrams_png_transaction-child-pays-for-parent.png)
 
 这是一项古老的技术，但至今依然有效。
 
 基本上，该技术利用了两个事实：
 
-1. 你可以在交易仍在内存池中时花费其 [output](/docs/technical/transaction/output.md)。
+1. 你可以在交易仍在内存池中时花费其 [output](output.md)。
 2. 矿工必须始终包含他们放入区块中的任何交易的“父交易”（如果父交易也在内存池中）。
 
 因此，如果你有一笔低手续费的交易停留在内存池中，你可以通过在新交易中花费其输出之一，并为该新交易设置足够高的手续费，来激励矿工将该交易包含在下一个区块中，**使其值得打包第一笔交易**。
@@ -175,7 +175,7 @@ Replace By Fee 允许你*直接*替换内存池中的交易。
 
 你能在一笔交易中设置的最低手续费是多少？
 
-[<img src="../../images/diagrams_png_networking-minrelayfee.png" alt="Diagram showing a nodes on the network rejecting transactions with feerates that do not meet their own individual minimum relay fee settings." width="786" height="522" />](https://static.learnmeabitcoin.com/diagrams/png/networking-minrelayfee.png)
+[<img src="../../images/diagrams_png_networking-minrelayfee.png" alt="Diagram showing a nodes on the network rejecting transactions with feerates that do not meet their own individual minimum relay fee settings." width="786" height="522" />](../../images/diagrams_png_networking-minrelayfee.png)
 
 由于节点使用的*最低中继费*设置，你通常需要在交易中设置至少 `1 sat/vbyte` 的手续费。
 
@@ -183,7 +183,7 @@ Replace By Fee 允许你*直接*替换内存池中的交易。
 
 当前默认的最低中继费是 `1 sat/vbyte`。
 
-不过，最低中继费是一项*策略*，而不是共识规则，因此零手续费的交易被开采到[区块链](/docs/technical/blockchain.md)上并非不可能。它只意味着你发送的费率低于此设置的任何节点都不会接受该交易，也不会将其转发给其他节点。
+不过，最低中继费是一项*策略*，而不是共识规则，因此零手续费的交易被开采到[区块链](../blockchain.md)上并非不可能。它只意味着你发送的费率低于此设置的任何节点都不会接受该交易，也不会将其转发给其他节点。
 
 因此，基本上，除非你认识矿工或者可以自己开采该交易，否则你设置的手续费必须高于你向其广播交易的节点/矿工的最低中继费。
 

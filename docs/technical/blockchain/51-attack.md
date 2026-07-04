@@ -1,6 +1,6 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_blockchain-51-attack.png" alt="Diagram showing a transaction being removed from the blockchain in a 51% attack." width="484" height="393" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack.png" alt="Diagram showing a transaction being removed from the blockchain in a 51% attack." width="484" height="393" />](../../images/diagrams_png_blockchain-51-attack.png)
 
 当前网络算力 (Current Network Hashrate):
 
@@ -8,7 +8,7 @@
 
 查看[计算方法](#hashpower)
 
-51% 攻击是指故意构建一个新的[最长链](/docs/technical/blockchain/longest-chain.md)以替换[区块链](/docs/technical/blockchain.md)中已有[区块](/docs/technical/block.md)的行为。这允许您**替换那些此前已写入区块链的[交易](/docs/technical/transaction.md)**。
+51% 攻击是指故意构建一个新的[最长链](longest-chain.md)以替换[区块链](../blockchain.md)中已有[区块](../block.md)的行为。这允许您**替换那些此前已写入区块链的[交易](../transaction.md)**。
 
 当您拥有**大多数挖矿算力 (majority of the mining power)**时，这种攻击最容易实施，这就是为什么它被称为“多数攻击 (majority attack)”或“51% 攻击”。
 
@@ -16,23 +16,23 @@
 
 51% 攻击是如何进行的？
 
-节点总是将[已知的最长链](/docs/technical/blockchain/longest-chain.md)视为区块链的*有效*版本。因此，如果您想在区块链中“撤销”一笔交易，您只需要**构建一个新的、更长的区块链接**，而在该链接中*不包含*那笔交易。
+节点总是将[已知的最长链](longest-chain.md)视为区块链的*有效*版本。因此，如果您想在区块链中“撤销”一笔交易，您只需要**构建一个新的、更长的区块链接**，而在该链接中*不包含*那笔交易。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="544" height="370" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-build-longest-chain.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="544" height="370" />](../../images/diagrams_png_blockchain-51-attack-example-build-longest-chain.png)
 
 假设我们用比特币买了一辆车并把它开走了。
 
-当节点收到这个新的*更长*的区块链接时，它们会执行一次[区块重组](/docs/technical/blockchain/chain-reorganization.md)以*停用*其旧最长链中的区块，并*激活*您构建的新最长链中的区块。
+当节点收到这个新的*更长*的区块链接时，它们会执行一次[区块重组](chain-reorganization.md)以*停用*其旧最长链中的区块，并*激活*您构建的新最长链中的区块。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="554" height="370" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-example-chain-reorganization.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png" alt="Diagram showing a 51 attack to replace a transaction in a previous longest chain." width="554" height="370" />](../../images/diagrams_png_blockchain-51-attack-example-chain-reorganization.png)
 
 旧最长链中的交易现在失效了。这就好像购买这辆车的付款从未发生过一样。
 
-因此，通过构建一个新的最长链来替换已有的最长链，您实际上是在**重写区块链**，并创建了一个[网络](/docs/technical/networking.md)上的所有节点都将采用的新交易历史。结果，您逆转了我们此前认为已永久成为区块链一部分的交易。
+因此，通过构建一个新的最长链来替换已有的最长链，您实际上是在**重写区块链**，并创建了一个[网络](../networking.md)上的所有节点都将采用的新交易历史。结果，您逆转了我们此前认为已永久成为区块链一部分的交易。
 
 但成功实施 51% 攻击并不容易。
 
-您会希望在新链中包含一笔*替代*交易，将比特币发送到*新的*目的地（例如，发送到您的[地址](/docs/technical/keys/address.md)而不是汽车经销商的地址）。否则，原始交易可能会在新链中被重新开采。
+您会希望在新链中包含一笔*替代*交易，将比特币发送到*新的*目的地（例如，发送到您的[地址](../keys/address.md)而不是汽车经销商的地址）。否则，原始交易可能会在新链中被重新开采。
 
 ## 防范
 
@@ -40,19 +40,19 @@
 
 每个矿工都有动力在当前最长的区块链接之上继续构建。因此，如果网络上所有其他矿工的合并挖矿算力大于您的算力，那么要**超越其他矿工的工作量**去构建一条更长的链并替换已有链就会变得**极其困难**。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-combined-mining.png" alt="Diagram showing miners working together to extend the current longest chain." width="733" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-combined-mining.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-combined-mining.png" alt="Diagram showing miners working together to extend the current longest chain." width="733" height="654" />](../../images/diagrams_png_blockchain-51-attack-prevention-combined-mining.png)
 
 矿工们协同工作，可以比您独自一人更快地构建起区块链。
 
 但当然，如果您确实能获得比所有其他矿工合并起来*更多*的挖矿算力，那么您就有能力赶超当前的最长链，并构建一条新的最长链供所有人采用。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-majority-power.png" alt="Diagram showing how you can build a longer chain faster than all other miners combined if you have the majority of the hashing power." width="730" height="707" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-majority-power.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-majority-power.png" alt="Diagram showing how you can build a longer chain faster than all other miners combined if you have the majority of the hashing power." width="730" height="707" />](../../images/diagrams_png_blockchain-51-attack-prevention-majority-power.png)
 
 如果您拥有大多数的挖矿算力，那么构建出一条更长的链只是时间问题。
 
-因此，为了防范这种情况的发生，我们希望使单个矿工难以获得大多数的挖矿算力。这是通过**允许世界上任何人参与挖矿**，并提供**[区块奖励](/docs/technical/mining/block-reward.md)作为动力**在已知最长链上继续构建来实现的。
+因此，为了防范这种情况的发生，我们希望使单个矿工难以获得大多数的挖矿算力。这是通过**允许世界上任何人参与挖矿**，并提供**[区块奖励](../mining/block-reward.md)作为动力**在已知最长链上继续构建来实现的。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png" alt="Diagram showing the block reward as an incentive for miners to extend the longest chain." width="733" height="907" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-prevention-incentive.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png" alt="Diagram showing the block reward as an incentive for miners to extend the longest chain." width="733" height="907" />](../../images/diagrams_png_blockchain-51-attack-prevention-incentive.png)
 
 区块奖励只有在最长链中达到 100 个区块深之后才能被消费。
 
@@ -74,7 +74,7 @@
 
 话虽如此，要替换较大数量的区块比只替换几个区块需要做更多的工作。因此，交易在区块链中沉淀得越深，逆转它所需要花费的时间和能量就越多。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-depth-work.png" alt="Diagram showing how it's harder to replace blocks the further they are down the blockchain." width="367" height="450" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-depth-work.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-depth-work.png" alt="Diagram showing how it's harder to replace blocks the further they are down the blockchain." width="367" height="450" />](../../images/diagrams_png_blockchain-51-attack-depth-work.png)
 
 交易在区块链中陷得越深，就越难以被替换。
 
@@ -98,11 +98,11 @@
 
 挖矿是不可预测的，因此即使您只有少量的挖矿算力，也不能断定您运气不够好而无法连续开采接下来的 2 个区块。这虽然不太可能，但并非不可能。概率取决于您相对于其他人拥有多少挖矿算力。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-rewrite-luck.png" alt="Diagram showing how you would need luck to rewrite the blockchain with a minority of the mining power." width="733" height="699" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-rewrite-luck.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-rewrite-luck.png" alt="Diagram showing how you would need luck to rewrite the blockchain with a minority of the mining power." width="733" height="699" />](../../images/diagrams_png_blockchain-51-attack-rewrite-luck.png)
 
 当然，交易在区块链中沉淀得越深，您连续开采 X 个区块所需要的运气就越多。如果在没有人拥有大多数挖矿算力的情况下，交易在区块链中沉淀得越深，替换它的难度就会呈*指数级增加*。
 
-[<img src="../../images/diagrams_png_blockchain-51-attack-mining-power-success-chart.png" alt="Chart showing the probability of being able to replace blocks in the blockchain based on mining power." width="548" height="612" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-51-attack-mining-power-success-chart.png)
+[<img src="../../images/diagrams_png_blockchain-51-attack-mining-power-success-chart.png" alt="Chart showing the probability of being able to replace blocks in the blockchain based on mining power." width="548" height="612" />](../../images/diagrams_png_blockchain-51-attack-mining-power-success-chart.png)
 
 如果一个矿工拥有 40% 的挖矿算力，他们大约有 50% 的机会能替换掉在链中深达 5 个区块的交易。
 
@@ -133,7 +133,7 @@
 
 以下是来自[比特币白皮书](/bitcoin.pdf)（第 11 节）的公式：
 
-[<img src="../../images/technical_blockchain_51-attack_equation-success.png" alt="The equation for attacking the blockchain from the Bitcoin whitepaper." width="523" height="264" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/51-attack/equation-success.png.md)
+[<img src="../../images/technical_blockchain_51-attack_equation-success.png" alt="The equation for attacking the blockchain from the Bitcoin whitepaper." width="523" height="264" />](../../images/technical_blockchain_51-attack_equation-success.png)
 
 区块越深越难被替换的证明是系统完整性和安全性的重要部分。
 
@@ -170,7 +170,7 @@ puts attacker_success_probability(0.4, 5) #=> 0.5506251290702077
 
 ### 图表
 
-[<img src="../../images/technical_blockchain_51-attack_success_chart_50_blocks.png" alt="Chart showing the probability of success for replacing blocks in the blockchain." width="800" height="600" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/51-attack/success_chart_50_blocks.png.md)
+[<img src="../../images/technical_blockchain_51-attack_success_chart_50_blocks.png" alt="Chart showing the probability of success for replacing blocks in the blockchain." width="800" height="600" />](../../images/technical_blockchain_51-attack_success_chart_50_blocks.png)
 
 交易在区块链中埋得越深，被替换的成功概率就呈指数级衰减。
 
@@ -182,7 +182,7 @@ puts attacker_success_probability(0.4, 5) #=> 0.5506251290702077
 
 在比特币的历史上，一些矿池曾接近达到总算力的 50% 或更多，但实际上没有人发起过成功的 51% 攻击。
 
-[<img src="../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg" alt="Chart showing Ghash.io having close to 50% of the mining power in 2014." width="500" height="467" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/51-attack/mining-distribution-ghash-2014.jpg.md)
+[<img src="../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg" alt="Chart showing Ghash.io having close to 50% of the mining power in 2014." width="500" height="467" />](../../images/technical_blockchain_51-attack_mining-distribution-ghash-2014.jpg)
 
 GHash.io 在 2014 年曾接近达到 50%。  
 [github.com/in3rsha/bitcoin-mining-distribution](https://github.com/in3rsha/bitcoin-mining-distribution)
@@ -191,13 +191,13 @@ GHash.io 在 2014 年曾接近达到 50%。
 
 ### 我需要多少算力才能发起 51% 攻击？
 
-您可以使用当前的[target](/docs/technical/mining/target.md)值来估计获得网络控制权所需的算力大小。
+您可以使用当前的[target](../mining/target.md)值来估计获得网络控制权所需的算力大小。
 
 目标值根据网络上所有矿工开采新区块的速度而上下浮动。因此，我们可以利用它来计算我们需要以多快的速度进行哈希，从而超越网络当前的速度。
 
 #### 1. 查找当前目标值
 
-首先，我们可以通过查看最近挖掘出的区块的区块头中的“[bits](/docs/technical/block/bits.md)”字段来获取当前的目标。
+首先，我们可以通过查看最近挖掘出的区块的区块头中的“[bits](../block/bits.md)”字段来获取当前的目标。
 
 ```
 $ bitcoin-cli getblockcount
@@ -236,7 +236,7 @@ Bits`0 bytes`
 
 0 秒
 
-这就是所有矿工需要将[区块哈希](/docs/technical/block/hash.md)降至其下才能成功挖出区块的数字。
+这就是所有矿工需要将[区块哈希](../block/hash.md)降至其下才能成功挖出区块的数字。
 
 #### 2. 计算挖掘下一个区块所需的平均哈希次数
 
@@ -251,7 +251,7 @@ hashes = 574975416304515007119360
 
 或者说，这大约是网络上所有矿工**每 10 分钟**执行的哈希总次数。
 
-请参阅[累积工作量计算说明](/docs/technical/blockchain/longest-chain.md#calculation)了解我们如何获得这一“预期哈希次数”的更多信息。
+请参阅[累积工作量计算说明](longest-chain.md#calculation)了解我们如何获得这一“预期哈希次数”的更多信息。
 
 #### 3. 转换为每秒哈希数
 

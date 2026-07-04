@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_keys-private-key.png" alt="Diagram showing a private key as a random number." width="316" height="102" />](https://static.learnmeabitcoin.com/diagrams/png/keys-private-key.png)
+[<img src="../../images/diagrams_png_keys-private-key.png" alt="Diagram showing a private key as a random number." width="316" height="102" />](../../images/diagrams_png_keys-private-key.png)
 
 A private key is a very large **random number**.
 
-It's used as the source for creating a [public key](/docs/technical/keys/public-key.md).
+It's used as the source for creating a [public key](public-key.md).
 
 Generate Random
 Reset
@@ -553,7 +553,7 @@ Bits
 
 如何创建一个私钥？
 
-要创建私钥，你只需要**生成一个随机的 256-[位](/docs/technical/general/bytes.md#bit)数字**[\*](#range)。
+要创建私钥，你只需要**生成一个随机的 256-[位](../general/bytes.md#bit)数字**[\*](#range)。
 
 生成私钥的关键部分是使用*可靠*的随机源。如果你使用的是 Linux，一个可靠的随机源是 [/dev/urandom](https://linux.die.net/man/4/urandom)：
 
@@ -576,9 +576,9 @@ min: 1
 max: 115792089237316195423570985008687907852837564279074904382605163141518161494336
 ```
 
-该最大值为 `n-1`，其中 [`n`](/docs/technical/cryptography/elliptic-curve.md#parameters-n) 是比特币中使用的[椭圆曲线](/docs/technical/cryptography/elliptic-curve.md)（*secp256k1*）上的点数。这比 256 位数字的最大值稍小一些。
+该最大值为 `n-1`，其中 [`n`](../cryptography/elliptic-curve.md#parameters-n) 是比特币中使用的[椭圆曲线](../cryptography/elliptic-curve.md)（*secp256k1*）上的点数。这比 256 位数字的最大值稍小一些。
 
-因此，如果你在生成一个随机的 256 位（32-[字节](/docs/technical/general/bytes.md)）数字，你会想要在开始使用它之前检查它没有超出最大值。
+因此，如果你在生成一个随机的 256 位（32-[字节](../general/bytes.md)）数字，你会想要在开始使用它之前检查它没有超出最大值。
 
 ### 密码学安全的随机数
 
@@ -601,7 +601,7 @@ puts SecureRandom.random_number(1..115792089237316195423570985008687907852837564
 
 因此，无论你使用的是什么编程语言，都要确保搜索如何生成“密码学安全的随机数”以找出你应该使用哪个函数（而不是你可能熟悉的默认函数）。
 
-例如，[libbitcoin](https://github.com/libbitcoin) 库（特别是 `bx seed` 命令行工具）在 2023 年由于没有使用密码学安全的随机数来生成[助记词](/docs/technical/keys/hd-wallets/mnemonic-seed.md)，导致了价值超过 900,000 美元的比特币丢失。有关发生的事情以及原因的完整说明，请参阅 [Milk Sad](https://milksad.info/disclosure.html)。
+例如，[libbitcoin](https://github.com/libbitcoin) 库（特别是 `bx seed` 命令行工具）在 2023 年由于没有使用密码学安全的随机数来生成[助记词](hd-wallets/mnemonic-seed.md)，导致了价值超过 900,000 美元的比特币丢失。有关发生的事情以及原因的完整说明，请参阅 [Milk Sad](https://milksad.info/disclosure.html)。
 
 有时生成*随机字节*比生成随机数更容易。所以你可以直接生成 32 个随机字节，然后将其用作你的私钥，因为这等同于生成一个 256 位数字。
 
@@ -619,7 +619,7 @@ puts SecureRandom.random_number(1..115792089237316195423570985008687907852837564
 
 ### 十六进制（最常见）
 
-在教程和网站上，你通常会看到原始私钥显示为 32 字节的[十六进制](/docs/technical/general/hexadecimal.md)字符串。例如：
+在教程和网站上，你通常会看到原始私钥显示为 32 字节的[十六进制](../general/hexadecimal.md)字符串。例如：
 
 这与**随机数是相同的**，只是不同的显示方式（使用十六进制数字代替十进制数字）。
 
@@ -654,9 +654,9 @@ puts SecureRandom.random_number(1..115792089237316195423570985008687907852837564
 
 ### WIF (钱包导入格式)
 
-为了方便起见，私钥可以转换为 [WIF](/docs/technical/keys/private-key/wif.md)（Wallet Import Format）。例如：
+为了方便起见，私钥可以转换为 [WIF](private-key/wif.md)（Wallet Import Format）。例如：
 
-这就像私钥的[地址](/docs/technical/keys/address.md)格式。有时在将私钥导入钱包（例如 [Electrum](https://electrum.org/)）时会用到它。
+这就像私钥的[地址](address.md)格式。有时在将私钥导入钱包（例如 [Electrum](https://electrum.org/)）时会用到它。
 
 生成随机
 
@@ -695,13 +695,13 @@ WIF 私钥
 
 私钥在比特币中是如何使用的？
 
-[<img src="../../images/diagrams_png_keys.png" alt="Diagram showing how a private key is used to create a public key and signatures, and how they're used to lock and unlock bitcoins in transactions." width="696" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/keys.png)
+[<img src="../../images/diagrams_png_keys.png" alt="Diagram showing how a private key is used to create a public key and signatures, and how they're used to lock and unlock bitcoins in transactions." width="696" height="378" />](../../images/diagrams_png_keys.png)
 
 私钥是计算公钥的起点。
 
-私钥还用于生成[签名](/docs/technical/keys/signature.md)，并且这些签名与公钥有数学上的联系。这些数学联系正是你在进行[交易](/docs/technical/transaction.md)时能够[锁定](/docs/technical/transaction/output/scriptpubkey.md)和[解锁](/docs/technical/transaction/input/scriptsig.md)比特币的原因。
+私钥还用于生成[签名](signature.md)，并且这些签名与公钥有数学上的联系。这些数学联系正是你在进行[交易](../transaction.md)时能够[锁定](../transaction/output/scriptpubkey.md)和[解锁](../transaction/input/scriptsig.md)比特币的原因。
 
-私钥本身不会公开发现在[区块链](/docs/technical/blockchain.md)中。私钥的目的是为了保持私密（因此得名），因此它们应该安全地存储在你的计算机上，并且只在生成签名以解锁比特币时使用（这就是当你进行交易时[比特币钱包](/docs/beginners/wallets.md)所做的事情）。
+私钥本身不会公开发现在[区块链](../blockchain.md)中。私钥的目的是为了保持私密（因此得名），因此它们应该安全地存储在你的计算机上，并且只在生成签名以解锁比特币时使用（这就是当你进行交易时[比特币钱包](../../beginners/wallets.md)所做的事情）。
 
 ## 安全性
 

@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_transaction-utxo.png" alt="Diagram showing the UTXOs as the unspent outputs in a graph of transactions." width="714" height="401" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo.png)
+[<img src="../../images/diagrams_png_transaction-utxo.png" alt="Diagram showing the UTXOs as the unspent outputs in a graph of transactions." width="714" height="401" />](../../images/diagrams_png_transaction-utxo.png)
 
 UTXO 是 **未花费的交易输出（unspent transaction output）**。
 
-每个比特币交易（[transaction](/docs/technical/transaction.md)）都会创建 [outputs](/docs/technical/transaction/output.md)，这些输出可以在未来的交易中作为 [inputs](/docs/technical/transaction/input.md) 被消耗。UTXOs 就是那些尚未被消耗、依然可用于支付的交易输出。
+每个比特币交易（[transaction](../transaction.md)）都会创建 [outputs](output.md)，这些输出可以在未来的交易中作为 [inputs](input.md) 被消耗。UTXOs 就是那些尚未被消耗、依然可用于支付的交易输出。
 
 因此，如果你把比特币看作是一个庞大的交易关系图，UTXOs 就位于这个关系图的末梢。
 
@@ -21,25 +21,25 @@ UTXOs 在比特币中是如何使用的？
 
 ### Verify Transactions
 
-当你的节点从[网络](/docs/technical/networking.md)接收到一笔新交易时，它需要验证该交易的所有 inputs 所引用的 outputs **尚未被花费**。
+当你的节点从[网络](../networking.md)接收到一笔新交易时，它需要验证该交易的所有 inputs 所引用的 outputs **尚未被花费**。
 
 如果交易的 inputs 全都是未花费的输出 (UTXOs)，那么该交易就是有效的：
 
-[<img src="../../images/diagrams_png_transaction-utxo-spending-valid.png" alt="Diagram showing a valid transaction spending an unspent output from a previous transaction." width="714" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-valid.png)
+[<img src="../../images/diagrams_png_transaction-utxo-spending-valid.png" alt="Diagram showing a valid transaction spending an unspent output from a previous transaction." width="714" height="423" />](../../images/diagrams_png_transaction-utxo-spending-valid.png)
 
 然而，如果交易试图花费一笔已经在之前的交易中被花费过的输出，那么该交易就是无效的，并且会被拒绝：
 
-[<img src="../../images/diagrams_png_transaction-utxo-spending-invalid.png" alt="Diagram showing an invalid transaction trying to spend an output from a previous transaction that has already been spent." width="714" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-invalid.png)
+[<img src="../../images/diagrams_png_transaction-utxo-spending-invalid.png" alt="Diagram showing an invalid transaction trying to spend an output from a previous transaction that has already been spent." width="714" height="423" />](../../images/diagrams_png_transaction-utxo-spending-invalid.png)
 
 ### Calculate Balances
 
-一个[地址](/docs/technical/keys/address.md)的“余额”是锁定在该地址下的所有 UTXOs 的总和：
+一个[地址](../keys/address.md)的“余额”是锁定在该地址下的所有 UTXOs 的总和：
 
-[<img src="../../images/diagrams_png_transaction-utxo-address-balance.png" alt="Diagram showing the balance of an address as the sum of the unspent outputs that are locked to that address." width="325" height="677" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-address-balance.png)
+[<img src="../../images/diagrams_png_transaction-utxo-address-balance.png" alt="Diagram showing the balance of an address as the sum of the unspent outputs that are locked to that address." width="325" height="677" />](../../images/diagrams_png_transaction-utxo-address-balance.png)
 
 你可以在诸如 [mempool.space](https://mempool.space) 和 [bitcoinexplorer.org](https://bitcoinexplorer.org) 等区块链浏览器上查看地址的余额。
 
-**需要特别注意的是，比特币并不“存在”于地址内部。** 比ty币是保存在 [outputs](/docs/technical/transaction/output.md) 里的，而地址本质上是加在输出之上的一把 *锁*。因此，一个地址的余额只是锁定在该地址下的所有 UTXOs 的总和。
+**需要特别注意的是，比特币并不“存在”于地址内部。** 比ty币是保存在 [outputs](output.md) 里的，而地址本质上是加在输出之上的一把 *锁*。因此，一个地址的余额只是锁定在该地址下的所有 UTXOs 的总和。
 
 ## 位置
 
@@ -51,18 +51,18 @@ UTXOs 在比特币中存储在哪里？
 ~/.bitcoin/chainstate
 ```
 
-这是一个存储在内存 (RAM) 中的独立数据库，这使得访问它的速度要比在[原始区块链文件](/docs/technical/block/blkdat.md)中搜寻以检查输出是否已被花费要快得多。
+这是一个存储在内存 (RAM) 中的独立数据库，这使得访问它的速度要比在[原始区块链文件](../block/blkdat.md)中搜寻以检查输出是否已被花费要快得多。
 
 chainstate 数据库是一个简单的 [LevelDB](https://github.com/google/leveldb) **key:value** 存储库，包含以下信息：
 
-* **Key (键)** - 这由每个输出的 [TXID](/docs/technical/transaction/input/txid.md):[VOUT](/docs/technical/transaction/input/vout.md) 组成。这被称为“outpoint（输出点）”，区块链中的每个输出都有其自己唯一的 outpoint，这意味着它可以用作直接查找每个独立输出的引用。
+* **Key (键)** - 这由每个输出的 [TXID](input/txid.md):[VOUT](input/vout.md) 组成。这被称为“outpoint（输出点）”，区块链中的每个输出都有其自己唯一的 outpoint，这意味着它可以用作直接查找每个独立输出的引用。
 * **Value (值)** - 数据库中每个 UTXO 的值包含以下字段：
-  * **Height (高度)** - 包含该 UTXO 的[区块](/docs/technical/block.md)的[高度](/docs/technical/blockchain/height.md)。
-  * **Coinbase** - 该 UTXO 是否来自 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易。这很重要，因为来自 Coinbase 交易的输出在区块链中深度达到 100 个区块之前不能被花费。
+  * **Height (高度)** - 包含该 UTXO 的[区块](../block.md)的[高度](../blockchain/height.md)。
+  * **Coinbase** - 该 UTXO 是否来自 [Coinbase](../mining/coinbase-transaction.md) 交易。这很重要，因为来自 Coinbase 交易的输出在区块链中深度达到 100 个区块之前不能被花费。
   * **Amount (金额)** - 输出的聪数（satoshis）值。
-  * **Locking Code (锁定代码)** - 加在输出上的[锁定代码](/docs/technical/transaction/output/scriptpubkey.md)。这很重要，因为在交易中花费输出时，每个输出都需要被 *解锁*，因此这允许你快速检查 input 上的解锁代码是否满足 output 上锁定代码的条件。
+  * **Locking Code (锁定代码)** - 加在输出上的[锁定代码](output/scriptpubkey.md)。这很重要，因为在交易中花费输出时，每个输出都需要被 *解锁*，因此这允许你快速检查 input 上的解锁代码是否满足 output 上锁定代码的条件。
 
-每当有新交易被打包挖出到[区块链](/docs/technical/blockchain.md)上时，chainstate 数据库就会更新；在交易中被花费的 UTXOs 会从数据库中移除，而新的 outputs 会被添加到数据库中。
+每当有新交易被打包挖出到[区块链](../blockchain.md)上时，chainstate 数据库就会更新；在交易中被花费的 UTXOs 会从数据库中移除，而新的 outputs 会被添加到数据库中。
 
 你可以通过在本地节点运行 `bitcoin-cli gettxoutsetinfo` 来获取关于 UTXO 集合的一些基本信息：
 

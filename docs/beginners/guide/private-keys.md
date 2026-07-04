@@ -6,13 +6,13 @@
 
 Generate
 
-但更精确地讲，私钥是一个随机的 **256-[位](/docs/technical/general/bytes.md#bit)** 数字：
+但更精确地讲，私钥是一个随机的 **256-[位](../../technical/general/bytes.md#bit)** 数字：
 
 是的，这依然是一个*数字*。它只是用*二进制*表示的，也就是数字在计算机中的存储方式。毕竟你知道，比特币归根结底是一个计算机程序。
 
 无论如何，我们可以很容易地将这个私钥从*二进制*转换为*十进制*：
 
-或者转换为* [十六进制](/docs/technical/general/hexadecimal.md)*：
+或者转换为* [十六进制](../../technical/general/hexadecimal.md)*：
 
 这没有任何区别。它们都是同一个数字，也都是同一个私钥。
 
@@ -55,7 +55,7 @@ Generate
 
 ### 什么是位？
 
-[位](/docs/technical/general/bytes.md#bit)是计算机内部最小的数据单位。
+[位](../../technical/general/bytes.md#bit)是计算机内部最小的数据单位。
 
 | 单位 | 大小 |
 | --- | --- |
@@ -67,17 +67,17 @@ Generate
 
 事实上，一个位是如此之小，它只能保存 `1` 或 `0` 的值：
 
-[<img src="../../images/beginners_guide_private-keys_01-bit.png" alt="展示单个位只能是 1 或 0 的图表。" width="81" height="69" />](/docs/beginners/guide/private-keys/01-bit.png.md)
+[<img src="../../images/beginners_guide_private-keys_01-bit.png" alt="展示单个位只能是 1 或 0 的图表。" width="81" height="69" />](../../images/beginners_guide_private-keys_01-bit.png)
 
 尽管如此，你仍然可以使用位来表示其他类型的数据，例如日常数字。
 
 例如，以下是利用位在计算机中存储十进制数字 0 到 8 的方法：
 
-[<img src="../../images/beginners_guide_private-keys_01-bit-numbers.png" alt="展示使用位来表示十进制数字 1 到 8 的图表。" width="733" height="38" />](/docs/beginners/guide/private-keys/01-bit-numbers.png.md)
+[<img src="../../images/beginners_guide_private-keys_01-bit-numbers.png" alt="展示使用位来表示十进制数字 1 到 8 的图表。" width="733" height="38" />](../../images/beginners_guide_private-keys_01-bit-numbers.png)
 
 因此，一个 256 位数字是一个可以使用 256 个这样的位来表示的数字：
 
-[<img src="../../images/beginners_guide_private-keys_01-bit-numbers-max.png" alt="展示可以使用 256 位表示的最大十进制数字的图表。" width="732" height="128" />](/docs/beginners/guide/private-keys/01-bit-numbers-max.png.md)
+[<img src="../../images/beginners_guide_private-keys_01-bit-numbers-max.png" alt="展示可以使用 256 位表示的最大十进制数字的图表。" width="732" height="128" />](../../images/beginners_guide_private-keys_01-bit-numbers-max.png)
 
 或者换句话说，一个 256 位数字处于：
 
@@ -98,7 +98,7 @@ Generate
 
 老实说，当你使用任何种类的比特币软件生成私钥时，它们并没有在施展魔法——它们只是给你一个随机的 256 位数字。
 
-[<img src="../../images/beginners_guide_private-keys_02-lol-private-key-machine.png" alt="一个画得很糟糕的虚构私钥生成器插图。" width="714" height="334" />](/docs/beginners/guide/private-keys/02-lol-private-key-machine.png.md)
+[<img src="../../images/beginners_guide_private-keys_02-lol-private-key-machine.png" alt="一个画得很糟糕的虚构私钥生成器插图。" width="714" height="334" />](../../images/beginners_guide_private-keys_02-lol-private-key-machine.png)
 
 因此，没有理由你不能自己创建私钥。你所需要的只是能够*安全地*生成一个随机的 256 位数字。
 
@@ -108,7 +108,7 @@ Generate
 
 投掷硬币 256 次允许你生成一个**二进制**的 256 位私钥：
 
-[<img src="../../images/beginners_guide_private-keys_02-1-coin.png" alt="使用硬币投掷来生成 1 或 0 的插图。" width="390" height="117" />](/docs/beginners/guide/private-keys/02-1-coin.png.md)
+[<img src="../../images/beginners_guide_private-keys_02-1-coin.png" alt="使用硬币投掷来生成 1 或 0 的插图。" width="390" height="117" />](../../images/beginners_guide_private-keys_02-1-coin.png)
 
 然后可以将这个 256 位的二进制结果转换为十六进制。
 
@@ -153,11 +153,11 @@ random.SystemRandom().randint(1, 11579208923731619542357098500868790785283756427
 
 **使用编程语言生成随机数时要小心。** 大多数编程语言中的默认“随机”函数通常不够随机，因此请确保你使用的函数被描述为“密码学安全”。
 
-### 3. 使用 SHA-256 [哈希函数](/docs/technical/cryptography/hash-function.md)对一些随机数据进行哈希计算。
+### 3. 使用 SHA-256 [哈希函数](../../technical/cryptography/hash-function.md)对一些随机数据进行哈希计算。
 
 将*随机*数据输入 SHA-256 将返回一个 32 字节（256 位）的**十六进制**结果，这可以用作私钥：
 
-[<img src="../../images/beginners_guide_private-keys_02-3-sha256.png" alt="展示将字符串 'learnmeabitcoin' 输入 SHA-256 哈希函数结果的插图。" width="419" height="219" />](/docs/beginners/guide/private-keys/02-3-sha256.png.md)
+[<img src="../../images/beginners_guide_private-keys_02-3-sha256.png" alt="展示将字符串 'learnmeabitcoin' 输入 SHA-256 哈希函数结果的插图。" width="419" height="219" />](../../images/beginners_guide_private-keys_02-3-sha256.png)
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> SHA-256 (Text)
 
@@ -195,7 +195,7 @@ SHA-256(text)
 
 但不要让所有这些恐吓阻止你。只要你保持谨慎，你就不会有事。
 
-**有效的私钥实际上略小于最大 256 位数字。** 因此，如果你正在生成私钥，你需要在尝试使用它之前检查它是否在[有效范围](/docs/technical/keys/private-key.md#range)内。这种情况很少见，但检查它很重要。
+**有效的私钥实际上略小于最大 256 位数字。** 因此，如果你正在生成私钥，你需要在尝试使用它之前检查它是否在[有效范围](../../technical/keys/private-key.md#range)内。这种情况很少见，但检查它很重要。
 
 **任何人都可以通过简单地生成一个随机数来创建自己的“账户”，这是比特币的一个重要特征。** 这意味着没有人在控制分发账户，这意味着任何能够生成大随机数的人都可以使用比特币。
 

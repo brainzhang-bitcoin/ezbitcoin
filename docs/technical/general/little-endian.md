@@ -47,9 +47,9 @@ Field Size
 
 什么是 little-endian？
 
-假设我们要将一个交易[输出（output）](/docs/technical/transaction/output.md)的*金额（amount）*设置为 `12345678` 聪（satoshis）。
+假设我们要将一个交易[输出（output）](../transaction/output.md)的*金额（amount）*设置为 `12345678` 聪（satoshis）。
 
-该*金额*字段的大小为 8 字节。如果我们把这个数值转换为[十六进制字节（hexadecimal bytes）](/docs/technical/general/hexadecimal.md#bytes)，它看起来是这样的：
+该*金额*字段的大小为 8 字节。如果我们把这个数值转换为[十六进制字节（hexadecimal bytes）](hexadecimal.md#bytes)，它看起来是这样的：
 
 ```
 00 00 00 00 00 bc 61 4e
@@ -71,7 +71,7 @@ Field Size
 
 ## 字节顺序 (Byte Orders)
 
-[<img src="../../images/diagrams_png_bytes-endianness-memory.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="752" height="276" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-endianness-memory.png)
+[<img src="../../images/diagrams_png_bytes-endianness-memory.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="752" height="276" />](../../images/diagrams_png_bytes-endianness-memory.png)
 
 如前所述，在计算机上存储整数时，有两种不同的字节排序方式：
 
@@ -144,7 +144,7 @@ Field Size
 
 为什么它们被称为 "little-endian" 和 "big-endian"？
 
-[<img src="../../images/diagrams_png_bytes-little-endian.png" alt="Diagram showing the little-end and big-end of eggs." width="699" height="374" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-little-endian.png)
+[<img src="../../images/diagrams_png_bytes-little-endian.png" alt="Diagram showing the little-end and big-end of eggs." width="699" height="374" />](../../images/diagrams_png_bytes-little-endian.png)
 
 基本上，是因为**鸡蛋**。
 
@@ -156,9 +156,9 @@ Field Size
 
 我们什么时候在比特币中使用 little-endian？
 
-在处理[网络消息（network messages）](/docs/technical/networking.md#messages)中的**整数**时，你会在比特币中发现 little-endian 字段。
+在处理[网络消息（network messages）](../networking.md#messages)中的**整数**时，你会在比特币中发现 little-endian 字段。
 
-最常见到 little-endian 的地方是原始[交易数据（transaction data）](/docs/technical/transaction.md)和原始[区块头（block headers）](/docs/technical/block.md#header)。
+最常见到 little-endian 的地方是原始[交易数据（transaction data）](../transaction.md)和原始[区块头（block headers）](../block.md#header)。
 
 ### 交易数据 (Transaction Data)
 
@@ -200,7 +200,7 @@ ab980b17 <- bits (little-endian)
 
 如何在 big-endian 和 little-endian 之间进行转换
 
-如果你正在处理字符串，一种简单粗暴的逆转字节顺序的方法是将字符串分割成由 2 个字符组成的一组（2 个十六进制字符 = 1 [字节（byte）](/docs/technical/general/bytes.md)），然后反转该数组。
+如果你正在处理字符串，一种简单粗暴的逆转字节顺序的方法是将字符串分割成由 2 个字符组成的一组（2 个十六进制字符 = 1 [字节（byte）](bytes.md)），然后反转该数组。
 
 ```
 # integer
@@ -292,9 +292,9 @@ Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/que
 
 我个人认为在所有地方都使用 big-endian 会容易得多。
 
-这会让比特币开发变得更加直观，因为它能消除为了弄清“这个字段是 little-endian 吗？”而频繁查阅文档的需要。另外，[交易 ID](/docs/technical/transaction/input/txid.md) 和 [区块哈希](/docs/technical/block/hash.md) 在显示时其[字节顺序](/docs/technical/general/byte-order.md)都会反转为 big-endian 格式，因此使用 big-endian 会让一切保持一致。更不用说 big-endian 更符合人类的阅读习惯了。
+这会让比特币开发变得更加直观，因为它能消除为了弄清“这个字段是 little-endian 吗？”而频繁查阅文档的需要。另外，[交易 ID](../transaction/input/txid.md) 和 [区块哈希](../block/hash.md) 在显示时其[字节顺序](byte-order.md)都会反转为 big-endian 格式，因此使用 big-endian 会让一切保持一致。更不用说 big-endian 更符合人类的阅读习惯了。
 
-但是这都无关紧要。比特币从一开始就是 little-endian，改变它将导致一场极具争议且收效甚微的[硬分叉（hard fork）](/docs/technical/blockchain/hard-fork.md)，因此**它不会改变**。
+但是这都无关紧要。比特币从一开始就是 little-endian，改变它将导致一场极具争议且收效甚微的[硬分叉（hard fork）](../blockchain/hard-fork.md)，因此**它不会改变**。
 
 好的一面是，这确实给了你一个学习 little-endian 和 big-endian 字节顺序差异的机会。在开始研究比特币数据之前，我甚至不知道有字节顺序这回事。
 
@@ -322,11 +322,11 @@ import sys
 print("System Byte Order:", sys.byteorder)
 ```
 
-在日常编程中，你通常不会关心系统的底层架构。但是，当你开始处理通过网络发送的原始数据字节（例如[交易数据](/docs/technical/transaction.md)）时，字节顺序（endianness）可能就会变得相关。
+在日常编程中，你通常不会关心系统的底层架构。但是，当你开始处理通过网络发送的原始数据字节（例如[交易数据](../transaction.md)）时，字节顺序（endianness）可能就会变得相关。
 
 ## 总结
 
-Little-endian 是我们在原始比特币数据中存储整数（以及其他多字节结构，例如 [bits](/docs/technical/block/bits.md) 字段）时所使用的字节顺序，例如在[交易](/docs/technical/transaction.md)和[区块头](/docs/technical/block.md#header)中。
+Little-endian 是我们在原始比特币数据中存储整数（以及其他多字节结构，例如 [bits](../block/bits.md) 字段）时所使用的字节顺序，例如在[交易](../transaction.md)和[区块头](../block.md#header)中。
 
 在人类眼中，little-endian 看起来像是字节以*相反*的顺序排列。然而，许多现代计算机使用 little-endian 架构，且中本聪在 little-endian 计算机上编写了比特币的第一个版本，这就是我们在比特币中使用 little-endian 的原因。
 

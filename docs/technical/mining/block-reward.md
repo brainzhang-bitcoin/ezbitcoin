@@ -1,6 +1,6 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_mining-block-reward.png" alt="Diagram showing the height of a block in the blockchain as its distance from the genesis block." width="490" height="400" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward.png)
+[<img src="../../images/diagrams_png_mining-block-reward.png" alt="Diagram showing the height of a block in the blockchain as its distance from the genesis block." width="490" height="400" />](../../images/diagrams_png_mining-block-reward.png)
 
 最新区块奖励：
 
@@ -12,15 +12,15 @@
 
 交易手续费： 0.0058941 BTC
 
-区块奖励是矿工通过[挖矿](/docs/technical/mining.md)[区块](/docs/technical/block.md)可以收集的比特币数量。
+区块奖励是矿工通过[挖矿](../mining.md)[区块](../block.md)可以收集的比特币数量。
 
-它通过 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易来索取，并为矿工在[区块链](/docs/technical/blockchain.md)上挖掘新区块提供**激励**。
+它通过 [Coinbase](coinbase-transaction.md) 交易来索取，并为矿工在[区块链](../blockchain.md)上挖掘新区块提供**激励**。
 
 ## 来源
 
 区块奖励来自哪里？
 
-[<img src="../../images/diagrams_png_mining-block-reward-source.png" alt="Diagram showing the block reward being collected by a coinbase transaction and as the sum of the block subsidy and transaction fees in the block." width="691" height="302" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-source.png)
+[<img src="../../images/diagrams_png_mining-block-reward-source.png" alt="Diagram showing the block reward being collected by a coinbase transaction and as the sum of the block subsidy and transaction fees in the block." width="691" height="302" />](../../images/diagrams_png_mining-block-reward-source.png)
 
 区块奖励由两部分组成：
 
@@ -37,7 +37,7 @@
 
 区块补贴是允许矿工在挖出区块时发送给自己的**新比特币**的固定数量。
 
-区块补贴的大小基于区块的[高度](/docs/technical/blockchain/height.md)。
+区块补贴的大小基于区块的[高度](../blockchain/height.md)。
 
 有关过去、当前和未来区块补贴的完整表格，请参阅[减半](#halving)部分。
 
@@ -51,15 +51,15 @@
 
 区块奖励还包括区块中包含的交易的所有**手续费**。
 
-[交易手续费](/docs/technical/transaction/fee.md)是在交易中没有被“消耗掉”的比特币数量，矿工也可以将这些“剩余”的比特币作为区块奖励的一部分来索取。
+[交易手续费](../transaction/fee.md)是在交易中没有被“消耗掉”的比特币数量，矿工也可以将这些“剩余”的比特币作为区块奖励的一部分来索取。
 
-矿工用来自[内存池](/docs/technical/mining/memory-pool.md)的包含最高手续费的交易来填充他们的[候选区块](/docs/technical/mining/candidate-block.md)，以最大化他们可以从区块奖励中索取的比特币数量。因此，在交易中设置高额手续费可以作为激励矿工将您的交易包含在他们的下一个区块中。
+矿工用来自[内存池](memory-pool.md)的包含最高手续费的交易来填充他们的[候选区块](candidate-block.md)，以最大化他们可以从区块奖励中索取的比特币数量。因此，在交易中设置高额手续费可以作为激励矿工将您的交易包含在他们的下一个区块中。
 
 > 奖励也可以通过交易手续费来资助。如果交易的输出值小于其输入值，则差额就是交易手续费，该手续费会被添加到包含该交易的区块的奖励价值中。
 
 中本聪，[比特币白皮书](/bitcoin.pdf)
 
-当没有区块补贴剩余时，区块奖励将完全由[交易手续费](/docs/technical/transaction/fee.md)组成。
+当没有区块补贴剩余时，区块奖励将完全由[交易手续费](../transaction/fee.md)组成。
 
 ## 目的
 
@@ -69,17 +69,17 @@
 
 ### 1. 激励
 
-[<img src="../../images/diagrams_png_mining-block-reward-incentive.png" alt="Diagram showing a miner collecting the block reward as compensation for the cost of mining a block on to the blockchain." width="431" height="522" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-incentive.png)
+[<img src="../../images/diagrams_png_mining-block-reward-incentive.png" alt="Diagram showing a miner collecting the block reward as compensation for the cost of mining a block on to the blockchain." width="431" height="522" />](../../images/diagrams_png_mining-block-reward-incentive.png)
 
-如前所述，区块奖励为**矿工向[区块链](/docs/technical/blockchain.md)添加新区块提供了激励**。
+如前所述，区块奖励为**矿工向[区块链](../blockchain.md)添加新区块提供了激励**。
 
-在区块链上尝试挖掘新区块需要消耗*能量*，因此区块奖励补偿了矿工在[挖矿](/docs/technical/mining.md)过程中使用的计算能力。
+在区块链上尝试挖掘新区块需要消耗*能量*，因此区块奖励补偿了矿工在[挖矿](../mining.md)过程中使用的计算能力。
 
 如果区块奖励足够可观，它会鼓励*更多*矿工加入网络来帮助构建区块链，从而使区块链更加安全（因为单个矿工企图重写区块链需要消耗更多能量）。
 
 #### 51% 攻击
 
-区块奖励还有助于防止[51% 攻击](/docs/technical/blockchain/51-attack.md)。
+区块奖励还有助于防止[51% 攻击](../blockchain/51-attack.md)。
 
 如果矿工能够获得大部分挖矿算力，他们就有能力重写区块链，从而使他们能够逆转交易并从他们之前的交易中“偷回”比特币。
 
@@ -89,7 +89,7 @@
 
 ### 2. 分发
 
-[<img src="../../images/diagrams_png_mining-block-reward-distribution.png" alt="Diagram showing an interval of 10 minutes between new block rewards being issued, and the block rewards as the source of bitcoins in new transactions." width="575" height="627" />](https://static.learnmeabitcoin.com/diagrams/png/mining-block-reward-distribution.png)
+[<img src="../../images/diagrams_png_mining-block-reward-distribution.png" alt="Diagram showing an interval of 10 minutes between new block rewards being issued, and the block rewards as the source of bitcoins in new transactions." width="575" height="627" />](../../images/diagrams_png_mining-block-reward-distribution.png)
 
 区块奖励（确切地说是*区块补贴*）用于**向网络中分发新的比特币**。
 
@@ -265,7 +265,7 @@ puts subsidy(300000) #=> 250000000 sats
 
 只有当区块在区块链中的深度达到 **100 个区块以上**时，矿工才能花费区块奖励。
 
-参见 [Coinbase 成熟度](/docs/technical/mining/coinbase-transaction.md#coinbase-maturity)。
+参见 [Coinbase 成熟度](coinbase-transaction.md#coinbase-maturity)。
 
 ## 备注
 

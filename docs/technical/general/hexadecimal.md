@@ -1,12 +1,12 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_numbers-hexadecimal-key.png" alt="Table showing hexadecimal numbers with corresponding decimal numbers." width="779" height="79" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-key.png)
+[<img src="../../images/diagrams_png_numbers-hexadecimal-key.png" alt="Table showing hexadecimal numbers with corresponding decimal numbers." width="779" height="79" />](../../images/diagrams_png_numbers-hexadecimal-key.png)
 
 十六进制数字系统使用**数字 0-9 和字母 A-F** 来表示 **0-15** 的数字。
 
 简单来说，十六进制系统（16 个符号）是十进制系统（10 个符号）的扩展。这意味着你只需用一个符号就能表示 0 到 15 之间的数字。
 
-该系统非常适合表示[字节](/docs/technical/general/bytes.md)，因为半个字节有 16 种不同的组合，因此可以用两个十六进制符号来表示一个完整的字节。这就是为什么在比特币中你会看到很多数据（例如[私钥](/docs/technical/keys/private-key.md)、[交易](/docs/technical/transaction.md)）都以十六进制形式呈现。
+该系统非常适合表示[字节](bytes.md)，因为半个字节有 16 种不同的组合，因此可以用两个十六进制符号来表示一个完整的字节。这就是为什么在比特币中你会看到很多数据（例如[私钥](../keys/private-key.md)、[交易](../transaction.md)）都以十六进制形式呈现。
 
 十六进制中的字母**大小写均可**，没有区别（例如 1337af 与 1337AF 相同）。
 
@@ -56,7 +56,7 @@ Hexadecimal (Base 16)
 
 ## 十六进制转十进制
 
-[<img src="../../images/diagrams_png_numbers-hexadecimal-decimal-conversion.png" alt="Diagram showing how to convert hexadecimal to decimal." width="768" height="181" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-hexadecimal-decimal-conversion.png)
+[<img src="../../images/diagrams_png_numbers-hexadecimal-decimal-conversion.png" alt="Diagram showing how to convert hexadecimal to decimal." width="768" height="181" />](../../images/diagrams_png_numbers-hexadecimal-decimal-conversion.png)
 
 要将十六进制转换为十进制，需要将每个字符乘以 16 的递增幂次。
 
@@ -85,7 +85,7 @@ Decimal = 0 + 131072 + 40960 + 256 + 48 + 11 = 172347
 
 你不必在脑海中进行十六进制到十进制的转换，但要记住：你看到十六进制数字和字母时，本质上还是在看数字。
 
-**[Little-Endian](/docs/technical/general/little-endian.md)。** 比特币数据中大多数字段里存储的整数（例如 [vout](/docs/technical/transaction.md#structure-inputs-vout)、[amount](/docs/technical/transaction.md#structure-outputs-amount)）都采用*小端序*（字节顺序相反），因此在转换为十进制之前需要先颠倒字节顺序。
+**[Little-Endian](little-endian.md)。** 比特币数据中大多数字段里存储的整数（例如 [vout](../transaction.md#structure-inputs-vout)、[amount](../transaction.md#structure-outputs-amount)）都采用*小端序*（字节顺序相反），因此在转换为十进制之前需要先颠倒字节顺序。
 
 ### 代码示例
 
@@ -103,7 +103,7 @@ echo "ibase=16; 02A13B" | bc #=> 172347
 
 ## 十进制转十六进制
 
-[<img src="../../images/diagrams_png_numbers-decimal-hexadecimal-conversion.png" alt="Diagram showing how to convert decimal to hexadecimal." width="620" height="344" />](https://static.learnmeabitcoin.com/diagrams/png/numbers-decimal-hexadecimal-conversion.png)
+[<img src="../../images/diagrams_png_numbers-decimal-hexadecimal-conversion.png" alt="Diagram showing how to convert decimal to hexadecimal." width="620" height="344" />](../../images/diagrams_png_numbers-decimal-hexadecimal-conversion.png)
 
 要将十进制转换为十六进制，只需持续除以 16 即可。
 
@@ -136,11 +136,11 @@ puts 6735.to_s(16) #=> 1a4f
 echo "obase=16; 6735" | bc #=> 1A4F
 ```
 
-## [字节](/docs/technical/general/bytes.md)
+## [字节](bytes.md)
 
 十六进制有什么用？
 
-[<img src="../../images/diagrams_png_bytes-hexadecimal.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="772" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-hexadecimal.png)
+[<img src="../../images/diagrams_png_bytes-hexadecimal.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="772" height="223" />](../../images/diagrams_png_bytes-hexadecimal.png)
 
 在处理比特币的原始数据时，你会频繁遇到十六进制字符。例如，下面是一个随机私钥：
 
@@ -183,7 +183,7 @@ Hexadecimal
 
 提示：半个字节称为"nibble"（半字节），但这对比特币来说并不重要。
 
-例如，与其用二进制显示所有八个[位](/docs/technical/general/bytes.md#bit)（如 `10110101`），不如用两个十六进制字符 `B5` 来缩写（因为 `1011` = `B`，`0101` = `5`）。
+例如，与其用二进制显示所有八个[位](bytes.md#bit)（如 `10110101`），不如用两个十六进制字符 `B5` 来缩写（因为 `1011` = `B`，`0101` = `5`）。
 
 所以简而言之，十六进制系统是一种用于显示原始字节数据的*便捷*系统。
 

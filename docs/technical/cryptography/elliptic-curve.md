@@ -1,20 +1,20 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/technical_cryptography_elliptic-curve_elliptic-curve.png" alt="Graph showing the shape of an elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/elliptic-curve.png.md)
-[<img src="../../images/technical_cryptography_elliptic-curve_latex-elliptic-curve-equation.png" alt="Equation for an elliptic curve." width="412" height="57" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/latex-elliptic-curve-equation.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_elliptic-curve.png" alt="Graph showing the shape of an elliptic curve." width="330" height="330" />](../../images/technical_cryptography_elliptic-curve_elliptic-curve.png)
+[<img src="../../images/technical_cryptography_elliptic-curve_latex-elliptic-curve-equation.png" alt="Equation for an elliptic curve." width="412" height="57" />](../../images/technical_cryptography_elliptic-curve_latex-elliptic-curve-equation.png)
 
 椭圆曲线 (elliptic curve) 被用作某些密码学系统的基础。
 
-椭圆曲线的结构允许您执行一个数学函数（“[相乘](#multiply)”），以单向移动曲线上的点，而无法反向移动。这被称为“陷门函数 (trapdoor function)”，它是椭圆曲线的核心特征，使其非常适合用于[公钥密码学](/docs/technical/cryptography.md#public-key-cryptography)。
+椭圆曲线的结构允许您执行一个数学函数（“[相乘](#multiply)”），以单向移动曲线上的点，而无法反向移动。这被称为“陷门函数 (trapdoor function)”，它是椭圆曲线的核心特征，使其非常适合用于[公钥密码学](../cryptography.md#public-key-cryptography)。
 
-简而言之，**椭圆曲线具有使其在密码学中非常有用的数学性质**，它们是比特币中使用的数字[签名](/docs/technical/keys/signature.md)系统（[ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)）的一部分。
+简而言之，**椭圆曲线具有使其在密码学中非常有用的数学性质**，它们是比特币中使用的数字[签名](../keys/signature.md)系统（[ECDSA](elliptic-curve/ecdsa.md)）的一部分。
 
 * 您不需要了解椭圆曲线就能进行比特币开发，所以除非您真的想学，否则不要强迫自己学习这些内容。
 * 在您的编程语言中使用椭圆曲线库来处理这一切，比您自己编写代码更安全也更容易。
 
 ## 参数 (Secp256k1)
 
-中本聪选择将 **secp256k1** 曲线用于 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)，该曲线具有以下参数：
+中本聪选择将 **secp256k1** 曲线用于 [ECDSA](elliptic-curve/ecdsa.md)，该曲线具有以下参数：
 
 ```
 # y² = x³ + ax + b
@@ -38,7 +38,7 @@ $G = {
 * `p` – 这是**质数模数 (prime modulus)**。在执行数学计算时，该数字将所有数字保持在特定范围内（同样，它针对 *secp256k1* 特有）。它是一个质数是密码学能够发挥作用的关键要素。
 * `n` – 这是**阶数 (order)**。它是我们在曲线上可以到达的**点数数量**。它小于 `p`，并且受到选定基点（见下文）的影响。
 * `G` – 这是**基点 (generator point)**，或称生成点。这是执行大多数数学运算时在曲线上的*起点*。选择该点的确切原因[尚不清楚](https://crypto.stackexchange.com/questions/60420/what-does-the-special-form-of-the-base-point-of-secp256k1-allow/60421#60421)，但通常是因为它提供了很高的*阶数*（见上文）并且未表现出任何固有的密码学漏洞。  
-  [<img src="../../images/technical_cryptography_elliptic-curve_point-generator.png" alt="Graph showing an example of a generator point on an elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/point-generator.png.md)
+  [<img src="../../images/technical_cryptography_elliptic-curve_point-generator.png" alt="Graph showing an example of a generator point on an elliptic curve." width="330" height="330" />](../../images/technical_cryptography_elliptic-curve_point-generator.png)
 
 **Secp256k1** 只是密码学中使用的[其中一个特定椭圆曲线](http://www.secg.org/sec2-v2.pdf)的名称。它是以下词汇的缩写：
 
@@ -60,13 +60,13 @@ $G = {
 
 我在本教程中使用的图表显示了一条平滑的椭圆曲线，如下所示：
 
-[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-real-numbers.png" alt="Graph showing an elliptic curve over real numbers (showing example point at x=1.123, y=2.90107701845366)." width="780" height="640" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/sage-elliptic-curve-real-numbers.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-real-numbers.png" alt="Graph showing an elliptic curve over real numbers (showing example point at x=1.123, y=2.90107701845366)." width="780" height="640" />](../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-real-numbers.png)
 
 实数域上的椭圆曲线。
 
 然而，比特币中使用的实际曲线看起来更像是点状的散点图，如下所示：
 
-[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-47.png" alt="Graph showing an elliptic curve over a finite field mod 47 (showing example point at x=17, y=19)." width="780" height="640" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/sage-elliptic-curve-finite-field-47.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-47.png" alt="Graph showing an elliptic curve over a finite field mod 47 (showing example point at x=17, y=19)." width="780" height="640" />](../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-47.png)
 
 有限域上的椭圆曲线 (模 47)。
 
@@ -76,7 +76,7 @@ $G = {
 
 当然，*secp256k1* 曲线的 `p` 值*非常庞大*，因此它更像下面的图表，只不过想象一下上面的点数几乎和宇宙中的原子一样多：
 
-[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-2503.png" alt="Graph showing an elliptic curve over a finite field mod 2503 (showing example point at x=17, y=19)." width="780" height="640" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/sage-elliptic-curve-finite-field-2503.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-2503.png" alt="Graph showing an elliptic curve over a finite field mod 2503 (showing example point at x=17, y=19)." width="780" height="640" />](../../images/technical_cryptography_elliptic-curve_sage-elliptic-curve-finite-field-2503.png)
 
 有限域上的椭圆曲线 (模 2503)。
 
@@ -127,7 +127,7 @@ sage: C = EllipticCurve(F, [0, 7])
 
 您可以在椭圆曲线上的*点*上执行几种数学运算。**两个主要的运算**是 [`double()`](#double)（翻倍）和 [`add()`](#add)（相加），然后它们可以组合起来执行 [`multiply()`](#multiply)（相乘）。
 
-这些运算是椭圆曲线密码学的基石，用于在 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 中生成[公钥](/docs/technical/keys/public-key.md)和[签名](/docs/technical/keys/signature.md)。
+这些运算是椭圆曲线密码学的基石，用于在 [ECDSA](elliptic-curve/ecdsa.md) 中生成[公钥](../keys/public-key.md)和[签名](../keys/signature.md)。
 
 * [模逆 (Modular Inverse)](#modular-inverse)
 * [点翻倍 (Double)](#double)
@@ -164,7 +164,7 @@ p
 
 然而，在整数有限域中并没有直接的*除法*运算。相反，您可以**乘以一个数字的*模逆元***，以达到与*除法*相同的效果：
 
-[<img src="../../images/technical_cryptography_elliptic-curve_modular-inverse.gif" alt="Animation showing showing the modular inverse of a number within a finite field." width="574" height="232" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/modular-inverse.gif.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_modular-inverse.gif" alt="Animation showing showing the modular inverse of a number within a finite field." width="574" height="232" />](../../images/technical_cryptography_elliptic-curve_modular-inverse.gif)
 
 在 **47** 的有限域中，**13** 的模乘逆元是 **29**。
 
@@ -216,7 +216,7 @@ end
 
 在数学等式中，一个数字的模逆元通常用右上角的 `⁻¹` 表示。
 
-[<img src="../../images/technical_cryptography_elliptic-curve_inverse-notation.png" alt="Diagram showing the mathematical notation for the modular inverse of a number." width="317" height="73" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/inverse-notation.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_inverse-notation.png" alt="Diagram showing the mathematical notation for the modular inverse of a number." width="317" height="73" />](../../images/technical_cryptography_elliptic-curve_inverse-notation.png)
 
 在接下来的运算中，数字的逆元有时是 `mod p`（模*质数*）求解的，有时是 `mod n`（模曲线上的*点数*）求解的。
 
@@ -252,12 +252,12 @@ y:
 
 从直观的几何角度来看，要对一个点进行“翻倍”，您需要在给定点上绘制曲线的*切线*，然后找出该切线与曲线相交的点（只会有一个），然后获取该点关于 x 轴的对称映射点（反射点）。
 
-[<img src="../../images/technical_cryptography_elliptic-curve_point-double.png" alt="Graph showing how to double a point on an elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/point-double.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_point-double.png" alt="Graph showing how to double a point on an elliptic curve." width="330" height="330" />](../../images/technical_cryptography_elliptic-curve_point-double.png)
 
 `P` 是曲线上的一个普通点。  
 `s` 指的是切线的斜率。
 
-[<img src="../../images/technical_cryptography_elliptic-curve_latex-point-double.png" alt="Equation for doubling a point on an elliptic curve." width="404" height="185" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/latex-point-double.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_latex-point-double.png" alt="Equation for doubling a point on an elliptic curve." width="404" height="185" />](../../images/technical_cryptography_elliptic-curve_latex-point-double.png)
 
 #### 代码
 
@@ -330,11 +330,11 @@ y:
 
 从几何的角度来看，要将两个点“相加”，您需要在它们之间画一条直线，然后找出该线与曲线相交的点（只会有一个），然后获取该点关于 x 轴的对称映射点。
 
-[<img src="../../images/technical_cryptography_elliptic-curve_point-add.png" alt="Graph showing how to add two points on an elliptic curve." width="330" height="330" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/point-add.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_point-add.png" alt="Graph showing how to add two points on an elliptic curve." width="330" height="330" />](../../images/technical_cryptography_elliptic-curve_point-add.png)
 
 `Q` 是曲线上的第二个普通点。
 
-[<img src="../../images/technical_cryptography_elliptic-curve_latex-point-add.png" alt="Equation for adding two points on an elliptic curve." width="404" height="169" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/latex-point-add.png.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_latex-point-add.png" alt="Equation for adding two points on an elliptic curve." width="404" height="169" />](../../images/technical_cryptography_elliptic-curve_latex-point-add.png)
 
 #### 代码
 
@@ -414,7 +414,7 @@ ECDSA 中的大多数点乘运算都从**基点** `G` 开始。
 
 #### 双倍相加算法 (Double-and-add algorithm)
 
-[<img src="../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](file:///opt/brainzhang/ezbitcoin/docs/technical/cryptography/elliptic-curve/point-multiply.gif.md)
+[<img src="../../images/technical_cryptography_elliptic-curve_point-multiply.gif" alt="Animation showing how to multiply a point on an elliptic curve." width="330" height="440" />](../../images/technical_cryptography_elliptic-curve_point-multiply.gif)
 
 `3P = 2P + P`（一次翻倍，一次相加）
 
@@ -485,7 +485,7 @@ end
 
 总之，这种 `multiply()` 运算允许您以单向移动曲线上的点，但没有数学运算能允许您“撤销”这种移动，这一性质正是椭圆曲线在密码学中如此有用的原因。
 
-所有这些椭圆曲线数学都被用作比特币中所使用的数字签名系统的基础：[ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 和 [Schnorr](/docs/technical/cryptography/elliptic-curve/schnorr.md)（作为 2021 年 [Taproot](/docs/technical/upgrades/taproot.md) 升级的一部分被引入）。
+所有这些椭圆曲线数学都被用作比特币中所使用的数字签名系统的基础：[ECDSA](elliptic-curve/ecdsa.md) 和 [Schnorr](elliptic-curve/schnorr.md)（作为 2021 年 [Taproot](../upgrades/taproot.md) 升级的一部分被引入）。
 
 ## 资源
 

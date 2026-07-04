@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_networking-magic-bytes.png" alt="Diagram showing a message being sent to another node with the magic bytes at the start of the message." width="635" height="170" />](https://static.learnmeabitcoin.com/diagrams/png/networking-magic-bytes.png)
+[<img src="../../images/diagrams_png_networking-magic-bytes.png" alt="Diagram showing a message being sent to another node with the magic bytes at the start of the message." width="635" height="170" />](../../images/diagrams_png_networking-magic-bytes.png)
 
-魔术字节（Magic bytes）有助于**识别在[比特币网络](/docs/technical/networking.md)节点之间发送的独立消息**。
+魔术字节（Magic bytes）有助于**识别在[比特币网络](../networking.md)节点之间发送的独立消息**。
 
-例如，当使用你自己的代码[连接到节点](/docs/technical/networking.md#connecting)时，你从该节点收到的*每条消息*都将以 `f9beb4d9` 开头，并且你发送的每条消息也应该以相同的魔术字节开头。
+例如，当使用你自己的代码[连接到节点](../networking.md#connecting)时，你从该节点收到的*每条消息*都将以 `f9beb4d9` 开头，并且你发送的每条消息也应该以相同的魔术字节开头。
 
 ## 比特币
 
@@ -22,19 +22,19 @@
 
 在哪里可以找到魔术字节？
 
-这是一条原始的 “[version](/docs/technical/networking.md#version)” 消息，它是你连接到节点时收到的第一条消息：
+这是一条原始的 “[version](../networking.md#version)” 消息，它是你连接到节点时收到的第一条消息：
 
 ```
 f9beb4d976657273696f6e00000000006f0000004aae42a47c11010005000000000000001436396400000000010000000000000000000000000000000000ffffc1207f8db0d0050000000000000000000000000000000000ffff8a4414c5208df66af23ecba5bd68192f5361746f7368693a302e31322e3128626974636f7265292fc8fb0b0001
 ```
 
-而这是一条包含单笔[交易](/docs/technical/transaction.md)的原始 “tx” 消息：
+而这是一条包含单笔[交易](../transaction.md)的原始 “tx” 消息：
 
 ```
 f9beb4d9747800000000000000000000e00000006a86deb701000000015ac5ae0a2ba96622c9b79de2c339084c8b1d30f63bb55a315f354db4d9a6abcf010000006b4830450221009ad52459e1e8bd5e758399cc0be963c75726c5089499465d9aa79ffb304ecd3802207d73ea58047f4d1f857b400cbff725ef562b7ada1c26e763c5a1aa6d29d2fdf401210234b7b614fcc0e4d926747d491992d8cc133f076bd79095eddf60c34b0e3fef4affffffff02390205000000000017a914ea3b6d7e92e05370bc8a61d3f05dbfdc90bb1d9587d1df3000000000001976a91425f0800454530549ed93747a6449aefe2618203988ac00000000
 ```
 
-如果你打印出本地节点[原始区块链文件](/docs/technical/block/blkdat.md)中的创世区块，你会发现它在磁盘上也是与魔术字节一起存储的：
+如果你打印出本地节点[原始区块链文件](../block/blkdat.md)中的创世区块，你会发现它在磁盘上也是与魔术字节一起存储的：
 
 ```
 $ hexdump -C -n 293 blk00000.dat
@@ -73,7 +73,7 @@ $ hexdump -C -n 293 blk00000.dat
 
 如果你连接到一个比特币节点，你收到的消息是连续数据流的一部分。
 
-[<img src="../../images/technical_networking_magic-bytes_magic-bytes-terminal.gif" alt="Diagram showing a message being sent to another node with the magic bytes at the start of the message." width="802" height="191" />](/docs/technical/networking/magic-bytes/magic-bytes-terminal.gif.md)
+[<img src="../../images/technical_networking_magic-bytes_magic-bytes-terminal.gif" alt="Diagram showing a message being sent to another node with the magic bytes at the start of the message." width="802" height="191" />](../../images/technical_networking_magic-bytes_magic-bytes-terminal.gif)
 
 节点在字节流中接收数据。
 
@@ -93,9 +93,9 @@ $ hexdump -C -n 293 blk00000.dat
 
 所以它们也可以是其他的，但这 4 个字节的属性刚好适合在比特币网络上作为足够好的魔术字节。
 
-* **ASCII。** 如果你将字节 `f9beb4d9` 转换为[扩展 ASCII](https://en.wikipedia.org/wiki/Extended_ASCII)，你会得到 `ù¾´Ù`，对于矿工来说，这不太可能被无意中放入 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易的 [scriptsig](/docs/technical/transaction/input/scriptsig.md) 中，或作为 [OP_RETURN](/docs/technical/script/return.md) 输出中的文本字符串。
+* **ASCII。** 如果你将字节 `f9beb4d9` 转换为[扩展 ASCII](https://en.wikipedia.org/wiki/Extended_ASCII)，你会得到 `ù¾´Ù`，对于矿工来说，这不太可能被无意中放入 [Coinbase](../mining/coinbase-transaction.md) 交易的 [scriptsig](../transaction/input/scriptsig.md) 中，或作为 [OP_RETURN](../script/return.md) 输出中的文本字符串。
 * **UTF-8。** [基础拉丁 UTF-8 字符集](https://www.w3schools.com/charsets/ref_utf_basic_latin.asp)不会超过 `7e`，所以如果你使用基础 UTF-8 编码一些文本，你不会与任何魔术字节冲突（因为它们都大于 `7e`）。
-* **整数。** 如果你将 `f9beb4d9` 转换为整数，你会得到 **4190024921**。如果你还将字节顺序反转为 `d9b4bef9` 并转换为整数，你会得到 **3652501241**。这两个都是非常大的数字，因此它们不太可能被用在原始[交易](/docs/technical/transaction.md)数据的其中一个字段中（例如 [version](/docs/technical/transaction.md#structure-version)、输入数量、[vout](/docs/technical/transaction.md#structure-inputs-vout)、输出数量、金额、脚本大小等）。
+* **整数。** 如果你将 `f9beb4d9` 转换为整数，你会得到 **4190024921**。如果你还将字节顺序反转为 `d9b4bef9` 并转换为整数，你会得到 **3652501241**。这两个都是非常大的数字，因此它们不太可能被用在原始[交易](../transaction.md)数据的其中一个字段中（例如 [version](../transaction.md#structure-version)、输入数量、[vout](../transaction.md#structure-inputs-vout)、输出数量、金额、脚本大小等）。
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
 

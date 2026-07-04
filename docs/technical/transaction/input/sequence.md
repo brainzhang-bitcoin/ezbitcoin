@@ -1,15 +1,15 @@
 <img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../../images/diagrams_png_transaction-sequence.png" alt="Diagram of showing the sequence fields alongside each transaction input." width="503" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence.png)
+[<img src="../../../images/diagrams_png_transaction-sequence.png" alt="Diagram of showing the sequence fields alongside each transaction input." width="503" height="423" />](../../../images/diagrams_png_transaction-sequence.png)
 
-sequence（序列号）字段存在于每个交易 [input](/docs/technical/transaction/input.md) 内部。它允许你控制一笔交易**何时可以被打包挖出**，或者一笔交易在[内存池 (mempool)](/docs/technical/mining/memory-pool.md) 中时**是否可以被替换**。
+sequence（序列号）字段存在于每个交易 [input](../input.md) 内部。它允许你控制一笔交易**何时可以被打包挖出**，或者一笔交易在[内存池 (mempool)](../../mining/memory-pool.md) 中时**是否可以被替换**。
 
-用更具技术性的术语来说，可以说 sequence 字段控制着交易的“终结性 (finality)”，即一笔交易在被打包挖入区块之前是否处于其“最终”状态。如果它不处于“最终”状态，那么在它最终进入[区块链](/docs/technical/blockchain.md)之前，它是有可能被替换的。
+用更具技术性的术语来说，可以说 sequence 字段控制着交易的“终结性 (finality)”，即一笔交易在被打包挖入区块之前是否处于其“最终”状态。如果它不处于“最终”状态，那么在它最终进入[区块链](../../blockchain.md)之前，它是有可能被替换的。
 
 以下是最常见的设置：
 
 * <=0xFFFFFFFE — **Locktime**。
-  此设置允许使用交易的 [locktime](/docs/technical/transaction/locktime.md) 字段。
+  此设置允许使用交易的 [locktime](../locktime.md) 字段。
 * <=0xFFFFFFFD — **Replace By Fee (RBF)**。
   此设置启用了 RBF 功能，如果交易仍处于内存池中，允许你用手续费更高的一笔交易替换它。
 * <=0xEFFFFFFF — **相对锁定时间 (Relative Locktime)**。
@@ -57,9 +57,9 @@ Sequence (大端序)
 
 ## Locktime
 
-[<img src="../../../images/diagrams_png_transaction-sequence-locktime.png" alt="Diagram showing the sequence field being set to enable the locktime field of a transaction." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-locktime.png)
+[<img src="../../../images/diagrams_png_transaction-sequence-locktime.png" alt="Diagram showing the sequence field being set to enable the locktime field of a transaction." width="722" height="336" />](../../../images/diagrams_png_transaction-sequence-locktime.png)
 
-如果你将 *任何* input 的 sequence 值设置为 0xFFFFFFFE 或更低，你就可以为整笔交易启用 [locktime](/docs/technical/transaction/locktime.md) 字段。
+如果你将 *任何* input 的 sequence 值设置为 0xFFFFFFFE 或更低，你就可以为整笔交易启用 [locktime](../locktime.md) 字段。
 
 例如：
 
@@ -73,11 +73,11 @@ Sequence (大端序)
 
 ### 使用
 
-如果你希望交易仅在未来的某个时间点才能被[打包挖出](/docs/technical/mining.md)，你需要利用交易末尾的 locktime 字段。
+如果你希望交易仅在未来的某个时间点才能被[打包挖出](../../mining.md)，你需要利用交易末尾的 locktime 字段。
 
 要启用 locktime 字段，你需要将交易中的 sequence 值之一设置为 0xFFFFFFFE 或更低。
 
-然后，你可以将 locktime 字段设置为 0 到 499999999 之间，以使交易能够在特定的区块[高度](/docs/technical/blockchain/height.md)之后被打包挖出；或者设置为 500000000 到 4294967295 之间，以使其在特定时间点（即 Unix 时间戳）之后被打包挖出。
+然后，你可以将 locktime 字段设置为 0 到 499999999 之间，以使交易能够在特定的区块[高度](../../blockchain/height.md)之后被打包挖出；或者设置为 500000000 到 4294967295 之间，以使其在特定时间点（即 Unix 时间戳）之后被打包挖出。
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix 时间 (Unix Time)
 
@@ -95,9 +95,9 @@ Unix 时间
 
 [BIP 125](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki)
 
-[<img src="../../../images/diagrams_png_transaction-sequence-replace-by-fee.png" alt="Diagram showing the sequence field being set to enable the replace by fee feature on a transaction." width="733" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-replace-by-fee.png)
+[<img src="../../../images/diagrams_png_transaction-sequence-replace-by-fee.png" alt="Diagram showing the sequence field being set to enable the replace by fee feature on a transaction." width="733" height="503" />](../../../images/diagrams_png_transaction-sequence-replace-by-fee.png)
 
-你可以通过将 *任何* input 的 sequence 值设置为 0xFFFFFFFD 或更低，来允许交易稍后（在它仍处于[内存池](/docs/technical/mining/memory-pool.md)中时）被手续费更高的一笔交易替换。
+你可以通过将 *任何* input 的 sequence 值设置为 0xFFFFFFFD 或更低，来允许交易稍后（在它仍处于[内存池](../../mining/memory-pool.md)中时）被手续费更高的一笔交易替换。
 
 例如：
 
@@ -109,7 +109,7 @@ Unix 时间
 
 ### 使用
 
-假设你创建了一笔交易并将其发送到了[网络](/docs/technical/networking.md)中，但你在其上设置了一个极低的[手续费](/docs/technical/transaction/fee.md)。
+假设你创建了一笔交易并将其发送到了[网络](../../networking.md)中，但你在其上设置了一个极低的[手续费](../fee.md)。
 
 如果网络上有大量的高手续费交易，你的交易可能会一直悬在内存池中等待被打包挖出。通常情况下，你无法撤销或替换此交易，直到它被打包挖出或在内存池中过期，但这可能需要几天时间。
 
@@ -121,13 +121,13 @@ Unix 时间
 
 * **你不需要在替代交易中增加或减少 sequence 数值。** 唯一关键的是替代交易具有更高的手续费。
 * **只要新交易的手续费比你要替换的交易更高，你就可以一次又一次地替换交易。** 替换的次数越多，每次就需要更高的手续费来超越之前的替代交易手续费。
-* **如果你愿意，你可以在替代交易中把代币发送到不同的目的地（即创建不同的 [outputs](/docs/technical/transaction/output.md)）。** 这也是为什么这有时被称为“Full RBF”（完全 RBF）的原因，因为其他 RBF 提案要求替代交易具有相同的 outputs。
+* **如果你愿意，你可以在替代交易中把代币发送到不同的目的地（即创建不同的 [outputs](../output.md)）。** 这也是为什么这有时被称为“Full RBF”（完全 RBF）的原因，因为其他 RBF 提案要求替代交易具有相同的 outputs。
 
 **RBF 是整笔交易范围的，而不是 input 特定的。** 在任何一个 input 上将 sequence 设置为 0xFFFFFFFD 或更低都会使*整笔交易*可被替换。因此，即使你在同一交易中的其他 inputs 上赋予了最大值 0xFFFFFFFF，那些独立的 inputs 也可以在高手续费的替代交易中被花费。
 
 ### 设置更高手续费
 
-[<img src="../../../images/diagrams_png_transaction-replace-by-fee-increase.png" alt="Diagram showing the transactions fees on replacement transactions including the size of the fees of the transactions they are replacing." width="355" height="284" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-replace-by-fee-increase.png)
+[<img src="../../../images/diagrams_png_transaction-replace-by-fee-increase.png" alt="Diagram showing the transactions fees on replacement transactions including the size of the fees of the transactions they are replacing." width="355" height="284" />](../../../images/diagrams_png_transaction-replace-by-fee-increase.png)
 
 替代交易上的手续费必须足以覆盖*最低中继费*，**外加它所替代的交易的手续费大小**。
 
@@ -135,13 +135,13 @@ Unix 时间
 RBF 交易最低手续费 = 最低中继费 + 前一笔交易手续费
 ```
 
-**[最低中继费](/docs/technical/transaction/fee.md#minimum-relay-fee)：**
+**[最低中继费](../fee.md#minimum-relay-fee)：**
 
-这是你必须在交易中设置的*最低*手续费，以便节点能够将其接受到内存池中。每个节点都可以独立设置此费用，但默认是 1 sat/[vbyte](/docs/technical/transaction/size.md#virtual-bytes)。这有助于防止有人用“免费”交易对网络进行垃圾邮件攻击。
+这是你必须在交易中设置的*最低*手续费，以便节点能够将其接受到内存池中。每个节点都可以独立设置此费用，但默认是 1 sat/[vbyte](../size.md#virtual-bytes)。这有助于防止有人用“免费”交易对网络进行垃圾邮件攻击。
 
 ### RBF 示例
 
-假设当前最低中继费是 **1 sat/[vbyte](/docs/technical/transaction/size.md#virtual-bytes)**。
+假设当前最低中继费是 **1 sat/[vbyte](../size.md#virtual-bytes)**。
 
 对于一个简单的*提升费用*交易（替代交易与原交易完全相同），替代交易的手续费只需至少是你要替换交易手续费的*两倍*：
 
@@ -189,7 +189,7 @@ RBF 交易最低手续费 = 最低中继费 + 前一笔交易手续费
 
 [BIP 68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki)
 
-[<img src="../../../images/diagrams_png_transaction-sequence-relative-locktime.png" alt="Diagram showing the sequence field being used to set a relative locktime on the transaction." width="741" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-relative-locktime.png)
+[<img src="../../../images/diagrams_png_transaction-sequence-relative-locktime.png" alt="Diagram showing the sequence field being used to set a relative locktime on the transaction." width="741" height="336" />](../../../images/diagrams_png_transaction-sequence-relative-locktime.png)
 
 > 相对锁定时间（RLT）使已签名的交易输入在其相对应的输出确认后的一段指定时间内保持无效。
 > 
@@ -199,7 +199,7 @@ RBF 交易最低手续费 = 最低中继费 + 前一笔交易手续费
 
 交易的 locktime 允许你指定交易可以被打包挖出的*绝对*时间，而相对锁定时间允许你指定相对时间（从被花费输出被打包的那刻起算）。
 
-要在某个 input 上设置相对锁定时间，你需要将 sequence 视作一个包含 32 个独立位的字段（即[位字段 (bit field)](/docs/technical/general/bytes.md#bit-field)）：
+要在某个 input 上设置相对锁定时间，你需要将 sequence 视作一个包含 32 个独立位的字段（即[位字段 (bit field)](../../general/bytes.md#bit-field)）：
 
 Sequence (小端序)
 

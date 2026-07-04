@@ -71,9 +71,9 @@
 
 举个例子，假设你决定把这些比特币发送到一家秘密商店。这没关系，但如果该秘密商店因为某种原因被查封，并且他们发现其比特币/地址，那么就可以查看到该商店接收到的所有交易。结果就是，鉴于你发送到那里的比特币带有你身份的标记，就有可能查出是*你*将比特币发送到了那家商店。
 
-[<img src="../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png" alt="该图展示了从需要身份证件的交易所购买比特币是如何将这些比特币标记到你的身份上的。" width="983" height="473" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-exchanges-id-privacy-transaction.png)
+[<img src="../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png" alt="该图展示了从需要身份证件的交易所购买比特币是如何将这些比特币标记到你的身份上的。" width="983" height="473" />](../images/diagrams_png_beginners-exchanges-id-privacy-transaction.png)
 
-我不会劝阻任何人不要从要求提供身份证件的公司购买比特币，但了解它们是如何运作的非常重要。只需记住，比特币[交易](/docs/technical/transaction.md)是连接在一起的，因此你的硬币的隐私取决于你*不要*在你的身份与你使用的[地址](/docs/technical/keys/address.md)之间建立关联。
+我不会劝阻任何人不要从要求提供身份证件的公司购买比特币，但了解它们是如何运作的非常重要。只需记住，比特币[交易](../technical/transaction.md)是连接在一起的，因此你的硬币的隐私取决于你*不要*在你的身份与你使用的[地址](../technical/keys/address.md)之间建立关联。
 
 我不定义购买比特币需要身份证件符合比特币的真正精神，但这些类型的交易所确实为你获得第一批比特币提供了一种便捷的方法。
 
@@ -103,7 +103,7 @@
 
 有些交易所可能相当专业，是为有经验的交易员设计的，如果你以前没有使用过，就可能不太清楚发生了什么。而其他交易所则是为初学者设计的，尽可能地简化了过程。
 
-[<img src="../images/beginners_exchanges_screenshot-tradeogre.jpg" alt="老版 TradeOgre 交易所的屏幕截图。" width="600" height="347" />](/docs/beginners/exchanges/screenshot-tradeogre.jpg.md)
+[<img src="../images/beginners_exchanges_screenshot-tradeogre.jpg" alt="老版 TradeOgre 交易所的屏幕截图。" width="600" height="347" />](../images/beginners_exchanges_screenshot-tradeogre.jpg)
 
 这种界面并不是每个人的菜。
 
@@ -117,11 +117,11 @@
 
 从根本上说，购买比特币的方式就是从出售它们的人那里购买。
 
-[<img src="../images/beginners_exchanges_buy-bitcoin-person.gif" alt="展示一个人直接从另一个人那里购买比特币的动画。" width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-person.gif.md)
+[<img src="../images/beginners_exchanges_buy-bitcoin-person.gif" alt="展示一个人直接从另一个人那里购买比特币的动画。" width="800" height="348" />](../images/beginners_exchanges_buy-bitcoin-person.gif)
 
 但当然，并不是每个人都认识有比特币出售的人，所以出现了一些以出售比特币为生的公司。这些公司被称为交易所，它们在网上提供了一种*便捷*的比特币购买方式。
 
-[<img src="../images/beginners_exchanges_buy-bitcoin-company.gif" alt="展示一个人从一家公司（即交易所）购买比特币的动画。" width="800" height="348" />](/docs/beginners/exchanges/buy-bitcoin-company.gif.md)
+[<img src="../images/beginners_exchanges_buy-bitcoin-company.gif" alt="展示一个人从一家公司（即交易所）购买比特币的动画。" width="800" height="348" />](../images/beginners_exchanges_buy-bitcoin-company.gif)
 
 所以这个页面列出了我认为在网上购买比特币的最佳交易所。
 
@@ -135,18 +135,18 @@
 
 那有什么替代方案？
 
-好吧，如果你想完全控制你的比特币（我推荐这样做），那么你需要将比特币*提现*到你自己的[钱包](/docs/beginners/wallets.md)。通过提现，你是要求该公司创建一个[交易](/docs/technical/transaction.md)，将一定数量的比特币锁定到你的[地址](/docs/technical/keys/address.md)之一。这意味着你将拥有允许你转移比特币的[密钥](/docs/technical/keys.md)，这意味着除了你之外，没有其他人可以控制它们。
+好吧，如果你想完全控制你的比特币（我推荐这样做），那么你需要将比特币*提现*到你自己的[钱包](wallets.md)。通过提现，你是要求该公司创建一个[交易](../technical/transaction.md)，将一定数量的比特币锁定到你的[地址](../technical/keys/address.md)之一。这意味着你将拥有允许你转移比特币的[密钥](../technical/keys.md)，这意味着除了你之外，没有其他人可以控制它们。
 
-[<img src="../images/beginners_exchanges_withdraw.gif" alt="展示一个人将比特币从交易所提现到他们钱包的动画。" width="800" height="378" />](/docs/beginners/exchanges/withdraw.gif.md)
+[<img src="../images/beginners_exchanges_withdraw.gif" alt="展示一个人将比特币从交易所提现到他们钱包的动画。" width="800" height="378" />](../images/beginners_exchanges_withdraw.gif)
 
 **完全拥有和控制自己的资金是比特币的核心原则之一。** 这就是为什么我建议尽可能将比特币从交易所提现到你的钱包里，因为这才是比特币设计用来带给你的自由。
 
-通过提现到你的钱包，你现在也掌控了那些比特币的[安全](/docs/beginners/security.md)。这完全是可管理的，但也不要掉以轻心。
+通过提现到你的钱包，你现在也掌控了那些比特币的[安全](security.md)。这完全是可管理的，但也不要掉以轻心。
 
 ## 接下来该做什么？
 
-在你购买了你的第一批比特币之后，你应该考虑将它们提现到你自己的[钱包](/docs/beginners/wallets.md)。
+在你购买了你的第一批比特币之后，你应该考虑将它们提现到你自己的[钱包](wallets.md)。
 
-从这里开始，你可以开始进行交易并向其他人及企业[发送比特币](/docs/beginners/sending.md)。
+从这里开始，你可以开始进行交易并向其他人及企业[发送比特币](sending.md)。
 
 这就是乐趣开始的地方。

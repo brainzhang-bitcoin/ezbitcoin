@@ -8,7 +8,7 @@ If you're running a v27.0 node or above, you can still communicate with it using
 
 Here's a quick guide on how to *connect to* and *communicate with* a node on the Bitcoin network.
 
-[<img src="../images/technical_networking_networking-terminal.gif" alt="Terminal animation showing a connection to a bitcoin node and the messages being sent." width="1080" height="256" />](/docs/technical/networking/networking-terminal.gif.md)
+[<img src="../images/technical_networking_networking-terminal.gif" alt="Terminal animation showing a connection to a bitcoin node and the messages being sent." width="1080" height="256" />](../images/technical_networking_networking-terminal.gif)
 
 
 
@@ -278,17 +278,17 @@ Bitcoin is a computer program. You can [download](https://bitcoin.org/en/downloa
 
 It runs on an open port on your computer, which means anyone can connect to it and communicate with it across the Internet.
 
-[<img src="../images/diagrams_png_networking.png" alt="Diagram showing a connection to a computer via a port." width="737" height="355" />](https://static.learnmeabitcoin.com/diagrams/png/networking.png)
+[<img src="../images/diagrams_png_networking.png" alt="Diagram showing a connection to a computer via a port." width="737" height="355" />](../images/diagrams_png_networking.png)
 
 
 Computers connect to each other through "ports". Bitcoin uses port `8333` by default.
 
 When you run Bitcoin, it uses ports to connect to other computers running the same program. So when you have lots of people running Bitcoin, you end up with a network of computers connected together and communicating with each other.
 
-[<img src="../images/diagrams_png_networking-network-chatter.png" alt="Diagram showing nodes on the Bitcoin network communicating with each other." width="786" height="397" />](https://static.learnmeabitcoin.com/diagrams/png/networking-network-chatter.png)
+[<img src="../images/diagrams_png_networking-network-chatter.png" alt="Diagram showing nodes on the Bitcoin network communicating with each other." width="786" height="397" />](../images/diagrams_png_networking-network-chatter.png)
 
 
-Computers on the Bitcoin network share the latest [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md) with each other.
+Computers on the Bitcoin network share the latest [transactions](transaction.md) and [blocks](block.md) with each other.
 
 Anyway, the cool thing about Bitcoin is **you can write your own basic program to connect to a node if you want to**. You just need to know how to speak its language.
 
@@ -298,7 +298,7 @@ And trust me, if *I* can connect to a Bitcoin node, anyone can.
 
 ## 1. Connecting
 
-[<img src="../images/diagrams_png_networking-connecting.png" alt="Diagram showing a connection to a Bitcoin node via port <code>8333</code> and a local IP." width="773" height="287" />](https://static.learnmeabitcoin.com/diagrams/png/networking-connecting.png)
+[<img src="../images/diagrams_png_networking-connecting.png" alt="Diagram showing a connection to a Bitcoin node via port <code>8333</code> and a local IP." width="773" height="287" />](../images/diagrams_png_networking-connecting.png)
 
 First things first, two quick facts you need to know about the Bitcoin program:
 
@@ -317,7 +317,7 @@ socket = TCPSocket.open("162.120.69.182", 8333) # local computer = 127.0.0.1
 
 And there we have a connection to a Bitcoin node.
 
-But that's pretty boring on its own. To start *receiving* data (like actual [transactions](/docs/technical/transaction.md) and [blocks](/docs/technical/block.md)), you need to start by sending it some *messages* first.
+But that's pretty boring on its own. To start *receiving* data (like actual [transactions](transaction.md) and [blocks](block.md)), you need to start by sending it some *messages* first.
 
 * See [Finding Nodes](#finding-nodes) if you don't already have an IP to connect to. The easiest method is to connect to your own local node (`127.0.0.1`), or you could try connecting to the node running on this server if you prefer (`162.120.69.182`).
 * You can use this [Bitnodes.io tool](https://bitnodes.io/#join-the-network) to check if a remote node is accepting incoming connections.
@@ -336,7 +336,7 @@ regtest = 18444
 
 A "message" is just a structured piece of data that Bitcoin nodes send to each other over the network. They all have the same format:
 
-[<img src="../images/diagrams_png_networking-message.png" alt="Diagram of a network message being sent from one Bitcoin node to another." width="773" height="212" />](https://static.learnmeabitcoin.com/diagrams/png/networking-message.png)
+[<img src="../images/diagrams_png_networking-message.png" alt="Diagram of a network message being sent from one Bitcoin node to another." width="773" height="212" />](../images/diagrams_png_networking-message.png)
 
 Here's an example of what an *actual* Bitcoin message looks like:
 
@@ -347,7 +347,7 @@ Payload: 7E1101000000000000000000C515CF61000000000000000000000000000000000000000
 
 This looks like jargon right now, but it will make sense in a moment.
 
-When you construct a message to send to another node, you're basically taking normal human-readable data (like numbers and text) and converting them to computer-readable [bytes](/docs/technical/general/bytes.md) that can be sent across the network more efficiently.
+When you construct a message to send to another node, you're basically taking normal human-readable data (like numbers and text) and converting them to computer-readable [bytes](general/bytes.md) that can be sent across the network more efficiently.
 
 Therefore, the trick to sending messages in Bitcoin is just getting a bunch of data into the *correct format*.
 
@@ -381,7 +381,7 @@ Header: (version message)
 
 ##### Fields
 
-* **[Magic Bytes](/docs/technical/networking/magic-bytes.md):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
+* **[Magic Bytes](networking/magic-bytes.md):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
 * **Command:** This indicates the type of message being sent. You can send different types of messages in the Bitcoin protocol, and they contain different types of information. It's a 12-byte field containing the *ASCII* encoding of the name of the message type. The one in this example says that we are sending a "version" message, which is used to send information about ourselves to another node.
 
   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> ASCII
@@ -406,7 +406,7 @@ Header: (version message)
 
   0 secs
 * **Size:** This is the size of the upcoming payload. This indicates how many bytes you need to read from the socket to get the full message being sent.
-* **[Checksum](/docs/technical/keys/checksum.md):** This is a small fingerprint for the payload. It allows us to quickly check that the data in the payload hasn't been tampered with during transit. It's created by double-hashing the payload, then taking the first 4 bytes of the result.
+* **[Checksum](keys/checksum.md):** This is a small fingerprint for the payload. It allows us to quickly check that the data in the payload hasn't been tampered with during transit. It's created by double-hashing the payload, then taking the first 4 bytes of the result.
 
 #### Payload
 
@@ -516,7 +516,7 @@ header      = magic_bytes + command + size + checksum
 message = header + payload
 ```
 
-**The trickiest part is making sure you convert the data into the correct bytes and the correct order.** That's where all those utility functions in the code above come in. But once you've got the hang of converting to [hexadecimal](/docs/technical/general/hexadecimal.md) and converting byte orders to [little-endian](/docs/technical/general/little-endian.md), it's not so bad.
+**The trickiest part is making sure you convert the data into the correct bytes and the correct order.** That's where all those utility functions in the code above come in. But once you've got the hang of converting to [hexadecimal](general/hexadecimal.md) and converting byte orders to [little-endian](general/little-endian.md), it's not so bad.
 
 And this is what our final "version" message looks like as a string of hexadecimal bytes:
 
@@ -534,7 +534,7 @@ Before we can start receiving data, we need to perform a "handshake". This hands
 
 In the Bitcoin protocol, the handshake works like this:
 
-[<img src="../images/diagrams_png_networking-handshake.png" alt="Diagram of a the sequence of messages in the handshake in the Bitcoin protocol." width="741" height="355" />](https://static.learnmeabitcoin.com/diagrams/png/networking-handshake.png)
+[<img src="../images/diagrams_png_networking-handshake.png" alt="Diagram of a the sequence of messages in the handshake in the Bitcoin protocol." width="741" height="355" />](../images/diagrams_png_networking-handshake.png)
 
 So the handshake is basically a 2-step process:
 
@@ -678,7 +678,7 @@ The node we've just connected to will continuously send us new messages after th
 
 This is what the new messages are going to look like:
 
-[<img src="../images/diagrams_png_networking-receiving-data.png" alt="Diagram showing the messages in the Bitcoin protocol that a node will receive shortly after connecting to another node." width="743" height="469" />](https://static.learnmeabitcoin.com/diagrams/png/networking-receiving-data.png)
+[<img src="../images/diagrams_png_networking-receiving-data.png" alt="Diagram showing the messages in the Bitcoin protocol that a node will receive shortly after connecting to another node." width="743" height="469" />](../images/diagrams_png_networking-receiving-data.png)
 
 You may receive some different messages before the "inv" messages shown in the diagram above, depending on what protocol version you're using. I'm just going to ignore them for now as they're not critically important.
 
@@ -756,7 +756,7 @@ You can then respond to these "inv" messages listing all the specific transactio
 
 Then, after you've sent your "getdata" message, the node will send you the full transactions and blocks you've requested in subsequent "tx" and "block" messages:
 
-[<img src="../images/diagrams_png_networking-getting-transactions-and-blocks.png" alt="Diagram showing the message sequence for requesting transactions and blocks in the Bitcoin protocol." width="742" height="393" />](https://static.learnmeabitcoin.com/diagrams/png/networking-getting-transactions-and-blocks.png)
+[<img src="../images/diagrams_png_networking-getting-transactions-and-blocks.png" alt="Diagram showing the message sequence for requesting transactions and blocks in the Bitcoin protocol." width="742" height="393" />](../images/diagrams_png_networking-getting-transactions-and-blocks.png)
 
 ### Inv
 
@@ -774,7 +774,7 @@ Payload: (inv)
 
 #### Inventory
 
-The "Inventory" part of the payload is *another* data structure in itself. But it's pretty simple: it's just a list of [transaction hashes](/docs/technical/transaction/input/txid.md) and/or [block hashes](/docs/technical/block/hash.md):
+The "Inventory" part of the payload is *another* data structure in itself. But it's pretty simple: it's just a list of [transaction hashes](transaction/input/txid.md) and/or [block hashes](block/hash.md):
 
 ```
 Inventory:
@@ -809,7 +809,7 @@ So if you want *all* of the transactions and blocks in the "inv", you can just r
 
 SegWit Transactions
 
-To request the full transaction data for new [segwit transactions](/docs/technical/transaction.md#example-segwit) (i.e. including the [witness](/docs/technical/transaction/witness.md) data), you must change the *type* field in the [inventory](#inventory) part of your "getdata" message from:
+To request the full transaction data for new [segwit transactions](transaction.md#example-segwit) (i.e. including the [witness](transaction/witness.md) data), you must change the *type* field in the [inventory](#inventory) part of your "getdata" message from:
 
 * `01 00 00 00 = MSG_TX`
 * `02 00 00 00 = MSG_BLOCK`
@@ -937,7 +937,7 @@ Here's a [full list](https://en.bitcoin.it/wiki/Protocol_documentation#Message_t
 
 One last thing before you go: the node you've just connected to will occasionally send you "ping" messages to see if you're still there. So if you want to keep the connection alive, you'll need to respond with timely "pong" messages.
 
-[<img src="../images/diagrams_png_networking-keeping-connected.png" alt="Diagram showing the message sequence for keeping a connection alive in the Bitcoin protocol via ping and pong messages." width="741" height="242" />](https://static.learnmeabitcoin.com/diagrams/png/networking-keeping-connected.png)
+[<img src="../images/diagrams_png_networking-keeping-connected.png" alt="Diagram showing the message sequence for keeping a connection alive in the Bitcoin protocol via ping and pong messages." width="741" height="242" />](../images/diagrams_png_networking-keeping-connected.png)
 
 ### Ping
 

@@ -119,7 +119,7 @@
     *   [OP_RETURN 脚本 (Return)](docs/technical/script/return.md)
 
 #### ⚡ 闪电网络与 Lnd 技术 (Lightning Network)
-*   **[闪电网络与 Lnd 技术 (Lightning Network)](docs/technical/lightning.md)**
+*   **[闪电网络与 Lnd 技术 (Lightning Network)](/technical/lightning.md)**
     *   [Lnd 启动扫描速度慢分析 (Lnd Low Rescan Speed)](docs/technical/lightning/lnd-low-rescan-speed-startup.md)
     *   [如何通过 lnd-cli 关闭通道 (How to Close Lightning Channels)](docs/technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md)
     *   [闪电网络基础与原理 - Part 0](docs/technical/lightning/hello-lightning-network-part0.md)

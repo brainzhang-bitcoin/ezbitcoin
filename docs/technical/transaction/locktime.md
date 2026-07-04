@@ -1,14 +1,14 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
+[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing how the locktime field can be used to prevent a transaction from being mined until a specific block height or time in the future." width="722" height="336" />](../../images/diagrams_png_transaction-locktime.png)
 
-locktime（锁定时间）字段允许你**阻止交易被打包挖出**，直到达到特定的区块**高度**或**[时间](/docs/technical/block/time.md)**之后。
+locktime（锁定时间）字段允许你**阻止交易被打包挖出**，直到达到特定的区块**高度**或**[时间](../block/time.md)**之后。
 
 包含未来 locktime 的交易也不会被节点接受或转发，因此你必须将其保存在本地，直到交易上设置的 locktime 过去。
 
 换句话说，在交易上设置 locktime 相当于[远期支票](https://en.wikipedia.org/wiki/Post-dated_cheque)。
 
-[<img src="../../images/technical_transaction_locktime_cheque.jpg" alt="An image of a post-dated cheque representing a transaction with a locktime of a specific block height." width="633" height="280" />](/docs/technical/transaction/locktime/cheque.jpg.md)
+[<img src="../../images/technical_transaction_locktime_cheque.jpg" alt="An image of a post-dated cheque representing a transaction with a locktime of a specific block height." width="633" height="280" />](../../images/technical_transaction_locktime_cheque.jpg)
 
 ## 使用
 
@@ -16,22 +16,22 @@ locktime 是如何工作的？
 
 locktime 字段大小为 4 字节，可容纳 0 (0x00000000) 到 4294967295 (0xffffffff) 之间的数值。
 
-你可以通过使用不同的数值*范围*来设置特定的区块[高度](/docs/technical/blockchain/height.md)或[时间](/docs/technical/block/time.md)：
+你可以通过使用不同的数值*范围*来设置特定的区块[高度](../blockchain/height.md)或[时间](../block/time.md)：
 
 | Locktime | 描述 |
 | --- | --- |
 | <=499999999 | 交易在达到特定的**高度**之前不能被打包。 |
 | >=500000000 | 交易在达到特定的**时间**之前不能被打包。 |
 
-这也称为“绝对锁定时间（absolute locktime）”，因为你设置的是未来特定的高度或时间。如果需要，也可以在交易上设置[相对锁定时间](/docs/technical/transaction/input/sequence.md#relative-locktime)。
+这也称为“绝对锁定时间（absolute locktime）”，因为你设置的是未来特定的高度或时间。如果需要，也可以在交易上设置[相对锁定时间](input/sequence.md#relative-locktime)。
 
-要启用 locktime 字段，[inputs](/docs/technical/transaction/input.md) 上的 [sequence](/docs/technical/transaction/input/sequence.md) 值中至少要有一个被设置为 0xfffffffe 或更低。如果所有 inputs 的 sequence 值都被设置为最大值 0xffffffff，则交易被视为“最终交易”，且 locktime 功能被禁用。
+要启用 locktime 字段，[inputs](input.md) 上的 [sequence](input/sequence.md) 值中至少要有一个被设置为 0xfffffffe 或更低。如果所有 inputs 的 sequence 值都被设置为最大值 0xffffffff，则交易被视为“最终交易”，且 locktime 功能被禁用。
 
 ### 高度
 
 0 到 499999999
 
-[<img src="../../images/diagrams_png_transaction-locktime-height.png" alt="Diagram showing the locktime field being used to set a specific block height." width="724" height="344" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime-height.png)
+[<img src="../../images/diagrams_png_transaction-locktime-height.png" alt="Diagram showing the locktime field being used to set a specific block height." width="724" height="344" />](../../images/diagrams_png_transaction-locktime-height.png)
 
 通过将 locktime 设置在 0 (0x00000000) 和 499999999 (0x1dcd64ff) 之间，你可以指定该交易只能在特定的高度之后被打包到区块链中。
 
@@ -41,7 +41,7 @@ locktime 字段大小为 4 字节，可容纳 0 (0x00000000) 到 4294967295 (0xf
 
 500000000 到 4294967295
 
-[<img src="../../images/diagrams_png_transaction-locktime-time.png" alt="Diagram showing the locktime field being used to set a specific block time." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime-time.png)
+[<img src="../../images/diagrams_png_transaction-locktime-time.png" alt="Diagram showing the locktime field being used to set a specific block time." width="722" height="336" />](../../images/diagrams_png_transaction-locktime-time.png)
 
 通过将 locktime 设置在 500000000 (0x1dcd6500) 和最大值 4294967295 (0xffffffff) 之间，你可以指定该交易只能在特定的时间之后被打包到区块链中。
 
@@ -57,7 +57,7 @@ Unix 时间
 
 0 secs
 
-实际的时间限制随后基于[区块头](/docs/technical/block.md#header)内部的[时间](/docs/technical/block/time.md)字段。区块内设置的时间由矿工控制，虽然它通常非常接近当前时间，但有时可能会有一到两个小时的误差。
+实际的时间限制随后基于[区块头](../block.md#header)内部的[时间](../block/time.md)字段。区块内设置的时间由矿工控制，虽然它通常非常接近当前时间，但有时可能会有一到两个小时的误差。
 
 这个范围允许你将 locktime 设置在 *1985 年 11 月 5 日，00:53:20* 和 *2106 年 2 月 7 日，06:28:15* 之间。
 
@@ -91,7 +91,7 @@ locktime 字段始终是交易的**最后 4 个字节**：
 
 交易：[f168381d64b32d7b03b3f0b82cadba72e815351686e3bff2b8b5ab92f65a58bf](/explorer/tx/f168381d64b32d7b03b3f0b82cadba72e815351686e3bff2b8b5ab92f65a58bf)
 
-原始交易中的 locktime 字段使用 [小端序 (little-endian)](/docs/technical/general/little-endian.md)。因此在上述示例中，如果我们将 `500e0c00` 的字节顺序反转，我们将得到 `000c0e50`，再将其从[十六进制](/docs/technical/general/hexadecimal.md)转换为十进制，我们得到 790096。
+原始交易中的 locktime 字段使用 [小端序 (little-endian)](../general/little-endian.md)。因此在上述示例中，如果我们将 `500e0c00` 的字节顺序反转，我们将得到 `000c0e50`，再将其从[十六进制](../general/hexadecimal.md)转换为十进制，我们得到 790096。
 
 所以这笔交易将 locktime 设置为区块高度 [790,096](/explorer/790096)（并在该区块之后的区块中被打包挖出）。
 

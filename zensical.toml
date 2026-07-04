@@ -76,7 +76,8 @@ palette = [
         { "最长链原则" = "technical/blockchain/longest-chain.md" },
         { "51% 攻击" = "technical/blockchain/51-attack.md" },
         { "硬分叉 (Hard Fork)" = "technical/blockchain/hard-fork.md" },
-        { "软分叉 (Soft Fork)" = "technical/blockchain/soft-fork.md" }
+        { "软分叉 (Soft Fork)" = "technical/blockchain/soft-fork.md" },
+        { "区块链重组" = "technical/blockchain/chain-reorganization.md" }
     ]},
     { "密码学" = [
         { "密码学总览" = "technical/cryptography.md" },
@@ -95,6 +96,7 @@ palette = [
         { "数字签名" = "technical/keys/signature.md" },
         { "比特币地址" = "technical/keys/address.md" },
         { "Base58 校验和" = "technical/keys/checksum.md" },
+        { "Base58 编码" = "technical/keys/base58.md" },
         { "Bech32 编码" = "technical/keys/bech32.md" },
         { "HD 确定性钱包" = "technical/keys/hd-wallets.md" },
         { "助记词种子" = "technical/keys/hd-wallets/mnemonic-seed.md" },
@@ -110,6 +112,7 @@ palette = [
         { "ScriptSig 解锁脚本" = "technical/transaction/input/scriptsig.md" },
         { "Sequence 序列号" = "technical/transaction/input/sequence.md" },
         { "Vout 输出索引" = "technical/transaction/input/vout.md" },
+        { "交易 ID" = "technical/transaction/input/txid.md" },
         { "交易输出 (Output)" = "technical/transaction/output.md" },
         { "ScriptPubKey 锁定脚本" = "technical/transaction/output/scriptpubkey.md" },
         { "交易手续费" = "technical/transaction/fee.md" },
@@ -136,6 +139,7 @@ palette = [
         { "十六进制" = "technical/general/hexadecimal.md" },
         { "字节" = "technical/general/bytes.md" },
         { "字节序 (Byte Order)" = "technical/general/byte-order.md" },
+        { "小端序" = "technical/general/little-endian.md" },
         { "可变长度整数" = "technical/general/compact-size.md" }
     ]}
 ]

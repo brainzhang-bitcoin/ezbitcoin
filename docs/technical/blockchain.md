@@ -1,6 +1,6 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../images/diagrams_png_blockchain.png" alt="Diagram showing the blockchain as a file stored by nodes on the bitcoin network." width="340" height="604" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain.png)
+[<img src="../images/diagrams_png_blockchain.png" alt="Diagram showing the blockchain as a file stored by nodes on the bitcoin network." width="340" height="604" />](../images/diagrams_png_blockchain.png)
 
 Current Blockchain Size:
 
@@ -9,11 +9,11 @@ Current Blockchain Size:
 956,479 blocks
 
 Note: This is the size of the blockchain for my local node.  
-The size of your blockchain will differ depending on how many [chain reorganizations](/docs/technical/blockchain/chain-reorganization.md) your node has experienced and how many [stale blocks](/docs/technical/blockchain/chain-reorganization.md#stale-blocks) you have stored on disk.
+The size of your blockchain will differ depending on how many [chain reorganizations](blockchain/chain-reorganization.md) your node has experienced and how many [stale blocks](blockchain/chain-reorganization.md#stale-blocks) you have stored on disk.
 
-The blockchain is a file of [transactions](/docs/technical/transaction.md). It's the most important file that a bitcoin node maintains.
+The blockchain is a file of [transactions](transaction.md). It's the most important file that a bitcoin node maintains.
 
-It is called the "blockchain" because new transactions are added to the file in [blocks](/docs/technical/block.md), and these blocks are built on top of one another to create a *chain* of blocks. Hence, blockchain.
+It is called the "blockchain" because new transactions are added to the file in [blocks](block.md), and these blocks are built on top of one another to create a *chain* of blocks. Hence, blockchain.
 
 But ultimately, the blockchain is **permanent storage for bitcoin transactions**.
 
@@ -23,7 +23,7 @@ Tip: 956,479 (0 blocks away) ⇈
 
 Next 0 blocks ↑
 
-| [Height](/docs/technical/blockchain/height.md) | [Block Hash](/docs/technical/block/hash.md) | Txs | Size | Avg [Feerate](/docs/technical/transaction/fee.md#sats-per-vbyte) AFR | Time (UTC) |
+| [Height](blockchain/height.md) | [Block Hash](block/hash.md) | Txs | Size | Avg [Feerate](transaction/fee.md#sats-per-vbyte) AFR | Time (UTC) |
 | --- | --- | --- | --- | --- | --- |
 | [956,479](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264) 956,479 | [000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264) | 6,825 | 1.00/1.00 vMB | 0 | 51 mins, 14 secs ago |
 | [956,478](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) 956,478 | [000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) | 1,734 | 0.43/1.00 vMB | 3 | 53 mins, 31 secs ago |
@@ -55,13 +55,13 @@ Total Size: 856.92 GB
 
 How do you get a copy of the blockchain?
 
-[<img src="../images/diagrams_png_blockchain-download.png" alt="Diagram showing the blockchain being downloaded from other nodes on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-download.png)
+[<img src="../images/diagrams_png_blockchain-download.png" alt="Diagram showing the blockchain being downloaded from other nodes on the network." width="983" height="503" />](../images/diagrams_png_blockchain-download.png)
 
 The easiest way to get a copy of the blockchain is to run a Bitcoin node.
 
 When you run the Bitcoin program (e.g. [Bitcoin Core](https://bitcoin.org/en/bitcoin-core/)) your node will automatically download blocks from other nodes on the network until you have an up-to-date copy of the blockchain on your computer.
 
-When nodes [connect](/docs/technical/networking.md) to each other, they tell each other the *height* of their chain (how many blocks they have) during the initial [handshake](/docs/technical/networking.md#handshake). If another node has more blocks than you, your node will request these blocks from the other nodes until you have a full copy of the blockchain.
+When nodes [connect](networking.md) to each other, they tell each other the *height* of their chain (how many blocks they have) during the initial [handshake](networking.md#handshake). If another node has more blocks than you, your node will request these blocks from the other nodes until you have a full copy of the blockchain.
 
 As a result, nodes are constantly communicating with each other to replicate the blockchain across every computer on the network.
 
@@ -69,15 +69,15 @@ There is no single or definitive version of "the blockchain". Every node keeps t
 
 It can take a while to download the full blockchain when you run Bitcoin for the first time. This is referred to as the [Initial Block Download](https://btcinformation.org/en/developer-guide#initial-block-download) (IBD).
 
-## [Mining](/docs/technical/mining.md)
+## [Mining](mining.md)
 
 How are new blocks added to the blockchain?
 
-[<img src="../images/diagrams_png_blockchain-mining.png" alt="Diagram showing the a block being mined on to the blockchain by a node on the network." width="983" height="503" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-mining.png)
+[<img src="../images/diagrams_png_blockchain-mining.png" alt="Diagram showing the a block being mined on to the blockchain by a node on the network." width="983" height="503" />](../images/diagrams_png_blockchain-mining.png)
 
-New blocks of transactions must be [mined](/docs/technical/mining.md) on to the blockchain.
+New blocks of transactions must be [mined](mining.md) on to the blockchain.
 
-In short, the process of mining involves collecting transactions from the [memory pool](/docs/technical/mining/memory-pool.md) into a [candidate block](/docs/technical/mining/candidate-block.md), and then using *processing power* to produce a [block hash](/docs/technical/block/hash.md) that is below a specific [target](/docs/technical/mining/target.md) value. This means that any node on the network can mine a new block, but you need to *use energy* to be able to do so.
+In short, the process of mining involves collecting transactions from the [memory pool](mining/memory-pool.md) into a [candidate block](mining/candidate-block.md), and then using *processing power* to produce a [block hash](block/hash.md) that is below a specific [target](mining/target.md) value. This means that any node on the network can mine a new block, but you need to *use energy* to be able to do so.
 
 <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Hash
 
@@ -147,7 +147,7 @@ Note: This target value has been truncated slightly for storage in the bits fiel
 
 When a node (or "miner") successfully mines a new block, they will share it with the other nodes on the network. When other nodes receive this new block, they will add it to their blockchain, and miners will start trying to mine a new block *on top* of it.
 
-[<img src="../images/diagrams_png_blockchain-mining-propagation.png" alt="Diagram showing a newly-mined block being propagated to other on the network." width="983" height="531" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-mining-propagation.png)
+[<img src="../images/diagrams_png_blockchain-mining-propagation.png" alt="Diagram showing a newly-mined block being propagated to other on the network." width="983" height="531" />](../images/diagrams_png_blockchain-mining-propagation.png)
 
 As a result, miners are constantly working to extend the blockchain with new blocks of transactions.
 
@@ -156,13 +156,13 @@ As a result, miners are constantly working to extend the blockchain with new blo
 
 Here's a [video on how mining works in Bitcoin](https://www.youtube.com/watch?v=f9EbD6iY9zI&t=140s).
 
-## [Chain Reorganizations](/docs/technical/blockchain/chain-reorganization.md)
+## [Chain Reorganizations](blockchain/chain-reorganization.md)
 
 Can two blocks be mined at the same time?
 
 As the blockchain is being built, it's perfectly normal for two blocks to be mined at the same time.
 
-[<img src="../images/diagrams_png_blockchain-fork.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="609" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork.png)
+[<img src="../images/diagrams_png_blockchain-fork.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="609" />](../images/diagrams_png_blockchain-fork.png)
 
 
 If two blocks are mined at the same time it will cause a temporary "fork" in the chain.
@@ -171,11 +171,11 @@ In this situation, nodes will consider the **first** block they receive as part 
 
 Consequently, nodes on the network will be in temporary disagreement about which of these two blocks belongs at the top of the chain.
 
-This disagreement is resolved when the next block is mined. The next block will be built on top of *one* of these blocks, creating a new [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks, and as a rule **nodes will always adopt the longest known chain of blocks** as their active blockchain.
+This disagreement is resolved when the next block is mined. The next block will be built on top of *one* of these blocks, creating a new [longest chain](blockchain/longest-chain.md) of blocks, and as a rule **nodes will always adopt the longest known chain of blocks** as their active blockchain.
 
-As a result, nodes with the shorter chain will perform a [chain reorganization](/docs/technical/blockchain/chain-reorganization.md) to move out blocks from their old active chain in favor of blocks that make up a new longer chain.
+As a result, nodes with the shorter chain will perform a [chain reorganization](blockchain/chain-reorganization.md) to move out blocks from their old active chain in favor of blocks that make up a new longer chain.
 
-[<img src="../images/diagrams_png_blockchain-fork-reorg.png" alt="Diagram showing a temporary fork in the blockchain being resolved via a chain reorganization." width="983" height="582" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg.png)
+[<img src="../images/diagrams_png_blockchain-fork-reorg.png" alt="Diagram showing a temporary fork in the blockchain being resolved via a chain reorganization." width="983" height="582" />](../images/diagrams_png_blockchain-fork-reorg.png)
 
 
 A fork is resolved when a new block is mined, as this will create a new longest chain.
@@ -184,31 +184,31 @@ So although there may be disagreements across the network about which block(s) b
 
 **A temporary fork like this is rare.** This happens about once a month (roughly), and usually only affects the top block on the blockchain.
 
-## [Longest Chain](/docs/technical/blockchain/longest-chain.md)
+## [Longest Chain](blockchain/longest-chain.md)
 
 Can blocks in the blockchain be replaced?
 
 Due to the way the blockchain is built, it's **possible for blocks at the top of the chain to be replaced**.
 
-Nodes always adopt the [longest chain](/docs/technical/blockchain/longest-chain.md) as the "true" version of the blockchain. Therefore, you could always try and build a new longer chain of blocks to replace an existing one, and every node on the network will adopt it.
+Nodes always adopt the [longest chain](blockchain/longest-chain.md) as the "true" version of the blockchain. Therefore, you could always try and build a new longer chain of blocks to replace an existing one, and every node on the network will adopt it.
 
 As a result, this allows you to "undo" or reverse a bitcoin transaction from the blockchain.
 
-[<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg-longest-chain.png)
+[<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](../images/diagrams_png_blockchain-fork-reorg-longest-chain.png)
 
 
 If you build a new longest chain of blocks, other nodes will adopt it as their blockchain.
 
 However, the problem is that all miners are incentivized to always be building on top of the longest known chain. This means that the combined processing power of miners on the network will be focused on building one single chain, which will be built faster than any chain you could build on your own.
 
-[<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-fork-reorg-longest-chain-network-power.png)
+[<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png)
 
 
 Miners naturally work to extend the current longest chain.
 
 In other words, the combined processing power of the network working to build the blockchain helps to protect blocks (and transactions) that have already been mined on to the blockchain.
 
-So the only way you could perform an intentional chain reorganization (to "undo" a transaction in an existing block) would be to have more processing power than every other miner combined so that you could out-mine the network and build a longer chain for everyone to adopt. This is referred to as a "[51% Attack](/docs/technical/blockchain/51-attack.md)".
+So the only way you could perform an intentional chain reorganization (to "undo" a transaction in an existing block) would be to have more processing power than every other miner combined so that you could out-mine the network and build a longer chain for everyone to adopt. This is referred to as a "[51% Attack](blockchain/51-attack.md)".
 
 Nobody has performed a successful 51% attack on the Bitcoin blockchain.
 
@@ -224,22 +224,22 @@ If you're running a Bitcoin Core node, the blockchain files can be found in the 
   + `C:\Users\[username]\AppData\Roaming\Bitcoin\blocks\` ([v27.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.2.md) and below)
   + `C:\Users\[username]\AppData\Local\Bitcoin\blocks\` ([v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md) onwards)
 
-The blockchain is split into multiple files named `blk00000.dat`, `blk00001.dat`, `blk00002.dat`, and so on. This is because it's easier to work with multiple small files than it is to work with one giant file. See [blk.dat](/docs/technical/block/blkdat.md) for details.
+The blockchain is split into multiple files named `blk00000.dat`, `blk00001.dat`, `blk00002.dat`, and so on. This is because it's easier to work with multiple small files than it is to work with one giant file. See [blk.dat](block/blkdat.md) for details.
 
 ## Summary
 
-[<img src="../images/technical_blockchain_animation.png" alt="Diagram showing a blockchain being built by nodes across a network of computers." width="1058" height="595" />](/docs/technical/blockchain/blockchain.gif.md)
+[<img src="../images/technical_blockchain_animation.png" alt="Diagram showing a blockchain being built by nodes across a network of computers." width="1058" height="595" />](../images/technical_blockchain_animation.png)
 
 
 Click on the image to see a nice and slow visualization of a blockchain being built over time, including a chain reorganization.
 
-The blockchain is permanent storage for bitcoin [transactions](/docs/technical/transaction.md). New transactions are added to the file in [blocks](/docs/technical/block.md), and these blocks are built on top of each other to create a *chain*.
+The blockchain is permanent storage for bitcoin [transactions](transaction.md). New transactions are added to the file in [blocks](block.md), and these blocks are built on top of each other to create a *chain*.
 
-New blocks are added to the blockchain through [mining](/docs/technical/mining.md), which involves the use of computer processing power. This means it takes energy to mine a block, but any node can work to try and add the next block on to the chain.
+New blocks are added to the blockchain through [mining](mining.md), which involves the use of computer processing power. This means it takes energy to mine a block, but any node can work to try and add the next block on to the chain.
 
-When a new block is mined, it will be relayed across the [network](/docs/technical/networking.md), which nodes will verify and add on to their chain. This makes the blockchain a constantly growing ledger of transactions, distributed across multiple computers on a network.
+When a new block is mined, it will be relayed across the [network](networking.md), which nodes will verify and add on to their chain. This makes the blockchain a constantly growing ledger of transactions, distributed across multiple computers on a network.
 
-Nodes always adopt the [longest chain](/docs/technical/blockchain/longest-chain.md) of blocks as the active version of the blockchain, which resolves disagreements about which blocks belong at the top of the chain. This also protects blocks that are already in the blockchain, as it would require large amounts of energy to build a chain that replaces blocks lower down in the chain.
+Nodes always adopt the [longest chain](blockchain/longest-chain.md) of blocks as the active version of the blockchain, which resolves disagreements about which blocks belong at the top of the chain. This also protects blocks that are already in the blockchain, as it would require large amounts of energy to build a chain that replaces blocks lower down in the chain.
 
 The mechanism of mining and adopting the longest chain **allows multiple computers over a network to agree on the same set of blocks and transactions**, whilst also making it difficult for anyone to make historic changes to the blocks (and therefore transactions) in the blockchain.
 

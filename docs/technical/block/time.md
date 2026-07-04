@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_block-time.png" alt="Diagram showing the location of the time field inside the block header." width="609" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-time.png)
+[<img src="../../images/diagrams_png_block-time.png" alt="Diagram showing the location of the time field inside the block header." width="609" height="291" />](../../images/diagrams_png_block-time.png)
 
-[区块头](/docs/technical/block.md#header)中的 time 字段指示了**区块被创建的粗略时间**。
+[区块头](../block.md#header)中的 time 字段指示了**区块被创建的粗略时间**。
 
-矿工在构建其[候选区块](/docs/technical/mining/candidate-block.md)时，会将当前时间存入区块头。它包含一个 Unix 时间戳 (Unix Timestamp，即自 1970 年 1 月 1 日以来的秒数)，这是计算机程序通常用来存储特定时间点的形式。
+矿工在构建其[候选区块](../mining/candidate-block.md)时，会将当前时间存入区块头。它包含一个 Unix 时间戳 (Unix Timestamp，即自 1970 年 1 月 1 日以来的秒数)，这是计算机程序通常用来存储特定时间点的形式。
 
 例如，[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)包含时间戳 1231006505，代表日期 *2009 年 1 月 3 日 18:15:05*。
 
@@ -22,11 +22,11 @@ Unix 时间
 
 区块时间是否影响区块的顺序？
 
-时间戳**不会**影响[区块链](/docs/technical/blockchain.md)中区块的顺序。
+时间戳**不会**影响[区块链](../blockchain.md)中区块的顺序。
 
 事实上，一个区块的时间戳完全有可能早于它所构建在其上的区块。例如：
 
-* 区块 [790,402](/explorer/790402#blockchain) = 2023 年 5 月 19 日 04:22（比[前一个区块](/docs/technical/block/previous-block.md)“早”了 2 分钟）
+* 区块 [790,402](/explorer/790402#blockchain) = 2023 年 5 月 19 日 04:22（比[前一个区块](previous-block.md)“早”了 2 分钟）
 * 区块 [790,401](/explorer/790401#blockchain) = 2023 年 5 月 19 日 04:24
 
 另一个特别极端的例子是 2011 年的一个区块，其时间比前一个区块“早”了近 2 个小时：
@@ -42,7 +42,7 @@ Unix 时间
 
 区块时间的最大和最小值是多少？
 
-[<img src="../../images/diagrams_png_block-time-range.png" alt="Diagram showing the valid time range that can be placed in the block header." width="355" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/block-time-range.png)
+[<img src="../../images/diagrams_png_block-time-range.png" alt="Diagram showing the valid time range that can be placed in the block header." width="355" height="639" />](../../images/diagrams_png_block-time-range.png)
 
 时间戳必须在特定范围内才有效：
 
@@ -69,9 +69,9 @@ Unix 时间
 
 网络调整时间是您的本地时间加上您所连接的所有节点的中间偏移量。
 
-[<img src="../../images/diagrams_png_networking-network-adjusted-time.png" alt="Diagram showing the network average time being calculated based on the timestamps sent by connected nodes" width="786" height="404" />](https://static.learnmeabitcoin.com/diagrams/png/networking-network-adjusted-time.png)
+[<img src="../../images/diagrams_png_networking-network-adjusted-time.png" alt="Diagram showing the network average time being calculated based on the timestamps sent by connected nodes" width="786" height="404" />](../../images/diagrams_png_networking-network-adjusted-time.png)
 
-节点在相互[连接](/docs/technical/networking.md)时，会发送其本地时间的 UTC 时间戳。
+节点在相互[连接](../networking.md)时，会发送其本地时间的 UTC 时间戳。
 
 例如：
 
@@ -114,9 +114,9 @@ Nodes are usually connected to more than 7 peers at a time.
 
 ### 目标重新计算
 
-[<img src="../../images/diagrams_png_target-period.png" alt="Diagram showing a target recalculation based on the time between the last 2015 blocks." width="983" height="189" />](https://static.learnmeabitcoin.com/diagrams/png/target-period.png)
+[<img src="../../images/diagrams_png_target-period.png" alt="Diagram showing a target recalculation based on the time between the last 2015 blocks." width="983" height="189" />](../../images/diagrams_png_target-period.png)
 
-区块头中的时间戳用于计算在 2016 个区块的周期内，区块的挖掘速度是快于还是慢于预期，并据此调整[target](/docs/technical/mining/target.md)。
+区块头中的时间戳用于计算在 2016 个区块的周期内，区块的挖掘速度是快于还是慢于预期，并据此调整[target](../mining/target.md)。
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标调整 (Target Adjustment)
 
@@ -162,9 +162,9 @@ Nodes are usually connected to more than 7 peers at a time.
 
 ### 交易锁定时间 (Transaction Locktime)
 
-[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing the locktime being used to prevent a transaction being mined until a specific time in the future." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-locktime.png)
+[<img src="../../images/diagrams_png_transaction-locktime.png" alt="Diagram showing the locktime being used to prevent a transaction being mined until a specific time in the future." width="722" height="336" />](../../images/diagrams_png_transaction-locktime.png)
 
-交易可以包含特定的 [locktime](/docs/technical/transaction/locktime.md)，以防止在它小于区块头中有效 time 字段的设定之前被挖掘到区块中。
+交易可以包含特定的 [locktime](../transaction/locktime.md)，以防止在它小于区块头中有效 time 字段的设定之前被挖掘到区块中。
 
 ## 注意事项
 

@@ -1,6 +1,6 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-你已经[购买了一些比特币](/docs/beginners/exchanges.md)，拥有的一定数量可能开始让你感到有些焦虑。
+你已经[购买了一些比特币](exchanges.md)，拥有的一定数量可能开始让你感到有些焦虑。
 
 你能做些什么来保护它们呢？
 
@@ -8,7 +8,7 @@
 
 ## 1. 硬件钱包
 
-[<img src="../images/diagrams_png_beginners-wallets-hardware-wallet.png" alt="展示硬件钱包没有直接互联网连接的图表。" width="722" height="318" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-hardware-wallet.png)
+[<img src="../images/diagrams_png_beginners-wallets-hardware-wallet.png" alt="展示硬件钱包没有直接互联网连接的图表。" width="722" height="318" />](../images/diagrams_png_beginners-wallets-hardware-wallet.png)
 
 首先也是最重要的一步，保护比特币的最大举措是获取一个*硬件钱包*。
 
@@ -19,11 +19,11 @@
 [Trezor](https://trezor.io/) | 初学者 | 2014
 [Coldcard](https://coldcard.com/) | 高级 | 2018
 
-硬件钱包是一个在你想发送和接收比特币时连接到计算机的小设备。然而，**所有的[私钥](/docs/technical/keys/private-key.md)都存储在设备内部，永远不会暴露给互联网**。
+硬件钱包是一个在你想发送和接收比特币时连接到计算机的小设备。然而，**所有的[私钥](../technical/keys/private-key.md)都存储在设备内部，永远不会暴露给互联网**。
 
 因此，你将私钥与互联网*断开*连接，从而保护你的比特币免受数字攻击。因此，别人窃取你比特币的唯一方法就是获取你设备（或种子）的物理访问权限。
 
-[软件钱包](/docs/beginners/wallets.md#type-software-wallet)对于日常使用很方便，但如果你在日常使用的计算机上使用软件钱包，你就会让比特币容易受到恶意软件和病毒的攻击。虽然这并不保证你的软件钱包里的比特币一定会被盗，但*存在这种可能*就已经足够让你强烈考虑投资一个硬件钱包来存储比特币了。
+[软件钱包](wallets.md#type-software-wallet)对于日常使用很方便，但如果你在日常使用的计算机上使用软件钱包，你就会让比特币容易受到恶意软件和病毒的攻击。虽然这并不保证你的软件钱包里的比特币一定会被盗，但*存在这种可能*就已经足够让你强烈考虑投资一个硬件钱包来存储比特币了。
 
 所以，如果你对持有的比特币数量感到焦虑，硬件钱包就是解决方案。
 
@@ -31,12 +31,12 @@
 
 ## 2. 密码短语 (Passphrase)
 
-[<img src="../images/beginners_security_passphrase.gif" alt="展示由种子加密码短语生成的私钥和地址的图表。" width="533" height="442" />](/docs/beginners/security/passphrase.gif.md)
+[<img src="../images/beginners_security_passphrase.gif" alt="展示由种子加密码短语生成的私钥和地址的图表。" width="533" height="442" />](../images/beginners_security_passphrase.gif)
 
 
 使用密码短语允许你从初始种子创建一个完全不同的钱包。
 
-结合使用密码短语与你的[种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md)是为比特币添加**额外安全层**的一种简单而有效的方法。
+结合使用密码短语与你的[种子](../technical/keys/hd-wallets/mnemonic-seed.md)是为比特币添加**额外安全层**的一种简单而有效的方法。
 
 如果你使用密码短语，别人窃取你比特币的唯一方法就是同时获取你的种子*和*密码短语。因此，如果有人偶然发现了你的种子，除非他们也能找到你的密码短语，否则他们将无法恢复你的私钥。
 
@@ -366,7 +366,7 @@ PBKDF2
 
 考虑将你的种子存储在某些*坚固*的介质上是一个好主意。
 
-[设置钱包](/docs/beginners/wallets.md#setup)的第一步是将你的种子写在纸上。这是一个好建议，因为这意味着你只会拥有一份种子的*物理*副本，从而远离互联网以及可能来自互联网的所有攻击。
+[设置钱包](wallets.md#setup)的第一步是将你的种子写在纸上。这是一个好建议，因为这意味着你只会拥有一份种子的*物理*副本，从而远离互联网以及可能来自互联网的所有攻击。
 
 然而，如果你的房子着火了，纸张就起不到作用了。
 
@@ -451,7 +451,7 @@ PBKDF2
 
 #### 计算方法
 
-两种不同大小的种子密句包含以下[位](/docs/technical/general/bytes.md#bit)的熵：
+两种不同大小的种子密句包含以下[位](../technical/general/bytes.md#bit)的熵：
 
 ```
 12 words = 128 bits
@@ -467,7 +467,7 @@ PBKDF2
 
 这些数字是通过将 2 提高到熵的位数次方来计算的（例如 `2^128`）。
 
-现在，假设比特币网络上所有矿工的综合[算力](/docs/technical/blockchain/51-attack.md)构成了世界上最强大的“计算机”（或至少是最强大的之一）。凭借这些算力，我们可以看到这台“计算机”每秒能够执行这么多次哈希计算：
+现在，假设比特币网络上所有矿工的综合[算力](../technical/blockchain/51-attack.md)构成了世界上最强大的“计算机”（或至少是最强大的之一）。凭借这些算力，我们可以看到这台“计算机”每秒能够执行这么多次哈希计算：
 
 ```
 Bitcoin hashes per second = 935160135489377927168
@@ -475,7 +475,7 @@ Bitcoin hashes per second = 935160135489377927168
 
 你可以使用 `bitcoin-cli getmininginfo` 获取此数据。
 
-此外，实际上你需要执行 [2,048 次哈希来生成每个单独的种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed)。利用这些信息，我们可以用*每秒哈希次数*除以生成每个种子所需的哈希次数，来计算世界上最快的计算机每秒可以生成多少个种子：
+此外，实际上你需要执行 [2,048 次哈希来生成每个单独的种子](../technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed)。利用这些信息，我们可以用*每秒哈希次数*除以生成每个种子所需的哈希次数，来计算世界上最快的计算机每秒可以生成多少个种子：
 
 ```
 seeds per second = 456621159906922816
@@ -506,7 +506,7 @@ seeds per second = 456621159906922816
 
 因此，虽然 12 个单词和 24 个单词的种子在暴力破解所需时间上存在显著差异，但从实际意义上讲，差别只是从“不可能”变成了“更不可能”。
 
-* 我假设执行 [2048 次助记句哈希来计算每个种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed)比遍历所有原始 512 位种子的可能组合更快。
+* 我假设执行 [2048 次助记句哈希来计算每个种子](../technical/keys/hd-wallets/mnemonic-seed.md#mnemonic-to-seed)比遍历所有原始 512 位种子的可能组合更快。
 * 这些计算假设你使用的是没有密码短语的种子密句。如果你添加了密码短语，则会增加更多熵，破解所需时间也会更长。
 
 ##### 代码

@@ -1,18 +1,18 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-区块链是一个包含比特币[交易](/docs/beginners/guide/transactions.md)列表的文件。
+区块链是一个包含比特币[交易](transactions.md)列表的文件。
 
-[<img src="../../images/beginners_guide_blockchain_01-blockchain_file.png" alt="展示区块链作为计算机上一个文件的图表。" width="194" height="237" />](/docs/beginners/guide/blockchain/01-blockchain_file.png.md)
+[<img src="../../images/beginners_guide_blockchain_01-blockchain_file.png" alt="展示区块链作为计算机上一个文件的图表。" width="194" height="237" />](../../images/beginners_guide_blockchain_01-blockchain_file.png)
 
-[比特币网络](/docs/beginners/guide/network.md)上的每个人都共享这个文件的一个副本，它会定期用最新的交易进行更新。
+[比特币网络](network.md)上的每个人都共享这个文件的一个副本，它会定期用最新的交易进行更新。
 
-[<img src="../../images/beginners_guide_blockchain_02-bitcoin_network.png" alt="展示区块链作为网络上计算机共享的文件的图表。" width="481" height="544" />](/docs/beginners/guide/blockchain/02-bitcoin_network.png.md)
+[<img src="../../images/beginners_guide_blockchain_02-bitcoin_network.png" alt="展示区块链作为网络上计算机共享的文件的图表。" width="481" height="544" />](../../images/beginners_guide_blockchain_02-bitcoin_network.png)
 
 ## 为什么区块链很重要？
 
 区块链告诉你**每个人拥有多少比特币**。
 
-这是因为拥有*完整的交易列表*允许你计算出每个[地址](/docs/technical/keys/address.md)处有多少比特币。因此，你可以搞清楚每个人拥有多少比特币。
+这是因为拥有*完整的交易列表*允许你计算出每个[地址](../../technical/keys/address.md)处有多少比特币。因此，你可以搞清楚每个人拥有多少比特币。
 
 所以区块链就像是一个账簿，或者说*分类账*。
 
@@ -24,7 +24,7 @@
 
 此外，这些区块被*链接*在一起，这可以防止任何人修改已经存在于链中的区块（因为任何修改都会破坏它们之间的链接）。所以是**链接**的区块，或者称之为区块**链**。
 
-[<img src="../../images/beginners_guide_blockchain_03-blocks_chains.png" alt="展示区块链作为一系列链接在一起的区块（交易）的图表。" width="515" height="433" />](/docs/beginners/guide/blockchain/03-blocks_chains.png.md)
+[<img src="../../images/beginners_guide_blockchain_03-blocks_chains.png" alt="展示区块链作为一系列链接在一起的区块（交易）的图表。" width="515" height="433" />](../../images/beginners_guide_blockchain_03-blocks_chains.png)
 
 区块的*链式连接*是一个安全特性。这使得任何人在不引起注意的情况下篡改区块链变得不可能。
 
@@ -32,9 +32,9 @@
 
 ## 区块链是如何共享的？
 
-区块链由[比特币网络](/docs/beginners/guide/network.md)上的[节点](/docs/beginners/guide/node.md)共享，类似于在 [BitTorrent 网络](https://en.wikipedia.org/wiki/BitTorrent)上共享一个完全合法且没有版权争议的视频文件。
+区块链由[比特币网络](network.md)上的[节点](node.md)共享，类似于在 [BitTorrent 网络](https://en.wikipedia.org/wiki/BitTorrent)上共享一个完全合法且没有版权争议的视频文件。
 
-[<img src="../../images/beginners_guide_blockchain_04-blocks_sharing.png" alt="展示区块链在网络上与新区块共享并更新的图表。" width="481" height="544" />](/docs/beginners/guide/blockchain/04-blocks_sharing.png.md)
+[<img src="../../images/beginners_guide_blockchain_04-blocks_sharing.png" alt="展示区块链在网络上与新区块共享并更新的图表。" width="481" height="544" />](../../images/beginners_guide_blockchain_04-blocks_sharing.png)
 
 所以，如果我的文件没有包含最新的交易区块，有人会把它们分享给我，让我保持最新状态。
 
@@ -70,6 +70,6 @@ Mac
 
 实际的区块链数据存储在名称类似 `blk00000.dat` 的文件中。还有 `blk00001.dat`、`blk00002.dat` 等等。将区块链分割成多个文件，比拥有一个庞大的单文件更容易处理。
 
-然而，这些 [.dat 文件](/docs/technical/block/blkdat.md)包含的数据是设计给计算机阅读的，所以如果你用文本编辑器打开它，你会看到一堆乱码。但请相信我，所有的交易都在里面。
+然而，这些 [.dat 文件](../../technical/block/blkdat.md)包含的数据是设计给计算机阅读的，所以如果你用文本编辑器打开它，你会看到一堆乱码。但请相信我，所有的交易都在里面。
 
 如果你想浏览可读版本的区块链，可以试试我的[区块链浏览器](/explorer/)。我基本上是从原始区块链文件（和你拥有的副本完全相同）中提取数据，对其进行*解析*，然后显示在网页上。

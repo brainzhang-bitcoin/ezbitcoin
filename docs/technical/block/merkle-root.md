@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_block-merkle-root.png" alt="An overview of the structure of a merkle tree and the merkle root being placed in the block header." width="767" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root.png)
+[<img src="../../images/diagrams_png_block-merkle-root.png" alt="An overview of the structure of a merkle tree and the merkle root being placed in the block header." width="767" height="310" />](../../images/diagrams_png_block-merkle-root.png)
 
-Merkle Root 是通过将成对的 [TXID](/docs/technical/transaction/input/txid.md) 组合进行[哈希运算](/docs/technical/cryptography/hash-function.md)创建的，以获取一个简短且独特的**指纹，代表[区块](/docs/technical/block.md)中的所有[交易](/docs/technical/transaction.md)**。
+Merkle Root 是通过将成对的 [TXID](../transaction/input/txid.md) 组合进行[哈希运算](../cryptography/hash-function.md)创建的，以获取一个简短且独特的**指纹，代表[区块](../block.md)中的所有[交易](../transaction.md)**。
 
-这个 Merkle Root 被放置在[区块头](/docs/technical/block.md#header)中，以防止区块内容随后被篡改。因此，如果有人试图从区块中添加或删除交易，区块内交易的 Merkle Root 将不再与区块头内的 Merkle Root 相匹配。
+这个 Merkle Root 被放置在[区块头](../block.md#header)中，以防止区块内容随后被篡改。因此，如果有人试图从区块中添加或删除交易，区块内交易的 Merkle Root 将不再与区块头内的 Merkle Root 相匹配。
 
 换句话说，Merkle Root 是连接区块头与区块中交易的纽带。
 
@@ -16,7 +16,7 @@ TXID 列表
 
 TXID 列表，以*空格*、*逗号*或*换行符*分隔。引号和括号会被忽略。
 
-TXID 应以[反向字节顺序](/docs/technical/general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算 Merkle Root 之前，它们会被转换为[自然字节顺序](/docs/technical/general/byte-order.md#natural-byte-order)。
+TXID 应以[反向字节顺序](../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算 Merkle Root 之前，它们会被转换为[自然字节顺序](../general/byte-order.md#natural-byte-order)。
 
 
 
@@ -46,7 +46,7 @@ Merkle Root 是通过在树状结构中对 TXID 进行哈希运算创建的。
 2. 提取得到的哈希值，并将它们成对组合并哈希。
 3. 重复此过程，直到只剩下一个哈希值。
 
-[<img src="../../images/diagrams_png_block-merkle-root-technical-diagram.png" alt="Technical diagram of a merkle tree structure." width="684" height="280" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-technical-diagram.png)
+[<img src="../../images/diagrams_png_block-merkle-root-technical-diagram.png" alt="Technical diagram of a merkle tree structure." width="684" height="280" />](../../images/diagrams_png_block-merkle-root-technical-diagram.png)
 
 ## 代码
 
@@ -112,7 +112,7 @@ result = merkleroot(txids)
 puts result.scan(/../).reverse.join('') #=> f3e94742aca4b5ef85488dc37c06c3282295ffec960994b2c0d5ac2a25a95766
 ```
 
-**[字节顺序](/docs/technical/general/byte-order.md):** 在创建 Merkle Root 时，TXID 必须处于自然字节顺序。生成的 Merkle Root 也将处于自然字节顺序，但在[区块链浏览器](/explorer/)上会以反向字节顺序显示。
+**[字节顺序](../general/byte-order.md):** 在创建 Merkle Root 时，TXID 必须处于自然字节顺序。生成的 Merkle Root 也将处于自然字节顺序，但在[区块链浏览器](/explorer/)上会以反向字节顺序显示。
 
 如果区块中只有*一笔*交易，则 Merkle Root 将与该交易的 TXID 相同。
 
@@ -124,11 +124,11 @@ puts result.scan(/../).reverse.join('') #=> f3e94742aca4b5ef85488dc37c06c3282295
 
 我的意思是，我们*本来*可以一次性对所有 TXID 进行哈希。那将为区块中的所有交易创建一个指纹，并且这也是可行的。但随后如果我们想知道某个特定的 TXID 是否用于创建该指纹，我们将需要知道**所有**其他 TXID：
 
-[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-hash.png" alt="Without a merkle tree you would need all of the TXIDs in the block to recreate the final hash." width="756" height="333" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-hash.png)
+[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-hash.png" alt="Without a merkle tree you would need all of the TXIDs in the block to recreate the final hash." width="756" height="333" />](../../images/diagrams_png_block-merkle-root-fingerprint-hash.png)
 
 这就是 Merkle 树的用武之地。如果我们改用 *Merkle 树*，我们只需要知道沿着树路径的**一些** *分支*，就可以验证一个 TXID 是否用于创建根哈希：
 
-[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree.png" alt="With a merkle tree you only need the specific branches (the merkle proof) to reconstruct the final hash (the merkle root)" width="756" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree.png)
+[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree.png" alt="With a merkle tree you only need the specific branches (the merkle proof) to reconstruct the final hash (the merkle root)" width="756" height="367" />](../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree.png)
 
 这一路径被称为 *Merkle 证明 (merkle proof)*。
 
@@ -136,7 +136,7 @@ puts result.scan(/../).reverse.join('') #=> f3e94742aca4b5ef85488dc37c06c3282295
 
 而如果您在处理包含 2,000 多笔交易的区块，Merkle 树比将所有 TXID 一次性哈希在一起要高效得多。
 
-[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree-big.png" alt="Diagram showing how merkle trees save on bandwidth when verifying the presence of a transaction in larger blocks." width="979" height="794" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-fingerprint-merkle-tree-big.png)
+[<img src="../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree-big.png" alt="Diagram showing how merkle trees save on bandwidth when verifying the presence of a transaction in larger blocks." width="979" height="794" />](../../images/diagrams_png_block-merkle-root-fingerprint-merkle-tree-big.png)
 
 ### Merkle 证明示例
 
@@ -186,9 +186,9 @@ merkle root
 
 得益于 Merkle 树，您可以创建*轻量级钱包*（或“瘦节点”），它们可以验证交易是否已进入区块，**而无需下载和存储整个区块链的开销**。
 
-这些钱包只需下载并存储[区块头](/docs/technical/block.md#header)（每个仅 80 字节，而不是 1 MB+ 的区块），并使用其中的 Merkle Root（以及从[全归档节点](/docs/technical/networking/node.md#archival-node)接收到的 *Merkle 证明*）来验证交易是否已被写入区块。
+这些钱包只需下载并存储[区块头](../block.md#header)（每个仅 80 字节，而不是 1 MB+ 的区块），并使用其中的 Merkle Root（以及从[全归档节点](../networking/node.md#archival-node)接收到的 *Merkle 证明*）来验证交易是否已被写入区块。
 
-[<img src="../../images/diagrams_png_block-merkle-root-thin-nodes.png" alt="Block headers are just 80 bytes, whereas each block can be 1,000,000+ bytes." width="756" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root-thin-nodes.png)
+[<img src="../../images/diagrams_png_block-merkle-root-thin-nodes.png" alt="Block headers are just 80 bytes, whereas each block can be 1,000,000+ bytes." width="756" height="329" />](../../images/diagrams_png_block-merkle-root-thin-nodes.png)
 
 轻量级钱包的一个流行示例是 [Electrum](https://electrum.org)。
 

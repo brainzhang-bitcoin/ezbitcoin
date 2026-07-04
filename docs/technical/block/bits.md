@@ -1,10 +1,10 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_block-bits.png" alt="Diagram showing the target being stored in the bits field of a block header." width="646" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/block-bits.png)
+[<img src="../../images/diagrams_png_block-bits.png" alt="Diagram showing the target being stored in the bits field of a block header." width="646" height="291" />](../../images/diagrams_png_block-bits.png)
 
-bits 字段包含[target](/docs/technical/mining/target.md)的紧凑表示形式。
+bits 字段包含[target](../mining/target.md)的紧凑表示形式。
 
-它指示了区块哈希（[block hash](/docs/technical/block/hash.md)）必须低于多少才能被[开采](/docs/technical/mining.md)，并且它必须表示比特币[区块链](/docs/technical/blockchain.md)中该区块高度的正确目标值。
+它指示了区块哈希（[block hash](hash.md)）必须低于多少才能被[开采](../mining.md)，并且它必须表示比特币[区块链](../blockchain.md)中该区块高度的正确目标值。
 
 当前
 
@@ -28,7 +28,7 @@ Bits`0 bytes`
 
 bits 字段是如何表示目标的？
 
-[<img src="../../images/diagrams_png_block-bits-to-target.png" alt="Diagram showing the exponent and coefficient of the bits field and how they convert to a full 32-byte target value." width="832" height="223" />](https://static.learnmeabitcoin.com/diagrams/png/block-bits-to-target.png)
+[<img src="../../images/diagrams_png_block-bits-to-target.png" alt="Diagram showing the exponent and coefficient of the bits field and how they convert to a full 32-byte target value." width="832" height="223" />](../../images/diagrams_png_block-bits-to-target.png)
 
 bits 字段包含两部分：
 
@@ -123,7 +123,7 @@ Bits: 1800eb30
 
 参见此处：[Why 1D00FFFF and not 1CFFFFFF as target in genesis block](https://bitcoin.stackexchange.com/questions/113535/why-1d00ffff-and-not-1cffffff-as-target-in-genesis-block)
 
-无论如何，这种目标到 bits 的转换就是矿工在进行[目标重新计算](/docs/technical/mining/target.md#adjustment)后为他们的区块头创建 bits 字段时所做的事情。
+无论如何，这种目标到 bits 的转换就是矿工在进行[目标重新计算](../mining/target.md#adjustment)后为他们的区块头创建 bits 字段时所做的事情。
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标调整 (Target Adjustment)
 
@@ -204,7 +204,7 @@ Target: 0000000065465700000000000000000000000000000000000000000000000000
 
 然而，中本聪并没有必要在区块头中包含目标的紧凑表示形式。节点会在内部计算目标值，因此在区块头中包含目标是冗余的。
 
-尽管如此，中本聪还是决定这么做，可能是为了某种便利。移除它需要进行一次[硬分叉](/docs/technical/blockchain/hard-fork.md)，并且这样做不值得，所以这就是为什么它今天仍然是区块头的一部分。
+尽管如此，中本聪还是决定这么做，可能是为了某种便利。移除它需要进行一次[硬分叉](../blockchain/hard-fork.md)，并且这样做不值得，所以这就是为什么它今天仍然是区块头的一部分。
 
 ## 术语
 
@@ -212,7 +212,7 @@ Target: 0000000065465700000000000000000000000000000000000000000000000000
 
 我不知道为什么这个字段被称为 "bits"。中本聪从未解释过他们选择这个字段名称背后的原因。
 
-但这有点尴尬，因为“[bit](/docs/technical/general/bytes.md#bit)”（位）是用于最小数据单位的单词（即一个字节有 8 位），这有点令人困惑。
+但这有点尴尬，因为“[bit](../general/bytes.md#bit)”（位）是用于最小数据单位的单词（即一个字节有 8 位），这有点令人困惑。
 
 也许是因为他们从目标中存储了*一些位*（而不是完整的精度），所以 "bits" 是该字段的一个快速且简单的名称。我的意思是，在编程时我们都使用快速的变量名，而它们并不总是完美的。
 

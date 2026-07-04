@@ -1,14 +1,14 @@
 <img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../../images/diagrams_png_schnorr-equations-summary.png" alt="Annotated summary of the signing and verifying equations for Schnorr signatures." width="665" height="359" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equations-summary.png)
+[<img src="../../../images/diagrams_png_schnorr-equations-summary.png" alt="Annotated summary of the signing and verifying equations for Schnorr signatures." width="665" height="359" />](../../../images/diagrams_png_schnorr-equations-summary.png)
 
-在创建和验证[数字签名](/docs/technical/keys/signature.md)方面，Schnorr 签名优于 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)。
+在创建和验证[数字签名](../../keys/signature.md)方面，Schnorr 签名优于 [ECDSA](ecdsa.md)。
 
 它们比 ECDSA 更简单、更高效且更安全。
 
 此外，更简单的数学运算还允许您将签名*相加*，以及同时[验证多个签名](#batch-verify)。这是 ECDSA 所不具备的两个功能。
 
-无论如何，作为 [Taproot](/docs/technical/upgrades/taproot.md) 升级的一部分，Schnorr 签名于 2021 年被引入比特币中，目前用于解锁 [P2TR](/docs/technical/script/p2tr.md) 锁定脚本。
+无论如何，作为 [Taproot](../../upgrades/taproot.md) 升级的一部分，Schnorr 签名于 2021 年被引入比特币中，目前用于解锁 [P2TR](../../script/p2tr.md) 锁定脚本。
 
 在本页中，我将向您展示[如何实现](#implementation)比特币中的 Schnorr 签名，并简要解释[它们的工作原理](#basics)。
 
@@ -329,9 +329,9 @@ puts " result:      fail" if point3[:x] != int(r)
 
 如何创建 Schnorr 签名？
 
-首先，Schnorr 签名使用**椭圆曲线密码学**。在实现 Schnorr 签名之前，没有必要非得去弄懂[椭圆曲线数学](/docs/technical/cryptography/elliptic-curve.md#mathematics)，但搞懂它会有所帮助。
+首先，Schnorr 签名使用**椭圆曲线密码学**。在实现 Schnorr 签名之前，没有必要非得去弄懂[椭圆曲线数学](../elliptic-curve.md#mathematics)，但搞懂它会有所帮助。
 
-无论如何，Schnorr 签名使用与 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 相同的 *Secp256k1* 椭圆曲线：
+无论如何，Schnorr 签名使用与 [ECDSA](ecdsa.md) 相同的 *Secp256k1* 椭圆曲线：
 
 Secp256k1 参数
 
@@ -353,7 +353,7 @@ $G = {
 }
 ```
 
-此外，您还需要能够在椭圆曲线上**点乘**（与 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 相同）：
+此外，您还需要能够在椭圆曲线上**点乘**（与 [ECDSA](ecdsa.md) 相同）：
 
 椭圆曲线数学
 
@@ -452,7 +452,7 @@ end
 1. [私钥](#private-key)
 2. [公钥](#public-key)
 
-这些[私钥](/docs/technical/keys/private-key.md)和[公钥](/docs/technical/keys/public-key.md)与您已在比特币中生成的完全相同。
+这些[私钥](../../keys/private-key.md)和[公钥](../../keys/public-key.md)与您已在比特币中生成的完全相同。
 
 #### 1. 私钥 (Private Key)
 
@@ -1086,7 +1086,7 @@ y:
 
 椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标以及 y 坐标是奇数还是偶数即可。
 
-在 [Taproot](/docs/technical/upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
+在 [Taproot](../../upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
 
 `0 bytes`
 
@@ -1104,7 +1104,7 @@ d02372c4789c6a1d6cf6cf137cc708153a4dbf70ec3ecd0b578476c5a2b4be56
 
 **比特币中 Schnorr 签名的公钥总是使用 *偶数 (even)* y 坐标**。因此，编码的公钥中不包含关于 y 坐标正负号的信息。
 
-您可以将典型的[压缩公钥](/docs/technical/keys/public-key.md#compressed)转换为用于 Schnorr 签名的公钥，只需删除第一个字节（该字节用于指示 y 坐标的极性）：
+您可以将典型的[压缩公钥](../../keys/public-key.md#compressed)转换为用于 Schnorr 签名的公钥，只需删除第一个字节（该字节用于指示 y 坐标的极性）：
 
 ```
 compressed public key = 03d02372c4789c6a1d6cf6cf137cc708153a4dbf70ec3ecd0b578476c5a2b4be56
@@ -1534,7 +1534,7 @@ R[x]:
 
 0 秒
 
-[<img src="../../../images/diagrams_png_schnorr-verify.png" alt="Technical diagram showing how to verify a Schnorr signature in Bitcoin." width="787" height="979" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-verify.png)
+[<img src="../../../images/diagrams_png_schnorr-verify.png" alt="Technical diagram showing how to verify a Schnorr signature in Bitcoin." width="787" height="979" />](../../../images/diagrams_png_schnorr-verify.png)
 
 #### 验证代码
 
@@ -1680,14 +1680,14 @@ puts " result:      fail" if point3[:x] != int(r)
 
 在比特币中使用 Schnorr 签名时，公钥仅被编码为 32 字节的 **x 坐标**。
 
-与使用 33 字节的[压缩公钥](/docs/technical/keys/public-key.md#compressed)或 65 字节的[未压缩公钥](/docs/technical/keys/public-key.md#uncompressed)相比，这[节省了空间](https://medium.com/blockstream/reducing-bitcoin-transaction-sizes-with-x-only-pubkeys-f86476af05d7)。
+与使用 33 字节的[压缩公钥](../../keys/public-key.md#compressed)或 65 字节的[未压缩公钥](../../keys/public-key.md#uncompressed)相比，这[节省了空间](https://medium.com/blockstream/reducing-bitcoin-transaction-sizes-with-x-only-pubkeys-f86476af05d7)。
 
 原因在于我们实际上不需要 y 坐标，因为对于任何给定的 x 坐标，只有两个可能的 y 坐标：
 
 1. **偶数** y 坐标
 2. **奇数** y 坐标
 
-[<img src="../../../images/diagrams_png_schnorr-public-key-y-coordinate.png" alt="Diagram showing a public key point having two possible y coordinates (one even, one odd) for each x coordinate." width="314" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-public-key-y-coordinate.png)
+[<img src="../../../images/diagrams_png_schnorr-public-key-y-coordinate.png" alt="Diagram showing a public key point having two possible y coordinates (one even, one odd) for each x coordinate." width="314" height="310" />](../../../images/diagrams_png_schnorr-public-key-y-coordinate.png)
 
 当重构完整的公钥时，我们始终使用这两者之中的**偶数 y 坐标**。
 
@@ -1747,7 +1747,7 @@ end
 puts "y: #{y}" #=> 20300379699400900502742728010166238706652234274974693180220049387639537150104
 ```
 
-从 x 坐标求出 y 坐标的初始方法与[解压公钥](/docs/technical/keys/public-key.md#decompress)时相同。
+从 x 坐标求出 y 坐标的初始方法与[解压公钥](../../keys/public-key.md#decompress)时相同。
 
 * 每次使用偶数 y 坐标意味着我们在[签名验证](#verify)过程中无需尝试两种可能的 y 坐标。
 * 从编码的公钥计算出完整的公钥点 (x, y) 需要一个额外的计算步骤，但为了在区块链中为每个公钥节省 1 字节的空间，这被认为是值得的。
@@ -1801,7 +1801,7 @@ y:
 
 椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标以及 y 坐标是奇数还是偶数即可。
 
-在 [Taproot](/docs/technical/upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
+在 [Taproot](../../upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
 
 `0 bytes`
 
@@ -1809,7 +1809,7 @@ y:
 
 0 秒
 
-此示例中的第二个私钥是第一个私钥的*加法逆元*（即我通过从[曲线上的点数](/docs/technical/cryptography/elliptic-curve.md#parameters)中减去它来使其取负值）。该“反转”的私钥为公钥生成完全相同的 x 坐标，但带相反的 y 坐标。
+此示例中的第二个私钥是第一个私钥的*加法逆元*（即我通过从[曲线上的点数](../elliptic-curve.md#parameters)中减去它来使其取负值）。该“反转”的私钥为公钥生成完全相同的 x 坐标，但带相反的 y 坐标。
 
 然而，有些令人惊讶的是，两个私钥生成同一个公钥的事实[并不会削弱比特币中 Schnorr 签名的安全性](https://bitcoin.stackexchange.com/questions/90118/why-is-no-security-lost-by-using-32-byte-public-keys-in-schnorr-signatures-inste)。
 
@@ -1817,11 +1817,11 @@ y:
 
 在[标准 Schnorr 签名方案](#basics)中，通过将公有 Nonce (`kG`) 与消息 (`m`) 进行哈希运算来创建挑战 (`e`)：
 
-[<img src="../../../images/diagrams_png_schnorr-challenge-standard.png" alt="Equation showing the calculation of the challenge (e) in the standard Schnorr signature scheme." width="544" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-challenge-standard.png)
+[<img src="../../../images/diagrams_png_schnorr-challenge-standard.png" alt="Equation showing the calculation of the challenge (e) in the standard Schnorr signature scheme." width="544" height="129" />](../../../images/diagrams_png_schnorr-challenge-standard.png)
 
 然而，在比特币中，该哈希还包含了公钥的 x 坐标 (`Px`)：
 
-[<img src="../../../images/diagrams_png_schnorr-challenge-bitcoin.png" alt="Equation showing the calculation of the challenge (e) in the Schnorr signature scheme in Bitcoin." width="677" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-challenge-bitcoin.png)
+[<img src="../../../images/diagrams_png_schnorr-challenge-bitcoin.png" alt="Equation showing the calculation of the challenge (e) in the Schnorr signature scheme in Bitcoin." width="677" height="129" />](../../../images/diagrams_png_schnorr-challenge-bitcoin.png)
 
 这被称为键前缀 (key-prefixing)，引入它是为了[在 HD 钱包中从非硬分叉公钥生成签名时防止相关攻击](https://bitcoin.stackexchange.com/questions/79768/a-couple-of-questions-on-schnorr-sig)。
 
@@ -1858,7 +1858,7 @@ SHA256(SHA256(string) || SHA256(string) || data)
 
 标记哈希是带有额外**标记前缀**的数据哈希值。这种哈希方法是作为比特币 Schnorr 签名实现的一部分被引入的。
 
-[<img src="../../../images/diagrams_png_schnorr-tagged-hash.png" alt="Diagram showing the basic structure of a tagged hash." width="333" height="291" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-tagged-hash.png)
+[<img src="../../../images/diagrams_png_schnorr-tagged-hash.png" alt="Diagram showing the basic structure of a tagged hash." width="333" height="291" />](../../../images/diagrams_png_schnorr-tagged-hash.png)
 
 这为每个哈希值提供了一个*上下文 (context)*，因此如果您在不同上下文中对相同数据进行哈希，您将不会获得相同的哈希结果。
 
@@ -1867,7 +1867,7 @@ SHA256(SHA256(string) || SHA256(string) || data)
 1. 对一个描述该最终哈希上下文的字符串（*标记 (tag)*）进行哈希运算。
 2. 将该*标记哈希*作为前缀，拼接数据后再进行哈希（该标记哈希前缀需要拼接两次）。
 
-[<img src="../../../images/diagrams_png_schnorr-tagged-hash-technical.png" alt="Technical diagram showing how to create a tagged hash in Bitcoin." width="469" height="525" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-tagged-hash-technical.png)
+[<img src="../../../images/diagrams_png_schnorr-tagged-hash-technical.png" alt="Technical diagram showing how to create a tagged hash in Bitcoin." width="469" height="525" />](../../../images/diagrams_png_schnorr-tagged-hash-technical.png)
 
 代码
 
@@ -1914,11 +1914,11 @@ tagged_hash = SHA256(tag || data)
 
 ### 4. Nonce 生成
 
-[<img src="../../../images/diagrams_png_schnorr-nonce-generation.png" alt="Technical diagram showing the method for generating the private nonce for a Schnorr signature in Bitcoin." width="393" height="219" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-nonce-generation.png)
+[<img src="../../../images/diagrams_png_schnorr-nonce-generation.png" alt="Technical diagram showing the method for generating the private nonce for a Schnorr signature in Bitcoin." width="393" height="219" />](../../../images/diagrams_png_schnorr-nonce-generation.png)
 
 您创建的每个签名都需要包含一个**随机 Nonce** (`k`)。
 
-在大多数签名方案中（例如 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)），该 Nonce 仅仅是一个随机生成的数字。但在比特币的 Schnorr 签名实现中，我们使用一种**特定方法**来生成每个 Nonce。
+在大多数签名方案中（例如 [ECDSA](ecdsa.md)），该 Nonce 仅仅是一个随机生成的数字。但在比特币的 Schnorr 签名实现中，我们使用一种**特定方法**来生成每个 Nonce。
 
 简而言之：
 
@@ -1940,15 +1940,15 @@ tagged_hash = SHA256(tag || data)
 
 通过拼接 32 字节的 `r` 值和 32 字节的 `s` 值来对 Schnorr 签名进行*编码*。
 
-[<img src="../../../images/diagrams_png_schnorr-signature-encoding.png" alt="Diagram showing the encoding of a Schnorr signature for use in Bitcoin transactions." width="601" height="238" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-signature-encoding.png)
+[<img src="../../../images/diagrams_png_schnorr-signature-encoding.png" alt="Diagram showing the encoding of a Schnorr signature for use in Bitcoin transactions." width="601" height="238" />](../../../images/diagrams_png_schnorr-signature-encoding.png)
 
 因此，Schnorr 签名长度始终为 **64 字节**。
 
 #### Schnorr 与 ECDSA 签名编码对比
 
-对于 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 签名，等效的 `r` 和 `s` 值被封装在 [DER 编码](/docs/technical/keys/signature.md#der)中：
+对于 [ECDSA](ecdsa.md) 签名，等效的 `r` 和 `s` 值被封装在 [DER 编码](../../keys/signature.md#der)中：
 
-[<img src="../../../images/diagrams_png_keys-signature-der-encoding.png" alt="Diagram showing the encoding of an ECDSA signature for use in Bitcoin transactions." width="760" height="231" />](https://static.learnmeabitcoin.com/diagrams/png/keys-signature-der-encoding.png)
+[<img src="../../../images/diagrams_png_keys-signature-der-encoding.png" alt="Diagram showing the encoding of an ECDSA signature for use in Bitcoin transactions." width="760" height="231" />](../../../images/diagrams_png_keys-signature-der-encoding.png)
 
 这种 DER 编码导致签名的长度在 **70-72 字节**之间变动。
 
@@ -1960,7 +1960,7 @@ tagged_hash = SHA256(tag || data)
 
 ## 优势
 
-与 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 相比，使用 Schnorr 签名有哪些优势？
+与 [ECDSA](ecdsa.md) 相比，使用 Schnorr 签名有哪些优势？
 
 与 ECDSA 相比，使用 Schnorr 签名有许多优势：
 
@@ -1976,11 +1976,11 @@ Schnorr 签名方案在数学上比 ECDSA 更简单。
 
 这是创建 Schnorr 签名的方程式：
 
-[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](../../../images/diagrams_png_schnorr-equation-sign.png)
 
 这是创建 ECDSA 签名的方程式：
 
-[<img src="../../../images/diagrams_png_ecdsa-equation-sign.png" alt="ECDSA sign equation." width="440" height="67" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign.png)
+[<img src="../../../images/diagrams_png_ecdsa-equation-sign.png" alt="ECDSA sign equation." width="440" height="67" />](../../../images/diagrams_png_ecdsa-equation-sign.png)
 
 从**数学**的角度来看，Schnorr 签名更为*合乎逻辑*且更为*优雅*。
 
@@ -1990,11 +1990,11 @@ Schnorr 签名方案在数学上比 ECDSA 更简单。
 
 创建 Schnorr 签名的方程仅使用算术的*加法*和*乘法*：
 
-[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](../../../images/diagrams_png_schnorr-equation-sign.png)
 
-另一方面，在 ECDSA 中创建签名的方程包含了 [椭圆曲线乘法](/docs/technical/cryptography/elliptic-curve.md#multiply) 和 [模逆](/docs/technical/cryptography/elliptic-curve.md#modular-inverse)：
+另一方面，在 ECDSA 中创建签名的方程包含了 [椭圆曲线乘法](../elliptic-curve.md#multiply) 和 [模逆](../elliptic-curve.md#modular-inverse)：
 
-[<img src="../../../images/diagrams_png_ecdsa-equation-sign-annotated.png" alt="ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations." width="702" height="114" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
+[<img src="../../../images/diagrams_png_ecdsa-equation-sign-annotated.png" alt="ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations." width="702" height="114" />](../../../images/diagrams_png_ecdsa-equation-sign-annotated.png)
 
 因此，Schnorr 签名在数学上更高效，计算速度也更快。
 
@@ -2006,13 +2006,13 @@ Schnorr 签名的另一个效率优势在于，您可以使用[批量验证](#ba
 
 Schnorr 签名方程的简单性也意味着它是**可证明安全的**。
 
-[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-sign.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-sign.png" alt="Schnorr sign equation." width="272" height="53" />](../../../images/diagrams_png_schnorr-equation-sign.png)
 
 换句话说，有一个[数学证明](https://crypto.stackexchange.com/questions/48616/prove-the-security-of-schnorrs-signature-scheme)表明，除非您能解决[离散对数问题](#discreet-logarithm-problem)，否则 Schnorr 签名是无法被破解的。
 
 相比之下，ECDSA 中创建签名方程的复杂性意味着无法正式证明其安全性。这是由于引入了椭圆曲线乘法部分，使得形成数学证明非常困难：
 
-[<img src="../../../images/diagrams_png_ecdsa-equation-sign-annotated.png" alt="ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations." width="702" height="114" />](https://static.learnmeabitcoin.com/diagrams/png/ecdsa-equation-sign-annotated.png)
+[<img src="../../../images/diagrams_png_ecdsa-equation-sign-annotated.png" alt="ECDSA sign equation annotated to show the modular inverse and elliptic curve multiplication operations." width="702" height="114" />](../../../images/diagrams_png_ecdsa-equation-sign-annotated.png)
 
 有一个强烈的*假设*认为 ECDSA 是安全的，但并无实际的数学证明。因此拥有一个实际的安全证明是 Schnorr 签名的又一胜利。
 
@@ -2052,7 +2052,7 @@ a^k mod p = b
 3^15 mod 17 = 6    <- 找到了答案
 ```
 
-在处理小数字时找到答案并不困难，但当您处理极大的数字时（如我们在[密码学](/docs/technical/cryptography.md)中所做的那样），求出 `k` 的值就会变得完全不可能。
+在处理小数字时找到答案并不困难，但当您处理极大的数字时（如我们在[密码学](../../cryptography.md)中所做的那样），求出 `k` 的值就会变得完全不可能。
 
 例如，看看这次您能否求出 `k` 的值：
 
@@ -2070,23 +2070,23 @@ a^k mod p = b
 k = 93350855816723809765951314891371850338090431368773987746149549196975035370474
 ```
 
-但正如我所说，除非我告诉您，否则您永远无法算出答案（或者您拥有[几十亿年](/docs/beginners/security.md#12-vs-24-word-seed)的时间以暴力破解的方式去尝试）。
+但正如我所说，除非我告诉您，否则您永远无法算出答案（或者您拥有[几十亿年](../../../beginners/security.md#12-vs-24-word-seed)的时间以暴力破解的方式去尝试）。
 
 ### 4. 线性特征 (Linearity)
 
 Schnorr 签名具有*线性*特征，而 ECDSA 签名则没有：
 
-[<img src="../../../images/diagrams_png_schnorr-equation-linearity.png" alt="Equations showing how Schnorr signatures are linear and ECDSA signatures are non-linear." width="616" height="228" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-linearity.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-linearity.png" alt="Equations showing how Schnorr signatures are linear and ECDSA signatures are non-linear." width="616" height="228" />](../../../images/diagrams_png_schnorr-equation-linearity.png)
 
 这意味着您可以**将 Schnorr 签名相加**，而这在 ECDSA 中是无法做到的。
 
 例如，您在 Schnorr 和 ECDSA 中都可以将公钥相加：
 
-[<img src="../../../images/diagrams_png_schnorr-equation-public-key-addition.png" alt="Equations showing the addition of public keys." width="376" height="210" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-public-key-addition.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-public-key-addition.png" alt="Equations showing the addition of public keys." width="376" height="210" />](../../../images/diagrams_png_schnorr-equation-public-key-addition.png)
 
 但您只能在 Schnorr 中将签名相加（因为它是*线性*的）：
 
-[<img src="../../../images/diagrams_png_schnorr-equation-signature-addition.png" alt="Equations showing the addition of Schnorr signatures." width="513" height="265" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-equation-signature-addition.png)
+[<img src="../../../images/diagrams_png_schnorr-equation-signature-addition.png" alt="Equations showing the addition of Schnorr signatures." width="513" height="265" />](../../../images/diagrams_png_schnorr-equation-signature-addition.png)
 
 这种将 Schnorr 签名相加的能力允许您做一些有用的事情，例如[批量验证](#batch-verify)，以及构建高效的[多重签名](#multisignature)锁定脚本。
 
@@ -2094,13 +2094,13 @@ Schnorr 签名具有*线性*特征，而 ECDSA 签名则没有：
 
 您可以将 Schnorr 签名相加的事实意味着，您可以生成一个对于**多个公钥之和**有效的单一签名。
 
-例如，在传统的 [P2MS](/docs/technical/script/p2ms.md) 锁定脚本（使用 ECDSA）中，您必须在锁定脚本中提供每个单独的公钥。为了解锁它，您需要为每个公钥提供一个签名。
+例如，在传统的 [P2MS](../../script/p2ms.md) 锁定脚本（使用 ECDSA）中，您必须在锁定脚本中提供每个单独的公钥。为了解锁它，您需要为每个公钥提供一个签名。
 
-[<img src="../../../images/diagrams_png_schnorr-multisignature-basic.png" alt="Diagram showing a basic multisignature locking and unlocking script." width="987" height="79" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-basic.png)
+[<img src="../../../images/diagrams_png_schnorr-multisignature-basic.png" alt="Diagram showing a basic multisignature locking and unlocking script." width="987" height="79" />](../../../images/diagrams_png_schnorr-multisignature-basic.png)
 
 但在使用 Schnorr 签名时，您可以将所有公钥相加，创建一个“公钥之和 (public key sum)”并将其放入锁定脚本中。解锁时，您可以为每个公钥创建一个签名，然后将它们相加，并在解锁脚本中提供一个单一的“签名之和 (signature sum)”：
 
-[<img src="../../../images/diagrams_png_schnorr-multisignature-sum.png" alt="Diagram showing a multisignature locking and unlocking script using the sum of public keys and the sum of signatures." width="1002" height="151" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-multisignature-sum.png)
+[<img src="../../../images/diagrams_png_schnorr-multisignature-sum.png" alt="Diagram showing a multisignature locking and unlocking script using the sum of public keys and the sum of signatures." width="1002" height="151" />](../../../images/diagrams_png_schnorr-multisignature-sum.png)
 
 这带来了两个主要优势：
 
@@ -2118,11 +2118,11 @@ Schnorr 签名是**非延展性的**，而 ECDSA 签名是具有延展性的。
 
 因此非延展性更为理想。
 
-签名延展性在比特币的历史上一直是一个令人有些恼火的隐患，因为这意味着在您将[交易](/docs/technical/transaction.md)发送到网络后，其 [TXID](/docs/technical/transaction/input/txid.md) 可以被他人修改。例如，矿工可以获取您的交易，对其中一个签名中的 `s` 值取反，最后交易的 TXID 就会变得不同。
+签名延展性在比特币的历史上一直是一个令人有些恼火的隐患，因为这意味着在您将[交易](../../transaction.md)发送到网络后，其 [TXID](../../transaction/input/txid.md) 可以被他人修改。例如，矿工可以获取您的交易，对其中一个签名中的 `s` 值取反，最后交易的 TXID 就会变得不同。
 
-这种“交易延展性 (transaction malleability)”并不是一个极其严重的隐患，因为交易仍会被[打包开采](/docs/technical/mining.md)，且比特币依然会发往相同的目的地。它只是意味着 TXID 不是 100% 可靠的，因此您无法在比特币之上构建任何依赖于交易发送到网络后 TXID 保持绝对不变的应用程序。
+这种“交易延展性 (transaction malleability)”并不是一个极其严重的隐患，因为交易仍会被[打包开采](../../mining.md)，且比特币依然会发往相同的目的地。它只是意味着 TXID 不是 100% 可靠的，因此您无法在比特币之上构建任何依赖于交易发送到网络后 TXID 保持绝对不变的应用程序。
 
-比特币中的交易延展性在很大程度上已通过 [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki)（仅使用低 s 值）和 [SegWit](/docs/technical/upgrades/segregated-witness.md)（签名不再影响 TXID）被“修补”，但在 ECDSA 中，底层算法层面的延展性仍然存在。
+比特币中的交易延展性在很大程度上已通过 [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki)（仅使用低 s 值）和 [SegWit](../../upgrades/segregated-witness.md)（签名不再影响 TXID）被“修补”，但在 ECDSA 中，底层算法层面的延展性仍然存在。
 
 如果比特币从一开始就使用 Schnorr 签名，那么交易延展性永远不会成为一个问题。
 
@@ -2315,13 +2315,13 @@ Schnorr 签名是如何工作的？
 
 我想在此解释一下 **Schnorr 签名是如何工作的**，以及这些*签署*和*验证*的方程究竟是怎么来的：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-equations.png" alt="The basic Schnorr signing and verifying equations." width="358" height="177" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-equations.png" alt="The basic Schnorr signing and verifying equations." width="358" height="177" />](../../../images/diagrams_png_schnorr-basics-equations.png)
 
 我将从最基础的开始逐步讲解。
 
 ### 1. 密钥对
 
-[<img src="../../../images/diagrams_png_schnorr-basics-keys.png" alt="Diagram showing a private key and public key being generated as the starting point for creating a Schnorr signature." width="459" height="293" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-keys.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-keys.png" alt="Diagram showing a private key and public key being generated as the starting point for creating a Schnorr signature." width="459" height="293" />](../../../images/diagrams_png_schnorr-basics-keys.png)
 
 首先，为了能够创建一个数字签名，我需要生成一对密钥：
 
@@ -2346,7 +2346,7 @@ Schnorr 签名是如何工作的？
 
 ### 2. Nonce
 
-[<img src="../../../images/diagrams_png_schnorr-basics-nonce.png" alt="Diagram showing the nonce part of the Schnorr signature scheme." width="648" height="293" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-nonce.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-nonce.png" alt="Diagram showing the nonce part of the Schnorr signature scheme." width="648" height="293" />](../../../images/diagrams_png_schnorr-basics-nonce.png)
 
 在创建数字签名之前，我需要生成一个一次性的随机数，称为 **nonce** (`k`)。
 
@@ -2360,7 +2360,7 @@ Schnorr 签名是如何工作的？
 
 ### 3. 挑战 (Challenge)
 
-[<img src="../../../images/diagrams_png_schnorr-basics-challenge.png" alt="Diagram showing the challenge part of the Schnorr signature scheme." width="388" height="293" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-challenge.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-challenge.png" alt="Diagram showing the challenge part of the Schnorr signature scheme." width="388" height="293" />](../../../images/diagrams_png_schnorr-basics-challenge.png)
 
 既然我已经向您发送了该公有 nonce (`kG`)，我需要您想出一个**挑战** (`e`) 数值并发送给我。
 
@@ -2372,7 +2372,7 @@ Schnorr 签名是如何工作的？
 
 ### 4. 签名 (Signature)
 
-[<img src="../../../images/diagrams_png_schnorr-basics-signature.png" alt="Diagram showing the creation of the basic Schnorr signature scheme." width="632" height="272" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-signature.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-signature.png" alt="Diagram showing the creation of the basic Schnorr signature scheme." width="632" height="272" />](../../../images/diagrams_png_schnorr-basics-signature.png)
 
 我通过将私钥 (`d`) 乘以挑战 (`e`)，再加上私有 nonce (`k`) 来创建我的**数字签名** (`s`)。
 
@@ -2386,7 +2386,7 @@ Schnorr 签名是如何工作的？
 
 所以，这些方程是 Schnorr 签名方案的核心：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-signature-equations.png" alt="Basic Schnorr signing and verifying equations (interactive, and not signing a message)." width="373" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-signature-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-signature-equations.png" alt="Basic Schnorr signing and verifying equations (interactive, and not signing a message)." width="373" height="129" />](../../../images/diagrams_png_schnorr-basics-signature-equations.png)
 
 这与上面示意图中的方程完全相同，只是重新进行了排列。
 
@@ -2394,7 +2394,7 @@ Schnorr 签名是如何工作的？
 
 到目前为止，这一切都只是使用字母表示的方程式，所以让我们使用一些*实际数字*来证明这些方程确实有效。
 
-[<img src="../../../images/diagrams_png_schnorr-basics-example.png" alt="Simple Schnorr signature signing and verifying example using small numbers and simple arithmetic." width="700" height="255" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-example.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-example.png" alt="Simple Schnorr signature signing and verifying example using small numbers and simple arithmetic." width="700" height="255" />](../../../images/diagrams_png_schnorr-basics-example.png)
 
 该示例仅使用了**小数字**和**简单的乘法**。
 
@@ -2416,9 +2416,9 @@ Schnorr 签名是如何工作的？
 
 为此，我需要能以某种方式*承诺*使用我的私有 nonce (`k`)，同时能够在我的端产生一个不可预测的挑战数 (`e`)，并且此后无法更改我的私有 nonce (`k`)。
 
-解决方案是使用[哈希函数](/docs/technical/cryptography/hash-function.md)，通过对公有 nonce (`kG`) 进行哈希运算来创建挑战 (`e`)。
+解决方案是使用[哈希函数](../hash-function.md)，通过对公有 nonce (`kG`) 进行哈希运算来创建挑战 (`e`)。
 
-[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-me.png" alt="Diagram showing the creation of the challenge by the signer by using a hash function." width="553" height="305" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-me.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-me.png" alt="Diagram showing the creation of the challenge by the signer by using a hash function." width="553" height="305" />](../../../images/diagrams_png_schnorr-basics-non-interactive-me.png)
 
 哈希函数是完美的，因为它会为输入其中的任何数据生成一个不可预测的随机结果。此外，通过哈希公有 nonce (`kG`)，意味着我已承诺了使用私有 nonce (`k`)，因为一旦更改了 nonce，就会改变随后计算出的挑战 (`e`)。
 
@@ -2426,7 +2426,7 @@ Schnorr 签名是如何工作的？
 
 随后，您可以使用该公有 nonce (`kG`) 算得与我在我这一端生成的完全相同的挑战 (`e`)，并使用此挑战采用相同的方程来验证数字签名 (`s`)：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-you.png" alt="Diagram showing the challenge being calculated by the verifier in the Schnorr signature scheme." width="553" height="246" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-you.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-you.png" alt="Diagram showing the challenge being calculated by the verifier in the Schnorr signature scheme." width="553" height="246" />](../../../images/diagrams_png_schnorr-basics-non-interactive-you.png)
 
 结果，使用哈希函数来创建挑战 (`e`)，使我们成功将数字签名系统从交互式升级为了**非交互式**系统。这是我们系统的一大便利升级。
 
@@ -2434,13 +2434,13 @@ Schnorr 签名是如何工作的？
 
 因此，由于引入了哈希函数来创建挑战 (`e`)，签署和验证的方程组现在看起来如下所示：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-equations.png" alt="Basic Schnorr signing and verifying equations after including a non-interactive challenge." width="514" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-non-interactive-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-non-interactive-equations.png" alt="Basic Schnorr signing and verifying equations after including a non-interactive challenge." width="514" height="133" />](../../../images/diagrams_png_schnorr-basics-non-interactive-equations.png)
 
 这种非交互式创建挑战的技术在学术上被称为 [Fiat-Shamir 变换 (Fiat-Shamir transformation)](https://www.zkdocs.com/docs/zkdocs/protocol-primitives/fiat-shamir/)。
 
 ### 7. 消息签署 (Message signing)
 
-[<img src="../../../images/diagrams_png_schnorr-basics-message.png" alt="Diagram showing the inclusion of a message to be signed as part of the Schnorr signature scheme." width="874" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-message.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-message.png" alt="Diagram showing the inclusion of a message to be signed as part of the Schnorr signature scheme." width="874" height="336" />](../../../images/diagrams_png_schnorr-basics-message.png)
 
 在此之前，我一直是在用数字签名 (`s`) 来证明我是某个公钥 (`dG`) 的*所有者*。
 
@@ -2448,7 +2448,7 @@ Schnorr 签名是如何工作的？
 
 这就像在现实生活中签署文件一样。您的签名本身足够独特，可以证明是*您*签署的，但我们通常会将签名写在像合同这样的文本上，以证明我们同意了其内容。消息 (`m`) 在此就充当我们想要附上签名 (`s`) 的“合同”。
 
-例如在比特币中，此消息通常就是[交易数据](/docs/technical/transaction.md)。通过对交易数据进行签名，我们既可以证明自己是比特币所锁定的对应公钥的所有者（以便能解锁它们），同时又同意了我们要将这笔比特币发送到哪里。此后，任何人都不能修改交易数据（例如试图将比特币发往其他地方），否则会导致签名失效。
+例如在比特币中，此消息通常就是[交易数据](../../transaction.md)。通过对交易数据进行签名，我们既可以证明自己是比特币所锁定的对应公钥的所有者（以便能解锁它们），同时又同意了我们要将这笔比特币发送到哪里。此后，任何人都不能修改交易数据（例如试图将比特币发往其他地方），否则会导致签名失效。
 
 总之，为了能够签署消息，我只需以某种方式将消息 (`m`) 包含在我的签名 (`s`) 运算中。这是通过在创建挑战 (`e`) 时，**将消息 (`m`) 也包含在哈希输入中**来实现的。
 
@@ -2456,7 +2456,7 @@ Schnorr 签名是如何工作的？
 
 总之，现在我们已将**消息**作为我们签名的一部分，签署和验证的方程看起来如下所示：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-message-equations.png" alt="Basic Schnorr signing and verifying equations after including a message to be signed." width="621" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-message-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-message-equations.png" alt="Basic Schnorr signing and verifying equations after including a message to be signed." width="621" height="133" />](../../../images/diagrams_png_schnorr-basics-message-equations.png)
 
 **这些是非交互式 Schnorr 签名方案的基础方程组。** 每当您查阅关于“Schnorr 签名”的任何数学解释时，您都会看到（以这种形式或其变体形式呈现的）这些方程式。
 
@@ -2468,19 +2468,19 @@ Schnorr 签名是如何工作的？
 
 我们需要的是一种特殊的“乘法”，它具有与普通乘法相同的性质（这样我们的方程式依然成立），但不存在逆向的“除法”运算。
 
-这正是[椭圆曲线](/docs/technical/cryptography/elliptic-curve.md)派上用场的地方。
+这正是[椭圆曲线](../elliptic-curve.md)派上用场的地方。
 
-在椭圆曲线的*点*上确实存在一种[点乘运算](/docs/technical/cryptography/elliptic-curve.md#multiply)：您可以取曲线上的一点（例如 `G`），将其乘以一个*标量*（例如 `d`），这将在同一条曲线上产生一个完全不同的新点（例如 `dG`）。但有趣的是，如果您把这个新点 (`dG`) 提供给他人，却没有任何数学运算能让他们通过除以 `G` 逆向推导出 `d` 是什么。
+在椭圆曲线的*点*上确实存在一种[点乘运算](../elliptic-curve.md#multiply)：您可以取曲线上的一点（例如 `G`），将其乘以一个*标量*（例如 `d`），这将在同一条曲线上产生一个完全不同的新点（例如 `dG`）。但有趣的是，如果您把这个新点 (`dG`) 提供给他人，却没有任何数学运算能让他们通过除以 `G` 逆向推导出 `d` 是什么。
 
 这对于我们的系统而言是完美的，也是为什么 Schnorr 签名的数学运算必须在**椭圆曲线**上进行的原因。
 
-此外，您同样可以对椭圆曲线上的两个点进行[相加](/docs/technical/cryptography/elliptic-curve.md#add)运算，这很重要，因为我们在验证过程中也需要将两个点相加 (`kG` + `edG`)。
+此外，您同样可以对椭圆曲线上的两个点进行[相加](../elliptic-curve.md#add)运算，这很重要，因为我们在验证过程中也需要将两个点相加 (`kG` + `edG`)。
 
 因此，**方程以与此前相同的方式工作**，但*相乘*和*相加*运算现在转为使用*椭圆曲线*上的点运算来进行，而不是使用我们在此之前一直在用的简单算术乘法和加法。
 
 为了说明我们现在在方程中使用的与之前略微不同的乘法运算，我将使用点“⋅”操作符来表示椭圆曲线乘法：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png" alt="Basic Schnorr signing and verifying equations using elliptic curve operations instead of simple addition and multiplication." width="693" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-elliptic-curve-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png" alt="Basic Schnorr signing and verifying equations using elliptic curve operations instead of simple addition and multiplication." width="693" height="133" />](../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png)
 
 * **小写**字母（例如 `k`, `d`, `e`, `s`）表示一个**标量 (scalar)**（一个数字）。
 * **大写**字母（例如 `G`）表示曲线上的一个**点 (point)**。
@@ -2493,7 +2493,7 @@ Schnorr 签名是如何工作的？
 
 最终的 Schnorr 签署和验证方程如下所示：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png" alt="Basic Schnorr signing and verifying equations using elliptic curve operations." width="693" height="133" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-elliptic-curve-equations.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png" alt="Basic Schnorr signing and verifying equations using elliptic curve operations." width="693" height="133" />](../../../images/diagrams_png_schnorr-basics-elliptic-curve-equations.png)
 
 我们也可以对其进行简化：
 
@@ -2503,13 +2503,13 @@ Schnorr 签名是如何工作的？
 
 因此，如果我们代入这些术语，我们的方程将变为：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-summary-equations-substitute.png" alt="Basic Schnorr signing and verifying equations using substituted terms." width="611" height="129" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-summary-equations-substitute.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-summary-equations-substitute.png" alt="Basic Schnorr signing and verifying equations using substituted terms." width="611" height="129" />](../../../images/diagrams_png_schnorr-basics-summary-equations-substitute.png)
 
 这便是我们在本页最上方所示的签署和验证公式的由来。
 
 最后，我们可以对验证方程进行**移项重新整理**以得到：
 
-[<img src="../../../images/diagrams_png_schnorr-basics-summary-equations-verification-rearrange.png" alt="Basic Schnorr verification equation rearranged." width="362" height="53" />](https://static.learnmeabitcoin.com/diagrams/png/schnorr-basics-summary-equations-verification-rearrange.png)
+[<img src="../../../images/diagrams_png_schnorr-basics-summary-equations-verification-rearrange.png" alt="Basic Schnorr verification equation rearranged." width="362" height="53" />](../../../images/diagrams_png_schnorr-basics-summary-equations-verification-rearrange.png)
 
 而这正是比特币中用于 Schnorr 签名[验证](#verify)的方程式。
 
@@ -2519,7 +2519,7 @@ Schnorr 签名是如何工作的？
 
 在比特币最初开发时，Schnorr 签名方案还在专利保护期内。
 
-中本聪使用 OpenSSL 库来为比特币提供密码学支持，而当时该库中并不支持 Schnorr 签名，因此他们使用了 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md)。所以即使 Schnorr 签名比 ECDSA 更简单也更有用，但在创建比特币时，它们并不是一个可行的选择。
+中本聪使用 OpenSSL 库来为比特币提供密码学支持，而当时该库中并不支持 Schnorr 签名，因此他们使用了 [ECDSA](ecdsa.md)。所以即使 Schnorr 签名比 ECDSA 更简单也更有用，但在创建比特币时，它们并不是一个可行的选择。
 
 以下是简要的历史发展线：
 
@@ -2540,7 +2540,7 @@ Schnorr 签名是如何工作的？
 
 在比特币中创建和验证数字签名方面，**Schnorr 签名是相比 ECDSA 的一大升级**。
 
-我们当初没有使用 Schnorr 签名的唯一原因是因为其专利在 2010 年前一直有效，所以 [ECDSA](/docs/technical/cryptography/elliptic-curve/ecdsa.md) 是当时次优的选择（它同样胜任工作，只是不够优雅）。但既然专利已经失效，我们便可以自由使用 Schnorr 签名并利用它们所带来的所有优势。
+我们当初没有使用 Schnorr 签名的唯一原因是因为其专利在 2010 年前一直有效，所以 [ECDSA](ecdsa.md) 是当时次优的选择（它同样胜任工作，只是不够优雅）。但既然专利已经失效，我们便可以自由使用 Schnorr 签名并利用它们所带来的所有优势。
 
 用更笃定的语气说：
 

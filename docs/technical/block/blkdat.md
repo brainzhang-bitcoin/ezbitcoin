@@ -1,8 +1,8 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-`~/.bitcoin/blocks/` 目录中的 blk.dat 文件包含您的 [*Bitcoin Core*](https://bitcoin.org/en/download) 节点接收到的**原始[区块](/docs/technical/block.md)数据**。
+`~/.bitcoin/blocks/` 目录中的 blk.dat 文件包含您的 [*Bitcoin Core*](https://bitcoin.org/en/download) 节点接收到的**原始[区块](../block.md)数据**。
 
-这些 blk.dat 文件基本上存储了整个[区块链](/docs/technical/blockchain.md)。
+这些 blk.dat 文件基本上存储了整个[区块链](../blockchain.md)。
 
 ## 位置
 
@@ -22,7 +22,7 @@
 
 区块链文件是如何组织的？
 
-您的节点接收到的每个[区块](/docs/technical/block.md)都会追加到 blk.dat 文件中。但是，为了避免将整个区块链存储在一个庞大的文件中，它们被拆分成了多个 blk\*.dat 文件。
+您的节点接收到的每个[区块](../block.md)都会追加到 blk.dat 文件中。但是，为了避免将整个区块链存储在一个庞大的文件中，它们被拆分成了多个 blk\*.dat 文件。
 
 * ~/.bitcoin/blocks/
   1. blk00000.dat
@@ -62,21 +62,21 @@ blk.dat 文件中的数据是以二进制形式存储的，基本上是一堆 1 
 f9beb4d9 1d010000 01000000 0000000000000000000000000000000000000000000000000000000000000000 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a 29ab5f49 ffff001d 1dac2b7c 01 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e642062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-请参阅下面的 [od 命令](#od) 以从二进制文件中显示[十六进制字节](/docs/technical/general/bytes.md#representing-bytes)。
+请参阅下面的 [od 命令](#od) 以从二进制文件中显示[十六进制字节](../general/bytes.md#representing-bytes)。
 
 ## 结构
 
 原始区块的结构是怎样的？
 
-[<img src="../../images/diagrams_png_block-blkdat.png" alt="Diagram showing structure of the raw block data inside the blk.dat files." width="431" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat.png)
+[<img src="../../images/diagrams_png_block-blkdat.png" alt="Diagram showing structure of the raw block data inside the blk.dat files." width="431" height="378" />](../../images/diagrams_png_block-blkdat.png)
 
 上面的数据可以分为五个部分：
 
-1. [**魔术字节 (magic bytes)**](/docs/technical/networking/magic-bytes.md)（4 字节）是一个消息分隔符，用于指示区块的开始。
-2. **大小 (size)**（4 字节）指示接下来的区块的大小（以[字节](/docs/technical/general/bytes.md)为单位）。
-3. [**区块头 (block header)**](/docs/technical/block.md#header)（80 字节）是区块数据的摘要。
-4. **交易数量 (tx count)**（[compact size](/docs/technical/general/compact-size.md)）指示区块中有多少笔交易。
-5. [**交易数据 (transaction data)**](/docs/technical/transaction.md)（可变长度）是区块中所有一个接一个连接在一起的交易。
+1. [**魔术字节 (magic bytes)**](../networking/magic-bytes.md)（4 字节）是一个消息分隔符，用于指示区块的开始。
+2. **大小 (size)**（4 字节）指示接下来的区块的大小（以[字节](../general/bytes.md)为单位）。
+3. [**区块头 (block header)**](../block.md#header)（80 字节）是区块数据的摘要。
+4. **交易数量 (tx count)**（[compact size](../general/compact-size.md)）指示区块中有多少笔交易。
+5. [**交易数据 (transaction data)**](../transaction.md)（可变长度）是区块中所有一个接一个连接在一起的交易。
 
 大小字段让我能够计算出在上面的示例中我需要读取 **293 字节** 才能获取整个区块。区块的大小表示为 `1d010000`，因此为了将其转换为人类可读的格式：
 
@@ -159,7 +159,7 @@ f9beb4d9 1d010000 01000000 00000000000000000000000000000000000000000000000000000
 
 您如何读取原始区块链数据？
 
-如前所述，blk.dat 文件中的数据是*二进制*的，因此如果您在常规文本编辑器中打开它，可能看不到任何有用的内容。不过没关系，因为二进制数据可以很容易地显示为[十六进制](/docs/technical/general/hexadecimal.md)字节，并且有几个命令可以提供帮助：
+如前所述，blk.dat 文件中的数据是*二进制*的，因此如果您在常规文本编辑器中打开它，可能看不到任何有用的内容。不过没关系，因为二进制数据可以很容易地显示为[十六进制](../general/hexadecimal.md)字节，并且有几个命令可以提供帮助：
 
 ### 1. `xxd`
 
@@ -223,7 +223,7 @@ $ od -x --endian=big -N 293 -An blk00000.dat
 
 ### 3. `hexdump`
 
-这类似于 `xxd` 和 `od`，但它还提供了从数据中显示 [ASCII](/docs/technical/general/bytes.md#text) 文本的选项（这对于查看交易数据中包含的消息非常方便）。
+这类似于 `xxd` 和 `od`，但它还提供了从数据中显示 [ASCII](../general/bytes.md#text) 文本的选项（这对于查看交易数据中包含的消息非常方便）。
 
 ```
 $ hexdump -C -s 8 -n 285 blk00000.dat
@@ -380,7 +380,7 @@ $ xxd -p ~/.bitcoin/blocks/xor.dat
 
 这个 `xor_key` 长度为 **8 字节**，因此您需要重复对原始区块数据的每 8 个字节进行 XOR 运算以对其进行去混淆。
 
-[<img src="../../images/diagrams_png_block-blkdat-xor.png" alt="Diagram showing how to use the xor_key to deobfuscate raw block data from a blk.dat file." width="765" height="178" />](https://static.learnmeabitcoin.com/diagrams/png/block-blkdat-xor.png)
+[<img src="../../images/diagrams_png_block-blkdat-xor.png" alt="Diagram showing how to use the xor_key to deobfuscate raw block data from a blk.dat file." width="765" height="178" />](../../images/diagrams_png_block-blkdat-xor.png)
 
 这是一些简单的代码，显示它是如何工作的：
 

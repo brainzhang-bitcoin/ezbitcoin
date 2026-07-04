@@ -1,8 +1,8 @@
 <img src="../../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../../images/diagrams_png_transaction-txid.png" alt="Diagram showing how a TXID is the hash of a transaction." width="764" height="276" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-txid.png)
+[<img src="../../../images/diagrams_png_transaction-txid.png" alt="Diagram showing how a TXID is the hash of a transaction." width="764" height="276" />](../../../images/diagrams_png_transaction-txid.png)
 
-TXID（交易 ID）是**比特币交易（[transaction](/docs/technical/transaction.md)）的唯一标识引用**。
+TXID（交易 ID）是**比特币交易（[transaction](../../transaction.md)）的唯一标识引用**。
 
 它们用于在[区块链浏览器](/explorer/)中查找特定的交易。例如：
 
@@ -10,20 +10,20 @@ TXID（交易 ID）是**比特币交易（[transaction](/docs/technical/transact
 * [a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d](/explorer/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d) — 2010 年花费 10,000 BTC 的[比萨交易](https://bitcointalk.org/index.php?topic=137.0)。
 * [4ce18f49ba153a51bcda9bb80d7f978e3de6e81b5fc326f00465464530c052f4](/explorer/tx/4ce18f49ba153a51bcda9bb80d7f978e3de6e81b5fc326f00465464530c052f4) — 包含我因制作本网站而收到的第一笔捐赠的交易。
 
-TXID 中的字母和数字没有特殊的含义。它们只是一组看起来随机的 32 [字节](/docs/technical/general/bytes.md)数据（表示为 64 个[十六进制](/docs/technical/general/hexadecimal.md)字符）。但它们对每笔交易来说都是 *唯一* 的。
+TXID 中的字母和数字没有特殊的含义。它们只是一组看起来随机的 32 [字节](../../general/bytes.md)数据（表示为 64 个[十六进制](../../general/hexadecimal.md)字符）。但它们对每笔交易来说都是 *唯一* 的。
 
 ## 创建
 
 如何创建一个 TXID？
 
-[<img src="../../../images/diagrams_png_transaction-txid-structure.png" alt="Diagram showing how a TXID is created by HASH256'ing specific parts of raw transaction data." width="624" height="200" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-txid-structure.png)
+[<img src="../../../images/diagrams_png_transaction-txid-structure.png" alt="Diagram showing how a TXID is created by HASH256'ing specific parts of raw transaction data." width="624" height="200" />](../../../images/diagrams_png_transaction-txid-structure.png)
 
-TXID 是通过对交易数据进行[哈希](/docs/technical/cryptography/hash-function.md)创建的。更确切地说，它是通过将交易数据的特定部分输入 SHA256 哈希函数，然后再次将结果进行 SHA256 哈希计算（这种双重 SHA256 哈希被称为 *HASH256*）来创建的。
+TXID 是通过对交易数据进行[哈希](../../cryptography/hash-function.md)创建的。更确切地说，它是通过将交易数据的特定部分输入 SHA256 哈希函数，然后再次将结果进行 SHA256 哈希计算（这种双重 SHA256 哈希被称为 *HASH256*）来创建的。
 
-* 对于 **[旧版交易](/docs/technical/transaction.md#example-legacy)**，你对所有交易数据进行 [HASH256](/docs/technical/cryptography/hash-function.md#hash256) 计算。
-* 对于 **[SegWit 交易](/docs/technical/transaction.md#example-segwit)**，你对除 [marker](/docs/technical/transaction.md#structure-marker)、[flag](/docs/technical/transaction.md#structure-flag) 和 [witness](/docs/technical/transaction.md#structure-witness) 字段之外的所有交易数据进行 HASH256 计算。
+* 对于 **[旧版交易](../../transaction.md#example-legacy)**，你对所有交易数据进行 [HASH256](../../cryptography/hash-function.md#hash256) 计算。
+* 对于 **[SegWit 交易](../../transaction.md#example-segwit)**，你对除 [marker](../../transaction.md#structure-marker)、[flag](../../transaction.md#structure-flag) 和 [witness](../../transaction.md#structure-witness) 字段之外的所有交易数据进行 HASH256 计算。
 
-因此，对于 SegWit 交易，[签名](/docs/technical/keys/signature.md)不再包含在 TXID 中。
+因此，对于 SegWit 交易，[签名](../../keys/signature.md)不再包含在 TXID 中。
 
 随机示例
 
@@ -51,11 +51,11 @@ TXID (反向字节序)
 
 0 secs
 
-你在区块链浏览器上看到的 TXID 实际上是**[反向字节序](/docs/technical/general/byte-order.md#reverse-byte-order)**的。这只是比特币的一个特点。
+你在区块链浏览器上看到的 TXID 实际上是**[反向字节序](../../general/byte-order.md#reverse-byte-order)**的。这只是比特币的一个特点。
 
 ### 代码
 
-TXID 的创建方式与[区块哈希](/docs/technical/block/hash.md)相同。你只需对交易数据的正确部分进行 **HASH256** 计算即可创建 TXID：
+TXID 的创建方式与[区块哈希](../../block/hash.md)相同。你只需对交易数据的正确部分进行 **HASH256** 计算即可创建 TXID：
 
 ```
 require 'digest'
@@ -91,7 +91,7 @@ puts txid #=> 169e1e83e930853391bc6f35f605c6754cfead57cf8387639d3b4096c54f18f4
 puts txid.scan(/../).reverse.join #=> f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16
 ```
 
-请记住，在处理 SegWit 交易时，你不应将 marker、flag 和 [witness](/docs/technical/transaction/witness.md) 包含在要进行哈希的交易数据中。
+请记住，在处理 SegWit 交易时，你不应将 marker、flag 和 [witness](../witness.md) 包含在要进行哈希的交易数据中。
 
 ## 示例
 
@@ -107,7 +107,7 @@ TXID 看起来像什么？
 
 注意：被哈希以创建 TXID 的数据被高亮标记为绿色。
 
-如果你对所有这些数据进行 HASH256 计算，你会得到 `169e1e83e930853391bc6f35f605c6754cfead57cf8387639d3b4096c54f18f4`，这是[自然字节序](/docs/technical/general/byte-order.md#natural-byte-order)的 TXID，也是原始交易数据内部所发现的格式。
+如果你对所有这些数据进行 HASH256 计算，你会得到 `169e1e83e930853391bc6f35f605c6754cfead57cf8387639d3b4096c54f18f4`，这是[自然字节序](../../general/byte-order.md#natural-byte-order)的 TXID，也是原始交易数据内部所发现的格式。
 
 然后，如果你反转字节顺序，你就会得到 TXID [f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16](/explorer/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16)，这是在区块链浏览器上搜索交易时使用的字节序。
 
@@ -123,9 +123,9 @@ TXID 看起来像什么？
 
 如果你对高亮的数据进行 HASH256 计算，你会得到 `01cda497b58d876f207b74c1f0b741f397c376852b3c68b0b6db042a24ffd96c`，然后反转字节序，你就得到了 TXID [6cd9ff242a04dbb6b0683c2b8576c397f341b7f0c1747b206f878db597a4cd01](/explorer/tx/6cd9ff242a04dbb6b0683c2b8576c397f341b7f0c1747b206f878db597a4cd01)。
 
-在为 SegWit 交易创建 TXID 时，你**不哈希 SegWit 交易中的新字段**。这避免了将任何[签名](/docs/technical/keys/signature.md)数据作为 TXID 的一部分（签名现在放置于 [witness](/docs/technical/transaction/witness.md) 中），因为签名在交易发送到[网络](/docs/technical/networking.md)后可以被篡改以改变 TXID（这很罕见，但它使 TXID 变得不够可靠）。
+在为 SegWit 交易创建 TXID 时，你**不哈希 SegWit 交易中的新字段**。这避免了将任何[签名](../../keys/signature.md)数据作为 TXID 的一部分（签名现在放置于 [witness](../witness.md) 中），因为签名在交易发送到[网络](../../networking.md)后可以被篡改以改变 TXID（这很罕见，但它使 TXID 变得不够可靠）。
 
-这是进行 [SegWit](/docs/technical/upgrades/segregated-witness.md) 升级的首要原因。
+这是进行 [SegWit](../../upgrades/segregated-witness.md) 升级的首要原因。
 
 ### 亲自尝试
 
@@ -193,21 +193,21 @@ $ bitcoin-cli getrawtransaction f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91
 # Note: You need to set txindex=1 in bitcoin.conf to look up all the transactions in the blockchain.
 ```
 
-这在你想要查看交易详情或找出其位置（即它是否已被打包进[区块链](/docs/technical/blockchain.md)，或者它是否依然在[内存池](/docs/technical/mining/memory-pool.md)中）时非常有用。
+这在你想要查看交易详情或找出其位置（即它是否已被打包进[区块链](../../blockchain.md)，或者它是否依然在[内存池](../../mining/memory-pool.md)中）时非常有用。
 
 ### 2. 引用以前的输出进行花费
 
-你在创建比特币交易时，使用 TXIDs 来引用以往交易中的 [outputs](/docs/technical/transaction/output.md) 用作 [inputs](/docs/technical/transaction/input.md)。
+你在创建比特币交易时，使用 TXIDs 来引用以往交易中的 [outputs](../output.md) 用作 [inputs](../input.md)。
 
-[<img src="../../../images/diagrams_png_transaction-input-select.png" alt="Diagram showing how an input is selected by referencing the TXID and VOUT from a previous transaction." width="740" height="352" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-input-select.png)
+[<img src="../../../images/diagrams_png_transaction-input-select.png" alt="Diagram showing how an input is selected by referencing the TXID and VOUT from a previous transaction." width="740" height="352" />](../../../images/diagrams_png_transaction-input-select.png)
 
-TXIDs 是唯一的，因此你可以将它们与 [VOUT](/docs/technical/transaction/input/vout.md) 结合使用，引用区块链中的任何特定输出进行花费。
+TXIDs 是唯一的，因此你可以将它们与 [VOUT](vout.md) 结合使用，引用区块链中的任何特定输出进行花费。
 
 ### 3. 创建默克尔根
 
-TXIDs 用于为[区块头](/docs/technical/block.md#header)创建[默克尔根](/docs/technical/block/merkle-root.md)：
+TXIDs 用于为[区块头](../../block.md#header)创建[默克尔根](../../block/merkle-root.md)：
 
-[<img src="../../../images/diagrams_png_block-merkle-root.png" alt="Diagram showing how TXIDs are used to create a merkle root." width="767" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-merkle-root.png)
+[<img src="../../../images/diagrams_png_block-merkle-root.png" alt="Diagram showing how TXIDs are used to create a merkle root." width="767" height="310" />](../../../images/diagrams_png_block-merkle-root.png)
 
 默克尔根基本上是通过以树状结构对区块中所有的 TXIDs 进行哈希创建的。这为区块内的所有交易创建了一个唯一的指纹，随后该指纹会被放置在区块头中，以防止区块内容在以后被篡改。
 
@@ -223,7 +223,7 @@ TXID 列表
 
 由 *空格*、*逗号* 或 *换行符* 分隔的 TXID 列表。引号和括号会被忽略。
 
-TXID 应该以 [反向字节序](/docs/technical/general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算默克尔根之前，它们会被转换为 [自然字节序](/docs/technical/general/byte-order.md#natural-byte-order)。
+TXID 应该以 [反向字节序](../../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算默克尔根之前，它们会被转换为 [自然字节序](../../general/byte-order.md#natural-byte-order)。
 
 
 
@@ -255,18 +255,18 @@ TXIDs (0)
    * [区块 91,842](/explorer/block/00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec) (2010 年 11 月 14 日, 21:04)
    * [区块 91,812](/explorer/block/00000000000af0aed4792b1acee3d966af36cf5def14935db8de83d6f9306f2f) (2010 年 11 月 14 日, 17:59)
 
-从技术上讲，每次出现的都是*同一笔交易*，因为它们都具有相同的底层[交易数据](/docs/technical/transaction.md#structure)。这并不是说两笔完全不同的交易最终得到了相同的 TXID（即[哈希碰撞](/docs/technical/cryptography/hash-function.md#strong-hash-function)）——而只是同一笔交易最终出现在了多个区块中。
+从技术上讲，每次出现的都是*同一笔交易*，因为它们都具有相同的底层[交易数据](../../transaction.md#structure)。这并不是说两笔完全不同的交易最终得到了相同的 TXID（即[哈希碰撞](../../cryptography/hash-function.md#strong-hash-function)）——而只是同一笔交易最终出现在了多个区块中。
 
-无论如何，这种重复 TXID 的情况发生，仅仅是因为它们是 **[coinbase 交易](/docs/technical/mining/coinbase-transaction.md)**。
+无论如何，这种重复 TXID 的情况发生，仅仅是因为它们是 **[coinbase 交易](../../mining/coinbase-transaction.md)**。
 
-你要知道，coinbase 交易的 [input](/docs/technical/transaction/input.md) 的 TXID 和 [VOUT](/docs/technical/transaction/input/vout.md) 字段是*固定*的，而不是像所有其他交易那样是*动态*的。这意味着 input 并不被迫要求唯一，所以如果你决定保持输出也完全相同（通过使用相同的[锁定脚本](/docs/technical/transaction/output/scriptpubkey.md)来认领相同金额的[区块奖励](/docs/technical/mining/block-reward.md)，这两个例子中发生的就是这种情况），那么过去没有什么能阻止你创建重复的 coinbase 交易并将其打包进区块链。
+你要知道，coinbase 交易的 [input](../input.md) 的 TXID 和 [VOUT](vout.md) 字段是*固定*的，而不是像所有其他交易那样是*动态*的。这意味着 input 并不被迫要求唯一，所以如果你决定保持输出也完全相同（通过使用相同的[锁定脚本](../output/scriptpubkey.md)来认领相同金额的[区块奖励](../../mining/block-reward.md)，这两个例子中发生的就是这种情况），那么过去没有什么能阻止你创建重复的 coinbase 交易并将其打包进区块链。
 
-当然，你其实并不希望区块链中出现重复的交易，因为 **TXIDs 被用来引用先前的交易**。如果你有多笔具有相同 TXID 的交易，那么只有其中*一笔*交易（最近的那笔）的未花费 [outputs](/docs/technical/transaction/output.md) 是可以被花费的，因为根本没有办法唯一引用其他的交易（较早的那些交易）。
+当然，你其实并不希望区块链中出现重复的交易，因为 **TXIDs 被用来引用先前的交易**。如果你有多笔具有相同 TXID 的交易，那么只有其中*一笔*交易（最近的那笔）的未花费 [outputs](../output.md) 是可以被花费的，因为根本没有办法唯一引用其他的交易（较早的那些交易）。
 
 ### 解决方案
 
-1. [BIP 30](https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki) **（2012 年 2 月 22 日）**：引入了一条规则，阻止区块包含已存在的 TXID（尽管这只包括检查 [UTXO](/docs/technical/transaction/utxo.md) 集中的 TXIDs）。
-2. [BIP 34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki) **（2012 年 7 月 6 日）**：要求 coinbase 交易在其交易数据中[包含当前的区块高度](/docs/technical/mining/coinbase-transaction.md#bip34)，这意味着 coinbase 交易数据将始终是唯一的。
+1. [BIP 30](https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki) **（2012 年 2 月 22 日）**：引入了一条规则，阻止区块包含已存在的 TXID（尽管这只包括检查 [UTXO](../utxo.md) 集中的 TXIDs）。
+2. [BIP 34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki) **（2012 年 7 月 6 日）**：要求 coinbase 交易在其交易数据中[包含当前的区块高度](../../mining/coinbase-transaction.md#bip34)，这意味着 coinbase 交易数据将始终是唯一的。
 
 这些修复措施意味着现在已经不可能创建重复的 coinbase 交易了。
 

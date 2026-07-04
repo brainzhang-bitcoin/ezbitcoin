@@ -1,14 +1,14 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-你可以通过 3 种方式来测量比特币交易（[transaction](/docs/technical/transaction.md)）的大小：
+你可以通过 3 种方式来测量比特币交易（[transaction](../transaction.md)）的大小：
 
 1. **[字节 (Bytes)](#bytes)** – 磁盘上的交易大小。
 2. **[重量单位 (Weight Units)](#weight-units)** – 用于确定放入区块的交易大小。
-3. **[虚拟字节 (Virtual Bytes)](#virtual-bytes)** – 用于比较交易之间的[费率](/docs/technical/transaction/fee.md)。
+3. **[虚拟字节 (Virtual Bytes)](#virtual-bytes)** – 用于比较交易之间的[费率](fee.md)。
 
 “字节”是最直接的单位。它用于测量计算机上的任何数据量。
 
-“重量单位”和“虚拟字节”是比特币所特有的测量单位。它们同样也是以字节为单位来测量交易的体积，但它们**对交易数据的某些部分给予了折扣**，并在计算一个[区块](/docs/technical/block.md)中能容纳多少交易时被使用。
+“重量单位”和“虚拟字节”是比特币所特有的测量单位。它们同样也是以字节为单位来测量交易的体积，但它们**对交易数据的某些部分给予了折扣**，并在计算一个[区块](../block.md)中能容纳多少交易时被使用。
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易拆分器 (Transaction Splitter)
 
@@ -32,11 +32,11 @@
 
 ## Bytes (b)
 
-[<img src="../../images/diagrams_png_transaction-size.png" alt="Diagram showing the measurement of a bitcoin transaction in bytes." width="424" height="178" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-size.png)
+[<img src="../../images/diagrams_png_transaction-size.png" alt="Diagram showing the measurement of a bitcoin transaction in bytes." width="424" height="178" />](../../images/diagrams_png_transaction-size.png)
 
-这是测量交易大小的自然方式。它是交易在占用空间方面的*实际*大小（以[字节](/docs/technical/general/bytes.md)计算）。
+这是测量交易大小的自然方式。它是交易在占用空间方面的*实际*大小（以[字节](../general/bytes.md)计算）。
 
-当交易在[网络](/docs/technical/networking.md)中发送时，或者在测量它在磁盘上占用多少空间时（例如存储在[区块文件](/docs/technical/block/blkdat.md)中时），都会使用字节。
+当交易在[网络](../networking.md)中发送时，或者在测量它在磁盘上占用多少空间时（例如存储在[区块文件](../block/blkdat.md)中时），都会使用字节。
 
 在区块大小限制也是以字节（1,000,000 字节，或 1 MB）来衡量时，以字节来测量交易大小更为重要。然而，现在的区块大小限制是基于 *重量（weight）* 计算的。
 
@@ -52,11 +52,11 @@
 
 该交易中包含 226 字节。
 
-你可以自己验证这一点，因为每 2 个[十六进制](/docs/technical/general/hexadecimal.md)字符代表 1 个字节。
+你可以自己验证这一点，因为每 2 个[十六进制](../general/hexadecimal.md)字符代表 1 个字节。
 
 #### 典型交易大小
 
-以*字节*为单位的交易大小主要**取决于交易中包含多少 [inputs](/docs/technical/transaction/input.md) 和 [outputs](/docs/technical/transaction/output.md)**。以下是典型交易的平均大小（ outputs 上带有标准 [P2PKH](/docs/technical/script/p2pkh.md) 锁定脚本）：
+以*字节*为单位的交易大小主要**取决于交易中包含多少 [inputs](input.md) 和 [outputs](output.md)**。以下是典型交易的平均大小（ outputs 上带有标准 [P2PKH](../script/p2pkh.md) 锁定脚本）：
 
 * Inputs: 1, Outputs: 1 = 191 或 192 字节
 * Inputs: 1, Outputs: 2 = 225 或 226 字节 *(最常见)*
@@ -65,15 +65,15 @@
 
 交易中的 inputs 和 outputs 越多，其体积就越大。
 
-以字节为单位的交易大小没有限制，唯一的限制是它必须能够装入一个[区块](/docs/technical/block.md)中。
+以字节为单位的交易大小没有限制，唯一的限制是它必须能够装入一个[区块](../block.md)中。
 
 ## Weight Units (wu)
 
 [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
 
-[<img src="../../images/diagrams_png_transaction-weight.png" alt="Diagram showing the measurement of a bitcoin transaction in weight units." width="699" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight.png)
+[<img src="../../images/diagrams_png_transaction-weight.png" alt="Diagram showing the measurement of a bitcoin transaction in weight units." width="699" height="197" />](../../images/diagrams_png_transaction-weight.png)
 
-每笔交易都有一个*重量*测量值。此项测量是在 [SegWit](/docs/technical/upgrades/segregated-witness.md) 升级中引入的。交易的重量是通过将[交易](/docs/technical/transaction.md)不同部分的体积（以字节为单位）乘以 4 或 1 来计算的：
+每笔交易都有一个*重量*测量值。此项测量是在 [SegWit](../upgrades/segregated-witness.md) 升级中引入的。交易的重量是通过将[交易](../transaction.md)不同部分的体积（以字节为单位）乘以 4 或 1 来计算的：
 
 | 字段 | 乘数 |
 | --- | --- |
@@ -85,7 +85,7 @@
 | witness | x1 |
 | locktime | x4 |
 
-因此，这给 [witness](/docs/technical/transaction/witness.md) 数据提供了*折扣*。
+因此，这给 [witness](witness.md) 数据提供了*折扣*。
 
 ### 示例
 
@@ -103,25 +103,25 @@
 
 ### 区块限制 (4,000,000 重量单位)
 
-重量测量非常重要，因为**[区块](/docs/technical/block.md)最多能容纳 4,000,000 重量单位**的交易数据。
+重量测量非常重要，因为**[区块](../block.md)最多能容纳 4,000,000 重量单位**的交易数据。
 
-因此，当[矿工](/docs/technical/mining.md)用交易填满他们的[候选区块](/docs/technical/mining/candidate-block.md)时，他们使用交易重量来确定区块中能容纳多少笔交易。
+因此，当[矿工](../mining.md)用交易填满他们的[候选区块](../mining/candidate-block.md)时，他们使用交易重量来确定区块中能容纳多少笔交易。
 
-[<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing a block being filled up with transactions using weight as the measurement for each transaction's size." width="660" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/block-weight.png)
+[<img src="../../images/diagrams_png_block-weight.png" alt="Diagram showing a block being filled up with transactions using weight as the measurement for each transaction's size." width="660" height="310" />](../../images/diagrams_png_block-weight.png)
 
 直接使用字节来衡量交易大小和区块限制之前更简单。但这种新的重量测量方法为花费输出的成本引入了*公平性*。
 
 ### 为什么 witness 数据重量较轻？
 
-因为它有助于平衡创建输出与花费输出的成本（就[交易手续费](/docs/technical/transaction/fee.md)而言）。
+因为它有助于平衡创建输出与花费输出的成本（就[交易手续费](fee.md)而言）。
 
-解锁输出所需的数据量（即[签名](/docs/technical/keys/signature.md)数据）要比最初在输出上加[锁](/docs/technical/transaction/output/scriptpubkey.md)所需的数据量大得多，这并不公平。因此，新的重量测量让交易中输出和输入的大小能够更加匹配。
+解锁输出所需的数据量（即[签名](../keys/signature.md)数据）要比最初在输出上加[锁](output/scriptpubkey.md)所需的数据量大得多，这并不公平。因此，新的重量测量让交易中输出和输入的大小能够更加匹配。
 
-[<img src="../../images/diagrams_png_transaction-weight-spending-sending-balance.png" alt="Diagram showing the comparative size of an output and and input when measured in bytes and in weight units." width="605" height="261" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight-spending-sending-balance.png)
+[<img src="../../images/diagrams_png_transaction-weight-spending-sending-balance.png" alt="Diagram showing the comparative size of an output and and input when measured in bytes and in weight units." width="605" height="261" />](../../images/diagrams_png_transaction-weight-spending-sending-balance.png)
 
 ## Virtual Bytes (vBytes)
 
-[<img src="../../images/diagrams_png_transaction-vsize.png" alt="Diagram showing the measurement of a bitcoin transaction in virtual bytes." width="710" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-vsize.png)
+[<img src="../../images/diagrams_png_transaction-vsize.png" alt="Diagram showing the measurement of a bitcoin transaction in virtual bytes." width="710" height="197" />](../../images/diagrams_png_transaction-vsize.png)
 
 交易的*虚拟大小 (vSize)* 等于其*重量*除以 4。
 
@@ -180,4 +180,4 @@
 
 * [BIP 141 (Transaction size calculations)](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#transaction-size-calculations)
 * [Is there a difference between bytes and virtual bytes (vbytes)?](https://bitcoin.stackexchange.com/questions/89385/is-there-a-difference-between-bytes-and-virtual-bytes-vbytes)
-* 感谢 [luke-jr](https://github.com/luke-jr) 在 IRC 上向我解释：将 non-witness 数据乘以 4 有助于在创建和花费 [UTXO](/docs/technical/transaction/utxo.md) 的成本之间建立平衡。
+* 感谢 [luke-jr](https://github.com/luke-jr) 在 IRC 上向我解释：将 non-witness 数据乘以 4 有助于在创建和花费 [UTXO](utxo.md) 的成本之间建立平衡。

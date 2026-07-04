@@ -1,6 +1,6 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization.png" alt="Diagram showing a chain reorganization across nodes on the network." width="983" height="639" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization.png" alt="Diagram showing a chain reorganization across nodes on the network." width="983" height="639" />](../../images/diagrams_png_blockchain-chain-reorganization.png)
 
 最近的区块重组 (Recent Chain Reorganizations):
 
@@ -51,9 +51,9 @@
 | [675,407](/explorer/675407) | 1 | 2021 年 3 月 20 日 |
 | [675,392](/explorer/675392) | 1 | 2021 年 3 月 20 日 |
 
-当您的节点收到属于新的[最长链](/docs/technical/blockchain/longest-chain.md)的区块时，就会发生区块重组 (chain reorganization，或简称 “reorg”)。您的节点将*停用*其旧最长链中的区块，以采用构建**新最长链**的区块。
+当您的节点收到属于新的[最长链](longest-chain.md)的区块时，就会发生区块重组 (chain reorganization，或简称 “reorg”)。您的节点将*停用*其旧最长链中的区块，以采用构建**新最长链**的区块。
 
-这一过程允许整个网络中的各个节点**商定同一个版本的[区块链](/docs/technical/blockchain.md)**，因为全球接受的区块链视图将始终是包含最长\*区块链接的视图。
+这一过程允许整个网络中的各个节点**商定同一个版本的[区块链](../blockchain.md)**，因为全球接受的区块链视图将始终是包含最长\*区块链接的视图。
 
 \*从技术上讲，它是包含最大*工作量*的链，但通常区块数量最多也就是指相同的内容。
 
@@ -65,15 +65,15 @@
 
 何时会发生区块重组？
 
-区块重组最常发生在**两个[区块](/docs/technical/block.md)被同时[挖掘出](/docs/technical/mining.md)**之后。
+区块重组最常发生在**两个[区块](../block.md)被同时[挖掘出](../mining.md)**之后。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-two-blocks.png" alt="Diagram showing two blocks being mined at the same time on the Bitcoin network." width="983" height="582" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-example-two-blocks.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-two-blocks.png" alt="Diagram showing two blocks being mined at the same time on the Bitcoin network." width="983" height="582" />](../../images/diagrams_png_blockchain-chain-reorganization-example-two-blocks.png)
 
 虽然少见，但同时挖掘出两个区块是完全正常的。
 
-由于区块在[网络](/docs/technical/networking.md)上的传播速度不同，某些节点会先收到其中一个区块，而另一些节点会先收到另一个区块。因此，对于这两个区块中哪一个实际上是“第一位”并应该放在每个人区块链的最顶端，会存在临时的分歧。
+由于区块在[网络](../networking.md)上的传播速度不同，某些节点会先收到其中一个区块，而另一些节点会先收到另一个区块。因此，对于这两个区块中哪一个实际上是“第一位”并应该放在每个人区块链的最顶端，会存在临时的分歧。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-chain-split.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="559" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-example-chain-split.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-chain-split.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="559" />](../../images/diagrams_png_blockchain-chain-reorganization-example-chain-split.png)
 
 节点会暂时对区块链的外观产生分歧。
 
@@ -81,7 +81,7 @@
 
 当*下一个区块被挖出*时，这个问题就会得到解决。下一个被挖出的区块将构建在这些区块之中的*一个*之上，从而创建一条新的最长链。当节点收到这个最新区块时，它们会发现它创建了一条新的最长链，并且它们将执行*区块重组*来采用它。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-next-block-resolved.png" alt="Diagram showing a temporary fork being resolved when the next block is mined." width="983" height="597" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-example-next-block-resolved.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-example-next-block-resolved.png" alt="Diagram showing a temporary fork being resolved when the next block is mined." width="983" height="597" />](../../images/diagrams_png_blockchain-chain-reorganization-example-next-block-resolved.png)
 
 旧较短链中的区块被停用，新最长链中的区块被激活。
 
@@ -97,25 +97,25 @@
 
 如果一个区块因为区块重组而被停用（“过期区块”），其中的交易将**不再是区块链的一部分**。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block.png" alt="Diagram showing a stale block after a chain reorganization." width="772" height="329" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block.png" alt="Diagram showing a stale block after a chain reorganization." width="772" height="329" />](../../images/diagrams_png_blockchain-chain-reorganization-stale-block.png)
 
 过期区块是指不再属于最长链一部分的区块。
 
-因此，如果您尝试使用*过期区块*中交易的[输出 (outputs)](/docs/technical/transaction/output.md)，节点会拒绝您的交易，因为您正试图消费在有效链中并不存在的比特币。
+因此，如果您尝试使用*过期区块*中交易的[输出 (outputs)](../transaction/output.md)，节点会拒绝您的交易，因为您正试图消费在有效链中并不存在的比特币。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-invalid-transaction.png" alt="Diagram showing how the outputs from a transaction in a stale block cannot be spent." width="772" height="469" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block-invalid-transaction.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-invalid-transaction.png" alt="Diagram showing how the outputs from a transaction in a stale block cannot be spent." width="772" height="469" />](../../images/diagrams_png_blockchain-chain-reorganization-stale-block-invalid-transaction.png)
 
 过期区块中交易的输出是不能被消费的；这就像交易从未发生过一样。
 
 不过在实际操作中，如果同时挖掘出两个区块，它们可能会包含相同（或相似）的交易，因此重组通常不会造成问题。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-similar-transactions.png" alt="Diagram showing how competing blocks during a chain reorganization usually contain similar transactions." width="772" height="318" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block-similar-transactions.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-similar-transactions.png" alt="Diagram showing how competing blocks during a chain reorganization usually contain similar transactions." width="772" height="318" />](../../images/diagrams_png_blockchain-chain-reorganization-stale-block-similar-transactions.png)
 
 在区块重组后，您的交易极有可能包含在“竞争”区块中。
 
-然而，如果过期区块中存在*未*包含在竞争区块中的交易，它们将被退回到您节点的[内存池 (memory pool)](/docs/technical/mining/memory-pool.md)中，并在网络中重新传播，以获得被挖掘到未来区块中的*机会*。
+然而，如果过期区块中存在*未*包含在竞争区块中的交易，它们将被退回到您节点的[内存池 (memory pool)](../mining/memory-pool.md)中，并在网络中重新传播，以获得被挖掘到未来区块中的*机会*。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-transactions-recycled.png" alt="Diagram showing a transaction from a stale block being recycled back into the mempool." width="772" height="480" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-stale-block-transactions-recycled.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-stale-block-transactions-recycled.png" alt="Diagram showing a transaction from a stale block being recycled back into the mempool." width="772" height="480" />](../../images/diagrams_png_blockchain-chain-reorganization-stale-block-transactions-recycled.png)
 
 如果过期区块中的交易未在竞争区块中，它们将被回收回到内存池。
 
@@ -129,7 +129,7 @@
 
 在这里，我们可以看到一个发生在区块高度 [578,141](/explorer/578141) 的区块链中实际发生区块重组的示例。
 
-[<img src="../../images/technical_blockchain_chain-reorganization_neo4j-reorg-5.jpg" alt="Diagram showing an actual example of chain reorganization and transactions from the stale block being re-mined in a later block." width="1151" height="621" />](file:///opt/brainzhang/ezbitcoin/docs/technical/blockchain/chain-reorganization/neo4j-reorg-5.jpg.md)
+[<img src="../../images/technical_blockchain_chain-reorganization_neo4j-reorg-5.jpg" alt="Diagram showing an actual example of chain reorganization and transactions from the stale block being re-mined in a later block." width="1151" height="621" />](../../images/technical_blockchain_chain-reorganization_neo4j-reorg-5.jpg)
 
 过期区块中的大多数交易都包含在竞争区块中，但有些交易在稍后的区块中被重新开采。
 
@@ -141,7 +141,7 @@
 
 如果您的节点收到了一条比当前活跃链更长的新区块链接，无论有多少个区块会被替换，您的节点都将进行区块重组以采用新链。
 
-这就是为什么拥有大多数哈希算力的矿工能够通过 [51% 攻击](/docs/technical/blockchain/51-attack.md)来替换您当前最长链中的区块和交易的原因。最长链总是获胜。
+这就是为什么拥有大多数哈希算力的矿工能够通过 [51% 攻击](51-attack.md)来替换您当前最长链中的区块和交易的原因。最长链总是获胜。
 
 然而，“自然”的区块重组（由于同时开采出两个区块而发生的重组）**很少涉及您链中顶端区块之外的区块**。
 
@@ -200,13 +200,13 @@
   + `headers-only` – **我们的节点观察到了可能的区块重组。** 我们收到了竞争链的区块头，但没有下载完整的区块。
   + `invalid` – 包含无效区块的分支。
 
-[<img src="../../images/diagrams_png_blockchain-chain-reorganization-getchaintips-status.png" alt="Diagram showing the difference between valid-fork, valid-headers, and headers-only." width="983" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/blockchain-chain-reorganization-getchaintips-status.png)
+[<img src="../../images/diagrams_png_blockchain-chain-reorganization-getchaintips-status.png" alt="Diagram showing the difference between valid-fork, valid-headers, and headers-only." width="983" height="336" />](../../images/diagrams_png_blockchain-chain-reorganization-getchaintips-status.png)
 
 状态为 `valid-fork` 的分支是包含我们最初认为是活跃区块链一部分的区块，但在收到新的最长区块链接后停用了它们。
 
 状态为 `valid-headers` 的分支是在我们已拥有等效活跃链*之后*收到的竞争链。这些链本来可能导致重组，但我们的链作为最长链继续保持，因此没有发生重组。
 
-**如果您没有持续运行节点几周或几个月，您不太可能看到任何区块重组。** 当您的节点[下载区块链](/docs/technical/blockchain.md#download)时，它将仅下载当前最长链中的区块（而不会下载来自任何分支或旧的区块重组的区块）。您的节点需要经历*实时发生的*区块重组，它们才会显示在 `bitcoin-cli getchaintips` 中。
+**如果您没有持续运行节点几周或几个月，您不太可能看到任何区块重组。** 当您的节点[下载区块链](../blockchain.md#download)时，它将仅下载当前最长链中的区块（而不会下载来自任何分支或旧的区块重组的区块）。您的节点需要经历*实时发生的*区块重组，它们才会显示在 `bitcoin-cli getchaintips` 中。
 
 ## 总结
 

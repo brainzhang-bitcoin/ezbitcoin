@@ -1,12 +1,12 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-wTXID 类似于 [TXID](/docs/technical/transaction/input/txid.md)，但 wTXID 包含了交易（[transaction](/docs/technical/transaction.md)）的 [witness](/docs/technical/transaction/witness.md) 数据。
+wTXID 类似于 [TXID](input/txid.md)，但 wTXID 包含了交易（[transaction](../transaction.md)）的 [witness](witness.md) 数据。
 
 例如：
 
-**wTXID** 是对所有交易数据进行 [HASH256](/docs/technical/cryptography/hash-function.md#hash256) 计算的结果，*包括* [marker](/docs/technical/transaction.md#structure-marker)、[flag](/docs/technical/transaction.md#structure-flag) 和 [witness](/docs/technical/transaction.md#structure-witness)：
+**wTXID** 是对所有交易数据进行 [HASH256](../cryptography/hash-function.md#hash256) 计算的结果，*包括* [marker](../transaction.md#structure-marker)、[flag](../transaction.md#structure-flag) 和 [witness](../transaction.md#structure-witness)：
 
-[<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the marker, flag, and witness." width="764" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-wtxid.png)
+[<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the marker, flag, and witness." width="764" height="367" />](../../images/diagrams_png_transaction-witness-wtxid.png)
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> wTXID
 
@@ -32,7 +32,7 @@ wTXID (反向字节序)
 
 而 **TXID** 是对除 marker、flag 和 witness *之外* 的所有交易数据进行 HASH256 计算的结果：
 
-[<img src="../../images/diagrams_png_transaction-witness-txid.png" alt="Diagram showing the TXID being calculated from the raw transaction data excluding the marker, flag, and witness." width="764" height="367" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-witness-txid.png)
+[<img src="../../images/diagrams_png_transaction-witness-txid.png" alt="Diagram showing the TXID being calculated from the raw transaction data excluding the marker, flag, and witness." width="764" height="367" />](../../images/diagrams_png_transaction-witness-txid.png)
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> TXID
 
@@ -68,7 +68,7 @@ TXID (反向字节序)
 
 如何创建 wTXID？
 
-从技术角度来看，wTXID 是通过对序列化原始交易的以下字段进行[哈希](/docs/technical/cryptography/hash-function.md)计算得到的：
+从技术角度来看，wTXID 是通过对序列化原始交易的以下字段进行[哈希](../cryptography/hash-function.md)计算得到的：
 
 ```
 wTXID = HASH256([version][marker][flag][inputs][outputs][witness][locktime])
@@ -138,7 +138,7 @@ SHA-256(SHA-256(data))
 
 0 secs
 
-**字节顺序。** 不要忘记 TXIDs 和 wTXIDs 是以[反向字节序](/docs/technical/general/byte-order.md#reverse-byte-order)显示的，因此 HASH256 的初始结果将是自然字节序（这意味着该结果起初看起来是反的）。
+**字节顺序。** 不要忘记 TXIDs 和 wTXIDs 是以[反向字节序](../general/byte-order.md#reverse-byte-order)显示的，因此 HASH256 的初始结果将是自然字节序（这意味着该结果起初看起来是反的）。
 
 ### 旧版交易
 
@@ -210,7 +210,7 @@ SHA-256(SHA-256(data))
 
 将交易的 witness 数据承诺到区块中
 
-[<img src="../../images/diagrams_png_block-wtxid-commitment.png" alt="Diagram showing segwit data being committed to the block via the wtxid commitment in the scriptpubkey of the coinbase transaction." width="810" height="499" />](https://static.learnmeabitcoin.com/diagrams/png/block-wtxid-commitment.png)
+[<img src="../../images/diagrams_png_block-wtxid-commitment.png" alt="Diagram showing segwit data being committed to the block via the wtxid commitment in the scriptpubkey of the coinbase transaction." width="810" height="499" />](../../images/diagrams_png_block-wtxid-commitment.png)
 
 wTXIDs 用于通过 **witness 默克尔根哈希 (witness root hash)** 将 SegWit 交易中的新数据*承诺*到区块中。
 
@@ -218,11 +218,11 @@ wTXIDs 用于通过 **witness 默克尔根哈希 (witness root hash)** 将 SegWi
 > 
 > —— [cryptography.fandom.com](https://cryptography.fandom.com/wiki/Commitment_scheme)
 
-例如，所有的旧版交易数据都是通过创建区块中所有 TXIDs 的[默克尔根](/docs/technical/block/merkle-root.md)承诺到[区块头](/docs/technical/block.md#header)中的。
+例如，所有的旧版交易数据都是通过创建区块中所有 TXIDs 的[默克尔根](../block/merkle-root.md)承诺到[区块头](../block.md#header)中的。
 
-然而，TXIDs 不包括 marker、flag 和 witness 数据。因此，对于自 [SegWit](/docs/technical/upgrades/segregated-witness.md) 升级以来的所有区块，我们还会**为所有 wTXIDs 创建一个默克尔根**，并通过创建一个 *witness root hash* 将其承诺到区块中。
+然而，TXIDs 不包括 marker、flag 和 witness 数据。因此，对于自 [SegWit](../upgrades/segregated-witness.md) 升级以来的所有区块，我们还会**为所有 wTXIDs 创建一个默克尔根**，并通过创建一个 *witness root hash* 将其承诺到区块中。
 
-这个 *witness root hash* 与 [*witness reserved value*](/docs/technical/transaction/witness.md#witness-reserved-value) 一起进行 HASH256 计算，从而创建 **wTXID 承诺**。它被放置在 [Coinbase](/docs/technical/mining/coinbase-transaction.md) 交易的其中一个 [outputs](/docs/technical/transaction/output.md) 的 [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) 中。
+这个 *witness root hash* 与 [*witness reserved value*](witness.md#witness-reserved-value) 一起进行 HASH256 计算，从而创建 **wTXID 承诺**。它被放置在 [Coinbase](../mining/coinbase-transaction.md) 交易的其中一个 [outputs](output.md) 的 [ScriptPubKey](output/scriptpubkey.md) 中。
 
 因此，现在在区块中放置了对所有新 SegWit 交易数据的承诺。如果有人试图更改区块中任何交易的 witness 数据内容，它将与 wTXID 承诺不匹配，该区块将变为无效。
 
@@ -266,7 +266,7 @@ TXID 列表
 
 由 *空格*、*逗号* 或 *换行符* 分隔的 TXID 列表。引号和括号会被忽略。
 
-TXID 应该以 [反向字节序](/docs/technical/general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算默克尔根之前，它们会被转换为 [自然字节序](/docs/technical/general/byte-order.md#natural-byte-order)。
+TXID 应该以 [反向字节序](../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算默克尔根之前，它们会被转换为 [自然字节序](../general/byte-order.md#natural-byte-order)。
 
 
 
@@ -338,7 +338,7 @@ aa21a9ed6502e8637ba29cd8a820021915339c7341223d571e5e8d66edd83786d387e715
 
 自 SegWit 升级以来的所有 Coinbase 交易都必须包含这个对 witness 数据的承诺。它们都必须包含一个具有以下脚本模式的输出：以 `OP_RETURN` 开始，后跟一个包含 4 字节头部和接下来的 32 字节 wTXID 承诺的 `OP_PUSHBYTES_36`。
 
-wTXID 承诺可以包含在 Coinbase 交易的*任何*输出中。如果由于某种原因有多个符合此结构的输出，包含此 wTXID 承诺结构的最大[输出索引号](/docs/technical/transaction/input/vout.md)将被视为最终承诺。
+wTXID 承诺可以包含在 Coinbase 交易的*任何*输出中。如果由于某种原因有多个符合此结构的输出，包含此 wTXID 承诺结构的最大[输出索引号](input/vout.md)将被视为最终承诺。
 
 ## 使用
 
@@ -350,9 +350,9 @@ wTXIDs 仅在比特币内部用于为交易的新 SegWit 字段创建承诺。
 > 
 > —— Pieter Wuille，[bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/55337/segwit-and-previous-hash-txid-or-wtxid-or-either/55339#55339)
 
-因此，你不会使用 wTXID 来在[区块链](/docs/technical/blockchain.md)中查找交易。
+因此，你不会使用 wTXID 来在[区块链](../blockchain.md)中查找交易。
 
-**你仍然使用 [TXID](/docs/technical/transaction/input/txid.md) 来在区块链中查找交易。** TXID 仍然是交易的唯一标识符，因为它依然哈希了交易的*效果*（将代币从已有的 [outputs](/docs/technical/transaction/output.md) 移动到新的输出中），这对于每笔交易来说始终是唯一的。[witness](/docs/technical/transaction/witness.md) 数据仅对于交易*验证*（解锁 inputs）重要，这并不会让交易数据变得比它原本的程度更具唯一性。
+**你仍然使用 [TXID](input/txid.md) 来在区块链中查找交易。** TXID 仍然是交易的唯一标识符，因为它依然哈希了交易的*效果*（将代币从已有的 [outputs](output.md) 移动到新的输出中），这对于每笔交易来说始终是唯一的。[witness](witness.md) 数据仅对于交易*验证*（解锁 inputs）重要，这并不会让交易数据变得比它原本的程度更具唯一性。
 
 > 交易内的签名实际上并不描述交易的效果。一笔交易是在移动代币、重新分配它们。但签名的存在只是为了证明该交易是经过授权的，它并不会改变其效果。
 > 

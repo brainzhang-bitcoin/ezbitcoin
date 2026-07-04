@@ -1,13 +1,13 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-[<img src="../images/beginners_wallets_electrum-screenshot.png" alt="Electrum 钱包的屏幕截图。" width="777" height="426" />](/docs/beginners/wallets/electrum-screenshot.png.md)
+[<img src="../images/beginners_wallets_electrum-screenshot.png" alt="Electrum 钱包的屏幕截图。" width="777" height="426" />](../images/beginners_wallets_electrum-screenshot.png)
 
 
 [Electrum](https://electrum.org/) 屏幕截图。
 
 开始使用比特币的第一件事就是**获取你自己的钱包**。它们完全免费，只需几分钟即可[设置完成](#setup)。
 
-一旦你拥有了钱包，你就拥有了开始接收和[发送](/docs/beginners/sending.md)比特币所需的一切。
+一旦你拥有了钱包，你就拥有了开始接收和[发送](sending.md)比特币所需的一切。
 
 ## 最佳钱包
 
@@ -50,7 +50,7 @@
 [Trezor](https://trezor.io/) | 初学者 | 2014
 [Coldcard](https://coldcard.com/) | 高级 | 2018
 
-硬件钱包是[安全存储](/docs/beginners/security.md)比特币的最佳选择。
+硬件钱包是[安全存储](security.md)比特币的最佳选择。
 
 购买硬件钱包需要花钱，而且不如桌面/移动钱包方便，但它们是*安全*的最佳选择。
 
@@ -68,7 +68,7 @@
 
 ### 1. 下载并安装
 
-[<img src="../images/diagrams_png_beginners-wallets-download.png" alt="展示直接从钱包网站下载比特币钱包的图表。" width="503" height="378" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-download.png)
+[<img src="../images/diagrams_png_beginners-wallets-download.png" alt="展示直接从钱包网站下载比特币钱包的图表。" width="503" height="378" />](../images/diagrams_png_beginners-wallets-download.png)
 
 显然，第一步是下载并安装比特币钱包。
 
@@ -76,7 +76,7 @@
 
 然而，关于比特币钱包最重要的一点是**直接从钱包的官方网站下载**。
 
-比特币钱包管理着你访问比特币所需的所有[密钥](/docs/beginners/guide/keys-addresses.md)，其中一些密钥需要保持私密。因此，你最不希望看到的是从不可靠的来源下载钱包。如果你直接从钱包网站下载，你可以确信你获得的是真实版的软件。
+比特币钱包管理着你访问比特币所需的所有[密钥](guide/keys-addresses.md)，其中一些密钥需要保持私密。因此，你最不希望看到的是从不可靠的来源下载钱包。如果你直接从钱包网站下载，你可以确信你获得的是真实版的软件。
 
 所以请务必**双重确认你下载钱包的网站 URL**。
 
@@ -84,18 +84,18 @@
 
 ### 2. 抄写种子
 
-在钱包的初始设置过程中，你将获得一个 12 或 24 个单词的[种子](/docs/technical/keys/hd-wallets/mnemonic-seed.md)。
+在钱包的初始设置过程中，你将获得一个 12 或 24 个单词的[种子](../technical/keys/hd-wallets/mnemonic-seed.md)。
 
 **将此种子抄写在纸上并保存在安全的地方。**
 
-[<img src="../images/diagrams_png_beginners-wallets-seed.png" alt="展示将种子抄写在纸上的图表。" width="601" height="371" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-seed.png)
+[<img src="../images/diagrams_png_beginners-wallets-seed.png" alt="展示将种子抄写在纸上的图表。" width="601" height="371" />](../images/diagrams_png_beginners-wallets-seed.png)
 
 
 **这是一个种子的例子，请勿使用。** 你的种子必须是唯一的，并由你自己的钱包随机生成。
 
-这个种子是你所有[密钥与地址](/docs/beginners/guide/keys-addresses.md)的来源。因此，如果你因为任何原因丢失了钱包，它允许你恢复所有的比特币。
+这个种子是你所有[密钥与地址](guide/keys-addresses.md)的来源。因此，如果你因为任何原因丢失了钱包，它允许你恢复所有的比特币。
 
-[<img src="../images/diagrams_png_beginners-wallets-seed-addresses.png" alt="展示种子作为钱包中所有私钥和地址来源的图表。" width="578" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-seed-addresses.png)
+[<img src="../images/diagrams_png_beginners-wallets-seed-addresses.png" alt="展示种子作为钱包中所有私钥和地址来源的图表。" width="578" height="423" />](../images/diagrams_png_beginners-wallets-seed-addresses.png)
 
 
 你所有的私钥和地址都是由种子生成的。
@@ -122,19 +122,19 @@
 
 比特币钱包**管理密钥**，这些密钥是你发送和接收比特币所必需的。
 
-当你想要*接收*付款时，你会使用你的一个[地址](/docs/technical/keys/address.md)。[比特币的工作方式](/docs/beginners/how-does-bitcoin-work.md)是在一笔[交易](/docs/beginners/guide/transactions.md)中，一定数量的比特币将被*锁*到你的地址上。
+当你想要*接收*付款时，你会使用你的一个[地址](../technical/keys/address.md)。[比特币的工作方式](how-does-bitcoin-work.md)是在一笔[交易](guide/transactions.md)中，一定数量的比特币将被*锁*到你的地址上。
 
-[<img src="../images/diagrams_png_beginners-wallets-receive.png" alt="展示钱包中的地址被用于接收比特币付款的图表。" width="608" height="257" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-receive.png)
+[<img src="../images/diagrams_png_beginners-wallets-receive.png" alt="展示钱包中的地址被用于接收比特币付款的图表。" width="608" height="257" />](../images/diagrams_png_beginners-wallets-receive.png)
 
-当你向其他人*发送*比特币时，你的钱包将创建一笔新交易，使用对应的[私钥](/docs/technical/keys/private-key.md)来*解锁*你已收到的比特币，并将一定数量的比特币锁到别人的地址上。
+当你向其他人*发送*比特币时，你的钱包将创建一笔新交易，使用对应的[私钥](../technical/keys/private-key.md)来*解锁*你已收到的比特币，并将一定数量的比特币锁到别人的地址上。
 
-[<img src="../images/diagrams_png_beginners-wallets-send.png" alt="展示当你进行付款时，钱包创建交易并将其发送到网络中的图表。" width="771" height="325" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-send.png)
+[<img src="../images/diagrams_png_beginners-wallets-send.png" alt="展示当你进行付款时，钱包创建交易并将其发送到网络中的图表。" width="771" height="325" />](../images/diagrams_png_beginners-wallets-send.png)
 
 总之，钱包主要做三件事：
 
-1. 管理接收比特币所需的[地址](/docs/technical/keys/address.md)。
-2. 管理发送比特币所需的对应[私钥](/docs/technical/keys/private-key.md)。
-3. 创建[交易](/docs/technical/transaction.md)并将其发送到网络中。
+1. 管理接收比特币所需的[地址](../technical/keys/address.md)。
+2. 管理发送比特币所需的对应[私钥](../technical/keys/private-key.md)。
+3. 创建[交易](../technical/transaction.md)并将其发送到网络中。
 
 * 钱包更像是*密钥管理*软件。
 * 你通常在用钱包时只能看到你的地址——私钥是在后台进行管理的。
@@ -149,7 +149,7 @@
 
 又称热钱包 (Hot Wallet)
 
-[<img src="../images/diagrams_png_beginners-wallets-software-wallet.png" alt="展示电脑上软件钱包直接连接互联网的图表。" width="435" height="318" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-software-wallet.png)
+[<img src="../images/diagrams_png_beginners-wallets-software-wallet.png" alt="展示电脑上软件钱包直接连接互联网的图表。" width="435" height="318" />](../images/diagrams_png_beginners-wallets-software-wallet.png)
 
 软件钱包是你在电脑或手机上下载并运行的钱包。这些钱包**与互联网相连**，能让你快速方便地发送和接收比特币。
 
@@ -161,17 +161,17 @@
 
 又称冷钱包 (Cold Wallet)
 
-[<img src="../images/diagrams_png_beginners-wallets-hardware-wallet.png" alt="展示硬件钱包没有直接互联网连接的图表。" width="722" height="318" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-hardware-wallet.png)
+[<img src="../images/diagrams_png_beginners-wallets-hardware-wallet.png" alt="展示硬件钱包没有直接互联网连接的图表。" width="722" height="318" />](../images/diagrams_png_beginners-wallets-hardware-wallet.png)
 
 硬件钱包是专门用于存储比特币的*设备*。
 
 这些设备**不与互联网连接**，这意味着它们受到了保护，免受软件钱包所面临的那些漏洞攻击。
 
-硬件钱包在设备上存储你所有的[私钥](/docs/beginners/guide/private-keys.md)。因此，当你将硬件钱包连接到计算机进行[交易](/docs/beginners/guide/transactions.md)时，所有的[签名](/docs/beginners/guide/digital-signatures.md)都在设备上完成，你的私钥永远不会暴露给互联网。
+硬件钱包在设备上存储你所有的[私钥](guide/private-keys.md)。因此，当你将硬件钱包连接到计算机进行[交易](guide/transactions.md)时，所有的[签名](guide/digital-signatures.md)都在设备上完成，你的私钥永远不会暴露给互联网。
 
 购买硬件钱包需要花钱，而且与方便的软件钱包相比增加了一个步骤，但如果你有相当数量的比特币想要保护，你应该强烈考虑为自己配置一个硬件钱包。
 
-硬件钱包是提高[比特币安全](/docs/beginners/security.md)你应该采取的第一步。
+硬件钱包是提高[比特币安全](security.md)你应该采取的第一步。
 
 * **硬件钱包就像是在一台没有联网的独立笔记本电脑上设置软件钱包。** 在硬件钱包流行起来之前，我们以前就是这么做的。只是购买硬件钱包比购买第二台笔记本电脑更便宜、更方便。
 
@@ -181,13 +181,13 @@
 
 [Bitcoin Core](https://bitcoincore.org/en/download/) 是用作比特币钱包的一个极佳选择。
 
-如果非要说的话，它是使用比特币的*终极*选择，因为它允许你验证你收到的每一笔付款**而无需信任**网络上的任何其他[节点](/docs/technical/networking/node.md)（因为你自己就是一个节点）。
+如果非要说的话，它是使用比特币的*终极*选择，因为它允许你验证你收到的每一笔付款**而无需信任**网络上的任何其他[节点](../technical/networking/node.md)（因为你自己就是一个节点）。
 
-缺点是在开始之前，你需要下载整个[区块链](/docs/technical/blockchain.md)，这会减慢初始的安装过程。但如果你有电脑硬件和时间来设置它，它作为一个比特币钱包是极好的选择。
+缺点是在开始之前，你需要下载整个[区块链](../technical/blockchain.md)，这会减慢初始的安装过程。但如果你有电脑硬件和时间来设置它，它作为一个比特币钱包是极好的选择。
 
 然而，**下载一个简单的软件钱包要快得多、也容易得多**，这也是大多数人发送和接收比特币（包括我）所做的。这些钱包*连接*到网络上的节点以获取有关交易的信息，从而省去了你自己下载和存储整个区块链的麻烦。
 
-[<img src="../images/diagrams_png_beginners-wallets-node-vs-wallet-trust.png" alt="展示软件钱包将信息发送到 Bitcoin Core 节点的图表。" width="983" height="654" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-node-vs-wallet-trust.png)
+[<img src="../images/diagrams_png_beginners-wallets-node-vs-wallet-trust.png" alt="展示软件钱包将信息发送到 Bitcoin Core 节点的图表。" width="983" height="654" />](../images/diagrams_png_beginners-wallets-node-vs-wallet-trust.png)
 
 但如果你喜欢，使用 Bitcoin Core 也完全没问题。
 
@@ -197,9 +197,9 @@
 
 使用比特币钱包能让你**控制自己的比特币**。
 
-如果你把比特币放在[交易所](/docs/beginners/exchanges.md)中，交易所则代替你控制着你的比特币。他们可以决定你可以提现多少，以及你可以将比特币发送到哪里。更糟糕的是，如果交易所消失了，你的比特币也就没有了。
+如果你把比特币放在[交易所](exchanges.md)中，交易所则代替你控制着你的比特币。他们可以决定你可以提现多少，以及你可以将比特币发送到哪里。更糟糕的是，如果交易所消失了，你的比特币也就没有了。
 
-[<img src="../images/diagrams_png_beginners-wallets-exchange-vs-wallet.png" alt="该图强调了在交易所持有比特币与在自己的钱包中持有比特币的区别。" width="624" height="529" />](https://static.learnmeabitcoin.com/diagrams/png/beginners-wallets-exchange-vs-wallet.png)
+[<img src="../images/diagrams_png_beginners-wallets-exchange-vs-wallet.png" alt="该图强调了在交易所持有比特币与在自己的钱包中持有比特币的区别。" width="624" height="529" />](../images/diagrams_png_beginners-wallets-exchange-vs-wallet.png)
 
 比特币中有一句流行语：
 
@@ -219,4 +219,4 @@
 
 ## 接下来该做什么？
 
-一旦你的比特币钱包设置好了，你就已经准备好去[购买你的第一批比特币](/docs/beginners/exchanges.md)了。
+一旦你的比特币钱包设置好了，你就已经准备好去[购买你的第一批比特币](exchanges.md)了。
