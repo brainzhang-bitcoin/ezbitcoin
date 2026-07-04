@@ -55,15 +55,15 @@ fee      =   45000 satoshis
 因此，在比较交易费用时，我们会将**手续费大小**除以**交易大小**（根据交易在区块中占用的空间计算）。这被称为*费率（feerate）*，它允许我们对比交易，以找出哪些交易对矿工来说更具价值。
 
 * *费率* 越高，你的交易就越快被挖出。
-* *费率* 越低，你的交易被挖出所需的时间就越长。
+* *费率* 越低，你的交易就越难被挖出。
 
 有 3 种不同的方法来衡量费率：
 
-1. [sats/byte](#satsbyte-已弃用) (已弃用)
-2. [sats/wu](#satswu-内部使用) (内部使用)
-3. [sats/vbyte](#satsvbyte-最常见) (最常见)
+1. [sats/byte](#satsbyte) (已弃用)
+2. [sats/wu](#satswu) (内部使用)
+3. [sats/vbyte](#satsvbyte) (最常见)
 
-### sats/byte (已弃用)
+### sats/byte
 
 [<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-byte.png" alt="Diagram showing the sats/byte feerate calculation as the fee divided by the number of bytes in the transaction." width="627" height="257" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-byte.png)
 
@@ -73,7 +73,7 @@ fee      =   45000 satoshis
 
 然而，自 [SegWit](/docs/technical/upgrades/segregated-witness.md) 升级（[BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)）以来，我们现在使用一种新的 *重量* 测量方法来确定区块中可以容纳多少笔交易……
 
-### sats/wu (内部使用)
+### sats/wu
 
 [<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-weight-unit.png" alt="Diagram showing the sats/wu feerate calculation as the fee divided by the number of weight units in the transaction." width="703" height="312" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-weight-unit.png)
 
@@ -85,7 +85,7 @@ fee      =   45000 satoshis
 
 但是，此 **sats/wu** 采用的是与旧的 **sats/byte** 测量不同的刻度。因此，为了与仍在使用 **sats/byte** 的旧软件保持向后兼容性，我们有了最后一种费率度量方法……
 
-### sats/vbyte (最常见)
+### sats/vbyte
 
 [<img src="../../images/diagrams_png_transaction-fee-rate-sats-per-vbyte.png" alt="Diagram showing the sats/vbyte feerate calculation as the fee divided by the number of virtual bytes in the transaction, which is the weight divided by 4." width="605" height="310" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-fee-rate-sats-per-vbyte.png)
 
@@ -171,7 +171,7 @@ Replace By Fee 允许你*直接*替换内存池中的交易。
 
 在可以使用 RBF 的情况下，没有理由使用 CPFP。但如果你的交易在未启用 RBF 的情况下被卡在内存池中，它仍然是一个非常方便的备选方案。
 
-## 最低中继费 (Minimum Relay Fee)
+## Minimum Relay Fee
 
 你能在一笔交易中设置的最低手续费是多少？
 

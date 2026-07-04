@@ -55,7 +55,7 @@ Sequence (大端序)
 
 你只需设置 *其中一个* sequence 字段即可启用 **locktime** 或 **RBF**（即使一笔交易中包含多个 inputs 和 sequence 字段）。然而，**相对锁定时间 (relative locktime)** 设置对于每个 input 都是特定的。
 
-## 锁定时间 (Locktime)
+## Locktime
 
 [<img src="../../../images/diagrams_png_transaction-sequence-locktime.png" alt="Diagram showing the sequence field being set to enable the locktime field of a transaction." width="722" height="336" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-sequence-locktime.png)
 
@@ -105,7 +105,7 @@ Unix 时间
 0xFFFFFFFD <- 启用 replace-by-fee
 ```
 
-这个值比上面的 [locktime](#锁定时间-locktime) 设置**小 1**，这意味着你可以仅启用 locktime 而 *不* 启用 replace-by-fee。
+这个值比上面的 [locktime](#locktime) 设置**小 1**，这意味着你可以仅启用 locktime 而 *不* 启用 replace-by-fee.
 
 ### 使用
 
@@ -135,13 +135,13 @@ Unix 时间
 RBF 交易最低手续费 = 最低中继费 + 前一笔交易手续费
 ```
 
-**[最低中继费](/docs/technical/transaction/fee.md#最低中继费-minimum-relay-fee)：**
+**[最低中继费](/docs/technical/transaction/fee.md#minimum-relay-fee)：**
 
-这是你必须在交易中设置的*最低*手续费，以便节点能够将其接受到内存池中。每个节点都可以独立设置此费用，但默认是 1 sat/[vbyte](/docs/technical/transaction/size.md#虚拟字节-virtual-bytes-vbytes-vb)。这有助于防止有人用“免费”交易对网络进行垃圾邮件攻击。
+这是你必须在交易中设置的*最低*手续费，以便节点能够将其接受到内存池中。每个节点都可以独立设置此费用，但默认是 1 sat/[vbyte](/docs/technical/transaction/size.md#virtual-bytes)。这有助于防止有人用“免费”交易对网络进行垃圾邮件攻击。
 
 ### RBF 示例
 
-假设当前最低中继费是 **1 sat/[vbyte](/docs/technical/transaction/size.md#虚拟字节-virtual-bytes-vbytes-vb)**。
+假设当前最低中继费是 **1 sat/[vbyte](/docs/technical/transaction/size.md#virtual-bytes)**。
 
 对于一个简单的*提升费用*交易（替代交易与原交易完全相同），替代交易的手续费只需至少是你要替换交易手续费的*两倍*：
 

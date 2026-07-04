@@ -2,9 +2,9 @@
 
 你可以通过 3 种方式来测量比特币交易（[transaction](/docs/technical/transaction.md)）的大小：
 
-1. **[字节 (Bytes)](#1-字节-bytes-b)** – 磁盘上的交易大小。
-2. **[重量单位 (Weight Units)](#2-重量单位-weight-units-wu)** – 用于确定放入区块的交易大小。
-3. **[虚拟字节 (Virtual Bytes)](#3-虚拟字节-virtual-bytes-vbytes-vb)** – 用于比较交易之间的[费率](/docs/technical/transaction/fee.md)。
+1. **[字节 (Bytes)](#bytes)** – 磁盘上的交易大小。
+2. **[重量单位 (Weight Units)](#weight-units)** – 用于确定放入区块的交易大小。
+3. **[虚拟字节 (Virtual Bytes)](#virtual-bytes)** – 用于比较交易之间的[费率](/docs/technical/transaction/fee.md)。
 
 “字节”是最直接的单位。它用于测量计算机上的任何数据量。
 
@@ -30,7 +30,7 @@
 
 0 secs
 
-## 1. 字节 (Bytes) (b)
+## Bytes (b)
 
 [<img src="../../images/diagrams_png_transaction-size.png" alt="Diagram showing the measurement of a bitcoin transaction in bytes." width="424" height="178" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-size.png)
 
@@ -67,7 +67,7 @@
 
 以字节为单位的交易大小没有限制，唯一的限制是它必须能够装入一个[区块](/docs/technical/block.md)中。
 
-## 2. 重量单位 (Weight Units) (wu)
+## Weight Units (wu)
 
 [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
 
@@ -119,7 +119,7 @@
 
 [<img src="../../images/diagrams_png_transaction-weight-spending-sending-balance.png" alt="Diagram showing the comparative size of an output and and input when measured in bytes and in weight units." width="605" height="261" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-weight-spending-sending-balance.png)
 
-## 3. 虚拟字节 (Virtual Bytes, vBytes, vB)
+## Virtual Bytes (vBytes)
 
 [<img src="../../images/diagrams_png_transaction-vsize.png" alt="Diagram showing the measurement of a bitcoin transaction in virtual bytes." width="710" height="197" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-vsize.png)
 

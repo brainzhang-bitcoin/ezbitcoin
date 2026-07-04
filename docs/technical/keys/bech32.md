@@ -5,132 +5,130 @@
 
 [<img src="../../images/diagrams_png_keys-bech32.png" alt="Diagram showing the structure of a Bech32 address." width="1038" height="397" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32.png)
 
-Bech32 ("besh thirty-two") is an **[address](/docs/technical/keys/address.md) format** used for representing *segwit locking scripts* like [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md), and [P2TR](/docs/technical/script/p2tr.md).
+Bech32（读作 "besh thirty-two"）是一种**[地址（address）](/docs/technical/keys/address.md)格式**，用于表示 *SegWit 锁定脚本*，如 [P2WPKH](/docs/technical/script/p2wpkh.md)、[P2WSH](/docs/technical/script/p2wsh.md) 和 [P2TR](/docs/technical/script/p2tr.md)。
 
-It was introduced shortly after the [Segregated Witness](/docs/technical/upgrades/segregated-witness.md) upgrade to provide a better address format for the new segwit locking scripts. It is an improvement over the legacy [Base58](/docs/technical/keys/base58.md) format.
+它是在 [隔离见证（Segregated Witness）](/docs/technical/upgrades/segregated-witness.md) 升级后不久引入的，旨在为新的 SegWit 锁定脚本提供更好的地址格式。它是对传统的 [Base58](/docs/technical/keys/base58.md) 格式的一种改进。
 
-Here are some examples of what they look like:
+以下是它们的一些示例：
 
-| Type | Address | Length |
+| 类型 | 地址 | 长度 |
 | --- | --- | --- |
-| P2WPKH | `bc1qx5y8r50l39cap3r9cd65fz7xfvlkjrl258hs8m` | 42 characters |
-| P2WSH | `bc1q37qzzxnhnwdsde7yjzq5hc0wktmnqejp3zt0pj9l0pgn9f2gpyls4hahsc` | 62 characters |
-| P2TR | `bc1p4pzgu93t5nlw9mscn0v6s7spfya7qntp0afynva267lr0vp0sxyqqj24dc` | 62 characters |
+| P2WPKH | `bc1qx5y8r50l39cap3r9cd65fz7xfvlkjrl258hs8m` | 42 个字符 |
+| P2WSH | `bc1q37qzzxnhnwdsde7yjzq5hc0wktmnqejp3zt0pj9l0pgn9f2gpyls4hahsc` | 62 个字符 |
+| P2TR | `bc1p4pzgu93t5nlw9mscn0v6s7spfya7qntp0afynva267lr0vp0sxyqqj24dc` | 62 个字符 |
 
-You can identify a Bech32 address by the `bc1` prefix.
+你可以通过前缀 `bc1` 来识别 Bech32 地址。
 
-On this page I'll show you how to **encode** and **decode** a Bech32 address, and explain why they're better than Base58 addresses.
+在本页中，我将展示如何对 Bech32 地址进行**编码（encode）**和**解码（decode）**，并解释为什么它们比 Base58 地址更好。
 
-## Benefits
+## 优势 (Benefits)
 
-What are the advantages of Bech32?
+Bech32 有哪些优势？
 
-Bech32 is more *user-friendly* and more *efficient* than the legacy [Base58](/docs/technical/keys/base58.md) format for addresses.
+对于地址而言，Bech32 比传统的 [Base58](/docs/technical/keys/base58.md) 格式更*用户友好*且更*高效*。
 
-In short, it's an *upgrade* compared to Base58.
+简而言之，与 Base58 相比，它是一次*升级*。
 
-### User-friendly
+### 用户友好 (User-friendly)
 
-Bech32 addresses are more user-friendly than Base58 addresses for three reasons:
+由于以下三个原因，Bech32 地址比 Base58 地址更易于使用：
 
-#### 1. Case-insensitive
+#### 1. 不区分大小写 (Case-insensitive)
 
-Bech32 addresses **do not use a combination of uppercase and lowercase letters**, which makes them easier to type out and read out loud compared to Base58.
+Bech32 地址**不混用大写字母和小写字母**，这使得它们与 Base58 相比更容易输入和朗读。
 
-So if you're giving someone your address over the phone, you no longer need to constantly switch between saying "uppercase x, lowercase y...", and so on.
+因此，如果你在电话里把地址告诉别人，你不再需要不断地切换着说“大写 X，小写 y……”等等。
 
-Bech32 addresses are typically all *lowercase*, but it's perfectly fine to use all *uppercase* (which is how they'll get [stored in a QR code](#smaller-qr-codes)).
+Bech32 地址通常全部是*小写*，但使用全部*大写*也是完全可以的（这也是它们被[存储在 QR 码](#smaller-qr-codes)中的方式）。
 
-To prevent confusion, Bech32 addresses **should not use a combination of uppercase and lowercase letters**. A wallet should consider a mixed-case Bech32 address as invalid.
+为了防止混淆，Bech32 地址**不应混用大写字母和小写字母**。钱包应当将大小写混用的 Bech32 地址视为无效。
 
-The fact that Bech32 uses fewer characters compared to Base58 (i.e. base 32 instead of base 58) means that addresses are typically *longer*, but having all the characters in a *single case* makes Bech32 addresses easier to use overall.
+与 Base58 相比，Bech32 使用更少的字符（即 32 进制而不是 58 进制），这意味着地址通常会*更长*，但由于所有字符均采用*单一口径的大小写*，这使得 Bech32 地址总体上更容易使用。
 
-#### 2. Friendly character set
+#### 2. 友好的字符集 (Friendly character set)
 
-This is not really an "upgrade" as [Base58](/docs/technical/keys/base58.md) does something similar, but Bech32 **does not use characters that look similar to each other**.
+这其实不算是一个“升级”，因为 [Base58](/docs/technical/keys/base58.md) 也做了类似的事情，但 Bech32 **不使用彼此相似的字符**。
 
-To be precise, the *data* part of the address uses all alphanumeric characters except for "1", "b", "i", and "o":
+确切地说，地址的*数据*部分使用了除 "1"、"b"、"i" 和 "o" 以外的所有字母数字字符：
 
-Bitcoin Base32 Character Set
+比特币 Base32 字符集
 
 ```
 0 1 2 3 4 5 6 7 8 9
 a b c d e f g h i j k l m n o p q r s t u v w x y z
 ```
 
-* The number "**1**" was removed because it looks similar to a lowercase "l".
-* The letter "**b**" was removed because an uppercase "B" looks similar to the number 8 (thanks [bordalix](https://bitcoin.stackexchange.com/questions/125902/why-doesnt-bech32-use-the-character-b-in-the-data-part)).
-* The letter "**o**" was removed because an uppercase "O" often looks similar to the number "0".
-* The letter "**i**" was removed because an uppercase "I" can look similar to a lowercase "l" (in some fonts).
+* 移除了数字 "**1**"，因为它看起来类似于小写字母 "l"。
+* 移除了字母 "**b**"，因为大写字母 "B" 看起来类似于数字 8（感谢 [bordalix](https://bitcoin.stackexchange.com/questions/125902/why-doesnt-bech32-use-the-character-b-in-the-data-part)）。
+* 移除了字母 "**o**"，因为大写字母 "O" 通常看起来类似于数字 "0"。
+* 移除了字母 "**i**"，因为大写字母 "I" 在某些字体中看起来类似于小写字母 "l"。
 
-So out of the 36 possible alphanumeric characters, 4 of the *least distinctive* ones have been removed to leave 32 characters in total.
+因此，在 36 个可能的字母数字字符中，移除了 4 个*最不具辨识度*的字符，剩下总共 32 个字符。
 
-This is slightly different to pre-existing "base 32" character sets. For example:
+这与预先存在的 "base 32" 字符集略有不同。例如：
 
-* [z-base-32](https://philzimmermann.com/docs/human-oriented-base-32-encoding.txt) — removes "0", "l", "v", and "2"
-* [RFC3548](http://www.faqs.org/rfcs/rfc3548.html) — removes "0", 1", "8", and "9"
+* [z-base-32](https://philzimmermann.com/docs/human-oriented-base-32-encoding.txt) — 移除了 "0"、"l"、"v" 和 "2"
+* [RFC3548](http://www.faqs.org/rfcs/rfc3548.html) — 移除了 "0"、"1"、"8" 和 "9"
 
-**The human-readable part is *not* restricted to using the base 32 characters above.** It can contain any [US-ASCII](https://www.columbia.edu/kermit/ascii.html) character (in the range 33-126), so that's why you can use a "b" at the start of an address.
+**人类可读部分（human-readable part）不受上述 base 32 字符集的限制。** 它可以包含任何 [US-ASCII](https://www.columbia.edu/kermit/ascii.html) 字符（在 33-126 范围内），这就是为什么你可以在地址的开头使用 "b"。
 
-#### 3. Better checksum
+#### 3. 更好的校验和 (Better checksum)
 
-Bech32 addresses use an improved [checksum algorithm](#checksum) that allows you to *detect and fix errors* in the address.
+Bech32 地址使用改进的[校验和算法（checksum algorithm）](#checksum)，允许你*检测并修复地址中的错误*。
 
-To summarize the differences:
+总结其差异如下：
 
-* **[Base58 Checksum](/docs/technical/keys/base58.md#base58check)** — Allows you to identify if the address has been entered correctly or incorrectly.
-* **Bech32 Checksum** — Allows you to identify if the address has been entered correctly or incorrectly. Furthermore, if the address has been entered incorrectly, it can locate *where* the errors are, and offer *suggestions* to fix it.
+* **[Base58 Checksum](/docs/technical/keys/base58.md#base58check)** — 允许你识别地址输入是正确还是错误。
+* **Bech32 Checksum** — 允许你识别地址输入是正确还是错误。此外，如果地址输入错误，它可以定位错误在*哪里*，并提供修改*建议*。
 
-So in short, the Bech32 checksum is *smarter*.
+所以简而言之，Bech32 的校验和更*聪明*。
 
-### Efficient
+### 高效 (Efficient)
 
-Bech32 addresses are more efficient than Base58 addresses for three reasons:
+由于以下三个原因，Bech32 地址比 Base58 地址更高效：
 
-#### 1. Smaller QR codes
+#### 1. 更小的 QR 码 (Smaller QR codes)
 
-The fact that Bech32 addresses are single-case allows you to encode them into QR codes using [alphanumeric mode](https://www.thonky.com/qr-code-tutorial/alphanumeric-mode-encoding).
+Bech32 地址使用单大小写这一事实，使得你能以[字母数字模式（alphanumeric mode）](https://www.thonky.com/qr-code-tutorial/alphanumeric-mode-encoding)将它们编码到 QR 码中。
 
-This means you can create more compact QR codes, because Base58 requires *both* uppercase and lowercase letters (which means you cannot use alphanumeric mode) whereas Bech32 does not.
+这意味着你可以创建更紧凑的 QR 码，因为 Base58 同时需要大写和小写字母（这意味着你无法使用字母数字模式），而 Bech32 则不需要。
 
-For example:
+例如：
 
-Base58 Address
+Base58 地址
 
 1MHKKX3cN2RnWrxnzg9kLfPzi6vCd1B2H7
 
 [<img src="../../images/technical_keys_bech32_base58-qr.png" alt="Example Base58 address QR code (case sensitive)." width="93" height="93" />](/docs/technical/keys/bech32/base58-qr.png.md)
 
-Bech32 Address
+Bech32 地址
 
 BC1QMEU8D90HWHFHM49GHGN5ZFGEXDPJSSPZGN28T4
 
 [<img src="../../images/technical_keys_bech32_bech32-qr-ignorecase.png" alt="Example Bech32 address QR code (case-insensitive)." width="81" height="81" />](/docs/technical/keys/bech32/bech32-qr-ignorecase.png.md)
 
-As you can see, even though the Bech32 address has more characters, the ability to use alphanumeric mode means the QR code uses less data overall.
+如你所见，尽管 Bech32 地址有更多字符，但由于可以使用字母数字模式，QR 码整体使用的数据更少。
 
-**The alphanumeric mode for QR codes only support uppercase letters.** So that's why when you scan a QR code containing a Bech32 address it will typically show up in all uppercase. This is perfectly fine, as Bech32 addresses are [case-insensitive](#case-insensitive).
+**QR 码的字母数字模式仅支持大写字母。** 因此，当你扫描包含 Bech32 地址的 QR 码时，它通常会以全大写形式显示。这完全没问题，因为 Bech32 地址是[不区分大小写](#case-insensitive)的。
 
-#### 2. Faster [encoding](#encode)
+#### 2. 更快的编码 (Faster encoding)
 
-It's faster to calculate a [Bech32 checksum](#checksum) than a [Base58 checksum](/docs/technical/keys/base58.md#base58check), which means it's faster to encode Bech32 addresses.
+计算 [Bech32 校验和](#checksum) 比计算 [Base58 校验和](/docs/technical/keys/base58.md#base58check) 更快，这意味着编码 Bech32 地址的速度更快。
 
-I know the Bech32 checksum algorithm looks pretty complicated, but it's still faster than the [double-SHA256](/docs/technical/cryptography/hash-function.md#hash256) required to create the Base58 checksum.
+我知道 Bech32 校验和算法看起来非常复杂，但它仍然比创建 Base58 校验和所需的 [双重 SHA256](/docs/technical/cryptography/hash-function.md#hash256) 运算更快。
 
-#### 3. Faster [decoding](#decode)
+#### 3. 更快的解码 (Faster decoding)
 
-The characters in a Bech32 address *map* to specific values, which is faster than the *modular arithmetic* on big numbers required to [decode a Base58 address](/docs/technical/keys/base58.md#decode).
+Bech32 地址中的字符直接*映射*到特定数值，这比 [解码 Base58 地址](/docs/technical/keys/base58.md#decode) 所需的大数*模运算*更快。
 
-Base58 is not spectacularly slow to encode/decode compared to Bech32, but Bech32 is more efficient nonetheless.
+与 Bech32 相比，Base58 的编码/解码速度虽然并没有慢到夸张的程度，但 Bech32 无论如何都更为高效。
 
-## Tool
+## 交互工具 (Tool)
 
 Random Example
 
 ScriptPubKey`0 bytes`
 `Type:` 
-
-
 
 ScriptPubKey (bytes)
 
@@ -138,15 +136,11 @@ Version
 
 Witness Program
 
-
-
 ScriptPubKey (8-bit groups)
 
 Version
 
 Witness Program`0 bits`
-
-
 
 ScriptPubKey (5-bit groups)
 
@@ -154,12 +148,9 @@ Version
 
 Witness Program`0 bits`
 
-
-
 Checksum Constant
  Bech32 (Version 0: P2WPK, P2WSK)
  Bech32m (Version 1: P2TR)
-
 
 Checksum Algorithm
 
@@ -169,203 +160,161 @@ Data (Version + Witness Program + Checksum)
 
 Data (Base32)
 
-
 Bech32
 
 hrp
 
 bc
 
-
 Network
  Mainnet
  Testnet
  Regtest
 
-
-
 Separator
 
 1
 
-
-
 Data
-
 
 Address`0 characters`
 
-
-
 0 secs
 
-## Encode
+## 编码 (Encode)
 
-Convert a ScriptPubKey to a Bech32 address
+将 ScriptPubKey 转换为 Bech32 地址
 
-A [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) for a *segwit locking script* (e.g. [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md), [P2TR](/docs/technical/script/p2tr.md)) can be converted to a Bech32 address.
+用于 *SegWit 锁定脚本*（例如 [P2WPKH](/docs/technical/script/p2wpkh.md)、[P2WSH](/docs/technical/script/p2wsh.md)、[P2TR](/docs/technical/script/p2tr.md)）的 [ScriptPubKey](/docs/technical/transaction/output/scriptpubkey.md) 可以转换为 Bech32 地址。
 
-The bulk of the encoding process involves converting the ScriptPubKey [bytes](/docs/technical/general/bytes.md) into binary (1s and 0s), splitting those 1s and 0s into **5-bit groups**, and then converting those 5-bit groups into their corresponding **base32 characters**.
+编码过程的主体包括将 ScriptPubKey 的[字节（bytes）](/docs/technical/general/bytes.md)转换为二进制（1 和 0），将这些 1 和 0 分割为**5位数组（5-bit groups）**，然后将这些 5 位数组转换为对应的 **Base32 字符**。
 
-That's a simplified explanation of the process, but that's basically how it works. The hardest part is calculating the [checksum](#encode-step-6).
+这虽然是简化的解释，但它基本上就是这样运作的。最难的部分是计算[校验和](#encode-step-6)。
 
-Here's a step-by-step guide:
+以下是逐步指南：
 
 [<img src="../../images/diagrams_png_keys-bech32-encode.png" alt="Diagram showing how to encode a segwit ScriptPubKey into a Bech32 address." width="1383" height="951" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-encode.png)
 
-The Bech32 encoding is only designed to work for segwit locking scripts (i.e. P2WPKH, P2WSH, P2TR). This is because they follow a specific pattern required for Bech32 encoding (they essentially require a **version number** and some **bytes of data**).
+Bech32 编码仅设计用于 SegWit 锁定脚本（即 P2WPKH、P2WSH、P2TR）。这是因为它们遵循了 Bech32 编码所需的特定模式（它们基本上需要一个**版本号**和一些**数据字节**）。
 
-### 1. Human-readable part
+### 1. 人类可读部分 (Human-readable part)
 
-To start with, you need to choose what you want the prefix to the final address to be.
+首先，你需要选择希望最终地址的前缀是什么。
 
-In Bitcoin, you have 3 options for this prefix:
+在比特币中，这个前缀有 3 个选项：
 
-* bc = mainnet
-* tb = testnet
-* bcrt = regtest
+* bc = 主网 (mainnet)
+* tb = 测试网 (testnet)
+* bcrt = 私有链 (regtest)
 
-This is referred to as the *human-readable part*, and it indicates whether the address is to be used on mainnet, testnet, or regtest.
+这被称为*人类可读部分*，它表明了该地址是用于主网、测试网还是私有链。
 
-You need to choose the human-readable part early on, as this is going to be used to used when [calculating the checksum](#encode-step-5).
-
-
-
+你需要在早期就选好人类可读部分，因为在[计算校验和](#encode-step-5)时会用到它。
 
 ### 2. ScriptPubKey
 
-Next, grab the complete ScriptPubKey that you want to convert to Bech32.
+接下来，获取你想要转换为 Bech32 的完整 ScriptPubKey。
 
-Here's an example [P2WPKH](/docs/technical/script/p2wpkh.md) ScriptPubKey:
+以下是一个 [P2WPKH](/docs/technical/script/p2wpkh.md) ScriptPubKey 示例：
 
 `0014751e76e8199196d454941c45d1b3a323f1433bd6`
 
-If you're not already aware, each segwit ScriptPubKey follows a similar structure. This structure can be split into 3 parts:
+如果你还没意识到，每个 SegWit ScriptPubKey 都遵循类似的结构。该结构可以拆分为 3 部分：
 
-#### 1. Version
+#### 1. 版本号 (Version)
 
-The *first byte* corresponds to an `OP_N` opcode.
+*第一个字节*对应一个 `OP_N` 操作码。
 
-| Byte | Opcode |
+| 字节 | 操作码 |
 | --- | --- |
 | 00 | `OP_0` |
 | 51 | `OP_1` |
 | 52 | `OP_2` |
-| 53 | `OP_3` |
-| 54 | `OP_4` |
-| 55 | `OP_5` |
-| 56 | `OP_6` |
-| 57 | `OP_7` |
-| 58 | `OP_8` |
-| 59 | `OP_9` |
-| 5a | `OP_10` |
-| 5b | `OP_11` |
-| 5c | `OP_12` |
-| 5d | `OP_13` |
-| 5e | `OP_14` |
-| 5f | `OP_15` |
+| ... | ... |
 | 60 | `OP_16` |
 
-The *integer* value that opcode represents indicates the *version* of the segwit locking script.
+该操作码代表的*整数*值表示 SegWit 锁定脚本的*版本*。
 
-In our example, the byte `00` corresponds to the opcode `OP_0`, which indicates a **version 0** segwit locking script (i.e. P2WPKH or P2WSH).
+在我们的示例中，字节 `00` 对应操作码 `OP_0`，这表示一个**版本 0** 的 SegWit 锁定脚本（即 P2WPKH 或 P2WSH）。
 
-The version byte should be `00`, or `51` to `60` (i.e. `OP_0` to `OP_16`).
+版本字节应该为 `00` 或 `51` 到 `60`（即 `OP_0` 到 `OP_16`）。
 
+#### 2. 大小 (Size)
 
+*第二个字节*指示接下来的*见证程序（witness program）*的大小。
 
+在我们的示例中，这个字节是 `14`，它指示接下来的见证程序长度为 20 字节。
 
-#### 2. Size
+**大小字节不包含在 Bech32 编码中**。这是因为在[解码](#decode) Bech32 地址后，你可以计算出*见证程序*的大小，因此无需显式包含大小字节。这在最终地址中节省了一两个字符。
 
-The *second byte* indicates the size of the upcoming *witness program*.
+#### 3. 见证程序 (Witness Program)
 
-This byte is `14` in our example, which indicates that the upcoming witness program is 20 bytes in length.
+ScriptPubKey 中的其余数据就是*见证程序*。
 
-**The size byte is not included as part of the Bech32 encoding**. This is because you can figure out the size of the *witness program* after [decoding](#decode) a Bech32 address, so there's no need to explicitly include the size byte. This saves a character or two in the final address.
+这是 ScriptPubKey 中最独特的部分，通常包含 3 种类型的数据之一：
 
+1. 20 字节的公钥哈希 (P2WPKH)
+2. 32 字节的脚本哈希 (P2WSH)
+3. 32 字节的微调公钥 (P2TR)
 
-
-
-#### 3. Witness Program
-
-The remaining data in the ScriptPubKey is the *witness program*.
-
-This is the unique part of the ScriptPubKey, and usually contains one of 3 types of data:
-
-1. 20-byte public key hash (P2WPKH)
-2. 32-byte script hash (P2WSH)
-3. 32-byte tweaked public key (P2TR)
-
-In our P2WPKH example, the witness program is a 20-byte public key hash:
+在我们的 P2WPKH 示例中，见证程序是一个 20 字节的公钥哈希：
 
 `751e76e8199196d454941c45d1b3a323f1433bd6`
 
-This data has the most influence over what our final Bech32 address looks like.
+这段数据对我们最终的 Bech32 地址外观影响最大。
 
+### 3. 版本号（5位）
 
+接下来，我们需要将 ScriptPubKey 的版本号转换为一个 **5位整数值**。
 
-
-### 3. Version (5-bits)
-
-Next, we need to convert the version number of the ScriptPubKey to a **5-bit integer value**.
-
-In our example the version byte is `00`, which corresponds to the [opcode](/docs/technical/script.md#opcodes) `OP_0`. Therefore, the version number of this ScriptPubKey is **0**. This can then be represented as a 5-bit binary value:
+在我们的示例中，版本字节为 `00`，它对应[操作码](/docs/technical/script.md#opcodes) `OP_0`。因此，此 ScriptPubKey 的版本号为 **0**。这可以表示为 5 位二进制值：
 
 ```
 version = 00000
 ```
 
-**Use the number represented by the opcode, not the byte value.** The `OP_1` to `OP_16` [opcodes](/docs/technical/script.md#opcodes) use the bytes in the range `51` to `60`. So it's important to convert the byte to its corresponding `OP_N` opcode to get the correct version number, rather than using the value of the byte directly.
+**使用操作码代表的数字，而不是字节值。** `OP_1` 到 `OP_16` 操作码使用的字节在 `51` 到 `60` 范围内。因此，重要的是将字节转换为其对应的 `OP_N` 操作码以获得正确的版本号，而不是直接使用字节的值。
 
-* The version number influences the first character after the prefix of the final address.
-  + A version 0 segwit locking script starts with bc1**q** (P2WPKH or P2WSH)
-  + A version 1 segwit locking script starts with bc1**p** (P2TR)
-* The version number must be between 0 and 16, so it will never exceed the maximum 5-bit value (which is 31).
+* 版本号会影响最终地址前缀后的第一个字符。
+  + 版本 0 的 SegWit 锁定脚本以 bc1**q** 开头 (P2WPKH 或 P2WSH)
+  + 版本 1 的 SegWit 锁定脚本以 bc1**p** 开头 (P2TR)
+* 版本号必须在 0 到 16 之间，因此它永远不会超过 5 位值的上限（即 31）。
 
+### 4. 见证程序（8位数组）
 
+接下来，我们将*见证程序*转换为 8 位数组。
 
-
-### 4. Witness Program (8-bit groups)
-
-Next, we convert the *witness program* into 8-bit groups.
-
-This is what our witness program looks like as a byte array:
+这是我们的见证程序表现为字节数组的形式：
 
 ```
 witness program = 75 1e 76 e8 19 91 96 d4 54 94 1c 45 d1 b3 a3 23 f1 43 3b d6
 ```
 
-If we convert each byte to bits, we get:
+如果我们将每个字节转换为二进制位，得到：
 
 ```
 witness program = 01110101 00011110 01110110 11101000 00011001 10010001 10010110 11010100 01010100 10010100 00011100 01000101 11010001 10110011 10100011 00100011 11110001 01000011 00111011 11010110
 ```
 
-There are 8 bits in a [byte](/docs/technical/general/bytes.md).
+一个[字节](/docs/technical/general/bytes.md)中有 8 个二进制位。
 
+### 5. 见证程序（5位数组）
 
-
-
-### 5. Witness Program (5-bit groups)
-
-Rearrange the witness program from 8-bit groups into 5-bit groups.
+将见证程序从 8 位数组重新排列为 5 位数组。
 
 ```
 witness program = 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110
 ```
 
-As you can see, we've rearranged the witness program from **20 x 8-bit groups** to **32 x 5-bit groups**.
+如你所见，我们将见证程序从 **20 个 8位数组** 重新排列为了 **32 个 5位数组**。
 
-**Padding.** If you do not have enough bits in the initial 8-bit groups to convert to full 5-bit groups, pad the final 5-bit group with zeros.
+**填充 (Padding)。** 如果在最后的 8 位组中没有足够的二进制位来转换为完整的 5 位组，则在最后的 5 位组中用零进行填充。
 
+### 6. 校验和 (Checksum)
 
+校验和是利用 *人类可读部分*、5位的 *版本号* 和见证程序的 *5位数组* 来计算的。
 
-
-### 6. Checksum
-
-The checksum is calculated using the *human-readable part*, the 5-bit *version*, and the 5-bit groups of the *witness program*.
-
-So this is the data we'll use as the inputs to the checksum algorithm:
+以下是我们作为校验和算法输入的数据：
 
 ```
 hrp             = 'bc'
@@ -373,87 +322,54 @@ version         = 00000
 witness program = 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110
 ```
 
-The resulting checksum for our example is:
+我们示例的计算所得校验和为：
 
 ```
 checksum = 01100 00111 01001 10001 01011 10101
 ```
 
-This process is quite involved, so I've skipped over it for now. See the [checksum](#checksum) algorithm for details.
+这个过程相当繁琐，我在这里先略过了。有关详细信息，请参阅[校验和](#checksum)算法部分。
 
+### 7. 合并
 
-
-
-### 7. Combine
-
-Add the *checksum* we've just calculated to the end of the 5-bit *version* and the 5-bit groups of the *witness program*:
+将我们刚刚计算出的*校验和*添加到 5位*版本号*和见证程序*5位数组*的末尾：
 
 ```
 version + witness_program + checksum = 00000 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110 01100 00111 01001 10001 01011 10101
 ```
 
+### 8. Base32 编码
 
-
-
-### 8. Base32
-
-Convert the combined 5-bit groups from the previous step to **integers**, then use those integers to **select the corresponding base32 character** for each:
+将上一步中合并的 5 位组转换为**整数**，然后使用这些整数来**选择每个整数对应的 Base32 字符**：
 
 ```
-Base32 Characters
+Base32 字符映射表
 
-0 = q
-1 = p
-2 = z
-3 = r
-4 = y
-5 = 9
-6 = x
-7 = 8
-8 = g
-9 = f
-10 = 2
-11 = t
-12 = v
-13 = d
-14 = w
-15 = 0
-16 = s
-17 = 3
-18 = j
-19 = n
-20 = 5
-21 = 4
-22 = k
-23 = h
-24 = c
-25 = e
-26 = 6
-27 = m
-28 = u
-29 = a
-30 = 7
-31 = l
+0 = q   8 = g   16 = s   24 = c
+1 = p   9 = f   17 = 3   25 = e
+2 = z   10 = 2  18 = j   26 = 6
+3 = r   11 = t  19 = n   27 = m
+4 = y   12 = v  20 = 5   28 = u
+5 = 9   13 = d  21 = 4   29 = a
+6 = x   14 = w  22 = k   30 = 7
+7 = 8   15 = 0  23 = h   31 = l
 ```
 
-The [base32 characters](#friendly-character-set) have been arranged in this specific order to improve the error correction capability of the checksum.
+[Base32 字符集](#friendly-character-set)按此特定顺序排列是为了提高校验和的纠错能力。
 
-For example:
+例如：
 
 ```
-version + witness_program + checksum (5-bit groups) = 00000 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110 01100 00111 01001 10001 01011 10101
-version + witness_program + checksum (integers) = 0 14 20 15 7 13 26 0 25 18 6 11 13 8 21 4 20 3 17 2 29 3 12 29 3 4 15 24 20 6 14 30 22 12 7 9 17 11 21
+version + witness_program + checksum (5位组) = 00000 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110 01100 00111 01001 10001 01011 10101
+version + witness_program + checksum (整数) = 0 14 20 15 7 13 26 0 25 18 6 11 13 8 21 4 20 3 17 2 29 3 12 29 3 4 15 24 20 6 14 30 22 12 7 9 17 11 21
 version + witness_program + checksum (base32) = q w 5 0 8 d 6 q e j x t d g 4 y 5 r 3 z a r v a r y 0 c 5 x w 7 k v 8 f 3 t 4
 ```
 
-This base32 string forms the *data part* of the final Bech32 address.
+该 Base32 字符串构成了最终 Bech32 地址的*数据部分*。
 
+### 9. 拼装 Bech32
 
-
-
-### 9. Bech32
-
-Finally, add the *human-readable part* and *separator* to the start of the base32 string to get the final *Bech32 address*.
+最后，在 Base32 字符串的开头添加*人类可读部分*和*分隔符*，以获得最终的 *Bech32 地址*。
 
 ```
 hrp       = bc
@@ -463,14 +379,11 @@ base32    = qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 bech32    = bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 ```
 
-**The separator is always 1.** This is used to separate the *human-readable part* from the *base32 data* part, because the human-readable part can vary in length. A "1" cannot appear in the *data* part of the address (as it has been excluded from the base32 character set), which is why it works reliably as a separator character.
+**分隔符始终为 1。** 这用于将*人类可读部分*与 *Base32 数据* 部分隔开，因为人类可读部分的长度可以变化。字符 "1" 永远不会出现在地址的*数据*部分（因为它已被排除在 Base32 字符集之外），因此它能可靠地用作分隔符。
 
+### 代码
 
-
-
-### Code
-
-```
+```ruby
 # --------
 # settings
 # --------
@@ -579,7 +492,7 @@ witness_program_8_bits.each do |int_8_bits|
 
   # add starting bits to accumulator
   accumulator = accumulator << from           # << = bitwise left shift
-  accumulator = accumulator | int_8_bits      # | = bitwise OR (note: need this comment for code highlighting to work properly on learnmeabitcoin.com website - having a single pipe on one line breaks the syntax highlighting for some reason)
+  accumulator = accumulator | int_8_bits      # | = bitwise OR
   accumulator = accumulator & max_accumulator # & = bitwise AND
 
   # increase counter
@@ -652,7 +565,7 @@ generator = [
   0b011110101000010001100111111010, # 0x1ea119fa
   0b111101010000100011001111011101, # 0x3d4233dd
   0b101010000101000110001010110011, # 0x2a1462b3
-]
+ ]
 
 # initial checksum value (final checksum result will be 30 bits)
 checksum = 1
@@ -778,105 +691,63 @@ bech32 = hrp + separator + base32.join
 puts "bech32:    #{bech32}" # bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 ```
 
-## Decode
+## 解码 (Decode)
 
-Convert a Bech32 address to a ScriptPubKey
+将 Bech32 地址转换为 ScriptPubKey
 
-A Bech32 address can be decoded into a segwit ScriptPubKey.
+Bech32 地址可以被解码为 SegWit ScriptPubKey。
 
-To do this, you basically convert the base32 characters into their corresponding 5-bit values, rearrange those bits into 8-bit groups to get the hex byte values, and then reconstruct the complete ScriptPubKey.
+为此，你基本上需要将 Base32 字符转换为它们对应的 5位数值，将这些二进制位重新组合成 8位数组以获得十六进制字节值，然后重新构建出完整的 ScriptPubKey。
 
-Here's a step-by-step guide:
+以下是逐步指南：
 
 [<img src="../../images/diagrams_png_keys-bech32-decode.png" alt="Diagram showing how to decode a Bech32 address to a segwit ScriptPubKey." width="1414" height="959" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-decode.png)
 
+### 1. 地址 (Address)
 
+首先，获取你想要转换为 ScriptPubKey 的地址。
 
-### 1. Address
-
-First of all, grab the address you want to convert to a ScriptPubKey.
-
-Here's an example:
+以下是一个示例：
 
 bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 
-Next, you need to split the address into 3 parts:
+接下来，你需要将地址拆分为 3 部分：
 
-1. **Human-readable part.** The characters before the *separator* are the human-readable part. This part can be between 1 and 83 characters in length. In Bitcoin, this part indicates whether the address is used on mainnet ("bc"), testnet ("tb"), or regest ("bcrt").
-2. **Separator.** The *last* occurrence of a "1" in the address is the separator. This separates the *human-readable part* from the *data* part. A valid address must contain a "1" separator character.
-3. **Data.** Everything after the *separator* is the "data" part. This is a base32 encoding of the *version*, *witness program*, and *checksum*.
+1. **人类可读部分 (Human-readable part)。** 分隔符之前的字符是人类可读部分。这部分的长度可以在 1 到 83 个字符之间。在比特币中，这部分表示地址是用于主网 ("bc")、测试网 ("tb") 还是私有链 ("bcrt")。
+2. **分隔符 (Separator)。** 地址中*最后*出现的一个 "1" 是分隔符。这用于将*人类可读部分*与*数据*部分隔开。有效的地址必须包含一个 "1" 分隔符。
+3. **数据部分 (Data)。** 分隔符之后的任何字符都是 "数据" 部分。这是对*版本*、*见证程序*和*校验和*的 Base32 编码。
 
-The way to split a Bech32 address into the *human-readable part* and the *data* part is by looking for the *separator*, which is the *last* occurrence of a "1" character.
+将 Bech32 地址拆分为*人类可读部分*和*数据*部分的方法是寻找*分隔符*，也就是*最后*一次出现的字符 "1"。
 
-So for this address, we have:
+因此对于这个地址，我们有：
 
-1. **Human-readable part** = bc
-2. **Separator** = 1
-3. **Data** = qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
+1. **人类可读部分** = bc
+2. **分隔符** = 1
+3. **数据部分** = qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 
-* **Do not read a fixed number of characters to extract the human-readable part.** It's usually 2 or 4 characters, but it can technically be between 1 and 83 characters in length in future.
-* **Do not search for the *first* occurrence of a "1".** It's technically possible for the human-readable part to contain a "1", so you would end up splitting the address too early and have an incorrect data part. To be sure you're getting the correct position of the separator, you should scan for the *last* occurrence of a "1" instead.
+* **不要通过读取固定数量的字符来提取人类可读部分。** 它通常是 2 或 4 个字符，但从技术上讲，未来它的长度可能在 1 到 83 个字符之间。
+* **不要搜索 *第一* 次出现的 "1"。** 从技术上讲，人类可读部分有可能包含 "1"，因此你最终会过早拆分地址，导致数据部分错误。为确保获取分隔符的正确位置，你应该扫描 *最后* 一次出现的 "1"。
 
-**The separator is not used from here on out.** Moving forward we will only use the *human-readable part* and the *data* part.
+**分隔符在之后不会被使用。** 后面我们仅使用*人类可读部分*和*数据*部分。
 
+### 2. 5位数组 (5-bit groups)
 
+将*数据*部分从 Base32 字符转换为它们对应的 5位整数值。
 
-
-### 2. 5-bit groups
-
-Convert the *data* part from base32 characters into their corresponding 5-bit integer values.
-
-For example:
+例如：
 
 ```
 base32 = qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4
 integers = 0 14 20 15 7 13 26 0 25 18 6 11 13 8 21 4 20 3 17 2 29 3 12 29 3 4 15 24 20 6 14 30 22 12 7 9 17 11 21
 ```
 
-```
-Base32 Characters
+这个整数数组可以拆分为 3 部分：
 
-0 = q
-1 = p
-2 = z
-3 = r
-4 = y
-5 = 9
-6 = x
-7 = 8
-8 = g
-9 = f
-10 = 2
-11 = t
-12 = v
-13 = d
-14 = w
-15 = 0
-16 = s
-17 = 3
-18 = j
-19 = n
-20 = 5
-21 = 4
-22 = k
-23 = h
-24 = c
-25 = e
-26 = 6
-27 = m
-28 = u
-29 = a
-30 = 7
-31 = l
-```
+1. **版本号 (Version)。** *第一*个整数代表版本。
+2. **见证程序 (Witness Program)。** *版本号*和*校验和*之间的整数是*见证程序*。
+3. **校验和 (Checksum)。** *最后* 6 个整数是校验和。
 
-This array of integers can be split into 3 parts:
-
-1. **Version.** The *first* integer represents the version.
-2. **Witness Program.** The integers between the *version* and *checksum* are the *witness program*.
-3. **Checksum.** The *last* 6 integers are the checksum.
-
-So we have:
+因此我们得到：
 
 ```
 version         = 0
@@ -884,7 +755,7 @@ witness program = 14 20 15 7 13 26 0 25 18 6 11 13 8 21 4 20 3 17 2 29 3 12 29 3
 checksum        = 12 7 9 17 11 21
 ```
 
-If you like, you can display these integers in their 5-bit binary representations:
+如果你愿意，可以展示这些整数的 5 位二进制表示：
 
 ```
 version         = 00000
@@ -892,41 +763,35 @@ witness program = 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01
 checksum        = 01100 00111 01001 10001 01011 10101
 ```
 
-**I'm displaying the 5-bit integers in binary for visual purposes.** You don't need to do this when decoding, as it's fine to keep them as arrays of 5-bit integers.
+**我展示二进制格式的 5位整数仅供视觉参考。** 在解码时你不需要这样做，保持它们作为 5位整数数组即可。
 
+### 3. 验证校验和 (Verify checksum)
 
+接下来，我们应该**验证地址中的校验和是否*有效***。
 
-
-### 3. Verify checksum
-
-Next we should **verify that the checksum in the address is *valid***.
-
-To do this, we [calculate the checksum](#checksum) using the *human-readable part* from [step 1](#decode-step-1), and the *version* and *witness program* we've decoded from [step 2](#decode-step-2):
+为此，我们利用从[第 1 步](#decode-step-1)中解码出来的*人类可读部分*，以及从[第 2 步](#decode-step-2)中得到的*版本号*和*见证程序*来[计算校验和](#checksum)：
 
 ```
 checksum (calculated) = 01100 00111 01001 10001 01011 10101
 ```
 
-We then compare this to the checksum provided in the address:
+然后，我们将其与地址中提供的校验和进行比较：
 
 ```
 checksum (address)    = 01100 00111 01001 10001 01011 10101
 ```
 
-If the checksums match, we know that the address has been entered correctly and no mistakes have been made.
+如果校验和匹配，我们就知道地址输入正确，没有发生任何错误。
 
-**This is just a simple check.** The checksum actually allows you to detect the position of potential errors and provide suggestions on how to correct them.
+**这只是一个简单的检查。** 校验和实际上允许你检测潜在错误的发生位置，并提供关于如何纠正它们的建议。
 
+### 4. 版本号 (Version)
 
+接下来，需要将*版本号*整数转换为对应 `OP_N` [操作码](/docs/technical/script.md#opcodes)的**十六进制字节**。
 
+例如：
 
-### 4. Version
-
-Next, the *version* integer needs to be converted to a **hex byte** corresponding to a `OP_N` [opcode](/docs/technical/script.md#opcodes).
-
-For example:
-
-| Version | Opcode | Hex |
+| 版本号 | 操作码 | 十六进制 |
 | --- | --- | --- |
 | 0 | `OP_0` | `00` |
 | 1 | `OP_1` | `51` |
@@ -934,23 +799,20 @@ For example:
 | ... | ... | ... |
 | 16 | `OP_16` | `60` |
 
-The version is **0** in our example, which corresponds to the `OP_0` opcode, which is represented by the following hex byte:
+在我们的示例中，版本号为 **0**，它对应 `OP_0` 操作码，由以下十六进制字节表示：
 
 ```
 version = 00
 ```
 
-**Quick conversion.** If the version is greater than zero, add `0x51` to get the `OP_N` opcode byte value.
+**快速转换。** 如果版本号大于零，只需加上 `0x51` 即可获得 `OP_N` 操作码的字节值。
 
-* **Do not convert the version integer value directly to a hex byte.** For example, version **1** corresponds to `OP_1`, which is represented by the byte `51`. If you convert it directly to hex you'll get `01`, which is an invalid opcode for the version number.
-* **The version number must be between 0 and 16.** Any other version number is invalid.
+* **不要直接将版本号整数转换为十六进制字节。** 例如，版本 **1** 对应 `OP_1`，它由字节 `51` 表示。如果你直接转换，会得到 `01`，这是该版本号的无效操作码。
+* **版本号必须介于 0 和 16 之间。** 任何其他版本号都是无效的。
 
+### 5. 8位数组 (8-bit groups)
 
-
-
-### 5. 8-bit groups
-
-Rearrange the witness program from 5-bit groups into **8-bit groups**:
+将见证程序从 5 位数组重新排列为 **8 位数组**：
 
 ```
 witness program (5-bit groups) = 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110
@@ -958,26 +820,23 @@ witness program (5-bit groups) = 01110 10100 01111 00111 01101 11010 00000 11001
 witness program (8-bit groups) = 01110101 00011110 01110110 11101000 00011001 10010001 10010110 11010100 01010100 10010100 00011100 01000101 11010001 10110011 10100011 00100011 11110001 01000011 00111011 11010110
 ```
 
-As you can see, we've simply gathered the bits into 8-bit groups.
+如你所见，我们只是简单地将二进制位重新收集到 8 位数组中。
 
-**Check that the 5-bit groups do not contain too much padding.** If the remainder after dividing the total number of bits in the 5 bit groups by the total number of bits in the resulting 8 bit groups is 5 or greater, then the address contained too much padding.
+**检查 5 位组是否包含过多的填充。** 如果 5 位组中总二进制位数除以 8 的余数是 5 或更大，则说明地址包含过多填充。
 
-**Check that the padding contains zeros only.** The padding amount is the total number of bits in the 5-bit groups minus the total number of bits in the 8-bit groups. If this padding contains anything other than zeros, the padding is invalid.
+**检查填充是否仅包含零。** 填充量是 5 位组中的总二进制位数减去 8 位组中的总二进制位数。如果该填充包含除零以外的任何内容，则填充是无效的。
 
-If we convert these 8-bit groups into hex bytes we get:
+如果我们将这些 8 位数组转换为十六进制字节，我们得到：
 
 ```
 witness program (bytes) = 75 1e 76 e8 19 91 96 d4 54 94 1c 45 d1 b3 a3 23 f1 43 3b d6
 ```
 
-
-
-
 ### 6. ScriptPubKey
 
-Finally, to construct the final ScriptPubKey we first need to calculate the *size* of the witness program from the previous step.
+最后，为了构建最终的 ScriptPubKey，我们首先需要计算上一步见证程序的*大小*。
 
-In our example, the witness program is **20** bytes in length, which as a hex byte is `14`. This gives us:
+在我们的示例中，见证程序长度为 **20** 字节，转换为十六进制为 `14`。这使得我们拥有：
 
 ```
 version = 00
@@ -985,20 +844,17 @@ size = 14
 witness program = 75 1e 76 e8 19 91 96 d4 54 94 1c 45 d1 b3 a3 23 f1 43 3b d6
 ```
 
-If we *combine* these 3 pieces of data, we have our complete ScriptPubKey:
+如果我们*合并*这 3 部分数据，就能得到完整的 ScriptPubKey：
 
 ```
 scriptpubkey = 0014751e76e8199196d454941c45d1b3a323f1433bd6
 ```
 
-Seeing as this is **version 0** with a **20-byte witness program**, we can tell this is a [P2WPKH](/docs/technical/script/p2wpkh.md) locking script.
+看到这是具有 **20字节见证程序** 的 **版本 0** 脚本，我们就可以断定这是一个 [P2WPKH](/docs/technical/script/p2wpkh.md) 锁定脚本。
 
+### 代码
 
-
-
-### Code
-
-```
+```ruby
 # --------
 # settings
 # --------
@@ -1226,7 +1082,7 @@ witness_program_5_bits.each do |int_5_bits|
 
   # add starting bits to accumulator
   accumulator = accumulator << from           # << = bitwise left shift
-  accumulator = accumulator | int_8_bits      # | = bitwise OR (note: need this comment for code highlighting to work properly on learnmeabitcoin.com website - having a single pipe on one line breaks the syntax highlighting for some reason)
+  accumulator = accumulator | int_8_bits      # | = bitwise OR
   accumulator = accumulator & max_accumulator # & = bitwise AND
 
   # increase counter
@@ -1269,29 +1125,27 @@ scriptpubkey = version_op_n_hex + witness_program_size_hex + witness_program_hex
 puts "scriptpubkey: #{scriptpubkey}" # 0014751e76e8199196d454941c45d1b3a323f1433bd6
 ```
 
-## Checksum
+## 校验和 (Checksum)
 
-How do you calculate a Bech32 checksum?
+如何计算 Bech32 校验和？
 
-The most complex part of the Bech32 encoding is **calculating the *checksum***.
+Bech32 编码中最复杂的部分是**计算*校验和（checksum）***。
 
-The checksum algorithm uses [BCH codes](https://en.wikipedia.org/wiki/BCH_code), which allows for error correction across the data (which is not possible with the [simple checksum](/docs/technical/keys/checksum.md) used in [Base58](/docs/technical/keys/base58.md)). This makes the Bech32 checksum a lot more useful, but also more complex to calculate.
+校验和算法使用了 [BCH码（BCH codes）](https://en.wikipedia.org/wiki/BCH_code)，允许跨数据进行纠错（这在使用 [Base58](/docs/technical/keys/base58.md) 的[简单校验和](/docs/technical/keys/checksum.md)中是无法实现的）。这使得 Bech32 校验和更加实用，但计算起来也更为复杂。
 
-I don't know enough about BCH codes to explain the design of the algorithm, so I'll just show you *how to calculate the checksum* instead.
+我对比特币中关于 BCH 码的设计算法理解尚浅，无法详细阐述其设计原理，因此我仅在此向你展示*如何计算此校验和*。
 
 [<img src="../../images/diagrams_png_keys-bech32-checksum-algorithm.png" alt="Diagram showing how to calculate the checksum for a Bech32 address." width="1383" height="1829" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-checksum-algorithm.png)
 
+### 1. 准备数据
 
+Bech32 地址的校验和由以下数据计算得出：
 
-### 1. Prepare data
+1. **人类可读部分 (Human-readable part)。** 在创建校验和之前，需要选择好用于最终地址的前缀。这个前缀通常是 'bc'（主网）、'tb'（测试网）或 'bcrt'（私有链）。
+2. **版本号 (Version)。** 这是 SegWit ScriptPubKey 的版本号。这是一个由 `OP_N` 操作码指示的 5位整数值。
+3. **见证程序 (Witness Program)。** 这是 ScriptPubKey 中的*见证程序*转换得到的 5位数组。因此，如果你从原始 ScriptPubKey 计算校验和，需要首先将见证程序从 8位字节数组重新排列为 5位数组。
 
-The checksum for a Bech32 address is calculated from the following data:
-
-1. **Human-readable part.** The prefix you want to use for the final address needs to be selected before creating the checksum. This string is usually 'bc' (mainnet), 'tb' (testnet), or 'bcrt' (testnet).
-2. **Version.** This is the version number for the segwit ScriptPubKey. This is a 5-bit integer value indicated by an `OP_N` opcode.
-3. **Witness Program.** This is the *witness program* from the ScriptPubKey as an array of 5-bit values. So if you're calculating the checksum from a raw ScriptPubKey, you need to rearrange the witness program from an array of 8-bit bytes to an array of 5-bit values first.
-
-Here's some example data:
+以下是示例数据：
 
 ```
 hrp             = 'bc'
@@ -1299,29 +1153,26 @@ version         = 00000
 witness program = 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110
 ```
 
-The *size* byte from the ScriptPubKey and the *separator* in the address are not covered by the checksum.
+ScriptPubKey 中的*大小*字节以及地址中的*分隔符*不包含在校验和覆盖范围内。
 
-
-
-
-### 2. Expand human-readable part
+### 2. 展开人类可读部分
 
 [<img src="../../images/diagrams_png_keys-bech32-checksum-hrp-expand.png" alt="Diagram showing how to expand the human-readable part into 5-bit groups." width="369" height="288" />](https://static.learnmeabitcoin.com/diagrams/png/keys-bech32-checksum-hrp-expand.png)
 
-The *human-readable part* is used as the prefix for the address. This needs to be included as part of the checksum so that we can detect if it has been entered correctly.
+*人类可读部分*被用作地址的前缀。它必须包含在校验和中，以便我们可以检测其是否被正确输入。
 
-This prefix is a string of 1 to 83 [US-ASCII](https://www.columbia.edu/kermit/ascii.html) characters. Therefore, we need to "expand" these characters to turn them into an array of 5-bit values.
+该前缀是长度为 1 到 83 个 [US-ASCII](https://www.columbia.edu/kermit/ascii.html) 字符的字符串。因此，我们需要“展开”这些字符，将它们转换为 5位整数值组成的数组。
 
-This is how you expand the human-readable part:
+以下是展开人类可读部分的方法：
 
-1. Convert each character to its **8-bit** ASCII byte value.
-2. Take the **first 3 bits** of each character's byte value.
-3. Add a **zero** as a separator.
-4. Take the **last 5 bits** of each character's byte value.
+1. 将每个字符转换为其 **8位** ASCII 字节值。
+2. 获取每个字符字节值的**前 3 位**。
+3. 加入一个**零**作为分隔符。
+4. 获取每个字符字节值的**后 5 位**。
 
-So basically, seeing as each ASCII character represents an 8-bit value, we split them up so that we can get an array of 5-bit values instead.
+也就是说，由于每个 ASCII 字符代表一个 8 位的值，我们将其拆开，以便我们可以得到一个 5 位值组成的数组。
 
-For example:
+例如：
 
 ```
 hrp            = 'bc'
@@ -1329,23 +1180,20 @@ hrp (ASCII)    = 01100010 01100011
 hrp (expanded) = 00011 00011 00000 00010 00011
 ```
 
-**The human-readable part is now represented as a 5-bit integer array.** This matches the structure of the *version* and *witness program* (which are also in arrays of 5-bit integers).
+**人类可读部分现在被表示为 5 位整数数组。** 这与*版本号*和*见证程序*的结构相匹配（它们也是 5位整数数组）。
 
+### 3. 构建 5位数组
 
+校验和算法的输入是以下数据的 5位数组：
 
+1. **展开的人类可读部分。** 来自[第 2 步](#checksum-step-2)的 5位整数数组。
+2. **版本号。** 基于 `OP_N` 操作码值的 5位整数。
+3. **见证程序。** 5位整数组成的数组。
+4. **填充 (Padding)。** 由 6 个全零 5位整数组成的数组。
 
-### 3. Construct 5-bit array
+因此，你基本上需要将 *hrp*、*版本号* 和 *见证程序* 拼合起来，并在末尾加上一些*填充*。
 
-The input to the checksum algorithm is a 5-bit array of the following data:
-
-1. **Expanded human-readable part.** The 5-bit integer array from [step 2](#checksum-step-2).
-2. **Version.** A 5-bit integer based on the `OP_N` opcode value.
-3. **Witness program.** An array of 5-bit integers.
-4. **Padding.** An array of 6 zero 5-bit integers.
-
-So you basically take the *hrp*, *version*, and *witness program*, and add some *padding* to the end.
-
-For example:
+例如：
 
 ```
 hrp (expanded)  = 00011 00011 00000 00010 00011
@@ -1356,50 +1204,47 @@ padding         = 00000 00000 00000 00000 00000 00000
 5-bit array     = 00011 00011 00000 00010 00011 00000 01110 10100 01111 00111 01101 11010 00000 11001 10010 00110 01011 01101 01000 10101 00100 10100 00011 10001 00010 11101 00011 01100 11101 00011 00100 01111 11000 10100 00110 01110 11110 10110 00000 00000 00000 00000 00000 00000
 ```
 
-This combined array of 5-bit integers is the input to the main checksum algorithm.
+这个组合的 5位整数数组是主校验和算法的输入。
 
+### 4. 模多项式 (Polymod)
 
+这是最有趣的部分。
 
-
-### 4. Polymod
-
-This is the fun part.
-
-The final checksum is going to be a 30-bit value. The starting value for the checksum is 1, so our initial checksum looks like this:
+最终校验和将是一个 30 位的值。校验和的起始值为 1，所以我们的初始校验和看起来像这样：
 
 ```
 000000000000000000000000000001
 ```
 
-We will now run through each 5-bit integer in our array, and perform the following steps:
+我们现在将遍历数组中的每个 5位整数，并执行以下步骤：
 
-#### 1. Top
+#### 1. 顶部 (Top)
 
-Grab the first 5 bits of the current checksum value. This is the "top" value, and will be used in a later step.
+获取当前校验和值的前 5 位。这是 "top" 值，将在后面的步骤中使用。
 
 ```
 top = 00000
 ```
 
-#### 2. Bottom
+#### 2. 底部 (Bottom)
 
-Grab the lower 25 bits of the current checksum value. This is the "bottom" value, and this is what we are going to adjust.
+获取当前校验和值的低 25 位。这是 "bottom" 值，这是我们接下来要调整的部分。
 
 ```
 bottom = 0000000000000000000000001
 ```
 
-#### 3. Padding
+#### 3. 填充 (Padding)
 
-Add 5 bits of padding to the "bottom" 25 bits from the previous step to make 30 bits in total.
+在上一步的 "bottom" 25 位末尾加上 5 位的填充，组成总共 30 位。
 
 ```
 padded = 000000000000000000000000100000
 ```
 
-#### 4. XOR with next 5-bit value
+#### 4. 与下一个 5位值进行 XOR 运算
 
-Take the next 5-bit value from the array and [XOR](https://stackoverflow.com/questions/14526584/what-does-the-xor-operator-do) it with the padded 30-bit checksum value from the previous step:
+从数组中提取下一个 5位值，并将其与上一步得到的填充后 30位校验和值进行 [XOR](https://stackoverflow.com/questions/14526584/what-does-the-xor-operator-do)（异或）运算：
 
 ```
 padded      = 000000000000000000000000100000
@@ -1407,9 +1252,9 @@ padded      = 000000000000000000000000100000
 xor         = 000000000000000000000000100011
 ```
 
-#### 5. XOR with generator values
+#### 5. 与生成器值进行 XOR 运算
 
-We now XOR the value from the previous step with the following generator values:
+我们现在将上一步得到的值与以下生成器值进行 XOR 运算：
 
 ```
 generator 0 = 111011011010100101011110110010
@@ -1419,630 +1264,45 @@ generator 3 = 111101010000100011001111011101
 generator 4 = 101010000101000110001010110011
 ```
 
-However, **we do not always XOR with all of these generator values**. Instead, we use the "top" value to determine which generator values we actually XOR with.
+然而，**我们并不总是与所有这些生成器值进行 XOR 运算**。相反，我们使用 "top" 值来确定我们具体与哪些生成器值进行 XOR 运算。
 
-Using the "top" value, we read the bits from right-to-left to determine which generator values we XOR the current checksum value with. If the bit is set (i.e. "1"), XOR with that corresponding generator value.
+我们根据 "top" 值中从右到左哪些二进制位被设置为 "1"，来决定与哪些对应的生成器值进行异或。如果该位被设置（即为 "1"），则与该对应的生成器值进行 XOR。
 
-Using our current example:
+在我们的示例中：
 
 ```
 top = 00000
 
-generator 0 = 111011011010100101011110110010 (bit 4 = 0, do not XOR)
-generator 1 = 100110010100001000111001101101 (bit 3 = 0, do not XOR)
-generator 2 = 011110101000010001100111111010 (bit 2 = 0, do not XOR)
-generator 3 = 111101010000100011001111011101 (bit 1 = 0, do not XOR)
-generator 4 = 101010000101000110001010110011 (bit 0 = 0, do not XOR)
+generator 0 = 111011011010100101011110110010 (bit 4 = 0, 不进行 XOR)
+generator 1 = 100110010100001000111001101101 (bit 3 = 0, 不进行 XOR)
+generator 2 = 011110101000010001100111111010 (bit 2 = 0, 不进行 XOR)
+generator 3 = 111101010000100011001111011101 (bit 1 = 0, 不进行 XOR)
+generator 4 = 101010000101000110001010110011 (bit 0 = 0, 不进行 XOR)
 xor         = 000000000000000000000000100011
 
 result      = 000000000000000000000000100011
 ```
 
-None of the bits in "top" are set, so we do not XOR the current checksum value with any of the generators.
+"top" 中的任何一位都没有被设置，因此我们不需要将当前的校验和值与任何生成器值进行 XOR。
 
-If the right-most bit is set, we XOR with generator 0. If the next bit from the right is set, we also XOR with generator 1, and so on.
+如果最右边的位被设置，我们与 generator 0 进行 XOR。如果右边数起的第二位被设置，我们也与 generator 1 进行 XOR，依此类推。
 
-#### 6. Repeat
+#### 6. 重复 (Repeat)
 
-Repeat the previous steps for all 5-bit integers in the array.
+对数组中的所有 5位整数重复上述步骤。
 
-##### Full step-by-step calculations
+### 5. 常量 (Constant)
 
-```
-checksum: 000000000000000000000000000001
-top:      00000
-bottom:        0000000000000000000000001
-padded:        000000000000000000000000100000
-5-bit group:                            00011
-xor:           000000000000000000000000100011
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000000000000000000000000100011
+最后，我们将计算得出的校验和值与一个*常量*进行 XOR。
 
-checksum: 000000000000000000000000100011
-top:      00000
-bottom:        0000000000000000000100011
-padded:        000000000000000000010001100000
-5-bit group:                            00011
-xor:           000000000000000000010001100011
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000000000000000000010001100011
-
-checksum: 000000000000000000010001100011
-top:      00000
-bottom:        0000000000000010001100011
-padded:        000000000000001000110001100000
-5-bit group:                            00000
-xor:           000000000000001000110001100000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000000000000001000110001100000
-
-checksum: 000000000000001000110001100000
-top:      00000
-bottom:        0000000001000110001100000
-padded:        000000000100011000110000000000
-5-bit group:                            00010
-xor:           000000000100011000110000000010
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000000000100011000110000000010
-
-checksum: 000000000100011000110000000010
-top:      00000
-bottom:        0000100011000110000000010
-padded:        000010001100011000000001000000
-5-bit group:                            00011
-xor:           000010001100011000000001000011
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000010001100011000000001000011
-
-checksum: 000010001100011000000001000011
-top:      00001
-bottom:        0001100011000000001000011
-padded:        000110001100000000100001100000
-5-bit group:                            00000
-xor:           000110001100000000100001100000
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      111101010110100101111111010010
-
-checksum: 111101010110100101111111010010
-top:      11110
-bottom:        1010110100101111111010010
-padded:        101011010010111111101001000000
-5-bit group:                            01110
-xor:           101011010010111111101001001110
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      000100111011000011110010110111
-
-checksum: 000100111011000011110010110111
-top:      00010
-bottom:        0111011000011110010110111
-padded:        011101100001111001011011100000
-5-bit group:                            10100
-xor:           011101100001111001011011110100
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      111011110101110001100010011001
-
-checksum: 111011110101110001100010011001
-top:      11101
-bottom:        1110101110001100010011001
-padded:        111010111000110001001100100000
-5-bit group:                            01111
-xor:           111010111000110001001100101111
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      001000011111100000110000001001
-
-checksum: 001000011111100000110000001001
-top:      00100
-bottom:        0011111100000110000001001
-padded:        001111110000011000000100100000
-5-bit group:                            00111
-xor:           001111110000011000000100100111
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      010001011000001001100011011101
-
-checksum: 010001011000001001100011011101
-top:      01000
-bottom:        1011000001001100011011101
-padded:        101100000100110001101110100000
-5-bit group:                            01101
-xor:           101100000100110001101110101101
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      010001010100010010100001110000
-
-checksum: 010001010100010010100001110000
-top:      01000
-bottom:        1010100010010100001110000
-padded:        101010001001010000111000000000
-5-bit group:                            11010
-xor:           101010001001010000111000011010
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      010111011001110011110111000111
-
-checksum: 010111011001110011110111000111
-top:      01011
-bottom:        1011001110011110111000111
-padded:        101100111001111011100011100000
-5-bit group:                            00000
-xor:           101100111001111011100011100000
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      001100100111110101001011100010
-
-checksum: 001100100111110101001011100010
-top:      00110
-bottom:        0100111110101001011100010
-padded:        010011111010100101110001000000
-5-bit group:                            11001
-xor:           010011111010100101110001011001
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      101011000110111100101111001110
-
-checksum: 101011000110111100101111001110
-top:      10101
-bottom:        1000110111100101111001110
-padded:        100011011110010111100111000000
-5-bit group:                            10010
-xor:           100011011110010111100111010010
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      101100101001100101010100101001
-
-checksum: 101100101001100101010100101001
-top:      10110
-bottom:        0101001100101010100101001
-padded:        010100110010101010010100100000
-5-bit group:                            00110
-xor:           010100110010101010010100100110
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      000110001011110101000000000010
-
-checksum: 000110001011110101000000000010
-top:      00011
-bottom:        0001011110101000000000010
-padded:        000101111010100000000001000000
-5-bit group:                            01011
-xor:           000101111010100000000001001011
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      011000110100001101100110010100
-
-checksum: 011000110100001101100110010100
-top:      01100
-bottom:        0110100001101100110010100
-padded:        011010000110110011001010000000
-5-bit group:                            01101
-xor:           011010000110110011001010001101
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      111001111110000001100010101010
-
-checksum: 111001111110000001100010101010
-top:      11100
-bottom:        1111110000001100010101010
-padded:        111111000000110001010101000000
-5-bit group:                            01000
-xor:           111111000000110001010101001000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      110110111101000101110111011100
-
-checksum: 110110111101000101110111011100
-top:      11011
-bottom:        0111101000101110111011100
-padded:        011110100010111011101110000000
-5-bit group:                            10101
-xor:           011110100010111011101110010101
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      010100111001110011001100100100
-
-checksum: 010100111001110011001100100100
-top:      01010
-bottom:        0111001110011001100100100
-padded:        011100111001100110010010000000
-5-bit group:                            00100
-xor:           011100111001100110010010000100
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      000111111101001101100100110100
-
-checksum: 000111111101001101100100110100
-top:      00011
-bottom:        1111101001101100100110100
-padded:        111110100110110010011010000000
-5-bit group:                            10100
-xor:           111110100110110010011010010100
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      100011101000011111111101001011
-
-checksum: 100011101000011111111101001011
-top:      10001
-bottom:        1101000011111111101001011
-padded:        110100001111111110100101100000
-5-bit group:                            00011
-xor:           110100001111111110100101100011
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      100101010000011101110001100010
-
-checksum: 100101010000011101110001100010
-top:      10010
-bottom:        1010000011101110001100010
-padded:        101000001110111000110001000000
-5-bit group:                            10001
-xor:           101000001110111000110001010001
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      100100011111110110000010001111
-
-checksum: 100100011111110110000010001111
-top:      10010
-bottom:        0011111110110000010001111
-padded:        001111111011000001000111100000
-5-bit group:                            00010
-xor:           001111111011000001000111100010
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      000011101010001111110100111100
-
-checksum: 000011101010001111110100111100
-top:      00001
-bottom:        1101010001111110100111100
-padded:        110101000111111010011110000000
-5-bit group:                            11101
-xor:           110101000111111010011110011101
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      001110011101011111000000101111
-
-checksum: 001110011101011111000000101111
-top:      00111
-bottom:        0011101011111000000101111
-padded:        001110101111100000010111100000
-5-bit group:                            00011
-xor:           001110101111100000010111100011
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      001101001001011100010111000110
-
-checksum: 001101001001011100010111000110
-top:      00110
-bottom:        1001001011100010111000110
-padded:        100100101110001011100011000000
-5-bit group:                            01100
-xor:           100100101110001011100011001100
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      011100010010010010111101011011
-
-checksum: 011100010010010010111101011011
-top:      01110
-bottom:        0010010010010111101011011
-padded:        001001001001011110101101100000
-5-bit group:                            11101
-xor:           001001001001011110101101111101
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      001100100101100100111100110111
-
-checksum: 001100100101100100111100110111
-top:      00110
-bottom:        0100101100100111100110111
-padded:        010010110010011110011011100000
-5-bit group:                            00011
-xor:           010010110010011110011011100011
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      101010001110000111000101110100
-
-checksum: 101010001110000111000101110100
-top:      10101
-bottom:        0001110000111000101110100
-padded:        000111000011100010111010000000
-5-bit group:                            00100
-xor:           000111000011100010111010000100
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      001000110100010000001001111111
-
-checksum: 001000110100010000001001111111
-top:      00100
-bottom:        0110100010000001001111111
-padded:        011010001000000100111111100000
-5-bit group:                            01111
-xor:           011010001000000100111111101111
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000100100000010101011000010101
-
-checksum: 000100100000010101011000010101
-top:      00010
-bottom:        0100000010101011000010101
-padded:        010000001010101100001010100000
-5-bit group:                            11000
-xor:           010000001010101100001010111000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      110110011110100100110011010101
-
-checksum: 110110011110100100110011010101
-top:      11011
-bottom:        0011110100100110011010101
-padded:        001111010010011001101010100000
-5-bit group:                            10100
-xor:           001111010010011001101010110100
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      000101001001010001001000000101
-
-checksum: 000101001001010001001000000101
-top:      00010
-bottom:        1001001010001001000000101
-padded:        100100101000100100000010100000
-5-bit group:                            00110
-xor:           100100101000100100000010100110
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      000010111100101100111011001011
-
-checksum: 000010111100101100111011001011
-top:      00001
-bottom:        0111100101100111011001011
-padded:        011110010110011101100101100000
-5-bit group:                            01110
-xor:           011110010110011101100101101110
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      100101001100111000111011011100
-
-checksum: 100101001100111000111011011100
-top:      10010
-bottom:        1001100111000111011011100
-padded:        100110011100011101101110000000
-5-bit group:                            11110
-xor:           100110011100011101101110011110
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      101010001101010011011101000000
-
-checksum: 101010001101010011011101000000
-top:      10101
-bottom:        0001101010011011101000000
-padded:        000110101001101110100000000000
-5-bit group:                            10110
-xor:           000110101001101110100000010110
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      001001011110011100010011101101
-
-checksum: 001001011110011100010011101101
-top:      00100
-bottom:        1011110011100010011101101
-padded:        101111001110001001110110100000
-5-bit group:                            00000
-xor:           101111001110001001110110100000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      110001100110011000010001011010
-
-checksum: 110001100110011000010001011010
-top:      11000
-bottom:        1100110011000010001011010
-padded:        110011001100001000101101000000
-5-bit group:                            00000
-xor:           110011001100001000101101000000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      100100011001101101101000101110
-
-checksum: 100100011001101101101000101110
-top:      10010
-bottom:        0011001101101101000101110
-padded:        001100110110110100010111000000
-5-bit group:                            00000
-xor:           001100110110110100010111000000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101 xor
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011 xor
-checksum:      000000100111111010100100011110
-
-checksum: 000000100111111010100100011110
-top:      00000
-bottom:        0100111111010100100011110
-padded:        010011111101010010001111000000
-5-bit group:                            00000
-xor:           010011111101010010001111000000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101
-generator 4:   101010000101000110001010110011
-checksum:      010011111101010010001111000000
-
-checksum: 010011111101010010001111000000
-top:      01001
-bottom:        1111101010010001111000000
-padded:        111110101001000111100000000000
-5-bit group:                            00000
-xor:           111110101001000111100000000000
-generator 0:   111011011010100101011110110010 xor
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011
-checksum:      111000100011000001110001101111
-
-checksum: 111000100011000001110001101111
-top:      11100
-bottom:        0100011000001110001101111
-padded:        010001100000111000110111100000
-5-bit group:                            00000
-xor:           010001100000111000110111100000
-generator 0:   111011011010100101011110110010
-generator 1:   100110010100001000111001101101
-generator 2:   011110101000010001100111111010 xor
-generator 3:   111101010000100011001111011101 xor
-generator 4:   101010000101000110001010110011 xor
-checksum:      011000011101001100010101110100
-```
-
-For our example, this gives us a resulting checksum value of:
-
-```
-checksum = 011000011101001100010101110100
-```
-
-
-
-
-### 5. Constant
-
-Lastly, we XOR the current checksum value with a *constant*.
-
-The constant we use depends on the version of the ScriptPubKey (see [Bech32m](#bech32m)):
+我们使用的常量取决于 ScriptPubKey 的版本（参见 [Bech32m](#bech32m)）：
 
 ```
 Version 0  = 000000000000000000000000000001
 Version 1+ = 101011110010000011000010100011
 ```
 
-Our example is a P2WPKH ScriptPubKey, which is version **0**:
+我们的示例是一个 P2WPKH ScriptPubKey，其版本为 **0**：
 
 ```
 checksum = 011000011101001100010101110100
@@ -2050,94 +1310,86 @@ constant = 000000000000000000000000000001
 result   = 011000011101001100010101110101
 ```
 
+### 6. 拆分为 5位组 (Split into 5-bit groups)
 
-
-
-### 6. Split into 5-bit groups
-
-Finally, we can split our 30-bit checksum into 6 groups of 5-bits:
+最后，我们可以将 30位校验和拆分为 6 个 5位组：
 
 ```
 checksum = 011000011101001100010101110101
 checksum = 01100 00111 01001 10001 01011 10101
 ```
 
-This is our final checksum.
+这是我们最终的校验和。
 
+### 代码
 
-
-
-### Code
-
-See [encode](#encode-code) or [decode](#decode-code) for the checksum algorithm.
+有关校验和算法，请参见[编码](#encode-code)或[解码](#decode-code)部分的代码。
 
 ## Bech32m
 
 [BIP 350](https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki)
 
-Bech32m refers to a *minor adjustment* made to the [checksum algorithm](#checksum) for **version 1** Bech32 addresses onwards.
+Bech32m 是指对 **版本 1** 及以上的 Bech32 地址的[校验和算法](#checksum)做出的*微调*。
 
-The only difference is that you use a **different [constant](#checksum-step-5)** before calculating the final checksum value:
+唯一的区别是，在计算最终校验和值之前，你需要使用一个**不同的[常量](#checksum-step-5)**：
 
-| Version | Constant | Address Type(s) |
+| 版本号 | 常量 | 地址类型 |
 | --- | --- | --- |
-| 0 | `0b000000000000000000000000000001` | [P2WPKH](/docs/technical/script/p2wpkh.md), [P2WSH](/docs/technical/script/p2wsh.md) |
+| 0 | `0b000000000000000000000000000001` | [P2WPKH](/docs/technical/script/p2wpkh.md)、[P2WSH](/docs/technical/script/p2wsh.md) |
 | 1+ | `0b101011110010000011000010100011` | [P2TR](/docs/technical/script/p2tr.md) |
 
-Everything else about the Bech32 encoding remains the same.
+Bech32 编码的其他所有方面均保持不变。
 
-This change fixes a problem where if the final character of the address is "p", inserting or removing any number of "q" characters does not make the checksum invalid.
+此更改修复了一个问题：即如果地址的最后一个字符是 "p"，那么插入或删除任意数量的 "q" 字符将不会导致校验和失效。
 
-This isn't a major issue, as existing P2WPKH and P2WSH addresses are not affected due to the fact that they're restricted to two specific lengths. Nonetheless, moving forward this change ensures that the checksum will be reliable for all future addresses.
+这并不是一个严重的问题，因为现有的 P2WPKH 和 P2WSH 地址被限制在两个特定的长度，因此不受影响。无论如何，这项变动确保了校验和对于所有未来的地址都是可靠的。
 
-**It's easier to think of this as the new default encoding method for "Bech32".** In other words, version 0 locking scripts (P2WPKH and P2WSH) use a different "legacy" constant.
+**把这看作是“Bech32”新的默认编码方法会更容易。** 换句话说，版本 0 锁定脚本（P2WPKH 和 P2WSH）只是使用了一个不同的“传统”常量。
 
-## Etymology
+## 名字由来 (Etymology)
 
-Where does the name "Bech32" come from?
+"Bech32" 这个名字是从哪里来的？
 
-The name "Bech32" (besh thirty-two) comes from the fact that the address uses **base32** characters, and the checksum uses **BCH** codes for the error detection/correction algorithm.
+"Bech32" (besh thirty-two) 这个名字源于以下事实：该地址使用 **Base32** 字符集，并且校验和在错误检测/纠正算法中使用了 **BCH** 码。
 
-So if you smush "base32" and "BCH" together, you get "Bech32". Kind of.
+所以，如果你把 "base32" 和 "BCH" 挤在一起，你就会得到 "Bech32"。差不多吧。
 
-> "Bech" contains the characters BCH (the error detection algorithm used) and sounds a bit like "base".
+> "Bech" 包含了字符 BCH（所使用的错误检测算法）并且听起来有点像 "base"。
 
 Pieter Wuille, [BIP 173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 
+我知道这并不完美，但勉强说得通。
 
+## 总结
 
-It's not perfect, I know. But it'll do.
+与 [Base58](/docs/technical/keys/base58.md) 相比，Bech32 只是一个**更好的地址格式**。
 
-## Summary
+Base58 曾经/现在很有用，因为它为你提供了一个不错的字符集以及一个用于检测错误的简单校验和。但 Bech32 提供了许多有用的*改进*：
 
-Bech32 is simply a **better format for addresses** compared to [Base58](/docs/technical/keys/base58.md).
+* 更小的 QR 码。
+* 更容易手动输入。
+* 更智能的纠错校验和。
+* 更快的编码和解码速度。
+* 前缀更具灵活性。
 
-Base58 was/is handy because it gives you a nice character set to work with, and a simple checksum to detect errors. But Bech32 offers a bunch of useful *improvements*:
+Base58 已经做得很不错了，你不能因为它的不完美而责备中本聪，因为他们当时可能没有几个月的时间来构建终极地址格式；它简单且有效。但自那以后，我们有了充足的时间来构建更好的格式。
 
-* Smaller QR codes.
-* Easier to type out manually.
-* Smarter checksum for error correction.
-* Faster encoding and decoding.
-* More flexibility with prefixes.
+我们目前仍然在*传统锁定脚本（legacy locking scripts）*、*私钥（private keys）*和*扩展密钥（extended keys）*中使用 **Base58**：
 
-Base58 was a pretty good effort, and you can't blame Satoshi for it not being perfect, as they probably didn't have months to spend constructing the ultimate address format; it was simple and effective. But since then we've had the luxury of time to construct something better.
+* [P2PKH](/docs/technical/script/p2pkh.md) (*2009 年至今*)
+* [P2SH](/docs/technical/script/p2sh.md) (*2012 年至今*)
+* [WIF 私钥](/docs/technical/keys/private-key/wif.md) (*2011 年至今*)
+* [扩展密钥](/docs/technical/keys/hd-wallets/extended-keys.md) (*2012 年至今*)
 
-We still use **Base58** for *legacy locking scripts*, *private keys*, and *extended keys*:
+但 **Bech32** 现已用于所有*现代锁定脚本（modern locking scripts）*：
 
-* [P2PKH](/docs/technical/script/p2pkh.md) (*2009 - present*)
-* [P2SH](/docs/technical/script/p2sh.md) (*2012 - present*)
-* [WIF Private Keys](/docs/technical/keys/private-key/wif.md) (*2011 - present*)
-* [Extended Keys](/docs/technical/keys/hd-wallets/extended-keys.md) (*2012 - present*)
+* [P2WPKH](/docs/technical/script/p2wpkh.md) (*2017 年至今*)
+* [P2WSH](/docs/technical/script/p2wsh.md) (*2017 年至今*)
+* [P2TR](/docs/technical/script/p2tr.md) (*2021 年至今*)
 
-But **Bech32** is now used for all *modern locking scripts*:
+Bech32 唯一让人抓狂的缺点是，它的 [Base32 字符集](#friendly-character-set)中没有字母 "b"，因此我无法使用 [vanitygen](https://github.com/10gic/vanitygen-plusplus) 构建一个包含 "beer"（啤酒）字样的个性化捐赠地址（这也是为什么我至今仍在[捐赠页面](/donate/)使用 Base58 地址的原因）。但这是我必须忍受的代价。
 
-* [P2WPKH](/docs/technical/script/p2wpkh.md) (*2017 - present*)
-* [P2WSH](/docs/technical/script/p2wsh.md) (*2017 - present*)
-* [P2TR](/docs/technical/script/p2tr.md) (*2021 - present*)
-
-The only crushing downside of Bech32 is that the [base32 character set](#friendly-character-set) does not include the letter "b", so I can't construct a [vanity address](https://github.com/10gic/vanitygen-plusplus) with the word "beer" in it (hence why I still use a Base58 address for [donations](/donate/)). But that's just something I need to live with.
-
-## Resources
+## 相关资源
 
 * [bech32.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/bech32.cpp)
 * [Bech32 error detection and correction](https://bitcoin.stackexchange.com/questions/125961/bech32-error-detection-and-correction-reference-implementation)

@@ -16,10 +16,10 @@ UTXOs 在比特币中是如何使用的？
 
 追踪 UTXOs 在以下两个方面非常有用：
 
-1. [验证交易](#1-验证交易)
-2. [计算地址余额](#2-计算地址余额)
+1. [验证交易](#verify-transactions)
+2. [计算地址余额](#calculate-balances)
 
-### 1. 验证交易
+### Verify Transactions
 
 当你的节点从[网络](/docs/technical/networking.md)接收到一笔新交易时，它需要验证该交易的所有 inputs 所引用的 outputs **尚未被花费**。
 
@@ -31,7 +31,7 @@ UTXOs 在比特币中是如何使用的？
 
 [<img src="../../images/diagrams_png_transaction-utxo-spending-invalid.png" alt="Diagram showing an invalid transaction trying to spend an output from a previous transaction that has already been spent." width="714" height="423" />](https://static.learnmeabitcoin.com/diagrams/png/transaction-utxo-spending-invalid.png)
 
-### 2. 计算地址余额
+### Calculate Balances
 
 一个[地址](/docs/technical/keys/address.md)的“余额”是锁定在该地址下的所有 UTXOs 的总和：
 

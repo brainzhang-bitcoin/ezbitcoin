@@ -39,58 +39,58 @@ Field Size
 
 0 secs
 
-The term little-endian refers to the order of bytes when storing integers on a computer. It's when the least-significant byte comes first, or more simply, it's when the **bytes appear backwards**.
+术语 little-endian 指的是在计算机中存储整数时的字节顺序。它是指最低有效字节（least-significant byte）排在最前面，或者更简单地说，就是**字节顺序相反**。
 
-Almost all integers in raw bitcoin data are in little-endian byte order, so it's worth getting used to.
+原始比特币数据中的几乎所有整数都以 little-endian 字节顺序存储，因此非常值得习惯它。
 
-## Example
+## 示例
 
-What is little-endian?
+什么是 little-endian？
 
-Let's say we're setting the *amount* of a transaction [output](/docs/technical/transaction/output.md) to `12345678` satoshis.
+假设我们要将一个交易[输出（output）](/docs/technical/transaction/output.md)的*金额（amount）*设置为 `12345678` 聪（satoshis）。
 
-Now, the *amount* field is 8 bytes in size. So if we convert this value to [hexadecimal bytes](/docs/technical/general/hexadecimal.md#bytes), it looks like this:
+该*金额*字段的大小为 8 字节。如果我们把这个数值转换为[十六进制字节（hexadecimal bytes）](/docs/technical/general/hexadecimal.md#bytes)，它看起来是这样的：
 
 ```
 00 00 00 00 00 bc 61 4e
 ```
 
-This order of bytes is called **big-endian**.
+这种字节顺序被称为 **big-endian**。
 
-We obviously haven't maxed-out this field, as the largest integer this 8-byte field can hold is `0xffffffffffffffff` (or `18446744073709551615`). This is obvious because there are so many zeros on the left, and as *humans* we expect to see the biggest numbers on the left.
+我们显然没有用满这个字段，因为这个 8 字节字段能容纳的最大整数是 `0xffffffffffffffff`（即 `18446744073709551615`）。这很明显，因为左边有许多零，而作为*人类*，我们期望在左边看到最大的数字。
 
-However, computers (and bitcoin) like to read these bytes from the other direction:
+然而，计算机（以及比特币）喜欢从另一个方向读取这些字节：
 
 ```
 4e 61 bc 00 00 00 00 00
 ```
 
-This byte order is called **little-endian**.
+这种字节顺序被称为 **little-endian**。
 
-We have the exact *same bytes*, but they are in *reverse order*. So instead of reading the smallest bytes from right-to-left, we're now reading them from left-to-right.
+我们拥有完全*相同的字节*，但它们的*顺序相反*。因此，我们不是从右到左读取最小的字节，而是从左到右读取它们。
 
-## Byte Orders
+## 字节顺序 (Byte Orders)
 
 [<img src="../../images/diagrams_png_bytes-endianness-memory.png" alt="Diagram showing bytes of data represented in binary, decimal, and hexadecimal." width="752" height="276" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-endianness-memory.png)
 
-As mentioned, there are two different ways of ordering bytes when storing integers on a computer:
+如前所述，在计算机上存储整数时，有两种不同的字节排序方式：
 
 1. [Big Endian](#big-endian)
 2. [Little Endian](#little-endian)
 
-Some computers use big-endian architecture, and others use little-endian architecture.
+有些计算机使用 big-endian 架构，而另一些则使用 little-endian 架构。
 
 ### 1. Big Endian
 
-(Rarely used in Bitcoin)
+（在比特币中极少使用）
 
-This is the more "human-readable" format. The byte containing the biggest number comes first:
+这是更符合“人类阅读习惯”的格式。包含最大数值的字节排在最前面：
 
 ```
 00 00 00 00 00 bc 61 4e
 ```
 
-Or more technically speaking, it's when the **most-significant byte** is stored at the **lowest memory address** in a block of bytes. For example:
+或者从更技术性的角度来说，是指**最高有效字节（most-significant byte）**存储在一组字节的**最低内存地址**中。例如：
 
 ```
 ┌────────────────┬──────────┐
@@ -107,21 +107,21 @@ Or more technically speaking, it's when the **most-significant byte** is stored 
 └────────────────┴──────────┘
 ```
 
-The **lowest memory address** in this table is at the **top**. I've ordered the memory addresses from lowest to highest.
+该表中的**最低内存地址**位于**顶部**。我已将内存地址从低到高排序。
 
-**Memory Address.** An address is a location in computer memory. Each byte of memory has its own address. The `100` to `107` addresses are just examples. This is a good [10-minute video on memory addresses](https://www.youtube.com/watch?v=lzMCuw_5dfM).
+**内存地址。** 地址是计算机内存中的一个位置。每个内存字节都有自己的地址。这里的 `100` 到 `107` 地址只是示例。这是一个关于[内存地址的 10 分钟视频](https://www.youtube.com/watch?v=lzMCuw_5dfM)。
 
 ### 2. Little Endian
 
-(Commonly used in Bitcoin)
+（在比特币中常用）
 
-This is the more "computer-readable" format. The byte containing the smallest number comes first:
+这是更符合“计算机阅读习惯”的格式。包含最小数值的字节排在最前面：
 
 ```
 4e 61 bc 00 00 00 00 00
 ```
 
-Or more technically speaking, it's when the **most-significant byte** is stored at the **highest memory address** in a block of bytes. For example:
+或者从更技术性的角度来说，是指**最高有效字节（most-significant byte）**存储在一组字节的**最高内存地址**中。例如：
 
 ```
 ┌────────────────┬──────────┐
@@ -138,31 +138,31 @@ Or more technically speaking, it's when the **most-significant byte** is stored 
 └────────────────┴──────────┘
 ```
 
-As you can guess, Satoshi was working on a little-endian computer when programming bitcoin.
+正如你所猜测的，中本聪（Satoshi）在编写比特币程序时，使用的是一台 little-endian 架构的计算机。
 
-## Terminology
+## 命名来源 (Terminology)
 
-Why is it called "little-endian" and "big-endian"?
+为什么它们被称为 "little-endian" 和 "big-endian"？
 
 [<img src="../../images/diagrams_png_bytes-little-endian.png" alt="Diagram showing the little-end and big-end of eggs." width="699" height="374" />](https://static.learnmeabitcoin.com/diagrams/png/bytes-little-endian.png)
 
-Because of **eggs**, basically.
+基本上，是因为**鸡蛋**。
 
-The terms "little-endian" and "big-endian" originate from the book Gulliver's Travels (1726). There's a section referring to two different groups of people: one that breaks open eggs from the "little end", and another that breaks open their eggs from the "big end".
+术语 "little-endian" 和 "big-endian" 源自 1726 年的小说《格列佛游记》（Gulliver's Travels）。书中提到了两类不同的人：一类人从“小端”（little end）敲开鸡蛋，而另一类人则从“大端”（big end）敲开鸡蛋。
 
-These "little end" and "big end" terms were then adopted to describe the two different ways of ordering bytes on a computer.
+这些“小端”和“大端”的说法随后被借用来描述计算机上字节排序的两种不同方式。
 
-## Usage
+## 在比特币中的应用 (Usage)
 
-When do we use little-endian in bitcoin?
+我们什么时候在比特币中使用 little-endian？
 
-You'll find little-endian fields in bitcoin any time you're working with **integers** inside [network messages](/docs/technical/networking.md#messages).
+在处理[网络消息（network messages）](/docs/technical/networking.md#messages)中的**整数**时，你会在比特币中发现 little-endian 字段。
 
-The most common places you'll see little-endian is in raw [transaction data](/docs/technical/transaction.md) and raw [block headers](/docs/technical/block.md#header).
+最常见到 little-endian 的地方是原始[交易数据（transaction data）](/docs/technical/transaction.md)和原始[区块头（block headers）](/docs/technical/block.md#header)。
 
-### Transaction Data
+### 交易数据 (Transaction Data)
 
-Here's a raw transaction. I've split it up and highlighted the little-endian fields in green.
+这是一笔原始交易。我将其拆分并用绿色高亮显示了 little-endian 字段。
 
 ```
 02000000 <- version (little-endian)
@@ -177,11 +177,11 @@ Here's a raw transaction. I've split it up and highlighted the little-endian fie
 ff30a00 <- locktime (little-endian)
 ```
 
-For example, the *vout* is a 4-byte little-endian field, and in this transaction it is referring to a previous output number of `1`. If this field was big-endian, it would be `00000001`, but because it's little-endian the bytes are in reverse order `01000000`.
+例如，*vout* 是一个 4 字节的 little-endian 字段，在此交易中它引用前一个输出编号为 `1`。如果该字段是 big-endian，它将是 `00000001`，但因为它是 little-endian，字节顺序是相反的 `01000000`。
 
-### Block Header
+### 区块头 (Block Header)
 
-Here's a raw block header.
+这是一个原始区块头。
 
 ```
 00000020 <- version (little-endian)
@@ -192,15 +192,15 @@ ab980b17 <- bits (little-endian)
 0e69d05c <- nonce (little-endian)
 ```
 
-As you can see, all of the little-endian fields are the ones that contain some kind of number.
+如你所见，所有的 little-endian 字段都是包含某种数值的字段。
 
-For example, the time in the block header is a 4-byte little-endian field containing a Unix timestamp. Here it's `daf0d861`, which in big-endian would be `61d8f0da`. If we convert this to decimal we get `1641607386`, which is a Unix timestamp for *08 Jan 2022, 02:03:06 UTC*.
+例如，区块头中的时间是一个 4 字节的 little-endian 字段，包含一个 Unix 时间戳。这里它是 `daf0d861`，在 big-endian 中将是 `61d8f0da`。如果我们将其转换为十进制，得到 `1641607386`，这是 *2022 年 1 月 8 日 02:03:06 UTC* 的 Unix 时间戳。
 
-## Converting
+## 转换方式 (Converting)
 
-How to convert between big-endian and little-endian
+如何在 big-endian 和 little-endian 之间进行转换
 
-If you're working with strings, a quick and dirty way to reverse the byte order is to split up the string into an array of 2-character chunks (2 hex characters = 1 [byte](/docs/technical/general/bytes.md)), and then reverse the array.
+如果你正在处理字符串，一种简单粗暴的逆转字节顺序的方法是将字符串分割成由 2 个字符组成的一组（2 个十六进制字符 = 1 [字节（byte）](/docs/technical/general/bytes.md)），然后反转该数组。
 
 ```
 # integer
@@ -219,7 +219,7 @@ little_endian = big_endian.scan(/../).reverse.join
 puts little_endian #=> 4e61bc0000000000
 ```
 
-Alternatively (and more professionally), you can use the `pack` and `unpack` functions to convert between numbers and actual raw bytes.
+或者（更专业的方法），你可以使用 `pack` 和 `unpack` 函数在数字和实际原始字节之间进行转换。
 
 ```
 # integer
@@ -250,90 +250,90 @@ string = bytes.unpack("H*")[0]
 puts string #=> 4e61bc0000000000
 ```
 
-And here's a quick and dirty way to convert between big-endian and little-endian on the command line:
+这里是在命令行上进行 big-endian 和 little-endian 快速转换的简单命令：
 
 ```
 echo -n acbd | tac -rs ..
 ```
 
-Thanks to [Greg Tonoski](https://github.com/GregTonoski) for this handy bash one-liner.
+感谢 [Greg Tonoski](https://github.com/GregTonoski) 提供这个实用的 bash 单行命令。
 
-## Popularity
+## 争议与看法 (Popularity)
 
-Is little-endian a popular choice with bitcoin developers?
+little-endian 是比特币开发者们普遍喜欢的选择吗？
 
-Not entirely. There have been [discussions](https://bitcointalk.org/index.php?topic=4278.0) about it since 2011:
+并不完全是。自 2011 年以来就有相关的[讨论](https://bitcointalk.org/index.php?topic=4278.0)：
 
-> The absolute #1 first thing I would change would be to make the network protocol big endian.
+> 我最想改的第一件事，就是把网络协议改为 big endian。
 
 error, [bitcointalk.org](https://bitcointalk.org/index.php?topic=4278.msg62130#msg62130)
 
 
-> Little Endian is a pain, and I've said it often enough.
+> Little Endian 很烦人，我已经说过很多次了。
 
 Christian Decker, [bitcointalk.org](https://bitcointalk.org/index.php?topic=4278.msg62278#msg62278)
 
 
-> Fixed little endian is just fine, and happens to match 99.9% of our current usage.
+> 固定 little endian 就很好，而且刚好符合我们目前 99.9% 的使用场景。
 
 jgarzik, [bitcointalk.org](https://bitcointalk.org/index.php?topic=4278.msg62161#msg62161)
 
 
-> Almost all CPUs these days work natively in little-endian. To operate on big-endian numbers, additional byteswap instructions are needed. For most things, I think this effect is negligible. Network protocols need a convention to represent things, and Bitcoin's creator picked one. The actual choice barely matters.
+> 如今几乎所有的 CPU 都原生以 little-endian 运行。要操作 big-endian 数字，需要额外的字节交换指令。对大多数事情来说，我认为这种影响微乎其微。网络协议需要一个规范来表示事物，比特币的创始人选了一个。实际选择其实并不重要。
 
 Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/103345/what-does-the-little-endian-notation-improve-for-bitcoin#answer-103349)
 
-So if you think working with little-endian is awkward, you're not alone.
+所以，如果你觉得使用 little-endian 很别扭，你并不孤单。
 
-There are basically two camps:
+基本上有两个阵营：
 
-1. Little-endian makes sense because most modern computers use a little-endian architecture.
-2. Big-endian makes sense because most communications over the network use big-endian.
+1. Little-endian 合理是因为大多数现代计算机内部使用 little-endian 架构。
+2. Big-endian 合理是因为大多数网络通信都使用 big-endian。
 
-Personally I think it would be much easier to use big-endian everywhere.
+我个人认为在所有地方都使用 big-endian 会容易得多。
 
-It would make developing on bitcoin much more straightforward, as it would remove the need to look up documentation all the time to find out "is this field little-endian?". Plus, [transaction IDs](/docs/technical/transaction/input/txid.md) and [block hashes](/docs/technical/block/hash.md) have their [byte orders](/docs/technical/general/byte-order.md) reversed to appear in a big-endian format when displayed, so using big-endian would make everything consistent. Not to mention the fact that big-endian is more human-readable.
+这会让比特币开发变得更加直观，因为它能消除为了弄清“这个字段是 little-endian 吗？”而频繁查阅文档的需要。另外，[交易 ID](/docs/technical/transaction/input/txid.md) 和 [区块哈希](/docs/technical/block/hash.md) 在显示时其[字节顺序](/docs/technical/general/byte-order.md)都会反转为 big-endian 格式，因此使用 big-endian 会让一切保持一致。更不用说 big-endian 更符合人类的阅读习惯了。
 
-But none of this matters. Bitcoin has been little-endian since the beginning, and changing it would result in a controversial [hard fork](/docs/technical/blockchain/hard-fork.md) with minimal benefit, so **it's not going to change**.
+但是这都无关紧要。比特币从一开始就是 little-endian，改变它将导致一场极具争议且收效甚微的[硬分叉（hard fork）](/docs/technical/blockchain/hard-fork.md)，因此**它不会改变**。
 
-On the plus side, it does give you the opportunity to learn the difference between little-endian and big-endian byte orders. I didn't even know byte order was a thing until I started playing with bitcoin data.
+好的一面是，这确实给了你一个学习 little-endian 和 big-endian 字节顺序差异的机会。在开始研究比特币数据之前，我甚至不知道有字节顺序这回事。
 
-## Why does bitcoin use little-endian?
+## 为什么比特币使用 little-endian？
 
-Because Satoshi developed Bitcoin on a computer with little-endian architecture.
+因为中本聪是在一台使用 little-endian 架构的计算机上开发比特币的。
 
-It might seem unusual at first, but the little-endian byte order is actually more common than you think:
+起初这看起来可能很不寻常，但 little-endian 字节顺序实际上比你想象的更普遍：
 
-> Almost all CPUs these days work natively in little-endian.
+> 如今几乎所有的 CPU 都原生以 little-endian 运行。
 
 Pieter Wuille, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/103345/what-does-the-little-endian-notation-improve-for-bitcoin#answer-103349)
 
 
-> Modern computers almost always use little-endian internally.
+> 现代计算机内部几乎总是使用 little-endian。
 
 theymos, [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com/questions/2063/why-does-the-bitcoin-protocol-use-the-little-endian-notation#answer-2069)
 
-So whilst it looks backwards to humans, it's pretty standard for computers.
+因此，虽然它在人类看来是反向的，但在计算机上却是非常标准的。
 
-You can check out whether your computer's architecture is big-endian or little endian using [Python](https://www.python.org/):
+你可以使用 [Python](https://www.python.org/) 检查你的计算机架构是 big-endian 还是 little-endian：
 
 ```
 import sys
 print("System Byte Order:", sys.byteorder)
 ```
 
-You wouldn't usually care about the underlying architecture of your system in day-to-day programming. But endianness may become relevant when you start working with the raw bytes of data that get sent across a network (e.g. [transaction data](/docs/technical/transaction.md)).
+在日常编程中，你通常不会关心系统的底层架构。但是，当你开始处理通过网络发送的原始数据字节（例如[交易数据](/docs/technical/transaction.md)）时，字节顺序（endianness）可能就会变得相关。
 
-## Summary
+## 总结
 
-Little-endian is the byte order we use for storing integers (and other multi-byte structures such as the [bits](/docs/technical/block/bits.md) field) in raw bitcoin data such as [transactions](/docs/technical/transaction.md) and [block headers](/docs/technical/block.md#header).
+Little-endian 是我们在原始比特币数据中存储整数（以及其他多字节结构，例如 [bits](/docs/technical/block/bits.md) 字段）时所使用的字节顺序，例如在[交易](/docs/technical/transaction.md)和[区块头](/docs/technical/block.md#header)中。
 
-To the human eye, little-endian looks like the bytes are in *reverse* order. However, many modern computers use little-endian architecture, and Satoshi programmed the first version of Bitcoin on a little-endian computer, so that's why we use little-endian in Bitcoin.
+在人类眼中，little-endian 看起来像是字节以*相反*的顺序排列。然而，许多现代计算机使用 little-endian 架构，且中本聪在 little-endian 计算机上编写了比特币的第一个版本，这就是我们在比特币中使用 little-endian 的原因。
 
-It would probably be easier from a development perspective to have everything in big-endian, but little-endian is what Satoshi went with, so you just have to get used to it.
+从开发角度来看，所有东西都采用 big-endian 可能会更容易，但 little-endian 是中本聪做出的选择，所以你只需要习惯它。
 
-Welcome to bitcoin programming.
+欢迎来到比特币编程的世界。
 
-## Resources
+## 相关资源
 
 * [Big and Little Endian - cs.umd.edu](https://web.archive.org/web/20150323052207/http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html)
