@@ -20,6 +20,11 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -27,6 +32,7 @@ jobs:
 
       - name: Build documentation site
         run: |
+          rm -rf docs/superpowers
           zensical build
 
       - name: Deploy to GitHub Pages
