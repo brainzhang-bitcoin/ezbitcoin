@@ -4,7 +4,15 @@ from pathlib import Path
 
 def sanitize_filename(url: str) -> str:
     # Extract path portion and replace slashes and special chars with underscores
-    path = url.split("learnmeabitcoin.com/")[-1]
+    if "learnmeabitcoin.com/" in url:
+        path = url.split("learnmeabitcoin.com/")[-1]
+    elif "brainz.fun/" in url:
+        path = url.split("brainz.fun/")[-1]
+        path = path.replace("images/blog/", "")
+    else:
+        from urllib.parse import urlparse
+        path = urlparse(url).path
+
     path = path.replace("images/", "").replace("assets/", "")
     sanitized = re.sub(r"[^a-zA-Z0-9\.\-_]", "_", path)
     return sanitized.strip("_")
