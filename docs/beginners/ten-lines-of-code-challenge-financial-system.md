@@ -21,7 +21,7 @@
 1. 会翻墙
 2. 了解[Ethereum](https://ethereum.org/)的基本原理，最好能把白皮书读明白
 3. 学会[solidity语言](https://github.com/ethereum/solidity/)
-4. 搞明白[Truffle开发环境的使用](trufflesuite.com/)
+4. 搞明白[Truffle开发环境的使用](https://trufflesuite.com/)
 5. 会用Nodejs
 6. 会用Npm安装包，因为相关代码迭代速度很快，有时候需要你自己解决一些依赖问题
 7. 会一些基本的Linux命令

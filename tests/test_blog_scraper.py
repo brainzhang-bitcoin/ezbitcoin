@@ -1,4 +1,3 @@
-import os
 from blog_router import get_local_path_for_blog_url, get_relative_link
 
 def test_get_local_path_for_blog_url():

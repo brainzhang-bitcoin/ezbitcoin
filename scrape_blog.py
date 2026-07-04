@@ -5,10 +5,10 @@ import random
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
-from blog_router import URL_MAP, get_local_path_for_blog_url
+from blog_router import get_local_path_for_blog_url
 from blog_transformer import transform_blog_html_to_markdown
 
-def scrape_blog():
+def scrape_blog() -> bool:
     session = requests.Session()
     session.headers.update({
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
@@ -19,9 +19,10 @@ def scrape_blog():
     try:
         resp = session.get(category_url, timeout=15)
         resp.raise_for_status()
+        resp.encoding = 'utf-8'
     except Exception as e:
         print(f"Error fetching category page: {e}")
-        sys.exit(1)
+        return False
         
     soup = BeautifulSoup(resp.text, "lxml")
     article_links = []
@@ -38,6 +39,8 @@ def scrape_blog():
     print(f"Found {len(article_links)} matching articles to import.")
     os.makedirs("docs/images", exist_ok=True)
     
+    failed_articles = 0
+    
     for i, url in enumerate(article_links, 1):
         md_file_path = get_local_path_for_blog_url(url)
         print(f"[{i}/{len(article_links)}] Processing {url} -> {md_file_path}")
@@ -48,8 +51,10 @@ def scrape_blog():
         try:
             art_resp = session.get(url, timeout=15)
             art_resp.raise_for_status()
+            art_resp.encoding = 'utf-8'
         except Exception as e:
             print(f"  Failed to fetch: {e}")
+            failed_articles += 1
             continue
             
         os.makedirs(os.path.dirname(md_file_path), exist_ok=True)
@@ -75,7 +80,14 @@ def scrape_blog():
         with open(md_file_path, "w", encoding="utf-8") as f:
             f.write(md_content)
             
+    if failed_articles > 0:
+        print(f"Blog import completed with {failed_articles} failures.")
+        return False
+        
     print("Blog import completed successfully!")
+    return True
 
 if __name__ == "__main__":
-    scrape_blog()
+    success = scrape_blog()
+    if not success:
+        sys.exit(1)
