@@ -29,6 +29,15 @@
     *   [公钥 (Public Keys)](docs/beginners/guide/public-keys.md)
     *   [数字签名 (Digital Signatures)](docs/beginners/guide/digital-signatures.md)
     *   [隔离见证 (SegWit)](docs/beginners/guide/segwit.md)
+*   **💡 推荐科普博文 (Blog Articles)**
+    *   [美国政府是如何没收大量比特币的](docs/beginners/how-us-government-seizes-bitcoins.md)
+    *   [远古矿工转移8万枚比特币](docs/beginners/ancient-miners-move-bitcoins.md)
+    *   [十行代码挑战世界金融体系](docs/beginners/ten-lines-of-code-challenge-financial-system.md)
+    *   [澳本聪是中本聪吗？(二)](docs/beginners/is-craig-wright-real-satoshi-part2.md)
+    *   [《The Internet of Money》读书笔记](docs/beginners/the-internet-of-money-reading-notes.md)
+    *   [《The Book of Satoshi》读书笔记](docs/beginners/the-book-of-satoshi-reading-notes.md)
+    *   [比特币的过去，现在和未来](docs/beginners/bitcoin-past-present-future.md)
+    *   [祝比特币10岁生日快乐](docs/beginners/happy-10th-birthday-bitcoin.md)
 
 ---
 
@@ -47,6 +56,8 @@
     *   [版本号 Version (Version)](docs/technical/block/version.md)
     *   [blk.dat 数据文件结构](docs/technical/block/blkdat.md)
 *   **[区块链总览 (Blockchain)](docs/technical/blockchain.md)**
+    *   [比特币的 Blockchain - Part 1](docs/technical/blockchain/bitcoin-blockchain-part1.md)
+    *   [比特币的 Blockchain - Part 2](docs/technical/blockchain/bitcoin-blockchain-part2.md)
     *   [区块高度 (Height)](docs/technical/blockchain/height.md)
     *   [最长链原则 (Longest Chain)](docs/technical/blockchain/longest-chain.md)
     *   [51% 攻击 (51% Attack)](docs/technical/blockchain/51-attack.md)
@@ -55,6 +66,7 @@
 
 #### 🔐 密码学 (Cryptography)
 *   **[密码学总览 (Cryptography)](docs/technical/cryptography.md)**
+    *   [提高比特币私钥碰撞几率的思路](docs/technical/cryptography/bitcoin-private-key-collision-ideas.md)
     *   [哈希函数 (Hash Function)](docs/technical/cryptography/hash-function.md)
     *   [椭圆曲线 (Elliptic Curve)](docs/technical/cryptography/elliptic-curve.md)
     *   [ECDSA 签名算法](docs/technical/cryptography/elliptic-curve/ecdsa.md)
@@ -77,6 +89,8 @@
 
 #### 💸 比特币交易 (Transactions)
 *   **[交易总览 (Transaction)](docs/technical/transaction.md)**
+    *   [比特币的交易 - Part 5](docs/technical/transaction/bitcoin-transaction-part5.md)
+    *   [比特币的交易 - Part 6](docs/technical/transaction/bitcoin-transaction-part6.md)
     *   [未花费交易输出 (UTXO)](docs/technical/transaction/utxo.md)
     *   [交易输入 (Input)](docs/technical/transaction/input.md)
         *   [ScriptSig 解锁脚本](docs/technical/transaction/input/scriptsig.md)
@@ -104,6 +118,18 @@
     *   [P2TR (Pay-to-Taproot)](docs/technical/script/p2tr.md)
     *   [OP_RETURN 脚本 (Return)](docs/technical/script/return.md)
 
+#### ⚡ 闪电网络与 Lnd 技术 (Lightning Network)
+*   **[闪电网络与 Lnd 技术 (Lightning Network)](docs/technical/lightning.md)**
+    *   [Lnd 启动扫描速度慢分析 (Lnd Low Rescan Speed)](docs/technical/lightning/lnd-low-rescan-speed-startup.md)
+    *   [如何通过 lnd-cli 关闭通道 (How to Close Lightning Channels)](docs/technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md)
+    *   [闪电网络基础与原理 - Part 0](docs/technical/lightning/hello-lightning-network-part0.md)
+    *   [闪电网络基础与原理 - Part 1](docs/technical/lightning/hello-lightning-network-part1.md)
+    *   [闪电网络基础与原理 - Part 2](docs/technical/lightning/hello-lightning-network-part2.md)
+    *   [闪电网络基础与原理 - Part 3](docs/technical/lightning/hello-lightning-network-part3.md)
+    *   [闪电网络节点搭建与配置小抄](docs/technical/lightning/setup-lightning-node-cheat-sheet.md)
+    *   [Eltoo 闪电和离线契约更新机制](docs/technical/lightning/eltoo-lightning-offchain-contracts.md)
+    *   [闪电网络的慢慢成长之路](docs/technical/lightning/lightning-network-gradual-growth.md)
+
 #### ⛏️ 挖矿与网络 (Mining & Networking)
 *   **[挖矿总览 (Mining)](docs/technical/mining.md)**
     *   [区块奖励 (Block Reward)](docs/technical/mining/block-reward.md)
@@ -112,6 +138,8 @@
     *   [候选区块 (Candidate Block)](docs/technical/mining/candidate-block.md)
     *   [目标值 (Target)](docs/technical/mining/target.md)
 *   **[网络协议总览 (Networking)](docs/technical/networking.md)**
+    *   [比特币 daemon 服务 Systemd 启动配置](docs/technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md)
+    *   [理想中的比特币全节点实现](docs/technical/networking/ideal-bitcoin-full-node-implementation.md)
     *   [网络节点 (Node)](docs/technical/networking/node.md)
     *   [魔法字节 (Magic Bytes)](docs/technical/networking/magic-bytes.md)
 

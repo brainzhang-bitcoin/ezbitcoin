@@ -412,6 +412,38 @@ Obviously, if you're proficient with your current development environment, stick
 
 最好的钱包和工具正是由那些在某些时候对比特币毫无经验的人构建的。
 
+## 📚 技术主题目录
+
+* **📦 区块与区块链 (Blocks & Blockchain)**
+  * [区块总览](/docs/technical/block.md)
+  * [区块链总览](/docs/technical/blockchain.md)
+    * [比特币的 Blockchain - Part 1](/docs/technical/blockchain/bitcoin-blockchain-part1.md)
+    * [比特币的 Blockchain - Part 2](/docs/technical/blockchain/bitcoin-blockchain-part2.md)
+* **🔐 密码学 (Cryptography)**
+  * [密码学总览](/docs/technical/cryptography.md)
+    * [提高比特币私钥碰撞几率的思路](/docs/technical/cryptography/bitcoin-private-key-collision-ideas.md)
+* **🔑 密钥、签名与地址 (Keys & Addresses)**
+  * [密钥总览](/docs/technical/keys.md)
+* **💸 比特币交易 (Transactions)**
+  * [交易总览](/docs/technical/transaction.md)
+    * [比特币的交易 - Part 5](/docs/technical/transaction/bitcoin-transaction-part5.md)
+    * [比特币的交易 - Part 6](/docs/technical/transaction/bitcoin-transaction-part6.md)
+* **⚡ 闪电网络与 Lnd 技术 (Lightning Network)**
+  * [Lnd 启动扫描速度慢分析](/docs/technical/lightning/lnd-low-rescan-speed-startup.md)
+  * [如何通过 lnd-cli 关闭通道](/docs/technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md)
+  * [闪电网络基础与原理 - Part 0](/docs/technical/lightning/hello-lightning-network-part0.md)
+  * [闪电网络基础与原理 - Part 1](/docs/technical/lightning/hello-lightning-network-part1.md)
+  * [闪电网络基础与原理 - Part 2](/docs/technical/lightning/hello-lightning-network-part2.md)
+  * [闪电网络基础与原理 - Part 3](/docs/technical/lightning/hello-lightning-network-part3.md)
+  * [闪电网络节点搭建与配置小抄](/docs/technical/lightning/setup-lightning-node-cheat-sheet.md)
+  * [Eltoo 闪电和离线契约更新机制](/docs/technical/lightning/eltoo-lightning-offchain-contracts.md)
+  * [闪电网络的慢慢成长之路](/docs/technical/lightning/lightning-network-gradual-growth.md)
+* **⛏️ 挖矿与网络 (Mining & Networking)**
+  * [挖矿总览](/docs/technical/mining.md)
+  * [网络协议总览](/docs/technical/networking.md)
+    * [比特币 daemon 服务 Systemd 启动配置](/docs/technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md)
+    * [理想中的比特币全节点实现](/docs/technical/networking/ideal-bitcoin-full-node-implementation.md)
+
 ### 其他资源
 
 谁也不会再仅从一本书或一个网站了解一门完整的学科，所以这里有其他一些我发现非常有用的极好比特币技术资源：

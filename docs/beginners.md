@@ -45,4 +45,17 @@
 * [数字签名](/docs/beginners/guide/digital-signatures.md)
 * [SegWit](/docs/beginners/guide/segwit.md)
 
+## 💡 推荐科普博文
+
+这里收录了作者撰写的关于比特币入门与科普的历史文章：
+
+* [美国政府是如何没收大量比特币的](/docs/beginners/how-us-government-seizes-bitcoins.md)
+* [远古矿工转移8万枚比特币](/docs/beginners/ancient-miners-move-bitcoins.md)
+* [十行代码挑战世界金融体系](/docs/beginners/ten-lines-of-code-challenge-financial-system.md)
+* [澳本聪是中本聪吗？(二)](/docs/beginners/is-craig-wright-real-satoshi-part2.md)
+* [《The Internet of Money》读书笔记](/docs/beginners/the-internet-of-money-reading-notes.md)
+* [《The Book of Satoshi》读书笔记](/docs/beginners/the-book-of-satoshi-reading-notes.md)
+* [比特币的过去，现在和未来](/docs/beginners/bitcoin-past-present-future.md)
+* [祝比特币10岁生日快乐](/docs/beginners/happy-10th-birthday-bitcoin.md)
+
 **本指南完全是非技术性的，大约只需花费 60 分钟。** 如果你想了解更多信息，请参阅[技术部分](/docs/technical.md)以获取更详细的解释。
