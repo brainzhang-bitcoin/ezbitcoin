@@ -1,4 +1,4 @@
-# EzBitcoin - 极简比特币讲解
+# EzBitcoin - 比特币入门
 
 这个项目面向对比特币技术好奇的读者，用极简非技术语言介绍比特币是如何工作的；里面的部分材料包含来自知名 Bitcoin 极简图解教学网站 [Learn Me A Bitcoin](https://learnmeabitcoin.com/) ，部分材料来自于[作者的blog历史文章](https://brainz.fun/blog/categories/blockchain/);
 
