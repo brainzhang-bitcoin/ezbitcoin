@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import random
 import requests
@@ -20,7 +21,7 @@ def scrape_blog():
         resp.raise_for_status()
     except Exception as e:
         print(f"Error fetching category page: {e}")
-        return
+        sys.exit(1)
         
     soup = BeautifulSoup(resp.text, "lxml")
     article_links = []

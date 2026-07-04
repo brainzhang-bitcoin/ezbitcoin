@@ -2,7 +2,7 @@ import os
 from blog_router import get_local_path_for_blog_url, get_relative_link
 
 def test_get_local_path_for_blog_url():
-    assert get_local_path_for_blog_url("https://brainz.fun/blog/2026/06/01/mei-guo-zheng-fu-shi-ru-he-mei-shou-da-liang-bi-te-bi-de/") == "docs/beginners/how-us-government-seized-bitcoins.md"
+    assert get_local_path_for_blog_url("https://brainz.fun/blog/2026/06/01/mei-guo-zheng-fu-shi-ru-he-mei-shou-da-liang-bi-te-bi-de/") == "docs/beginners/how-us-government-seizes-bitcoins.md"
     assert get_local_path_for_blog_url("/blog/2025/09/15/tan-tan-wen-ding-bi/") is None  # Excluded
 
 def test_get_relative_link():
