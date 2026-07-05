@@ -31,13 +31,7 @@
     *   [数字签名 (Digital Signatures)](docs/beginners/guide/digital-signatures.md)
     *   [隔离见证 (SegWit)](docs/beginners/guide/segwit.md)
 *   **💡 推荐科普博文 (Blog Articles)**
-    *   [美国政府是如何没收大量比特币的](docs/beginners/how-us-government-seizes-bitcoins.md)
-    *   [远古矿工转移8万枚比特币](docs/beginners/ancient-miners-move-bitcoins.md)
-    *   [十行代码挑战世界金融体系](docs/beginners/ten-lines-of-code-challenge-financial-system.md)
     *   [澳本聪是中本聪吗？(二)](docs/beginners/is-craig-wright-real-satoshi-part2.md)
-    *   [《The Internet of Money》读书笔记](docs/beginners/the-internet-of-money-reading-notes.md)
-    *   [《The Book of Satoshi》读书笔记](docs/beginners/the-book-of-satoshi-reading-notes.md)
-    *   [比特币的过去，现在和未来](docs/beginners/bitcoin-past-present-future.md)
     *   [祝比特币10岁生日快乐](docs/beginners/happy-10th-birthday-bitcoin.md)
 
 ---
@@ -68,7 +62,6 @@
 
 #### 🔐 密码学 (Cryptography)
 *   **[密码学总览 (Cryptography)](docs/technical/cryptography.md)**
-    *   [提高比特币私钥碰撞几率的思路](docs/technical/cryptography/bitcoin-private-key-collision-ideas.md)
     *   [哈希函数 (Hash Function)](docs/technical/cryptography/hash-function.md)
     *   [椭圆曲线 (Elliptic Curve)](docs/technical/cryptography/elliptic-curve.md)
     *   [ECDSA 签名算法](docs/technical/cryptography/elliptic-curve/ecdsa.md)
@@ -141,7 +134,6 @@
     *   [目标值 (Target)](docs/technical/mining/target.md)
 *   **[网络协议总览 (Networking)](docs/technical/networking.md)**
     *   [比特币 daemon 服务 Systemd 启动配置](docs/technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md)
-    *   [理想中的比特币全节点实现](docs/technical/networking/ideal-bitcoin-full-node-implementation.md)
     *   [网络节点 (Node)](docs/technical/networking/node.md)
     *   [魔法字节 (Magic Bytes)](docs/technical/networking/magic-bytes.md)
 
@@ -155,3 +147,20 @@
 *   [字节 (Bytes)](docs/technical/general/bytes.md)
 *   [字节序 (Byte Order / Little-Endian)](docs/technical/general/byte-order.md)
 *   [可变长度整数 VarInt (Compact Size)](docs/technical/general/compact-size.md)
+
+---
+
+### 🟡 3. 番外篇 (External Articles)
+外部科普推荐、读书笔记与延伸思考。
+
+*   **[比特币番外篇主页](docs/external.md)**
+*   **💡 推荐科普博文 (Blog Articles)**
+    *   [美国政府是如何没收大量比特币的](docs/external/how-us-government-seizes-bitcoins.md)
+    *   [远古矿工转移8万枚比特币](docs/external/ancient-miners-move-bitcoins.md)
+    *   [十行代码挑战世界金融体系](docs/external/ten-lines-of-code-challenge-financial-system.md)
+    *   [《The Internet of Money》读书笔记](docs/external/the-internet-of-money-reading-notes.md)
+    *   [《The Book of Satoshi》读书笔记](docs/external/the-book-of-satoshi-reading-notes.md)
+    *   [比特币的过去，现在和未来](docs/external/bitcoin-past-present-future.md)
+*   **⚙️ 延伸思考 (Extended Topics)**
+    *   [提高比特币私钥碰撞几率的思路](docs/external/bitcoin-private-key-collision-ideas.md)
+    *   [理想中的比特币全节点实现](docs/external/ideal-bitcoin-full-node-implementation.md)

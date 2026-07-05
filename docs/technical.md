@@ -421,7 +421,6 @@ Obviously, if you're proficient with your current development environment, stick
     * [比特币的 Blockchain - Part 2](technical/blockchain/bitcoin-blockchain-part2.md)
 * **🔐 密码学 (Cryptography)**
   * [密码学总览](technical/cryptography.md)
-    * [提高比特币私钥碰撞几率的思路](technical/cryptography/bitcoin-private-key-collision-ideas.md)
 * **🔑 密钥、签名与地址 (Keys & Addresses)**
   * [密钥总览](technical/keys.md)
 * **💸 比特币交易 (Transactions)**
@@ -442,7 +441,6 @@ Obviously, if you're proficient with your current development environment, stick
   * [挖矿总览](technical/mining.md)
   * [网络协议总览](technical/networking.md)
     * [比特币 daemon 服务 Systemd 启动配置](technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md)
-    * [理想中的比特币全节点实现](technical/networking/ideal-bitcoin-full-node-implementation.md)
 
 ### 其他资源
 
