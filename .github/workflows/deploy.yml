@@ -5,11 +5,21 @@ on:
     branches:
       - main
 
+# ⚠️ 1. 必须修改权限，否则官方 Actions 无法触发 Pages 状态变更
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -35,9 +45,17 @@ jobs:
           rm -rf docs/superpowers
           zensical build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      # ⚠️ 2. 配置官方的 Pages 环境
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # ⚠️ 3. 官方步骤一：上传编译好的静态目录（对应你原本的 ./site）
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          cname: ezbitcoin.brainz.fun
+          path: './site'
+
+      # ⚠️ 4. 官方步骤二：直接部署到后台，不再需要中转分支
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
