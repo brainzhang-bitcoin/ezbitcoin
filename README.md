@@ -30,9 +30,6 @@
     *   [公钥 (Public Keys)](docs/beginners/guide/public-keys.md)
     *   [数字签名 (Digital Signatures)](docs/beginners/guide/digital-signatures.md)
     *   [隔离见证 (SegWit)](docs/beginners/guide/segwit.md)
-*   **💡 推荐科普博文 (Blog Articles)**
-    *   [澳本聪是中本聪吗？(二)](docs/beginners/is-craig-wright-real-satoshi-part2.md)
-    *   [祝比特币10岁生日快乐](docs/beginners/happy-10th-birthday-bitcoin.md)
 
 ---
 
@@ -161,6 +158,8 @@
     *   [《The Internet of Money》读书笔记](docs/external/the-internet-of-money-reading-notes.md)
     *   [《The Book of Satoshi》读书笔记](docs/external/the-book-of-satoshi-reading-notes.md)
     *   [比特币的过去，现在和未来](docs/external/bitcoin-past-present-future.md)
+    *   [澳本聪是中本聪吗？(二)](docs/external/is-craig-wright-real-satoshi-part2.md)
+    *   [祝比特币10岁生日快乐](docs/external/happy-10th-birthday-bitcoin.md)
 *   **⚙️ 延伸思考 (Extended Topics)**
     *   [提高比特币私钥碰撞几率的思路](docs/external/bitcoin-private-key-collision-ideas.md)
     *   [理想中的比特币全节点实现](docs/external/ideal-bitcoin-full-node-implementation.md)

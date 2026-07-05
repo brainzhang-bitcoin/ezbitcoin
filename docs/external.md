@@ -9,6 +9,8 @@
 * [远古矿工转移8万枚比特币](external/ancient-miners-move-bitcoins.md)
 * [美国政府是如何没收大量比特币的](external/how-us-government-seizes-bitcoins.md)
 * [十行代码挑战世界金融体系](external/ten-lines-of-code-challenge-financial-system.md)
+* [澳本聪是中本聪吗？(二)](external/is-craig-wright-real-satoshi-part2.md)
+* [祝比特币10岁生日快乐](external/happy-10th-birthday-bitcoin.md)
 
 ## 📖 读书笔记 (Reading Notes)
 * [《The Book of Satoshi》读书笔记](external/the-book-of-satoshi-reading-notes.md)

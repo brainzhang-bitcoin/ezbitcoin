@@ -45,11 +45,4 @@
 * [数字签名](beginners/guide/digital-signatures.md)
 * [SegWit](beginners/guide/segwit.md)
 
-## 💡 推荐科普博文
-
-这里收录了作者撰写的关于比特币入门与科普的历史文章：
-
-* [澳本聪是中本聪吗？(二)](beginners/is-craig-wright-real-satoshi-part2.md)
-* [祝比特币10岁生日快乐](beginners/happy-10th-birthday-bitcoin.md)
-
 **本指南完全是非技术性的，大约只需花费 60 分钟。** 如果你想了解更多信息，请参阅[技术部分](technical.md)以获取更详细的解释，或者查看[番外篇](external.md)了解更多背景故事和读书笔记。
