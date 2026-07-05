@@ -131,15 +131,15 @@ nav = [
     ]},
     { "闪电网络" = [
         { "闪电网络与 Lnd 技术" = "technical/lightning.md" },
-        { "Lnd 启动扫描速度慢分析" = "technical/lightning/lnd-low-rescan-speed-startup.md" },
-        { "如何通过 lnd-cli 关闭通道" = "technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md" },
+        { "闪电网络的慢慢成长之路" = "technical/lightning/lightning-network-gradual-growth.md" }
         { "闪电网络基础与原理 - Part 0" = "technical/lightning/hello-lightning-network-part0.md" },
         { "闪电网络基础与原理 - Part 1" = "technical/lightning/hello-lightning-network-part1.md" },
         { "闪电网络基础与原理 - Part 2" = "technical/lightning/hello-lightning-network-part2.md" },
         { "闪电网络基础与原理 - Part 3" = "technical/lightning/hello-lightning-network-part3.md" },
         { "闪电网络节点搭建与配置小抄" = "technical/lightning/setup-lightning-node-cheat-sheet.md" },
+        { "如何通过 lnd-cli 关闭通道" = "technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md" },
+        { "Lnd 启动扫描速度慢分析" = "technical/lightning/lnd-low-rescan-speed-startup.md" },
         { "Eltoo 闪电和离线契约更新机制" = "technical/lightning/eltoo-lightning-offchain-contracts.md" },
-        { "闪电网络的慢慢成长之路" = "technical/lightning/lightning-network-gradual-growth.md" }
     ]},
     { "External" = [
         { "External" = "external/index.md" },
