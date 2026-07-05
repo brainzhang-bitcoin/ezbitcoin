@@ -46,13 +46,7 @@ palette = [
         { "隔离见证 (SegWit)" = "beginners/guide/segwit.md" }
     ]},
     { "推荐科普博文" = [
-        { "美国政府是如何没收大量比特币的" = "beginners/how-us-government-seizes-bitcoins.md" },
-        { "远古矿工转移8万枚比特币" = "beginners/ancient-miners-move-bitcoins.md" },
-        { "十行代码挑战世界金融体系" = "beginners/ten-lines-of-code-challenge-financial-system.md" },
         { "澳本聪是中本聪吗？(二)" = "beginners/is-craig-wright-real-satoshi-part2.md" },
-        { "《The Internet of Money》读书笔记" = "beginners/the-internet-of-money-reading-notes.md" },
-        { "《The Book of Satoshi》读书笔记" = "beginners/the-book-of-satoshi-reading-notes.md" },
-        { "比特币的过去，现在和未来" = "beginners/bitcoin-past-present-future.md" },
         { "祝比特币10岁生日快乐" = "beginners/happy-10th-birthday-bitcoin.md" }
     ]}
 ]
@@ -81,7 +75,6 @@ palette = [
     ]},
     { "密码学" = [
         { "密码学总览" = "technical/cryptography.md" },
-        { "提高比特币私钥碰撞几率的思路" = "technical/cryptography/bitcoin-private-key-collision-ideas.md" },
         { "哈希函数" = "technical/cryptography/hash-function.md" },
         { "椭圆曲线" = "technical/cryptography/elliptic-curve.md" },
         { "ECDSA 算法" = "technical/cryptography/elliptic-curve/ecdsa.md" },
@@ -153,7 +146,6 @@ palette = [
     { "目标值" = "technical/mining/target.md" },
     { "网络协议总览" = "technical/networking.md" },
     { "系统服务 Systemd 启动配置" = "technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md" },
-    { "理想中的全节点实现" = "technical/networking/ideal-bitcoin-full-node-implementation.md" },
     { "网络节点" = "technical/networking/node.md" },
     { "魔法字节" = "technical/networking/magic-bytes.md" },
     { "隔离见证 (SegWit)" = "technical/upgrades/segregated-witness.md" },
@@ -171,4 +163,16 @@ palette = [
     { "闪电网络节点搭建与配置小抄" = "technical/lightning/setup-lightning-node-cheat-sheet.md" },
     { "Eltoo 闪电和离线契约更新机制" = "technical/lightning/eltoo-lightning-offchain-contracts.md" },
     { "闪电网络的慢慢成长之路" = "technical/lightning/lightning-network-gradual-growth.md" }
+]
+
+"番外篇" = [
+    { "比特币番外篇" = "external.md" },
+    { "比特币的过去，现在和未来" = "external/bitcoin-past-present-future.md" },
+    { "远古矿工转移8万枚比特币" = "external/ancient-miners-move-bitcoins.md" },
+    { "美国政府是如何没收大量比特币的" = "external/how-us-government-seizes-bitcoins.md" },
+    { "十行代码挑战世界金融体系" = "external/ten-lines-of-code-challenge-financial-system.md" },
+    { "《The Book of Satoshi》读书笔记" = "external/the-book-of-satoshi-reading-notes.md" },
+    { "《The Internet of Money》读书笔记" = "external/the-internet-of-money-reading-notes.md" },
+    { "提高比特币私钥碰撞几率的思路" = "external/bitcoin-private-key-collision-ideas.md" },
+    { "理想中的全节点实现" = "external/ideal-bitcoin-full-node-implementation.md" }
 ]
