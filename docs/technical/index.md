@@ -1,6 +1,6 @@
-<img src="images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
+<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-# <img src="images/icons_file-text.svg" alt="Technical Icon" style="width:52px; height:52px" /> 技术
+# <img src="../images/icons_file-text.svg" alt="Technical Icon" style="width:52px; height:52px" /> 技术
 
 这是一份完整的比特币技术指南。
 
@@ -16,7 +16,7 @@
 
 ## 代码示例如下所示
 
-<img src="images/icons_ruby.svg" alt="Ruby Icon" style="width:52px; height:52px" />
+<img src="../images/icons_ruby.svg" alt="Ruby Icon" style="width:52px; height:52px" />
 
 大多数代码示例都使用 [Ruby](https://www.ruby-lang.org/en/) 语言，因为我认为它是最容易阅读的语言。
 
@@ -35,7 +35,7 @@
 * **[Xubuntu](https://xubuntu.org/)** – 这是我首选的 Linux 发行版。它就是流行的 [Ubuntu](https://ubuntu.com/) 捆绑了轻量且实用的 [XFCE](https://xfce.org/) 桌面环境。它易于使用，如果您是从 Mac 或 Windows 转过来的，它是一个很好的起点，因为一切都是开箱即用的。
     
 
-  [<img src="images/technical_my-setup-2020.png" alt="Screenshot of my desktop." width="960" height="540" />](images/technical_my-setup-2020.png)
+  [<img src="../images/technical_my-setup-2020.png" alt="Screenshot of my desktop." width="960" height="540" />](images/technical_my-setup-2020.png)
 
 
   这是我的桌面外观。我当时正在制作这个 [SHA256 动画](https://www.youtube.com/watch?v=f9EbD6iY9zI)。
@@ -48,7 +48,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 ### 安装 Bitcoin Core
 
-<img src="images/svg_bitcoin-logo.svg" alt="Bitcoin Logo" style="width: 24px; height: 24px;" />
+<img src="../images/svg_bitcoin-logo.svg" alt="Bitcoin Logo" style="width: 24px; height: 24px;" />
 
 如果您打算开始对比特币进行开发，安装 [Bitcoin Core](https://bitcoin.org/en/download)（原始的比特币程序）是一个好主意。
 
@@ -78,12 +78,12 @@ Obviously, if you're proficient with your current development environment, stick
 
 ### 使用您最喜欢的编程语言
 
-<img src="images/icons_python.svg" alt="Python Icon" style="width:52px; height:52px" />
-<img src="images/icons_ruby.svg" alt="Ruby Icon" style="width:52px; height:52px" />
-<img src="images/icons_javascript.svg" alt="Javascript Icon" style="width:52px; height:52px" />
-<img src="images/icons_go.svg" alt="Golang Icon" style="width:52px; height:52px" />
-<img src="images/icons_cpp.svg" alt="C++ Icon" style="width:52px; height:52px" />
-<img src="images/icons_php.svg" alt="PHP Icon" style="width:52px; height:52px" />
+<img src="../images/icons_python.svg" alt="Python Icon" style="width:52px; height:52px" />
+<img src="../images/icons_ruby.svg" alt="Ruby Icon" style="width:52px; height:52px" />
+<img src="../images/icons_javascript.svg" alt="Javascript Icon" style="width:52px; height:52px" />
+<img src="../images/icons_go.svg" alt="Golang Icon" style="width:52px; height:52px" />
+<img src="../images/icons_cpp.svg" alt="C++ Icon" style="width:52px; height:52px" />
+<img src="../images/icons_php.svg" alt="PHP Icon" style="width:52px; height:52px" />
 
 **您可以使用*any*您喜欢的编程语言来处理比特币**，因此您不妨使用您最喜欢的语言。
 
@@ -128,7 +128,7 @@ Obviously, if you're proficient with your current development environment, stick
    ```
 2. **解码[交易](transaction.md)**。学习如何解码原始交易将教给您很多关于比特币交易结构的知识，它们构成了[blockchain](blockchain.md)内99%的数据。  
 
-   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易分割器 (Transaction Splitter)
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易分割器 (Transaction Splitter)
 
    随机示例
 
@@ -148,7 +148,7 @@ Obviously, if you're proficient with your current development environment, stick
    0 秒
 3. **创建您自己的交易**。在解码交易之后，您就可以开始创建自己的交易了。这是一个大得多的里程碑（所以慢慢来），但这是自然的下一步。对其进行[签名](keys/signature.md)将是棘手的部分，但如果您能成功将自己的比特币交易发送到[网络](networking.md)中，那么您就可以确认自己是一个相当不错的比特币程序员了。  
 
-   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易构建器 (Transaction Builder)
+   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易构建器 (Transaction Builder)
 
    随机示例
 
@@ -247,7 +247,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 ### 编写命令行工具
 
-[<img src="images/technical_command-line-tools.gif" alt="Screencast showing bitcoin command line tools being used in the terminal." width="728" height="183" />](images/technical_command-line-tools.gif)
+[<img src="../images/technical_command-line-tools.gif" alt="Screencast showing bitcoin command line tools being used in the terminal." width="728" height="183" />](images/technical_command-line-tools.gif)
 
 编写命令行工具是开始对比特币进行编程的好方法。
 
@@ -257,7 +257,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 * **哈希函数** - 能够快速且轻松地获取一些数据的 [HASH256](cryptography/hash-function.md#hash256) 或 [HASH160](cryptography/hash-function.md#hash160) 非常方便，因为它们在比特币中随处可见。  
 
-  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
+  <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
   随机交易数据
 
@@ -268,10 +268,10 @@ Obviously, if you're proficient with your current development environment, stick
   `0 bytes`
 
 
-  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
+  <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
-  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
+  <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
   HASH256
@@ -284,7 +284,7 @@ Obviously, if you're proficient with your current development environment, stick
 
   0 秒
 
-  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH160
+  <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH160
 
   数据 (Hex)
 
@@ -293,10 +293,10 @@ Obviously, if you're proficient with your current development environment, stick
   `0 bytes`
 
 
-  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
+  <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
-  <img src="images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
+  <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   RIPEMD-160
 
   HASH160
@@ -310,7 +310,7 @@ Obviously, if you're proficient with your current development environment, stick
   0 秒
 * **反转字节顺序** - 这对我来说极其宝贵。您经常需要反转 [txid](transaction/input/txid.md) 和[block hashes](block/hash.md)的[byte order](general/byte-order.md)，因为在原始交易数据和区块数据中使用的字节顺序与在[blockchain explorer](/explorer/)中搜索它们时的字节顺序正好相反。此外，原始比特币数据中的大多数字段都是“[little-endian](general/little-endian.md)”，因此在将十六进制和十进制数相互转换时，您经常需要反转字节顺序。  
 
-  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 反转字节 (Reverse Bytes)
+  <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 反转字节 (Reverse Bytes)
 
   随机示例
 
@@ -330,7 +330,7 @@ Obviously, if you're proficient with your current development environment, stick
   0 秒
 * **数字转换器** - 我记不清有多少次我需要将[hexadecimal](general/hexadecimal.md)转换成十进制（反之亦然）。如果您愿意，可以使用在线工具，但没有什么比打开终端并使用自己编写的脚本转换数字更好的了。  
 
-  <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
+  <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
   二进制 (Base 2)
 
