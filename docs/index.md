@@ -158,7 +158,7 @@
     *   [《The Internet of Money》读书笔记](external/the-internet-of-money-reading-notes.md)
     *   [《The Book of Satoshi》读书笔记](external/the-book-of-satoshi-reading-notes.md)
     *   [比特币的过去，现在和未来](external/bitcoin-past-present-future.md)
-    *   [澳本聪是中本聪吗？(二)](external/is-craig-wright-real-satoshi-part2.md)
+    *   [澳本聪是中本聪吗？](external/is-craig-wright-real-satoshi-part2.md)
     *   [祝比特币10岁生日快乐](external/happy-10th-birthday-bitcoin.md)
 *   **⚙️ 延伸思考 (Extended Topics)**
     *   [提高比特币私钥碰撞几率的思路](external/bitcoin-private-key-collision-ideas.md)
