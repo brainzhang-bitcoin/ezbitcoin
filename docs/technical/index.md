@@ -54,7 +54,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 在本地运行您自己的比特币节点有以下几个好处：
 
-* **获取原始比特币数据**。通过在本地计算机上运行全节点，您可以快速轻松地访问原始的[区块](technical/block.md)和[交易](technical/transaction.md)数据，而无需依赖第三方 API：  
+* **获取原始比特币数据**。通过在本地计算机上运行全节点，您可以快速轻松地访问原始的[区块](block.md)和[交易](transaction.md)数据，而无需依赖第三方 API：  
 
   ```
   bitcoin-cli getrawtransaction <txid>
@@ -66,7 +66,7 @@ Obviously, if you're proficient with your current development environment, stick
   bitcoin-cli decoderawtransaction <raw transaction data>
   bitcoin-cli decodescript <hex script>
   ```
-* **发送原始交易**。如果您的工作是构建自己的原始[交易](technical/transaction.md)，您可以通过自己的本地节点将它们发送到比特币网络中：  
+* **发送原始交易**。如果您的工作是构建自己的原始[交易](transaction.md)，您可以通过自己的本地节点将它们发送到比特币网络中：  
 
   ```
   bitcoin-cli sendrawtransaction <raw transaction data>
@@ -117,7 +117,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 如果我必须给您提供一条具体的路径，我会说在学习如何对比特币进行编程时，这**三个**最实用（且令人满意）的里程碑是：
 
-1. **生成您自己的[密钥](technical/keys.md)**。这是完美的起点。尝试生成您自己的[private key](technical/keys/private-key.md)、[public key](technical/keys/public-key.md)和[地址](technical/keys/address.md)。然后将 private key 导入钱包，看看是否能得到与您生成的地址相同的地址。  
+1. **生成您自己的[密钥](keys.md)**。这是完美的起点。尝试生成您自己的[private key](keys/private-key.md)、[public key](keys/public-key.md)和[地址](keys/address.md)。然后将 private key 导入钱包，看看是否能得到与您生成的地址相同的地址。  
 
    生成
 
@@ -126,7 +126,7 @@ Obviously, if you're proficient with your current development environment, stick
    public key:  027287f9c695c85e5f292dd7169fc2739cbf52885425c5cb69045080ca8d4d25a5
    address:     1PZnUgqGQhjfC3vEPHMBxBQBVFmsxaxa7P
    ```
-2. **解码[交易](technical/transaction.md)**。学习如何解码原始交易将教给您很多关于比特币交易结构的知识，它们构成了[blockchain](technical/blockchain.md)内99%的数据。  
+2. **解码[交易](transaction.md)**。学习如何解码原始交易将教给您很多关于比特币交易结构的知识，它们构成了[blockchain](blockchain.md)内99%的数据。  
 
    <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易分割器 (Transaction Splitter)
 
@@ -146,7 +146,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 
    0 秒
-3. **创建您自己的交易**。在解码交易之后，您就可以开始创建自己的交易了。这是一个大得多的里程碑（所以慢慢来），但这是自然的下一步。对其进行[签名](technical/keys/signature.md)将是棘手的部分，但如果您能成功将自己的比特币交易发送到[网络](technical/networking.md)中，那么您就可以确认自己是一个相当不错的比特币程序员了。  
+3. **创建您自己的交易**。在解码交易之后，您就可以开始创建自己的交易了。这是一个大得多的里程碑（所以慢慢来），但这是自然的下一步。对其进行[签名](keys/signature.md)将是棘手的部分，但如果您能成功将自己的比特币交易发送到[网络](networking.md)中，那么您就可以确认自己是一个相当不错的比特币程序员了。  
 
    <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易构建器 (Transaction Builder)
 
@@ -255,7 +255,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 从长远来看，一些非常有用的基础命令行工具包括：
 
-* **哈希函数** - 能够快速且轻松地获取一些数据的 [HASH256](technical/cryptography/hash-function.md#hash256) 或 [HASH160](technical/cryptography/hash-function.md#hash160) 非常方便，因为它们在比特币中随处可见。  
+* **哈希函数** - 能够快速且轻松地获取一些数据的 [HASH256](cryptography/hash-function.md#hash256) 或 [HASH160](cryptography/hash-function.md#hash160) 非常方便，因为它们在比特币中随处可见。  
 
   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
@@ -308,7 +308,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 
   0 秒
-* **反转字节顺序** - 这对我来说极其宝贵。您经常需要反转 [txid](technical/transaction/input/txid.md) 和[block hashes](technical/block/hash.md)的[byte order](technical/general/byte-order.md)，因为在原始交易数据和区块数据中使用的字节顺序与在[blockchain explorer](/explorer/)中搜索它们时的字节顺序正好相反。此外，原始比特币数据中的大多数字段都是“[little-endian](technical/general/little-endian.md)”，因此在将十六进制和十进制数相互转换时，您经常需要反转字节顺序。  
+* **反转字节顺序** - 这对我来说极其宝贵。您经常需要反转 [txid](transaction/input/txid.md) 和[block hashes](block/hash.md)的[byte order](general/byte-order.md)，因为在原始交易数据和区块数据中使用的字节顺序与在[blockchain explorer](/explorer/)中搜索它们时的字节顺序正好相反。此外，原始比特币数据中的大多数字段都是“[little-endian](general/little-endian.md)”，因此在将十六进制和十进制数相互转换时，您经常需要反转字节顺序。  
 
   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 反转字节 (Reverse Bytes)
 
@@ -328,7 +328,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 
   0 秒
-* **数字转换器** - 我记不清有多少次我需要将[hexadecimal](technical/general/hexadecimal.md)转换成十进制（反之亦然）。如果您愿意，可以使用在线工具，但没有什么比打开终端并使用自己编写的脚本转换数字更好的了。  
+* **数字转换器** - 我记不清有多少次我需要将[hexadecimal](general/hexadecimal.md)转换成十进制（反之亦然）。如果您愿意，可以使用在线工具，但没有什么比打开终端并使用自己编写的脚本转换数字更好的了。  
 
   <img src="images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
@@ -396,7 +396,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 所以，放手去创造一些尚不存在的有用工具，然后将其提供给其他人使用，看看会发生什么。
 
-**要负责任**。如果您在创建一个处理 [private keys](technical/keys/private-key.md) 或为其他人创建[transactions](technical/transaction.md)的工具（例如钱包），您需要非常小心。自己犯错导致丢失自己的币是一回事，但犯错导致他人丢失币则是另一回事，所以千万不要掉以轻心。
+**要负责任**。如果您在创建一个处理 [private keys](keys/private-key.md) 或为其他人创建[transactions](transaction.md)的工具（例如钱包），您需要非常小心。自己犯错导致丢失自己的币是一回事，但犯错导致他人丢失币则是另一回事，所以千万不要掉以轻心。
 
 **在 [GitHub](https://github.com/) 上分享您的工作**。这是与世界分享代码的好方法，也是在寻找工作时展示经验的好机会（如果您想朝这个方向发展）。
 
@@ -404,7 +404,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 不要让任何人让您觉得您不能成为一名比特币程序员。
 
-比特币是去中心化的开源软件。如果您愿意，您可以生成自己的[keys](technical/keys.md)并构建自己的[transactions](technical/transaction.md)，没有人可以阻止您。这也是比特币之所以成为比特币的一部分。
+比特币是去中心化的开源软件。如果您愿意，您可以生成自己的[keys](keys.md)并构建自己的[transactions](transaction.md)，没有人可以阻止您。这也是比特币之所以成为比特币的一部分。
 
 我相信有些人会试图说服您需要某种资格才能对比特币进行开发，但请允许我告诉您，您不需要。您需要的一切都可以在互联网上免费学到，甚至只需通过阅读[bitcoin source code](https://github.com/bitcoin/bitcoin/)即可。对比特币进行开发唯一真正的资格就是贡献的愿望，其他一切都可以在过程中学到。
 
@@ -415,32 +415,32 @@ Obviously, if you're proficient with your current development environment, stick
 ## 📚 技术主题目录
 
 * **📦 区块与区块链 (Blocks & Blockchain)**
-  * [区块总览](technical/block.md)
-  * [区块链总览](technical/blockchain.md)
-    * [比特币的 Blockchain - Part 1](technical/blockchain/bitcoin-blockchain-part1.md)
-    * [比特币的 Blockchain - Part 2](technical/blockchain/bitcoin-blockchain-part2.md)
+  * [区块总览](block.md)
+  * [区块链总览](blockchain.md)
+    * [比特币的 Blockchain - Part 1](blockchain/bitcoin-blockchain-part1.md)
+    * [比特币的 Blockchain - Part 2](blockchain/bitcoin-blockchain-part2.md)
 * **🔐 密码学 (Cryptography)**
-  * [密码学总览](technical/cryptography.md)
+  * [密码学总览](cryptography.md)
 * **🔑 密钥、签名与地址 (Keys & Addresses)**
-  * [密钥总览](technical/keys.md)
+  * [密钥总览](keys.md)
 * **💸 比特币交易 (Transactions)**
-  * [交易总览](technical/transaction.md)
-    * [比特币的交易 - Part 5](technical/transaction/bitcoin-transaction-part5.md)
-    * [比特币的交易 - Part 6](technical/transaction/bitcoin-transaction-part6.md)
+  * [交易总览](transaction.md)
+    * [比特币的交易 - Part 5](transaction/bitcoin-transaction-part5.md)
+    * [比特币的交易 - Part 6](transaction/bitcoin-transaction-part6.md)
 * **⚡ 闪电网络与 Lnd 技术 (Lightning Network)**
-  * [Lnd 启动扫描速度慢分析](technical/lightning/lnd-low-rescan-speed-startup.md)
-  * [如何通过 lnd-cli 关闭通道](technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md)
-  * [闪电网络基础与原理 - Part 0](technical/lightning/hello-lightning-network-part0.md)
-  * [闪电网络基础与原理 - Part 1](technical/lightning/hello-lightning-network-part1.md)
-  * [闪电网络基础与原理 - Part 2](technical/lightning/hello-lightning-network-part2.md)
-  * [闪电网络基础与原理 - Part 3](technical/lightning/hello-lightning-network-part3.md)
-  * [闪电网络节点搭建与配置小抄](technical/lightning/setup-lightning-node-cheat-sheet.md)
-  * [Eltoo 闪电和离线契约更新机制](technical/lightning/eltoo-lightning-offchain-contracts.md)
-  * [闪电网络的慢慢成长之路](technical/lightning/lightning-network-gradual-growth.md)
+  * [Lnd 启动扫描速度慢分析](lightning/lnd-low-rescan-speed-startup.md)
+  * [如何通过 lnd-cli 关闭通道](lightning/how-to-close-lightning-channels-by-lnd-cli.md)
+  * [闪电网络基础与原理 - Part 0](lightning/hello-lightning-network-part0.md)
+  * [闪电网络基础与原理 - Part 1](lightning/hello-lightning-network-part1.md)
+  * [闪电网络基础与原理 - Part 2](lightning/hello-lightning-network-part2.md)
+  * [闪电网络基础与原理 - Part 3](lightning/hello-lightning-network-part3.md)
+  * [闪电网络节点搭建与配置小抄](lightning/setup-lightning-node-cheat-sheet.md)
+  * [Eltoo 闪电和离线契约更新机制](lightning/eltoo-lightning-offchain-contracts.md)
+  * [闪电网络的慢慢成长之路](lightning/lightning-network-gradual-growth.md)
 * **⛏️ 挖矿与网络 (Mining & Networking)**
-  * [挖矿总览](technical/mining.md)
-  * [网络协议总览](technical/networking.md)
-    * [比特币 daemon 服务 Systemd 启动配置](technical/networking/how-to-set-systemd-startup-script-for-bitcoind.md)
+  * [挖矿总览](mining.md)
+  * [网络协议总览](networking.md)
+    * [比特币 daemon 服务 Systemd 启动配置](networking/how-to-set-systemd-startup-script-for-bitcoind.md)
 
 ### 其他资源
 

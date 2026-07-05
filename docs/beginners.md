@@ -45,4 +45,4 @@
 * [数字签名](beginners/guide/digital-signatures.md)
 * [SegWit](beginners/guide/segwit.md)
 
-**本指南完全是非技术性的，大约只需花费 60 分钟。** 如果你想了解更多信息，请参阅[技术部分](technical.md)以获取更详细的解释，或者查看[番外篇](external.md)了解更多背景故事和读书笔记。
+**本指南完全是非技术性的，大约只需花费 60 分钟。** 如果你想了解更多信息，请参阅[技术部分](technical/index.md)以获取更详细的解释，或者查看[番外篇](external/index.md)了解更多背景故事和读书笔记。

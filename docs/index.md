@@ -36,7 +36,7 @@
 ### 🔵 2. 技术指南 (Technical Guide)
 适合想要深入理解比特币底层协议、密码学及进行比特币编程开发的读者。
 
-*   **[技术指南导读主页](technical.md)**
+*   **[技术指南导读主页](technical/index.md)**
 
 #### 📦 区块与区块链 (Blocks & Blockchain)
 *   **[区块总览 (Block)](technical/block.md)**
@@ -150,7 +150,7 @@
 ### 🟡 3. 番外篇 (External Articles)
 外部科普推荐、读书笔记与延伸思考。
 
-*   **[比特币番外篇主页](external.md)**
+*   **[比特币番外篇主页](external/index.md)**
 *   **💡 推荐科普博文 (Blog Articles)**
     *   [美国政府是如何没收大量比特币的](external/how-us-government-seizes-bitcoins.md)
     *   [远古矿工转移8万枚比特币](external/ancient-miners-move-bitcoins.md)
