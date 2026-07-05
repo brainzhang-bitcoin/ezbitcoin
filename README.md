@@ -8,6 +8,7 @@
 
 ### 🟢 1. 新手指南 (Beginners Guide)
 适合完全没有技术背景的读者，用极简非技术语言介绍比特币基本概念。
+
 *   **[新手导读及概览](docs/beginners.md)**
 *   **[比特币是如何工作的？](docs/beginners/how-does-bitcoin-work.md)**
 *   **[如何选择钱包 (Wallets)](docs/beginners/wallets.md)**
@@ -43,6 +44,7 @@
 
 ### 🔵 2. 技术指南 (Technical Guide)
 适合想要深入理解比特币底层协议、密码学及进行比特币编程开发的读者。
+
 *   **[技术指南导读主页](docs/technical.md)**
 
 #### 📦 区块与区块链 (Blocks & Blockchain)
@@ -148,16 +150,8 @@
 *   [主根升级 (Taproot)](docs/technical/upgrades/taproot.md)
 
 #### ⚙️ CS 基础知识 (General CS Concepts)
+
 *   [十六进制 (Hexadecimal)](docs/technical/general/hexadecimal.md)
 *   [字节 (Bytes)](docs/technical/general/bytes.md)
 *   [字节序 (Byte Order / Little-Endian)](docs/technical/general/byte-order.md)
 *   [可变长度整数 VarInt (Compact Size)](docs/technical/general/compact-size.md)
-
----
-
-## 🛠️ 项目使用的爬虫工具
-我们使用 Python 编写的本地爬虫工具来抓取和转换这些内容：
-*   **`scrape_to_markdown.py`**：核心启动脚本。
-*   **`sitemap_parser.py`**：获取和过滤目标 URL。
-*   **`content_transformer.py`**：清洗 HTML 并利用 `markdownify` 转换为干净的 `.md` 内容。
-*   **`image_manager.py`**：处理图解文件的本地下载和链接重写。
