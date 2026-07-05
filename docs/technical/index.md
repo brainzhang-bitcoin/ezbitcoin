@@ -130,118 +130,11 @@ Obviously, if you're proficient with your current development environment, stick
 
    <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易分割器 (Transaction Splitter)
 
-   随机示例
 
-   交易数据
-
-   * `0 bytes`
-   * `0 vbytes`
-
-   结果
-
-   ```
-    
-   ```
-
-
-
-   0 秒
 3. **创建您自己的交易**。在解码交易之后，您就可以开始创建自己的交易了。这是一个大得多的里程碑（所以慢慢来），但这是自然的下一步。对其进行[签名](keys/signature.md)将是棘手的部分，但如果您能成功将自己的比特币交易发送到[网络](networking.md)中，那么您就可以确认自己是一个相当不错的比特币程序员了。  
 
    <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易构建器 (Transaction Builder)
 
-   随机示例
-
-   类型
-
-    Legacy
-
-    Segwit
-
-   Version
-
-   0d
-
-   * 基础交易
-
-
-   输入 (1)
-
-
-   输入 0 
-
-
-   TXID
-   * **注意:** 这只是作为示例提供的占位 TXID。
-   VOUT
-
-   0d
-
-   scriptSig (ASM)
-
-
-
-   Sequence
-
-   0x
-
-
-
-   [+] 添加输入
-
-
-
-   输出 (1)
-
-
-   输出 0
-
-
-   金额 (satoshis)
-
-   0d
-
-
-   scriptPubKey (ASM)
-
-
-
-   类型
-
-    Non-Standard
-    P2PK (Pay To Pubkey)
-    P2PKH (Pay To Pubkey Hash)
-    P2MS (Multisig)
-    P2SH (Pay To Script Hash)
-    P2WPKH (Pay To Witness Pubkey Hash)
-    P2WSH (Pay To Witness Script Hash)
-    P2TR (Pay To Taproot)
-    OP\_RETURN (数据)
-
-
-   [+] 添加输出
-
-
-   Locktime
-
-   0d
-
-   * 区块高度
-
-   ---
-
-
-
-   原始交易数据
-
-   ```
-   0100000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0000000000ffffffff0100000000000000000000000000
-   ```
-
-   * `60 bytes`
-   * `60 vbytes`
-
-   0 秒
 
 如果您能创建自己的比特币交易，那么比特币中就没有什么事情能超出您的能力了。
 
@@ -259,105 +152,28 @@ Obviously, if you're proficient with your current development environment, stick
 
   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
-  随机交易数据
-
-  随机区块头
-
-  数据 (Hex)
-
-  `0 bytes`
-
 
   <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-  SHA-256
 
   <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-  SHA-256
-
-  HASH256
-
-  SHA-256(SHA-256(data))
-
-  `0 bytes`
-
-
-
-  0 秒
 
   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH160
 
   数据 (Hex)
 
-  例如公钥或脚本
-
-  `0 bytes`
-
 
   <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
   SHA-256
 
   <img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-  RIPEMD-160
 
-  HASH160
-
-  RIPEMD-160(SHA-256(data))
-
-  `0 bytes`
-
-
-
-  0 秒
 * **反转字节顺序** - 这对我来说极其宝贵。您经常需要反转 [txid](transaction/input/txid.md) 和[block hashes](block/hash.md)的[byte order](general/byte-order.md)，因为在原始交易数据和区块数据中使用的字节顺序与在[blockchain explorer](/explorer/)中搜索它们时的字节顺序正好相反。此外，原始比特币数据中的大多数字段都是“[little-endian](general/little-endian.md)”，因此在将十六进制和十进制数相互转换时，您经常需要反转字节顺序。  
 
   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 反转字节 (Reverse Bytes)
 
-  随机示例
-
-  字节
-
-  `0 bytes`
-
-  已反转
-
-  `0 bytes`
-
-
-   显示详情
-
-
-
-  0 秒
 * **数字转换器** - 我记不清有多少次我需要将[hexadecimal](general/hexadecimal.md)转换成十进制（反之亦然）。如果您愿意，可以使用在线工具，但没有什么比打开终端并使用自己编写的脚本转换数字更好的了。  
 
   <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
-
-  二进制 (Base 2)
-
-  0b
-
-  `0 digits`
-
-  十进制 (Base 10)
-
-  0d
-
-  `0 digits`
-
-  十六进制 (Base 16)
-
-  0x
-
-  `0 digits`
-
-
-
-
-  +1
-
-
-
-  0 秒
 
 但不要仅仅为了写命令行工具而写。这只是个好的开始，但在您成为比特币程序员的道路上，您的主要焦点应该是开发自己的项目……
 
