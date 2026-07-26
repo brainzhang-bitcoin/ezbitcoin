@@ -230,33 +230,114 @@ Obviously, if you're proficient with your current development environment, stick
 
 ## 📚 技术主题目录
 
-* **📦 区块与区块链 (Blocks & Blockchain)**
-  * [区块总览](block.md)
-  * [区块链总览](blockchain.md)
-    * [比特币的 Blockchain - Part 1](blockchain/bitcoin-blockchain-part1.md)
-    * [比特币的 Blockchain - Part 2](blockchain/bitcoin-blockchain-part2.md)
-* **🔐 密码学 (Cryptography)**
-  * [密码学总览](cryptography.md)
-* **🔑 密钥、签名与地址 (Keys & Addresses)**
-  * [密钥总览](keys.md)
-* **💸 比特币交易 (Transactions)**
-  * [交易总览](transaction.md)
-    * [比特币的交易 - Part 5](transaction/bitcoin-transaction-part5.md)
-    * [比特币的交易 - Part 6](transaction/bitcoin-transaction-part6.md)
-* **⚡ 闪电网络与 Lnd 技术 (Lightning Network)**
-  * [Lnd 启动扫描速度慢分析](lightning/lnd-low-rescan-speed-startup.md)
-  * [如何通过 lnd-cli 关闭通道](lightning/how-to-close-lightning-channels-by-lnd-cli.md)
-  * [闪电网络基础与原理 - Part 0](lightning/hello-lightning-network-part0.md)
-  * [闪电网络基础与原理 - Part 1](lightning/hello-lightning-network-part1.md)
-  * [闪电网络基础与原理 - Part 2](lightning/hello-lightning-network-part2.md)
-  * [闪电网络基础与原理 - Part 3](lightning/hello-lightning-network-part3.md)
-  * [闪电网络节点搭建与配置小抄](lightning/setup-lightning-node-cheat-sheet.md)
-  * [Eltoo 闪电和离线契约更新机制](lightning/eltoo-lightning-offchain-contracts.md)
-  * [闪电网络的慢慢成长之路](lightning/lightning-network-gradual-growth.md)
-* **⛏️ 挖矿与网络 (Mining & Networking)**
-  * [挖矿总览](mining.md)
-  * [网络协议总览](networking.md)
-    * [比特币 daemon 服务 Systemd 启动配置](networking/how-to-set-systemd-startup-script-for-bitcoind.md)
+### Phase 1: 基础工具箱 (Foundation & Toolbox)
+*   **⚙️ CS 基础知识 (General CS Concepts)**
+    *   [十六进制 (Hexadecimal)](general/hexadecimal.md)
+    *   [字节 (Bytes)](general/bytes.md)
+    *   [字节序 (Byte Order / Little-Endian)](general/byte-order.md)
+    *   [可变长度整数 VarInt (Compact Size)](general/compact-size.md)
+*   **🔐 密码学 (Cryptography)**
+    *   [密码学总览 (Cryptography)](cryptography.md)
+        *   [哈希函数 (Hash Function)](cryptography/hash-function.md)
+        *   [椭圆曲线 (Elliptic Curve)](cryptography/elliptic-curve.md)
+        *   [ECDSA 签名算法](cryptography/elliptic-curve/ecdsa.md)
+        *   [Schnorr 签名算法](cryptography/elliptic-curve/schnorr.md)
+*   **🔑 密钥、签名与地址 (Keys, Signatures & Addresses)**
+    *   [密钥总览 (Keys)](keys.md)
+        *   [私钥 (Private Key)](keys/private-key.md)
+        *   [WIF 格式私钥 (WIF)](keys/private-key/wif.md)
+        *   [公钥 (Public Key)](keys/public-key.md)
+        *   [公钥哈希 (Public Key Hash)](keys/public-key/hash.md)
+        *   [数字签名 (Signature)](keys/signature.md)
+        *   [比特币地址 (Address)](keys/address.md)
+        *   [Base58 校验和 (Checksum)](keys/checksum.md)
+        *   [Bech32 格式编码 (Bech32)](keys/bech32.md)
+        *   [HD 层次确定性钱包 (HD Wallets)](keys/hd-wallets.md)
+            *   [助记词种子 (Mnemonic Seed)](keys/hd-wallets/mnemonic-seed.md)
+            *   [扩展密钥 (Extended Keys)](keys/hd-wallets/extended-keys.md)
+            *   [派生路径 (Derivation Paths)](keys/hd-wallets/derivation-paths.md)
+
+### Phase 2: 构建交易 (Constructing the Transaction)
+*   **💸 比特币交易 (Transactions)**
+    *   [交易总览 (Transaction)](transaction.md)
+        *   [比特币的交易 - Part 5](transaction/bitcoin-transaction-part5.md)
+        *   [比特币的交易 - Part 6](transaction/bitcoin-transaction-part6.md)
+        *   [未花费交易输出 (UTXO)](transaction/utxo.md)
+        *   [交易输入 (Input)](transaction/input.md)
+            *   [ScriptSig 解锁脚本](transaction/input/scriptsig.md)
+            *   [Sequence 序列号](transaction/input/sequence.md)
+            *   [Vout 输出索引](transaction/input/vout.md)
+        *   [交易输出 (Output)](transaction/output.md)
+            *   [ScriptPubKey 锁定脚本](transaction/output/scriptpubkey.md)
+        *   [交易手续费 (Fee)](transaction/fee.md)
+        *   [锁定时间 Locktime (Locktime)](transaction/locktime.md)
+        *   [交易大小与虚拟大小 (Size / Vsize)](transaction/size.md)
+        *   [见证数据 (Witness)](transaction/witness.md)
+        *   [Wtxid 见证交易哈希](transaction/wtxid.md)
+        *   [部分签名的比特币交易 (PSBT)](transaction/psbt.md)
+*   **📝 比特币脚本 (Script)**
+    *   [脚本语言总览 (Script)](script.md)
+        *   [P2PK (Pay-to-Public-Key)](script/p2pk.md)
+        *   [P2PKH (Pay-to-Public-Key-Hash)](script/p2pkh.md)
+        *   [P2MS (Pay-to-Multi-Sig)](script/p2ms.md)
+        *   [P2SH (Pay-to-Script-Hash)](script/p2sh.md)
+        *   [P2WPKH (Pay-to-Witness-Public-Key-Hash)](script/p2wpkh.md)
+        *   [P2WSH (Pay-to-Witness-Script-Hash)](script/p2wsh.md)
+        *   [P2SH-P2WPKH](script/p2sh-p2wpkh.md)
+        *   [P2SH-P2WSH](script/p2sh-p2wsh.md)
+        *   [P2TR (Pay-to-Taproot)](script/p2tr.md)
+        *   [OP_RETURN 脚本 (Return)](script/return.md)
+
+### Phase 3: 广播与确认 (Broadcast & Consensus)
+*   **🌐 网络协议 (Networking)**
+    *   [网络协议总览 (Networking)](networking.md)
+        *   [比特币 daemon 服务 Systemd 启动配置](networking/how-to-set-systemd-startup-script-for-bitcoind.md)
+        *   [网络节点 (Node)](networking/node.md)
+        *   [魔法字节 (Magic Bytes)](networking/magic-bytes.md)
+*   **⛏️ 挖矿 (Mining)**
+    *   [挖矿总览 (Mining)](mining.md)
+        *   [区块奖励 (Block Reward)](mining/block-reward.md)
+        *   [币基交易 (Coinbase Transaction)](mining/coinbase-transaction.md)
+        *   [内存池 (Memory Pool)](mining/memory-pool.md)
+        *   [候选区块 (Candidate Block)](mining/candidate-block.md)
+        *   [目标值 (Target)](mining/target.md)
+*   **📦 区块 (Block)**
+    *   [区块总览 (Block)](block.md)
+        *   [区块哈希值 (Hash)](block/hash.md)
+        *   [前一区块哈希 (Previous Block)](block/previous-block.md)
+        *   [默克尔根 (Merkle Root)](block/merkle-root.md)
+        *   [时间戳 (Time)](block/time.md)
+        *   [难度目标 Bits (Bits)](block/bits.md)
+        *   [随机数 Nonce (Nonce)](block/nonce.md)
+        *   [版本号 Version (Version)](block/version.md)
+        *   [blk.dat 数据文件结构](block/blkdat.md)
+
+### Phase 4: 账本与演进 (The Ledger & Protocol Evolution)
+*   **🔗 区块链 (Blockchain)**
+    *   [区块链总览 (Blockchain)](blockchain.md)
+        *   [比特币的 Blockchain - Part 1](blockchain/bitcoin-blockchain-part1.md)
+        *   [比特币的 Blockchain - Part 2](blockchain/bitcoin-blockchain-part2.md)
+        *   [区块高度 (Height)](blockchain/height.md)
+        *   [最长链原则 (Longest Chain)](blockchain/longest-chain.md)
+        *   [51% 攻击 (51% Attack)](blockchain/51-attack.md)
+        *   [硬分叉 (Hard Fork)](blockchain/hard-fork.md)
+        *   [软分叉 (Soft Fork)](blockchain/soft-fork.md)
+*   **⚡ 比特币升级协议 (Upgrades)**
+    *   [隔离见证 (Segregated Witness / SegWit)](upgrades/segregated-witness.md)
+    *   [主根升级 (Taproot)](upgrades/taproot.md)
+
+### Phase 5: 二层扩展 (Layer 2 Scaling)
+*   **⚡ 闪电网络与 Lnd 技术 (Lightning Network)**
+    *   [闪电网络与 Lnd 技术 (Lightning Network)](lightning.md)
+        *   [Lnd 启动扫描速度慢分析 (Lnd Low Rescan Speed)](lightning/lnd-low-rescan-speed-startup.md)
+        *   [如何通过 lnd-cli 关闭通道 (How to Close Lightning Channels)](lightning/how-to-close-lightning-channels-by-lnd-cli.md)
+        *   [闪电网络基础与原理 - Part 0](lightning/hello-lightning-network-part0.md)
+        *   [闪电网络基础与原理 - Part 1](lightning/hello-lightning-network-part1.md)
+        *   [闪电网络基础与原理 - Part 2](lightning/hello-lightning-network-part2.md)
+        *   [闪电网络基础与原理 - Part 3](lightning/hello-lightning-network-part3.md)
+        *   [闪电网络节点搭建与配置小抄](lightning/setup-lightning-node-cheat-sheet.md)
+        *   [Eltoo 闪电和离线契约更新机制](lightning/eltoo-lightning-offchain-contracts.md)
+        *   [闪电网络的慢慢成长之路](lightning/lightning-network-gradual-growth.md)
 
 ### 其他资源
 
