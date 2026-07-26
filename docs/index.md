@@ -11,12 +11,21 @@
 ### 🟢 1. 新手指南 (Beginners Guide)
 适合完全没有技术背景的读者，用极简非技术语言介绍比特币基本概念。
 
+#### Phase 1: Introduction & Core Concepts
 *   **[新手导读及概览](beginners.md)**
 *   **[比特币是如何工作的？](beginners/how-does-bitcoin-work.md)**
-*   **[如何选择钱包 (Wallets)](beginners/wallets.md)**
+
+#### Phase 2: Acquisition (Getting Bitcoin)
 *   **[如何选择交易平台 (Exchanges)](beginners/exchanges.md)**
-*   **[如何发送与接收比特币 (Sending)](beginners/sending.md)**
+
+#### Phase 3: Storage & Safety
+*   **[如何选择钱包 (Wallets)](beginners/wallets.md)**
 *   **[安全与存储防范 (Security)](beginners/security.md)**
+
+#### Phase 4: Usage
+*   **[如何发送与接收比特币 (Sending)](beginners/sending.md)**
+
+#### Phase 5: Technical Primer
 *   **📖 新手极简图解手册 (Beginners Short Guide)**
     *   [比特币网络 (Network)](beginners/guide/network.md)
     *   [节点 (Node)](beginners/guide/node.md)
