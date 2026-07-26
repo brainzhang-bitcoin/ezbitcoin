@@ -1,11 +1,11 @@
-<img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
+# 钱包
 
 [<img src="../images/beginners_wallets_electrum-screenshot.png" alt="Electrum 钱包的屏幕截图。" width="777" height="426" />](../images/beginners_wallets_electrum-screenshot.png)
 
 
 [Electrum](https://electrum.org/) 屏幕截图。
 
-开始使用比特币的第一件事就是**获取你自己的钱包**。它们完全免费，只需几分钟即可[设置完成](#setup)。
+开始使用比特币的第一件事就是**获取你自己的钱包**。它们完全免费，只需几分钟即可[设置完成](#设置)。
 
 一旦你拥有了钱包，你就拥有了开始接收和[发送](sending.md)比特币所需的一切。
 
@@ -17,44 +17,44 @@
 
 ### 桌面钱包
 
-钱包 | 级别 | 操作系统 | 发布年份
---- | --- | --- | ---
-[Electrum](https://electrum.org/) | 初学者/中级 | Linux/Windows/Mac | 2011
-[Sparrow Wallet](https://www.sparrowwallet.com/) | 高级 | Linux/Windows/Mac | 2020
+| 钱包 | 级别 | 操作系统 | 发布年份 |
+| --- | --- | --- | --- |
+| [Electrum](https://electrum.org/) | 初学者/中级 | Linux/Windows/Mac | 2011 |
+| [Sparrow Wallet](https://www.sparrowwallet.com/) | 高级 | Linux/Windows/Mac | 2020 |
 
 如果你是比特币的新手，我强烈建议你从*桌面钱包*开始。
 
-桌面钱包通常比[移动钱包](#mobile-wallets)提供更多功能，并能让你更好地控制和管理你的比特币。
+桌面钱包通常比[移动钱包](#移动钱包)提供更多功能，并能让你更好地控制和管理你的比特币。
 
 **我高度推荐 [Electrum](https://electrum.org/)。** 我已经使用它很多年了，它是我个人的最爱。
 
 ### 移动钱包
 
-钱包 | 级别 | 操作系统 | 发布年份
---- | --- | --- | ---
-[BlueWallet](https://bluewallet.io/) | 初学者 | iOS/Android | 2018
-[Electrum](https://electrum.org/) | 初学者 | Android | 2016
-[Blockstream Green](https://blockstream.com/green/) | 初学者 | iOS/Android | 2020
-[Mycelium](https://wallet.mycelium.com/) | 中级 | Android | 2012
+| 钱包 | 级别 | 操作系统 | 发布年份 |
+| --- | --- | --- | --- |
+| [BlueWallet](https://bluewallet.io/) | 初学者 | iOS/Android | 2018 |
+| [Electrum](https://electrum.org/) | 初学者 | Android | 2016 |
+| [Blockstream Green](https://blockstream.com/green/) | 初学者 | iOS/Android | 2020 |
+| [Mycelium](https://wallet.mycelium.com/) | 中级 | Android | 2012 |
 
 如果你没有台式计算机，移动钱包是一个不错的替代选择。
 
 我不是特别喜欢移动钱包，因为它们提供的功能往往受限，而且我不喜欢随身携带你所有比特币的想法。
 
-然而，如果移动钱包是你唯一可用的选择，或者你想用它来存放少量比特币进行支付，那么从移动钱包开始完全没有问题。我只是会避免在移动钱包中存放太多比特币，并在有机会时升级到[桌面钱包](#desktop-wallets)或[硬件钱包](#hardware-wallets)。
+然而，如果移动钱包是你唯一可用的选择，或者你想用它来存放少量比特币进行支付，那么从移动钱包开始完全没有问题。我只是会避免在移动钱包中存放太多比特币，并在有机会时升级到[桌面钱包](#桌面钱包)或[硬件钱包](#硬件钱包)。
 
 ### 硬件钱包
 
-钱包 | 级别 | 发布年份
---- | --- | ---
-[Trezor](https://trezor.io/) | 初学者 | 2014
-[Coldcard](https://coldcard.com/) | 高级 | 2018
+| 钱包 | 级别 | 发布年份 |
+| --- | --- | --- |
+| [Trezor](https://trezor.io/) | 初学者 | 2014 |
+| [Coldcard](https://coldcard.com/) | 高级 | 2018 |
 
 硬件钱包是[安全存储](security.md)比特币的最佳选择。
 
 购买硬件钱包需要花钱，而且不如桌面/移动钱包方便，但它们是*安全*的最佳选择。
 
-我建议先从[桌面](#desktop-wallets)钱包开始，当你拥有了值得保护的比特币数量时，再升级到硬件钱包。
+我建议先从[桌面钱包](#桌面钱包)开始，当你拥有了值得保护的比特币数量时，再升级到硬件钱包。
 
 将用于日常消费的比特币放在桌面钱包中，将其余所有比特币保存在硬件钱包中。
 
@@ -219,4 +219,6 @@
 
 ## 接下来该做什么？
 
-一旦你的比特币钱包设置好了，你就已经准备好去[购买你的第一批比特币](exchanges.md)了。
+如果你还没有比特币，下一步是前往[交易所](exchanges.md)购买你的第一批比特币。
+
+如果你已经拥有比特币并设置好了钱包，建议继续阅读[安全指南](security.md)了解如何安全备份种子与使用硬件钱包，或者开始尝试[发送比特币](sending.md)。
