@@ -199,5 +199,5 @@
 
 比特币程序本身也处于活跃的开发状态，自发布以来已有超过 **600** 人为代码做出了贡献。这是由于该软件是“开源”的，这意味着任何人都可以查看代码并为改进代码做出贡献。
 
-* [bitcoin.pdf](https://bitcoin.org/bitcoin.pdf) – 白皮书
+* [bitcoin.pdf](/bitcoin.pdf) – 白皮书
 * [github.com/bitcoin/bitcoin/](https://github.com/bitcoin/bitcoin/) – 源代码
