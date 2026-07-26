@@ -1,8 +1,10 @@
+# 密码学总览 (Cryptography)
+
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 > Cryptography is the practice and study of techniques for secure communication in the presence of adversarial behavior.
-
-Ron Rivest, Handbook of Theoretical Computer Science. Vol. 1. (1990)
+>
+> — Ron Rivest, Handbook of Theoretical Computer Science. Vol. 1. (1990)
 
 Bitcoin uses cryptography. That's why it's sometimes referred to as a "cryptocurrency".
 
@@ -578,8 +580,8 @@ And that was genius enough in itself.
 So don't worry if you're not an expert in cryptography and you want to work with Bitcoin, because whilst it's cool to understand how it all works under the hood, it's only important to simply be *aware* of what tools are available and what they're useful for.
 
 > Skill in production cryptanalysis has always been heavily on the side of the professionals, but innovation, particularly in the design of new types of cryptographic systems, has come primarily from the amateurs.
-
-Whitfield Diffie, [New Directions in Cryptography](https://www.cs.jhu.edu/~rubin/courses/sp03/papers/diffie.hellman.pdf)
+>
+> — Whitfield Diffie, [New Directions in Cryptography](https://www.cs.jhu.edu/~rubin/courses/sp03/papers/diffie.hellman.pdf)
 
 ## Resources
 
