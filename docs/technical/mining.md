@@ -1,3 +1,5 @@
+# 挖矿总览 (Mining)
+
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 [<img src="../images/diagrams_png_mining.png" alt="Diagram showing a node on the bitcoin network mining a new block on to the blockchain." width="983" height="503" />](../images/diagrams_png_mining.png)
@@ -370,7 +372,7 @@ To mine a block, you start by constructing a [block header](block.md#header) for
 
 For example, here's what the block header for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) would have *started* out like:
 
-```
+```text
 0100000050120119172a610421a6c3011dd330d9df07b63616c2cc1f1cd00200000000006657a9252aacd5c0b2940996ecff952228c3067cc38d4885efb5a4ac4247e9f337221b4d4c86041b00000000
 ```
 
@@ -405,7 +407,7 @@ SHA-256(SHA-256(data))
 
 For example:
 
-```
+```text
 Nonce     Hash256
 --------  -------
 00000000: 5bd0d617b30a972407ad69a845cd74fb201d940cd45acc15fcd4761493bc3ae2
@@ -424,7 +426,7 @@ Nonce     Hash256
 
 Eventually you may find a nonce value that produces a hash result below the target:
 
-```
+```text
 Nonce    Hash256
 -------- -------
 0f2b5710: 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506

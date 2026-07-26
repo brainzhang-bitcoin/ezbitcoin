@@ -1,3 +1,5 @@
+# 网络协议总览 (Networking)
+
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 **The introductory code on this page works for nodes up to [v26.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-26.2.md).**
@@ -12,9 +14,9 @@ Here's a quick guide on how to *connect to* and *communicate with* a node on the
 
 
 
-Networking (Full Code)
+## Networking (Full Code)
 
-```
+```ruby
 # Sockets are in the standard library in Ruby
 require 'socket'
 
@@ -307,7 +309,7 @@ First things first, two quick facts you need to know about the Bitcoin program:
 
 So all you need to connect to a Bitcoin node is the **IP address** of the computer it's running on, and the ability to make **TCP connections** from your programming language. For example:
 
-```
+```ruby
 # Sockets are in the standard library in Ruby
 require 'socket'
 
@@ -324,7 +326,7 @@ But that's pretty boring on its own. To start *receiving* data (like actual [tra
 
 These are the ports you'll usually find Bitcoin running on:
 
-```
+```text
 mainnet =  8333
 testnet = 18333
 regtest = 18444
@@ -340,7 +342,7 @@ A "message" is just a structured piece of data that Bitcoin nodes send to each o
 
 Here's an example of what an *actual* Bitcoin message looks like:
 
-```
+```text
 Header:  F9BEB4D976657273696F6E0000000000550000002C2F86F3
 Payload: 7E1101000000000000000000C515CF6100000000000000000000000000000000000000000000FFFF2E13894A208D000000000000000000000000000000000000FFFF7F000001208D00000000000000000000000000
 ```
@@ -367,7 +369,7 @@ The header contains a **summary of the message**, and its structure is the same 
 
 Here's what a header looks like for a "version" message:
 
-```
+```text
 Header: (version message)
 ┌─────────────┬──────────────┬───────────────┬───────┬─────────────────────────────────────┐
 │ Name        │ Example Data │ Format        │ Size  │ Bytes                               │
@@ -459,7 +461,7 @@ As I say, this is one of the more complicated messages, so don't let it put you 
 
 Here's some example code for constructing a "version" message in Ruby:
 
-```
+```ruby
 require 'digest' # needed for creating checksums
 
 # Handy functions for getting data in the right format for messages
@@ -520,7 +522,7 @@ message = header + payload
 
 And this is what our final "version" message looks like as a string of hexadecimal bytes:
 
-```
+```text
 F9BEB4D976657273696F6E0000000000550000002C2F86F37E1101000000000000000000C515CF6100000000000000000000000000000000000000000000FFFF2E13894A208D000000000000000000000000000000000000FFFF7F000001208D00000000000000000000000000
 ```
 
@@ -585,7 +587,7 @@ Now we've got our messages ready, we just need to send them to the node we've co
 
 Here's some Ruby code showing how to manually construct each message, and how to write/read bytes to/from the socket connection:
 
-```
+```ruby
 # 1. Send Version Message
 
 # Prepare version message
@@ -688,7 +690,7 @@ I'll explain what these "inv" messages are and how to respond to them in a momen
 
 The following code is similar to the code from before, except this time we've put it in a *loop* to continuously read from the socket.
 
-```
+```ruby
 # Keep reading messages
 loop do
 
@@ -762,7 +764,7 @@ Then, after you've sent your "getdata" message, the node will send you the full 
 
 The payload of an "inv" message looks like this:
 
-```
+```text
 Payload: (inv)
 ┌─────────────┬───────────────────┬──────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ Name        │ Format            │ Size     │ Example Bytes                                                                                                │
@@ -776,7 +778,7 @@ Payload: (inv)
 
 The "Inventory" part of the payload is *another* data structure in itself. But it's pretty simple: it's just a list of [transaction hashes](transaction/input/txid.md) and/or [block hashes](block/hash.md):
 
-```
+```text
 Inventory:
 ┌─────────┬───────────────┬───────┬─────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ Name    │ Format        │ Size  │ Example Bytes                                                                                   │
@@ -795,7 +797,7 @@ Types:
 
 The "getdata" message you respond with has the exact same structure as the "inv" message (which is convenient):
 
-```
+```text
 Payload: (getdata)
 ┌─────────────┬───────────────────┬──────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ Name        │ Format            │ Size     │ Example Bytes                                                                                                │
@@ -807,7 +809,7 @@ Payload: (getdata)
 
 So if you want *all* of the transactions and blocks in the "inv", you can just reply with the exact same payload in your "getdata" message. Or if you don't want them all, just construct a payload with a list of the transaction/block hashes that you do want.
 
-SegWit Transactions
+#### SegWit Transactions
 
 To request the full transaction data for new [segwit transactions](transaction.md#example-segwit) (i.e. including the [witness](transaction/witness.md) data), you must change the *type* field in the [inventory](#inventory) part of your "getdata" message from:
 
@@ -821,7 +823,7 @@ To:
 
 For example, the payload for the example "getdata" message above would be:
 
-```
+```text
 Payload: (getdata)
 ┌─────────────┬───────────────────┬──────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ Name        │ Format            │ Size     │ Example Bytes                                                                                                │
@@ -839,7 +841,7 @@ Anyway, after sending your "getdata" message, the node will proceed to send you 
 
 Here's some Ruby code that responds to every "inv" with a "getdata" message requesting everything in the payload:
 
-```
+```ruby
 # Keep reading messages
 loop do
 
@@ -943,7 +945,7 @@ One last thing before you go: the node you've just connected to will occasionall
 
 As of protocol version `60001`, each "ping" message contains a random number as its payload:
 
-```
+```text
 Payload: (ping)
 ┌─────────────┬─────────┬──────┬─────────────────────────┐
 │ Name        │ Format  │ Size │ Example Bytes           │
@@ -956,7 +958,7 @@ Payload: (ping)
 
 Your "pong" message in response just needs to contain the same number in its payload too:
 
-```
+```text
 Payload: (pong)
 ┌─────────────┬─────────┬──────┬─────────────────────────┐
 │ Name        │ Format  │ Size │ Example Bytes           │
@@ -969,7 +971,7 @@ So by adding one last adjustment to our loop, we can now keep the connection ope
 
 ## Code
 
-```
+```ruby
 # Keep reading messages
 loop do
 

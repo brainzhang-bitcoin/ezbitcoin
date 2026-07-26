@@ -1,3 +1,5 @@
+# 区块总览 (Block)
+
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
 [<img src="../images/diagrams_png_block.png" alt="Diagram of the structure of a bitcoin block showing the block header fields and the transactions." width="636" height="688" />](../images/diagrams_png_block.png)
@@ -20,7 +22,7 @@ The following is the **raw block data** for [block 1](/explorer/block/0000000083
 
 I've split it up and highlighted the individual fields:
 
-```
+```text
 01000000 6fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000 982051fd1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e 61bc6649 ffff001d 01e36299 01 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000
 ```
 
@@ -465,7 +467,7 @@ The average transaction is typically around 550-850 weight units, but this can v
 
 For example:
 
-```
+```text
 226ae926a0c7b608762ddd1091f6f061330fd70328d58184d97f77d4e7805c9a = 1 input,  2 outputs = 565 weight units
 f82ec8b10a384577d0031eab359b80cfdc07ab2879a8b0d6492cd707bd7ab43a = 2 inputs, 2 outputs = 836 weight units
 ```
@@ -478,7 +480,7 @@ Where can you find raw block data?
 
 If you're running a Bitcoin Core node, the raw block data for the blockchain is stored in the [blkXXXXX.dat](block/blkdat.md) files in the `blocks/` directory:
 
-```
+```text
 Linux:   ~/.bitcoin/blocks/
 Mac:     ~/Library/Application Support/Bitcoin/blocks/
 Windows: %APPDATA%\Bitcoin\blocks\
@@ -486,7 +488,7 @@ Windows: %APPDATA%\Bitcoin\blocks\
 
 The blocks are stored in raw bytes, so you will need to use something like the `hexdump` command to be able to print them. This is the genesis block for example:
 
-```
+```bash
 $ hexdump -C -s 8 -n 285 blk00000.dat
 
 00000008  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -512,7 +514,7 @@ $ hexdump -C -s 8 -n 285 blk00000.dat
 
 More simply, you can request the same raw blocks from your local Bitcoin Core node using `bitcoin-cli` commands:
 
-```
+```bash
 $ bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f false
 
 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
