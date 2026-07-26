@@ -1,5 +1,7 @@
 <img src="images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
+# 初学者指南
+
 本部分面向完全不了解比特币的**初学者**，旨在介绍**其工作原理**以及**如何开始**使用比特币。
 
 从这里开始：

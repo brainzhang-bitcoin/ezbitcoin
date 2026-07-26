@@ -1,5 +1,7 @@
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
+# 比特币是如何工作的？
+
 比特币是一个**电子支付系统**，它允许任何人创建账户并向世界上任何地方的任何人发送任意金额的资金。
 
 你可能想把这句话再读一遍。
@@ -49,7 +51,7 @@
 
 那么，谁来*决定*哪笔交易“先”发生并应该是唯一写入文件的交易呢？
 
-比特币解决这个问题的方法是：强制节点在将收到的交易写入文件之前，先保存在*内[存池](../technical/mining/memory-pool.md)*中。然后，大约每隔 10 分钟，网络上的一个*随机节点*会将他们内存中的交易添加到该文件中。
+比特币解决这个问题的方法是：强制节点在将收到的交易写入文件之前，先保存在[*内存池*](../technical/mining/memory-pool.md)中。然后，大约每隔 10 分钟，网络上的一个*随机节点*会将他们内存中的交易添加到该文件中。
 
 [<img src="../images/beginners_how-does-bitcoin-work_2_2_why_mining.png" alt="展示网络上的单个节点将他们内存中的交易添加到共享文件中的图表。" width="800" height="429" />](../images/beginners_how-does-bitcoin-work_2_2_why_mining.png)
 
@@ -77,7 +79,7 @@
 
 [<img src="../images/beginners_how-does-bitcoin-work_3_2_hash_function.png" alt="展示数据被输入到哈希函数并输出一个随机数的图表。" width="800" height="114" />](../images/beginners_how-does-bitcoin-work_3_2_hash_function.png)
 
-为了让你的区块成功添加到区块链上，这个结果（或[**区块哈希**](../technical/block/hash.md)）必须**等于或低于****[目标**](../technical/mining/target.md)，这是网络上每个人都同意的阈值。
+为了让你的区块成功添加到区块链上，这个结果（或[**区块哈希**](../technical/block/hash.md)）必须**等于或低于** [**目标**](../technical/mining/target.md)，这是网络上每个人都同意的阈值。
 
 [<img src="../images/beginners_how-does-bitcoin-work_3_3_mining_block_hash.png" alt="展示区块哈希试图低于目标值的图表。" width="800" height="354" />](../images/beginners_how-does-bitcoin-work_3_3_mining_block_hash.png)
 
@@ -193,9 +195,9 @@
 
 结果，这创建了一个电子支付系统，任何人都可以使用，并且在没有中央控制点的情况下运行。
 
-自 2009 年 1 月发布以来，比特币网络一直处于不间断运行状态。在 2023 年，比特币网络处理了超过 **1.53亿笔交易**，移动的资金总额达到 **$12,820,677,140,286** (12.82 万亿美元)[1](#fn1)。
+自 2009 年 1 月发布以来，比特币网络一直处于不间断运行状态。在 2023 年，比特币网络处理了超过 **1.53亿笔交易**，移动的资金总额达到 **$12,820,677,140,286** (12.82 万亿美元)。
 
-比特币程序本身也处于活跃的开发状态，自发布以来已有超过 **600** 人为代码做出了贡献[2](#fn2)。这是由于该软件是“开源”的，这意味着任何人都可以查看代码并为改进代码做出贡献。
+比特币程序本身也处于活跃的开发状态，自发布以来已有超过 **600** 人为代码做出了贡献。这是由于该软件是“开源”的，这意味着任何人都可以查看代码并为改进代码做出贡献。
 
-* [bitcoin.pdf](/bitcoin.pdf) – 白皮书
+* [bitcoin.pdf](https://bitcoin.org/bitcoin.pdf) – 白皮书
 * [github.com/bitcoin/bitcoin/](https://github.com/bitcoin/bitcoin/) – 源代码
