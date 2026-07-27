@@ -4,28 +4,28 @@
 
 [<img src="../images/diagrams_png_blockchain.png" alt="Diagram showing the blockchain as a file stored by nodes on the bitcoin network." width="340" height="604" />](../images/diagrams_png_blockchain.png)
 
-Current Blockchain Size:
+当前区块链大小 (Current Blockchain Size):
 
 856.92 GB
 
 956,479 blocks
 
-Note: This is the size of the blockchain for my local node.  
-The size of your blockchain will differ depending on how many [chain reorganizations](blockchain/chain-reorganization.md) your node has experienced and how many [stale blocks](blockchain/chain-reorganization.md#stale-blocks) you have stored on disk.
+注意：这是我本地节点的区块链大小。
+您的区块链大小会有所不同，取决于您的节点经历了多少次[链重组 (chain reorganizations)](blockchain/chain-reorganization.md)，以及您在磁盘上存储了多少个[陈腐区块 (stale blocks)](blockchain/chain-reorganization.md#stale-blocks)。
 
-The blockchain is a file of [transactions](transaction.md). It's the most important file that a bitcoin node maintains.
+区块链是一个由[交易 (transactions)](transaction.md)组成的文件。它是比特币节点维护的最重要的文件。
 
-It is called the "blockchain" because new transactions are added to the file in [blocks](block.md), and these blocks are built on top of one another to create a *chain* of blocks. Hence, blockchain.
+它被称为“区块链 (blockchain)”，因为新交易被包含在[区块 (blocks)](block.md)中添加到文件中，并且这些区块相互叠加，形成了一个区块的*链条*。因此称为区块链。
 
-But ultimately, the blockchain is **permanent storage for bitcoin transactions**.
+但归根结底，区块链是**比特币交易的永久存储 (permanent storage for bitcoin transactions)**。
 
-## Live Bitcoin Blockchain:
+## 实时比特币区块链 (Live Bitcoin Blockchain):
 
-Tip: 956,479 (0 blocks away) ⇈
+顶端 (Tip): 956,479 (距离 0 个区块) ⇈
 
-Next 0 blocks ↑
+接下来 0 个区块 ↑
 
-| [Height](blockchain/height.md) | [Block Hash](block/hash.md) | Txs | Size | Avg [Feerate](transaction/fee.md#sats-per-vbyte) AFR | Time (UTC) |
+| [高度 (Height)](blockchain/height.md) | [区块哈希 (Block Hash)](block/hash.md) | 交易数 (Txs) | 大小 (Size) | 平均[费率 (Feerate)](transaction/fee.md#sats-per-vbyte) AFR | 时间 (UTC) |
 | --- | --- | --- | --- | --- | --- |
 | [956,479](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264) 956,479 | [000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264](/explorer/block/000000000000000000005af9d7cca01756b552b02e5f5fac6422864439807264) | 6,825 | 1.00/1.00 vMB | 0 | 51 mins, 14 secs ago |
 | [956,478](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) 956,478 | [000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8](/explorer/block/000000000000000000000af753580e7b7bd555102cfbe9c72b4b625dbd3f48d8) | 1,734 | 0.43/1.00 vMB | 3 | 53 mins, 31 secs ago |
@@ -49,153 +49,148 @@ Next 0 blocks ↑
 | [956,460](/explorer/block/00000000000000000001209aeacef29b29526bcf9cffc95274676c8e198af91b) 956,460 | [00000000000000000001209aeacef29b29526bcf9cffc95274676c8e198af91b](/explorer/block/00000000000000000001209aeacef29b29526bcf9cffc95274676c8e198af91b) | 3,649 | 1.00/1.00 vMB | 1 | 03 Jul 2026, 06:59 |
 | [956,459](/explorer/block/0000000000000000000098f2e73eb0fcbb5301edda9392b2fe08dad2b1b64be8) 956,459 | [0000000000000000000098f2e73eb0fcbb5301edda9392b2fe08dad2b1b64be8](/explorer/block/0000000000000000000098f2e73eb0fcbb5301edda9392b2fe08dad2b1b64be8) | 3,963 | 1.00/1.00 vMB | 3 | 03 Jul 2026, 06:57 |
 
-Previous 10 blocks ↓
+之前 10 个区块 (Previous 10 blocks) ↓
 
-Total Size: 856.92 GB
+总大小 (Total Size): 856.92 GB
 
-## Download
+## 下载 (Download)
 
-How do you get a copy of the blockchain?
+您如何获得区块链的副本？
 
 [<img src="../images/diagrams_png_blockchain-download.png" alt="Diagram showing the blockchain being downloaded from other nodes on the network." width="983" height="503" />](../images/diagrams_png_blockchain-download.png)
 
-The easiest way to get a copy of the blockchain is to run a Bitcoin node.
+获得区块链副本的最简单方法是运行一个比特币节点。
 
-When you run the Bitcoin program (e.g. [Bitcoin Core](https://bitcoin.org/en/bitcoin-core/)) your node will automatically download blocks from other nodes on the network until you have an up-to-date copy of the blockchain on your computer.
+当您运行比特币程序（例如 [Bitcoin Core](https://bitcoin.org/en/bitcoin-core/)）时，您的节点将自动从网络上的其他节点下载区块，直到您的计算机上拥有最新版本的区块链副本。
 
-When nodes [connect](networking.md) to each other, they tell each other the *height* of their chain (how many blocks they have) during the initial [handshake](networking.md#handshake). If another node has more blocks than you, your node will request these blocks from the other nodes until you have a full copy of the blockchain.
+当节点彼此[连接 (connect)](networking.md)时，它们会在初始[握手 (handshake)](networking.md#handshake)期间互相告知它们链的*高度*（它们拥有的区块数量）。如果另一个节点的区块比您多，您的节点将向其他节点请求这些区块，直到您拥有区块链的完整副本。
 
-As a result, nodes are constantly communicating with each other to replicate the blockchain across every computer on the network.
+因此，节点会不断地相互通信，以便在网络上的每台计算机之间复制区块链。
 
-There is no single or definitive version of "the blockchain". Every node keeps their own local copy of the blockchain, and it can vary from computer to computer at any given time.
+并不存在单一或最终版本的“区块链”。每个节点都保留它们自己的本地区块链副本，在任何给定时间，不同的计算机上的副本可能会有所不同。
 
-It can take a while to download the full blockchain when you run Bitcoin for the first time. This is referred to as the [Initial Block Download](https://btcinformation.org/en/developer-guide#initial-block-download) (IBD).
+当您第一次运行比特币时，下载完整的区块链可能需要一段时间。这被称为[初始区块下载 (Initial Block Download)](https://btcinformation.org/en/developer-guide#initial-block-download) (IBD)。
 
-## [Mining](mining.md)
+## [挖矿 (Mining)](mining.md)
 
-How are new blocks added to the blockchain?
+如何将新区块添加到区块链？
 
 [<img src="../images/diagrams_png_blockchain-mining.png" alt="Diagram showing the a block being mined on to the blockchain by a node on the network." width="983" height="503" />](../images/diagrams_png_blockchain-mining.png)
 
-New blocks of transactions must be [mined](mining.md) on to the blockchain.
+包含交易的新区块必须被[挖 (mined)](mining.md)到区块链上。
 
-In short, the process of mining involves collecting transactions from the [memory pool](mining/memory-pool.md) into a [candidate block](mining/candidate-block.md), and then using *processing power* to produce a [block hash](block/hash.md) that is below a specific [target](mining/target.md) value. This means that any node on the network can mine a new block, but you need to *use energy* to be able to do so.
+简而言之，挖矿的过程包括将交易从[内存池 (memory pool)](mining/memory-pool.md)收集到一个[候选区块 (candidate block)](mining/candidate-block.md)中，然后使用*处理能力*生成一个低于特定[目标 (target)](mining/target.md)值的[区块哈希 (block hash)](block/hash.md)。这意味着网络上的任何节点都可以挖掘新区块，但您需要*耗费能量*才能做到。
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Block Header | `0 bytes` |
-| Block Hash (Natural Byte Order) | Used internally inside raw block headers<br>`0 bytes` |
-| Block Hash (Reverse Byte Order) | Used externally when searching for blocks on block explorers<br>`0 bytes` |
+| 区块头 (Block Header) | `0 bytes` |
+| 区块哈希 (自然字节序) (Block Hash (Natural Byte Order)) | 在原始区块头内部使用<br>`0 bytes` |
+| 区块哈希 (反转字节序) (Block Hash (Reverse Byte Order)) | 在区块浏览器上搜索区块时在外部使用<br>`0 bytes` |
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Current Target | 0x<br>`0 bytes` |
-| Time (seconds)<br>Actual | 0d |
-| Time (seconds)<br>Expected | 0d<br><br>The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds. |
-| Ratio | The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target. |
-| New Target (Full Precision) | 0x |
-| New Target | 0x<br>`0 bytes`<br><br>Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining. |
+| 当前目标 (Current Target) | 0x<br>`0 bytes` |
+| 时间（秒）<br>实际 (Time (seconds)<br>Actual) | 0d |
+| 时间（秒）<br>预期 (Time (seconds)<br>Expected) | 0d<br><br>目标调整周期为 2016 个区块。平均每 600 秒（10 分钟）挖出一个区块，因此预期时间为 2016 \* 600 = 1209600 秒。 |
+| 比率 (Ratio) | *实际*时间除以*预期*时间。我们将当前目标乘以这个比率以获得新目标。 |
+| 新目标 (全精度) (New Target (Full Precision)) | 0x |
+| 新目标 (New Target) | 0x<br>`0 bytes`<br><br>注意：这个目标值被略微截断以存储在区块头的 bits 字段中，这是实际挖矿时使用的目标值。 |
 
-When a node (or "miner") successfully mines a new block, they will share it with the other nodes on the network. When other nodes receive this new block, they will add it to their blockchain, and miners will start trying to mine a new block *on top* of it.
+当一个节点（或“矿工”）成功挖出一个新区块时，他们会将其分享给网络上的其他节点。当其他节点接收到这个新区块时，他们会将其添加到自己的区块链中，然后矿工们将开始尝试*在这个新区块之上*挖出一个新区块。
 
 [<img src="../images/diagrams_png_blockchain-mining-propagation.png" alt="Diagram showing a newly-mined block being propagated to other on the network." width="983" height="531" />](../images/diagrams_png_blockchain-mining-propagation.png)
 
-As a result, miners are constantly working to extend the blockchain with new blocks of transactions.
+因此，矿工们不断努力利用新的交易区块来延长区块链。
 
-* Due to the processing power required to mine a block and the regularly adjusting target, new blocks are added to the blockchain once every **10 minutes** (on average).
-* A node doesn't have to try and mine new blocks. Instead, it can just keep a copy of the blockchain and relay new blocks to other nodes when it receives them.
+* 由于挖出一个区块所需的处理能力以及定期调整的目标，平均每 **10 分钟**就会有一个新区块添加到区块链中。
+* 节点不必尝试挖掘新区块。相反，它只需保留区块链的副本并在收到新区块时将其转发给其他节点即可。
 
-Here's a [video on how mining works in Bitcoin](https://www.youtube.com/watch?v=f9EbD6iY9zI&t=140s).
+这里有一段[关于比特币挖矿工作原理的视频 (video on how mining works in Bitcoin)](https://www.youtube.com/watch?v=f9EbD6iY9zI&t=140s)。
 
-## [Chain Reorganizations](blockchain/chain-reorganization.md)
+## [链重组 (Chain Reorganizations)](blockchain/chain-reorganization.md)
 
-Can two blocks be mined at the same time?
+两个区块可以同时被挖出吗？
 
-As the blockchain is being built, it's perfectly normal for two blocks to be mined at the same time.
+在区块链的构建过程中，两个区块同时被挖出是完全正常的。
 
 [<img src="../images/diagrams_png_blockchain-fork.png" alt="Diagram showing a temporary fork in the blockchain due to two blocks being mined at the same time." width="983" height="609" />](../images/diagrams_png_blockchain-fork.png)
 
+如果两个区块同时被挖出，它将导致链上的暂时“分叉”。
 
-If two blocks are mined at the same time it will cause a temporary "fork" in the chain.
+在这种情况下，节点会将他们接收到的**第一个**区块视为其区块链的一部分，但也会保留接收到的第二个区块*以防万一*。然而，后到达的第二个区块（以及其中的交易）不会被视为其*活跃*区块链的一部分。
 
-In this situation, nodes will consider the **first** block they receive as part of their blockchain, but also keep the second block they receive *just in case*. However, the second block to arrive (and the transactions inside it) will not be considered as part of their *active* blockchain.
+因此，网络上的节点将暂时对这两个区块中哪一个属于链的顶端存在分歧。
 
-Consequently, nodes on the network will be in temporary disagreement about which of these two blocks belongs at the top of the chain.
+当下一个区块被挖出时，这种分歧将得到解决。下一个区块将建立在其中*一个*区块之上，从而创建一个新的[最长区块链 (longest chain)](blockchain/longest-chain.md)，通常来说，**节点始终会采用已知的最长区块链**作为其活跃的区块链。
 
-This disagreement is resolved when the next block is mined. The next block will be built on top of *one* of these blocks, creating a new [longest chain](blockchain/longest-chain.md) of blocks, and as a rule **nodes will always adopt the longest known chain of blocks** as their active blockchain.
-
-As a result, nodes with the shorter chain will perform a [chain reorganization](blockchain/chain-reorganization.md) to move out blocks from their old active chain in favor of blocks that make up a new longer chain.
+因此，拥有较短链的节点将执行[链重组 (chain reorganization)](blockchain/chain-reorganization.md)，从其旧的活跃链中移出区块，转而支持构成新的较长链的区块。
 
 [<img src="../images/diagrams_png_blockchain-fork-reorg.png" alt="Diagram showing a temporary fork in the blockchain being resolved via a chain reorganization." width="983" height="582" />](../images/diagrams_png_blockchain-fork-reorg.png)
 
+当新区块被挖出时，分叉就会被解决，因为这将创造一条新的最长链。
 
-A fork is resolved when a new block is mined, as this will create a new longest chain.
+因此，尽管整个网络对于在任何给定时间哪个（或哪些）区块属于区块链顶端可能存在分歧，但新区块的挖掘和最长链的采用意味着节点最终将始终保持同步。
 
-So although there may be disagreements across the network about which block(s) belong at the top of the blockchain at any given time, the mining of new blocks and the adoption of the longest chain means that nodes will always eventually be in sync.
+**像这样的临时分叉很少见。** 这大约每个月发生一次，通常只影响区块链上的顶端区块。
 
-**A temporary fork like this is rare.** This happens about once a month (roughly), and usually only affects the top block on the blockchain.
+## [最长链 (Longest Chain)](blockchain/longest-chain.md)
 
-## [Longest Chain](blockchain/longest-chain.md)
+区块链中的区块可以被替换吗？
 
-Can blocks in the blockchain be replaced?
+由于区块链的构建方式，**链顶端的区块是有可能被替换的**。
 
-Due to the way the blockchain is built, it's **possible for blocks at the top of the chain to be replaced**.
+节点始终采用[最长链 (longest chain)](blockchain/longest-chain.md)作为区块链的“真实”版本。因此，您始终可以尝试构建一个更长的新区块链来替换现有的区块链，网络上的每个节点都会采用它。
 
-Nodes always adopt the [longest chain](blockchain/longest-chain.md) as the "true" version of the blockchain. Therefore, you could always try and build a new longer chain of blocks to replace an existing one, and every node on the network will adopt it.
-
-As a result, this allows you to "undo" or reverse a bitcoin transaction from the blockchain.
+这使您可以从区块链中“撤销 (undo)”或反转一笔比特币交易。
 
 [<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](../images/diagrams_png_blockchain-fork-reorg-longest-chain.png)
 
+如果您构建了一条新的最长区块链，其他节点会将其用作他们的区块链。
 
-If you build a new longest chain of blocks, other nodes will adopt it as their blockchain.
-
-However, the problem is that all miners are incentivized to always be building on top of the longest known chain. This means that the combined processing power of miners on the network will be focused on building one single chain, which will be built faster than any chain you could build on your own.
+然而，问题在于所有的矿工都被激励始终在已知最长链的基础上进行构建。这意味着网络上矿工的合并处理能力将集中在构建一条单一的链上，这条链的构建速度将比您自己构建的任何链都快。
 
 [<img src="../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png" alt="Diagram showing nodes on the network adopting the longest chain of blocks as their blockchain." width="983" height="590" />](../images/diagrams_png_blockchain-fork-reorg-longest-chain-network-power.png)
 
+矿工们自然而然地努力去延长当前的最长链。
 
-Miners naturally work to extend the current longest chain.
+换句话说，网络致力于构建区块链的合并处理能力，有助于保护已经挖出并添加到区块链上的区块（以及交易）。
 
-In other words, the combined processing power of the network working to build the blockchain helps to protect blocks (and transactions) that have already been mined on to the blockchain.
+因此，执行蓄意的链重组（以“撤销”现有区块中的一笔交易）的唯一方法是拥有比所有其他矿工总和更多的处理能力，这样您就可以超越网络的挖掘速度，构建一条更长的链供大家采用。这被称为“[51% 攻击 (51% Attack)](blockchain/51-attack.md)”。
 
-So the only way you could perform an intentional chain reorganization (to "undo" a transaction in an existing block) would be to have more processing power than every other miner combined so that you could out-mine the network and build a longer chain for everyone to adopt. This is referred to as a "[51% Attack](blockchain/51-attack.md)".
+目前还没有人成功对比特币区块链进行过 51% 攻击。
 
-Nobody has performed a successful 51% attack on the Bitcoin blockchain.
+## 位置 (Location)
 
-## Location
+区块链存储在哪里？
 
-Where is the blockchain stored?
-
-If you're running a Bitcoin Core node, the blockchain files can be found in the following location on your computer:
+如果您运行的是 Bitcoin Core 节点，可以在您计算机的以下位置找到区块链文件：
 
 * **Linux**: `~/.bitcoin/blocks/`
 * **Mac**: `~/Library/Application Support/Bitcoin/blocks/`
 * **Windows**:
-  + `C:\Users\[username]\AppData\Roaming\Bitcoin\blocks\` ([v27.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.2.md) and below)
-  + `C:\Users\[username]\AppData\Local\Bitcoin\blocks\` ([v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md) onwards)
+  + `C:\Users\[username]\AppData\Roaming\Bitcoin\blocks\`（[v27.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.2.md) 及更低版本）
+  + `C:\Users\[username]\AppData\Local\Bitcoin\blocks\`（[v28.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-28.0.md) 及以后版本）
 
-The blockchain is split into multiple files named `blk00000.dat`, `blk00001.dat`, `blk00002.dat`, and so on. This is because it's easier to work with multiple small files than it is to work with one giant file. See [blk.dat](block/blkdat.md) for details.
+区块链被拆分成名为 `blk00000.dat`、`blk00001.dat`、`blk00002.dat` 等等多个文件。这是因为处理多个小文件比处理一个巨大的文件要容易得多。详情请见 [blk.dat](block/blkdat.md)。
 
-## Summary
+## 总结 (Summary)
 
 [<img src="../images/technical_blockchain_animation.png" alt="Diagram showing a blockchain being built by nodes across a network of computers." width="1058" height="595" />](../images/technical_blockchain_animation.png)
 
+点击图片观看一段精美、缓慢的动画，展示随着时间推移区块链是如何构建的，其中还空间包括了一次链重组。
 
-Click on the image to see a nice and slow visualization of a blockchain being built over time, including a chain reorganization.
+区块链是比特币[交易 (transactions)](transaction.md)的永久存储。新交易被包含在[区块 (blocks)](block.md)中添加到文件中，并且这些区块相互叠加以形成一条*链*。
 
-The blockchain is permanent storage for bitcoin [transactions](transaction.md). New transactions are added to the file in [blocks](block.md), and these blocks are built on top of each other to create a *chain*.
+新区块通过[挖矿 (mining)](mining.md)添加到区块链中，这需要使用计算机的处理能力。这意味着挖掘一个区块需要消耗能量，但任何节点都可以努力尝试将下一个区块添加到链上。
 
-New blocks are added to the blockchain through [mining](mining.md), which involves the use of computer processing power. This means it takes energy to mine a block, but any node can work to try and add the next block on to the chain.
+当新区块被挖出时，它将被中继到[网络 (network)](networking.md)中，节点将验证并将其添加到它们的链中。这使得区块链成为了一个不断增长的交易账本，分布在网络上的多台计算机中。
 
-When a new block is mined, it will be relayed across the [network](networking.md), which nodes will verify and add on to their chain. This makes the blockchain a constantly growing ledger of transactions, distributed across multiple computers on a network.
+节点始终采用[最长的区块链 (longest chain)](blockchain/longest-chain.md)作为区块链的活跃版本，这解决了有关哪些区块属于链顶端的分歧。这也保护了已经在区块链中的区块，因为构建一条能够替换较低层区块的链需要耗费大量能量。
 
-Nodes always adopt the [longest chain](blockchain/longest-chain.md) of blocks as the active version of the blockchain, which resolves disagreements about which blocks belong at the top of the chain. This also protects blocks that are already in the blockchain, as it would require large amounts of energy to build a chain that replaces blocks lower down in the chain.
+挖矿和采用最长链的机制**允许多台计算机在同一个网络上就相同的区块和交易集达成一致**，同时也使得任何人都难以对区块链中的历史区块（进而影响交易）进行更改。
 
-The mechanism of mining and adopting the longest chain **allows multiple computers over a network to agree on the same set of blocks and transactions**, whilst also making it difficult for anyone to make historic changes to the blocks (and therefore transactions) in the blockchain.
+因此，区块链是一个安全、分布式、并且定期更新的交易文件。
 
-As a result the blockchain is a secure, distributed, and regularly updated file of transactions.
+## 资源 (Resources)
 
-## Resources
-
-* [Why are blk\*.dat files ~134200000 bytes?](https://bitcoin.stackexchange.com/questions/50693/why-are-blk-dat-files-134200000-bytes)
+* [为什么 blk\*.dat 文件大约是 134200000 字节？(Why are blk\*.dat files ~134200000 bytes?)](https://bitcoin.stackexchange.com/questions/50693/why-are-blk-dat-files-134200000-bytes)

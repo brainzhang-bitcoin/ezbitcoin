@@ -4,236 +4,236 @@
 
 [<img src="../images/diagrams_png_mining.png" alt="Diagram showing a node on the bitcoin network mining a new block on to the blockchain." width="983" height="503" />](../images/diagrams_png_mining.png)
 
-Mining is the process of trying to add a new [block](block.md) of [transactions](transaction.md) on to the [blockchain](blockchain.md).
+挖矿（Mining）是指尝试将一个包含[交易](transaction.md)的全新[区块](block.md)添加到[区块链](blockchain.md)上的过程。
 
-It's a **network-wide competition** where any [node](networking/node.md) on the network can *work* to try and add the next block on to the chain.
+这是一场**全网竞争**，网络上的任何[节点](networking/node.md)都可以*努力*尝试将下一个区块添加到链上。
 
-When a new block is mined, it gets broadcast across the network, where each node independently verifies and adds it on to their blockchain.
+当新区块被挖出时，它会被广播到整个网络，其中每个节点都会独立验证它并将其添加到自己的区块链中。
 
 [<img src="../images/diagrams_png_mining-broadcast.png" alt="Diagram showing a mined block being broadcast across the network and nodes adding it to their blockchain." width="983" height="531" />](../images/diagrams_png_mining-broadcast.png)
 
 
-Nodes update their blockchains with the new block.
+节点会使用新区块更新它们的区块链。
 
-After adding the new block, each mining node restarts the process to try to build *on top* of this new block in the chain. As a result, the blockchain is regularly updated thanks to a collaborative effort of nodes across the network.
+添加新区块后，每个挖矿节点都会重新开始这个过程，尝试在链上的这个新区块*之上*进行构建。由此一来，得益于网络上各个节点的协作努力，区块链得以定期更新。
 
-The system is designed so that a new block is mined **once every 10 minutes** on average.
+该系统被设计为平均**每 10 分钟**挖出一个新区块。
 
-## Method
+## 原理 (Method)
 
-How does mining work?
+挖矿是如何运作的？
 
-The mining process begins by filling a [candidate block](mining/candidate-block.md) with transactions from your node's [memory pool](mining/memory-pool.md).
+挖矿过程始于用你节点[内存池](mining/memory-pool.md)中的交易填充一个[候选区块](mining/candidate-block.md)。
 
-This candidate block is what we're going to try and mine on to our blockchain (and then send to everyone else so they can add it to their blockchain too).
+这个候选区块就是我们将要尝试挖掘并添加到我们区块链上的内容（然后再发送给其他人，以便他们也可以将其添加到自己的区块链中）。
 
 [<img src="../images/diagrams_png_mining-candidate-block.png" alt="Diagram showing a miner filling a candidate block with transactions from their memory pool." width="505" height="401" />](../images/diagrams_png_mining-candidate-block.png)
 
 
-Every node keeps a copy of the latest transactions in their memory pool.
+每个节点都会在其内存池中保留最新交易的副本。
 
-Next we construct a [block header](block.md#header) for this candidate block. This is basically a short summary of all of the data inside the block, which includes a *reference to an existing block* in the blockchain that we want to build on.
+接下来我们为这个候选区块构建一个[区块头](block.md#header)。这基本上是区块内所有数据的简短摘要，其中包括一个指向我们想要在其之上进行构建的区块链中*现有区块的引用*。
 
 [<img src="../images/diagrams_png_mining-block-header.png" alt="Diagram showing a block header for a candidate block, containing a previous block hash and a merkle root." width="501" height="435" />](../images/diagrams_png_mining-block-header.png)
 
 
-You refer to a previous block by its [block hash](block/hash.md). A summary of all the transactions in the block is contained in the [merkle root](block/merkle-root.md).
+你可以通过[区块哈希](block/hash.md)引用前一个区块。区块中所有交易的摘要包含在[默克尔根](block/merkle-root.md)中。
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Block | |
-| Block Header (Hex) | `0 bytes` |
-| Block Header (Fields)<br>Version | 0 |
-| Previous Block | |
-| Merkle Root | |
-| Time | 0d |
-| Bits | |
-| Nonce | 0d<br>+1 |
-| Block Hash | This is the HASH256 of the hex block header. It's also in reverse byte order, because that's how block hashes are displayed in block explorers. |
+| 区块 (Block) | |
+| 区块头（十六进制）(Block Header (Hex)) | `0 bytes` |
+| 区块头字段<br>版本 (Block Header (Fields)<br>Version) | 0 |
+| 前一个区块 (Previous Block) | |
+| 默克尔根 (Merkle Root) | |
+| 时间 (Time) | 0d |
+| 难度目标 (Bits) | |
+| 随机数 (Nonce) | 0d<br>+1 |
+| 区块哈希 (Block Hash) | 这是十六进制区块头的 HASH256 结果。它还处于反向字节序状态，因为这正是区块浏览器显示区块哈希的方式。 |
 
-Now we are ready to start *mining* this block.
+现在我们准备开始*挖掘*这个区块了。
 
-To do this, we put this block's **block header** through the SHA-256 [hash function](cryptography/hash-function.md) *twice* (called HASH256 for short), and hope that the number it spits out is below the current [target](mining/target.md).
+为了做到这一点，我们将这个区块的**区块头**放入 SHA-256 [哈希函数](cryptography/hash-function.md)计算*两次*（简称为 HASH256），并希望它得出的数字低于当前的[目标值](mining/target.md)。
 
 [<img src="../images/diagrams_png_mining-block-header-hash.png" alt="Diagram showing a block hash trying to get below a specific target value." width="841" height="454" />](../images/diagrams_png_mining-block-header-hash.png)
 
 
-The target is the number your block hash must get below to add the block on to the blockchain.
+目标值是你的区块哈希必须低于的数值，只有低于它才能将区块添加到区块链上。
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Data (Hex) | `0 bytes` |
+| 数据（十六进制）(Data (Hex)) | `0 bytes` |
 | HASH256 | SHA-256(SHA-256(data))<br>`0 bytes` |
 
-If the hash of your block header *isn't* below the target, you can *keep trying* by incrementing the [nonce](block/nonce.md) field in the block header. This allows you to keep the same basic block header, but get a completely different hash result for it.
+如果你区块头的哈希值*没有*低于目标值，你可以通过递增区块头中的[随机数 (nonce)](block/nonce.md) 字段来*继续尝试*。这允许你在保持相同的基本区块头的同时，获得一个完全不同的哈希结果。
 
 [<img src="../images/diagrams_png_mining-block-header-hash-nonce.png" alt="Diagram showing a miner adjusting the nonce field in the block header to produce a different block hash." width="838" height="453" />](../images/diagrams_png_mining-block-header-hash-nonce.png)
 
 
-The mining process is basically hashing a block header as fast as you can to try and be the first node to get a low enough result.
+挖矿过程基本上就是尽可能快地对区块头进行哈希计算，试图成为第一个获得足够低的计算结果的节点。
 
-And if you're lucky, you may end up getting a block hash that's below the current target.
+如果你足够幸运，你最终可能会得到一个低于当前目标值的区块哈希。
 
-## Synchronization
+## 同步 (Synchronization)
 
-How do nodes update their blockchain?
+节点如何更新它们的区块链？
 
-If a miner manages to get a block hash for their candidate block below the target, they will **broadcast that block to the rest of network**.
+如果某个矿工设法使其候选区块的区块哈希低于目标值，他们就会**将该区块广播到网络的其余部分**。
 
-Each node will then confirm that the block header hashes below the target, then add this "mined" block on to their blockchain.
+每个节点随后将确认该区块头的哈希值低于目标值，然后将这个“挖出”的区块添加到它们的区块链中。
 
 [<img src="../images/diagrams_png_mining-block-broadcast.png" alt="Diagram showing a newly-mined block being broadcast to the other nodes on the network." width="983" height="503" />](../images/diagrams_png_mining-block-broadcast.png)
 
 
-Congratulations, you have just mined a block of transactions onto the blockchain.
+恭喜，你刚刚将一个交易区块挖到了区块链上。
 
-From here, each node will stop working on their own candidate block, construct a new one (with fresh transactions from their memory pool), and start trying to build on top of this new block in the chain.
+从这里开始，每个节点都将停止处理它们自己的候选区块，构建一个新的（使用其内存池中全新交易），并开始尝试在链上的这个新区块之上进行构建。
 
 [<img src="../images/diagrams_png_mining-block-broadcast-restart-mining.png" alt="Diagram showing miners constructing a new candidate block to build on top of the newly-mined block." width="983" height="522" />](../images/diagrams_png_mining-block-broadcast-restart-mining.png)
 
 
-Miners start trying to add the next batch of transactions on to the chain.
+矿工们开始尝试将下一批交易添加到链上。
 
-As a result, miners are constantly working independently (yet collaboratively) to extend the blockchain with new blocks of transactions.
+结果是，矿工们不断独立（但协作地）工作，以新的交易区块扩展区块链。
 
-## Proof of Work
+## 工作量证明 (Proof of Work)
 
-What does proof of work mean?
+工作量证明意味着什么？
 
-The mining process is often referred to as **proof of work**.
+挖矿过程通常被称为**工作量证明 (proof of work)**。
 
-The term "proof of work" just refers to the fact that it takes *work* to get a block hash below the target. And if you can, anyone else can check that work has been done by confirming that the hash for the block you have constructed is indeed below the target.
+“工作量证明”这个术语仅仅是指获得一个低于目标值的区块哈希需要花费*工作量 (work)*。而且如果你能做到，任何其他人都可以通过确认你构建的区块的哈希值确实低于目标值，来验证该工作确实已经被完成了。
 
-In other words, the hash function is used as a way to prove that you have performed a required amount of "work" on your block.
+换句话说，哈希函数被用作一种证明你已经在你的区块上执行了所需数量的“工作”的方式。
 
-> The proof-of-work involves scanning for a value that when hashed, such as with SHA-256, the hash begins with a number of zero bits.
+> 工作量证明涉及扫描一个值，该值在经过如 SHA-256 等哈希计算后，其哈希值以一定数量的零位开始。
 
-Satoshi Nakamoto, [Bitcoin Whitepaper](/bitcoin.pdf)
+中本聪 (Satoshi Nakamoto), [比特币白皮书 (Bitcoin Whitepaper)](/bitcoin.pdf)
 
-## Miners
+## 矿工 (Miners)
 
-Who can mine blocks?
+谁能挖掘区块？
 
-**Any** node can try to mine a block, and each node has a *chance* of being successful.
+**任何**节点都可以尝试挖掘区块，并且每个节点都有*机会*成功。
 
-This means we have a network-wide competition where any node on the network could be the one to add the next batch of transactions on to the blockchain.
+这意味着我们有一个全网范围的竞争，网络上的任何节点都可能成为那个将下一批交易添加到区块链上的节点。
 
 [<img src="../images/diagrams_png_mining-competition.png" alt="Diagram showing how any node on the network can choose to try and mine blocks." width="983" height="525" />](../images/diagrams_png_mining-competition.png)
 
-However, although anyone can try mining, being able to perform hash calculations *as fast as possible* improves your chances of successfully mining the next block.
+然而，尽管任何人都可以尝试挖矿，但能够*尽可能快地*执行哈希计算会提高你成功挖掘下一个区块的机会。
 
 [<img src="../images/diagrams_png_mining-competition-hardware.png" alt="Diagram showing how a miner on the network with specialized hardware can out-compete a miner without specialized hardware." width="983" height="521" />](../images/diagrams_png_mining-competition-hardware.png)
 
-> Anyone's chance of finding a solution at any time is proportional to their CPU power.
+> 任何人在任何时候找到解决方案的机会都与其 CPU 算力成正比。
 
-Satoshi Nakamoto, [Cryptography Mailing List](https://www.metzdowd.com/pipermail/cryptography/2008-November/014858.html)
+中本聪 (Satoshi Nakamoto), [密码学邮件列表 (Cryptography Mailing List)](https://www.metzdowd.com/pipermail/cryptography/2008-November/014858.html)
 
-As a result, miners with the most processing power (or "hashing power") are more likely to mine a block than those who cannot hash as quickly. So even though anyone can mine, it **favors those with specialized mining hardware** and access to cheap electricity to power that hardware.
+结果是，拥有最多处理能力（或“算力”）的矿工比那些哈希速度较慢的人更有可能挖出区块。因此，即使任何人都可以挖矿，它也**偏向于那些拥有专用挖矿硬件**以及获得廉价电力来驱动该硬件的人。
 
-But still, nothing is stopping you from mining if you want to.
+但是，如果你想的话，依然没有什么能阻止你挖矿。
 
-## [Block Reward](mining/block-reward.md)
+## [区块奖励](mining/block-reward.md) (Block Reward)
 
-What's the incentive to mine blocks?
+挖区块的动机是什么？
 
-If you are able to mine a block you can claim a **block reward**.
+如果你能够挖出一个区块，你可以获得**区块奖励**。
 
-You see, when you construct a candidate block, you can put your own special transaction at the top of the block. This is called the [coinbase transaction](mining/coinbase-transaction.md), and it allows you to send yourself a fixed amount of bitcoins that did not previously exist.
+要知道，当你构建一个候选区块时，你可以将你自己特殊的交易放在区块的顶部。这被称为[币基交易 (coinbase transaction)](mining/coinbase-transaction.md)，它允许你向自己发送一定数量的以前不存在的比特币。
 
 [<img src="../images/diagrams_png_mining-coinbase-transaction.png" alt="Diagram showing the coinbase transaction at the top of a block of transactions." width="983" height="219" />](../images/diagrams_png_mining-coinbase-transaction.png)
 
 
-The coinbase transaction is the first transaction in a block.
+币基交易是区块中的第一笔交易。
 
-So if you end up mining this block, you would be able to spend the bitcoins you claimed from the coinbase transaction *after* the block reaches 100 blocks deep in the [longest chain](blockchain/longest-chain.md).
+所以如果你最终挖出了这个区块，你将能够在该区块在[最长链 (longest chain)](blockchain/longest-chain.md) 中达到 100 个区块深度*之后*，花费你从币基交易中获得的比特币。
 
 [<img src="../images/diagrams_png_mining-block-reward-longest-chain.png" alt="Diagram showing how the block reward can be spent after the block reaches 100 blocks deep in the blockchain." width="983" height="295" />](../images/diagrams_png_mining-block-reward-longest-chain.png)
 
-Therefore, this **block reward acts as an incentive** for miners to mine new blocks and continually try to extend the *longest* known chain of blocks.
+因此，这个**区块奖励作为一种激励**，促使矿工挖掘新区块并不断尝试扩展已知的*最长*区块链。
 
 [<img src="../images/diagrams_png_mining-block-reward-longest-chain-building.png" alt="Diagram showing how all miners focus on building upon the current longest chain so they can spend the block reward later on." width="983" height="355" />](../images/diagrams_png_mining-block-reward-longest-chain-building.png)
 
-* **Sending bitcoins that did not previously exist is only allowed in the coinbase transaction.** This makes the coinbase transaction the source of all new bitcoins.
-* **The presence of the block reward is why this process is called "mining".** However, from a technical point of view, mining is mainly concerned with adding new transactions to the blockchain.
+* **发送以前不存在的比特币仅在币基交易中被允许。**这使得币基交易成为所有新比特币的来源。
+* **区块奖励的存在是为什么这个过程被称为“挖矿”的原因。**然而，从技术的角度来看，挖矿主要关注的是将新的交易添加到区块链中。
 
-## Interval
+## 间隔 (Interval)
 
-How long does it take to mine a block?
+挖出一个区块需要多长时间？
 
-The mining system is designed so that one miner across the bitcoin network will successfully mine a new block **once every 10 minutes** (on average).
+挖矿系统的设计使得比特币网络中平均**每 10 分钟**会有一名矿工成功挖出一个新区块。
 
 [<img src="../images/diagrams_png_mining-target-ten-minutes.png" alt="Diagram showing a node on the network mining a new block once every 10 minutes (on average)." width="983" height="503" />](../images/diagrams_png_mining-target-ten-minutes.png)
 
-The timing is controlled by the [target](mining/target.md), which is like a limbo pole that a block's hash has to get under for the block to be allowed on to the blockchain.
+时间是由[目标值 (target)](mining/target.md) 控制的，它就像一根限制杆，区块的哈希值必须低于它，该区块才被允许上链。
 
 [<img src="../images/diagrams_png_mining-target-nodes.png" alt="Diagram showing nodes on the network agreeing on a target value for the current height of the blockchain." width="983" height="525" />](../images/diagrams_png_mining-target-nodes.png)
 
 
-Each node agrees upon the target value for the current height of the blockchain.
+每个节点都同意当前区块链高度的目标值。
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Current Target | 0x<br>`0 bytes` |
-| Time (seconds)<br>Actual | 0d |
-| Time (seconds)<br>Expected | 0d<br><br>The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds. |
-| Ratio | The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target. |
-| New Target (Full Precision) | 0x |
-| New Target | 0x<br>`0 bytes`<br><br>Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining. |
+| 当前目标值 (Current Target) | 0x<br>`0 bytes` |
+| 实际时间（秒）(Time (seconds)<br>Actual) | 0d |
+| 预期时间（秒）(Time (seconds)<br>Expected) | 0d<br><br>目标调整周期是 2016 个区块。平均每 600 秒（10分钟）挖出一个区块，所以预期时间是 2016 \* 600 = 1209600 秒。 |
+| 比例 (Ratio) | *实际*时间除以*预期*时间。我们将当前目标值乘以这个比例来获得新的目标值。 |
+| 新目标值（全精度）(New Target (Full Precision)) | 0x |
+| 新目标值 (New Target) | 0x<br>`0 bytes`<br><br>注意：这个目标值被轻微截断以便存储在区块头的 bits 字段中，而这才是挖矿时实际使用的目标值。 |
 
-If blocks are mined faster than 10 minutes on average over a two-week period (e.g. because more miners join the network), the target will adjust downwards so that it becomes *more difficult* to mine a block, and so the average time between blocks reverts back to around 10 minutes.
+如果在两周的时间内，挖出区块的速度平均快于 10 分钟（例如，因为更多矿工加入了网络），目标值将向下调整，以便挖掘区块变得*更加困难*，从而使区块之间的平均时间恢复到 10 分钟左右。
 
 [<img src="../images/diagrams_png_mining-target-nodes-adjust.png" alt="Diagram showing nodes on the network adjusting the target value after 2,016 blocks to keep 10 minutes between blocks." width="983" height="529" />](../images/diagrams_png_mining-target-nodes-adjust.png)
 
 
-Each node adjusts the target independently, but they will each calculate the *same target* if they have the *same chain of blocks*.
+每个节点独立调整目标值，但如果它们拥有*相同的区块链*，它们都会计算出*相同的目标值*。
 
-As a result, the target *regularly adjusts* to try and keep a regular interval of 10 minutes between newly-mined blocks. This enforces a **consistent rate of new blocks**, in addition to a consistent issuance of new bitcoins into the network.
+结果是，目标值会*定期调整*，以试图在最新挖出的区块之间保持 10 分钟的规律间隔。这确保了**稳定的新区块生成率**，并且也使得新比特币在网络中的发行速度保持稳定。
 
-## Purpose
+## 目的 (Purpose)
 
-Why do we use mining?
+我们为什么要使用挖矿？
 
-The mining system **allows computers across a network to resolve conflicts** without the need for a central computer to sort them out.
+挖矿系统**允许整个网络中的计算机解决冲突**，而无需中央计算机来处理这些问题。
 
-Bitcoin runs across a network of *independent* computers, so it's possible to create two conflicting transactions (sending the same bitcoins to different places) and insert them in to different nodes on the network at the same time. Some nodes will receive **transaction A** first, and other nodes will receive **transaction B** first.
+比特币运行在一个由*独立*计算机组成的网络上，因此有可能创建两笔冲突的交易（将相同的比特币发送到不同的地方），并同时将它们插入到网络上的不同节点中。有些节点会先收到**交易 A**，而其他节点会先收到**交易 B**。
 
 [<img src="../images/diagrams_png_mining-double-spend.png" alt="Diagram showing a double spend where two conflicting transactions are inserted in to different parts of the network at the same time." width="983" height="529" />](../images/diagrams_png_mining-double-spend.png)
 
 
-How can all the computers agree on which transaction should make it into the blockchain?
+所有计算机如何就哪笔交易应该进入区块链达成一致？
 
-But thanks to the mechanism of mining, **only one of these transactions will make it into the blockchain**.
+但得益于挖矿机制，**这些交易中只有一笔能够进入区块链**。
 
-Eventually, one of the nodes on the network will mine a block of transactions from *their* memory pool, and broadcast this block to the rest of the network. When nodes receive this block, they will add it to their chain and **remove any conflicting transactions from their memory pool**.
+最终，网络上的其中一个节点将从*他们*的内存池中挖出一个包含交易的区块，并将这个区块广播给网络的其他部分。当节点接收到这个区块时，他们会将其添加到他们的链中，并**从内存池中移除任何冲突的交易**。
 
 [<img src="../images/diagrams_png_mining-double-spend-resolved.png" alt="Diagram showing a double spend being resolved when a block of transactions is mined." width="983" height="541" />](../images/diagrams_png_mining-double-spend-resolved.png)
 
-As a result, the process of mining acts as a sorting mechanism for transactions across a network of computers; the *mined* blocks have the final say on which transactions belong in the blockchain.
+因此，挖矿过程充当了整个计算机网络中交易的分类机制；*挖出*的区块对于哪些交易属于区块链拥有最终决定权。
 
-Better still, thanks to the fact that anyone can mine, no single node on the network is ever in complete control of which transactions make it into the blockchain.
+更好的是，得益于任何人都可以挖矿的事实，网络上没有任何单个节点能够完全控制哪些交易进入区块链。
 
-**A single miner can control which transactions make it on to the blockchain if they can acquire a *majority* of the mining power.** This is known as a [51% attack](blockchain/51-attack.md).
+**如果单个矿工能够获得*大部分*算力，那么他们就可以控制哪些交易进入区块链。** 这被称为 [51% 攻击](blockchain/51-attack.md)。
 
-## Technical
+## 技术层面 (Technical)
 
-How do you mine a block?
+你如何挖掘一个区块？
 
-To mine a block, you start by constructing a [block header](block.md#header) for your candidate block.
+为了挖掘一个区块，你要从为你的候选区块构建一个[区块头](block.md#header)开始。
 
-For example, here's what the block header for [block 100,000](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506) would have *started* out like:
+例如，这里是[第 100,000 个区块](/explorer/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506)的区块头起初看起来的样子：
 
 ```text
 0100000050120119172a610421a6c3011dd330d9df07b63616c2cc1f1cd00200000000006657a9252aacd5c0b2940996ecff952228c3067cc38d4885efb5a4ac4247e9f337221b4d4c86041b00000000
 ```
 
-Now you've got a block header, you try and "mine" it by putting it through [HASH256](cryptography/hash-function.md#hash256). You keep incrementing the [nonce](block/nonce.md) value as you go to try and get a result below the [target](mining/target.md).
+现在你有了区块头，你尝试通过将其放入 [HASH256](cryptography/hash-function.md#hash256) 中来进行“挖掘”。随着过程的进行，你不断递增[随机数 (nonce)](block/nonce.md) 值，试图获得一个低于[目标值](mining/target.md)的结果。
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Data (Hex) | `0 bytes` |
+| 数据（十六进制）(Data (Hex)) | `0 bytes` |
 | HASH256 | SHA-256(SHA-256(data))<br>`0 bytes` |
 
-For example:
+例如：
 
 ```text
 Nonce     Hash256
@@ -252,7 +252,7 @@ Nonce     Hash256
 ...
 ```
 
-Eventually you may find a nonce value that produces a hash result below the target:
+最终，你可能会找到一个能产生低于目标值的哈希结果的随机数：
 
 ```text
 Nonce    Hash256
@@ -260,21 +260,21 @@ Nonce    Hash256
 0f2b5710: 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506
 ```
 
-* The nonce is a 4-byte field in [little-endian](general/little-endian.md) byte order.
-* **The result of hashing the raw block header through HASH256 will appear to be *backwards* at first.** This is because block hashes are displayed in [reverse byte order](general/byte-order.md#reverse-byte-order) on blockchain explorers.
+* 随机数是一个采用[小端序 (little-endian)](general/little-endian.md) 字节顺序的 4 字节字段。
+* **通过 HASH256 计算原始区块头所得的结果最初看起来是*倒序*的。** 这是因为在区块浏览器上，区块哈希是以[反向字节序 (reverse byte order)](general/byte-order.md#reverse-byte-order) 显示的。
 
-| Field | Value |
+| 字段 (Field) | 值 (Value) |
 | --- | --- |
-| Bytes | `0 bytes` |
-| Reversed | `0 bytes` |
+| 字节 (Bytes) | `0 bytes` |
+| 反向 (Reversed) | `0 bytes` |
 
-## Code
+## 代码 (Code)
 
-Here's some Ruby code that shows how you can mine a block (like the one above).
+以下是一些展示你如何挖掘区块（类似上述区块）的 Ruby 代码。
 
-The code is simpler than you might think. The only tricky part is getting the [block header](block.md#header) data in the correct format before hashing it.
+代码比你想象的要简单。唯一棘手的部分是在进行哈希计算之前，使[区块头](block.md#header)数据呈正确格式。
 
-### Mining Simulator
+### 挖矿模拟器 (Mining Simulator)
 
 ```
 require 'digest/sha2'
@@ -339,33 +339,33 @@ loop do
 end
 ```
 
-## Commands
+## 命令 (Commands)
 
 ### `bitcoin-cli getblocktemplate`
 
-This command grabs transactions from your node's [memory pool](mining/memory-pool.md) and returns the data you need to start mining a new block.
+此命令会从你节点的[内存池](mining/memory-pool.md)中获取交易，并返回你开始挖掘新区块所需的数据。
 
-Annoyingly, you also have to provide an awkward array to specify the kind of block template you want (see [BIP22](https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki)). This is what I typically use: `bitcoin-cli getblocktemplate '{"rules": ["segwit"]}'`
+令人烦恼的是，你还必须提供一个有些别扭的数组来指定你想要的区块模板的类型（请参阅 [BIP22](https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki)）。这是我通常使用的格式：`bitcoin-cli getblocktemplate '{"rules": ["segwit"]}'`
 
-This command returns the key block header information like the `previous block`, `time`, and `bits`, but you will need to construct the [merkle root](block/merkle-root.md) yourself.
+该命令返回如 `previous block`（前一个区块）、`time`（时间）和 `bits`（难度目标）等关键区块头信息，但你需要自己构建[默克尔根 (merkle root)](block/merkle-root.md)。
 
 ### `bitcoin-cli submitblock [hex]`
 
-Send a raw block into the network.
+将一个原始区块发送到网络中。
 
-For example, this is the [genesis block](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f):
+例如，这是[创世区块 (genesis block)](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)：
 
 ```
 $ bitcoin-cli submitblock 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
 ```
 
-**This is a complete raw [block](block.md).** It must include the block header, the transaction count, and all the raw transaction data.
+**这是一个完整的原始[区块](block.md)。** 它必须包括区块头、交易计数以及所有的原始交易数据。
 
 ### `bitcoin-cli getmininginfo`
 
-This command returns some interesting mining information.
+此命令会返回一些有趣的挖矿信息。
 
-For example:
+例如：
 
 ```
 $ bitcoin-cli getmininginfo
@@ -389,8 +389,8 @@ $ bitcoin-cli getmininginfo
 }
 ```
 
-If you run `bitcoin-cli getblocktemplate` beforehand it will also show you how many transactions from the memory pool are currently being included in the next block (under `currentblocktx`).
+如果你预先运行 `bitcoin-cli getblocktemplate`，它还会向你显示当前有多少内存池中的交易被包含在了下一个区块中（在 `currentblocktx` 下）。
 
-## Resources
+## 资源 (Resources)
 
 * [en.bitcoin.it/wiki/Proof\_of\_work](https://en.bitcoin.it/wiki/Proof_of_work)
