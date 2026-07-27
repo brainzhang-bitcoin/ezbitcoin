@@ -2,19 +2,17 @@
 
 <img src="../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-**The introductory code on this page works for nodes up to [v26.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-26.2.md).**
+**本页的入门代码适用于 [v26.2](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-26.2.md) 及以下版本的节点。**
 
-Bitcoin Core [v27.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.0.md) (released April 2024) and above use *version 2* protocol ([BIP 324](https://github.com/bitcoin/bips/blob/master/bip-0324.mediawiki)) by default. The underlying messages are the same, it's just that the messages are now *encrypted*, which this guide does not cover.
+Bitcoin Core [v27.0](https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-27.0.md) (于 2024 年 4 月发布) 及以上版本默认使用 *version 2* 协议 ([BIP 324](https://github.com/bitcoin/bips/blob/master/bip-0324.mediawiki))。底层的消息内容是相同的，只是现在这些消息被*加密*了，而本指南不涉及加密部分。
 
-If you're running a v27.0 node or above, you can still communicate with it using the example code on this page by setting `-v2transport=0` (disabling the v2 protocol and running the old v1 protocol instead).
+如果你运行的是 v27.0 或以上版本的节点，你仍然可以通过设置 `-v2transport=0` (禁用 v2 协议并运行旧版的 v1 协议)，使用本页上的示例代码与其进行通信。
 
-Here's a quick guide on how to *connect to* and *communicate with* a node on the Bitcoin network.
+以下是一个关于如何*连接到*比特币网络上的节点并与其进行*通信*的快速指南。
 
 [<img src="../images/technical_networking_networking-terminal.gif" alt="Terminal animation showing a connection to a bitcoin node and the messages being sent." width="1080" height="256" />](../images/technical_networking_networking-terminal.gif)
 
-
-
-## Networking (Full Code)
+## 网络 (完整代码)
 
 ```ruby
 # Sockets are in the standard library in Ruby
@@ -274,40 +272,38 @@ loop do
 end
 ```
 
-## 0. Intro
+## 0. 简介 (Intro)
 
-Bitcoin is a computer program. You can [download](https://bitcoin.org/en/download) it for free.
+比特币 (Bitcoin) 是一个计算机程序。你可以免费[下载](https://bitcoin.org/en/download)它。
 
-It runs on an open port on your computer, which means anyone can connect to it and communicate with it across the Internet.
+它在你的计算机上的一个开放端口上运行，这意味着任何人都可以通过互联网连接到它并与其通信。
 
 [<img src="../images/diagrams_png_networking.png" alt="Diagram showing a connection to a computer via a port." width="737" height="355" />](../images/diagrams_png_networking.png)
 
+计算机之间通过“端口”相互连接。比特币默认使用端口 `8333`。
 
-Computers connect to each other through "ports". Bitcoin uses port `8333` by default.
-
-When you run Bitcoin, it uses ports to connect to other computers running the same program. So when you have lots of people running Bitcoin, you end up with a network of computers connected together and communicating with each other.
+当你运行比特币时，它使用端口连接到运行相同程序的其他计算机。因此，当有很多人在运行比特币时，你最终会得到一个由计算机组成的网络，它们相互连接并相互通信。
 
 [<img src="../images/diagrams_png_networking-network-chatter.png" alt="Diagram showing nodes on the Bitcoin network communicating with each other." width="786" height="397" />](../images/diagrams_png_networking-network-chatter.png)
 
+比特币网络上的计算机相互共享最新的[交易](transaction.md)和[区块](block.md)。
 
-Computers on the Bitcoin network share the latest [transactions](transaction.md) and [blocks](block.md) with each other.
+无论如何，关于比特币的酷炫之处在于，**如果你愿意，你可以编写自己的基本程序来连接到节点**。你只需要知道如何用它的语言交流。
 
-Anyway, the cool thing about Bitcoin is **you can write your own basic program to connect to a node if you want to**. You just need to know how to speak its language.
+在本指南中，我将向你展示如何使用 [Ruby](https://www.ruby-lang.org/en/) 连接到比特币节点。Ruby 是一种简单的语言，所以你应该能够将代码转换为你喜欢使用的任何语言。我个人比较喜欢 Ruby。
 
-In this guide I'm going to show you how to connect to a bitcoin node using [Ruby](https://www.ruby-lang.org/en/). Ruby is a simple language, so you should be able to translate the code into whichever language you prefer to use. I personally like Ruby.
+相信我，如果*我*能连接到比特币节点，那么任何人都可以。
 
-And trust me, if *I* can connect to a Bitcoin node, anyone can.
-
-## 1. Connecting
+## 1. 连接 (Connecting)
 
 [<img src="../images/diagrams_png_networking-connecting.png" alt="Diagram showing a connection to a Bitcoin node via port <code>8333</code> and a local IP." width="773" height="287" />](../images/diagrams_png_networking-connecting.png)
 
-First things first, two quick facts you need to know about the Bitcoin program:
+首先，你需要了解关于比特币程序的两个简短事实：
 
-* It runs on **port `8333`** (usually)
-* It uses **TCP** for communication
+* 它运行在 **`8333` 端口** (通常情况)
+* 它使用 **TCP** 进行通信
 
-So all you need to connect to a Bitcoin node is the **IP address** of the computer it's running on, and the ability to make **TCP connections** from your programming language. For example:
+因此，连接到比特币节点你只需要知道运行它的计算机的 **IP 地址**，并且能够从你所使用的编程语言发起 **TCP 连接**。例如：
 
 ```ruby
 # Sockets are in the standard library in Ruby
@@ -317,14 +313,14 @@ require 'socket'
 socket = TCPSocket.open("162.120.69.182", 8333) # local computer = 127.0.0.1
 ```
 
-And there we have a connection to a Bitcoin node.
+这样我们就和比特币节点建立连接了。
 
-But that's pretty boring on its own. To start *receiving* data (like actual [transactions](transaction.md) and [blocks](block.md)), you need to start by sending it some *messages* first.
+但这本身相当无聊。要开始*接收*数据 (例如实际的[交易](transaction.md)和[区块](block.md))，你需要首先向它发送一些*消息* (messages)。
 
-* See [Finding Nodes](#finding-nodes) if you don't already have an IP to connect to. The easiest method is to connect to your own local node (`127.0.0.1`), or you could try connecting to the node running on this server if you prefer (`162.120.69.182`).
-* You can use this [Bitnodes.io tool](https://bitnodes.io/#join-the-network) to check if a remote node is accepting incoming connections.
+* 如果你还没有可连接的 IP，请参阅[查找节点 (Finding Nodes)](#finding-nodes)。最简单的方法是连接到你自己的本地节点 (`127.0.0.1`)，或者如果你愿意，可以尝试连接到在此服务器上运行的节点 (`162.120.69.182`)。
+* 你可以使用这个 [Bitnodes.io 工具](https://bitnodes.io/#join-the-network)来检查远程节点是否接受传入的连接。
 
-These are the ports you'll usually find Bitcoin running on:
+以下是你通常会发现比特币运行的端口：
 
 ```text
 mainnet =  8333
@@ -332,42 +328,42 @@ testnet = 18333
 regtest = 18444
 ```
 
-**TCP = Transmission Control Protocol.** This is just a way that two computers can communicate with each other over the Internet (one says hello first, the other says hello back, etc.). For example, your computer used TCP it when you downloaded this webpage. Another protocol is UDP, but that's less common. You don't need to know how these protocols work: all you need to know is that Bitcoin uses TCP.
+**TCP = 传输控制协议 (Transmission Control Protocol)。** 这只是两台计算机在互联网上相互通信的一种方式 (一台先说你好，另一台回复你好，等等)。例如，你的计算机在下载此网页时使用了 TCP。另一种协议是 UDP，但不太常见。你不需要了解这些协议是如何工作的：你只需要知道比特币使用 TCP。
 
-## 2. Messages
+## 2. 消息 (Messages)
 
-A "message" is just a structured piece of data that Bitcoin nodes send to each other over the network. They all have the same format:
+“消息 (message)”只是比特币节点通过网络相互发送的一段结构化数据。它们都具有相同的格式：
 
 [<img src="../images/diagrams_png_networking-message.png" alt="Diagram of a network message being sent from one Bitcoin node to another." width="773" height="212" />](../images/diagrams_png_networking-message.png)
 
-Here's an example of what an *actual* Bitcoin message looks like:
+以下是*实际*的比特币消息示例：
 
 ```text
 Header:  F9BEB4D976657273696F6E0000000000550000002C2F86F3
 Payload: 7E1101000000000000000000C515CF6100000000000000000000000000000000000000000000FFFF2E13894A208D000000000000000000000000000000000000FFFF7F000001208D00000000000000000000000000
 ```
 
-This looks like jargon right now, but it will make sense in a moment.
+这现在看起来像行话，但等下就会明白。
 
-When you construct a message to send to another node, you're basically taking normal human-readable data (like numbers and text) and converting them to computer-readable [bytes](general/bytes.md) that can be sent across the network more efficiently.
+当你构建要发送给另一个节点的消息时，你基本上是将正常的人类可读数据 (如数字和文本) 转换为计算机可读的[字节](general/bytes.md)，以便可以更有效地通过网络发送。
 
-Therefore, the trick to sending messages in Bitcoin is just getting a bunch of data into the *correct format*.
+因此，在比特币中发送消息的诀窍只是将一堆数据整理成*正确的格式*。
 
-So I'm going to start by showing you the basic structure of a message `header` and `payload`, and then I'll show you how to construct one yourself. I'm going to use a "version" type message as the first example, as that's the first message you want to send to a Bitcoin node after connecting to one.
+所以我将从向你展示消息标头 (`header`) 和有效载荷 (`payload`) 的基本结构开始，然后我将向你展示如何自己构建一个。我将使用 "version" (版本) 类型的消息作为第一个示例，因为这是连接到比特币节点后你想要发送的第一条消息。
 
-> The “version” message provides information about the transmitting node to the receiving node at the beginning of a connection. Until both peers have exchanged “version” messages, no other messages will be accepted.
+> “version”消息在连接开始时将发射节点的信息提供给接收节点。在两个对等节点交换了“version”消息之前，将不接受任何其他消息。
 
 [developer.bitcoin.org](https://developer.bitcoin.org/reference/p2p_networking.html)
 
 
 
-### Version
+### 版本 (Version)
 
-#### Header
+#### 标头 (Header)
 
-The header contains a **summary of the message**, and its structure is the same for every message in the Bitcoin protocol.
+标头包含**消息的摘要**，它的结构在比特币协议中的每条消息都是相同的。
 
-Here's what a header looks like for a "version" message:
+以下是 "version" 消息标头的样子：
 
 ```text
 Header: (version message)
@@ -381,24 +377,24 @@ Header: (version message)
 └─────────────┴──────────────┴───────────────┴───────┴─────────────────────────────────────┘
 ```
 
-##### Fields
+##### 字段 (Fields)
 
-* **[Magic Bytes](networking/magic-bytes.md):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
-* **Command:** This indicates the type of message being sent. You can send different types of messages in the Bitcoin protocol, and they contain different types of information. It's a 12-byte field containing the *ASCII* encoding of the name of the message type. The one in this example says that we are sending a "version" message, which is used to send information about ourselves to another node.
+* **[魔术字节 (Magic Bytes)](networking/magic-bytes.md):** 这是一个用于标识新消息开始的唯一点字节集。它们始终相同。你看，在接收消息时，你将从 TCP 连接读取字节流，因此能够识别新消息何时开始很方便。这组看似随机的字节是经过特别挑选的，因为它们不太可能出现在消息的其他任何地方。
+* **命令 (Command):** 这指示了正在发送的消息类型。你可以在比特币协议中发送不同类型的消息，它们包含不同类型的信息。它是一个 12 字节的字段，包含消息类型名称的 *ASCII* 编码。本例中的命令表明我们正在发送 "version" (版本) 消息，它用于将我们自己的信息发送给另一个节点。
 
   | Field | Value |
   | --- | --- |
   | Hex | `0 bytes` |
   | Bytes | |
   | ASCII | `0 characters`<br><br>+ The hex bytes **between `0x20` and 0x7f** contain the *printable characters*.<br>+ Anything **`0x1f` or below** is a *control character* (will not display, or will display a weird character).<br>+ Anything **`0x80` or above** will show *nothing*.<br><br>See the [ISO 646](https://en.wikipedia.org/wiki/ISO/IEC_646) encoding standard for details. |
-* **Size:** This is the size of the upcoming payload. This indicates how many bytes you need to read from the socket to get the full message being sent.
-* **[Checksum](keys/checksum.md):** This is a small fingerprint for the payload. It allows us to quickly check that the data in the payload hasn't been tampered with during transit. It's created by double-hashing the payload, then taking the first 4 bytes of the result.
+* **大小 (Size):** 这是即将到来的有效载荷的大小。这表示你需要从套接字读取多少字节才能获得正在发送的完整消息。
+* **[校验和 (Checksum)](keys/checksum.md):** 它是有效载荷的小型指纹。它使我们能够快速检查有效载荷中的数据在传输过程中是否被篡改。它是通过对有效载荷进行双重哈希处理，然后获取结果的前 4 个字节来创建的。
 
-#### Payload
+#### 有效载荷 (Payload)
 
-The payload contains the main **content of the message**. Different message types have different structures for their payloads.
+有效载荷包含消息的**主要内容**。不同的消息类型具有不同结构的有效载荷。
 
-Here's the payload for a "version" message:
+以下是 "version" 消息的有效载荷：
 
 ```
 Payload (version message):
@@ -420,30 +416,30 @@ Payload (version message):
 └───────────────────────┴─────────────────────┴────────────────────────────┴─────────┴─────────────────────────────────────────────────┘
 ```
 
-A "version" message is one of the more complex messages you can send in Bitcoin, but that's only because it contains lots of information. It's a good place to start though, because if you can construct a "version" message, you can construct any message in the Bitcoin protocol.
+"version" 消息是你在比特币中可以发送的较为复杂的消息之一，但这仅仅是因为它包含了大量信息。不过这是一个很好的起点，因为如果你能构建一条 "version" 消息，你就能构建比特币协议中的任何消息。
 
-##### Fields
+##### 字段 (Fields)
 
-Here's what each of the individual fields mean for this particular message:
+以下是每个单独字段针对此特定消息的含义：
 
-* **Protocol Version:** This is the version of the protocol our node understands. Different versions of the protocol have different messages, so by giving our protocol version we let the other node know what kind of messages we can work with.
-* **Services:** This is a list of optional services that your node can offer. This is a 64 bit field, where each bit can be set to `1` to indicate a different service you offer (see [this table](https://developer.bitcoin.org/reference/p2p_networking.html#version) for a full list). For example, setting the first bit (on the right) indicates that you are a full node and can provide all of the blocks in the blockchain. You can leave this as zero if you're just testing.
-* **Time:** Your computer's time as a Unix timestamp (the number of seconds since 01 Jan 1970).
-* **Remote Services:** This is a list of optional services you think the node you're connecting to can offer. It's the same structure as the main "Services" field above. I'm not sure why this is useful or if it's actually used for anything, so I leave it as zero.
-* **Remote IP:** This is the IP address of the node you think you're connecting to. This is in IPv6 format (you can easily [convert between IPv4 and IPv6](https://dnschecker.org/ipv4-to-ipv6.php) if you need to). I don't think this is crucial either, but I set it as the IP I'm connecting to anyway.
-* **Remote Port:** This is the port on the node you think you're connecting to. I just leave it as the default `8333`.
-* **Local Services:** This is the list of services your node offers. I'm not sure why this gets repeated.
-* **Local IP:** This is what you think your local IP is. This is your IP address in IPv6 format (again, you can [convert between IPv4 and IPv6](https://dnschecker.org/ipv4-to-ipv6.php) if you need to). This is not actually used by the remote node, so you can set it to what you want. I just set it as localhost (`127.0.0.1`).
-* **Local Port:** This is the local port you're communicating from. Again, I don't think this is crucial, but I leave it as the default `8333`.
-* **Nonce:** A randomly generated number that can be used to detect connections to yourself later on. You can leave this as zero if it's not needed and it will just be ignored. The term "nonce" is short for "number used once", unless you're British, in which case it doesn't mean that at all.
-* **User Agent:** A custom string you can use to identify the make and model of your node on the network. Bitcoin Core uses a string like "/Satoshi:22.0.0/", but you can put "Awesome Node 5000" or something like that if you prefer. You can see these user agents for yourself when you run `bitcoin-cli getpeerinfo`. You can leave this field blank if you want, but just remember you'll still need to place a `00` byte in this field to indicate that you have not provided any upcoming bytes.
-* **Last Block:** The height of the top block in your local blockchain. Leave this as zero if you haven't got any blocks or don't care to share any.
+* **协议版本 (Protocol Version):** 这是我们节点理解的协议版本。协议的不同版本有不同的消息，因此通过提供我们的协议版本，我们让其他节点知道我们可以处理哪种消息。
+* **服务 (Services):** 这是你的节点可以提供的可选服务列表。这是一个 64 位字段，其中每一位都可以设置为 `1` 以指示你提供的不同服务 (完整列表请参见[此表](https://developer.bitcoin.org/reference/p2p_networking.html#version))。例如，设置第一位 (右侧) 表示你是全节点，可以提供区块链中的所有区块。如果你只是在测试，可以将其保留为零。
+* **时间 (Time):** 你计算机的时间，以 Unix 时间戳表示 (自 1970 年 1 月 1 日以来的秒数)。
+* **远程服务 (Remote Services):** 这是你认为你要连接的节点可以提供的可选服务列表。它的结构与上面的主要“服务 (Services)”字段相同。我不确定这为什么有用或它实际用于什么，所以我将其保留为零。
+* **远程 IP (Remote IP):** 这是你认为你要连接到的节点的 IP 地址。这采用 IPv6 格式 (如果需要，你可以轻松地在 [IPv4 和 IPv6 之间转换](https://dnschecker.org/ipv4-to-ipv6.php))。我认为这也不是至关重要的，但我仍然将其设置为我要连接的 IP。
+* **远程端口 (Remote Port):** 这是你认为你要连接到的节点的端口。我只是把它保留为默认的 `8333`。
+* **本地服务 (Local Services):** 这是你的节点提供的服务列表。我不确定为什么会重复这个。
+* **本地 IP (Local IP):** 这是你认为你的本地 IP。这是你的 IPv6 格式的 IP 地址 (同样的，如果需要，你可以 [在 IPv4 和 IPv6 之间转换](https://dnschecker.org/ipv4-to-ipv6.php))。远程节点实际上并不使用它，所以你可以根据需要进行设置。我只是将其设置为 localhost (`127.0.0.1`)。
+* **本地端口 (Local Port):** 这是你从中进行通信的本地端口。同样，我认为这不是至关重要的，但我将其保留为默认的 `8333`。
+* **随机数 (Nonce):** 一个随机生成的数字，可用于稍后检测到自己的连接。如果不需要，你可以将其留为零，它将被忽略。
+* **用户代理 (User Agent):** 你可以用来在网络上识别节点品牌和型号的自定义字符串。Bitcoin Core 使用诸如 "/Satoshi:22.0.0/" 之类的字符串，但如果你愿意，可以放入 "Awesome Node 5000" 之类的名称。当你运行 `bitcoin-cli getpeerinfo` 时，你可以亲眼看到这些用户代理。如果你愿意，你可以将此字段留空，但只要记住你仍然需要在此字段中放置一个 `00` 字节以指示你没有提供任何后续字节。
+* **最新区块 (Last Block):** 你的本地区块链中最高区块的高度。如果你没有任何区块或不想共享任何区块，请将其留为零。
 
-As I say, this is one of the more complicated messages, so don't let it put you off from trying to connect to a node. Give it a go.
+正如我所说，这是较为复杂的消息之一，所以不要让它打消你尝试连接到节点的念头。去试试看。
 
-## Code
+## 代码 (Code)
 
-Here's some example code for constructing a "version" message in Ruby:
+以下是在 Ruby 中构建 "version" 消息的一些示例代码：
 
 ```ruby
 require 'digest' # needed for creating checksums
@@ -502,47 +498,47 @@ header      = magic_bytes + command + size + checksum
 message = header + payload
 ```
 
-**The trickiest part is making sure you convert the data into the correct bytes and the correct order.** That's where all those utility functions in the code above come in. But once you've got the hang of converting to [hexadecimal](general/hexadecimal.md) and converting byte orders to [little-endian](general/little-endian.md), it's not so bad.
+**最棘手的部分是确保将数据转换为正确的字节和正确的顺序。** 这就是上面代码中所有那些实用函数的用武之地。但是，一旦你掌握了转换为[十六进制](general/hexadecimal.md)并将字节顺序转换为[小端序 (little-endian)](general/little-endian.md)的方法，那就没那么糟糕了。
 
-And this is what our final "version" message looks like as a string of hexadecimal bytes:
+这就是我们最终的 "version" 消息作为十六进制字节字符串的样子：
 
 ```text
 F9BEB4D976657273696F6E0000000000550000002C2F86F37E1101000000000000000000C515CF6100000000000000000000000000000000000000000000FFFF2E13894A208D000000000000000000000000000000000000FFFF7F000001208D00000000000000000000000000
 ```
 
-So now we know how to construct a message, we can start communicating with the node we've just connected to.
+所以现在我们知道如何构建消息了，我们可以开始与刚刚连接的节点进行通信。
 
-## 3. Handshake
+## 3. 握手 (Handshake)
 
-> Handshaking is the process that establishes communication between two networking devices.
+> 握手 (Handshaking) 是在两个网络设备之间建立通信的过程。
 
-Before we can start receiving data, we need to perform a "handshake". This handshake is just a sequence of messages we send each other to get the ball rolling.
+在我们开始接收数据之前，我们需要进行一次“握手”。这次握手只是我们相互发送的一系列消息，用来让一切运转起来。
 
-In the Bitcoin protocol, the handshake works like this:
+在比特币协议中，握手是这样进行的：
 
 [<img src="../images/diagrams_png_networking-handshake.png" alt="Diagram of a the sequence of messages in the handshake in the Bitcoin protocol." width="741" height="355" />](../images/diagrams_png_networking-handshake.png)
 
-So the handshake is basically a 2-step process:
+因此，握手基本上是一个分为两步的过程：
 
-1. We initiate the communication by sending our "version" message, and they respond with their own "version" message.
-2. They then send a "verack" message **ack**nowledging that they've received our **ver**sion message, and we finish by sending a "verack" message back to them.
+1. 我们通过发送我们的 "version" 消息来发起通信，然后他们回复自己的 "version" 消息。
+2. 然后他们发送一条 "verack" 消息，**确认** (acknowledge) 他们已收到我们的**版本** (version) 消息，最后我们也发送一条 "verack" 消息回复给他们。
 
-And that's all there is to it.
+这就是它的全部内容。
 
-**The *order* of the messages in the handshake is important.** If you get the order wrong, the handshake will fail, and the other node will reject your connection. You can always try again, but if you mess up the handshake too many times you may get temporarily banned. If that happens, you can always connect to another node in the meantime.
+**握手中消息的*顺序*很重要。** 如果弄错顺序，握手将失败，对方节点将拒绝你的连接。你总是可以重试，但是如果你把握手搞砸太多次，你可能会被暂时封禁。如果发生这种情况，在此期间你可以连接到另一个节点。
 
-### Message preparation
+### 消息准备 (Message preparation)
 
-We need to send two messages to perform the handshake:
+我们需要发送两条消息来完成握手：
 
-1. [Version Message](#version)
-2. [Verack Message](#verack)
+1. [版本消息 (Version Message)](#version)
+2. [确认消息 (Verack Message)](#verack)
 
-We've already prepared our "version" message, so let's create a "verack" message.
+我们已经准备好了我们的 "version" 消息，所以让我们创建一个 "verack" 消息。
 
-#### Verack
+#### 确认 (Verack)
 
-The "verack" is a simple message header without a payload:
+"verack" 是一个没有有效载荷的简单消息标头：
 
 ```
 Verack Message:
@@ -558,18 +554,18 @@ Verack Message:
 Hexadecimal: F9BEB4D976657261636B000000000000000000005DF6E0E2
 ```
 
-A "verack" message is always the same.
+"verack" 消息始终是相同的。
 
-### Sending and receiving messages
+### 发送和接收消息 (Sending and receiving messages)
 
-Now we've got our messages ready, we just need to send them to the node we've connected to (and receive messages back from them).
+现在我们的消息准备好了，我们只需要将它们发送到我们连接的节点 (并从他们那里接收消息)。
 
-* To "send" messages, we just *write* bytes to our TCP socket connection.
-* To "receive" messages we just *read* bytes from the same socket.
+* 要“发送”消息，我们只需将字节*写入*我们的 TCP 套接字连接。
+* 要“接收”消息，我们只需从同一个套接字*读取*字节。
 
-## Code
+## 代码 (Code)
 
-Here's some Ruby code showing how to manually construct each message, and how to write/read bytes to/from the socket connection:
+以下是一些 Ruby 代码，显示了如何手动构建每条消息，以及如何向/从套接字连接写入/读取字节：
 
 ```ruby
 # 1. Send Version Message
@@ -652,27 +648,27 @@ puts "payload:     " + payload
 puts
 ```
 
-**Strings and Bytes.** When sending data "over the wire" you need to convert all of your data to raw bytes. In the code examples I've given, even though it looks like I'm working with bytes, I'm actually manipulating *strings* made up of hexadecimal characters that *represent* bytes. That's where the `pack()` function come in, as this allows you to convert strings to actual bytes. Your programming language will have something similar.
+**字符串和字节 (Strings and Bytes)。** 当“通过网络”发送数据时，你需要将所有数据转换为原始字节。在我给出的代码示例中，尽管看起来我正在处理字节，但实际上我正在处理由*表示*字节的十六进制字符组成的*字符串*。这就是 `pack()` 函数派上用场的地方，因为它允许你将字符串转换为实际字节。你的编程语言应该会有类似的功能。
 
-**Socket Programming.** The way you write/read bytes to/from a socket will be different from one programming language to another, so it might take some getting used to if you've never done it before.
+**套接字编程 (Socket Programming)。** 向套接字写入/读取字节的方式会因一种编程语言而异，因此如果你以前从未做过，可能需要一些时间来适应。
 
-Anyway, once you've received that "verack" message (and sent your own one back), the handshake is complete. And if everything has worked correctly, the node will start sending you some *new* message types...
+无论如何，一旦你收到了那条 "verack" 消息 (并回传了你自己的消息)，握手就完成了。如果一切正常，该节点将开始向你发送一些*新的*消息类型...
 
-## 4. Receiving Messages
+## 4. 接收消息 (Receiving Messages)
 
-The node we've just connected to will continuously send us new messages after the handshake. So to keep receiving these messages, all we need to do is **keep reading from the socket in a loop**.
+我们刚刚连接的节点将在握手后不断向我们发送新消息。因此，为了继续接收这些消息，我们需要做的就是**在循环中不断从套接字读取**。
 
-This is what the new messages are going to look like:
+这些新消息将如下所示：
 
 [<img src="../images/diagrams_png_networking-receiving-data.png" alt="Diagram showing the messages in the Bitcoin protocol that a node will receive shortly after connecting to another node." width="743" height="469" />](../images/diagrams_png_networking-receiving-data.png)
 
-You may receive some different messages before the "inv" messages shown in the diagram above, depending on what protocol version you're using. I'm just going to ignore them for now as they're not critically important.
+在上面图表中显示的 "inv" 消息之前，你可能会收到一些不同的消息，这取决于你使用的协议版本。我暂时忽略它们，因为它们并非至关重要。
 
-I'll explain what these "inv" messages are and how to respond to them in a moment. But for now I'll just show you how to *keep reading messages* from the node you've connected to:
+我稍后会解释这些 "inv" 消息是什么以及如何回应它们。但现在，我只向你展示如何*持续读取*来自你连接节点的*消息*：
 
-## Code
+## 代码 (Code)
 
-The following code is similar to the code from before, except this time we've put it in a *loop* to continuously read from the socket.
+以下代码与之前的代码类似，只是这次我们将其放入*循环*中，以便不断从套接字读取。
 
 ```ruby
 # Keep reading messages
@@ -732,21 +728,21 @@ loop do
 end
 ```
 
-Now we can keep reading data from this node forever, or at least until our computer randomly crashes and I end up losing all the code I've been writing for the last hour because I forgot to save it.
+现在我们可以永远从这个节点持续读取数据了，或者至少直到我的计算机随机崩溃，然后我丢失了过去一小时所写的所有代码，因为我忘了保存它。
 
-## 5. Requesting Transactions and Blocks
+## 5. 请求交易和区块 (Requesting Transactions and Blocks)
 
-A node won't openly send you all the new transactions and blocks that it has received. Instead, to save bandwidth, they will send you a *list* of hashes of the latest transactions and blocks they've received in "inv" (inventory) messages.
+节点不会公开向你发送它收到的所有新交易和区块。相反，为了节省带宽，它们会在 "inv" (库存, inventory) 消息中向你发送它们收到的最新交易和区块的哈希*列表*。
 
-You can then respond to these "inv" messages listing all the specific transactions and blocks you want with "getdata" messages.
+然后，你可以使用 "getdata" 消息回应这些 "inv" 消息，列出你想要的所有特定交易和区块。
 
-Then, after you've sent your "getdata" message, the node will send you the full transactions and blocks you've requested in subsequent "tx" and "block" messages:
+然后，在你发送 "getdata" 消息后，该节点将在随后的 "tx" (交易) 和 "block" (区块) 消息中向你发送你所请求的交易和区块的完整副本：
 
 [<img src="../images/diagrams_png_networking-getting-transactions-and-blocks.png" alt="Diagram showing the message sequence for requesting transactions and blocks in the Bitcoin protocol." width="742" height="393" />](../images/diagrams_png_networking-getting-transactions-and-blocks.png)
 
-### Inv
+### 库存 (Inv)
 
-The payload of an "inv" message looks like this:
+"inv" 消息的有效载荷如下所示：
 
 ```text
 Payload: (inv)
@@ -758,9 +754,9 @@ Payload: (inv)
 └─────────────┴───────────────────┴──────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### Inventory
+#### 库存 (Inventory)
 
-The "Inventory" part of the payload is *another* data structure in itself. But it's pretty simple: it's just a list of [transaction hashes](transaction/input/txid.md) and/or [block hashes](block/hash.md):
+有效载荷的 "Inventory" (库存) 部分本身也是*另一种*数据结构。但它非常简单：它只是一个[交易哈希](transaction/input/txid.md)和/或[区块哈希](block/hash.md)的列表：
 
 ```text
 Inventory:
@@ -777,9 +773,33 @@ Types:
 * 02 00 00 00 = MSG_BLOCK (Block Hash)
 ```
 
-### Getdata
+这里的 Type 表明即将到来的哈希对应的是什么。比如 `1` 表示一笔交易，`2` 表示一个区块。
 
-The "getdata" message you respond with has the exact same structure as the "inv" message (which is convenient):
+因此，当你收到一条 "inv" 消息时，它是在告诉你这个节点有些什么新鲜玩意儿，你可以决定是否想请求查看这些对象的完整数据。
+
+### 获取数据 (Getdata)
+
+要在收到 "inv" 消息后获取某个交易或区块，你需要发送一条 "getdata" 消息。
+
+好消息是，**"getdata" 消息的有效载荷格式与 "inv" 消息完全相同**。
+
+因此，向节点请求数据的最简单方法是获取你刚收到的 "inv" 消息的有效载荷，将其粘贴到具有新 "getdata" 标头的消息中，然后将其发送回去。你实质上只是在回复你刚收到的一组完整的哈希。
+
+#### 隔离见证 (Segwit)
+
+**注意:** 在请求*交易*时，如果将 "Type" 更改为 `1` 的隔离见证 (segwit) 等效项，你将获得更多数据 (因为隔离见证将部分交易数据移动到了交易结构的不同部分)。因此，你只需在第 4 个字节添加一个 `40` 字节即可，它就变成了隔离见证类型。
+
+例如，你可以将以下类型：
+
+* `01 00 00 00 = MSG_TX`
+* `02 00 00 00 = MSG_BLOCK`
+
+更改为：
+
+* `01 00 00 40 = MSG_WITNESS_TX`
+* `02 00 00 40 = MSG_WITNESS_BLOCK`
+
+例如，上述示例中 "getdata" 消息的有效载荷将是：
 
 ```text
 Payload: (getdata)
@@ -791,21 +811,13 @@ Payload: (getdata)
 └─────────────┴───────────────────┴──────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-So if you want *all* of the transactions and blocks in the "inv", you can just reply with the exact same payload in your "getdata" message. Or if you don't want them all, just construct a payload with a list of the transaction/block hashes that you do want.
+你应该对所有 "getdata" 消息进行此更改，以确保你获得隔离见证和传统交易的完整交易数据。
 
-#### SegWit Transactions
+无论如何，在发送你的 "getdata" 消息之后，该节点将继续向你发送你在后续单独的 "tx" 和 "block" 消息中请求的交易和区块的完整副本。
 
-To request the full transaction data for new [segwit transactions](transaction.md#example-segwit) (i.e. including the [witness](transaction/witness.md) data), you must change the *type* field in the [inventory](#inventory) part of your "getdata" message from:
+## 代码 (Code)
 
-* `01 00 00 00 = MSG_TX`
-* `02 00 00 00 = MSG_BLOCK`
-
-To:
-
-* `01 00 00 40 = MSG_WITNESS_TX`
-* `02 00 00 40 = MSG_WITNESS_BLOCK`
-
-For example, the payload for the example "getdata" message above would be:
+以下是一些 Ruby 代码，该代码响应每一个 "inv"，并回复一个 "getdata" 消息请求有效载荷中的所有内容：
 
 ```text
 Payload: (getdata)
@@ -817,13 +829,21 @@ Payload: (getdata)
 └─────────────┴───────────────────┴──────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-You should make this change for all "getdata" messages to make sure you're getting the full transaction data for both segwit and legacy transactions.
+这就是你如何从网络上的实际节点获取最新的交易和区块。
 
-Anyway, after sending your "getdata" message, the node will proceed to send you full copies of the transactions and blocks you asked for in individual "tx" and "block" messages in response.
+如果你已经到了这一步，并且一切正常，那么你已经弄清楚了如何从头开始连接并与比特币节点进行通信。从此以后的所有工作都只涉及构建不同类型的消息。
 
-## Code
+这是比特币节点可以互相发送的消息的[完整列表](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types)。
 
-Here's some Ruby code that responds to every "inv" with a "getdata" message requesting everything in the payload:
+## 6. 保持连接 (Keeping Connected)
+
+离开前最后一件事：你刚才连接的节点偶尔会向你发送 "ping" (乒) 消息，看看你是否还在那里。所以，如果你想保持连接畅通，你需要及时回应 "pong" (乓) 消息。
+
+[<img src="../images/diagrams_png_networking-keeping-connected.png" alt="Diagram showing the message sequence for keeping a connection alive in the Bitcoin protocol via ping and pong messages." width="741" height="242" />](../images/diagrams_png_networking-keeping-connected.png)
+
+### 乒 (Ping)
+
+从协议版本 `60001` 开始，每个 "ping" 消息都包含一个随机数作为其有效载荷：
 
 ```ruby
 # Keep reading messages
@@ -913,21 +933,9 @@ loop do
 end
 ```
 
-And that's how you can get the latest transactions and blocks from an actual node on the network.
+### 乓 (Pong)
 
-If you've got this far and everything is working, you've figured out how to connect to and communicate with a bitcoin node from scratch. Everything from here just involves constructing different types of messages.
-
-Here's a [full list](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types) of the messages Bitcoin nodes can send each other.
-
-## 6. Keeping Connected
-
-One last thing before you go: the node you've just connected to will occasionally send you "ping" messages to see if you're still there. So if you want to keep the connection alive, you'll need to respond with timely "pong" messages.
-
-[<img src="../images/diagrams_png_networking-keeping-connected.png" alt="Diagram showing the message sequence for keeping a connection alive in the Bitcoin protocol via ping and pong messages." width="741" height="242" />](../images/diagrams_png_networking-keeping-connected.png)
-
-### Ping
-
-As of protocol version `60001`, each "ping" message contains a random number as its payload:
+作为回应，你的 "pong" 消息也只需要在其有效载荷中包含相同的数字：
 
 ```text
 Payload: (ping)
@@ -938,9 +946,9 @@ Payload: (ping)
 └─────────────┴─────────┴──────┴─────────────────────────┘
 ```
 
-### Pong
+因此，通过对我们的循环做最后一次调整，我们现在可以保持连接处于打开状态并永远接收交易和区块：
 
-Your "pong" message in response just needs to contain the same number in its payload too:
+## 代码 (Code)
 
 ```text
 Payload: (pong)
@@ -951,10 +959,43 @@ Payload: (pong)
 └─────────────┴─────────┴──────┴─────────────────────────┘
 ```
 
-So by adding one last adjustment to our loop, we can now keep the connection open and receive transactions and blocks forever:
+**函数 (Functions)。** 为了尽可能保持代码可读，我在代码示例中重复了相同的代码。最好将读取消息和发送消息的代码放入它们各自的函数中。
 
-## Code
+## 7. 寻找节点 (Finding Nodes)
 
+不知道在哪里可以找到你可以连接的节点？你可以尝试以下几个地方：
+
+* **你自己的节点 (Your own node)。** 如果你下载并在你的本地计算机上运行你自己的 Bitcoin Core 节点，你可以通过 IP 地址 `127.0.0.1` 连接到它。或者如果你将它托管在远程服务器上，请使用该服务器的 IP。
+* **[bitnodes.io](https://bitnodes.io/)** 这是一个方便的网站，列出了它能找到的所有比特币网络上可用的节点。
+* **DNS 种子 (DNS Seeds)。** 有一些由可信的 Bitcoin Core 开发者运行的 DNS 服务器，会返回一些可靠的全节点的 IP。你可以通过使用任何在线的“DNS 查找”工具来查询这些 DNS 种子。以下是 DNS 种子的一些示例：
+
+  + seed.bitcoin.sipa.be - Pieter Wuille
+  + dnsseed.bitcoin.dashjr.org - Luke Dashjr
+  + seed.bitcoin.sprovoost.nl - Sjors Provoost
+
+你可以从命令行对 DNS 种子执行 DNS 请求：`nslookup seed.bitcoin.sipa.be`。请注意，如果你正在使用 VPN，这可能不起作用。
+
+### Bitcoin Core
+
+就 *Bitcoin Core* 客户端如何寻找节点来连接而言，它在启动时会按照以下顺序进行查找：
+
+1. **以前的连接 (Previous Connections)。** Bitcoin Core 维护它以前连接过的节点的列表，并在启动后尝试再次连接到这些节点。
+2. **DNS 种子 (DNS Seeds)。** 如果你是第一次运行 Bitcoin Core，你将没有以前节点的数据库，因此它将使用像上面那样的 DNS 种子来寻找节点以连接。
+3. **硬编码列表 (Hardcoded List)。** 如果其他方法都失败了，Bitcoin Core 附带了一个硬编码的“种子节点”列表，它将连接到这些节点，并将其作为起点来帮助它查找网络上的其他节点。这个列表可以在 [chainparamsseeds.h](https://github.com/bitcoin/bitcoin/blob/master/src/chainparamsseeds.h) 中找到。
+
+最终目标只是能够连接到网络上的*一个*可靠节点，因为从那里该节点就能让你知道你可以连接到的其他节点，依此类推。
+
+## 8. 总结 (Summary)
+
+从头开始连接到一个节点，是开始比特币编程的一种很酷的方式。它可以让你看到节点之间是如何互相通信的，并且让你能够实时访问网络上的最新交易和区块。
+
+你可以用几乎任何你喜欢的编程语言来连接到节点。你所需要的只是能够进行 TCP 连接，并且知道运行着比特币节点的计算机的 IP 和端口号。如果你在本地运行比特币，IP 将会是 `127.0.0.1`，端口默认将会是 `8333`。
+
+迄今为止最棘手的部分是弄清楚如何构建消息。你需要让所有原始数据字节按正确的顺序排列，因为即使你弄错了一个字节，你发送消息的节点也无法理解你的意思。这可能是一个有些令人沮丧的过程，直到你做对为止。但是，一旦你正确发送了第一条消息，所有其他[消息类型](https://en.bitcoin.it/wiki/Protocol_documentation#Message_types)就容易构建得多。
+
+使用我从头开始编写的脚本，从真实的比特币节点获取我的第一笔原始交易，这是我的编程生涯中最令人满意的成就之一。
+
+祝你好运。
 ```ruby
 # Keep reading messages
 loop do
