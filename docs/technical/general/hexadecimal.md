@@ -12,31 +12,11 @@
 
 Hexa = 6，Deci = 10。因此 *hexadeci*mal 表示该数字系统共有 16 个不同的字符。
 
-Binary (Base 2)
-
-0b
-
-`0 digits`
-
-Decimal (Base 10)
-
-0d
-
-`0 digits`
-
-Hexadecimal (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-+1
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Binary (Base 2) | 0b `0 digits` |
+| Decimal (Base 10) | 0d `0 digits` |
+| Hexadecimal (Base 16) | 0x `0 digits` |
 
 ## 数字前缀
 

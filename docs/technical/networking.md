@@ -386,27 +386,11 @@ Header: (version message)
 * **[Magic Bytes](networking/magic-bytes.md):** This is a unique set of bytes used to identify the start of a new message. They're always the same. You see, you'll be reading a stream of bytes from your TCP connection when receiving messages, so it's handy to be able to identify when a new message starts. This random-looking set of bytes has been specifically chosen so that it's unlikely that they would appear anywhere else in a message.
 * **Command:** This indicates the type of message being sent. You can send different types of messages in the Bitcoin protocol, and they contain different types of information. It's a 12-byte field containing the *ASCII* encoding of the name of the message type. The one in this example says that we are sending a "version" message, which is used to send information about ourselves to another node.
 
-  <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> ASCII
-
-  Example
-
-  Hex`0 bytes`
-
-
-  Bytes
-   
-
-  ASCII`0 characters`
-  + The hex bytes **between `0x20` and 0x7f** contain the *printable characters*.
-  + Anything **`0x1f` or below** is a *control character* (will not display, or will display a weird character).
-  + Anything **`0x80` or above** will show *nothing*.
-
-  See the [ISO 646](https://en.wikipedia.org/wiki/ISO/IEC_646) encoding standard for details.
-
-
-
-
-  0 secs
+  | Field | Value |
+  | --- | --- |
+  | Hex | `0 bytes` |
+  | Bytes | |
+  | ASCII | `0 characters`<br><br>+ The hex bytes **between `0x20` and 0x7f** contain the *printable characters*.<br>+ Anything **`0x1f` or below** is a *control character* (will not display, or will display a weird character).<br>+ Anything **`0x80` or above** will show *nothing*.<br><br>See the [ISO 646](https://en.wikipedia.org/wiki/ISO/IEC_646) encoding standard for details. |
 * **Size:** This is the size of the upcoming payload. This indicates how many bytes you need to read from the socket to get the full message being sent.
 * **[Checksum](keys/checksum.md):** This is a small fingerprint for the payload. It allows us to quickly check that the data in the payload hasn't been tampered with during transit. It's created by double-hashing the payload, then taking the first 4 bytes of the result.
 

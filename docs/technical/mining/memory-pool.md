@@ -180,25 +180,14 @@
 
 此设置使用一种繁琐的 BTC/kvB（千[虚拟字节](../transaction/size.md#vbytes)）设置来衡量费率。默认的 0.00001 BTC/kvB 相当于 1 sat/vbyte。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 单位转换器
+**🔧 单位转换器**
 
-BTC
-
-whole bitcoin
-
-mBTC
-
-one-thousandth of a bitcoin
-
-uBTC
-
-one-millionth of a bitcoin
-
-Sats
-
-one-hundred-millionth of a bitcoin
-
-0 secs
+| Field | Value |
+| --- | --- |
+| BTC | whole bitcoin |
+| mBTC | one-thousandth of a bitcoin |
+| uBTC | one-millionth of a bitcoin |
+| Sats | one-hundred-millionth of a bitcoin |
 
 因此，虽然每个内存池都可以是唯一的，但整个网络中最常用的内存池设置为：
 

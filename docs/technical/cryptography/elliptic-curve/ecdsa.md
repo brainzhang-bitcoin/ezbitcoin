@@ -276,46 +276,15 @@ ECDSA 使用[椭圆曲线](../elliptic-curve.md)作为数字签名系统的基�
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 椭圆曲线乘法 (EC Multiply)
 
-基点 (Generator Point)
-随机点
-
-点 1 (Point 1)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-Multiplier
-
-0d
-
-
-
-+1
-
-随机
-
-
-点 1 x 乘数 (Multiplier)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-步骤 (Steps)
- 
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 基点 (Generator Point) | 随机点 |
+| 点 1 (Point 1) x | 0d |
+| 点 1 (Point 1) y | 0d |
+| Multiplier | 0d |
+| 点 1 x 乘数 (Multiplier) x | 0d |
+| 点 1 x 乘数 (Multiplier) y | 0d |
+| 步骤 (Steps) | |
 
 简而言之，椭圆曲线上的“乘法”基本上是指在曲线上面选择一个起点，并在曲线上弹跳一定次数以到达曲线上一个新的点。这种“乘法”运算的特殊性质在于无法“反向求出”，这就是为什么椭圆曲线被用于数字签名等密码学系统的原因。
 
@@ -443,791 +412,24 @@ end
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 私钥 (Private Key)
 
-随机生成 (Generate Random)
-重置 (Reset)
-
-Bits
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-Binary
-
-0b
-
-`0 bits`
-
-Decimal
-
-0d
-
-Hexadecimal
-
-0x
-
-`0 bytes`
+| Field | Value |
+| --- | --- |
+| Bits | `0 bits` |
+| Binary | 0b `0 bits` |
+| Decimal | 0d |
+| Hexadecimal | 0x `0 bytes` |
 
 **切勿使用由网站生成的私钥，或在网站中输入您的私钥。** 网站很容易保存私钥并用其盗取您的比特币。
 
-0 秒
-
-基点 (Generator Point)
-随机点
-
-点 1 (Point 1)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-Multiplier
-
-0d
-
-
-
-+1
-
-随机
-
-
-点 1 x 乘数 (Multiplier)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-步骤 (Steps)
- 
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 基点 (Generator Point) | 随机点 |
+| 点 1 (Point 1) x | 0d |
+| 点 1 (Point 1) y | 0d |
+| Multiplier | 0d |
+| 点 1 x 乘数 (Multiplier) x | 0d |
+| 点 1 x 乘数 (Multiplier) y | 0d |
+| 步骤 (Steps) | |
 
 我们使用椭圆曲线点乘来创建**密钥对**：
 
@@ -1268,46 +470,16 @@ public key  = {
 
 ### 签名
 
-随机示例
-
-消息哈希 (Message Hash) (z)
-
-这通常是已被准备用于签名的某些交易数据的哈希值。
-
-0x
-
-`0 bytes`
-
-Nonce (k)
-
-0x
-
-随机 (Random)
-
-私钥 (Private Key) (d)
-
-0x
-
-随机 (Random)
-
-`0 bytes`
-
-签名 (Signature)
-
-R:
-
-0d
-
-S:
-
-0d
-
-High:
-Low:
+| Field | Value |
+| --- | --- |
+| 消息哈希 (Message Hash) (z) | 0x `0 bytes` |
+| Nonce (k) | 0x `0 bytes` |
+| 私钥 (Private Key) (d) | 0x `0 bytes` |
+| 签名 (Signature) R | 0d |
+| 签名 (Signature) S | 0d |
+| 签名 (Signature) High/Low | |
 
 **切勿在网站中输入您的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并用其盗取您的比特币。
-
-0 秒
 
 要签署消息，您需要三样东西：
 
@@ -1354,32 +526,11 @@ signature: r = R[x], s = k⁻¹ * (z + r * d): {
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-二进制 (Base 2)
-
-0b
-
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 二进制 (Base 2) | 0b `0 digits` |
+| 十进制 (Base 10) | 0d `0 digits` |
+| 十六进制 (Base 16) | 0x `0 digits` |
 
 简而言之，唯一的 `s` 值提供了到达随机生成点 `r` 的*路径*。
 
@@ -1518,41 +669,14 @@ puts d_calculated #=> 1111222233334444555566667777888899990000
 
 ### 验证
 
-随机示例
-
-消息哈希 (Message Hash) (z)
-
-0x
-
-`0 bytes`
-
-签名 (Signature)
-
-R:
-
-0d
-
-S:
-
-0d
-
-公钥 (Public Key) (Q)
-
-0x
-
-`0 bytes`
-
-签名验证 (Signature Verification)
-
-x:
-
-0d
-
-y:
-
-0d
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 消息哈希 (Message Hash) (z) | 0x `0 bytes` |
+| 签名 (Signature) R | 0d |
+| 签名 (Signature) S | 0d |
+| 公钥 (Public Key) (Q) | 0x `0 bytes` |
+| 签名验证 (Signature Verification) x | 0d |
+| 签名验证 (Signature Verification) y | 0d |
 
 您可以使用三样东西来验证消息及其签名：
 
@@ -1599,74 +723,24 @@ verification (s⁻¹ * z)G + (s⁻¹ * r)Q: {
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-二进制 (Base 2)
-
-0b
-
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 二进制 (Base 2) | 0b `0 digits` |
+| 十进制 (Base 10) | 0d `0 digits` |
+| 十六进制 (Base 16) | 0x `0 digits` |
 
 <img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 公钥 (Public Key)
 
-随机生成 (Generate Random)
-
-私钥 (Private Key)
-
-`0 bytes`
-
-公钥 (Public Key)
-
-坐标 (Coordinates)
-
-x:
-
-0d
-
-y:
-
-0d
-
-奇偶性 (parity):
-
-公钥只是椭圆曲线上的一个点。最终的公钥是这些十六进制的坐标。
-
-压缩方式
-
- 压缩格式 (以 02 或 03 开头)
-
- 未压缩格式 (以 04 开头)
-
- 仅含 x 轴 (无前缀)
-
-椭圆曲线沿 x 轴对称，因此*压缩的*公钥只需要存储完整的 x 坐标以及 y 坐标是奇数还是偶数即可。
-
-在 [Taproot](../../upgrades/taproot.md) 输出中使用仅含 x 轴的公钥。相应的 y 坐标默认假定为偶数。
-
-`0 bytes`
+| Field | Value |
+| --- | --- |
+| 私钥 (Private Key) | `0 bytes` |
+| 公钥 (Public Key) 坐标 (Coordinates) x | 0d |
+| 公钥 (Public Key) 坐标 (Coordinates) y | 0d |
+| 奇偶性 (parity) | |
+| 压缩方式 | 压缩格式 (以 02 或 03 开头) / 未压缩格式 (以 04 开头) / 仅含 x 轴 (无前缀) |
+| 结果 | `0 bytes` |
 
 **切勿在网站中输入您的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并用其盗取您的比特币。
-
-0 秒
 
 换句话说，该消息的签名只能由拥有公钥所对应的实际私钥的人创建。其他人无法提供一个 `s` 值，能让您在与公钥 `Q` 结合后到达随机点 `R`，*除非*他们知道该公钥对应的私钥 `d`。
 

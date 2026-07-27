@@ -49,25 +49,11 @@ Segregated Witness (SegWit) 是 2017 年激活的比特币软件的一次重大�
 * 旧版锁定脚本（例如 [P2PKH](../script/p2pkh.md), [P2SH](../script/p2sh.md)）仍然需要使用 ScriptSig 字段进行解锁。只有新的锁定脚本（例如 [P2WPKH](../script/p2wpkh.md), [P2WSH](../script/p2wsh.md)）才使用新的 witness 字段进行解锁。
 * 因此，不使用 witness 部分解锁输入的旧版交易仍然容易受到交易延展性的影响。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易拆分器
+**🔧 交易拆分器 (Transaction Splitter)**
 
-随机示例
-
-交易数据
-
-
-* `0 bytes`
-* `0 vbytes`
-
-结果
-
-```
- 
-```
-
-
-
-0 secs
+| Field | Value |
+| 交易数据 | `0 bytes`<br>`0 vbytes` |
+| 结果 | |
 
 ### 2. 交易大小计算
 
@@ -97,25 +83,11 @@ Segregated Witness (SegWit) 是 2017 年激活的比特币软件的一次重大�
 
 你通常会在[区块链浏览器](/explorer/)上看到虚拟字节测量，但在内部，比特币使用重量来确定一个[区块](../block.md)中可以容纳多少交易。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易拆分器
+**🔧 交易拆分器 (Transaction Splitter)**
 
-随机示例
-
-交易数据
-
-
-* `0 bytes`
-* `0 vbytes`
-
-结果
-
-```
- 
-```
-
-
-
-0 secs
+| Field | Value |
+| 交易数据 | `0 bytes`<br>`0 vbytes` |
+| 结果 | |
 
 ### 3. 区块大小增加
 
@@ -142,35 +114,13 @@ Segregated Witness (SegWit) 是 2017 年激活的比特币软件的一次重大�
 
 **新的 P2WPKH 和 P2WSH 锁定脚本*不*使用传统的 [Script](../script.md) 语言进行锁定和解锁。** 它们使用固定的字节结构，并有自己的硬编码执行方法。但尽管如此，它们在功能上仍与 P2PKH 和 P2SH 相同。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 脚本
+**🔧 脚本 (Script)**
 
-随机 ScriptPubKey
-随机 ScriptSig
-
-十六进制
-
-
-`0 bytes`
-
-ASM
-类型
-
- 非标准
- P2PK (Pay To Pubkey)
- P2PKH (Pay To Pubkey Hash)
- P2MS (Multisig)
- P2SH (Pay To Script Hash)
- P2WPKH (Pay To Witness Pubkey Hash)
- P2WSH (Pay To Witness Script Hash)
- P2TR (Pay To Taproot)
- OP_RETURN (Data)
-
-
-地址`0 characters`
-
-
-
-0 secs
+| Field | Value |
+| 十六进制 | `0 bytes` |
+| ASM | |
+| 类型 | - 非标准<br>- P2PK (Pay To Pubkey)<br>- P2PKH (Pay To Pubkey Hash)<br>- P2MS (Multisig)<br>- P2SH (Pay To Script Hash)<br>- P2WPKH (Pay To Witness Pubkey Hash)<br>- P2WSH (Pay To Witness Script Hash)<br>- P2TR (Pay To Taproot)<br>- OP_RETURN (Data) |
+| 地址 | `0 characters` |
 
 ### 5. 地址格式
 
@@ -178,40 +128,14 @@ ASM
 
 这些 Bech32 地址允许**更好的错误检测**，且**更易于抄写**。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 地址 (Bech32)
+**🔧 地址 (Address)**
 
-随机生成
-
-
-ScriptPubKey
-
-Version
- `OP_0` (P2WPKH or P2WSH)
- `OP_1` (P2TR)
-
-Data
-(public key hash or script hash)
-`0 bytes`
-
-Hex
-
-`0 bytes`
-`Type:`
-
-Network
- Mainnet
- Testnet
- Regtest
-
-Address
-
-Bech32 encoding of the ScriptPubKey
-
-`0 characters`
-
-
-
-0 secs
+| Field | Value |
+| ScriptPubKey<br>Version | - `OP_0` (P2WPKH or P2WSH)<br>- `OP_1` (P2TR) |
+| ScriptPubKey<br>Data | (public key hash or script hash)<br>`0 bytes` |
+| Hex | `0 bytes`<br>`Type:` |
+| Network | - Mainnet<br>- Testnet<br>- Regtest |
+| Address | Bech32 encoding of the ScriptPubKey<br>`0 characters` |
 
 因此，旧版 P2PKH 和 P2SH 锁定脚本继续使用 [Base58](../keys/base58.md) 地址，而新的 P2WPKH 和 P2WSH 锁定脚本使用 Bech32 地址来代替。
 
@@ -235,56 +159,19 @@ Bech32 encoding of the ScriptPubKey
 
 [<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the new segwit fields." width="764" height="367" />](../../images/diagrams_png_transaction-witness-wtxid.png)
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> TXID
+**🔧 TXID**
 
-随机示例
+| Field | Value |
+| 交易数据 | `0 bytes` |
+| TXID (自然字节顺序) | 内部在原始交易数据中使用<br>`0 bytes` |
+| TXID (反向字节顺序) | 在区块浏览器上搜索交易时外部使用<br>`0 bytes` |
 
-交易数据
+**🔧 wTXID**
 
-`0 bytes`
-
-
- 显示详情
-
-
-
-TXID (自然字节顺序)
-
-内部在原始交易数据中使用
-
-`0 bytes`
-
-TXID (反向字节顺序)
-
-在区块浏览器上搜索交易时外部使用
-
-`0 bytes`
-
-
-
-0 secs
-
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> wTXID
-
-随机示例
-
-交易数据
-
-`0 bytes`
-
-wTXID (自然字节顺序)
-
-`0 bytes`
-
-wTXID (反向字节顺序)
-
-使用 `bitcoin-cli` 命令时也称为交易“哈希”
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| 交易数据 | `0 bytes` |
+| wTXID (自然字节顺序) | `0 bytes` |
+| wTXID (反向字节顺序) | 使用 `bitcoin-cli` 命令时也称为交易“哈希”<br>`0 bytes` |
 
 所以当构建区块时，矿工现在还将为区块中的所有 wtxid 计算一个 [merkle root](../block/merkle-root.md)，并通过 [Coinbase](../mining/coinbase-transaction.md) 交易中的 wTXID 承诺将该根哈希包含在区块中。
 

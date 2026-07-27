@@ -12,110 +12,19 @@ Nonce 是[区块头](../block.md#header)末尾的一个备用字段，用于[挖
 
 无论如何，理解其目的最简单的方法是调整区块头中的 Nonce，看看它如何影响[区块哈希](hash.md)：
 
-随机示例
+### 随机示例 (Random Example)
 
-区块:
-
-区块头 (Hex)
-
-`0 bytes`
-
-
-区块头 (字段)
-
-
-Version
-
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-Previous Block:
-Merkle Root
-Time
-
-0d
-
-Bits
-Nonce
-
-0d
-
-
-
-+1
-
-
-
-区块哈希 (Block Hash)
-
-这是十六进制区块头的 HASH256。它也采用反向字节顺序，因为这是区块浏览器显示区块哈希的方式。
-
-
-
-
-0 秒
+| 字段 (Field) | 值 (Value) | 说明 (Description) |
+| --- | --- | --- |
+| 区块 (Block) | | |
+| 区块头 (Hex) | `0 bytes` | |
+| Version | 0 | |
+| Previous Block | | |
+| Merkle Root | | |
+| Time | 0d | |
+| Bits | | |
+| Nonce | 0d | |
+| 区块哈希 (Block Hash) | | 这是十六进制区块头的 HASH256。它也采用反向字节顺序，因为这是区块浏览器显示区块哈希的方式。 |
 
 ## 用途
 

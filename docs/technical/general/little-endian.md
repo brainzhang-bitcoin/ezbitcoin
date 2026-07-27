@@ -1,43 +1,11 @@
 <img src="../../images/icons_loader-2.svg" alt="Loading Tool" style="height:32px; width:32px;" />
 
-+1
-
-Decimal
-
-0d
-
-Hex Bytes (Big Endian)
-
-0x
-
-`0 bytes`
-
-Hex Bytes (Little Endian)
-
-0x
-
-`0 bytes`
-
-
-Field Size
-
- Any
-
- 2 Bytes
-
- 4 Bytes
-
- 8 Bytes
-
- 12 Bytes
-
- 16 Bytes
-
- 32 Bytes
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Decimal | 0d |
+| Hex Bytes (Big Endian) | 0x `0 bytes` |
+| Hex Bytes (Little Endian) | 0x `0 bytes` |
+| Field Size | Any |
 
 术语 little-endian 指的是在计算机中存储整数时的字节顺序。它是指最低有效字节（least-significant byte）排在最前面，或者更简单地说，就是**字节顺序相反**。
 

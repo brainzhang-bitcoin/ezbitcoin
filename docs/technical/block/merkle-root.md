@@ -8,32 +8,14 @@ Merkle Root 是通过将成对的 [TXID](../transaction/input/txid.md) 组合进
 
 换句话说，Merkle Root 是连接区块头与区块中交易的纽带。
 
-随机示例
+### 随机示例 (Random Example)
 
-区块
-
-TXID 列表
-
-TXID 列表，以*空格*、*逗号*或*换行符*分隔。引号和括号会被忽略。
-
-TXID 应以[反向字节顺序](../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算 Merkle Root 之前，它们会被转换为[自然字节顺序](../general/byte-order.md#natural-byte-order)。
-
-
-
-TXIDs (0)
- 
-
-Merkle Root (自然字节顺序)
-
-来自哈希函数的字节顺序
-
-Merkle Root (反向字节顺序)
-
-在区块链浏览器上显示的字节顺序
-
-
-
-0 秒
+| 字段 (Field) | 值 (Value) | 说明 (Description) |
+| --- | --- | --- |
+| 区块 (Block) | | |
+| TXID 列表 (TXIDs) | | TXID 列表，以*空格*、*逗号*或*换行符*分隔。引号和括号会被忽略。<br>TXID 应以[反向字节顺序](../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算 Merkle Root 之前，它们会被转换为[自然字节顺序](../general/byte-order.md#natural-byte-order)。 |
+| Merkle Root (自然字节顺序) | | 来自哈希函数的字节顺序 |
+| Merkle Root (反向字节顺序) | | 在区块链浏览器上显示的字节顺序 |
 
 ## 结构
 

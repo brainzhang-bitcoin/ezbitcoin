@@ -97,53 +97,20 @@ $ hexdump -C -n 293 blk00000.dat
 * **UTF-8。** [基础拉丁 UTF-8 字符集](https://www.w3schools.com/charsets/ref_utf_basic_latin.asp)不会超过 `7e`，所以如果你使用基础 UTF-8 编码一些文本，你不会与任何魔术字节冲突（因为它们都大于 `7e`）。
 * **整数。** 如果你将 `f9beb4d9` 转换为整数，你会得到 **4190024921**。如果你还将字节顺序反转为 `d9b4bef9` 并转换为整数，你会得到 **3652501241**。这两个都是非常大的数字，因此它们不太可能被用在原始[交易](../transaction.md)数据的其中一个字段中（例如 [version](../transaction.md#structure-version)、输入数量、[vout](../transaction.md#structure-inputs-vout)、输出数量、金额、脚本大小等）。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
+**🔧 进制转换器**
 
-二进制 (Base 2)
+| Field | Value |
+| --- | --- |
+| 二进制 (Base 2) | `0b`<br>`0 digits` |
+| 十进制 (Base 10) | `0d`<br>`0 digits` |
+| 十六进制 (Base 16) | `0x`<br>`0 digits` |
 
-0b
+**🔧 字节反转**
 
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 secs
-
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 字节反转
-
-随机示例
-
-字节
-
-`0 bytes`
-
-已反转
-
-`0 bytes`
-
-
- 显示详情
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 字节 | `0 bytes` |
+| 已反转 | `0 bytes` |
 
 在区块或交易中出现这组特定字节并非不可能，但它们自然发生的可能性较低，这已经是次好的情况了。
 

@@ -83,75 +83,22 @@ f9beb4d9 1d010000 01000000 00000000000000000000000000000000000000000000000000000
 1. 将 `1d010000` 从 *小端序 (little-endian)* 转换为 *大端序 (big-endian)* 得到 `0000011d`。
 2. 将 `0000011d` 从 *十六进制* 转换为 *十进制* 得到 `285`。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 小端序 (Little Endian)
+### <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 小端序 (Little Endian)
 
-+1
+| 字段 (Field) | 值 (Value) |
+| --- | --- |
+| 十进制 (Decimal) | 0d |
+| 十六进制字节 (大端序) (Hex Big Endian) | 0x `0 bytes` |
+| 十六进制字节 (小端序) (Hex Little Endian) | 0x `0 bytes` |
+| 字段大小 (Field Size) | Any, 2 字节, 4 字节, 8 字节, 12 字节, 16 字节, 32 字节 |
 
-十进制
+### <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-0d
-
-十六进制字节 (大端序)
-
-0x
-
-`0 bytes`
-
-十六进制字节 (小端序)
-
-0x
-
-`0 bytes`
-
-
-字段大小
-
- Any
-
- 2 字节
-
- 4 字节
-
- 8 字节
-
- 12 字节
-
- 16 字节
-
- 32 字节
-
-
-
-0 秒
-
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
-
-二进制 (Base 2)
-
-0b
-
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 秒
+| 格式 (Format) | 值 (Value) |
+| --- | --- |
+| 二进制 (Base 2) | 0b `0 digits` |
+| 十进制 (Base 10) | 0d `0 digits` |
+| 十六进制 (Base 16) | 0x `0 digits` |
 
 因此实际的区块本身只有 285 字节。但是，由于在开始处有额外的 8 字节用于存放 magic-bytes + size，因此我需要从原始区块链文件的开头读取 **293 字节** 才能获得完整的区块数据。
 

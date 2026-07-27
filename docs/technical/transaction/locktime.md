@@ -47,15 +47,10 @@ locktime 字段大小为 4 字节，可容纳 0 (0x00000000) 到 4294967295 (0xf
 
 这个时间值是以 [Unix 时间 (Unix Time)](https://en.wikipedia.org/wiki/Unix_time) 表示的：
 
-Unix 时间
-
-0d
-
-当前
-
-日期
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Unix 时间 | `0d` (当前) |
+| 日期 | - |
 
 实际的时间限制随后基于[区块头](../block.md#header)内部的[时间](../block/time.md)字段。区块内设置的时间由矿工控制，虽然它通常非常接近当前时间，但有时可能会有一到两个小时的误差。
 
@@ -95,37 +90,14 @@ locktime 字段始终是交易的**最后 4 个字节**：
 
 所以这笔交易将 locktime 设置为区块高度 [790,096](/explorer/790096)（并在该区块之后的区块中被打包挖出）。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 小端序 (Little Endian)
+**🔧 小端序 (Little Endian)**
 
-+1
-
-十进制
-
-0d
-
-十六进制字节 (大端序)
-
-0x
-
-`0 bytes`
-
-十六进制字节 (小端序)
-
-0x
-
-`0 bytes`
-
-字段大小
-
- 任意
- 2 字节
- 4 字节
- 8 字节
- 12 字节
- 16 字节
- 32 字节
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 十进制 | `0d` |
+| 十六进制字节 (大端序) | `0x` (`0 bytes`) |
+| 十六进制字节 (小端序) | `0x` (`0 bytes`) |
+| 字段大小 | - 任意<br>- 2 字节<br>- 4 字节<br>- 8 字节<br>- 12 字节<br>- 16 字节<br>- 32 字节 |
 
 ## 资源
 

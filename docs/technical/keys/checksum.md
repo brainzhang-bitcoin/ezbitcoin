@@ -6,29 +6,11 @@
 
 它们最常见于[地址](address.md)中以检测拼写错误。这有助于防止将比特币发送到错误的地址。
 
-随机示例
-
-数据
-
-你想要为其创建校验和的一些数据字节
-
-`0 bytes`
-
-校验和
-
-[hash256](../cryptography/hash-function.md#hash256)(data) 的前 4 个字节
-
-`Expected:`
-
-带有校验和的数据
-
-原数据后面附加校验和
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 数据 | 你想要为其创建校验和的一些数据字节<br>`0 bytes` |
+| 校验和 | [hash256](../cryptography/hash-function.md#hash256)(data) 的前 4 个字节<br>`Expected:` |
+| 带有校验和的数据 | 原数据后面附加校验和<br>`0 bytes` |
 
 更准确地说，可以将校验和添加到某些数据的末尾，以创建组合的 `data+checksum`。
 
@@ -73,30 +55,10 @@ checksum      = 05c4de7c
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
 
-随机交易数据
-
-随机区块头
-
-数据 (十六进制)
-
-`0 bytes`
-
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 数据 (十六进制) | `0 bytes` |
+| HASH256 | SHA-256(SHA-256(data))<br>`0 bytes` |
 
 ```
 # ---------

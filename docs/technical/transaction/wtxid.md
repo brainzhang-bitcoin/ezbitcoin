@@ -8,59 +8,25 @@ wTXID 类似于 [TXID](input/txid.md)，但 wTXID 包含了交易（[transaction
 
 [<img src="../../images/diagrams_png_transaction-witness-wtxid.png" alt="Diagram showing the wTXID being calculated from the raw transaction data including the marker, flag, and witness." width="764" height="367" />](../../images/diagrams_png_transaction-witness-wtxid.png)
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> wTXID
+**🔧 wTXID**
 
-随机示例
-
-交易数据
-
-`0 bytes`
-
-wTXID (自然字节序)
-
-`0 bytes`
-
-wTXID (反向字节序)
-
-在使用 `bitcoin-cli` 命令时也被称为交易“哈希（hash）”
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 交易数据 | `0 bytes` |
+| wTXID (自然字节序) | `0 bytes` |
+| wTXID (反向字节序) | `0 bytes` (在使用 `bitcoin-cli` 命令时也被称为交易“哈希（hash）”) |
 
 而 **TXID** 是对除 marker、flag 和 witness *之外* 的所有交易数据进行 HASH256 计算的结果：
 
 [<img src="../../images/diagrams_png_transaction-witness-txid.png" alt="Diagram showing the TXID being calculated from the raw transaction data excluding the marker, flag, and witness." width="764" height="367" />](../../images/diagrams_png_transaction-witness-txid.png)
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> TXID
+**🔧 TXID**
 
-随机示例
-
-交易数据
-
-`0 bytes`
-
-
- 显示详情
-
-
-TXID (自然字节序)
-
-在原始交易数据内部使用
-
-`0 bytes`
-
-TXID (反向字节序)
-
-在区块链浏览器上搜索交易时在外部使用
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 交易数据 | `0 bytes` |
+| TXID (自然字节序) | `0 bytes` (在原始交易数据内部使用) |
+| TXID (反向字节序) | `0 bytes` (在区块链浏览器上搜索交易时在外部使用) |
 
 上面的图表没有显示 marker 和 flag 字段。
 
@@ -92,51 +58,19 @@ wTXID = HASH256([version][marker][flag][inputs][outputs][witness][locktime])
 
 你可以通过手动将数据输入 HASH256 来亲自验证这一点：
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
+**🔧 HASH256**
 
-随机交易数据
+| Field | Value |
+| --- | --- |
+| 数据 (十六进制) | `0 bytes` |
+| HASH256 | `0 bytes` (SHA-256(SHA-256(data))) |
 
-随机区块头
+**🔧 字节反转 (Reverse Bytes)**
 
-数据 (十六进制)
-
-`0 bytes`
-
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
-
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 字节反转 (Reverse Bytes)
-
-随机示例
-
-字节
-
-`0 bytes`
-
-反转后
-
-`0 bytes`
-
-
- 显示详情
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 字节 | `0 bytes` |
+| 反转后 | `0 bytes` |
 
 **字节顺序。** 不要忘记 TXIDs 和 wTXIDs 是以[反向字节序](../general/byte-order.md#reverse-byte-order)显示的，因此 HASH256 的初始结果将是自然字节序（这意味着该结果起初看起来是反的）。
 
@@ -158,51 +92,19 @@ SHA-256(SHA-256(data))
 
 `25346687d5d10239c25a88193c97228327826a4ff66a36c4ba7e038f3e2ae9ed`
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
+**🔧 HASH256**
 
-随机交易数据
+| Field | Value |
+| --- | --- |
+| 数据 (十六进制) | `0 bytes` |
+| HASH256 | `0 bytes` (SHA-256(SHA-256(data))) |
 
-随机区块头
+**🔧 字节反转 (Reverse Bytes)**
 
-数据 (十六进制)
-
-`0 bytes`
-
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
-
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 字节反转 (Reverse Bytes)
-
-随机示例
-
-字节
-
-`0 bytes`
-
-反转后
-
-`0 bytes`
-
-
- 显示详情
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 字节 | `0 bytes` |
+| 反转后 | `0 bytes` |
 
 你可以通过运行 `bitcoin-cli getrawtransaction <txid> 1` 来查找交易的 wTXID。wTXID 将等于 "hash" 字段，因为这个 "hash" 是整个交易数据的 HASH256（反向字节序），目前它等于 wTXID。
 
@@ -256,34 +158,14 @@ wTXIDs 最终用于防止任何人篡改区块中包含的新隔离见证（segr
 witness root hash: dbee9a868a8caa2a1ddf683af1642a88dfb7ac7ce3ecb5d043586811a41fdbf2
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 默克尔根 (Merkle Root)
+**🔧 默克尔根 (Merkle Root)**
 
-随机示例
-
-区块
-
-TXID 列表
-
-由 *空格*、*逗号* 或 *换行符* 分隔的 TXID 列表。引号和括号会被忽略。
-
-TXID 应该以 [反向字节序](../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算默克尔根之前，它们会被转换为 [自然字节序](../general/byte-order.md#natural-byte-order)。
-
-
-
-TXIDs (0)
- 
-
-默克尔根 (自然字节序)
-
-哈希函数输出的字节顺序
-
-默克尔根 (反向字节序)
-
-区块链浏览器上显示的字节顺序
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| TXID 列表 | 由空格、逗号或换行符分隔的 TXID 列表。 |
+| TXIDs | 0 |
+| 默克尔根 (自然字节序) | 哈希函数输出的字节顺序 |
+| 默克尔根 (反向字节序) | 区块链浏览器上显示的字节顺序 |
 
 现在，如果我们查看 [Coinbase 交易的 input](/explorer/tx/2d4cdcd29d0004c762790b579bc2541da788f042031fa87fc27e402244080394#input-0) 内部，我们会找到 **witness reserved value**：
 
@@ -298,32 +180,12 @@ wTXID commitment = HASH256(witness root hash | witness reserved value)
 wTXID commitment = 6502e8637ba29cd8a820021915339c7341223d571e5e8d66edd83786d387e715
 ```
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
+**🔧 HASH256**
 
-随机交易数据
-
-随机区块头
-
-数据 (十六进制)
-
-`0 bytes`
-
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 数据 (十六进制) | `0 bytes` |
+| HASH256 | `0 bytes` (SHA-256(SHA-256(data))) |
 
 这个 wTXID 承诺被放置在 Coinbase 交易的*其中一个*输出的 ScriptPubKey 中。如果我们检查该区块的 Coinbase 交易的 [输出 1 (output 1)](/explorer/tx/2d4cdcd29d0004c762790b579bc2541da788f042031fa87fc27e402244080394#output-1) 的 ScriptPubKey，我们会找到以下脚本：
 

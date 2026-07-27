@@ -188,32 +188,11 @@ puts subsidy(300000) #=> 250000000 sats
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器
 
-二进制 (Base 2)
-
-0b
-
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 二进制 (Base 2) | 0b<br>`0 digits` |
+| 十进制 (Base 10) | 0d<br>`0 digits` |
+| 十六进制 (Base 16) | 0x<br>`0 digits` |
 
 因此，与其称其为“比特币减半”，不如亲切地将其称为“[右位移](https://www.reddit.com/r/Bitcoin/comments/173ljh7/the_halving_aka_the_bitshift_righting/)”。
 

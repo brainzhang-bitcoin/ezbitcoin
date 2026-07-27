@@ -125,61 +125,29 @@ Bech32 地址中的字符直接*映射*到特定数值，这比 [解码 Base58 �
 
 ## 交互工具 (Tool)
 
-Random Example
-
-ScriptPubKey`0 bytes`
-`Type:` 
-
-ScriptPubKey (bytes)
-
-Version
-
-Witness Program
-
-ScriptPubKey (8-bit groups)
-
-Version
-
-Witness Program`0 bits`
-
-ScriptPubKey (5-bit groups)
-
-Version
-
-Witness Program`0 bits`
-
-Checksum Constant
- Bech32 (Version 0: P2WPK, P2WSK)
- Bech32m (Version 1: P2TR)
-
-Checksum Algorithm
-
-Checksum
-
-Data (Version + Witness Program + Checksum)
-
-Data (Base32)
-
-Bech32
-
-hrp
-
-bc
-
-Network
- Mainnet
- Testnet
- Regtest
-
-Separator
-
-1
-
-Data
-
-Address`0 characters`
-
-0 secs
+| Field | Value |
+| --- | --- |
+| ScriptPubKey | `0 bytes`<br>`Type:` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ ScriptPubKey (bytes) | |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Version | |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Witness Program | |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ ScriptPubKey (8-bit groups) | |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Version | |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Witness Program | `0 bits` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ ScriptPubKey (5-bit groups) | |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Version | |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Witness Program | `0 bits` |
+| Checksum Constant | Bech32 (Version 0: P2WPK, P2WSK)<br>Bech32m (Version 1: P2TR) |
+| Checksum Algorithm | |
+| Checksum | |
+| Data (Version + Witness Program + Checksum) | |
+| Data (Base32) | |
+| Bech32 | |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ hrp | bc |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Network | Mainnet<br>Testnet<br>Regtest |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ Separator | 1 |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ Data | |
+| Address | `0 characters` |
 
 ## 编码 (Encode)
 

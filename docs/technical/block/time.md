@@ -8,15 +8,12 @@
 
 例如，[创世区块](/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)包含时间戳 1231006505，代表日期 *2009 年 1 月 3 日 18:15:05*。
 
-Unix 时间
+### Unix 时间转换 (Unix Time Conversion)
 
-0d
-
-当前
-
-日期
-
-0 秒
+| 字段 (Field) | 值 (Value) |
+| --- | --- |
+| Unix 时间 (Unix Time) | 0d |
+| 日期 (Date) | |
 
 ## 区块顺序
 
@@ -120,45 +117,15 @@ Nodes are usually connected to more than 7 peers at a time.
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标调整 (Target Adjustment)
 
-上一次调整
-当前目标
-
-0x
-
-`0 bytes`
-
-
-时间 (秒)
-
-实际
-
-0d
-
-预期
-
-0d
-
-目标调整周期为 2016 个区块。一个区块平均每 600 秒（10 分钟）开采一次，因此预期时间为 2016 \* 600 = 1209600 秒。
-
-比例
-
-实际时间除以预期时间。我们将当前目标乘以该比例以获得新目标。
-
-新目标 (全精度)
-
-0x
-
-新目标
-
-0x
-
-`0 bytes`
-
-注意：此目标值已被轻微截断，以便存储在区块头的 bits 字段中，而这正是挖矿时实际使用的目标值。
-
-
-
-0 秒
+| 字段 (Field) | 值 (Value) | 说明 (Description) |
+| --- | --- | --- |
+| 上一次调整 (Last Adjustment) | | |
+| 当前目标 (Current Target) | 0x `0 bytes` | |
+| 实际时间 (Actual Time) | 0d | |
+| 预期时间 (Expected Time) | 0d | 目标调整周期为 2016 个区块。一个区块平均每 600 秒（10 分钟）开采一次，因此预期时间为 2016 \* 600 = 1209600 秒。 |
+| 比例 (Ratio) | | 实际时间除以预期时间。我们将当前目标乘以该比例以获得新目标。 |
+| 新目标 (全精度) (New Target Full) | 0x | |
+| 新目标 (New Target) | 0x `0 bytes` | 注意：此目标值已被轻微截断，以便存储在区块头的 bits 字段中，而这正是挖矿时实际使用的目标值。 |
 
 ### 交易锁定时间 (Transaction Locktime)
 

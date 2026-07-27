@@ -126,35 +126,11 @@ HD Wallets（分层）。
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HMAC-SHA512
 
-随机示例
-
-数据 (十六进制)
-
-seed 或 (私钥/公钥 + 4字节索引)
-
-`0 bytes`
-
-密匙 (十六进制)
-
-"Bitcoin seed" 或 链码
-
-`0 bytes`
-
-"Bitcoin seed"
-(ASCII)
-
-<img src="../../images/icons_hash-function-hmac.svg" alt="HMAC Icon" style="width:128px; height:128px" />
-HMAC-SHA512
-
-结果
-
-HMAC-SHA512(data, key)
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 数据 (十六进制) | seed 或 (私钥/公钥 + 4字节索引)<br>`0 bytes` |
+| 密匙 (十六进制) | "Bitcoin seed" 或 链码<br>`0 bytes`<br>"Bitcoin seed" (ASCII) |
+| <img src="../../images/icons_hash-function-hmac.svg" alt="HMAC Icon" style="width:128px; height:128px" /><br>HMAC-SHA512<br>结果 | HMAC-SHA512(data, key)<br>`0 bytes` |
 
 我们使用这 64 字节来创建我们的**主**扩展私钥。
 
@@ -173,42 +149,11 @@ HMAC-SHA512(data, key)
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 公钥
 
-生成随机
-
-私钥
-
-`0 bytes`
-
-公钥坐标
-
-x:
-
-0d
-
-y:
-
-0d
-
-奇偶性:
-
-公钥只是椭圆曲线上的一个点。最终的公钥是这些坐标的十六进制形式。
-
-压缩
- 压缩 (02 或 03 前缀)
- 未压缩 (04 前缀)
- 仅 x (无前缀)
-
-椭圆曲线沿 x 轴对称，因此*压缩*公钥只需存储完整的 x 坐标以及 y 坐标是偶数还是奇数。
-
-仅 x 公钥用于 [Taproot](../upgrades/taproot.md) 输出。相对应的 y 坐标被假定为偶数。
-
-`0 bytes`
-
-
-
-**切勿在网站中输入你的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并利用它窃取你的比特币。
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 私钥 | `0 bytes` |
+| 公钥坐标 | x: 0d<br>y: 0d<br>奇偶性:<br>公钥只是椭圆曲线上的一个点。最终的公钥是这些坐标的十六进制形式。 |
+| 压缩 | 压缩 (02 或 03 前缀)<br>未压缩 (04 前缀)<br>仅 x (无前缀)<br>椭圆曲线沿 x 轴对称，因此*压缩*公钥只需存储完整的 x 坐标以及 y 坐标是偶数还是奇数。<br>仅 x 公钥用于 [Taproot](../upgrades/taproot.md) 输出。相对应的 y 坐标被假定为偶数。<br>`0 bytes` |
 
 *实际* 的**主**扩展私钥本身就只是私钥和链码。
 
@@ -256,42 +201,11 @@ y:
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 公钥
 
-生成随机
-
-私钥
-
-`0 bytes`
-
-公钥坐标
-
-x:
-
-0d
-
-y:
-
-0d
-
-奇偶性:
-
-公钥只是椭圆曲线上的一个点。最终的公钥是这些坐标的十六进制形式。
-
-压缩
- 压缩 (02 或 03 前缀)
- 未压缩 (04 前缀)
- 仅 x (无前缀)
-
-椭圆曲线沿 x 轴对称，因此*压缩*公钥只需存储完整的 x 坐标以及 y 坐标是偶数还是奇数。
-
-仅 x 公钥用于 [Taproot](../upgrades/taproot.md) 输出。相对应的 y 坐标被假定为偶数。
-
-`0 bytes`
-
-
-
-**切勿在网站中输入你的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并利用它窃取你的比特币。
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 私钥 | `0 bytes` |
+| 公钥坐标 | x: 0d<br>y: 0d<br>奇偶性:<br>公钥只是椭圆曲线上的一个点。最终的公钥是这些坐标的十六进制形式。 |
+| 压缩 | 压缩 (02 或 03 前缀)<br>未压缩 (04 前缀)<br>仅 x (无前缀)<br>椭圆曲线沿 x 轴对称，因此*压缩*公钥只需存储完整的 x 坐标以及 y 坐标是偶数还是奇数。<br>仅 x 公钥用于 [Taproot](../upgrades/taproot.md) 输出。相对应的 y 坐标被假定为偶数。<br>`0 bytes` |
 
 #### 示例
 
@@ -383,86 +297,21 @@ HD Wallets 中的扩展私钥和扩展公钥有它们自己的地址格式。
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 地址（扩展密钥）
 
-生成随机示例
+**🔧 扩展密匙数据 (Extended Key Data)**
 
-
-扩展密匙数据
-
-
-类型
-
- 传统 ([BIP 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki))
-  扩展私钥 (xprv)
-  扩展公钥 (xpub)
-
-注意：1地址 ([P2PKH](../script/p2pkh.md))
-
-
- Segwit ([BIP 49](https://github.com/bitcoin/bips/blob/master/bip-0049.mediawiki))
-  扩展私钥 (yprv)
-  扩展公钥 (ypub)
-
-注意：3地址 (P2SH-P2WPKH)
-
-
- Segwit ([BIP 84](https://github.com/bitcoin/bips/blob/master/bip-0084.mediawiki))
-  扩展私钥 (zprv)
-  扩展公钥 (zpub)
-
-注意：bc1地址 ([P2WPKH](../script/p2wpkh.md))
-
-深度
-
-从主密钥派生的深度（如果是主密钥则为 0）
-
-0d
-
-
-+1
-
-指纹
-
-父公钥 HASH160 的前 4 个字节（如果是主密钥则为 00000000）
-
-索引
-
-此密钥与其父密钥的索引号（如果是主密钥则为 0）
-
-0d
-
-
-+1
-
-链码
-
-父密钥 HMAC-SHA512 的最后 32 字节（密钥+索引，链码）或（seed，密码学密码）
-
-`0 bytes`
-
-密匙
-
-原始私钥（32字节）或公钥（33字节）
-
-`0 bytes`
-
-
-序列化 (十六进制)
-
-`0 bytes`
-
-校验和`0 bytes`
-
-地址
-
-序列化扩展密钥和校验和的 Base58 编码
-
-`0 characters`
-
-
+| Field | Value |
+| --- | --- |
+| 类型 | - 传统 ([BIP 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki))<br>  &nbsp;&nbsp;扩展私钥 (xprv)<br>  &nbsp;&nbsp;扩展公钥 (xpub)<br>  &nbsp;&nbsp;注意：1地址 ([P2PKH](../script/p2pkh.md))<br>- Segwit ([BIP 49](https://github.com/bitcoin/bips/blob/master/bip-0049.mediawiki))<br>  &nbsp;&nbsp;扩展私钥 (yprv)<br>  &nbsp;&nbsp;扩展公钥 (ypub)<br>  &nbsp;&nbsp;注意：3地址 (P2SH-P2WPKH)<br>- Segwit ([BIP 84](https://github.com/bitcoin/bips/blob/master/bip-0084.mediawiki))<br>  &nbsp;&nbsp;扩展私钥 (zprv)<br>  &nbsp;&nbsp;扩展公钥 (zpub)<br>  &nbsp;&nbsp;注意：bc1地址 ([P2WPKH](../script/p2wpkh.md)) |
+| 深度 | 从主密钥派生的深度（如果是主密钥则为 0）<br>`0d`<br>`+1` |
+| 指纹 | 父公钥 HASH160 的前 4 个字节（如果是主密钥则为 00000000） |
+| 索引 | 此密钥与其父密钥的索引号（如果是主密钥则为 0）<br>`0d`<br>`+1` |
+| 链码 | 父密钥 HMAC-SHA512 的最后 32 字节（密钥+索引，链码）或（seed，密码学密码）<br>`0 bytes` |
+| 密匙 | 原始私钥（32字节）或公钥（33字节）<br>`0 bytes` |
+| 序列化 (十六进制) | `0 bytes` |
+| 校验和 | `0 bytes` |
+| 地址 | 序列化扩展密钥和校验和的 Base58 编码<br>`0 characters` |
 
 **切勿使用由网站生成的私钥，或在网站中输入你的私钥。** 网站很容易保存私钥并利用它窃取你的比特币。
-
-0 secs
 
 例如，这是我们的主扩展私钥序列化后的样子：
 

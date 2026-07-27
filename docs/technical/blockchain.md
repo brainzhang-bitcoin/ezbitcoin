@@ -81,71 +81,20 @@ New blocks of transactions must be [mined](mining.md) on to the blockchain.
 
 In short, the process of mining involves collecting transactions from the [memory pool](mining/memory-pool.md) into a [candidate block](mining/candidate-block.md), and then using *processing power* to produce a [block hash](block/hash.md) that is below a specific [target](mining/target.md) value. This means that any node on the network can mine a new block, but you need to *use energy* to be able to do so.
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Hash
+| Field | Value |
+| --- | --- |
+| Block Header | `0 bytes` |
+| Block Hash (Natural Byte Order) | Used internally inside raw block headers<br>`0 bytes` |
+| Block Hash (Reverse Byte Order) | Used externally when searching for blocks on block explorers<br>`0 bytes` |
 
-Random Example
-
-Block Header
-
-`0 bytes`
-
-Block Hash (Natural Byte Order)
-
-Used internally inside raw block headers
-
-`0 bytes`
-
-Block Hash (Reverse Byte Order)
-
-Used externally when searching for blocks on block explorers
-
-`0 bytes`
-
-
-
-0 secs
-
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
-
-Previous Adjustment
-Current Target
-
-0x
-
-`0 bytes`
-
-
-Time (seconds)
-
-Actual
-
-0d
-
-Expected
-
-0d
-
-The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds.
-
-Ratio
-
-The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target.
-
-New Target (Full Precision)
-
-0x
-
-New Target
-
-0x
-
-`0 bytes`
-
-Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining.
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Current Target | 0x<br>`0 bytes` |
+| Time (seconds)<br>Actual | 0d |
+| Time (seconds)<br>Expected | 0d<br><br>The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds. |
+| Ratio | The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target. |
+| New Target (Full Precision) | 0x |
+| New Target | 0x<br>`0 bytes`<br><br>Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining. |
 
 When a node (or "miner") successfully mines a new block, they will share it with the other nodes on the network. When other nodes receive this new block, they will add it to their blockchain, and miners will start trying to mine a new block *on top* of it.
 

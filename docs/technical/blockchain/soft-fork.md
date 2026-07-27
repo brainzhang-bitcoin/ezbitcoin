@@ -202,86 +202,10 @@ ScriptPubKey 会在交易数据中暴露其所有的消费条件。这些条件�
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 版本位 (Version Bits)
 
-随机示例
-
-位字段 (Bit Field)
-
-0
-
-0
-
-1
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-
-
-十六进制 (Hex)
-
-0x
-
-`4 bytes`
-
-
-
-
-
+| Field | Value |
+| --- | --- |
+| 位字段 (Bit Field) | `00100000000000000000000000000000` |
+| 十六进制 (Hex) | 0x `4 bytes` |
 * **Version Bits:** 已启用
 
 当在一个[目标调整周期](../mining/target.md#period)内，有 90-95% 的矿工指示它们同意升级（并且它们将按照新规则开采新区块）时，该软分叉就会被“锁定 (locked in)”，并且在特定的区块[高度](height.md)处矿工们将开始挖掘新区块。

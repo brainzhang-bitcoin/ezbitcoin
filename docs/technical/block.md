@@ -53,112 +53,17 @@ Every raw block begins with a block *header*.
 
 The block header contains a **summary of the block's contents**, and is used to create the [block hash](block/hash.md).
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
-
-Random Example
-
-Block:
-
-Block Header (Hex)
-
-`0 bytes`
-
-
-Block Header (Fields)
-
-
-Version
-
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-Previous Block:
-Merkle Root
-Time
-
-0d
-
-Bits
-Nonce
-
-0d
-
-
-
-+1
-
-
-
-Block Hash
-
-This is the HASH256 of the hex block header. It's also in reverse byte order, because that's how block hashes are displayed in block explorers.
-
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Block | |
+| Block Header (Hex) | `0 bytes` |
+| Block Header (Fields)<br>Version | 0 |
+| Previous Block | |
+| Merkle Root | |
+| Time | 0d |
+| Bits | |
+| Nonce | 0d<br>+1 |
+| Block Hash | This is the HASH256 of the hex block header. It's also in reverse byte order, because that's how block hashes are displayed in block explorers. |
 
 ### [Version](block/version.md)
 
@@ -214,34 +119,13 @@ So in other words, when you create a new block, the *previous block* field conta
 
 [<img src="../images/diagrams_png_block-merkle-root-basic.png" alt="Diagram of a merkle root being created for use in the block header." width="767" height="310" />](../images/diagrams_png_block-merkle-root-basic.png)
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Merkle Root
-
-Random Example
-
-Block
-
-TXID List
-
-A list of TXIDs separated by *spaces*, *commas*, or *new lines*. Quotes and brackets are ignored.
-
-The TXIDs should be input in [reverse byte order](general/byte-order.md#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](general/byte-order.md#natural-byte-order) before the merkle root is calculated.
-
-
-
-TXIDs (0)
- 
-
-Merkle Root (Natural Byte Order)
-
-The byte order as it comes out of the hash function
-
-Merkle Root (Reverse Byte Order)
-
-The byte order as shown on blockchain explorers
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Block | |
+| TXID List | A list of TXIDs separated by *spaces*, *commas*, or *new lines*. Quotes and brackets are ignored.<br><br>The TXIDs should be input in [reverse byte order](general/byte-order.md#reverse-byte-order) (as they appear on blockchain explorers), but they are converted to [natural byte order](general/byte-order.md#natural-byte-order) before the merkle root is calculated. |
+| TXIDs (0) | |
+| Merkle Root (Natural Byte Order) | The byte order as it comes out of the hash function |
+| Merkle Root (Reverse Byte Order) | The byte order as shown on blockchain explorers |
 
 The *merkle root* field contains a **fingerprint for all the transaction data** in the block.
 
@@ -260,19 +144,10 @@ So the merkle root is like putting a tamper-resistant seal on the block.
 
 [<img src="../images/diagrams_png_block-time.png" alt="Diagram showing the time being stored in the block header." width="609" height="291" />](../images/diagrams_png_block-time.png)
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
-
-Unix Time
-
-0d
-
-
-Now
-
-Date
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Unix Time | 0d |
+| Date | |
 
 The time field contains the **time the block was constructed** as a Unix timestamp.
 
@@ -288,25 +163,11 @@ So it's possible that a block higher up in the chain could have an earlier *time
 
 [<img src="../images/diagrams_png_block-bits.png" alt="Diagram showing target being stored in the bits field of the block header." width="646" height="291" />](../images/diagrams_png_block-bits.png)
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
-
-Current
-
-Random Example
-
-Height:
-
-Target
-
-0x
-
-`0 bytes`
-
-Bits`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Height | |
+| Target | 0x<br>`0 bytes` |
+| Bits | `0 bytes` |
 
 The bits field is a **compact representation of the [target](mining/target.md)** at the time the block was mined.
 
@@ -353,35 +214,11 @@ After the block header we have the actual transaction data. This is just a serie
 * Type: [compact size](general/compact-size.md)
 * Example: `01`
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Compact Size
-
-Integer
-
-0d
-
-Compact Size
-
-`0 bytes`
-
-
-Prefix
-
-The first byte indicates which bytes encode the integer:
-
- `<=FC`
-– This byte (0 - 252)
- `FD`
-– The next two bytes (253 - 65535)
- `FE`
-– The next four bytes (65536 - 4294967295)
- `FF`
-– The next eight bytes (4294967296 - 18446744073709551615)
-
-Note: Bytes encoding the integer are in little endian.
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Integer | 0d |
+| Compact Size | `0 bytes` |
+| Prefix | The first byte indicates which bytes encode the integer:<br><br>- `<=FC` – This byte (0 - 252)<br>- `FD` – The next two bytes (253 - 65535)<br>- `FE` – The next four bytes (65536 - 4294967295)<br>- `FF` – The next eight bytes (4294967296 - 18446744073709551615)<br><br>Note: Bytes encoding the integer are in little endian. |
 
 The first piece of data after the block header is actually a transaction count indicating the **number of upcoming transactions in the block**. It's a compact size field, so it's usually either 1 or 3 bytes in size (depending on how many transactions are in the block).
 
@@ -417,29 +254,11 @@ Parent transactions must always come before child transactions in a block. So if
 
 [<img src="../images/diagrams_png_block-hash.png" alt="Diagram showing the position of the regular transaction below the coinbase transaction in a block." width="775" height="563" />](../images/diagrams_png_block-hash.png)
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Hash
-
-Random Example
-
-Block Header
-
-`0 bytes`
-
-Block Hash (Natural Byte Order)
-
-Used internally inside raw block headers
-
-`0 bytes`
-
-Block Hash (Reverse Byte Order)
-
-Used externally when searching for blocks on block explorers
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Block Header | `0 bytes` |
+| Block Hash (Natural Byte Order) | Used internally inside raw block headers<br>`0 bytes` |
+| Block Hash (Reverse Byte Order) | Used externally when searching for blocks on block explorers<br>`0 bytes` |
 
 A block hash is created by double-SHA256'ing the block header. The block hash is a **unique identifier** for a block, which has two benefits:
 

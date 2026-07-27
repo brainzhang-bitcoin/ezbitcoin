@@ -20,27 +20,13 @@
 
 区块哈希是通过对[区块头](../block.md#header)进行[哈希运算](../cryptography/hash-function.md)创建的。
 
-随机示例
+### 随机示例 (Random Example)
 
-区块头 (Block Header)
-
-`0 bytes`
-
-区块哈希 (自然字节顺序)
-
-在原始区块头内部使用
-
-`0 bytes`
-
-区块哈希 (反向字节顺序)
-
-在区块浏览器上搜索区块时在外部使用
-
-`0 bytes`
-
-
-
-0 秒
+| 字段 (Field) | 值 (Value) | 说明 (Description) |
+| --- | --- | --- |
+| 区块头 (Block Header) | `0 bytes` | |
+| 区块哈希 (自然字节顺序) | `0 bytes` | 在原始区块头内部使用 |
+| 区块哈希 (反向字节顺序) | `0 bytes` | 在区块浏览器上搜索区块时在外部使用 |
 
 创建区块哈希的步骤如下：
 
@@ -139,31 +125,10 @@ puts blockhash.scan(/../).reverse.join #=> 000000000019d6689c085ae165831e934ff76
 
 因此，将区块哈希视为一个唯一的数字是有意义的。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
+### <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 数字转换器 (Number Converter)
 
-二进制 (Base 2)
-
-0b
-
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 秒
+| 格式 (Format) | 值 (Value) |
+| --- | --- |
+| 二进制 (Base 2) | 0b `0 digits` |
+| 十进制 (Base 10) | 0d `0 digits` |
+| 十六进制 (Base 16) | 0x `0 digits` |

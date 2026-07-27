@@ -518,36 +518,12 @@ Bits
 
 0
 
-0
-
-0
-
-0
-
-二进制 (Binary)
-
-0b
-
-`0 bits`
-
-十进制 (Decimal)
-
-0d
-
-十六进制 (Hexadecimal)
-
-0x
-
-`0 bytes`
-
-
-
-
-
-
-**切勿使用由网站生成的私钥，或在网站中输入你的私钥。** 网站很容易保存私钥并利用它窃取你的比特币。
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Bits | 0 |
+| 二进制 (Binary) | 0b<br>`0 bits` |
+| 十进制 (Decimal) | 0d |
+| 十六进制 (Hexadecimal) | 0x<br>`0 bytes` |
 
 ## 生成
 
@@ -625,32 +601,11 @@ puts SecureRandom.random_number(1..115792089237316195423570985008687907852837564
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 进制转换器 (Number Converter)
 
-二进制 (Base 2)
-
-0b
-
-`0 digits`
-
-十进制 (Base 10)
-
-0d
-
-`0 digits`
-
-十六进制 (Base 16)
-
-0x
-
-`0 digits`
-
-
-
-
-+1
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 二进制 (Base 2) | 0b<br>`0 digits` |
+| 十进制 (Base 10) | 0d<br>`0 digits` |
+| 十六进制 (Base 16) | 0x<br>`0 digits` |
 
 ### WIF (钱包导入格式)
 
@@ -658,38 +613,14 @@ puts SecureRandom.random_number(1..115792089237316195423570985008687907852837564
 
 这就像私钥的[地址](address.md)格式。有时在将私钥导入钱包（例如 [Electrum](https://electrum.org/)）时会用到它。
 
-生成随机
-
-
-前缀`1 byte`
-
-网络
-
- 主网
- 测试网
-
-私钥`0 bytes`
-
-压缩`1 byte`
-
-已压缩
-
- 是 (默认)
- 否
-
-校验和`0 bytes`
-
-WIF 私钥
-
-以上数据的 Base58 编码
-
-`0 characters`
-
-
-
-**切勿在网站中输入你的私钥，或使用由网站生成的私钥。** 网站很容易保存私钥并利用它窃取你的比特币。
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 前缀 | `1 byte` |
+| 网络 | 主网<br>测试网 |
+| 私钥 | `0 bytes` |
+| 压缩 | `1 byte`<br>已压缩: 是 (默认), 否 |
+| 校验和 | `0 bytes` |
+| WIF 私钥 | 以上数据的 Base58 编码<br>`0 characters` |
 
 ## 使用
 

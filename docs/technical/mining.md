@@ -39,112 +39,17 @@ Next we construct a [block header](block.md#header) for this candidate block. Th
 
 You refer to a previous block by its [block hash](block/hash.md). A summary of all the transactions in the block is contained in the [merkle root](block/merkle-root.md).
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
-
-Random Example
-
-Block:
-
-Block Header (Hex)
-
-`0 bytes`
-
-
-Block Header (Fields)
-
-
-Version
-
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-Previous Block:
-Merkle Root
-Time
-
-0d
-
-Bits
-Nonce
-
-0d
-
-
-
-+1
-
-
-
-Block Hash
-
-This is the HASH256 of the hex block header. It's also in reverse byte order, because that's how block hashes are displayed in block explorers.
-
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Block | |
+| Block Header (Hex) | `0 bytes` |
+| Block Header (Fields)<br>Version | 0 |
+| Previous Block | |
+| Merkle Root | |
+| Time | 0d |
+| Bits | |
+| Nonce | 0d<br>+1 |
+| Block Hash | This is the HASH256 of the hex block header. It's also in reverse byte order, because that's how block hashes are displayed in block explorers. |
 
 Now we are ready to start *mining* this block.
 
@@ -155,32 +60,10 @@ To do this, we put this block's **block header** through the SHA-256 [hash funct
 
 The target is the number your block hash must get below to add the block on to the blockchain.
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
-
-Random Transaction Data
-
-Random Block Header
-
-Data (Hex)
-
-`0 bytes`
-
-
-<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Data (Hex) | `0 bytes` |
+| HASH256 | SHA-256(SHA-256(data))<br>`0 bytes` |
 
 If the hash of your block header *isn't* below the target, you can *keep trying* by incrementing the [nonce](block/nonce.md) field in the block header. This allows you to keep the same basic block header, but get a completely different hash result for it.
 
@@ -288,47 +171,14 @@ The timing is controlled by the [target](mining/target.md), which is like a limb
 
 Each node agrees upon the target value for the current height of the blockchain.
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Adjustment
-
-Previous Adjustment
-Current Target
-
-0x
-
-`0 bytes`
-
-
-Time (seconds)
-
-Actual
-
-0d
-
-Expected
-
-0d
-
-The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds.
-
-Ratio
-
-The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target.
-
-New Target (Full Precision)
-
-0x
-
-New Target
-
-0x
-
-`0 bytes`
-
-Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining.
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Current Target | 0x<br>`0 bytes` |
+| Time (seconds)<br>Actual | 0d |
+| Time (seconds)<br>Expected | 0d<br><br>The target adjustment period is 2016 blocks. A block is mined on average every 600 seconds (10 minutes), so the expected time is 2016 \* 600 = 1209600 seconds. |
+| Ratio | The *actual* time divided by the *expected* time. We multiply the current target by this ratio to get the new target. |
+| New Target (Full Precision) | 0x |
+| New Target | 0x<br>`0 bytes`<br><br>Note: This target value has been truncated slightly for storage in the bits field of the block header, and that's the target value that's actually used when mining. |
 
 If blocks are mined faster than 10 minutes on average over a two-week period (e.g. because more miners join the network), the target will adjust downwards so that it becomes *more difficult* to mine a block, and so the average time between blocks reverts back to around 10 minutes.
 
@@ -378,32 +228,10 @@ For example, here's what the block header for [block 100,000](/explorer/block/00
 
 Now you've got a block header, you try and "mine" it by putting it through [HASH256](cryptography/hash-function.md#hash256). You keep incrementing the [nonce](block/nonce.md) value as you go to try and get a result below the [target](mining/target.md).
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> HASH256
-
-Random Transaction Data
-
-Random Block Header
-
-Data (Hex)
-
-`0 bytes`
-
-
-<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Data (Hex) | `0 bytes` |
+| HASH256 | SHA-256(SHA-256(data))<br>`0 bytes` |
 
 For example:
 
@@ -435,24 +263,10 @@ Nonce    Hash256
 * The nonce is a 4-byte field in [little-endian](general/little-endian.md) byte order.
 * **The result of hashing the raw block header through HASH256 will appear to be *backwards* at first.** This is because block hashes are displayed in [reverse byte order](general/byte-order.md#reverse-byte-order) on blockchain explorers.
 
-<img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Reverse Bytes
-
-Random Example
-
-Bytes
-
-`0 bytes`
-
-Reversed
-
-`0 bytes`
-
-
- Show Details
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Bytes | `0 bytes` |
+| Reversed | `0 bytes` |
 
 ## Code
 

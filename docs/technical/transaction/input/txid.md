@@ -25,31 +25,11 @@ TXID 是通过对交易数据进行[哈希](../../cryptography/hash-function.md)
 
 因此，对于 SegWit 交易，[签名](../../keys/signature.md)不再包含在 TXID 中。
 
-随机示例
-
-交易数据
-
-`0 bytes`
-
-
- 显示详情
-
-
-TXID (自然字节序)
-
-在原始交易数据内部使用
-
-`0 bytes`
-
-TXID (反向字节序)
-
-在区块链浏览器上搜索交易时在外部使用
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 交易数据 | `0 bytes` |
+| TXID (自然字节序) | `0 bytes` (在原始交易数据内部使用) |
+| TXID (反向字节序) | `0 bytes` (在区块链浏览器上搜索交易时在外部使用) |
 
 你在区块链浏览器上看到的 TXID 实际上是**[反向字节序](../../general/byte-order.md#reverse-byte-order)**的。这只是比特币的一个特点。
 
@@ -131,49 +111,17 @@ TXID 看起来像什么？
 
 你可以通过使用 HASH256 直接手动哈希相同的数据来验证上述数据生成了正确的 TXIDs：
 
-随机交易数据
-
-随机区块头
-
-数据 (十六进制)
-
-`0 bytes`
-
-
-<img src="../../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-<img src="../../../images/icons_hash-function.svg" alt="Hash Function Icon" style="width:52px; height:52px" />
-SHA-256
-
-HASH256
-
-SHA-256(SHA-256(data))
-
-`0 bytes`
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 数据 (十六进制) | `0 bytes` |
+| HASH256 | `0 bytes` (SHA-256(SHA-256(data))) |
 
 然后不要忘记反转字节序：
 
-随机示例
-
-字节
-
-`0 bytes`
-
-反转后
-
-`0 bytes`
-
-
- 显示详情
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 字节 | `0 bytes` |
+| 反转后 | `0 bytes` |
 
 ## 用途
 
@@ -213,34 +161,14 @@ TXIDs 用于为[区块头](../../block.md#header)创建[默克尔根](../../bloc
 
 这是因为对交易数据的任何更改都会改变 TXID，而对 TXID 的任何更改都会对生成的默克尔根产生连锁反应。
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 默克尔根 (Merkle Root)
+**🔧 默克尔根 (Merkle Root)**
 
-随机示例
-
-区块
-
-TXID 列表
-
-由 *空格*、*逗号* 或 *换行符* 分隔的 TXID 列表。引号和括号会被忽略。
-
-TXID 应该以 [反向字节序](../../general/byte-order.md#reverse-byte-order)（如它们在区块链浏览器上显示的那样）输入，但在计算默克尔根之前，它们会被转换为 [自然字节序](../../general/byte-order.md#natural-byte-order)。
-
-
-
-TXIDs (0)
- 
-
-默克尔根 (自然字节序)
-
-哈希函数输出的字节顺序
-
-默克尔根 (反向字节序)
-
-区块链浏览器上显示的字节顺序
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| TXID 列表 | 由空格、逗号或换行符分隔的 TXID 列表。 |
+| TXIDs | 0 |
+| 默克尔根 (自然字节序) | 哈希函数输出的字节顺序 |
+| 默克尔根 (反向字节序) | 区块链浏览器上显示的字节顺序 |
 
 ## 重复的 TXIDs
 

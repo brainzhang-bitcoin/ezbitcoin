@@ -19,37 +19,13 @@ sequence（序列号）字段存在于每个交易 [input](../input.md) 内部�
 
 一个普遍的选择是为你的 sequence 字段使用 0xFFFFFFFD，因为这既启用了 locktime 字段（如果你想使用它的话），也启用了 replace-by-fee（这通常很有用）。
 
-Sequence (小端序)
-
-原始交易数据中的 sequence 形式
-
-0x
-
-`4 bytes`
-
-Sequence (大端序)
-
-0x
-
-`4 bytes`
-
-功能
-
- 锁定时间 (Locktime)
- 提升费用替换 (Replace-by-Fee)
- 相对锁定时间 (Relative Locktime)
-
-相对锁定时间类型
-
- 时间 (Time)
- 秒 (seconds)
- 区块 (Blocks)
-
-数量 (Count)
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Sequence (小端序) | `0x` (`4 bytes`) |
+| Sequence (大端序) | `0x` (`4 bytes`) |
+| 功能 | - 锁定时间 (Locktime)<br>- 提升费用替换 (Replace-by-Fee)<br>- 相对锁定时间 (Relative Locktime) |
+| 相对锁定时间类型 | - 时间 (Time)<br>- 秒 (seconds)<br>- 区块 (Blocks) |
+| 数量 (Count) | |
 
 如果你将一笔交易中 *所有* inputs 的 sequence 都设置为最大值 0xFFFFFFFF，那么这整笔交易就被认为是“最终确定”的，无法被替换，也无法阻止其被打包挖出。
 
@@ -79,17 +55,12 @@ Sequence (大端序)
 
 然后，你可以将 locktime 字段设置为 0 到 499999999 之间，以使交易能够在特定的区块[高度](../../blockchain/height.md)之后被打包挖出；或者设置为 500000000 到 4294967295 之间，以使其在特定时间点（即 Unix 时间戳）之后被打包挖出。
 
-<img src="../../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix 时间 (Unix Time)
+**🔧 Unix 时间 (Unix Time)**
 
-Unix 时间
-
-0d
-
-当前
-
-日期
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Unix 时间 | `0d` (当前) |
+| 日期 | |
 
 ## Replace By Fee (RBF)
 
@@ -201,70 +172,13 @@ RBF 交易最低手续费 = 最低中继费 + 前一笔交易手续费
 
 要在某个 input 上设置相对锁定时间，你需要将 sequence 视作一个包含 32 个独立位的字段（即[位字段 (bit field)](../../general/bytes.md#bit-field)）：
 
-Sequence (小端序)
-
-原始交易数据中的 sequence 形式
-
-0x
-
-`4 bytes`
-
-Sequence (大端序)
-
-0x
-
-`4 bytes`
-
-Sequence (位字段)
-
-0
-0
-0
-0
-0
-0
-0
-0
-0
-1
-0
-0
-0
-0
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-
-设置
-
- 禁用标志 (Disable Flag)
- 类型标志 (Type Flag)
-
-相对锁定时间
-
- 时间 (Time)
- 数值 (Value)
- `x 512 = 0 seconds`
-
- 区块 (Blocks)
- 数值 (Value)
-
-0 secs
+| Field | Value |
+| --- | --- |
+| Sequence (小端序) | `0x` (`4 bytes`) |
+| Sequence (大端序) | `0x` (`4 bytes`) |
+| Sequence (位字段) | 32-bit field |
+| 设置 | - 禁用标志 (Disable Flag)<br>- 类型标志 (Type Flag) |
+| 相对锁定时间 | - 时间 (Time) / 数值 (Value) `x 512 = 0 seconds`<br>- 区块 (Blocks) / 数值 (Value) |
 
 * **第 31 位：禁用标志 (Disable Flag)**
   * 1 = 相对锁定时间已禁用

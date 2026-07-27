@@ -86,13 +86,9 @@
 
 您能在拥有低于 50% 挖矿算力的情况下重写区块链吗？
 
-挖矿算力
-
-%
-
-随机示例
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 挖矿算力 | % |
 
 在*没有*占大多数挖矿算力的情况下重写区块链是可能的，但您需要**运气**。
 
@@ -218,23 +214,11 @@ $ bitcoin-cli getblockheader 000000000000000000005af9d7cca01756b552b02e5f5fac642
 
 <img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 目标 Bits (Target Bits)
 
-当前
-
-随机示例
-
-高度:
-
-目标
-
-0x
-
-`0 bytes`
-
-Bits`0 bytes`
-
-
-
-0 秒
+| Field | Value |
+| --- | --- |
+| 高度 | |
+| 目标 | 0x `0 bytes` |
+| Bits | `0 bytes` |
 
 这就是所有矿工需要将[区块哈希](../block/hash.md)降至其下才能成功挖出区块的数字。
 

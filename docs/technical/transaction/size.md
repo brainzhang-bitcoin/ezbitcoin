@@ -10,25 +10,12 @@
 
 “重量单位”和“虚拟字节”是比特币所特有的测量单位。它们同样也是以字节为单位来测量交易的体积，但它们**对交易数据的某些部分给予了折扣**，并在计算一个[区块](../block.md)中能容纳多少交易时被使用。
 
-<img src="../../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> 交易拆分器 (Transaction Splitter)
+**🔧 交易拆分器 (Transaction Splitter)**
 
-随机示例
-
-交易数据
-
-
-* `0 bytes`
-* `0 vbytes`
-
-结果
-
-```
- 
-```
-
-
-
-0 secs
+| Field | Value |
+| --- | --- |
+| 交易数据 | `0 bytes` / `0 vbytes` |
+| 结果 | - |
 
 ## Bytes (b)
 
