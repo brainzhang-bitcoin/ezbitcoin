@@ -53,6 +53,8 @@ Every raw block begins with a block *header*.
 
 The block header contains a **summary of the block's contents**, and is used to create the [block hash](block/hash.md).
 
+### <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Header
+
 | Field | Value |
 | --- | --- |
 | Block | |
@@ -119,6 +121,8 @@ So in other words, when you create a new block, the *previous block* field conta
 
 [<img src="../images/diagrams_png_block-merkle-root-basic.png" alt="Diagram of a merkle root being created for use in the block header." width="767" height="310" />](../images/diagrams_png_block-merkle-root-basic.png)
 
+### <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Merkle Root
+
 | Field | Value |
 | --- | --- |
 | Block | |
@@ -144,6 +148,8 @@ So the merkle root is like putting a tamper-resistant seal on the block.
 
 [<img src="../images/diagrams_png_block-time.png" alt="Diagram showing the time being stored in the block header." width="609" height="291" />](../images/diagrams_png_block-time.png)
 
+### <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Unix Time
+
 | Field | Value |
 | --- | --- |
 | Unix Time | 0d |
@@ -162,6 +168,8 @@ So it's possible that a block higher up in the chain could have an earlier *time
 * Example: `ffff001d` (i.e. `1d00ffff` in little-endian)
 
 [<img src="../images/diagrams_png_block-bits.png" alt="Diagram showing target being stored in the bits field of the block header." width="646" height="291" />](../images/diagrams_png_block-bits.png)
+
+### <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Target Bits
 
 | Field | Value |
 | --- | --- |
@@ -214,6 +222,8 @@ After the block header we have the actual transaction data. This is just a serie
 * Type: [compact size](general/compact-size.md)
 * Example: `01`
 
+### <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Compact Size
+
 | Field | Value |
 | --- | --- |
 | Integer | 0d |
@@ -253,6 +263,8 @@ Parent transactions must always come before child transactions in a block. So if
 ## [Block Hash](block/hash.md)
 
 [<img src="../images/diagrams_png_block-hash.png" alt="Diagram showing the position of the regular transaction below the coinbase transaction in a block." width="775" height="563" />](../images/diagrams_png_block-hash.png)
+
+### <img src="../images/icons_tool.svg" alt="Tool Icon" style="width:20px; height:20px" /> Block Hash
 
 | Field | Value |
 | --- | --- |

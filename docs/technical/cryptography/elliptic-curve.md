@@ -136,27 +136,16 @@ sage: C = EllipticCurve(F, [0, 7])
 
 ### 模逆 (Modular Inverse)
 
-简单示例
+### 简单示例
 
-数字
-
-0d
-
-逆元 (Inverse)
-
-0d
-
-模数 (Modulus)
-
-0d
-
-n
-p
+| Field | Value |
+| --- | --- |
+| 数字 | 0d |
+| 逆元 (Inverse) | 0d |
+| 模数 (Modulus) | 0d<br>n<br>p |
 
 **n** = secp256k1 椭圆曲线上的点数（在处理标量时使用，例如私钥）  
 **p** = secp256k1 椭圆曲线的有限域大小（在处理点时使用，即坐标）
-
-0 秒
 
 在我们在曲线上对点执行 [`double()`](#double) 和 [`add()`](#add) 运算之前，我们需要先求出有限域中数字的*模逆 (modular inverse)*。
 
@@ -222,31 +211,11 @@ end
 
 ### 点翻倍 (Double)
 
-基点 (Generator Point)
-随机点
-
-点 1 (Point 1)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-点 1 + 点 1
-
-x:
-
-0d
-
-y:
-
-0d
-
-0 秒
+| Field | Value |
+| --- | --- |
+| Point Type | 基点 (Generator Point)<br>随机点 |
+| 点 1 (Point 1) | x: 0d<br>y: 0d |
+| 点 1 + 点 1 | x: 0d<br>y: 0d |
 
 对一个点进行“翻倍”与将一个点与自身“相加”是一回事。
 
@@ -290,41 +259,12 @@ end
 
 ### 点相加 (Add)
 
-随机点
-
-点 1 (Point 1)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-点 2 (Point 2)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-点 1 + 点 2
-
-x:
-
-0d
-
-y:
-
-0d
-
-0 秒
+| Field | Value |
+| --- | --- |
+| Point Type | 随机点 |
+| 点 1 (Point 1) | x: 0d<br>y: 0d |
+| 点 2 (Point 2) | x: 0d<br>y: 0d |
+| 点 1 + 点 2 | x: 0d<br>y: 0d |
 
 正如所料，在椭圆曲线数学中，两个点的“相加”与普通的整数相加并不相同，但它仍被称为“相加”。
 
@@ -363,46 +303,13 @@ end
 
 此运算是椭圆曲线密码学的核心。
 
-基点 (Generator Point)
-随机点
-
-点 1 (Point 1)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-Multiplier
-
-0d
-
-
-
-+1
-
-随机
-
-
-点 1 x 乘数 (Multiplier)
-
-x:
-
-0d
-
-y:
-
-0d
-
-
-步骤 (Steps)
- 
-
-0 秒
+| Field | Value |
+| --- | --- |
+| Point Type | 基点 (Generator Point)<br>随机点 |
+| 点 1 (Point 1) | x: 0d<br>y: 0d |
+| Multiplier | 0d<br>+1<br>随机 |
+| 点 1 x 乘数 (Multiplier) | x: 0d<br>y: 0d |
+| 步骤 (Steps) | |
 
 ECDSA 中的大多数点乘运算都从**基点** `G` 开始。
 

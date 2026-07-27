@@ -134,30 +134,10 @@ b97bb553a077ee8bc49337a4e920ff0535ac2e8a00e22c26660d38663da3b6b6
 
 这简直是计算领域天作之合。
 
-Binary
-
-Byte
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-0
-
-Hexadecimal
-
-`0`
-`0`
+| Field | Value |
+| --- | --- |
+| Binary Byte | 00000000 |
+| Hexadecimal | `0` `0` |
 
 提示：*最低位*在右边 →
 
