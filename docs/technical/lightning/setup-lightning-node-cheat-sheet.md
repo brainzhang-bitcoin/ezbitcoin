@@ -1,179 +1,166 @@
-# Setup Lightning Node Cheat Sheet
-
-运营一个闪电节点的基本命令速查；
-
-## Bitcoin Core
-
-#### 启动
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` bitcoind --conf=/opt/bitcoin/blockdata/bitcoin.conf --datadir=/opt/bitcoin/blockdata/ ``` |
-
-如果需要一些老接口
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` bitcoind --conf=/opt/bitcoin/blockdata/bitcoin.conf --datadir=/opt/bitcoin/blockdata/ --deprecatedrpc=signrawtransaction ``` |
-
-#### bitcoin.conf
-
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 ``` | ``` rpcuser=user rpcpassword=password #rpcallowip=127.0.0.1/16 rpcallowip=0.0.0.0/0 rpcport=8332 test.rpcport=8332 rpcthreads=10 server=1 rest=1 testnet=0 zmqpubrawblock=tcp://127.0.0.1:28332 zmqpubrawtx=tcp://127.0.0.1:28333  #walletnotify=/usr/bin/echo "hello" ``` |
-
-## Lnd
-
-接口丰富，自带rpc和restapi接口，迭代速度快；
-
-https://github.com/lightningnetwork/lnd
-
-#### 部署
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lnd --bitcoin.active --bitcoin.testnet --debuglevel=debug --bitcoin.node=bitcoind --bitcoind.rpcuser=user --bitcoind.rpcpass='password' --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333 --listen=0.0.0.0:9736 --externalip=207.246.105.100 --no-macaroons 2>&1 >> lndtest.log ``` |
-
-#### 常用命令
-
-* 解锁钱包
-
-|  |  |
-| --- | --- |
-| ``` 1 2 ``` | ``` lncli  --network=testnet unlock lncli  --network=testnet newaddr ``` |
-
-* 查看余额
-
-|  |  |
-| --- | --- |
-| ``` 1 2 ``` | ``` lncli  --network=testnet walletbalance lncli  --network=testnet listunspent ``` |
-
-* 连接到一个闪电节点
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lncli  --network=testnet connect "027455aef8453d92f4706b560b61527cc217ddf14da41770e8ed6607190a1851b8@3.13.29.161:9735" ``` |
-
-* 打开一个通道
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lncli  --network=testnet openchannel --node_key 027455aef8453d92f4706b560b61527cc217ddf14da41770e8ed6607190a1851b8 100000 ``` |
-
-* 支付
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lncli  --network=testnet sendpayment --pay_req "lntb10n1pw6gf60pp5jxwg30u3k7qw2lzef7cnpy6tmnd80q2v5ytglf5tdaalrejhprzsdqhvf6xxmt9ypkxuepqw3jhxaqcqzpg9jsccqelkelayq89ydgrhxwf0hv2ffkdu2y6l27vtpmscszxj3pjsh..." ``` |
-
-* 接收付款
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lncli  --network=testnet addinvoice --memo "invoice for lnd.fun test3" --amt 100000 ``` |
-
-* 关闭通道
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lncli  --network=testnet closechannel "1243f60a54c4c6b8ab5d124a0c701792e085ab13a68da135ca3ffbabb461f1cc" ``` |
-
-* 链上发送全部余额
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lncli  --network=testnet sendcoins tbxxxxxx  --sweepall ``` |
-
-## C-lightning
-
-接口简洁，能直接集成lightning-charge；
-
-https://github.com/ElementsProject/lightning
-
-#### 部署
-
-* c-lightning提供了systemctl 服务脚本:
-
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ``` | ``` cat /etc/systemd/system/lightning.service   [Unit] Description=c-Lightning daemon  [Service] ExecStart=/usr/bin/lightningd --pid-file=/root/.lightning/lightning.pid --daemon PIDFile=/root/.lightning/lightning.pid User=root Type=forking Restart=always RestartSec=10  [Install] WantedBy=multi-user.target ``` |
-
-* 配置文件:
-
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 ``` | ``` ~/.lightning/config  alias=brain_zhang_lightning_testnode log-level=debug #network=bitcoin network=testnet bitcoin-rpcuser=user bitcoin-rpcpassword=password bitcoin-rpcconnect=127.0.0.1 bitcoin-rpcport=18332 log-file=/var/log/lightning.log bind-addr= announce-addr=x.x.x.x:9735 ``` |
-
-* 注册、启动服务
-
-|  |  |
-| --- | --- |
-| ``` 1 2 ``` | ``` systemctl enable lightning systemctl start lightning ``` |
-
-#### 常用命令
-
-* 建立一个新地址
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli newaddr ``` |
-
-* 查看线上钱包地址
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli dev-listaddrs ``` |
-
-* 连接node (1ml.com node)
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli connect 02312627fdf07fbdd7e5ddb136611bdde9b00d26821d14d94891395452f67af248@23.237.77.12:9735 ``` |
-
-* 建立通道
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli fundchannel id satoshi [feerate] [announce] [minconf] ``` |
-
-* 查看链上和链下余额
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli listfunds ``` |
-
-* 支付
-
-Send payment specified by {bolt11} with {amount}
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli pay bolt11 [msatoshi] [label] [riskfactor] [maxfeepercent] [retry_for] [maxdelay] [exemptfee] ``` |
-
-* 收款
-
-Create an invoice for {msatoshi} with {label} and {description} with optional {expiry} seconds (default 1 hour), optional {fallbacks} address list(default empty list) and optional {preimage}
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` lightning-cli invoice msatoshi label description [expiry] [fallbacks] [preimage] [exposeprivatechannels] ``` |
-
-## C-lightning && lightning-charge
-
-https://github.com/btcme/lightning-charge
-
-#### 部署
-
-lightning-charge最好用docker直接集成c-lightning一把启动，比如我已经运行了一个bitcoin core全节点，可以直接下面的命令启动:
-
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 ``` | ``` docker run -d -u `id -u` -v `pwd`/data:/data -p 9735:9735 -p 9112:9112 \              -e API_TOKEN=mySecretToken \              -e NETWORK=testnet  \              -e BITCOIND_URI="http://user:[email protected]:18332" \              shesek/lightning-charge ``` |
-
-注意BITCOIND\_URL的IP是docker容器内向外连接的，如果不是用net的方式启动，要填docker的网桥地址；
-
-* 查询运行状况
-
-|  |  |
-| --- | --- |
-| ``` 1 ``` | ``` curl http://api-token:mySecretToken@localhost:9112/info ``` |
+# 闪电网络节点搭建与配置小抄 (Node Setup Cheat Sheet)
+
+本小抄整理了运营闪电网络节点最核心的配置模板与常用运维指令，覆盖 **Bitcoin Core**、**LND** 以及 **Core Lightning (CLN)**。
+
+---
+
+## 1. Bitcoin Core 节点配合配置
+
+### `bitcoin.conf` 核心配置模板
+```ini
+# ~/.bitcoin/bitcoin.conf
+testnet=1
+server=1
+rest=1
+rpcuser=user
+rpcpassword=password
+rpcallowip=127.0.0.1
+rpcport=18332
+test.rpcport=18332
+rpcthreads=10
+
+# ZeroMQ 通知（闪电节点监听新区块与新交易必需）
+zmqpubrawblock=tcp://127.0.0.1:28332
+zmqpubrawtx=tcp://127.0.0.1:28333
+```
+
+### 节点启停与查询
+```bash
+# 启动守护进程
+bitcoind -daemon --conf=/opt/bitcoin/blockdata/bitcoin.conf --datadir=/opt/bitcoin/blockdata/
+
+# 查询同步状态与钱包信息
+bitcoin-cli getblockchaininfo
+bitcoin-cli getwalletinfo
+```
+
+---
+
+## 2. LND (Lightning Network Daemon)
+
+[LND](https://github.com/lightningnetwork/lnd) 是目前最流行的 Go 语言闪电节点实现，提供丰富的 gRPC 与 REST 接口。
+
+### 启动 LND
+```bash
+lnd --bitcoin.active \
+    --bitcoin.testnet \
+    --debuglevel=debug \
+    --bitcoin.node=bitcoind \
+    --bitcoind.rpcuser=user \
+    --bitcoind.rpcpass=password \
+    --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 \
+    --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333 \
+    --listen=0.0.0.0:9735 \
+    --externalip=x.x.x.x:9735
+```
+
+### `lncli` 常用运维指令
+```bash
+# 解锁钱包
+lncli --network=testnet unlock
+
+# 获取收款地址 (原生隔离见证)
+lncli --network=testnet newaddress p2wkh
+
+# 查看钱包链上余额与通道余额
+lncli --network=testnet walletbalance
+lncli --network=testnet channelbalance
+
+# 连接对端节点
+lncli --network=testnet connect <pubkey>@<ip>:9735
+
+# 开启通道 (存入 100,000 satoshi)
+lncli --network=testnet openchannel --node_key <pubkey> --local_amt 100000
+
+# 查看当前活跃通道
+lncli --network=testnet listchannels
+
+# 发送闪电支付 (向 BOLT11 发票付款)
+lncli --network=testnet sendpayment --pay_req <invoice_string>
+
+# 生成收款发票 (金额 100,000 satoshi)
+lncli --network=testnet addinvoice --memo "test invoice" --amt 100000
+
+# 协作关闭通道
+lncli --network=testnet closechannel <channel_point>
+```
+
+---
+
+## 3. Core Lightning (CLN)
+
+[Core Lightning](https://github.com/ElementsProject/lightning)（原 c-lightning）由 Blockstream 维护，采用 C 语言编写，性能优异且资源占用极低。
+
+### Systemd 服务配置模板 (`/etc/systemd/system/lightning.service`)
+```ini
+[Unit]
+Description=Core Lightning daemon
+After=network.target bitcoind.service
+
+[Service]
+ExecStart=/usr/bin/lightningd --pid-file=/root/.lightning/lightning.pid --daemon
+PIDFile=/root/.lightning/lightning.pid
+User=root
+Type=forking
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### 配置文件 `~/.lightning/config`
+```ini
+alias=ezbitcoin_node
+log-level=debug
+network=testnet
+bitcoin-rpcuser=user
+bitcoin-rpcpassword=password
+bitcoin-rpcconnect=127.0.0.1
+bitcoin-rpcport=18332
+log-file=/var/log/lightning.log
+bind-addr=0.0.0.0:9735
+announce-addr=x.x.x.x:9735
+```
+
+### `lightning-cli` 常用指令
+```bash
+# 获取新地址
+lightning-cli newaddr
+
+# 连接公网节点
+lightning-cli connect <pubkey>@<ip>:9735
+
+# 注资开启通道
+lightning-cli fundchannel <node_id> <amount_satoshi>
+
+# 查看资金池概况
+lightning-cli listfunds
+
+# 支付发票
+lightning-cli pay <bolt11_invoice>
+
+# 创建发票 (金额单位 millisatoshi)
+lightning-cli invoice <msatoshi> <label> <description>
+```
+
+---
+
+## 4. 搭配 Lightning Charge 搭建微支付网关
+
+[Lightning Charge](https://github.com/ElementsProject/lightning-charge) 是为 Core Lightning 提供的开箱即用 REST API 收银网关，适合电商网站集成：
+
+```bash
+docker run -d --name lightning-charge \
+  -v /data/lightning:/data \
+  -p 9112:9112 \
+  -e API_TOKEN=mySecretToken \
+  -e NETWORK=testnet \
+  -e BITCOIND_URI="http://user:password@127.0.0.1:18332" \
+  shesek/lightning-charge
+```
+
+健康检查：
+```bash
+curl http://api-token:mySecretToken@localhost:9112/info
+```
