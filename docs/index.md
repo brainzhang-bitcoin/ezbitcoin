@@ -79,8 +79,6 @@
 #### Phase 2: 构建交易 (Constructing the Transaction)
 *   **💸 比特币交易 (Transactions)**
     *   [交易总览 (Transaction)](technical/transaction.md)
-        *   [比特币的交易 - Part 5](technical/transaction/bitcoin-transaction-part5.md)
-        *   [比特币的交易 - Part 6](technical/transaction/bitcoin-transaction-part6.md)
         *   [未花费交易输出 (UTXO)](technical/transaction/utxo.md)
         *   [交易输入 (Input)](technical/transaction/input.md)
             *   [ScriptSig 解锁脚本](technical/transaction/input/scriptsig.md)
@@ -94,6 +92,7 @@
         *   [见证数据 (Witness)](technical/transaction/witness.md)
         *   [Wtxid 见证交易哈希](technical/transaction/wtxid.md)
         *   [部分签名的比特币交易 (PSBT)](technical/transaction/psbt.md)
+        *   [实战：用 Python 手工构造并签署裸交易](technical/transaction/raw-transaction-python.md)
 *   **📝 比特币脚本 (Script)**
     *   [脚本语言总览 (Script)](technical/script.md)
         *   [P2PK (Pay-to-Public-Key)](technical/script/p2pk.md)
@@ -130,12 +129,11 @@
         *   [随机数 Nonce (Nonce)](technical/block/nonce.md)
         *   [版本号 Version (Version)](technical/block/version.md)
         *   [blk.dat 数据文件结构](technical/block/blkdat.md)
+        *   [区块深度考古：创世区块谜题与 blk.dat 文件解析](technical/block/genesis-and-blkdat.md)
 
 #### Phase 4: 账本与演进 (The Ledger & Protocol Evolution)
 *   **🔗 区块链 (Blockchain)**
     *   [区块链总览 (Blockchain)](technical/blockchain.md)
-        *   [比特币的 Blockchain - Part 1](technical/blockchain/bitcoin-blockchain-part1.md)
-        *   [比特币的 Blockchain - Part 2](technical/blockchain/bitcoin-blockchain-part2.md)
         *   [区块高度 (Height)](technical/blockchain/height.md)
         *   [最长链原则 (Longest Chain)](technical/blockchain/longest-chain.md)
         *   [51% 攻击 (51% Attack)](technical/blockchain/51-attack.md)
@@ -143,20 +141,23 @@
         *   [软分叉 (Soft Fork)](technical/blockchain/soft-fork.md)
 *   **⚡ 比特币升级协议 (Upgrades)**
     *   [隔离见证 (Segregated Witness / SegWit)](technical/upgrades/segregated-witness.md)
+    *   [隔离见证深度溯源：从交易延展性危机谈起](technical/upgrades/segwit-malleability-history.md)
     *   [主根升级 (Taproot)](technical/upgrades/taproot.md)
 
-#### Phase 5: 二层扩展 (Layer 2 Scaling)
-*   **⚡ 闪电网络与 Lnd 技术 (Lightning Network)**
-    *   [闪电网络与 Lnd 技术 (Lightning Network)](technical/lightning.md)
-        *   [Lnd 启动扫描速度慢分析 (Lnd Low Rescan Speed)](technical/lightning/lnd-low-rescan-speed-startup.md)
-        *   [如何通过 lnd-cli 关闭通道 (How to Close Lightning Channels)](technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md)
-        *   [闪电网络基础与原理 - Part 0](technical/lightning/hello-lightning-network-part0.md)
-        *   [闪电网络基础与原理 - Part 1](technical/lightning/hello-lightning-network-part1.md)
-        *   [闪电网络基础与原理 - Part 2](technical/lightning/hello-lightning-network-part2.md)
-        *   [闪电网络基础与原理 - Part 3](technical/lightning/hello-lightning-network-part3.md)
+#### Phase 5: 二层网络与扩展技术 (Layer 2 & Scaling)
+*   **🌐 侧链与跨链 (Sidechains & Cross-chain)**
+    *   [侧链与跨链技术演进：从 BitDNS、Namecoin 到 Liquid](technical/upgrades/sidechains-and-crosschain.md)
+*   **⚡ 闪电网络专栏 (Lightning Network)**
+    *   [闪电网络与 Lnd 技术导读](technical/lightning.md)
+        *   [闪电网络的演进与成长之路](technical/lightning/lightning-network-gradual-growth.md)
+        *   [闪电网络极速入门与 LND 初体验](technical/lightning/lnd-quickstart.md)
+        *   [核心机制深潜：深度图解 RSMC 与 HTLC](technical/lightning/rsmc-and-htlc.md)
+        *   [真实工程困境：通道入站容量谜题](technical/lightning/inbound-capacity.md)
+        *   [容量破局之道：Loop 潜艇互换机制](technical/lightning/submarine-swaps-loop.md)
         *   [闪电网络节点搭建与配置小抄](technical/lightning/setup-lightning-node-cheat-sheet.md)
-        *   [Eltoo 闪电和离线契约更新机制](technical/lightning/eltoo-lightning-offchain-contracts.md)
-        *   [闪电网络的慢慢成长之路](technical/lightning/lightning-network-gradual-growth.md)
+        *   [运维实战：如何通过 lncli 安全关闭闪电通道](technical/lightning/how-to-close-lightning-channels-by-lnd-cli.md)
+        *   [运维实战：排查 LND 启动扫描慢问题](technical/lightning/lnd-low-rescan-speed-startup.md)
+        *   [未来前沿：Eltoo 离线契约更新机制](technical/lightning/eltoo-lightning-offchain-contracts.md)
 
 ---
 

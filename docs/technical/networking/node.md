@@ -324,7 +324,7 @@ SPV 钱包只接收区块链的[区块头](../block.md#header)（它比完整的
 
 > 我不认为比特币的第二种兼容实现会是一个好主意。它的许多设计都取决于所有节点步骤完全一致地得到精确相同的结果，以至于第二种实现会对网络构成威胁。
 
-中本聪，[bitcointalk.org](ttps://bitcointalk.org/index.php?topic=195.msg1611#msg1611)
+中本聪，[bitcointalk.org](https://bitcointalk.org/index.php?topic=195.msg1611#msg1611)
 
 On the other hand，如果你有*多种*实现，那么它们受到相同漏洞影响的可能性就会降低。所以如果网络上运行某个特定实现的所有节点都因为一个严重漏洞而宕机，运行其他实现的节点仍然在线并能保持网络运行（假设它们没有受到相同漏洞的影响）。
 

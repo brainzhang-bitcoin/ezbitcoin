@@ -112,7 +112,7 @@ Total Weight      = 2,200,000 weight units
 
 所以可以说，这实际上将区块大小限制提高到了 **1.8 MB**。
 
-1. 我是通过遍历 [blk.dat](../../technical/block/blkdat.md) 文件并累加区块中所有交易的 `scriptSig` 数据，并将其与区块的总大小进行对比，从而得到了这 60% 的数据。我没有进行详尽的测试，但 60% 似乎是一个合理的平均值。例如，这里是 [blk00700.dat](blk00700_scriptsig.txt) 的结果。
+1. 我是通过遍历 [blk.dat](../../technical/block/blkdat.md) 文件并累加区块中所有交易的 `scriptSig` 数据，并将其与区块的总大小进行对比，从而得到了这 60% 的数据。我没有进行详尽的测试，但 60% 似乎是一个合理的平均值。例如，这里是 [blk00700.dat](https://learnmeabitcoin.com/beginners/guide/blk00700_scriptsig.txt) 的结果。
 
 ## 为什么这些变化要以这种方式实现？
 

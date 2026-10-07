@@ -35,7 +35,7 @@
 * **[Xubuntu](https://xubuntu.org/)** – 这是我首选的 Linux 发行版。它就是流行的 [Ubuntu](https://ubuntu.com/) 捆绑了轻量且实用的 [XFCE](https://xfce.org/) 桌面环境。它易于使用，如果您是从 Mac 或 Windows 转过来的，它是一个很好的起点，因为一切都是开箱即用的。
     
 
-  [<img src="../images/technical_my-setup-2020.png" alt="Screenshot of my desktop." width="960" height="540" />](images/technical_my-setup-2020.png)
+  [<img src="../images/technical_my-setup-2020.png" alt="Screenshot of my desktop." width="960" height="540" />](../images/technical_my-setup-2020.png)
 
 
   这是我的桌面外观。我当时正在制作这个 [SHA256 动画](https://www.youtube.com/watch?v=f9EbD6iY9zI)。
@@ -140,7 +140,7 @@ Obviously, if you're proficient with your current development environment, stick
 
 ### 编写命令行工具
 
-[<img src="../images/technical_command-line-tools.gif" alt="Screencast showing bitcoin command line tools being used in the terminal." width="728" height="183" />](images/technical_command-line-tools.gif)
+[<img src="../images/technical_command-line-tools.gif" alt="Screencast showing bitcoin command line tools being used in the terminal." width="728" height="183" />](../images/technical_command-line-tools.gif)
 
 编写命令行工具是开始对比特币进行编程的好方法。
 
@@ -260,8 +260,6 @@ Obviously, if you're proficient with your current development environment, stick
 ### Phase 2: 构建交易 (Constructing the Transaction)
 *   **💸 比特币交易 (Transactions)**
     *   [交易总览 (Transaction)](transaction.md)
-        *   [比特币的交易 - Part 5](transaction/bitcoin-transaction-part5.md)
-        *   [比特币的交易 - Part 6](transaction/bitcoin-transaction-part6.md)
         *   [未花费交易输出 (UTXO)](transaction/utxo.md)
         *   [交易输入 (Input)](transaction/input.md)
             *   [ScriptSig 解锁脚本](transaction/input/scriptsig.md)
@@ -275,6 +273,7 @@ Obviously, if you're proficient with your current development environment, stick
         *   [见证数据 (Witness)](transaction/witness.md)
         *   [Wtxid 见证交易哈希](transaction/wtxid.md)
         *   [部分签名的比特币交易 (PSBT)](transaction/psbt.md)
+        *   [实战：用 Python 手工构造并签署裸交易](transaction/raw-transaction-python.md)
 *   **📝 比特币脚本 (Script)**
     *   [脚本语言总览 (Script)](script.md)
         *   [P2PK (Pay-to-Public-Key)](script/p2pk.md)
@@ -311,12 +310,11 @@ Obviously, if you're proficient with your current development environment, stick
         *   [随机数 Nonce (Nonce)](block/nonce.md)
         *   [版本号 Version (Version)](block/version.md)
         *   [blk.dat 数据文件结构](block/blkdat.md)
+        *   [区块深度考古：创世区块谜题与 blk.dat 文件解析](block/genesis-and-blkdat.md)
 
 ### Phase 4: 账本与演进 (The Ledger & Protocol Evolution)
 *   **🔗 区块链 (Blockchain)**
     *   [区块链总览 (Blockchain)](blockchain.md)
-        *   [比特币的 Blockchain - Part 1](blockchain/bitcoin-blockchain-part1.md)
-        *   [比特币的 Blockchain - Part 2](blockchain/bitcoin-blockchain-part2.md)
         *   [区块高度 (Height)](blockchain/height.md)
         *   [最长链原则 (Longest Chain)](blockchain/longest-chain.md)
         *   [51% 攻击 (51% Attack)](blockchain/51-attack.md)
@@ -324,20 +322,23 @@ Obviously, if you're proficient with your current development environment, stick
         *   [软分叉 (Soft Fork)](blockchain/soft-fork.md)
 *   **⚡ 比特币升级协议 (Upgrades)**
     *   [隔离见证 (Segregated Witness / SegWit)](upgrades/segregated-witness.md)
+    *   [隔离见证深度溯源：从交易延展性危机谈起](upgrades/segwit-malleability-history.md)
     *   [主根升级 (Taproot)](upgrades/taproot.md)
 
-### Phase 5: 二层扩展 (Layer 2 Scaling)
-*   **⚡ 闪电网络与 Lnd 技术 (Lightning Network)**
-    *   [闪电网络与 Lnd 技术 (Lightning Network)](lightning.md)
-        *   [Lnd 启动扫描速度慢分析 (Lnd Low Rescan Speed)](lightning/lnd-low-rescan-speed-startup.md)
-        *   [如何通过 lnd-cli 关闭通道 (How to Close Lightning Channels)](lightning/how-to-close-lightning-channels-by-lnd-cli.md)
-        *   [闪电网络基础与原理 - Part 0](lightning/hello-lightning-network-part0.md)
-        *   [闪电网络基础与原理 - Part 1](lightning/hello-lightning-network-part1.md)
-        *   [闪电网络基础与原理 - Part 2](lightning/hello-lightning-network-part2.md)
-        *   [闪电网络基础与原理 - Part 3](lightning/hello-lightning-network-part3.md)
+### Phase 5: 二层网络与扩展技术 (Layer 2 & Scaling)
+*   **🌐 侧链与跨链 (Sidechains & Cross-chain)**
+    *   [侧链与跨链技术演进：从 BitDNS、Namecoin 到 Liquid](upgrades/sidechains-and-crosschain.md)
+*   **⚡ 闪电网络专栏 (Lightning Network)**
+    *   [闪电网络与 Lnd 技术导读](lightning.md)
+        *   [闪电网络的演进与成长之路](lightning/lightning-network-gradual-growth.md)
+        *   [闪电网络极速入门与 LND 初体验](lightning/lnd-quickstart.md)
+        *   [核心机制深潜：深度图解 RSMC 与 HTLC](lightning/rsmc-and-htlc.md)
+        *   [真实工程困境：通道入站容量谜题](lightning/inbound-capacity.md)
+        *   [容量破局之道：Loop 潜艇互换机制](lightning/submarine-swaps-loop.md)
         *   [闪电网络节点搭建与配置小抄](lightning/setup-lightning-node-cheat-sheet.md)
-        *   [Eltoo 闪电和离线契约更新机制](lightning/eltoo-lightning-offchain-contracts.md)
-        *   [闪电网络的慢慢成长之路](lightning/lightning-network-gradual-growth.md)
+        *   [运维实战：如何通过 lncli 安全关闭闪电通道](lightning/how-to-close-lightning-channels-by-lnd-cli.md)
+        *   [运维实战：排查 LND 启动扫描慢问题](lightning/lnd-low-rescan-speed-startup.md)
+        *   [未来前沿：Eltoo 离线契约更新机制](lightning/eltoo-lightning-offchain-contracts.md)
 
 ### 其他资源
 
